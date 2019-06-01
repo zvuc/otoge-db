@@ -38,6 +38,10 @@
             background: #fff;
         }
 
+        thead span {
+            display: block;
+        }
+
         thead .id select,
         thead .jacket select,
         thead .song-title select,
@@ -47,6 +51,7 @@
 
         thead select {
             font-size: 1em;
+            text-overflow: ellipsis;
         }
         
         tbody td.id {
@@ -56,6 +61,22 @@
         tbody td.song-title {
             font-weight: bold;
             font-size: 1.1em;
+            width: 20%;
+        }
+        
+        .chapter-id {
+            font-size: 0.9em;
+            max-width: 80px;
+            white-space: nowrap;
+        }
+
+        .chapter {
+            font-size: 0.9em;
+            width: 8%;
+        }
+
+        .chapter select {
+            max-width: 200px;
         }
 
         .jacket span {
@@ -84,6 +105,27 @@
         .lv-lnt {
             background: rgba(255, 255, 255, 0.5);
         }
+
+        .lv-bsc.sorting_1 {
+            background: rgba(231, 249, 231, 1) !important;
+        }
+        .lv-adv.sorting_1 {
+            background: rgba(255, 244, 201, 1) !important;
+        }
+        .lv-exp.sorting_1 {
+            background: rgba(255, 224, 224, 1) !important;
+        }
+        .lv-mas.sorting_1 {
+            background: rgba(248, 237, 255, 1) !important;
+        }
+        .lv-lnt.sorting_1 {
+            background: rgba(255, 255, 255, 1) !important;
+        }
+
+        tbody td.date {
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -106,13 +148,13 @@
                 <th><span>チャプター</span></th>
                 <th><span>chara_id</span></th>
                 <th><span>相手キャラ</span></th>
-                <th><span>追加日</span></th>
                 <th><span>BSC</span></th>
                 <th><span>ADV</span></th>
                 <th><span>EXP</span></th>
                 <th><span>MAS</span></th>
                 <th><span>LNT</span></th>
                 <th><span>new</span></th>
+                <th><span>追加日</span></th>
             </tr>
         </thead>
     </table>
@@ -185,7 +227,8 @@
                         visible: false
                     },
                     { 
-                        data: "chap_id"
+                        data: "chap_id",
+                        className: "chapter-id"
                     },
                     { 
                         data: "chapter",
@@ -197,9 +240,6 @@
                     },
                     { 
                         data: "character"
-                    },
-                    { 
-                        data: "date"
                     },
                     { 
                         data: "lev_bas",
@@ -225,13 +265,17 @@
                         data: "new",
                         searchable: false,
                         visible: false
+                    },
+                    { 
+                        data: "date",
+                        className: "date",
                     }
                 ],
 
                 initComplete: function () {
                     this.api().columns().every( function () {
                         var column = this;
-                        var select = $('<select onclick="event.stopPropagation()"><option value="">-------</option></select>')
+                        var select = $('<select onclick="event.stopPropagation()"><option value="" selected>——</option></select>')
                             .appendTo( $(column.header()) )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
