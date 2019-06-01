@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <style>
         html, body {
-            font-family: --apple-system, sans-serif;
+            font-family: -apple-system, 'Segoe UI', sans-serif;
+            font-feature-settings: "palt";
             padding: 0;
             margin: 0;
         }
@@ -37,6 +38,10 @@
             background: #fff;
         }
         
+        tbody td.id {
+            font-variant-numeric: tabular-nums;
+        }
+
         tbody td.song-title {
             font-weight: bold;
             font-size: 1.1em;
@@ -51,16 +56,19 @@
         }
 
         .lv-bsc {
-            background: #e7f9e7;
+            background: rgba(231, 249, 231, 0.5);
         }
         .lv-adv {
-            background: #fff4c9;
+            background: rgba(255, 244, 201, 0.5);
         }
         .lv-exp {
-            background: #ffe0e0;
+            background: rgba(255, 224, 224, 0.5);
         }
         .lv-mas {
-            background: #f8edff;
+            background: rgba(248, 237, 255, 0.5);
+        }
+        .lv-lnt {
+            background: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
@@ -72,7 +80,8 @@
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>id</th>
+                <th>ID (system)</th>
+                <th>ID</th>
                 <th class="jacket"></th>
                 <th>Title</th>
                 <th>Title (sort name)</th>
@@ -84,7 +93,7 @@
                 <th>chara_id</th>
                 <th>character</th>
                 <th>Added Date</th>
-                <th>BAS</th>
+                <th>BSC</th>
                 <th>ADV</th>
                 <th>EXP</th>
                 <th>MAS</th>
@@ -106,17 +115,27 @@
                 },
                 "deferRender": true,
                 "lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
-                "order": [11, 'desc'], 
+                "order": [[12, 'desc'],[0,'desc']], 
                 "columns": [
                     { 
                         data: "id",
+                        className: "id",
+                        visible: false
+                    },
+                    { 
+                        data: "image_url",
+                        className: "id",
+                        searchable: false,
+                        render: function(data) {
+                            return data.split(".")[0];
+                        }
                     },
                     { 
                         data: "image_url",
                         className: "jacket",
                         orderable: false,
                         searchable: false,
-                        render: function(data, row) {
+                        render: function(data) {
                             return '<img src=\"img/' + data.split(".")[0] + '.jpg\"\/>';
                         }
                     },
