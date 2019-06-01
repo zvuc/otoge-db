@@ -16,26 +16,68 @@
         header {
             display: flex;
             align-items: center;
-            padding: 10px 10px;
-            border-bottom: 2px solid #aaa;
+            padding: 10px 15px;
             margin-bottom: 10px;
+            border-bottom: 3px solid #ff1b71;
+            background-color: #efefef;
+            overflow: hidden;
         }
         h1 {
             margin: 0;
             font-size: 1.5em;
         }
         header .lastupdated {
+            position: relative;
+            display: inline-block;
+            padding: 5px 30px 5px 30px;
             margin-left: auto;
+            margin-right: -30px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        header .lastupdated:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: #111;
+            transform: skewX(-40deg);
+        }
+
+        header .lastupdated span {
+            position: relative;
+        }
+        
+        .dataTables_length {
+            margin-bottom: 10px;
+        }
+
+        .dataTables_filter {
+            margin-bottom: 10px;
         }
 
         #table_wrapper {
             padding: 10px 10px;
         }
 
+        #table {
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
         #table thead {
             position: sticky;
             top: 0;
             background: #fff;
+        }
+
+        table.dataTable thead th,
+        table.dataTable thead td {
+            padding-left: 10px;
+            padding-right: 20px;
         }
 
         thead span {
@@ -50,7 +92,7 @@
         }
 
         thead select {
-            font-size: 1em;
+            font-size: 1rem;
             text-overflow: ellipsis;
         }
         
@@ -65,14 +107,20 @@
         }
         
         .chapter-id {
-            font-size: 0.9em;
             max-width: 80px;
             white-space: nowrap;
         }
 
-        .chapter {
+        tbody td.chapter-id {
             font-size: 0.9em;
+        }
+
+        .chapter {
             width: 8%;
+        }
+
+        tbody td.chapter {
+            font-size: 0.9em;
         }
 
         .chapter select {
@@ -88,6 +136,10 @@
         }
         tbody td.title-sort {
             font-size: 0.7em;
+        }
+
+        .lv {
+            max-width: 60px;
         }
 
         .lv-bsc {
@@ -131,7 +183,7 @@
 <body>
     <header>
         <h1>オンゲキ収録曲DB</h1>
-        <span class="lastupdated">Last updated 2019/06/01</span>
+        <div class="lastupdated"><span>Last updated 2019/06/01</span></div>
     </header>
     <table id="table" class="display" style="width:100%">
         <thead>
@@ -172,6 +224,14 @@
                 "deferRender": true,
                 "lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
                 "order": [[12, 'desc'],[0,'desc']], 
+                // "columnDefs": [
+                //     {
+                //         "render": function ( data, type, row ) {
+                //             return '('+ row[8]+') ' + data;
+                //         },
+                //         "targets": 9
+                //     }
+                // ],
                 "columns": [
                     { 
                         data: "id",
@@ -232,7 +292,7 @@
                     },
                     { 
                         data: "chapter",
-                        className: "chapter"
+                        className: "chapter",
                     },
                     { 
                         data: "chara_id",
@@ -243,23 +303,23 @@
                     },
                     { 
                         data: "lev_bas",
-                        className: "lv-bsc"
+                        className: "lv lv-bsc"
                     },
                     { 
                         data: "lev_adv",
-                        className: "lv-adv"
+                        className: "lv lv-adv"
                     },
                     { 
                         data: "lev_exc",
-                        className: "lv-exp"
+                        className: "lv lv-exp"
                     },
                     { 
                         data: "lev_mas",
-                        className: "lv-mas"
+                        className: "lv lv-mas"
                     },
                     { 
                         data: "lev_lnt",
-                        className: "lv-lnt"
+                        className: "lv lv-lnt"
                     },
                     { 
                         data: "new",
@@ -275,7 +335,7 @@
                 initComplete: function () {
                     this.api().columns().every( function () {
                         var column = this;
-                        var select = $('<select onclick="event.stopPropagation()"><option value="" selected>——</option></select>')
+                        var select = $('<select onclick="event.stopPropagation()"><option value="" selected>—</option></select>')
                             .appendTo( $(column.header()) )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
@@ -287,7 +347,9 @@
                                     .draw();
                             } );
                         column.data().unique().sort().each( function ( d, j ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' );
+                            if (j != ''){
+                                select.append( '<option value="'+d+'">'+d+'</option>' );
+                            }
                         } );
                     } );
                 }
