@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-141271073-1');
+    </script>
+
+
     <meta charset="UTF-8"> 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+    <title>オンゲキ収録曲DB</title>
+
     <style>
         html, body {
             font-family: -apple-system, 'Segoe UI', sans-serif;
             font-feature-settings: "palt";
             padding: 0;
             margin: 0;
+        }
+
+        a {
+            color: #ff1b71;
         }
 
         header {
@@ -177,6 +194,12 @@
         tbody td.date {
             text-align: center;
         }
+        
+        footer {
+            padding: 25px 15px 15px 15px;
+            font-size: 0.8em;
+            color: #666;
+        }
 
     </style>
 </head>
@@ -210,7 +233,11 @@
             </tr>
         </thead>
     </table>
-
+    
+    <footer>
+        <p><b>DISCLAIMER: This website is not in any way afiiliated with or endorsed by SEGA. All copyrighted materials owned by their respective owners.</b></p>
+        <p>Made by <a href="https://twitter.com/zvuc_" target="_blank" rel="noopener">@zvuc_</a> / Contributions & feedback on <a href="https://github.com/zvuc/ongeki-db" target="_blank" rel="noopener">GitHub</a></p>
+    </footer>
 
     <script>
         $(document).ready(function() {
@@ -222,7 +249,7 @@
                     dataSrc: ""
                 },
                 "deferRender": true,
-                "lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 "order": [[12, 'desc'],[0,'desc']], 
                 // "columnDefs": [
                 //     {
