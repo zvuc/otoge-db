@@ -37,6 +37,17 @@
             top: 0;
             background: #fff;
         }
+
+        thead .id select,
+        thead .jacket select,
+        thead .song-title select,
+        thead .artist select {
+            display: none;
+        }
+
+        thead select {
+            font-size: 1em;
+        }
         
         tbody td.id {
             font-variant-numeric: tabular-nums;
@@ -47,6 +58,9 @@
             font-size: 1.1em;
         }
 
+        .jacket span {
+            display: none;
+        }
         .jacket img {
             max-width: 50px;
             height: auto;
@@ -80,25 +94,25 @@
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>ID (system)</th>
-                <th>ID</th>
-                <th class="jacket"></th>
-                <th>Title</th>
-                <th>Title (sort name)</th>
-                <th>Artist</th>
-                <th class="toggle">Category</th>
-                <th class="toggle">category_id</th>
-                <th>chap_id</th>
-                <th>chapter</th>
-                <th>chara_id</th>
-                <th>character</th>
-                <th>Added Date</th>
-                <th>BSC</th>
-                <th>ADV</th>
-                <th>EXP</th>
-                <th>MAS</th>
-                <th>LNT</th>
-                <th>new</th>
+                <th><span>ID (system)</span></th>
+                <th><span>ID</span></th>
+                <th><span>アルバムアート</span></th>
+                <th><span>曲名</span></th>
+                <th><span>曲名 (読み)</span></th>
+                <th><span>アーティスト</span></th>
+                <th><span>カテゴリ</span></th>
+                <th><span>category_id</span></th>
+                <th><span>チャプターID</span></th>
+                <th><span>チャプター</span></th>
+                <th><span>chara_id</span></th>
+                <th><span>相手キャラ</span></th>
+                <th><span>追加日</span></th>
+                <th><span>BSC</span></th>
+                <th><span>ADV</span></th>
+                <th><span>EXP</span></th>
+                <th><span>MAS</span></th>
+                <th><span>LNT</span></th>
+                <th><span>new</span></th>
             </tr>
         </thead>
     </table>
@@ -159,21 +173,23 @@
                         visible: false
                     },
                     { 
-                        data: "artist"
+                        data: "artist",
+                        className: "artist",
                     },
                     { 
-                        data: "category"
+                        data: "category",
+                        className: "category"
                     },
                     { 
                         data: "category_id",
                         visible: false
                     },
                     { 
-                        data: "chap_id",
-                        visible: false
+                        data: "chap_id"
                     },
                     { 
-                        data: "chapter"
+                        data: "chapter",
+                        className: "chapter"
                     },
                     { 
                         data: "chara_id",
@@ -207,13 +223,30 @@
                     },
                     { 
                         data: "new",
-                        searchable: false
+                        searchable: false,
+                        visible: false
                     }
                 ],
-                buttons: [ {
-                    extend: 'columnsToggle',
-                    columns: '.toggle'
-                } ]
+
+                initComplete: function () {
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select onclick="event.stopPropagation()"><option value="">-------</option></select>')
+                            .appendTo( $(column.header()) )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+         
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+                        column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' );
+                        } );
+                    } );
+                }
             });
         });
     </script>
