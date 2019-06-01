@@ -142,11 +142,21 @@
                     { 
                         data: "title",
                         className: "song-title",
-                        orderable: false
+                        render: function ( data, type, row ) {
+                            // If display or filter data is requested, return title
+                            if ( type === 'display' || type === 'filter' ) {
+                                return data;
+                            }
+                            // Else type detection or sorting data, return title_sort
+                            else {
+                                return row.title_sort;
+                            }
+                        }
                     },
                     {
                         data: "title_sort",
-                        className: "title-sort"
+                        className: "title-sort",
+                        visible: false
                     },
                     { 
                         data: "artist"
