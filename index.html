@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <style>
+        html, body {
+            font-family: --apple-system, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 10px;
+            border-bottom: 2px solid #aaa;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        header .lastupdated {
+            margin-left: auto;
+        }
+
+        #table_wrapper {
+            padding: 10px 10px;
+        }
+
+        #table thead {
+            position: sticky;
+            top: 0;
+            background: #fff;
+        }
+        
+        tbody td.song-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .jacket img {
+            max-width: 50px;
+            height: auto;
+        }
+        tbody td.title-sort {
+            font-size: 0.7em;
+        }
+
+        .lv-bsc {
+            background: #e7f9e7;
+        }
+        .lv-adv {
+            background: #fff4c9;
+        }
+        .lv-exp {
+            background: #ffe0e0;
+        }
+        .lv-mas {
+            background: #f8edff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>オンゲキ収録曲DB</h1>
+        <span class="lastupdated">Last updated 2019/06/01</span>
+    </header>
+    <table id="table" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th class="jacket"></th>
+                <th>Title</th>
+                <th>Title (sort name)</th>
+                <th>Artist</th>
+                <th class="toggle">Category</th>
+                <th class="toggle">category_id</th>
+                <th>chap_id</th>
+                <th>chapter</th>
+                <th>chara_id</th>
+                <th>character</th>
+                <th>Added Date</th>
+                <th>BAS</th>
+                <th>ADV</th>
+                <th>EXP</th>
+                <th>MAS</th>
+                <th>LNT</th>
+                <th>new</th>
+            </tr>
+        </thead>
+    </table>
+
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#table');
+            
+            table.DataTable( {
+                "ajax": {
+                    url: "music.json",
+                    dataSrc: ""
+                },
+                "deferRender": true,
+                "lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
+                "order": [11, 'desc'], 
+                "columns": [
+                    { 
+                        data: "id",
+                    },
+                    { 
+                        data: "image_url",
+                        className: "jacket",
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, row) {
+                            return '<img src=\"img/' + data + '\"\/>';
+                        }
+                    },
+                    { 
+                        data: "title",
+                        className: "song-title",
+                        orderable: false
+                    },
+                    {
+                        data: "title_sort",
+                        className: "title-sort"
+                    },
+                    { 
+                        data: "artist"
+                    },
+                    { 
+                        data: "category"
+                    },
+                    { 
+                        data: "category_id",
+                        visible: false
+                    },
+                    { 
+                        data: "chap_id",
+                        visible: false
+                    },
+                    { 
+                        data: "chapter"
+                    },
+                    { 
+                        data: "chara_id",
+                        visible: false
+                    },
+                    { 
+                        data: "character"
+                    },
+                    { 
+                        data: "date"
+                    },
+                    { 
+                        data: "lev_bas",
+                        className: "lv-bsc"
+                    },
+                    { 
+                        data: "lev_adv",
+                        className: "lv-adv"
+                    },
+                    { 
+                        data: "lev_exc",
+                        className: "lv-exp"
+                    },
+                    { 
+                        data: "lev_mas",
+                        className: "lv-mas"
+                    },
+                    { 
+                        data: "lev_lnt",
+                        className: "lv-lnt"
+                    },
+                    { 
+                        data: "new",
+                        searchable: false
+                    }
+                ],
+                buttons: [ {
+                    extend: 'columnsToggle',
+                    columns: '.toggle'
+                } ]
+            });
+
+            table.DataTable().cells()
+
+            // &('#table').find('.')
+        });
+    </script>
+</body>
+
+</html>
