@@ -315,11 +315,49 @@
                     },
                     { 
                         data: "chap_id",
-                        className: "chapter-id"
+                        className: "chapter-id",
+                        visible: false
                     },
-                    { 
-                        data: "chapter",
-                        className: "chapter",
+                    {
+                        // combine chap_id + chapter
+                        data: function( row, type, set, meta ) {
+                            if (type === 'sort') {
+                                return row.chap_id;
+                            } else {
+                                row.chap_chapter = row.chap_id.substr(3,2);
+                                if (row.chap_id.substr(0,1) == "0") {
+                                    // 01xxx : chapter 1
+                                    if (row.chap_id.substr(1,1) == "1") {
+                                        row.chap_book = "1";
+                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                        return row.chap_display;
+                                    } 
+                                    // 02xxx : chapter 2
+                                    else if (row.chap_id.substr(1,1) == "2") {
+                                        row.chap_book = "2";
+                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                        return row.chap_display;
+                                    }
+                                    // 00xxx : default mylist
+                                    else {
+                                        row.chap_display = row.chapter;
+                                        return row.chap_display;
+                                    }
+                                }
+                                // 99xxx : Event chapters
+                                else if (row.chap_id.substr(0,2) == "99") {
+                                    row.chap_book = "SP";
+                                    row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                    return row.chap_display;
+                                }
+                                // Others?
+                                else {
+                                    row.chap_display = row.chap_id + ' ' + row.chapter;
+                                    return row.chap_display;
+                                }
+                            }
+                        },
+                        className: "chapter"
                     },
                     { 
                         data: "chara_id",
