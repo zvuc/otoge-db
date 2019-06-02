@@ -67,13 +67,22 @@
         header .lastupdated span {
             position: relative;
         }
-        
-        .dataTables_length {
+
+        .toolbar {
+            display: flex;
             margin-bottom: 10px;
         }
+        
+        .dataTables_wrapper .dataTables_length {
+        }
 
-        .dataTables_filter {
-            margin-bottom: 10px;
+        .dataTables_wrapper .dataTables_info {
+            padding: 0;
+            margin-left: 20px;
+        }
+
+        .dataTables_wrapper .dataTables_filter {
+            margin-left: auto;
         }
 
         #table_wrapper {
@@ -248,9 +257,10 @@
                     url: "music.json",
                     dataSrc: ""
                 },
+                "dom": '<"toolbar"lif><"table-wrapper"rt><"paging"p>',
                 "deferRender": true,
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[12, 'desc'],[0,'desc']], 
+                "order": [[18, 'desc'],[0,'desc']], 
                 // "columnDefs": [
                 //     {
                 //         "render": function ( data, type, row ) {
