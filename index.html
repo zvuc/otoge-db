@@ -374,7 +374,7 @@
                                     .draw();
                             } );
                         column.data().unique().sort().each( function ( d, j ) {
-                            if (j != ''){
+                            if (d != ''){
                                 select.append( '<option value="'+d+'">'+d+'</option>' );
                             }
                         } );
