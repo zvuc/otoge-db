@@ -443,8 +443,7 @@
                                 return row.lev_bas;
                             }
                             else {
-                                s = row.lev_bas;
-                                row.lev_bas_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                row.lev_bas_sort = addLeadingZero(row.lev_bas);
                                 return row.lev_bas_sort;
                             }
                         },
@@ -457,8 +456,7 @@
                                 return row.lev_adv;
                             }
                             else {
-                                s = row.lev_adv;
-                                row.lev_adv_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                row.lev_adv_sort = addLeadingZero(row.lev_adv);
                                 return row.lev_adv_sort;
                             }
                         },
@@ -471,8 +469,7 @@
                                 return row.lev_exc;
                             }
                             else {
-                                s = row.lev_exc;
-                                row.lev_exc_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                row.lev_exc_sort = addLeadingZero(row.lev_exc);
                                 return row.lev_exc_sort;
                             }
                         },
@@ -485,8 +482,7 @@
                                 return row.lev_mas;
                             }
                             else {
-                                s = row.lev_mas;
-                                row.lev_mas_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                row.lev_mas_sort = addLeadingZero(row.lev_mas);
                                 return row.lev_mas_sort;
                             }
                         },
@@ -499,8 +495,7 @@
                                 return row.lev_lnt;
                             }
                             else {
-                                s = row.lev_lnt;
-                                row.lev_lnt_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                row.lev_lnt_sort = addLeadingZero(row.lev_lnt);
                                 return row.lev_lnt_sort;
                             }
                         },
@@ -541,6 +536,11 @@
                 }
             });
         });
+
+        function addLeadingZero(s) {
+            lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
+            return lev_processed;
+        }
     </script>
 </body>
 
