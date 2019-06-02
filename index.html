@@ -160,8 +160,17 @@
             max-width: 50px;
             height: auto;
         }
+
         tbody td.title-sort {
             font-size: 0.7em;
+        }
+
+        .character {
+            width: 8%;
+        }
+
+        .character select {
+            max-width: 200px;
         }
 
         .lv {
@@ -221,7 +230,7 @@
         <thead>
             <tr>
                 <th><span>ID (system)</span></th>
-                <th><span>ID</span></th>
+                <th><span>#</span></th>
                 <th><span>アルバムアート</span></th>
                 <th><span>曲名</span></th>
                 <th><span>曲名 (読み)</span></th>
@@ -374,7 +383,17 @@
                         visible: false
                     },
                     { 
-                        data: "character"
+                        data: "character",
+                        className: "character",
+                        render: function ( data, type, row ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                return data;
+                            }
+                            // use chara_id for sort
+                            else {
+                                return row.chara_id;
+                            }
+                        }
                     },
                     { 
                         data: "lev_bas",
