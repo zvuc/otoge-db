@@ -437,23 +437,73 @@
                         }
                     },
                     { 
-                        data: "lev_bas",
+                        //  BASIC
+                        data: function ( row, type, set, meta ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                return row.lev_bas;
+                            }
+                            else {
+                                s = row.lev_bas;
+                                row.lev_bas_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                return row.lev_bas_sort;
+                            }
+                        },
                         className: "lv lv-bsc"
                     },
                     { 
-                        data: "lev_adv",
+                        //  ADVANCED
+                        data: function ( row, type, set, meta ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                return row.lev_adv;
+                            }
+                            else {
+                                s = row.lev_adv;
+                                row.lev_adv_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                return row.lev_adv_sort;
+                            }
+                        },
                         className: "lv lv-adv"
                     },
                     { 
-                        data: "lev_exc",
+                        //  EXPERT
+                        data: function ( row, type, set, meta ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                return row.lev_exc;
+                            }
+                            else {
+                                s = row.lev_exc;
+                                row.lev_exc_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                return row.lev_exc_sort;
+                            }
+                        },
                         className: "lv lv-exp"
                     },
                     { 
-                        data: "lev_mas",
+                        //  MASTER
+                        data: function ( row, type, set, meta ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                return row.lev_mas;
+                            }
+                            else {
+                                s = row.lev_mas;
+                                row.lev_mas_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                return row.lev_mas_sort;
+                            }
+                        },
                         className: "lv lv-mas"
                     },
                     { 
-                        data: "lev_lnt",
+                        //  LUNATIC
+                        data: function ( row, type, set, meta ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                return row.lev_lnt;
+                            }
+                            else {
+                                s = row.lev_lnt;
+                                row.lev_lnt_sort = parseInt(s) < 10 ? ('0' + s) : s;
+                                return row.lev_lnt_sort;
+                            }
+                        },
                         className: "lv lv-lnt"
                     },
                     { 
@@ -467,6 +517,7 @@
                     }
                 ],
 
+                // Generate Filter dropdown per columns
                 initComplete: function () {
                     this.api().columns().every( function () {
                         var column = this;
