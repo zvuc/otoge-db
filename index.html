@@ -417,73 +417,31 @@
                                 return row.chara_id;
                             }
                         },
-                        customSort: function(row_a, row_b) {
-                            return row_a.chara_id.localeCompare(row_b.chara_id);
-                        }
+                        customSortColumn: 'chara_id'
                     },
                     { 
                         //  BASIC
-                        data: function ( row, type, set, meta ) {
-                            if ( type === 'display' || type === 'filter' ) {
-                                return row.lev_bas;
-                            }
-                            else {
-                                row.lev_bas_sort = addLeadingZero(row.lev_bas);
-                                return row.lev_bas_sort;
-                            }
-                        },
+                        data: sortLevels('lev_bas'),
                         className: "lv lv-bsc"
                     },
                     { 
                         //  ADVANCED
-                        data: function ( row, type, set, meta ) {
-                            if ( type === 'display' || type === 'filter' ) {
-                                return row.lev_adv;
-                            }
-                            else {
-                                row.lev_adv_sort = addLeadingZero(row.lev_adv);
-                                return row.lev_adv_sort;
-                            }
-                        },
+                        data: sortLevels('lev_adv'),
                         className: "lv lv-adv"
                     },
                     { 
                         //  EXPERT
-                        data: function ( row, type, set, meta ) {
-                            if ( type === 'display' || type === 'filter' ) {
-                                return row.lev_exc;
-                            }
-                            else {
-                                row.lev_exc_sort = addLeadingZero(row.lev_exc);
-                                return row.lev_exc_sort;
-                            }
-                        },
+                        data: sortLevels('lev_exc'),
                         className: "lv lv-exp"
                     },
                     { 
                         //  MASTER
-                        data: function ( row, type, set, meta ) {
-                            if ( type === 'display' || type === 'filter' ) {
-                                return row.lev_mas;
-                            }
-                            else {
-                                row.lev_mas_sort = addLeadingZero(row.lev_mas);
-                                return row.lev_mas_sort;
-                            }
-                        },
+                        data: sortLevels('lev_mas'),
                         className: "lv lv-mas"
                     },
                     { 
                         //  LUNATIC
-                        data: function ( row, type, set, meta ) {
-                            if ( type === 'display' || type === 'filter' ) {
-                                return row.lev_lnt;
-                            }
-                            else {
-                                row.lev_lnt_sort = addLeadingZero(row.lev_lnt);
-                                return row.lev_lnt_sort;
-                            }
-                        },
+                        data: sortLevels('lev_lnt'),
                         className: "lv lv-lnt"
                     },
                     { 
@@ -497,6 +455,22 @@
                     }
                 ];
             
+            function sortLevels(column) {
+                return function ( row, type, set, meta ) {
+                    if ( type === 'display' || type === 'filter' ) {
+                        return row[column];
+                    }
+                    else {
+                        return addLeadingZero(row[column]);
+                    }
+                }
+            }
+
+            function addLeadingZero(s) {
+                lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
+                return lev_processed;
+            }
+
             table.DataTable( {
                 "ajax": {
                     url: "music.json",
@@ -535,11 +509,11 @@
                         var column_data = column.data();
                         var column_param = columns_params[column.index()];
 
-                        if (column_param.customSort) {
+                        if (column_param.customSortColumn) {
                             column_data = column_data.map(function(_, index) {
                                 return rows[index];
                             }).sort(function(row_a, row_b) {
-                                return column_param.customSort(row_a, row_b);
+                                return row_a[column_param.customSortColumn].localeCompare(row_b[column_param.customSortColumn]);
                             }).map(function(row) {
                                 return row[column_param.data];
                             });
@@ -557,10 +531,7 @@
             });
         });
 
-        function addLeadingZero(s) {
-            lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
-            return lev_processed;
-        }
+        
     </script>
 </body>
 
