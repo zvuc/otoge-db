@@ -301,25 +301,7 @@
     <script>
         $(document).ready(function() {
             var table = $('#table');
-            
-            table.DataTable( {
-                "ajax": {
-                    url: "music.json",
-                    dataSrc: ""
-                },
-                "dom": '<"toolbar"lif><"table-inner"rt><"paging"p>',
-                "deferRender": true,
-                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[18, 'desc'],[0,'desc']], 
-                // "columnDefs": [
-                //     {
-                //         "render": function ( data, type, row ) {
-                //             return '('+ row[8]+') ' + data;
-                //         },
-                //         "targets": 9
-                //     }
-                // ],
-                "columns": [
+            var columns_params = [
                     { 
                         data: "id",
                         className: "id",
@@ -434,6 +416,9 @@
                             else {
                                 return row.chara_id;
                             }
+                        },
+                        customSort: function(row_a, row_b) {
+                            return row_a.chara_id.localeCompare(row_b.chara_id);
                         }
                     },
                     { 
@@ -510,10 +495,30 @@
                         data: "date",
                         className: "date",
                     }
-                ],
+                ];
+            
+            table.DataTable( {
+                "ajax": {
+                    url: "music.json",
+                    dataSrc: ""
+                },
+                "dom": '<"toolbar"lif><"table-inner"rt><"paging"p>',
+                "deferRender": true,
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+                "order": [[18, 'desc'],[0,'desc']], 
+                // "columnDefs": [
+                //     {
+                //         "render": function ( data, type, row ) {
+                //             return '('+ row[8]+') ' + data;
+                //         },
+                //         "targets": 9
+                //     }
+                // ],
+                "columns": columns_params,
 
                 // Generate Filter dropdown per columns
                 initComplete: function () {
+                    var rows = this.api().rows().data();
                     this.api().columns().every( function () {
                         var column = this;
                         var select = $('<select onclick="event.stopPropagation()"><option value="" selected>—</option></select>')
@@ -527,7 +532,22 @@
                                     .search( val ? '^'+val+'$' : '', true, false )
                                     .draw();
                             } );
-                        column.data().unique().sort().each( function ( d, j ) {
+                        var column_data = column.data();
+                        var column_param = columns_params[column.index()];
+
+                        if (column_param.customSort) {
+                            column_data = column_data.map(function(_, index) {
+                                return rows[index];
+                            }).sort(function(row_a, row_b) {
+                                return column_param.customSort(row_a, row_b);
+                            }).map(function(row) {
+                                return row[column_param.data];
+                            });
+                        } else {
+                            column_data = column_data.sort();
+                        }
+                        
+                        column_data.unique().each( function ( d, j ) {
                             if (d != ''){
                                 select.append( '<option value="'+d+'">'+d+'</option>' );
                             }
