@@ -417,32 +417,37 @@
                                 return row.chara_id;
                             }
                         },
-                        customSortColumn: 'chara_id'
+                        customDropdownSortSource: 'chara_id'
                     },
                     { 
                         //  BASIC
                         data: sortLevels('lev_bas'),
-                        className: "lv lv-bsc"
+                        className: "lv lv-bsc",
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_bas')
                     },
                     { 
                         //  ADVANCED
                         data: sortLevels('lev_adv'),
-                        className: "lv lv-adv"
+                        className: "lv lv-adv",
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_adv')
                     },
                     { 
                         //  EXPERT
                         data: sortLevels('lev_exc'),
-                        className: "lv lv-exp"
+                        className: "lv lv-exp",
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_exc')
                     },
                     { 
                         //  MASTER
                         data: sortLevels('lev_mas'),
-                        className: "lv lv-mas"
+                        className: "lv lv-mas",
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_mas')
                     },
                     { 
                         //  LUNATIC
                         data: sortLevels('lev_lnt'),
-                        className: "lv lv-lnt"
+                        className: "lv lv-lnt",
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_lnt')
                     },
                     { 
                         data: "new",
@@ -457,11 +462,11 @@
             
             function sortLevels(column) {
                 return function ( row, type, set, meta ) {
-                    if ( type === 'display' || type === 'filter' ) {
-                        return row[column];
+                    if ( type === 'sort' ) {
+                        return addLeadingZero(row[column]);
                     }
                     else {
-                        return addLeadingZero(row[column]);
+                        return row[column];
                     }
                 }
             }
@@ -469,6 +474,12 @@
             function addLeadingZero(s) {
                 lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
                 return lev_processed;
+            }
+
+            function sortLevelsByLeadingZeros(column) {
+                return function (row_a, row_b) {
+                    return addLeadingZero(row_a[column]).localeCompare(addLeadingZero(row_b[column]));
+                }
             }
 
             table.DataTable( {
@@ -509,13 +520,25 @@
                         var column_data = column.data();
                         var column_param = columns_params[column.index()];
 
-                        if (column_param.customSortColumn) {
+                        // column parameter has customDropdownSortSource option
+                        if (column_param.customDropdownSortSource) {
                             column_data = column_data.map(function(_, index) {
-                                return rows[index];
-                            }).sort(function(row_a, row_b) {
-                                return row_a[column_param.customSortColumn].localeCompare(row_b[column_param.customSortColumn]);
-                            }).map(function(row) {
-                                return row[column_param.data];
+                                // get index of column
+                                return index;
+                            }).sort(function(index_a, index_b) {
+                                // get index_a-th row and index_b-th row
+                                var row_a = rows[index_a], row_b = rows[index_b];
+                                // if customDropdownSortSource option is function type use it as comparator
+                                if (typeof column_param.customDropdownSortSource === 'function') {
+                                    return column_param.customDropdownSortSource(row_a, row_b);
+                                // if customDropdownSortSource option is string type use it as comparator column key
+                                } else {
+                                    return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
+                                }
+                                // get column data again since we converted this array to row array in previous lines
+                            }).map(function(index) {
+                                // get index-th column's data
+                                return column_data[index];
                             });
                         } else {
                             column_data = column_data.sort();
