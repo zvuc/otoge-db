@@ -172,6 +172,36 @@ tbody td.title-sort {
     font-size: 0.7em;
 }
 
+.type {
+    max-width: 40px;
+    text-align: center;
+}
+
+.type select {
+    max-width: 40px;
+}
+
+.type-icon {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-repeat: no-repeat;
+}
+
+.type-icon span {
+    display: none;
+}
+
+.type-icon.leaf {
+    background-image: url('img/card_icon_leaf.png');
+}
+.type-icon.fire {
+    background-image: url('img/card_icon_fire.png');
+}
+.type-icon.aqua {
+    background-image: url('img/card_icon_aqua.png');
+}
+
 .character {
     max-width: 200px;
 }

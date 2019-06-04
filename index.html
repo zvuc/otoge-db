@@ -38,8 +38,10 @@
                 <th><span>category_id</span></th>
                 <th><span>チャプターID</span></th>
                 <th><span>チャプター</span></th>
+                <th><span>属性</span></th>
                 <th><span>chara_id</span></th>
                 <th><span>相手キャラ</span></th>
+                <th><span>レベル</span></th>
                 <th><span>BSC</span></th>
                 <th><span>ADV</span></th>
                 <th><span>EXP</span></th>
@@ -79,7 +81,7 @@
                         orderable: false,
                         searchable: false,
                         render: function(data) {
-                            return '<img src=\"img/' + data.split(".")[0] + '.jpg\"\/>';
+                            return '<img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/>';
                         }
                     },
                     { 
@@ -160,6 +162,19 @@
                         className: "chapter"
                     },
                     { 
+                        data: "enemy_type",
+                        className: "type",
+                        render: function ( data, type, row ) {
+                            if ( type === 'display' ) {
+                                return '<span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span>';
+                            }
+                            // use chara_id for sort
+                            else {
+                                return data;
+                            }
+                        }
+                    },
+                    { 
                         data: "chara_id",
                         visible: false
                     },
@@ -178,39 +193,53 @@
                         customDropdownSortSource: 'chara_id'
                     },
                     { 
+                        data: "enemy_lv",
+                        className: "enemy-lv",
+                        render: function ( data, type, row ) {
+                            if ( type === 'display' ) {
+                                return 'Lv.' + data;
+                            }
+                            // use chara_id for sort
+                            else {
+                                return data;
+                            }
+                        },
+                        customDropdownSortSource: sortByLeadingZeros('enemy_lv')
+                    },
+                    { 
                         //  BASIC
                         data: sortLevels('lev_bas'),
                         className: "lv lv-bsc",
                         render: renderLvNum('lev_bas', 'lev_bas_i'),
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_bas_i')
+                        customDropdownSortSource: sortByLeadingZeros('lev_bas_i')
                     },
                     { 
                         //  ADVANCED
                         data: sortLevels('lev_adv'),
                         className: "lv lv-adv",
                         render: renderLvNum('lev_adv', 'lev_adv_i'),
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_adv_i')
+                        customDropdownSortSource: sortByLeadingZeros('lev_adv_i')
                     },
                     { 
                         //  EXPERT
                         data: sortLevels('lev_exc'),
                         className: "lv lv-exp",
                         render: renderLvNum('lev_exc', 'lev_exc_i'),
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_exc_i')
+                        customDropdownSortSource: sortByLeadingZeros('lev_exc_i')
                     },
                     { 
                         //  MASTER
                         data: sortLevels('lev_mas'),
                         className: "lv lv-mas",
                         render: renderLvNum('lev_mas', 'lev_mas_i'),
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_mas_i')
+                        customDropdownSortSource: sortByLeadingZeros('lev_mas_i')
                     },
                     { 
                         //  LUNATIC
                         data: sortLevels('lev_lnt'),
                         className: "lv lv-lnt",
                         render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_lnt_i')
+                        customDropdownSortSource: sortByLeadingZeros('lev_lnt_i')
                     },
                     { 
                         data: "new",
@@ -239,7 +268,7 @@
                 return lev_processed;
             }
 
-            function sortLevelsByLeadingZeros(column) {
+            function sortByLeadingZeros(column) {
                 return function (row_a, row_b) {
                     return addLeadingZero(row_a[column]).localeCompare(addLeadingZero(row_b[column]));
                 }
@@ -264,7 +293,7 @@
                 "dom": '<"toolbar"lif><"table-inner"rt><"paging"p>',
                 "deferRender": true,
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[18, 'desc'],[0,'desc']], 
+                "order": [[20, 'desc'],[0,'desc']], 
                 // "columnDefs": [
                 //     {
                 //         "render": function ( data, type, row ) {
