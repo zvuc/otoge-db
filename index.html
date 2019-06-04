@@ -181,31 +181,36 @@
                         //  BASIC
                         data: sortLevels('lev_bas'),
                         className: "lv lv-bsc",
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_bas')
+                        render: renderLvNum('lev_bas', 'lev_bas_i'),
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_bas_i')
                     },
                     { 
                         //  ADVANCED
                         data: sortLevels('lev_adv'),
                         className: "lv lv-adv",
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_adv')
+                        render: renderLvNum('lev_adv', 'lev_adv_i'),
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_adv_i')
                     },
                     { 
                         //  EXPERT
                         data: sortLevels('lev_exc'),
                         className: "lv lv-exp",
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_exc')
+                        render: renderLvNum('lev_exc', 'lev_exc_i'),
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_exc_i')
                     },
                     { 
                         //  MASTER
                         data: sortLevels('lev_mas'),
                         className: "lv lv-mas",
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_mas')
+                        render: renderLvNum('lev_mas', 'lev_mas_i'),
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_mas_i')
                     },
                     { 
                         //  LUNATIC
                         data: sortLevels('lev_lnt'),
                         className: "lv lv-lnt",
-                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_lnt')
+                        render: renderLvNum('lev_lnt', 'lev_lnt_i'),
+                        customDropdownSortSource: sortLevelsByLeadingZeros('lev_lnt_i')
                     },
                     { 
                         data: "new",
@@ -240,9 +245,20 @@
                 }
             }
 
+            function renderLvNum(simple_lv, precise_lv) {
+                return function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span>';
+                    }
+                    else {
+                        return data;
+                    }
+                }
+            }
+
             table.DataTable( {
                 "ajax": {
-                    url: "music.json",
+                    url: "data/music-ex.json",
                     dataSrc: ""
                 },
                 "dom": '<"toolbar"lif><"table-inner"rt><"paging"p>',

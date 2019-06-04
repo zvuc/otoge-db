@@ -16,6 +16,11 @@ curl -O https://ongeki.sega.jp/assets/img/music/\[0048-0107\].png
 curl -O https://ongeki.sega.jp/assets/img/music/\[0108-0175\].jpg
 ```
 
+## Notes
+- `/data/music.json` : Original JSON file provided by SEGA
+- `/data/music-ex.csv`: Combined data sheet exported to CSV (includes extra info)
+- `/data/music-ex.json`: Above CSV back-converted to JSON (actually used file in the webpage)
+
 ## Contribution & Feedback
 Contact [@zvuc_](https://twitter.com/zvuc_) for inquiries.
 提案や合同作業など興味ある方はツイッターで連絡ください。
