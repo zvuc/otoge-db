@@ -92,7 +92,7 @@
                     render: function ( data, type, row ) {
                         // If display or filter data is requested, return title
                         if ( type === 'display' ) {
-                            return '<span class="title">' + data + '<\/span><span class="artist">' + row.artist + '<\/span>';
+                            return '<span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span>';
                         }
                         else if ( type === 'filter' ) {
                             return data;
@@ -316,8 +316,14 @@
                 ],
                 "responsive": {
                     details: {
-                        type: 'column',
                         target: 'tr',
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                var data = row.data();
+                                return data.title + '<br><span class="artist">' + data.artist + '<\/span>';
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll()
                     }
                 },
                 "deferRender": true,

@@ -101,8 +101,8 @@ header .lastupdated span {
 }
 
 #table thead {
-    position: sticky;
-    top: 0;
+    /*position: sticky;
+    top: 0;*/
     background: #fff;
 }
 
@@ -142,7 +142,11 @@ td.song-title .title {
     font-size: 1.1em;
 }
 
-td.song-title .artist {
+.artist-display {
+    display: none;
+}
+
+td.song-title .artist-display {
     display: block;
     margin-top: 0.2em;
     font-size: 0.8em;
@@ -298,11 +302,22 @@ tbody td.date {
 }
 
 /* Details */
-ul.dtr-details li {
-    display: flex;
+.dtr-modal-content h2 .artist {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #666;
 }
 
-ul.dtr-details li span.dtr.data {
+table.dtr-details tr td {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+table.dtr-details tr td:first-child {
+    font-weight: bold;
+}
+
+table.dtr-details li span.dtr.data {
     display: block;
 }
 
