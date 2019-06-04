@@ -10,12 +10,14 @@
       gtag('config', 'UA-141271073-1');
     </script>
 
-
     <meta charset="UTF-8"> 
 
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>
+    <link rel="stylesheet" href="datatables/datatables.min.css">
     <link rel="stylesheet" href="style.css">
 
     <title>オンゲキ収録曲DB</title>
@@ -29,26 +31,26 @@
         <thead>
             <tr>
                 <th><span>ID (system)</span></th>
-                <th><span>#</span></th>
-                <th><span>アルバムアート</span></th>
-                <th><span>曲名</span></th>
+                <th data-priority="1"><span>#</span></th>
+                <th data-priority="1"><span>アルバムアート</span></th>
+                <th data-priority="1"><span>曲名</span></th>
                 <th><span>曲名 (読み)</span></th>
                 <th><span>アーティスト</span></th>
-                <th><span>カテゴリ</span></th>
-                <th><span>category_id</span></th>
+                <th data-priority="4" class="toggle"><span>カテゴリ</span></th>
+                <th><span>カテゴリID</span></th>
                 <th><span>チャプターID</span></th>
-                <th><span>チャプター</span></th>
-                <th><span>属性</span></th>
-                <th><span>chara_id</span></th>
-                <th><span>相手キャラ</span></th>
-                <th><span>レベル</span></th>
-                <th><span>BSC</span></th>
-                <th><span>ADV</span></th>
-                <th><span>EXP</span></th>
-                <th><span>MAS</span></th>
-                <th><span>LNT</span></th>
-                <th><span>new</span></th>
-                <th><span>追加日</span></th>
+                <th data-priority="5" class="toggle"><span>チャプター</span></th>
+                <th data-priority="3" class="toggle"><span>属性</span></th>
+                <th><span>キャラID</span></th>
+                <th data-priority="3" class="toggle"><span>相手キャラ</span></th>
+                <th data-priority="3" class="toggle"><span>レベル</span></th>
+                <th data-priority="4" class="toggle"><span>BSC</span></th>
+                <th data-priority="4" class="toggle"><span>ADV</span></th>
+                <th data-priority="2" class="toggle"><span>EXP</span></th>
+                <th data-priority="2" class="toggle"><span>MAS</span></th>
+                <th data-priority="2" class="toggle"><span>LNT</span></th>
+                <th><span>NEW</span></th>
+                <th data-priority="3"><span>追加日</span></th>
             </tr>
         </thead>
     </table>
@@ -62,195 +64,199 @@
         $(document).ready(function() {
             var table = $('#table');
             var columns_params = [
-                    { 
-                        data: "id",
-                        className: "id",
-                        visible: false
-                    },
-                    { 
-                        data: "image_url",
-                        className: "id",
-                        searchable: false,
-                        render: function(data) {
-                            return data.split(".")[0];
+                { 
+                    data: "id",
+                    className: "id",
+                    visible: false
+                },
+                { 
+                    data: "image_url",
+                    className: "id",
+                    searchable: false,
+                    render: function(data) {
+                        return data.split(".")[0];
+                    }
+                },
+                { 
+                    data: "image_url",
+                    className: "jacket",
+                    orderable: false,
+                    searchable: false,
+                    render: function(data) {
+                        return '<img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/>';
+                    }
+                },
+                { 
+                    data: "title",
+                    className: "song-title",
+                    render: function ( data, type, row ) {
+                        // If display or filter data is requested, return title
+                        if ( type === 'display' ) {
+                            return '<span class="title">' + data + '<\/span><span class="artist">' + row.artist + '<\/span>';
                         }
-                    },
-                    { 
-                        data: "image_url",
-                        className: "jacket",
-                        orderable: false,
-                        searchable: false,
-                        render: function(data) {
-                            return '<img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/>';
+                        else if ( type === 'filter' ) {
+                            return data;
                         }
-                    },
-                    { 
-                        data: "title",
-                        className: "song-title",
-                        render: function ( data, type, row ) {
-                            // If display or filter data is requested, return title
-                            if ( type === 'display' || type === 'filter' ) {
-                                return data;
-                            }
-                            // Else type detection or sorting data, return title_sort
-                            else {
-                                return row.title_sort;
-                            }
+                        // Else type detection or sorting data, return title_sort
+                        else {
+                            return row.title_sort;
                         }
-                    },
-                    {
-                        data: "title_sort",
-                        className: "title-sort",
-                        visible: false
-                    },
-                    { 
-                        data: "artist",
-                        className: "artist",
-                    },
-                    { 
-                        data: "category",
-                        className: "category"
-                    },
-                    { 
-                        data: "category_id",
-                        visible: false
-                    },
-                    { 
-                        data: "chap_id",
-                        className: "chapter-id",
-                        visible: false
-                    },
-                    {
-                        // combine chap_id + chapter
-                        data: function( row, type, set, meta ) {
-                            if (type === 'sort') {
-                                return row.chap_id;
-                            } else {
-                                row.chap_chapter = row.chap_id.substr(3,2);
-                                if (row.chap_id.substr(0,1) == "0") {
-                                    // 01xxx : chapter 1
-                                    if (row.chap_id.substr(1,1) == "1") {
-                                        row.chap_book = "1";
-                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                        return row.chap_display;
-                                    } 
-                                    // 02xxx : chapter 2
-                                    else if (row.chap_id.substr(1,1) == "2") {
-                                        row.chap_book = "2";
-                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                        return row.chap_display;
-                                    }
-                                    // 00xxx : default mylist
-                                    else {
-                                        row.chap_display = row.chapter;
-                                        return row.chap_display;
-                                    }
-                                }
-                                // 99xxx : Event chapters
-                                else if (row.chap_id.substr(0,2) == "99") {
-                                    row.chap_book = "SP";
+                    }
+                },
+                {
+                    data: "title_sort",
+                    className: "title-sort",
+                    visible: false
+                },
+                { 
+                    data: "artist",
+                    className: "artist",
+                    visible: false
+                },
+                { 
+                    data: "category",
+                    className: "category"
+                },
+                { 
+                    data: "category_id",
+                    visible: false
+                },
+                { 
+                    data: "chap_id",
+                    className: "chapter-id",
+                    visible: false
+                },
+                {
+                    // combine chap_id + chapter
+                    data: function( row, type, set, meta ) {
+                        if (type === 'sort') {
+                            return row.chap_id;
+                        } else {
+                            row.chap_chapter = row.chap_id.substr(3,2);
+                            if (row.chap_id.substr(0,1) == "0") {
+                                // 01xxx : chapter 1
+                                if (row.chap_id.substr(1,1) == "1") {
+                                    row.chap_book = "1";
+                                    row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                    return row.chap_display;
+                                } 
+                                // 02xxx : chapter 2
+                                else if (row.chap_id.substr(1,1) == "2") {
+                                    row.chap_book = "2";
                                     row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
                                     return row.chap_display;
                                 }
-                                // Others?
+                                // 00xxx : default mylist
                                 else {
-                                    row.chap_display = row.chap_id + ' ' + row.chapter;
+                                    row.chap_display = row.chapter;
                                     return row.chap_display;
                                 }
                             }
-                        },
-                        className: "chapter"
-                    },
-                    { 
-                        data: "enemy_type",
-                        className: "type",
-                        render: function ( data, type, row ) {
-                            if ( type === 'display' ) {
-                                return '<span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span>';
+                            // 99xxx : Event chapters
+                            else if (row.chap_id.substr(0,2) == "99") {
+                                row.chap_book = "SP";
+                                row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                return row.chap_display;
                             }
-                            // use chara_id for sort
+                            // Others?
                             else {
-                                return data;
+                                row.chap_display = row.chap_id + ' ' + row.chapter;
+                                return row.chap_display;
                             }
                         }
                     },
-                    { 
-                        data: "chara_id",
-                        visible: false
-                    },
-                    { 
-                        data: "character",
-                        className: "character",
-                        render: function ( data, type, row ) {
-                            if ( type === 'display' || type === 'filter' ) {
-                                return data;
-                            }
-                            // use chara_id for sort
-                            else {
-                                return row.chara_id;
-                            }
-                        },
-                        customDropdownSortSource: 'chara_id'
-                    },
-                    { 
-                        data: "enemy_lv",
-                        className: "enemy-lv",
-                        render: function ( data, type, row ) {
-                            if ( type === 'display' ) {
-                                return 'Lv.' + data;
-                            }
-                            // use chara_id for sort
-                            else {
-                                return data;
-                            }
-                        },
-                        customDropdownSortSource: sortByLeadingZeros('enemy_lv')
-                    },
-                    { 
-                        //  BASIC
-                        data: sortLevels('lev_bas'),
-                        className: "lv lv-bsc",
-                        render: renderLvNum('lev_bas', 'lev_bas_i'),
-                        customDropdownSortSource: sortByLeadingZeros('lev_bas_i')
-                    },
-                    { 
-                        //  ADVANCED
-                        data: sortLevels('lev_adv'),
-                        className: "lv lv-adv",
-                        render: renderLvNum('lev_adv', 'lev_adv_i'),
-                        customDropdownSortSource: sortByLeadingZeros('lev_adv_i')
-                    },
-                    { 
-                        //  EXPERT
-                        data: sortLevels('lev_exc'),
-                        className: "lv lv-exp",
-                        render: renderLvNum('lev_exc', 'lev_exc_i'),
-                        customDropdownSortSource: sortByLeadingZeros('lev_exc_i')
-                    },
-                    { 
-                        //  MASTER
-                        data: sortLevels('lev_mas'),
-                        className: "lv lv-mas",
-                        render: renderLvNum('lev_mas', 'lev_mas_i'),
-                        customDropdownSortSource: sortByLeadingZeros('lev_mas_i')
-                    },
-                    { 
-                        //  LUNATIC
-                        data: sortLevels('lev_lnt'),
-                        className: "lv lv-lnt",
-                        render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-                        customDropdownSortSource: sortByLeadingZeros('lev_lnt_i')
-                    },
-                    { 
-                        data: "new",
-                        searchable: false,
-                        visible: false
-                    },
-                    { 
-                        data: "date",
-                        className: "date",
+                    className: "chapter"
+                },
+                { 
+                    data: "enemy_type",
+                    className: "type",
+                    render: function ( data, type, row ) {
+                        if ( type === 'display' ) {
+                            return '<span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span>';
+                        }
+                        // use chara_id for sort
+                        else {
+                            return data;
+                        }
                     }
-                ];
+                },
+                { 
+                    data: "chara_id",
+                    visible: false
+                },
+                { 
+                    data: "character",
+                    className: "character",
+                    render: function ( data, type, row ) {
+                        if ( type === 'display' || type === 'filter' ) {
+                            return data;
+                        }
+                        // use chara_id for sort
+                        else {
+                            return row.chara_id;
+                        }
+                    },
+                    customDropdownSortSource: 'chara_id'
+                },
+                { 
+                    data: "enemy_lv",
+                    className: "enemy-lv",
+                    render: function ( data, type, row ) {
+                        if ( type === 'display' ) {
+                            return 'Lv.' + data;
+                        }
+                        // use chara_id for sort
+                        else {
+                            return data;
+                        }
+                    },
+                    customDropdownSortSource: sortByLeadingZeros('enemy_lv')
+                },
+                { 
+                    //  BASIC
+                    data: sortLevels('lev_bas'),
+                    className: "lv lv-bsc",
+                    render: renderLvNum('lev_bas', 'lev_bas_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_bas_i')
+                },
+                { 
+                    //  ADVANCED
+                    data: sortLevels('lev_adv'),
+                    className: "lv lv-adv",
+                    render: renderLvNum('lev_adv', 'lev_adv_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_adv_i')
+                },
+                { 
+                    //  EXPERT
+                    data: sortLevels('lev_exc'),
+                    className: "lv lv-exp",
+                    render: renderLvNum('lev_exc', 'lev_exc_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_exc_i')
+                },
+                { 
+                    //  MASTER
+                    data: sortLevels('lev_mas'),
+                    className: "lv lv-mas",
+                    render: renderLvNum('lev_mas', 'lev_mas_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_mas_i')
+                },
+                { 
+                    //  LUNATIC
+                    data: sortLevels('lev_lnt'),
+                    className: "lv lv-lnt",
+                    render: renderLvNum('lev_lnt', 'lev_lnt_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_lnt_i')
+                },
+                { 
+                    data: "new",
+                    searchable: false,
+                    visible: false
+                },
+                { 
+                    data: "date",
+                    className: "date",
+                }
+            ];
             
             function sortLevels(column) {
                 return function ( row, type, set, meta ) {
@@ -290,18 +296,33 @@
                     url: "data/music-ex.json",
                     dataSrc: ""
                 },
-                "dom": '<"toolbar"lif><"table-inner"rt><"paging"p>',
+                "dom": '<"column-toggle-bar"B><"toolbar"lif><"table-inner"rt><"paging"p>',
+                "buttons": [
+                    {
+                        extend: 'colvisGroup',
+                        text: '全難易度',
+                        show: [ 14, 15, 16, 17, 18 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        text: 'MAS/LNTのみ',
+                        show: [ 17, 18 ],
+                        hide: [ 14, 15, 16 ]
+                    },
+                    {
+                        extend: 'columnsToggle',
+                        columns: '.toggle'
+                    },
+                ],
+                "responsive": {
+                    details: {
+                        type: 'column',
+                        target: 'tr',
+                    }
+                },
                 "deferRender": true,
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 "order": [[20, 'desc'],[0,'desc']], 
-                // "columnDefs": [
-                //     {
-                //         "render": function ( data, type, row ) {
-                //             return '('+ row[8]+') ' + data;
-                //         },
-                //         "targets": 9
-                //     }
-                // ],
                 "columns": columns_params,
 
                 // Generate Filter dropdown per columns

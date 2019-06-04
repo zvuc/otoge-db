@@ -58,6 +58,14 @@ header .lastupdated span {
     position: relative;
 }
 
+.column-toggle-bar {
+    display: block;
+    margin-bottom: 10px;
+}
+.column-toggle-bar .dt-buttons {
+    float: none;
+}
+
 .toolbar {
     display: flex;
     padding: 0 10px;
@@ -125,17 +133,27 @@ tbody td.id {
 }
 
 tbody td.song-title {
-    font-weight: bold;
-    font-size: 1.1em;
-    width: 20%;
+    width: 30%;
     min-width: 200px;
 }
 
-.artist {
+td.song-title .title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+td.song-title .artist {
+    display: block;
+    margin-top: 0.2em;
+    font-size: 0.8em;
+    color: #666;
+}
+
+td.artist {
     min-width: 150px;
 }
 
-.chapter-id {
+td.chapter-id {
     max-width: 80px;
     white-space: nowrap;
 }
@@ -144,7 +162,7 @@ tbody td.chapter-id {
     font-size: 0.9em;
 }
 
-.chapter {
+td.chapter {
     max-width: 200px;
 }
 
@@ -152,18 +170,20 @@ tbody td.chapter {
     font-size: 0.9em;
 }
 
-.chapter select {
+th.chapter select {
     max-width: 150px;
 }
 
-.jacket {
+th.jacket,
+td.jacket {
     max-width: 60px;
 }
 
-.jacket span {
+th.jacket span {
     display: none;
 }
-.jacket img {
+
+td.jacket img {
     max-width: 50px;
     height: auto;
 }
@@ -172,12 +192,13 @@ tbody td.title-sort {
     font-size: 0.7em;
 }
 
-.type {
+th.type,
+td.type {
     max-width: 40px;
     text-align: center;
 }
 
-.type select {
+th.type select {
     max-width: 40px;
 }
 
@@ -202,19 +223,21 @@ tbody td.title-sort {
     background-image: url('img/card_icon_aqua.png');
 }
 
-.character {
+th.character,
+td.character {
     max-width: 200px;
 }
 
-.character select {
+th.character select {
     max-width: 150px;
 }
 
-.lv {
-    max-width: 50px;
+th.lv,
+td.lv {
+    max-width: 4em;
 }
 
-.lv select {
+th.lv select {
     max-width: 4.5em;
 }
 
@@ -272,6 +295,15 @@ tbody td.lv {
 
 tbody td.date {
     text-align: center;
+}
+
+/* Details */
+ul.dtr-details li {
+    display: flex;
+}
+
+ul.dtr-details li span.dtr.data {
+    display: block;
 }
 
 .paging {
