@@ -3,6 +3,11 @@ html {
     padding: 0;
     margin: 0;
 }
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
 @media screen and (min-width: 1440px) {
     html {
         font-size: 16px;
@@ -61,7 +66,9 @@ header .lastupdated span {
 .column-toggle-bar {
     display: block;
     margin-bottom: 10px;
+    padding: 0 10px;
 }
+
 .column-toggle-bar .dt-buttons {
     float: none;
 }
@@ -133,7 +140,6 @@ tbody td.id {
 }
 
 tbody td.song-title {
-    width: 30%;
     min-width: 200px;
 }
 
@@ -154,20 +160,9 @@ td.song-title .artist-display {
 }
 
 td.artist {
-    min-width: 150px;
-}
-
-td.chapter-id {
-    max-width: 80px;
-    white-space: nowrap;
-}
-
-tbody td.chapter-id {
-    font-size: 0.9em;
 }
 
 td.chapter {
-    max-width: 200px;
 }
 
 tbody td.chapter {
@@ -178,9 +173,12 @@ th.chapter select {
     max-width: 150px;
 }
 
-th.jacket,
-td.jacket {
-    max-width: 60px;
+th.jacket {
+    max-width: 50px !important;
+}
+table.dataTable thead th.jacket,
+table.dataTable thead td.jacket {
+    padding-right: 10px;
 }
 
 th.jacket span {
@@ -198,7 +196,6 @@ tbody td.title-sort {
 
 th.type,
 td.type {
-    max-width: 40px;
     text-align: center;
 }
 
@@ -238,7 +235,6 @@ th.character select {
 
 th.lv,
 td.lv {
-    max-width: 4em;
 }
 
 th.lv select {

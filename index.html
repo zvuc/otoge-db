@@ -30,27 +30,27 @@
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
-                <th><span>ID (system)</span></th>
-                <th data-priority="1"><span>#</span></th>
-                <th data-priority="1"><span>アルバムアート</span></th>
-                <th data-priority="1"><span>曲名</span></th>
-                <th><span>曲名 (読み)</span></th>
-                <th><span>アーティスト</span></th>
-                <th data-priority="4" class="toggle"><span>カテゴリ</span></th>
-                <th><span>カテゴリID</span></th>
-                <th><span>チャプターID</span></th>
-                <th data-priority="5" class="toggle"><span>チャプター</span></th>
-                <th data-priority="3" class="toggle"><span>属性</span></th>
-                <th><span>キャラID</span></th>
-                <th data-priority="3" class="toggle"><span>相手キャラ</span></th>
-                <th data-priority="3" class="toggle"><span>レベル</span></th>
-                <th data-priority="4" class="toggle"><span>BSC</span></th>
-                <th data-priority="4" class="toggle"><span>ADV</span></th>
-                <th data-priority="2" class="toggle"><span>EXP</span></th>
-                <th data-priority="2" class="toggle"><span>MAS</span></th>
-                <th data-priority="2" class="toggle"><span>LNT</span></th>
-                <th><span>NEW</span></th>
-                <th data-priority="3"><span>追加日</span></th>
+                <th class="never"><span>ID (system)</span></th>
+                <th data-priority="5"><span>#</span></th>
+                <th class="all" data-priority="1"><span>アルバムアート</span></th>
+                <th class="all" data-priority="1"><span>曲名</span></th>
+                <th class="never"><span>曲名 (読み)</span></th>
+                <th class="never"><span>アーティスト</span></th>
+                <th class="toggle" data-priority="5"><span>カテゴリ</span></th>
+                <th class="never"><span>カテゴリID</span></th>
+                <th class="never"><span>チャプターID</span></th>
+                <th class="toggle" data-priority="6" ><span>チャプター</span></th>
+                <th class="toggle" data-priority="3" ><span>属性</span></th>
+                <th class="never"><span>キャラID</span></th>
+                <th class="toggle" data-priority="4"><span>相手キャラ</span></th>
+                <th class="toggle" data-priority="3"><span>レベル</span></th>
+                <th class="all toggle" data-priority="4"><span>BSC</span></th>
+                <th class="all toggle" data-priority="4"><span>ADV</span></th>
+                <th class="all toggle" data-priority="2"><span>EXP</span></th>
+                <th class="all toggle" data-priority="2"><span>MAS</span></th>
+                <th class="all toggle" data-priority="2"><span>LNT</span></th>
+                <th class="never"><span>NEW</span></th>
+                <th class="toggle" data-priority="3"><span>追加日</span></th>
             </tr>
         </thead>
     </table>
@@ -84,7 +84,8 @@
                     searchable: false,
                     render: function(data) {
                         return '<img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/>';
-                    }
+                    },
+                    width: "50px"
                 },
                 { 
                     data: "title",
@@ -101,7 +102,8 @@
                         else {
                             return row.title_sort;
                         }
-                    }
+                    },
+                    width: "20%"
                 },
                 {
                     data: "title_sort",
@@ -165,7 +167,8 @@
                             }
                         }
                     },
-                    className: "chapter"
+                    className: "chapter",
+                    width: "10em;"
                 },
                 { 
                     data: "enemy_type",
@@ -178,7 +181,8 @@
                         else {
                             return data;
                         }
-                    }
+                    },
+                    width: "40px"
                 },
                 { 
                     data: "chara_id",
@@ -217,35 +221,40 @@
                     data: sortLevels('lev_bas'),
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_bas_i')
+                    customDropdownSortSource: sortByLeadingZeros('lev_bas_i'),
+                    width: "4em"
                 },
                 { 
                     //  ADVANCED
                     data: sortLevels('lev_adv'),
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_adv_i')
+                    customDropdownSortSource: sortByLeadingZeros('lev_adv_i'),
+                    width: "4em"
                 },
                 { 
                     //  EXPERT
                     data: sortLevels('lev_exc'),
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_exc_i')
+                    customDropdownSortSource: sortByLeadingZeros('lev_exc_i'),
+                    width: "4em"
                 },
                 { 
                     //  MASTER
                     data: sortLevels('lev_mas'),
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_mas_i')
+                    customDropdownSortSource: sortByLeadingZeros('lev_mas_i'),
+                    width: "4em"
                 },
                 { 
                     //  LUNATIC
                     data: sortLevels('lev_lnt'),
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_lnt_i')
+                    customDropdownSortSource: sortByLeadingZeros('lev_lnt_i'),
+                    width: "4em"
                 },
                 { 
                     data: "new",
@@ -310,12 +319,13 @@
                         hide: [ 14, 15, 16 ]
                     },
                     {
-                        extend: 'columnsToggle',
+                        extend: 'colvis',
                         columns: '.toggle'
                     },
                 ],
                 "responsive": {
                     details: {
+                        type: 'column',
                         target: 'tr',
                         display: $.fn.dataTable.Responsive.display.modal( {
                             header: function ( row ) {
@@ -330,6 +340,7 @@
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 "order": [[20, 'desc'],[0,'desc']], 
                 "columns": columns_params,
+                fixedColumns: true,
 
                 // Generate Filter dropdown per columns
                 initComplete: function () {
