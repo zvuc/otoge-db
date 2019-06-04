@@ -30,27 +30,27 @@
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
-                <th class="never"><span>ID (system)</span></th>
-                <th data-priority="5"><span>#</span></th>
-                <th class="all" data-priority="1"><span>アルバムアート</span></th>
-                <th class="all" data-priority="1"><span>曲名</span></th>
-                <th class="never"><span>曲名 (読み)</span></th>
-                <th class="never"><span>アーティスト</span></th>
-                <th class="toggle" data-priority="5"><span>カテゴリ</span></th>
-                <th class="never"><span>カテゴリID</span></th>
-                <th class="never"><span>チャプターID</span></th>
-                <th class="toggle" data-priority="6" ><span>チャプター</span></th>
-                <th class="toggle" data-priority="3" ><span>属性</span></th>
-                <th class="never"><span>キャラID</span></th>
-                <th class="toggle" data-priority="4"><span>相手キャラ</span></th>
-                <th class="toggle" data-priority="3"><span>レベル</span></th>
-                <th class="all toggle" data-priority="4"><span>BSC</span></th>
-                <th class="all toggle" data-priority="4"><span>ADV</span></th>
-                <th class="all toggle" data-priority="2"><span>EXP</span></th>
-                <th class="all toggle" data-priority="2"><span>MAS</span></th>
-                <th class="all toggle" data-priority="2"><span>LNT</span></th>
-                <th class="never"><span>NEW</span></th>
-                <th class="toggle" data-priority="3"><span>追加日</span></th>
+                <!-- 0 --><th class="never"><span>ID (system)</span></th>
+                <!-- 1 --><th class="all"><span>#</span></th>
+                <!-- 2 --><th class="all"><span>アルバムアート</span></th>
+                <!-- 3 --><th class="all"><span>曲名</span></th>
+                <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
+                <!-- 5 --><th class="never"><span>アーティスト</span></th>
+                <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
+                <!-- 7 --><th class="never"><span>カテゴリID</span></th>
+                <!-- 8 --><th class="never"><span>チャプターID</span></th>
+                <!-- 9 --><th class="all toggle" ><span>チャプター</span></th>
+                <!-- 10 --><th class="all toggle" ><span>属性</span></th>
+                <!-- 11 --><th class="never"><span>キャラID</span></th>
+                <!-- 12 --><th class="all toggle"><span>相手キャラ</span></th>
+                <!-- 13 --><th class="all toggle"><span>レベル</span></th>
+                <!-- 14 --><th class="all toggle"><span>BSC</span></th>
+                <!-- 15 --><th class="all toggle"><span>ADV</span></th>
+                <!-- 16 --><th class="all toggle"><span>EXP</span></th>
+                <!-- 17 --><th class="all toggle"><span>MAS</span></th>
+                <!-- 18 --><th class="all toggle"><span>LNT</span></th>
+                <!-- 19 --><th class="never"><span>NEW</span></th>
+                <!-- 20 --><th class="all toggle"><span>追加日</span></th>
             </tr>
         </thead>
     </table>
@@ -319,8 +319,15 @@
                         hide: [ 14, 15, 16 ]
                     },
                     {
+                        extend: 'colvisGroup',
+                        text: '相手属性・レベルのみ',
+                        show: [ 10, 12, 13 ],
+                        hide: [ 14, 15, 16, 17, 18 ]
+                    },
+                    {
                         extend: 'colvis',
-                        columns: '.toggle'
+                        columns: '.toggle',
+                        text: '表示オプション'
                     },
                 ],
                 "responsive": {
