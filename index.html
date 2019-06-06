@@ -25,7 +25,7 @@
 <body>
     <header>
         <h1>オンゲキ収録曲DB</h1>
-        <div class="lastupdated"><span>Last updated 2019/06/06</span></div>
+        <div class="lastupdated"><span>DATA: 20190606</span></div>
     </header>
     <table id="table" class="display" style="width:100%">
         <thead>
@@ -242,7 +242,7 @@
                 { 
                     //  BASIC
                     displayTitle: "BASIC",
-                    data: sortLevels('lev_bas'),
+                    data: sortLevels('lev_bas', 'lev_bas_i'),
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_bas_i'),
@@ -252,7 +252,7 @@
                 { 
                     //  ADVANCED
                     displayTitle: "ADVANCED",
-                    data: sortLevels('lev_adv'),
+                    data: sortLevels('lev_adv', 'lev_adv_i'),
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv_i'),
@@ -262,7 +262,7 @@
                 { 
                     //  EXPERT
                     displayTitle: "EXPERT",
-                    data: sortLevels('lev_exc'),
+                    data: sortLevels('lev_exc', 'lev_exc_i'),
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc_i'),
@@ -272,7 +272,7 @@
                 { 
                     //  MASTER
                     displayTitle: "MASTER",
-                    data: sortLevels('lev_mas'),
+                    data: sortLevels('lev_mas', 'lev_mas_i'),
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas_i'),
@@ -282,7 +282,7 @@
                 { 
                     //  LUNATIC
                     displayTitle: "LUNATIC",
-                    data: sortLevels('lev_lnt'),
+                    data: sortLevels('lev_lnt', 'lev_lnt_i'),
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt_i'),
@@ -303,13 +303,13 @@
                 }
             ];
             
-            function sortLevels(column) {
+            function sortLevels(col_a, col_b) {
                 return function ( row, type, set, meta ) {
                     if ( type === 'sort' ) {
-                        return addLeadingZero(row[column]);
+                        return addLeadingZero(row[col_b]);
                     }
                     else {
-                        return row[column];
+                        return row[col_a];
                     }
                 }
             }
