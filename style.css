@@ -127,9 +127,6 @@ header .lastupdated span {
 
 .table-inner {
     width: 100%;
-/*    overflow: hidden;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;*/
 }
 
 #table {
