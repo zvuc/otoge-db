@@ -97,8 +97,7 @@
                         else {
                             return row.title_sort;
                         }
-                    },
-                    width: "20%"
+                    }
                 },
                 {
                     displayTitle: "曲名 (読み)",
@@ -236,7 +235,7 @@
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_bas'),
-                    width: "3em",
+                    width: "3rem",
                     filterable: true
                 },
                 { 
@@ -246,7 +245,7 @@
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv'),
-                    width: "3em",
+                    width: "3rem",
                     filterable: true
                 },
                 { 
@@ -256,7 +255,7 @@
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc'),
-                    width: "3em",
+                    width: "3rem",
                     filterable: true
                 },
                 { 
@@ -266,7 +265,7 @@
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas'),
-                    width: "3em",
+                    width: "3rem",
                     filterable: true
                 },
                 { 
@@ -276,7 +275,7 @@
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
-                    width: "3em",
+                    width: "3rem",
                     filterable: true
                 },
                 { 
@@ -289,7 +288,8 @@
                     displayTitle: "追加日",
                     data: "date",
                     className: "date",
-                    filterable: true
+                    filterable: true,
+                    width: "4em"
                 }
             ];
             
@@ -341,27 +341,36 @@
                 },
                 "buttons": [
                     {
+                        extend: 'colvisRestore',
+                        text: '全カラム表示',
+                    },
+                    {
                         extend: 'colvisGroup',
                         text: '全難易度表示',
                         show: [ 14, 15, 16, 17, 18 ]
                     },
                     {
                         extend: 'colvisGroup',
-                        text: 'BSC/ADV/EXPを隠す',
-                        hide: [ 14, 15, 16 ]
+                        text: 'EXPERT以下を隠す',
+                        hide: [ 14, 15 ]
                     },
                     {
                         extend: 'colvisGroup',
                         className: 'asdf',
-                        text: '相手属性・レベルのみ',
-                        show: [ 10, 12, 13 ],
-                        hide: [ 14, 15, 16, 17, 18 ]
+                        text: 'カテゴリ・チャプターを隠す',
+                        hide: [ 6, 9 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        className: 'asdf',
+                        text: '相手情報を隠す',
+                        hide: [ 10, 12, 13 ]
                     },
                     {
                         extend: 'colvis',
                         columns: '.toggle',
-                        text: 'カラム表示',
-                        collectionTitle: "カラム表示のカスタマイズ",
+                        text: 'カスタム設定',
+                        collectionTitle: "表示・隠すカラムを選択",
                         collectionLayout: "fixed",
                         fade: 150
                     },

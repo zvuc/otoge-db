@@ -369,6 +369,7 @@ td.character {
 
 th.lv,
 td.lv {
+    max-width: 3rem;
 }
 
 th.lv select {
@@ -380,35 +381,35 @@ tbody td.lv {
 }
 
 .lv-bsc {
-    background: rgba(231, 249, 231, 0.5);
+    background: rgba(231,249,231,0.5);
 }
 .lv-adv {
-    background: rgba(255, 244, 201, 0.5);
+    background: rgba(255,244,201,0.5);
 }
 .lv-exp {
-    background: rgba(255, 224, 224, 0.5);
+    background: rgba(255,224,224,0.5);
 }
 .lv-mas {
-    background: rgba(248, 237, 255, 0.5);
+    background: rgba(248,237,255,0.5);
 }
 .lv-lnt {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255,255,255,0.5);
 }
 
 .lv-bsc.sorting_1 {
-    background: rgba(231, 249, 231, 1) !important;
+    background: rgba(231,249,231,1) !important;
 }
 .lv-adv.sorting_1 {
-    background: rgba(255, 244, 201, 1) !important;
+    background: rgba(255,244,201,1) !important;
 }
 .lv-exp.sorting_1 {
-    background: rgba(255, 224, 224, 1) !important;
+    background: rgba(255,224,224,1) !important;
 }
 .lv-mas.sorting_1 {
-    background: rgba(248, 237, 255, 1) !important;
+    background: rgba(248,237,255,1) !important;
 }
 .lv-lnt.sorting_1 {
-    background: rgba(255, 255, 255, 1) !important;
+    background: rgba(255,255,255,1) !important;
 }
 
 .lv-num-simple {
