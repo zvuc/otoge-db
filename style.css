@@ -221,12 +221,6 @@ table.dataTable thead th.song-title,
 td.song-title {
     min-width: 200px;
     padding-left: 50px;
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    background-color: transparent;
-    background-image: linear-gradient(to right, #fff 95%, rgba(255,255,255,0));
-    z-index: 1;
 }
 
 td.song-title .inner-wrap {
@@ -234,15 +228,26 @@ td.song-title .inner-wrap {
     align-items: center;
 }
 
-tbody tr.odd td.song-title {
+
+td.song-title .img-wrap {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    margin-left: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #fff 95%, rgba(255,255,255,0));
+    z-index: 1;
+}
+tbody tr.odd td.song-title .img-wrap {
     background-image: linear-gradient(to right, #f9f9f9 95%, rgba(249,249,249,0));
 }
-tbody tr:hover td.song-title {
+tbody tr:hover td.song-title .img-wrap {
     background-image: linear-gradient(to right, #f6f6f6 95%, rgba(246,246,246,0));
 }
 
 td.song-title img {
-    margin-right: 10px;
     max-width: 50px;
     height: auto;
 }
@@ -305,9 +310,10 @@ td.type {
 
 .type-icon {
     display: inline-block;
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .type-icon span {

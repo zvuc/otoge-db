@@ -89,7 +89,7 @@
                     render: function ( data, type, row ) {
                         // If display or filter data is requested, return title
                         if ( type === 'display' ) {
-                            return '<div class="inner-wrap"><img src=\"jacket/' + row.image_url.split(".")[0] + '.jpg\"\/><span class="meta"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/span><\/div>';
+                            return '<div class="inner-wrap"><span class="img-wrap"><img src=\"jacket/' + row.image_url.split(".")[0] + '.jpg\"\/></span><span class="meta"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/span><\/div>';
                         }
                         else if ( type === 'filter' ) {
                             return data;
@@ -237,7 +237,7 @@
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_bas'),
-                    width: "4em",
+                    width: "3em",
                     filterable: true
                 },
                 { 
@@ -247,7 +247,7 @@
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv'),
-                    width: "4em",
+                    width: "3em",
                     filterable: true
                 },
                 { 
@@ -257,7 +257,7 @@
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc'),
-                    width: "4em",
+                    width: "3em",
                     filterable: true
                 },
                 { 
@@ -267,7 +267,7 @@
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas'),
-                    width: "4em",
+                    width: "3em",
                     filterable: true
                 },
                 { 
@@ -277,7 +277,7 @@
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
-                    width: "4em",
+                    width: "3em",
                     filterable: true
                 },
                 { 
@@ -354,6 +354,7 @@
                     },
                     {
                         extend: 'colvisGroup',
+                        className: 'asdf',
                         text: '相手属性・レベルのみ',
                         show: [ 10, 12, 13 ],
                         hide: [ 14, 15, 16, 17, 18 ]
@@ -361,7 +362,10 @@
                     {
                         extend: 'colvis',
                         columns: '.toggle',
-                        text: '表示オプション'
+                        text: 'カラム表示',
+                        collectionTitle: "カラム表示のカスタマイズ",
+                        collectionLayout: "fixed",
+                        fade: 150
                     },
                 ],
                 "columns": columns_params,
