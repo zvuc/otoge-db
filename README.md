@@ -1,10 +1,10 @@
 # Ongeki Song DB Table
-This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'. Based on the public data provided from the official homepage ([https://ongeki.sega.jp/music/]), this tool enables user to view information easier by using custom sort and filter options.
+This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'. Based on the public data provided from the official homepage (https://ongeki.sega.jp/music/), this tool enables user to view information easier by using custom sort and filter options.
 
 このツールは、SEGAの音ゲー「オンゲキ」の収録曲データをより便利に閲覧できるように制作されたビュアーです。
 
 ## Data Sources
-- Base data source: [https://ongeki.sega.jp/assets/data/music.json]
+- Base data source: https://ongeki.sega.jp/assets/data/music.json
 - Enemy type & level data: [オンゲキ攻略wiki](https://ongeki.gamerch.com/%E5%B1%9E%E6%80%A7%E5%88%A5%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7)
 - Detailed chart integers (譜面定数): [OngekiScoreLog](https://ongeki-score.net/music)
 - Combined Data Sheet → [https://docs.google.com/spreadsheets/d/1ZyASbNVyZVuFJ_bwka48sW4_jCBhSSsadLCQTXLA9FY]
