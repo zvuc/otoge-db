@@ -110,7 +110,12 @@ header .lastupdated span {
     color: #aaa;
 }
 
-.dataTables_wrapper .dataTables_length {
+.dataTables_wrapper .dataTables_length select {
+    font-size: 16px;
+}
+
+.dataTables_wrapper .dataTables_length select option {
+    font-size: 14px;
 }
 
 .dataTables_wrapper .dataTables_info {
@@ -147,6 +152,10 @@ header .lastupdated span {
     z-index: 2;
     background-color: #fff;
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+.dataTables_scroll .dataTables_scrollHead thead th {
+    height: 20px !important;
 }
 
 table.dataTable thead th,
