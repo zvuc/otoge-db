@@ -62,7 +62,6 @@
 
     <script>
         $(document).ready(function() {
-            var table = $('#table');
             var columns_params = [
                 { 
                     data: "id",
@@ -263,7 +262,7 @@
                 },
                 { 
                     data: "date",
-                    className: "date",
+                    className: "date"
                 }
             ];
             
@@ -300,7 +299,7 @@
                 }
             }
 
-            table.DataTable( {
+            var table = $('#table').DataTable( {
                 "ajax": {
                     url: "data/music-ex.json",
                     dataSrc: ""
@@ -330,6 +329,14 @@
                         text: '表示オプション'
                     },
                 ],
+                "rowGroup": {
+                    dataSrc: 'date',
+                    startRender: function ( rows, group ) {
+                        return group +' 追加';
+                        // enable rows count again when I find a way to show all rows in other pages
+                        // return group +'更新 ('+rows.count()+'曲)';
+                    }
+                },
                 "responsive": {
                     details: {
                         type: 'column',
@@ -347,24 +354,35 @@
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 "order": [[20, 'desc'],[0,'desc']], 
                 "columns": columns_params,
-                fixedColumns: true,
+                "fixedColumns": true,
 
-                // Generate Filter dropdown per columns
-                initComplete: function () {
+                initComplete: function() {
                     var rows = this.api().rows().data();
-                    this.api().columns().every( function () {
+
+                    // Generate Filter dropdown per columns
+                    this.api().columns().every(function() {
+                        var order = table.order();
                         var column = this;
                         var select = $('<select onclick="event.stopPropagation()"><option value="" selected>—</option></select>')
                             .appendTo( $(column.header()) )
-                            .on( 'change', function () {
+                            .on( 'change', function() {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
                                 );
-         
+                                
+                                // when applying filter, control rowgroup visibility
+                                if(column.index() === 20 || (val === "" && order[0][0] === 20)) {
+                                    column.rowGroup().enable();
+                                    console.log('group enabled (filter)');
+                                } else {
+                                    column.rowGroup().disable();
+                                    console.log('group disabled (filter active)');
+                                }
+
                                 column
                                     .search( val ? '^'+val+'$' : '', true, false )
                                     .draw();
-                            } );
+                            });
                         var column_data = column.data();
                         var column_param = columns_params[column.index()];
 
@@ -392,14 +410,55 @@
                             column_data = column_data.sort();
                         }
                         
-                        column_data.unique().each( function ( d, j ) {
+                        // draw option list
+                        column_data.unique().each(function ( d, j ) {
                             if (d != ''){
                                 select.append( '<option value="'+d+'">'+d+'</option>' );
                             }
-                        } );
+                        });
+                    });
+            
+                    table.on( 'order.dt', function () {
+                        var order = table.order();
+                        var search = table.columns().search();
+                        var searchActive = false;
+
+                        console.log('Reorder happened!');
+                        console.log(order);
+
+                        for (let k = 0; k < search.length; k = k+1) {
+                            if (k in search && search[k] !== "") {
+                                searchActive = true;
+                                console.log(searchActive);
+                                break;
+                            }
+                        }                       
+
+                        // Disable rowgroup unless sorting by date
+                        if ( order[0][0] !== 20 ) {
+                            table.rowGroup().disable();
+                            console.log('group disabled (sorting by non-date column)');
+                            return;
+                        } 
+                        // enable rowgroup if sorting by date AND search is inactive
+                        else if ( (order[0][0] === 20) && !searchActive ) {
+                            table.rowGroup().enable();
+                            console.log('group enabled (sorting by date + search inactive)');
+                            return;
+                        }
+                        // do nothing
+                        else {
+                            console.log('do nothing');
+                            return;
+                        }
+                        table.draw();
                     } );
                 }
             });
+
+            // table.on( 'search.dt', function () {
+            //     console.log('search happened')
+            // } );
         });
 
         
