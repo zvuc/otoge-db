@@ -245,7 +245,7 @@
                     data: sortLevels('lev_bas', 'lev_bas_i'),
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_bas_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_bas'),
                     width: "4em",
                     filterable: true
                 },
@@ -255,7 +255,7 @@
                     data: sortLevels('lev_adv', 'lev_adv_i'),
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_adv_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_adv'),
                     width: "4em",
                     filterable: true
                 },
@@ -265,7 +265,7 @@
                     data: sortLevels('lev_exc', 'lev_exc_i'),
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_exc_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_exc'),
                     width: "4em",
                     filterable: true
                 },
@@ -275,7 +275,7 @@
                     data: sortLevels('lev_mas', 'lev_mas_i'),
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_mas_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_mas'),
                     width: "4em",
                     filterable: true
                 },
@@ -285,7 +285,7 @@
                     data: sortLevels('lev_lnt', 'lev_lnt_i'),
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-                    customDropdownSortSource: sortByLeadingZeros('lev_lnt_i'),
+                    customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
                     width: "4em",
                     filterable: true
                 },
@@ -306,7 +306,11 @@
             function sortLevels(col_a, col_b) {
                 return function ( row, type, set, meta ) {
                     if ( type === 'sort' ) {
-                        return addLeadingZero(row[col_b]);
+                        if ( row[col_b] === "" ) {
+                            return addLeadingZero(row[col_a]);
+                        } else {
+                            return addLeadingZero(row[col_b]);
+                        }
                     }
                     else {
                         return row[col_a];
@@ -315,8 +319,12 @@
             }
 
             function addLeadingZero(s) {
-                lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
-                return lev_processed;
+                if(s != "") {
+                    lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
+                    return lev_processed;
+                } else {
+                    return "";
+                }
             }
 
             function sortByLeadingZeros(column) {
