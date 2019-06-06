@@ -127,9 +127,9 @@ header .lastupdated span {
 
 .table-inner {
     width: 100%;
-    overflow: hidden;
+/*    overflow: hidden;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;*/
 }
 
 #table {
@@ -137,8 +137,6 @@ header .lastupdated span {
 }
 
 #table thead {
-    /*position: sticky;
-    top: 0;*/
     background: #fff;
 }
 
@@ -146,6 +144,49 @@ table.dataTable thead th,
 table.dataTable thead td {
     padding-left: 10px;
     padding-right: 20px;
+}
+
+/* override sorting button */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  background-image: none;
+}
+
+table.dataTable thead th {
+    position: relative;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: inline-block;
+    margin-left: 3px;
+    width: 19px;
+    height: 100%;
+    background-image: url("datatables/images/sort_both.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+table.dataTable thead .sorting_asc:after {
+    background-image: url("datatables/images/sort_asc.png");
+}
+table.dataTable thead .sorting_desc:after {
+    background-image: url("datatables/images/sort_desc.png");
+}
+table.dataTable thead .sorting_asc_disabled:after {
+    background-image: url("datatables/images/sort_asc_disabled.png");
+}
+table.dataTable thead .sorting_desc_disabled:after {
+    background-image: url("datatables/images/sort_desc_disabled.png");
 }
 
 thead span {
@@ -160,6 +201,7 @@ thead th.nowrap {
 tr.dtrg-start td div {
     display: inline-block;
     position: sticky;
+    position: -webkit-sticky;
     left: 10px;
 }
 
@@ -178,24 +220,28 @@ table.dataTable thead td.jacket {
     padding-right: 10px;
 }
 
-th.song-title,
+table.dataTable thead th.song-title,
 td.song-title {
     min-width: 200px;
     padding-left: 50px;
+    position: -webkit-sticky;
     position: sticky;
     left: 0;
-    background-color: #fff;
-}
-tbody tr.odd td.song-title {
-    background-color: #f9f9f9
-}
-tbody tr:hover td.song-title {
-    background-color: #f6f6f6
+    background-color: transparent;
+    background-image: linear-gradient(to right, #fff 95%, rgba(255,255,255,0));
+    z-index: 1;
 }
 
 td.song-title .inner-wrap {
     display: flex;
     align-items: center;
+}
+
+tbody tr.odd td.song-title {
+    background-image: linear-gradient(to right, #f9f9f9 95%, rgba(249,249,249,0));
+}
+tbody tr:hover td.song-title {
+    background-image: linear-gradient(to right, #f6f6f6 95%, rgba(246,246,246,0));
 }
 
 td.song-title img {

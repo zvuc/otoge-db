@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-141271073-1');
-    </script>
-
     <meta charset="UTF-8"> 
 
     <meta name="HandheldFriendly" content="True" />
@@ -349,7 +340,6 @@
                     url: "data/music-ex.json",
                     dataSrc: ""
                 },
-                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lf><"toolbar"i><"table-inner"rt><"paging"p>',
                 "buttons": [
                     {
                         extend: 'colvisGroup',
@@ -374,14 +364,11 @@
                         text: '表示オプション'
                     },
                 ],
-                "rowGroup": {
-                    dataSrc: 'date',
-                    startRender: function ( rows, group ) {
-                        return '<div>' + group +' 追加<\/div>';
-                        // enable rows count again when I find a way to show all rows in other pages
-                        // return group +'更新 ('+rows.count()+'曲)';
-                    }
-                },
+                "columns": columns_params,
+                "deferRender": true,
+                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lf><"toolbar"i><"table-inner"rt><"paging"p>',
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+                "order": [[20, 'desc'],[0,'desc']], 
                 "responsive": {
                     details: {
                         type: 'column',
@@ -395,11 +382,15 @@
                         renderer: $.fn.dataTable.Responsive.renderer.tableAll()
                     }
                 },
-                "deferRender": true,
-                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[20, 'desc'],[0,'desc']], 
-                "columns": columns_params,
-                "fixedColumns": true,
+                "rowGroup": {
+                    dataSrc: 'date',
+                    startRender: function ( rows, group ) {
+                        return '<div>' + group +' 追加<\/div>';
+                        // enable rows count again when I find a way to show all rows in other pages
+                        // return group +'更新 ('+rows.count()+'曲)';
+                    }
+                },
+                "scrollX": true,
 
                 initComplete: function() {
                     var rows = this.api().rows().data();
@@ -513,6 +504,15 @@
         });
 
         
+    </script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-141271073-1');
     </script>
 </body>
 
