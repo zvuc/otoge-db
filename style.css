@@ -104,6 +104,7 @@ header .lastupdated span {
     min-width: 70px;
     max-width: 100px;
     text-overflow: ellipsis;
+    font-size: 16px;
 }
 .toolbar.filters select option[data-default] {
     color: #aaa;
@@ -119,6 +120,10 @@ header .lastupdated span {
 .dataTables_wrapper .dataTables_filter {
     margin-left: auto;
     margin-top: 0;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    font-size: 16px;
 }
 
 /* main table */
