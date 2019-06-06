@@ -39,11 +39,11 @@
                 <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
                 <!-- 7 --><th class="never"><span>カテゴリID</span></th>
                 <!-- 8 --><th class="never"><span>チャプターID</span></th>
-                <!-- 9 --><th class="all toggle" ><span>チャプター</span></th>
-                <!-- 10 --><th class="all toggle" ><span>属性</span></th>
+                <!-- 9 --><th class="all toggle"><span>チャプター</span></th>
+                <!-- 10 --><th class="all toggle nowrap"><span>属性</span></th>
                 <!-- 11 --><th class="never"><span>キャラID</span></th>
-                <!-- 12 --><th class="all toggle"><span>相手キャラ</span></th>
-                <!-- 13 --><th class="all toggle"><span>レベル</span></th>
+                <!-- 12 --><th class="all toggle nowrap"><span>相手キャラ</span></th>
+                <!-- 13 --><th class="all toggle"><span>Lv</span></th>
                 <!-- 14 --><th class="all toggle"><span>BSC</span></th>
                 <!-- 15 --><th class="all toggle"><span>ADV</span></th>
                 <!-- 16 --><th class="all toggle"><span>EXP</span></th>
@@ -64,11 +64,13 @@
         $(document).ready(function() {
             var columns_params = [
                 { 
+                    title: "ID (system)",
                     data: "id",
                     className: "id",
                     visible: false
                 },
                 { 
+                    title: "#",
                     data: "image_url",
                     className: "id",
                     searchable: false,
@@ -77,6 +79,7 @@
                     }
                 },
                 { 
+                    title: "アルバムアート",
                     data: "image_url",
                     className: "jacket",
                     orderable: false,
@@ -84,15 +87,17 @@
                     render: function(data) {
                         return '<img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/>';
                     },
-                    width: "50px"
+                    width: "50px",
+                    visible: false
                 },
                 { 
+                    title: "曲名",
                     data: "title",
                     className: "song-title",
                     render: function ( data, type, row ) {
                         // If display or filter data is requested, return title
                         if ( type === 'display' ) {
-                            return '<span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span>';
+                            return '<div class="inner-wrap"><img src=\"jacket/' + row.image_url.split(".")[0] + '.jpg\"\/><span class="meta"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/span><\/div>';
                         }
                         else if ( type === 'filter' ) {
                             return data;
@@ -105,30 +110,37 @@
                     width: "20%"
                 },
                 {
+                    title: "曲名 (読み)",
                     data: "title_sort",
                     className: "title-sort",
                     visible: false
                 },
                 { 
+                    title: "アーティスト",
                     data: "artist",
                     className: "artist",
                     visible: false
                 },
                 { 
+                    title: "カテゴリ",
                     data: "category",
-                    className: "category"
+                    className: "category",
+                    filterable: true
                 },
                 { 
+                    title: "カテゴリID",
                     data: "category_id",
                     visible: false
                 },
                 { 
+                    title: "チャプターID",
                     data: "chap_id",
                     className: "chapter-id",
                     visible: false
                 },
                 {
                     // combine chap_id + chapter
+                        title: "チャプター",
                     data: function( row, type, set, meta ) {
                         if (type === 'sort') {
                             return row.chap_id;
@@ -167,9 +179,11 @@
                         }
                     },
                     className: "chapter",
-                    width: "10em;"
+                    width: "10em",
+                    filterable: true
                 },
                 { 
+                    title: "属性",
                     data: "enemy_type",
                     className: "type",
                     render: function ( data, type, row ) {
@@ -181,13 +195,16 @@
                             return data;
                         }
                     },
-                    width: "40px"
+                    width: "40px",
+                    filterable: true
                 },
                 { 
+                    title: "キャラID",
                     data: "chara_id",
                     visible: false
                 },
                 { 
+                    title: "相手キャラ",
                     data: "character",
                     className: "character",
                     render: function ( data, type, row ) {
@@ -199,9 +216,12 @@
                             return row.chara_id;
                         }
                     },
-                    customDropdownSortSource: 'chara_id'
+                    customDropdownSortSource: 'chara_id',
+                    width: "10em",
+                    filterable: true
                 },
                 { 
+                    title: "Lv",
                     data: "enemy_lv",
                     className: "enemy-lv",
                     render: function ( data, type, row ) {
@@ -213,56 +233,71 @@
                             return data;
                         }
                     },
-                    customDropdownSortSource: sortByLeadingZeros('enemy_lv')
+                    customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
+                    width: "4em",
+                    filterable: true
                 },
                 { 
                     //  BASIC
+                    title: "BSC",
                     data: sortLevels('lev_bas'),
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_bas_i'),
-                    width: "4em"
+                    width: "4em",
+                    filterable: true
                 },
                 { 
                     //  ADVANCED
+                    title: "ADV",
                     data: sortLevels('lev_adv'),
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv_i'),
-                    width: "4em"
+                    width: "4em",
+                    filterable: true
                 },
                 { 
                     //  EXPERT
+                    title: "EXP",
                     data: sortLevels('lev_exc'),
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc_i'),
-                    width: "4em"
+                    width: "4em",
+                    filterable: true
                 },
                 { 
                     //  MASTER
+                    title: "MAS",
                     data: sortLevels('lev_mas'),
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas_i'),
-                    width: "4em"
+                    width: "4em",
+                    filterable: true
                 },
                 { 
                     //  LUNATIC
+                    title: "LNT",
                     data: sortLevels('lev_lnt'),
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt_i'),
-                    width: "4em"
+                    width: "4em",
+                    filterable: true
                 },
                 { 
+                    title: "NEW",
                     data: "new",
                     searchable: false,
                     visible: false
                 },
                 { 
+                    title: "追加日",
                     data: "date",
-                    className: "date"
+                    className: "date",
+                    filterable: true
                 }
             ];
             
@@ -304,7 +339,7 @@
                     url: "data/music-ex.json",
                     dataSrc: ""
                 },
-                "dom": '<"column-toggle-bar"B><"toolbar"lif><"table-inner"rt><"paging"p>',
+                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lif><"table-inner"rt><"paging"p>',
                 "buttons": [
                     {
                         extend: 'colvisGroup',
@@ -332,7 +367,7 @@
                 "rowGroup": {
                     dataSrc: 'date',
                     startRender: function ( rows, group ) {
-                        return group +' 追加';
+                        return '<div>' + group +' 追加<\/div>';
                         // enable rows count again when I find a way to show all rows in other pages
                         // return group +'更新 ('+rows.count()+'曲)';
                     }
@@ -363,59 +398,65 @@
                     this.api().columns().every(function() {
                         var order = table.order();
                         var column = this;
-                        var select = $('<select onclick="event.stopPropagation()"><option value="" selected>—</option></select>')
-                            .appendTo( $(column.header()) )
-                            .on( 'change', function() {
-                                var val = $.fn.dataTable.util.escapeRegex(
-                                    $(this).val()
-                                );
-                                
-                                // when applying filter, control rowgroup visibility
-                                if(column.index() === 20 || (val === "" && order[0][0] === 20)) {
-                                    column.rowGroup().enable();
-                                    console.log('group enabled (filter)');
-                                } else {
-                                    column.rowGroup().disable();
-                                    console.log('group disabled (filter active)');
-                                }
-
-                                column
-                                    .search( val ? '^'+val+'$' : '', true, false )
-                                    .draw();
-                            });
                         var column_data = column.data();
                         var column_param = columns_params[column.index()];
 
-                        // column parameter has customDropdownSortSource option
-                        if (column_param.customDropdownSortSource) {
-                            column_data = column_data.map(function(_, index) {
-                                // get index of column
-                                return index;
-                            }).sort(function(index_a, index_b) {
-                                // get index_a-th row and index_b-th row
-                                var row_a = rows[index_a], row_b = rows[index_b];
-                                // if customDropdownSortSource option is function type use it as comparator
-                                if (typeof column_param.customDropdownSortSource === 'function') {
-                                    return column_param.customDropdownSortSource(row_a, row_b);
-                                // if customDropdownSortSource option is string type use it as comparator column key
-                                } else {
-                                    return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
-                                }
-                                // get column data again since we converted this array to row array in previous lines
-                            }).map(function(index) {
-                                // get index-th column's data
-                                return column_data[index];
-                            });
-                        } else {
-                            column_data = column_data.sort();
-                        }
-                        
-                        // draw option list
-                        column_data.unique().each(function ( d, j ) {
-                            if (d != ''){
-                                select.append( '<option value="'+d+'">'+d+'</option>' );
+                        if ("filterable" in column_param) {
+                            var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.title + '</span></div>')
+                                .appendTo( $('.toolbar.filters') );
+                            var select = $('<select><option value="" selected data-default>——</option></select>')
+                                .appendTo( selectWrap )
+                                .on( 'change', function() {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+                                    
+                                    // when applying filter, control rowgroup visibility
+                                    if(column.index() === 20 || (val === "" && order[0][0] === 20)) {
+                                        column.rowGroup().enable();
+                                        console.log('group enabled (filter)');
+                                    } else {
+                                        column.rowGroup().disable();
+                                        console.log('group disabled (filter active)');
+                                    }
+
+                                    column
+                                        .search( val ? '^'+val+'$' : '', true, false )
+                                        .draw();
+                                });
+
+
+                            // column parameter has customDropdownSortSource option
+                            if (column_param.customDropdownSortSource) {
+                                column_data = column_data.map(function(_, index) {
+                                    // get index of column
+                                    return index;
+                                }).sort(function(index_a, index_b) {
+                                    // get index_a-th row and index_b-th row
+                                    var row_a = rows[index_a], row_b = rows[index_b];
+                                    // if customDropdownSortSource option is function type use it as comparator
+                                    if (typeof column_param.customDropdownSortSource === 'function') {
+                                        return column_param.customDropdownSortSource(row_a, row_b);
+                                    // if customDropdownSortSource option is string type use it as comparator column key
+                                    } else {
+                                        return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
+                                    }
+                                    // get column data again since we converted this array to row array in previous lines
+                                }).map(function(index) {
+                                    // get index-th column's data
+                                    return column_data[index];
+                                });
+                            } else {
+                                column_data = column_data.sort();
                             }
-                        });
+                            
+                            // draw option list
+                            column_data.unique().each(function ( d, j ) {
+                                if (d != ''){
+                                    select.append( '<option value="'+d+'">'+d+'</option>' );
+                                }
+                            });
+                        }
                     });
             
                     table.on( 'order.dt', function () {

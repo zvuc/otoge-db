@@ -79,6 +79,31 @@ header .lastupdated span {
     margin-bottom: 10px;
 }
 
+.toolbar.filters {
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.toolbar.filters .select-wrap {
+    display: inline-block;
+    margin-right: 10px;
+}
+.toolbar.filters .select-wrap .label {
+    display: block;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.toolbar.filters select {
+    font-size: 1rem;
+    min-width: 60px;
+    max-width: 100px;
+    text-overflow: ellipsis;
+}
+.toolbar.filters select option[data-default] {
+    color: #aaa;
+}
+
 .dataTables_wrapper .dataTables_length {
 }
 
@@ -103,7 +128,6 @@ header .lastupdated span {
 }
 
 #table {
-    padding-top: 10px;
     border-top: 1px solid #ddd;
 }
 
@@ -123,29 +147,73 @@ thead span {
     display: block;
 }
 
-thead .id select,
-thead .jacket select,
-thead .song-title select,
-thead .artist select {
-    display: none;
+thead th.nowrap {
+    white-space: nowrap;
 }
 
-thead select {
-    font-size: 1rem;
-    text-overflow: ellipsis;
+/* rowgroup header */
+tr.dtrg-start td div {
+    display: inline-block;
+    position: sticky;
+    left: 10px;
 }
 
+/* column contents */
 tbody td.id {
     font-variant-numeric: tabular-nums;
 }
 
-tbody td.song-title {
+th.jacket {
+    max-width: 50px !important;
+}
+table.dataTable thead th.jacket,
+table.dataTable thead td.jacket {
+    padding-right: 10px;
+}
+
+th.song-title,
+td.song-title {
     min-width: 200px;
+    padding-left: 50px;
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+}
+tbody tr.odd td.song-title {
+    background-color: #f9f9f9
+}
+tbody tr:hover td.song-title {
+    background-color: #f6f6f6
+}
+
+td.song-title .inner-wrap {
+    display: flex;
+    align-items: center;
+}
+
+td.song-title img {
+    margin-right: 10px;
+    max-width: 50px;
+    height: auto;
+}
+
+th.jacket span {
+    display: none;
+}
+
+td.jacket img {
+    max-width: 50px;
+    height: auto;
 }
 
 td.song-title .title {
     font-weight: bold;
-    font-size: 1.1em;
+}
+
+@media screen and (max-width: 480px) {
+    td.song-title .title {
+        font-size: 1.1em;
+    }
 }
 
 .artist-display {
@@ -169,27 +237,6 @@ tbody td.chapter {
     font-size: 0.9em;
 }
 
-th.chapter select {
-    max-width: 150px;
-}
-
-th.jacket {
-    max-width: 50px !important;
-}
-table.dataTable thead th.jacket,
-table.dataTable thead td.jacket {
-    padding-right: 10px;
-}
-
-th.jacket span {
-    display: none;
-}
-
-td.jacket img {
-    max-width: 50px;
-    height: auto;
-}
-
 tbody td.title-sort {
     font-size: 0.7em;
 }
@@ -197,10 +244,6 @@ tbody td.title-sort {
 th.type,
 td.type {
     text-align: center;
-}
-
-th.type select {
-    max-width: 40px;
 }
 
 .type-icon {
@@ -227,10 +270,6 @@ th.type select {
 th.character,
 td.character {
     max-width: 200px;
-}
-
-th.character select {
-    max-width: 150px;
 }
 
 th.lv,
