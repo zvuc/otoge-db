@@ -64,13 +64,13 @@
         $(document).ready(function() {
             var columns_params = [
                 { 
-                    title: "ID (system)",
+                    displayTitle: "ID (system)",
                     data: "id",
                     className: "id",
                     visible: false
                 },
                 { 
-                    title: "#",
+                    displayTitle: "#",
                     data: "image_url",
                     className: "id",
                     searchable: false,
@@ -80,7 +80,7 @@
                     }
                 },
                 { 
-                    title: "アルバムアート",
+                    displayTitle: "アルバムアート",
                     data: "image_url",
                     className: "jacket",
                     orderable: false,
@@ -92,7 +92,7 @@
                     visible: false
                 },
                 { 
-                    title: "曲名",
+                    displayTitle: "曲名",
                     data: "title",
                     className: "song-title",
                     render: function ( data, type, row ) {
@@ -111,38 +111,38 @@
                     width: "20%"
                 },
                 {
-                    title: "曲名 (読み)",
+                    displayTitle: "曲名 (読み)",
                     data: "title_sort",
                     className: "title-sort",
                     visible: false
                 },
                 { 
-                    title: "アーティスト",
+                    displayTitle: "アーティスト",
                     data: "artist",
                     className: "artist",
                     visible: false
                 },
                 { 
-                    title: "カテゴリ",
+                    displayTitle: "カテゴリ",
                     data: "category",
                     className: "category",
                     filterable: true
                 },
                 { 
-                    title: "カテゴリID",
+                    displayTitle: "カテゴリID",
                     data: "category_id",
                     width: "90px",
                     visible: false
                 },
                 { 
-                    title: "チャプターID",
+                    displayTitle: "チャプターID",
                     data: "chap_id",
                     className: "chapter-id",
                     visible: false
                 },
                 {
                     // combine chap_id + chapter
-                        title: "チャプター",
+                        displayTitle: "チャプター",
                     data: function( row, type, set, meta ) {
                         if (type === 'sort') {
                             return row.chap_id;
@@ -185,7 +185,7 @@
                     filterable: true
                 },
                 { 
-                    title: "属性",
+                    displayTitle: "属性",
                     data: "enemy_type",
                     className: "type",
                     render: function ( data, type, row ) {
@@ -201,12 +201,12 @@
                     filterable: true
                 },
                 { 
-                    title: "キャラID",
+                    displayTitle: "キャラID",
                     data: "chara_id",
                     visible: false
                 },
                 { 
-                    title: "相手キャラ",
+                    displayTitle: "相手キャラ",
                     data: "character",
                     className: "character",
                     render: function ( data, type, row ) {
@@ -223,7 +223,7 @@
                     filterable: true
                 },
                 { 
-                    title: "Lv",
+                    displayTitle: "相手レベル",
                     data: "enemy_lv",
                     className: "enemy-lv",
                     render: function ( data, type, row ) {
@@ -241,7 +241,7 @@
                 },
                 { 
                     //  BASIC
-                    title: "BSC",
+                    displayTitle: "BASIC",
                     data: sortLevels('lev_bas'),
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
@@ -251,7 +251,7 @@
                 },
                 { 
                     //  ADVANCED
-                    title: "ADV",
+                    displayTitle: "ADVANCED",
                     data: sortLevels('lev_adv'),
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
@@ -261,7 +261,7 @@
                 },
                 { 
                     //  EXPERT
-                    title: "EXP",
+                    displayTitle: "EXPERT",
                     data: sortLevels('lev_exc'),
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
@@ -271,7 +271,7 @@
                 },
                 { 
                     //  MASTER
-                    title: "MAS",
+                    displayTitle: "MASTER",
                     data: sortLevels('lev_mas'),
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
@@ -281,7 +281,7 @@
                 },
                 { 
                     //  LUNATIC
-                    title: "LNT",
+                    displayTitle: "LUNATIC",
                     data: sortLevels('lev_lnt'),
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
@@ -290,13 +290,13 @@
                     filterable: true
                 },
                 { 
-                    title: "NEW",
+                    displayTitle: "NEW",
                     data: "new",
                     searchable: false,
                     visible: false
                 },
                 { 
-                    title: "追加日",
+                    displayTitle: "追加日",
                     data: "date",
                     className: "date",
                     filterable: true
@@ -341,7 +341,7 @@
                     url: "data/music-ex.json",
                     dataSrc: ""
                 },
-                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lif><"table-inner"rt><"paging"p>',
+                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lf><"toolbar"i><"table-inner"rt><"paging"p>',
                 "buttons": [
                     {
                         extend: 'colvisGroup',
@@ -404,7 +404,7 @@
                         var column_param = columns_params[column.index()];
 
                         if ("filterable" in column_param) {
-                            var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.title + '</span></div>')
+                            var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.displayTitle + '</span></div>')
                                 .appendTo( $('.toolbar.filters') );
                             var select = $('<select><option value="" selected data-default>——</option></select>')
                                 .appendTo( selectWrap )

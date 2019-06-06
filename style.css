@@ -83,20 +83,25 @@ header .lastupdated span {
     display: block;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .toolbar.filters .select-wrap {
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 5px;
 }
 .toolbar.filters .select-wrap .label {
     display: block;
     font-size: 0.8em;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 .toolbar.filters select {
     font-size: 1rem;
-    min-width: 60px;
+    min-width: 70px;
     max-width: 100px;
     text-overflow: ellipsis;
 }
@@ -109,11 +114,11 @@ header .lastupdated span {
 
 .dataTables_wrapper .dataTables_info {
     padding: 0;
-    margin-left: 20px;
 }
 
 .dataTables_wrapper .dataTables_filter {
     margin-left: auto;
+    margin-top: 0;
 }
 
 #table_wrapper {
