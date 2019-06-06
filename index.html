@@ -23,8 +23,8 @@
             <tr>
                 <!-- 0 --><th class="never"><span>ID (system)</span></th>
                 <!-- 1 --><th class="all"><span>#</span></th>
-                <!-- 2 --><th class="all"><span>アルバムアート</span></th>
-                <!-- 3 --><th class="all"><span>曲名</span></th>
+                <!-- 2 --><th class="all"><span>A</span></th>
+                <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
                 <!-- 5 --><th class="never"><span>アーティスト</span></th>
                 <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
@@ -77,10 +77,9 @@
                     orderable: false,
                     searchable: false,
                     render: function(data) {
-                        return '<img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/>';
+                        return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span>';
                     },
-                    width: "50px",
-                    visible: false
+                    width: "50px"
                 },
                 { 
                     displayTitle: "曲名",
@@ -89,7 +88,7 @@
                     render: function ( data, type, row ) {
                         // If display or filter data is requested, return title
                         if ( type === 'display' ) {
-                            return '<div class="inner-wrap"><span class="img-wrap"><img src=\"jacket/' + row.image_url.split(".")[0] + '.jpg\"\/></span><span class="meta"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/span><\/div>';
+                            return '<div class="inner-wrap"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
                         }
                         else if ( type === 'filter' ) {
                             return data;
@@ -343,13 +342,12 @@
                 "buttons": [
                     {
                         extend: 'colvisGroup',
-                        text: '全難易度',
+                        text: '全難易度表示',
                         show: [ 14, 15, 16, 17, 18 ]
                     },
                     {
                         extend: 'colvisGroup',
-                        text: 'MAS/LNTのみ',
-                        show: [ 17, 18 ],
+                        text: 'BSC/ADV/EXPを隠す',
                         hide: [ 14, 15, 16 ]
                     },
                     {
