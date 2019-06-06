@@ -161,6 +161,8 @@ tr.dtrg-start td div {
 /* column contents */
 tbody td.id {
     font-variant-numeric: tabular-nums;
+    font-size: 0.8em;
+    padding-right: 0 !important;
 }
 
 th.jacket {
@@ -230,7 +232,14 @@ td.song-title .artist-display {
 td.artist {
 }
 
+th.category,
+td.category {
+    min-width: 90px;
+}
+
+th.chapter,
 td.chapter {
+    min-width: 100px;
 }
 
 tbody td.chapter {
