@@ -22,7 +22,7 @@
         <thead>
             <tr>
                 <!-- 0 --><th class="never"><span>ID (system)</span></th>
-                <!-- 1 --><th class="all"><span>#</span></th>
+                <!-- 1 --><th class="all toggle"><span>#</span></th>
                 <!-- 2 --><th class="all"><span>A</span></th>
                 <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
@@ -131,7 +131,7 @@
                 },
                 {
                     // combine chap_id + chapter
-                        displayTitle: "チャプター",
+                    displayTitle: "チャプター",
                     data: function( row, type, set, meta ) {
                         if (type === 'sort') {
                             return row.chap_id;
@@ -170,7 +170,7 @@
                         }
                     },
                     className: "chapter",
-                    width: "20em",
+                    width: "15em",
                     filterable: true
                 },
                 { 
