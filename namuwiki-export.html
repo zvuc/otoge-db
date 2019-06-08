@@ -84,7 +84,7 @@
                     visible: false
                 },
                 { 
-                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#aaa>&lt;:>'''곡명 / 아티스트'''",
+                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#ddd>&lt;:>'''곡명 / 아티스트'''",
                     displayTitle: "曲名",
                     data: "title",
                     className: "song-title",
@@ -218,7 +218,7 @@
                 },
                 { 
                     displayTitle: "相手レベル",
-                    title: "&lt;:>'''Lv'''",
+                    title: "&lt;:>&lt;width=40>'''Lv'''",
                     data: "enemy_lv",
                     className: "enemy-lv",
                     render: function ( data, type, row ) {
@@ -237,7 +237,7 @@
                 { 
                     //  BASIC
                     displayTitle: "BASIC",
-                    title: "&lt;:>&lt;width=50>&lt;bgcolor=#65d346> {{{#fff '''BSC'''}}}",
+                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#65d346> {{{#fff '''BSC'''}}}",
                     data: sortLevels('lev_bas', 'lev_bas_i'),
                     className: "lv lv-bsc",
                     render: renderLvNum('lev_bas', 'lev_bas_i'),
@@ -248,7 +248,7 @@
                 { 
                     //  ADVANCED
                     displayTitle: "ADVANCED",
-                    title: "&lt;:>&lt;width=50>&lt;bgcolor=#fbe64d> {{{#fff '''ADV'''}}}",
+                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#fbe64d> {{{#fff '''ADV'''}}}",
                     data: sortLevels('lev_adv', 'lev_adv_i'),
                     className: "lv lv-adv",
                     render: renderLvNum('lev_adv', 'lev_adv_i'),
@@ -259,7 +259,7 @@
                 { 
                     //  EXPERT
                     displayTitle: "EXPERT",
-                    title: "&lt;:>&lt;width=50>&lt;bgcolor=#ea3886> {{{#fff '''EXP'''}}}",
+                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#ea3886> {{{#fff '''EXP'''}}}",
                     data: sortLevels('lev_exc', 'lev_exc_i'),
                     className: "lv lv-exp",
                     render: renderLvNum('lev_exc', 'lev_exc_i'),
@@ -270,7 +270,7 @@
                 { 
                     //  MASTER
                     displayTitle: "MASTER",
-                    title: "&lt;:>&lt;width=50>&lt;bgcolor=#a547d5> {{{#fff '''MAS'''}}}",
+                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#a547d5> {{{#fff '''MAS'''}}}",
                     data: sortLevels('lev_mas', 'lev_mas_i'),
                     className: "lv lv-mas",
                     render: renderLvNum('lev_mas', 'lev_mas_i'),
@@ -281,7 +281,7 @@
                 { 
                     //  LUNATIC
                     displayTitle: "LUNATIC",
-                    title: "&lt;:>&lt;width=50>&lt;bgcolor=#fff> {{{#d9362c '''LUN'''}}}",
+                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#fff> {{{#d9362c '''LUN'''}}}",
                     data: sortLevels('lev_lnt', 'lev_lnt_i'),
                     className: "lv lv-lnt",
                     render: renderLvNum('lev_lnt', 'lev_lnt_i'),
