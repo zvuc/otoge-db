@@ -4,10 +4,10 @@
  *
  * To rebuild or modify this file with the latest versions of the included
  * software please visit:
- *   https://datatables.net/download/#dt/dt-1.10.18/b-1.5.6/b-colvis-1.5.6/fc-3.2.5/r-2.2.2/rg-1.1.0
+ *   https://datatables.net/download/#dt/dt-1.10.18/b-1.5.6/b-colvis-1.5.6/b-html5-1.5.6/r-2.2.2/rg-1.1.0/sc-2.0.0
  *
  * Included libraries:
- *   DataTables 1.10.18, Buttons 1.5.6, Column visibility 1.5.6, FixedColumns 3.2.5, Responsive 2.2.2, RowGroup 1.1.0
+ *   DataTables 1.10.18, Buttons 1.5.6, Column visibility 1.5.6, HTML5 export 1.5.6, Responsive 2.2.2, RowGroup 1.1.0, Scroller 2.0.0
  */
 
 /*
@@ -831,26 +831,6 @@ a.dt-button.processing:after {
 }
 
 
-table.DTFC_Cloned thead,
-table.DTFC_Cloned tfoot {
-  background-color: white;
-}
-
-div.DTFC_Blocker {
-  background-color: white;
-}
-
-div.DTFC_LeftWrapper table.dataTable,
-div.DTFC_RightWrapper table.dataTable {
-  margin-bottom: 0;
-  z-index: 2;
-}
-div.DTFC_LeftWrapper table.dataTable.no-footer,
-div.DTFC_RightWrapper table.dataTable.no-footer {
-  border-bottom: none;
-}
-
-
 table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
 table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
 table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
@@ -1049,6 +1029,40 @@ table.dataTable tr.dtrg-group.dtrg-level-2 td {
 
 table.dataTable tr.dtrg-group.dtrg-level-2 td {
   background-color: #f3f3f3;
+}
+
+
+div.dts {
+  display: block !important;
+}
+div.dts tbody th,
+div.dts tbody td {
+  white-space: nowrap;
+}
+div.dts div.dts_loading {
+  z-index: 1;
+}
+div.dts div.dts_label {
+  position: absolute;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  text-align: right;
+  border-radius: 3px;
+  padding: 0.4em;
+  z-index: 2;
+  display: none;
+}
+div.dts div.dataTables_scrollBody {
+  background: repeating-linear-gradient(45deg, #edeeff, #edeeff 10px, white 10px, white 20px);
+}
+div.dts div.dataTables_scrollBody table {
+  z-index: 2;
+}
+div.dts div.dataTables_paginate,
+div.dts div.dataTables_length {
+  display: none;
 }
 
 
