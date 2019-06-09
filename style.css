@@ -38,6 +38,13 @@ h1 {
     margin: 0;
     font-size: 1.5em;
 }
+h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+h1 a:hover {
+    text-decoration: underline;
+}
 header .lastupdated {
     position: relative;
     display: inline-block;

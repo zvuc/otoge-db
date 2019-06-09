@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <h1>オンゲキ収録曲DB</h1>
+        <h1><a href="#" class="reset-search">オンゲキ収録曲DB</a></h1>
         <div class="lastupdated"><span>DATA: 20190606</span></div>
     </header>
     <table id="table" class="display" style="width:100%">
@@ -292,6 +292,8 @@
                     width: "4em"
                 }
             ];
+
+            var default_order = [[20, 'desc'],[9, 'asc'],[0, 'asc']];
             
             function sortLevels(col_a, col_b) {
                 return function ( row, type, set, meta ) {
@@ -402,7 +404,7 @@
                     }
                 },
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[20, 'desc'],[9, 'asc'],[0, 'asc']], 
+                "order": default_order, 
                 "responsive": {
                     details: {
                         type: 'column',
@@ -535,9 +537,20 @@
             // table.on( 'search.dt', function () {
             //     console.log('search happened')
             // } );
-        });
+    
 
-        
+            $('a.reset-search').on('click', function(){
+                table
+                    .order([[20, 'desc'],[9, 'asc'],[0, 'asc']]) //FIXME: why doesn't work with just calling var?
+                    .search('')
+                    .columns().search('')
+                    .draw();
+
+                $('.toolbar.filters select').prop('selectedIndex',0);
+
+                console.log('search reset');
+            });
+        });
     </script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
