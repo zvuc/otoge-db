@@ -449,10 +449,10 @@
                                     // when applying filter, control rowgroup visibility
                                     if(column.index() === 20 || (val === "" && order[0][0] === 20)) {
                                         column.rowGroup().enable();
-                                        console.log('group enabled (filter)');
+                                        // console.log('group enabled (filter)');
                                     } else {
                                         column.rowGroup().disable();
-                                        console.log('group disabled (filter active)');
+                                        // console.log('group disabled (filter active)');
                                     }
 
                                     column
@@ -499,13 +499,13 @@
                         var search = table.columns().search();
                         var searchActive = false;
 
-                        console.log('Reorder happened!');
-                        console.log(order);
+                        // console.log('Reorder happened!');
+                        // console.log(order);
 
                         for (let k = 0; k < search.length; k = k+1) {
                             if (k in search && search[k] !== "") {
                                 searchActive = true;
-                                console.log(searchActive);
+                                // console.log(searchActive);
                                 break;
                             }
                         }                       
@@ -513,18 +513,18 @@
                         // Disable rowgroup unless sorting by date
                         if ( order[0][0] !== 20 ) {
                             table.rowGroup().disable();
-                            console.log('group disabled (sorting by non-date column)');
+                            // console.log('group disabled (sorting by non-date column)');
                             return;
                         } 
                         // enable rowgroup if sorting by date AND search is inactive
                         else if ( (order[0][0] === 20) && !searchActive ) {
                             table.rowGroup().enable();
-                            console.log('group enabled (sorting by date + search inactive)');
+                            // console.log('group enabled (sorting by date + search inactive)');
                             return;
                         }
                         // do nothing
                         else {
-                            console.log('do nothing');
+                            // console.log('do nothing');
                             return;
                         }
                         table.draw();
