@@ -27,8 +27,8 @@
                 <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
                 <!-- 5 --><th class="never"><span>アーティスト</span></th>
-                <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
-                <!-- 7 --><th class="never"><span>カテゴリID</span></th>
+                <!-- 6 --><th class="all toggle"><span>ジャンル</span></th>
+                <!-- 7 --><th class="never"><span>ジャンルID</span></th>
                 <!-- 8 --><th class="never"><span>チャプターID</span></th>
                 <!-- 9 --><th class="all toggle"><span>チャプター</span></th>
                 <!-- 10 --><th class="all toggle nowrap"><span>属性</span></th>
@@ -112,13 +112,13 @@
                     visible: false
                 },
                 { 
-                    displayTitle: "カテゴリ",
+                    displayTitle: "ジャンル",
                     data: "category",
                     className: "category",
                     filterable: true
                 },
                 { 
-                    displayTitle: "カテゴリID",
+                    displayTitle: "ジャンルID",
                     data: "category_id",
                     width: "90px",
                     visible: false
@@ -359,7 +359,7 @@
                     {
                         extend: 'colvisGroup',
                         className: 'asdf',
-                        text: 'カテゴリ・チャプターを隠す',
+                        text: 'ジャンル・チャプターを隠す',
                         hide: [ 6, 9 ]
                     },
                     {
