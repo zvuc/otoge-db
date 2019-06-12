@@ -154,6 +154,7 @@ div.dt-button-collection a.dt-button {
     background-image: none;
     box-shadow: none;
     color: #fff;
+    font-size: 1rem;
 }
 
 div.dt-button-collection button.dt-button:hover:not(.disabled),
