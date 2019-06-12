@@ -21,6 +21,11 @@ body {
     margin: 0;
 }
 
+button, input {
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-feature-settings: "palt";
+}
+
 a {
     color: #ff1b71;
 }
@@ -29,7 +34,6 @@ header {
     display: flex;
     align-items: center;
     padding: 10px 15px;
-    margin-bottom: 10px;
     border-bottom: 3px solid #ff1b71;
     background-color: #efefef;
     overflow: hidden;
@@ -73,11 +77,131 @@ header .lastupdated span {
 .column-toggle-bar {
     display: block;
     margin-bottom: 10px;
-    padding: 0 10px;
+    padding: 2px 10px;
+    background-color: #444;
+    background-image: linear-gradient(to bottom, #5c0c2a 0%, #000 60%);
+    overflow: hidden;
 }
 
 .column-toggle-bar .dt-buttons {
     float: none;
+}
+.column-toggle-bar .dt-buttons > button.dt-button {
+    position: relative;
+    margin: 1px 0;
+    font-size: 1rem;
+    height: 40px;
+    color: #fff;
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding: 5px 20px;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:hover,
+.column-toggle-bar .dt-buttons > button.dt-button:active,
+.column-toggle-bar .dt-buttons > button.dt-button:active:hover,
+.column-toggle-bar .dt-buttons > button.dt-button:focus
+.column-toggle-bar .dt-buttons > button.dt-button.active {
+    border: none;
+    box-shadow: none;
+    background: none; 
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #444;
+    transform: skewX(-40deg);
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:hover:before {
+    background-color: #444;
+    background-image: linear-gradient(to top, #22877e 0%, #444 20%);
+    box-shadow: 0 -2px 0 0 #3be5d6 inset, 0 2px 0 0 #3be5d6 inset;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:active:before {
+    background-color: #333;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button span {
+    position: relative;
+}
+
+div.dt-button-collection button.dt-button,
+div.dt-button-collection div.dt-button,
+div.dt-button-collection a.dt-button {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: block;
+    float: none;
+    margin-bottom: 4px;
+    margin-right: 0;
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%2111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: #fff;
+}
+
+div.dt-button-collection button.dt-button:hover:not(.disabled),
+div.dt-button-collection div.dt-button:hover:not(.disabled),
+div.dt-button-collection a.dt-button:hover:not(.disabled){
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+
+div.dt-button-collection button.dt-button:active:not(.disabled),
+div.dt-button-collection button.dt-button.active:not(.disabled),
+div.dt-button-collection div.dt-button:active:not(.disabled),
+div.dt-button-collection div.dt-button.active:not(.disabled),
+div.dt-button-collection a.dt-button:active:not(.disabled),
+div.dt-button-collection a.dt-button.active:not(.disabled) {
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%23111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+div.dt-button-collection button.dt-button:active:hover:not(.disabled),
+div.dt-button-collection button.dt-button.active:hover:not(.disabled),
+div.dt-button-collection div.dt-button:active:hover:not(.disabled),
+div.dt-button-collection div.dt-button.active:hover:not(.disabled),
+div.dt-button-collection a.dt-button:active:hover:not(.disabled),
+div.dt-button-collection a.dt-button.active:hover:not(.disabled) {
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+div.dt-button-collection.fixed {
+  border-radius: 0;
+  padding: 10px 15px;
 }
 
 .toolbar {
@@ -140,7 +264,7 @@ header .lastupdated span {
 
 /* main table */
 #table_wrapper {
-    padding: 10px 0;
+    padding: 0 0 10px 0;
 }
 
 .table-inner {
