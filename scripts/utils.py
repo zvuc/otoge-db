@@ -1,6 +1,7 @@
 import requests
 import urllib.request
 import json
+import re
 from datetime import datetime
 
 def load_new_song_data(local_music_json_path, server_music_json_path):
@@ -55,3 +56,15 @@ def add_song_new_data_name(song):
     song['lev_mas_i'] = ""
     song['lev_lnt_i'] = ""
     return song
+
+def renew_lastupdated(local_index_html_path):
+    with open(local_index_html_path, 'r', encoding='utf-8') as f:
+        html = f.read()
+        f.close()
+
+    value = f'<span>DATE: {datetime.now().strftime("%Y%m%d")}</span>'
+    html = re.sub(r'(<[^>]+ class="lastupdated"[^>]*>).*(</[^>]+>)', rf'\1{value}\2', html, flags=re.IGNORECASE)
+
+    with open(local_index_html_path, 'w', encoding='utf-8') as f:
+        f.write(html)
+        f.close()
