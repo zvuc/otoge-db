@@ -3,6 +3,7 @@ import urllib.request
 import json
 import re
 from datetime import datetime
+from functools import reduce
 
 def load_new_song_data(local_music_json_path, server_music_json_path):
     with open(local_music_json_path, 'r', encoding='utf-8') as f:
@@ -58,12 +59,21 @@ def _add_song_new_data_name(song):
     song['lev_lnt_i'] = ""
     return song
 
-def renew_lastupdated(local_html_path):
+def renew_lastupdated(local_music_json_path, local_html_path):
+    with open(local_music_json_path, 'r', encoding='utf-8') as f:
+        local_music_data = json.load(f)
+
+    all_dates = [datetime.strptime(x['date'], '%Y%m%d').date() for x in local_music_data]
+    lastupdated = f"DATA: {reduce(lambda x, y: x if x > y else y, all_dates).strftime('%Y%m%d')}"
+    print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {lastupdated} {local_html_path}")
+
     with open(local_html_path, 'r', encoding='utf-8') as f:
         local_html_data = f.read()
 
-    value = f'<span>DATE: {datetime.now().strftime("%Y%m%d")}</span>'
-    local_html_data = re.sub(r'(<[^>]+ class="lastupdated"[^>]*>).*(</[^>]+>)', rf'\1{value}\2', local_html_data, flags=re.IGNORECASE)
+    local_html_data = re.sub(r'(<[^>]+ class="lastupdated"[^>]*>).*(</[^>]+>)',
+                             rf'\1<span>{lastupdated}</span>\2',
+                             local_html_data,
+                             flags=re.IGNORECASE)
 
     with open(local_html_path, 'w', encoding='utf-8') as f:
         f.write(local_html_data)
