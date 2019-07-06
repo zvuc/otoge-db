@@ -9,7 +9,8 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
 - Precise LV data (譜面定数): [OngekiScoreLog](https://ongeki-score.net/music), Twitter for latest data (Mostly [@masa_9713](https://twitter.com/masa_9713))
 
 ## How to fetch and apply new data
-- Install Requirements
+- You'll need Python3 to run scripts on command line.
+- Install requirements
     ```
     pip3 install requests
     ```
@@ -17,14 +18,20 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
     ```
     python3 scripts/main.py
     ```
-Thanks to [@Ryudnar](https://github.com/Ryudnar) for automation script
 
 ## Notes
-- `/data/music.json` : Original JSON file provided by SEGA
-- `/data/music-ex.csv`: Combined data sheet exported to CSV (includes extra info)
-- `/data/music-ex.json`: Above CSV back-converted to JSON (actually used file in the webpage)
+- This webpage is hosted and run entirely on Github Pages without any additional backend servers attached.
+- `/data/music.json` : Copy of original JSON file provided by SEGA
+- `/data/music-ex.json`: Augmented JSON file containing additional data (Enemy type / lv / precise lv) (actually used file in the webpage)
 
-## Contribution & Feedback
+## Contributors
+- [@Ryudnar](https://github.com/Ryudnar) : song data download automation script
+- [@kiding](https://github.com/kiding/) : auto update datestamp
+
+## Feedback
 Contact [@zvuc_](https://twitter.com/zvuc_) for inquiries.
-提案や合同作業など興味ある方はツイッターで連絡ください。
+
+## Copyright
+MIT License for all code in this repository.
+All image assets and other copyrighted materials are owned by SEGA or their respective owners.
 
