@@ -6716,7 +6716,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.5",
     "lev_lnt_i": ""
   },
   {
@@ -6751,7 +6751,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "14.8",
     "lev_lnt_i": ""
   },
   {
@@ -6786,7 +6786,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "14.2",
     "lev_lnt_i": ""
   },
   {
@@ -6820,8 +6820,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "12.2",
+    "lev_mas_i": "13.9",
     "lev_lnt_i": ""
   }
 ]
