@@ -6750,7 +6750,7 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.3",
     "lev_mas_i": "14.8",
     "lev_lnt_i": ""
   },
@@ -6785,7 +6785,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.9",
     "lev_mas_i": "14.2",
     "lev_lnt_i": ""
   },
