@@ -25,14 +25,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0001.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0001.jpg"
   },
   {
     "category": "チュウマイ",
@@ -60,14 +53,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0002.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.2",
-    "lev_lnt_i": ""
+    "image_url": "0002.jpg"
   },
   {
     "category": "VARIETY",
@@ -95,14 +81,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0003.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.3",
-    "lev_lnt_i": ""
+    "image_url": "0003.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -130,14 +109,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0004.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7",
-    "lev_lnt_i": ""
+    "image_url": "0004.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -165,14 +137,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0005.jpg",
-    "enemy_lv": "3",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0005.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -200,14 +165,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0006.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0006.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -235,14 +193,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0007.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0007.jpg"
   },
   {
     "category": "チュウマイ",
@@ -270,14 +221,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0008.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.2",
-    "lev_mas_i": "13.8",
-    "lev_lnt_i": ""
+    "image_url": "0008.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -305,14 +249,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0009.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.6",
-    "lev_lnt_i": ""
+    "image_url": "0009.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -340,14 +277,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0010.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "10.7?",
-    "lev_lnt_i": ""
+    "image_url": "0010.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -375,14 +305,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0011.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.2",
-    "lev_lnt_i": ""
+    "image_url": "0011.jpg"
   },
   {
     "category": "チュウマイ",
@@ -410,14 +333,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0012.jpg",
-    "enemy_lv": "3",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.2",
-    "lev_lnt_i": ""
+    "image_url": "0012.jpg"
   },
   {
     "category": "チュウマイ",
@@ -445,14 +361,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0013.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.8",
-    "lev_lnt_i": ""
+    "image_url": "0013.jpg"
   },
   {
     "category": "オンゲキ",
@@ -480,14 +389,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0014.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.4",
-    "lev_lnt_i": ""
+    "image_url": "0014.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -515,14 +417,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0015.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.9",
-    "lev_lnt_i": ""
+    "image_url": "0015.jpg"
   },
   {
     "category": "チュウマイ",
@@ -550,14 +445,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0016.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0016.jpg"
   },
   {
     "category": "チュウマイ",
@@ -585,14 +473,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0017.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.5",
-    "lev_lnt_i": ""
+    "image_url": "0017.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -620,14 +501,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0018.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0018.jpg"
   },
   {
     "category": "VARIETY",
@@ -655,14 +529,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0019.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0019.jpg"
   },
   {
     "category": "VARIETY",
@@ -690,14 +557,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0020.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.6",
-    "lev_lnt_i": ""
+    "image_url": "0020.jpg"
   },
   {
     "category": "チュウマイ",
@@ -725,14 +585,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0021.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "12.8",
-    "lev_lnt_i": ""
+    "image_url": "0021.jpg"
   },
   {
     "category": "niconico",
@@ -760,14 +613,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0022.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0022.jpg"
   },
   {
     "category": "niconico",
@@ -795,14 +641,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0023.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0023.jpg"
   },
   {
     "category": "niconico",
@@ -830,14 +669,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0024.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.8",
-    "lev_lnt_i": ""
+    "image_url": "0024.jpg"
   },
   {
     "category": "チュウマイ",
@@ -865,14 +697,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0025.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0025.jpg"
   },
   {
     "category": "niconico",
@@ -900,14 +725,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0026.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0026.jpg"
   },
   {
     "category": "niconico",
@@ -935,14 +753,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0027.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.5",
-    "lev_mas_i": "12.7?",
-    "lev_lnt_i": ""
+    "image_url": "0027.jpg"
   },
   {
     "category": "VARIETY",
@@ -970,14 +781,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0028.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0",
-    "lev_lnt_i": ""
+    "image_url": "0028.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -1005,14 +809,7 @@
     "character": "戸山香澄",
     "chara_img": "img",
     "chara_id": "5010",
-    "image_url": "0029.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "10.7?",
-    "lev_lnt_i": ""
+    "image_url": "0029.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -1040,14 +837,7 @@
     "character": "美竹蘭",
     "chara_img": "img",
     "chara_id": "5020",
-    "image_url": "0030.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.0",
-    "lev_lnt_i": ""
+    "image_url": "0030.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -1075,14 +865,7 @@
     "character": "丸山彩",
     "chara_img": "img",
     "chara_id": "5030",
-    "image_url": "0031.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "10.7",
-    "lev_lnt_i": ""
+    "image_url": "0031.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -1110,14 +893,7 @@
     "character": "湊友希那",
     "chara_img": "img",
     "chara_id": "5040",
-    "image_url": "0032.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7",
-    "lev_lnt_i": ""
+    "image_url": "0032.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -1145,14 +921,7 @@
     "character": "弦巻こころ",
     "chara_img": "img",
     "chara_id": "5050",
-    "image_url": "0033.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "10.7?",
-    "lev_lnt_i": ""
+    "image_url": "0033.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1180,14 +949,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0034.jpg",
-    "enemy_lv": "2",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.0",
-    "lev_lnt_i": ""
+    "image_url": "0034.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1215,14 +977,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0035.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.4",
-    "lev_lnt_i": ""
+    "image_url": "0035.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1250,14 +1005,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0036.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0",
-    "lev_lnt_i": ""
+    "image_url": "0036.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1285,14 +1033,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0037.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.6",
-    "lev_lnt_i": ""
+    "image_url": "0037.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1320,14 +1061,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0038.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0038.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1355,14 +1089,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0039.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7?",
-    "lev_mas_i": "12.9",
-    "lev_lnt_i": ""
+    "image_url": "0039.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1390,14 +1117,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0040.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0040.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1425,14 +1145,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0041.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.8",
-    "lev_lnt_i": ""
+    "image_url": "0041.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1460,14 +1173,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0042.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "12.8",
-    "lev_lnt_i": ""
+    "image_url": "0042.jpg"
   },
   {
     "category": "オンゲキ",
@@ -1495,14 +1201,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0043.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.1",
-    "lev_lnt_i": ""
+    "image_url": "0043.jpg"
   },
   {
     "category": "niconico",
@@ -1530,14 +1229,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0044.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0044.jpg"
   },
   {
     "category": "VARIETY",
@@ -1565,14 +1257,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0045.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.4",
-    "lev_lnt_i": ""
+    "image_url": "0045.jpg"
   },
   {
     "category": "niconico",
@@ -1600,14 +1285,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0046.jpg",
-    "enemy_lv": "3",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.1",
-    "lev_lnt_i": ""
+    "image_url": "0046.jpg"
   },
   {
     "category": "niconico",
@@ -1635,14 +1313,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0047.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0047.jpg"
   },
   {
     "category": "チュウマイ",
@@ -1670,14 +1341,7 @@
     "character": "早乙女 彩華",
     "chara_img": "img",
     "chara_id": "1080",
-    "image_url": "0048.png",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.4",
-    "lev_lnt_i": ""
+    "image_url": "0048.png"
   },
   {
     "category": "niconico",
@@ -1705,14 +1369,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0049.png",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0?",
-    "lev_mas_i": "13.9",
-    "lev_lnt_i": ""
+    "image_url": "0049.png"
   },
   {
     "category": "niconico",
@@ -1740,14 +1397,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0050.png",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.1",
-    "lev_lnt_i": ""
+    "image_url": "0050.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -1775,14 +1425,7 @@
     "character": "桜井 春菜",
     "chara_img": "img",
     "chara_id": "1070",
-    "image_url": "0051.png",
-    "enemy_lv": "20",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.0",
-    "lev_lnt_i": ""
+    "image_url": "0051.png"
   },
   {
     "category": "オンゲキ",
@@ -1810,14 +1453,7 @@
     "character": "桜井 春菜",
     "chara_img": "img",
     "chara_id": "1070",
-    "image_url": "0052.png",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0052.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -1845,14 +1481,7 @@
     "character": "早乙女 彩華",
     "chara_img": "img",
     "chara_id": "1080",
-    "image_url": "0053.png",
-    "enemy_lv": "15",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "10.9",
-    "lev_lnt_i": ""
+    "image_url": "0053.png"
   },
   {
     "category": "チュウマイ",
@@ -1880,14 +1509,7 @@
     "character": "早乙女 彩華",
     "chara_img": "img",
     "chara_id": "1080",
-    "image_url": "0054.png",
-    "enemy_lv": "20",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7?",
-    "lev_mas_i": "13.0",
-    "lev_lnt_i": ""
+    "image_url": "0054.png"
   },
   {
     "category": "オンゲキ",
@@ -1915,14 +1537,7 @@
     "character": "早乙女 彩華",
     "chara_img": "img",
     "chara_id": "1080",
-    "image_url": "0055.png",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.8",
-    "lev_lnt_i": ""
+    "image_url": "0055.png"
   },
   {
     "category": "チュウマイ",
@@ -1950,14 +1565,7 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0056.png",
-    "enemy_lv": "30",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.9",
-    "lev_lnt_i": ""
+    "image_url": "0056.png"
   },
   {
     "category": "VARIETY",
@@ -1985,14 +1593,7 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0057.png",
-    "enemy_lv": "30",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.0",
-    "lev_mas_i": "14.3",
-    "lev_lnt_i": ""
+    "image_url": "0057.png"
   },
   {
     "category": "オンゲキ",
@@ -2020,14 +1621,7 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0058.png",
-    "enemy_lv": "40",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.6",
-    "lev_lnt_i": ""
+    "image_url": "0058.png"
   },
   {
     "category": "オンゲキ",
@@ -2055,14 +1649,7 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0059.png",
-    "enemy_lv": "40",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.5",
-    "lev_lnt_i": ""
+    "image_url": "0059.png"
   },
   {
     "category": "オンゲキ",
@@ -2090,14 +1677,7 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0060.png",
-    "enemy_lv": "50",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.1",
-    "lev_mas_i": "14.1",
-    "lev_lnt_i": ""
+    "image_url": "0060.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -2125,14 +1705,7 @@
     "character": "桜井 春菜",
     "chara_img": "img",
     "chara_id": "1070",
-    "image_url": "0061.png",
-    "enemy_lv": "15",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0?",
-    "lev_lnt_i": ""
+    "image_url": "0061.png"
   },
   {
     "category": "チュウマイ",
@@ -2160,14 +1733,7 @@
     "character": "桜井 春菜",
     "chara_img": "img",
     "chara_id": "1070",
-    "image_url": "0062.png",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.4",
-    "lev_lnt_i": ""
+    "image_url": "0062.png"
   },
   {
     "category": "VARIETY",
@@ -2195,14 +1761,7 @@
     "character": "あかニャン",
     "chara_img": "img",
     "chara_id": "9020",
-    "image_url": "0063.png",
-    "enemy_lv": "50",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "14.0"
+    "image_url": "0063.png"
   },
   {
     "category": "niconico",
@@ -2230,14 +1789,7 @@
     "character": "あおニャン",
     "chara_img": "img",
     "chara_id": "9040",
-    "image_url": "0064.png",
-    "enemy_lv": "50",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "14.0?"
+    "image_url": "0064.png"
   },
   {
     "category": "niconico",
@@ -2265,14 +1817,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0065.png",
-    "enemy_lv": "6",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0065.png"
   },
   {
     "category": "東方Project",
@@ -2300,14 +1845,7 @@
     "character": "博麗 霊夢",
     "chara_img": "img",
     "chara_id": "2010",
-    "image_url": "0066.png",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0066.png"
   },
   {
     "category": "東方Project",
@@ -2335,14 +1873,7 @@
     "character": "霧雨 魔理沙",
     "chara_img": "img",
     "chara_id": "2020",
-    "image_url": "0067.png",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.3",
-    "lev_mas_i": "12.7?",
-    "lev_lnt_i": ""
+    "image_url": "0067.png"
   },
   {
     "category": "東方Project",
@@ -2370,14 +1901,7 @@
     "character": "博麗 霊夢",
     "chara_img": "img",
     "chara_id": "2010",
-    "image_url": "0068.png",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0",
-    "lev_lnt_i": ""
+    "image_url": "0068.png"
   },
   {
     "category": "東方Project",
@@ -2405,14 +1929,7 @@
     "character": "霧雨 魔理沙",
     "chara_img": "img",
     "chara_id": "2020",
-    "image_url": "0069.png",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0069.png"
   },
   {
     "category": "niconico",
@@ -2440,14 +1957,7 @@
     "character": "井之原 小星",
     "chara_img": "img",
     "chara_id": "1090",
-    "image_url": "0070.png",
-    "enemy_lv": "35",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.3",
-    "lev_mas_i": "13.7",
-    "lev_lnt_i": ""
+    "image_url": "0070.png"
   },
   {
     "category": "オンゲキ",
@@ -2475,14 +1985,7 @@
     "character": "井之原 小星",
     "chara_img": "img",
     "chara_id": "1090",
-    "image_url": "0071.png",
-    "enemy_lv": "35",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0071.png"
   },
   {
     "category": "オンゲキ",
@@ -2510,14 +2013,7 @@
     "character": "柏木 咲姫",
     "chara_img": "img",
     "chara_id": "1100",
-    "image_url": "0072.png",
-    "enemy_lv": "35",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0072.png"
   },
   {
     "category": "チュウマイ",
@@ -2545,14 +2041,7 @@
     "character": "井之原 小星",
     "chara_img": "img",
     "chara_id": "1090",
-    "image_url": "0073.png",
-    "enemy_lv": "45",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.9",
-    "lev_lnt_i": ""
+    "image_url": "0073.png"
   },
   {
     "category": "VARIETY",
@@ -2580,14 +2069,7 @@
     "character": "柏木 咲姫",
     "chara_img": "img",
     "chara_id": "1100",
-    "image_url": "0074.png",
-    "enemy_lv": "35",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0074.png"
   },
   {
     "category": "チュウマイ",
@@ -2615,14 +2097,7 @@
     "character": "柏木 咲姫",
     "chara_img": "img",
     "chara_id": "1100",
-    "image_url": "0075.png",
-    "enemy_lv": "45",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "14.0",
-    "lev_lnt_i": ""
+    "image_url": "0075.png"
   },
   {
     "category": "東方Project",
@@ -2650,14 +2125,7 @@
     "character": "フランドール・スカーレット",
     "chara_img": "img",
     "chara_id": "2070",
-    "image_url": "0076.png",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0076.png"
   },
   {
     "category": "東方Project",
@@ -2685,14 +2153,7 @@
     "character": "紅 美鈴",
     "chara_img": "img",
     "chara_id": "2030",
-    "image_url": "0077.png",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0077.png"
   },
   {
     "category": "東方Project",
@@ -2720,14 +2181,7 @@
     "character": "パチュリー・ノーレッジ",
     "chara_img": "img",
     "chara_id": "2040",
-    "image_url": "0078.png",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0",
-    "lev_lnt_i": ""
+    "image_url": "0078.png"
   },
   {
     "category": "東方Project",
@@ -2755,14 +2209,7 @@
     "character": "十六夜 咲夜",
     "chara_img": "img",
     "chara_id": "2050",
-    "image_url": "0079.png",
-    "enemy_lv": "5",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0079.png"
   },
   {
     "category": "東方Project",
@@ -2790,14 +2237,7 @@
     "character": "レミリア・スカーレット",
     "chara_img": "img",
     "chara_id": "2060",
-    "image_url": "0080.png",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0080.png"
   },
   {
     "category": "niconico",
@@ -2825,14 +2265,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0081.png",
-    "enemy_lv": "8",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.2",
-    "lev_lnt_i": ""
+    "image_url": "0081.png"
   },
   {
     "category": "東方Project",
@@ -2860,14 +2293,7 @@
     "character": "レミリア・スカーレット",
     "chara_img": "img",
     "chara_id": "2060",
-    "image_url": "0082.png",
-    "enemy_lv": "20",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0082.png"
   },
   {
     "category": "東方Project",
@@ -2895,14 +2321,7 @@
     "character": "フランドール・スカーレット",
     "chara_img": "img",
     "chara_id": "2070",
-    "image_url": "0083.png",
-    "enemy_lv": "25",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.3",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0083.png"
   },
   {
     "category": "niconico",
@@ -2930,14 +2349,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0084.png",
-    "enemy_lv": "5",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0084.png"
   },
   {
     "category": "niconico",
@@ -2965,14 +2377,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0085.png",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.0?",
-    "lev_lnt_i": ""
+    "image_url": "0085.png"
   },
   {
     "category": "オンゲキ",
@@ -3000,14 +2405,7 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0086.png",
-    "enemy_lv": "50",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.3",
-    "lev_mas_i": "14.2",
-    "lev_lnt_i": ""
+    "image_url": "0086.png"
   },
   {
     "category": "オンゲキ",
@@ -3035,14 +2433,7 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0087.png",
-    "enemy_lv": "60",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.3",
-    "lev_mas_i": "14.7?",
-    "lev_lnt_i": ""
+    "image_url": "0087.png"
   },
   {
     "category": "チュウマイ",
@@ -3070,14 +2461,7 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0088.png",
-    "enemy_lv": "35",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.5",
-    "lev_lnt_i": ""
+    "image_url": "0088.png"
   },
   {
     "category": "チュウマイ",
@@ -3105,14 +2489,7 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0089.png",
-    "enemy_lv": "40",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "13.4",
-    "lev_lnt_i": ""
+    "image_url": "0089.png"
   },
   {
     "category": "チュウマイ",
@@ -3140,14 +2517,7 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0090.png",
-    "enemy_lv": "45",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0?",
-    "lev_mas_i": "14.2",
-    "lev_lnt_i": ""
+    "image_url": "0090.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3175,14 +2545,7 @@
     "character": "アクア",
     "chara_img": "img",
     "chara_id": "5070",
-    "image_url": "0091.png",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0091.png"
   },
   {
     "category": "niconico",
@@ -3210,14 +2573,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0092.png",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0?",
-    "lev_mas_i": "13.8",
-    "lev_lnt_i": ""
+    "image_url": "0092.png"
   },
   {
     "category": "niconico",
@@ -3245,14 +2601,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0093.png",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.2",
-    "lev_lnt_i": ""
+    "image_url": "0093.png"
   },
   {
     "category": "niconico",
@@ -3280,14 +2629,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0094.png",
-    "enemy_lv": "15",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0094.png"
   },
   {
     "category": "niconico",
@@ -3315,14 +2657,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0095.png",
-    "enemy_lv": "8",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.9",
-    "lev_lnt_i": ""
+    "image_url": "0095.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3350,14 +2685,7 @@
     "character": "めぐみん",
     "chara_img": "img",
     "chara_id": "5060",
-    "image_url": "0096.png",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0096.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3385,14 +2713,7 @@
     "character": "アクア",
     "chara_img": "img",
     "chara_id": "5070",
-    "image_url": "0097.png",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.4",
-    "lev_lnt_i": ""
+    "image_url": "0097.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3420,14 +2741,7 @@
     "character": "ダクネス",
     "chara_img": "img",
     "chara_id": "5080",
-    "image_url": "0098.png",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "10.9",
-    "lev_lnt_i": ""
+    "image_url": "0098.png"
   },
   {
     "category": "VARIETY",
@@ -3455,14 +2769,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0099.png",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.5",
-    "lev_mas_i": "14.0?",
-    "lev_lnt_i": ""
+    "image_url": "0099.png"
   },
   {
     "category": "チュウマイ",
@@ -3490,14 +2797,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0100.png",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7?",
-    "lev_lnt_i": ""
+    "image_url": "0100.png"
   },
   {
     "category": "東方Project",
@@ -3525,14 +2825,7 @@
     "character": "博麗 霊夢",
     "chara_img": "img",
     "chara_id": "2010",
-    "image_url": "0101.png",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0101.png"
   },
   {
     "category": "東方Project",
@@ -3560,14 +2853,7 @@
     "character": "みどニャン",
     "chara_img": "img",
     "chara_id": "9030",
-    "image_url": "0102.png",
-    "enemy_lv": "50",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "13.8"
+    "image_url": "0102.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3595,14 +2881,7 @@
     "character": "戸山香澄",
     "chara_img": "img",
     "chara_id": "5010",
-    "image_url": "0103.png",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0?",
-    "lev_lnt_i": ""
+    "image_url": "0103.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3630,14 +2909,7 @@
     "character": "美竹蘭",
     "chara_img": "img",
     "chara_id": "5020",
-    "image_url": "0104.png",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0104.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3665,14 +2937,7 @@
     "character": "丸山彩",
     "chara_img": "img",
     "chara_id": "5030",
-    "image_url": "0105.png",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0105.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3700,14 +2965,7 @@
     "character": "湊友希那",
     "chara_img": "img",
     "chara_id": "5040",
-    "image_url": "0106.png",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0106.png"
   },
   {
     "category": "POPS＆ANIME",
@@ -3735,14 +2993,7 @@
     "character": "弦巻こころ",
     "chara_img": "img",
     "chara_id": "5050",
-    "image_url": "0107.png",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0107.png"
   },
   {
     "category": "オンゲキ",
@@ -3770,14 +3021,7 @@
     "character": "珠洲島 有栖",
     "chara_img": "img",
     "chara_id": "1130",
-    "image_url": "0108.jpg",
-    "enemy_lv": "60",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "13.3",
-    "lev_mas_i": "14.9",
-    "lev_lnt_i": ""
+    "image_url": "0108.jpg"
   },
   {
     "category": "オンゲキ",
@@ -3805,14 +3049,7 @@
     "character": "珠洲島 有栖",
     "chara_img": "img",
     "chara_id": "1130",
-    "image_url": "0109.jpg",
-    "enemy_lv": "70",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "13.3",
-    "lev_mas_i": "14.9",
-    "lev_lnt_i": ""
+    "image_url": "0109.jpg"
   },
   {
     "category": "チュウマイ",
@@ -3840,14 +3077,7 @@
     "character": "珠洲島 有栖",
     "chara_img": "img",
     "chara_id": "1130",
-    "image_url": "0110.jpg",
-    "enemy_lv": "50",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.7",
-    "lev_mas_i": "14.5",
-    "lev_lnt_i": ""
+    "image_url": "0110.jpg"
   },
   {
     "category": "チュウマイ",
@@ -3875,14 +3105,7 @@
     "character": "珠洲島 有栖",
     "chara_img": "img",
     "chara_id": "1130",
-    "image_url": "0111.jpg",
-    "enemy_lv": "55",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.9",
-    "lev_mas_i": "14.5",
-    "lev_lnt_i": ""
+    "image_url": "0111.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -3910,14 +3133,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0112.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.0",
-    "lev_lnt_i": ""
+    "image_url": "0112.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -3945,14 +3161,7 @@
     "character": "日向 美海",
     "chara_img": "img",
     "chara_id": "5090",
-    "image_url": "0113.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0113.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -3980,14 +3189,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0114.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0114.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4015,14 +3217,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0115.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0115.jpg"
   },
   {
     "category": "チュウマイ",
@@ -4050,14 +3245,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0116.jpg",
-    "enemy_lv": "35",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0",
-    "lev_lnt_i": ""
+    "image_url": "0116.jpg"
   },
   {
     "category": "チュウマイ",
@@ -4085,14 +3273,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0117.jpg",
-    "enemy_lv": "35",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.0",
-    "lev_lnt_i": ""
+    "image_url": "0117.jpg"
   },
   {
     "category": "チュウマイ",
@@ -4120,14 +3301,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0118.jpg",
-    "enemy_lv": "35",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0118.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4155,14 +3329,7 @@
     "character": "彩城 天音",
     "chara_img": "img",
     "chara_id": "5100",
-    "image_url": "0119.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0119.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4190,14 +3357,7 @@
     "character": "東条 遥",
     "chara_img": "img",
     "chara_id": "5110",
-    "image_url": "0120.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.9",
-    "lev_lnt_i": ""
+    "image_url": "0120.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4225,14 +3385,7 @@
     "character": "日向 美海",
     "chara_img": "img",
     "chara_id": "5090",
-    "image_url": "0121.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0121.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4260,14 +3413,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0122.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0122.jpg"
   },
   {
     "category": "オンゲキ",
@@ -4295,14 +3441,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0123.jpg",
-    "enemy_lv": "2",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7?",
-    "lev_lnt_i": ""
+    "image_url": "0123.jpg"
   },
   {
     "category": "オンゲキ",
@@ -4330,14 +3469,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0124.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.2",
-    "lev_mas_i": "13.2",
-    "lev_lnt_i": ""
+    "image_url": "0124.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4365,14 +3497,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0125.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0125.jpg"
   },
   {
     "category": "オンゲキ",
@@ -4400,14 +3525,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0126.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.9",
-    "lev_lnt_i": ""
+    "image_url": "0126.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4435,14 +3553,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0127.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0127.jpg"
   },
   {
     "category": "オンゲキ",
@@ -4470,14 +3581,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0128.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0128.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4505,14 +3609,7 @@
     "character": "御坂 美琴",
     "chara_img": "img",
     "chara_id": "5120",
-    "image_url": "0129.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.1",
-    "lev_lnt_i": ""
+    "image_url": "0129.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4540,14 +3637,7 @@
     "character": "御坂 美琴",
     "chara_img": "img",
     "chara_id": "5120",
-    "image_url": "0130.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0130.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4575,14 +3665,7 @@
     "character": "白井 黒子",
     "chara_img": "img",
     "chara_id": "5130",
-    "image_url": "0131.jpg",
-    "enemy_lv": "4",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0131.jpg"
   },
   {
     "category": "niconico",
@@ -4610,14 +3693,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0132.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0132.jpg"
   },
   {
     "category": "niconico",
@@ -4645,14 +3721,7 @@
     "character": "鏡音リン",
     "chara_img": "img",
     "chara_id": "3030",
-    "image_url": "0133.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.8",
-    "lev_lnt_i": ""
+    "image_url": "0133.jpg"
   },
   {
     "category": "niconico",
@@ -4680,14 +3749,7 @@
     "character": "巡音ルカ",
     "chara_img": "img",
     "chara_id": "3020",
-    "image_url": "0134.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7?",
-    "lev_mas_i": "13.7?",
-    "lev_lnt_i": ""
+    "image_url": "0134.jpg"
   },
   {
     "category": "東方Project",
@@ -4715,14 +3777,7 @@
     "character": "霧雨 魔理沙",
     "chara_img": "img",
     "chara_id": "2020",
-    "image_url": "0135.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.9",
-    "lev_mas_i": "13.8",
-    "lev_lnt_i": ""
+    "image_url": "0135.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4750,14 +3805,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0136.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "13.0"
+    "image_url": "0136.jpg"
   },
   {
     "category": "オンゲキ",
@@ -4785,14 +3833,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0137.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.9",
-    "lev_lnt_i": ""
+    "image_url": "0137.jpg"
   },
   {
     "category": "niconico",
@@ -4820,14 +3861,7 @@
     "character": "結城 莉玖",
     "chara_img": "img",
     "chara_id": "1050",
-    "image_url": "0138.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.3",
-    "lev_mas_i": "13.1",
-    "lev_lnt_i": ""
+    "image_url": "0138.jpg"
   },
   {
     "category": "niconico",
@@ -4855,14 +3889,7 @@
     "character": "藍原 椿",
     "chara_img": "img",
     "chara_id": "1060",
-    "image_url": "0139.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0139.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4890,14 +3917,7 @@
     "character": "初春 飾利",
     "chara_img": "img",
     "chara_id": "5140",
-    "image_url": "0140.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0?",
-    "lev_lnt_i": ""
+    "image_url": "0140.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -4925,14 +3945,7 @@
     "character": "佐天 涙子",
     "chara_img": "img",
     "chara_id": "5150",
-    "image_url": "0141.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.6",
-    "lev_lnt_i": ""
+    "image_url": "0141.jpg"
   },
   {
     "category": "オンゲキ",
@@ -4960,14 +3973,7 @@
     "character": "高瀬 梨緒",
     "chara_img": "img",
     "chara_id": "1040",
-    "image_url": "0142.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "13.2",
-    "lev_mas_i": "14.5",
-    "lev_lnt_i": ""
+    "image_url": "0142.jpg"
   },
   {
     "category": "niconico",
@@ -4995,14 +4001,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0143.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "13.7",
-    "lev_lnt_i": ""
+    "image_url": "0143.jpg"
   },
   {
     "category": "niconico",
@@ -5030,14 +4029,7 @@
     "character": "鏡音リン",
     "chara_img": "img",
     "chara_id": "3030",
-    "image_url": "0144.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0144.jpg"
   },
   {
     "category": "niconico",
@@ -5065,14 +4057,7 @@
     "character": "巡音ルカ",
     "chara_img": "img",
     "chara_id": "3020",
-    "image_url": "0145.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.1",
-    "lev_mas_i": "13.0",
-    "lev_lnt_i": ""
+    "image_url": "0145.jpg"
   },
   {
     "category": "niconico",
@@ -5100,14 +4085,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0146.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0146.jpg"
   },
   {
     "category": "niconico",
@@ -5135,14 +4113,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0147.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0?",
-    "lev_lnt_i": ""
+    "image_url": "0147.jpg"
   },
   {
     "category": "niconico",
@@ -5170,14 +4141,7 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0148.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.8",
-    "lev_lnt_i": ""
+    "image_url": "0148.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5205,14 +4169,7 @@
     "character": "桜井 春菜",
     "chara_img": "img",
     "chara_id": "1070",
-    "image_url": "0149.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.0",
-    "lev_lnt_i": ""
+    "image_url": "0149.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5240,14 +4197,7 @@
     "character": "早乙女 彩華",
     "chara_img": "img",
     "chara_id": "1080",
-    "image_url": "0150.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0150.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5275,14 +4225,7 @@
     "character": "早乙女 彩華",
     "chara_img": "img",
     "chara_id": "1080",
-    "image_url": "0151.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.2",
-    "lev_mas_i": "13.8",
-    "lev_lnt_i": ""
+    "image_url": "0151.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5310,14 +4253,7 @@
     "character": "桜井 春菜",
     "chara_img": "img",
     "chara_id": "1070",
-    "image_url": "0152.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.9",
-    "lev_mas_i": "13.5",
-    "lev_lnt_i": ""
+    "image_url": "0152.jpg"
   },
   {
     "category": "VARIETY",
@@ -5345,14 +4281,7 @@
     "character": "あおニャン",
     "chara_img": "img",
     "chara_id": "9040",
-    "image_url": "0153.jpg",
-    "enemy_lv": "50",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "13.7"
+    "image_url": "0153.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5380,20 +4309,13 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0154.jpg",
-    "enemy_lv": "41",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "13.5",
-    "lev_lnt_i": ""
+    "image_url": "0154.jpg"
   },
   {
     "category": "POPS＆ANIME",
     "category_id": "01",
     "id": "1840",
-    "date": "20190411",
+    "date": "20190401",
     "new": "",
     "title": "極上スマイル",
     "title_sort": "コクシヨウスマイル",
@@ -5415,14 +4337,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0158.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.1",
-    "lev_lnt_i": ""
+    "image_url": "0158.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5450,14 +4365,7 @@
     "character": "ペコリーヌ",
     "chara_img": "img",
     "chara_id": "5160",
-    "image_url": "0156.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.8",
-    "lev_lnt_i": ""
+    "image_url": "0156.jpg"
   },
   {
     "category": "VARIETY",
@@ -5485,14 +4393,7 @@
     "character": "アリサ",
     "chara_img": "img",
     "chara_id": "5190",
-    "image_url": "0157.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.6",
-    "lev_lnt_i": ""
+    "image_url": "0157.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5520,14 +4421,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0159.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0159.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5555,14 +4449,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0160.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0160.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5590,14 +4477,7 @@
     "character": "キャル",
     "chara_img": "img",
     "chara_id": "5180",
-    "image_url": "0161.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0161.jpg"
   },
   {
     "category": "niconico",
@@ -5625,14 +4505,7 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0162.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.0",
-    "lev_lnt_i": ""
+    "image_url": "0162.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5660,14 +4533,7 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0163.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.1",
-    "lev_lnt_i": ""
+    "image_url": "0163.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5695,14 +4561,7 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0164.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0164.jpg"
   },
   {
     "category": "東方Project",
@@ -5730,14 +4589,7 @@
     "character": "紅 美鈴",
     "chara_img": "img",
     "chara_id": "2030",
-    "image_url": "0165.jpg",
-    "enemy_lv": "40",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.6",
-    "lev_lnt_i": ""
+    "image_url": "0165.jpg"
   },
   {
     "category": "チュウマイ",
@@ -5765,14 +4617,7 @@
     "character": "柏木 咲姫",
     "chara_img": "img",
     "chara_id": "1100",
-    "image_url": "0166.jpg",
-    "enemy_lv": "25",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0166.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5800,14 +4645,7 @@
     "character": "井之原 小星",
     "chara_img": "img",
     "chara_id": "1090",
-    "image_url": "0167.jpg",
-    "enemy_lv": "15",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0167.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5835,14 +4673,7 @@
     "character": "井之原 小星",
     "chara_img": "img",
     "chara_id": "1090",
-    "image_url": "0168.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7?",
-    "lev_mas_i": "13.3",
-    "lev_lnt_i": ""
+    "image_url": "0168.jpg"
   },
   {
     "category": "オンゲキ",
@@ -5870,14 +4701,7 @@
     "character": "柏木 咲姫",
     "chara_img": "img",
     "chara_id": "1100",
-    "image_url": "0169.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "14.4",
-    "lev_lnt_i": ""
+    "image_url": "0169.jpg"
   },
   {
     "category": "POPS＆ANIME",
@@ -5905,21 +4729,14 @@
     "character": "柏木 咲姫",
     "chara_img": "img",
     "chara_id": "1100",
-    "image_url": "0170.jpg",
-    "enemy_lv": "25",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.3",
-    "lev_lnt_i": ""
+    "image_url": "0170.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1750",
     "date": "20190523",
-    "new": "NEW",
+    "new": "",
     "title": "進捗どうですか？",
     "title_sort": "シンチヨクトウテスカ",
     "artist": "sumijun(Halozy) feat. ななひら(Confetto)",
@@ -5940,21 +4757,14 @@
     "character": "橙",
     "chara_img": "img",
     "chara_id": "2290",
-    "image_url": "0171.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0171.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1760",
     "date": "20190523",
-    "new": "NEW",
+    "new": "",
     "title": "東方妖々夢 ～the maximum moving about～",
     "title_sort": "トウホウヨウヨウムTHEMAXIMUMMOVINGABOUT",
     "artist": "石鹸屋",
@@ -5975,21 +4785,14 @@
     "character": "魂魄 妖夢",
     "chara_img": "img",
     "chara_id": "2320",
-    "image_url": "0172.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0172.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1780",
     "date": "20190523",
-    "new": "NEW",
+    "new": "",
     "title": "妖狐仙楽踏",
     "title_sort": "ヨウコセンカクトウ",
     "artist": "片霧烈火＆橋本鏡也",
@@ -6010,21 +4813,14 @@
     "character": "八雲 藍",
     "chara_img": "img",
     "chara_id": "2300",
-    "image_url": "0174.jpg",
-    "enemy_lv": "20",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.2",
-    "lev_lnt_i": ""
+    "image_url": "0174.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1770",
     "date": "20190523",
-    "new": "NEW",
+    "new": "",
     "title": "寒想桜",
     "title_sort": "カンソウサクラ",
     "artist": "あ～るの～と（いえろ～ぜぶら）",
@@ -6045,21 +4841,14 @@
     "character": "西行寺 幽々子",
     "chara_img": "img",
     "chara_id": "2330",
-    "image_url": "0173.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.1",
-    "lev_lnt_i": ""
+    "image_url": "0173.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1790",
     "date": "20190523",
-    "new": "NEW",
+    "new": "",
     "title": "Necro Fantasia",
     "title_sort": "NECROFANTASIA",
     "artist": "Masayoshi Minoshima",
@@ -6080,21 +4869,14 @@
     "character": "八雲 紫",
     "chara_img": "img",
     "chara_id": "2310",
-    "image_url": "0175.jpg",
-    "enemy_lv": "25",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.9",
-    "lev_lnt_i": ""
+    "image_url": "0175.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1810",
     "date": "20190606",
-    "new": "NEW",
+    "new": "",
     "title": "櫻結び",
     "title_sort": "サクラムスヒ",
     "artist": "IOSYS",
@@ -6115,21 +4897,14 @@
     "character": "西行寺 幽々子",
     "chara_img": "img",
     "chara_id": "2330",
-    "image_url": "0177.jpg",
-    "enemy_lv": "50",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0177.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "1800",
     "date": "20190606",
-    "new": "NEW",
+    "new": "",
     "title": "Colors",
     "title_sort": "COLORS",
     "artist": "REDALiCE feat.野宮あゆみ",
@@ -6150,21 +4925,14 @@
     "character": "魂魄 妖夢",
     "chara_img": "img",
     "chara_id": "2320",
-    "image_url": "0176.jpg",
-    "enemy_lv": "45",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.1",
-    "lev_lnt_i": ""
+    "image_url": "0176.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "2560",
     "date": "20190606",
-    "new": "NEW",
+    "new": "",
     "title": "Melody！",
     "title_sort": "MELODY",
     "artist": "あ～るの～と（いえろ～ぜぶら）",
@@ -6185,21 +4953,14 @@
     "character": "霧雨 魔理沙",
     "chara_img": "img",
     "chara_id": "2020",
-    "image_url": "0178.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0178.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "2570",
     "date": "20190606",
-    "new": "NEW",
+    "new": "",
     "title": "Scream out! -音華鏡 Re:BREAK-",
     "title_sort": "SCREAMOUTオンケキヨウREBREAK",
     "artist": "A-One",
@@ -6220,21 +4981,14 @@
     "character": "博麗 霊夢",
     "chara_img": "img",
     "chara_id": "2010",
-    "image_url": "0179.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.9",
-    "lev_mas_i": "13.4",
-    "lev_lnt_i": ""
+    "image_url": "0179.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "2580",
     "date": "20190606",
-    "new": "NEW",
+    "new": "",
     "title": "Calamity Fortune",
     "title_sort": "CALAMITYFORTUNE",
     "artist": "LeaF",
@@ -6255,21 +5009,14 @@
     "character": "みどニャン",
     "chara_img": "img",
     "chara_id": "9030",
-    "image_url": "0180.jpg",
-    "enemy_lv": "50",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "14.0"
+    "image_url": "0180.jpg"
   },
   {
     "category": "VARIETY",
     "category_id": "04",
     "id": "0620",
     "date": "20190620",
-    "new": "NEW",
+    "new": "",
     "title": "conflict",
     "title_sort": "CONFLICT",
     "artist": "siromaru + cranky",
@@ -6290,21 +5037,14 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0181.jpg",
-    "enemy_lv": "25",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.4",
-    "lev_mas_i": "13.7",
-    "lev_lnt_i": ""
+    "image_url": "0181.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0630",
     "date": "20190620",
-    "new": "NEW",
+    "new": "",
     "title": "UTAKATA",
     "title_sort": "UTAKATA",
     "artist": "曲：ゆよゆっぺ／歌：九條 楓(CV：佳村 はるか)",
@@ -6325,21 +5065,14 @@
     "character": "九條 楓",
     "chara_img": "img",
     "chara_id": "1110",
-    "image_url": "0182.jpg",
-    "enemy_lv": "45",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "13.0?",
-    "lev_lnt_i": ""
+    "image_url": "0182.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0640",
     "date": "20190620",
-    "new": "NEW",
+    "new": "",
     "title": "Rule the World!!",
     "title_sort": "RULETHEWORLD",
     "artist": "曲：八木雄一 feat. Marty Friedman／歌：逢坂 茜(CV：大空 直美)",
@@ -6360,21 +5093,14 @@
     "character": "逢坂 茜",
     "chara_img": "img",
     "chara_id": "1120",
-    "image_url": "0183.jpg",
-    "enemy_lv": "45",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.1",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0183.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0650",
     "date": "20190620",
-    "new": "NEW",
+    "new": "",
     "title": "どうぶつ☆パラダイス",
     "title_sort": "トウフツハラタイス",
     "artist": "曲：村井大／歌：珠洲島 有栖(CV：長縄 まりあ)",
@@ -6395,21 +5121,14 @@
     "character": "珠洲島 有栖",
     "chara_img": "img",
     "chara_id": "1130",
-    "image_url": "0184.jpg",
-    "enemy_lv": "45",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.3",
-    "lev_lnt_i": ""
+    "image_url": "0184.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0660",
     "date": "20190620",
-    "new": "NEW",
+    "new": "",
     "title": "Y.Y.Y.計画!!!!",
     "title_sort": "YYYケイカク",
     "artist": "曲：烏屋茶房／歌：R.B.P. [九條 楓(CV：佳村 はるか)、逢坂 茜(CV：大空 直美)、珠洲島 有栖(CV：長縄 まりあ)]",
@@ -6430,21 +5149,14 @@
     "character": "珠洲島 有栖",
     "chara_img": "img",
     "chara_id": "1130",
-    "image_url": "0185.jpg",
-    "enemy_lv": "50",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0185.jpg"
   },
   {
     "category": "POPS＆ANIME",
     "category_id": "01",
     "id": "1980",
     "date": "20190704",
-    "new": "NEW",
+    "new": "",
     "title": "fantastic dreamer",
     "title_sort": "FANTASTICDREAMER",
     "artist": "Machico「この素晴らしい世界に祝福を！」",
@@ -6465,21 +5177,14 @@
     "character": "ゆんゆん",
     "chara_img": "img",
     "chara_id": "5081",
-    "image_url": "0186.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.4",
-    "lev_lnt_i": ""
+    "image_url": "0186.jpg"
   },
   {
     "category": "POPS＆ANIME",
     "category_id": "01",
     "id": "1990",
     "date": "20190704",
-    "new": "NEW",
+    "new": "",
     "title": "DreamRiser",
     "title_sort": "DREAMRISER",
     "artist": "ChouCho",
@@ -6500,21 +5205,14 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0187.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.8",
-    "lev_lnt_i": ""
+    "image_url": "0187.jpg"
   },
   {
     "category": "POPS＆ANIME",
     "category_id": "01",
     "id": "2000",
     "date": "20190704",
-    "new": "NEW",
+    "new": "",
     "title": "Rising Hope",
     "title_sort": "RISINGHOPE",
     "artist": "LiSA",
@@ -6535,21 +5233,14 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0188.jpg",
-    "enemy_lv": "30",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.1",
-    "lev_mas_i": "13.0",
-    "lev_lnt_i": ""
+    "image_url": "0188.jpg"
   },
   {
     "category": "POPS＆ANIME",
     "category_id": "01",
     "id": "2110",
     "date": "20190704",
-    "new": "NEW",
+    "new": "",
     "title": "Hand in Hand",
     "title_sort": "HANDINHAND",
     "artist": "ユーフィリア(CV：高橋 李依)「アンジュ・ヴィエルジュ」",
@@ -6570,21 +5261,14 @@
     "character": "日向 美海",
     "chara_img": "img",
     "chara_id": "5090",
-    "image_url": "0189.jpg",
-    "enemy_lv": "10",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0189.jpg"
   },
   {
     "category": "niconico",
     "category_id": "02",
     "id": "2730",
     "date": "20190711",
-    "new": "NEW",
+    "new": "",
     "title": "39",
     "title_sort": "39",
     "artist": "sasakure.UK x DECO*27",
@@ -6605,21 +5289,14 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0190.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.2",
-    "lev_lnt_i": ""
+    "image_url": "0190.jpg"
   },
   {
     "category": "niconico",
     "category_id": "02",
     "id": "2740",
     "date": "20190711",
-    "new": "NEW",
+    "new": "",
     "title": "メルト",
     "title_sort": "メルト",
     "artist": "supercell",
@@ -6640,21 +5317,14 @@
     "character": "初音ミク",
     "chara_img": "img",
     "chara_id": "3010",
-    "image_url": "0191.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "11.7?",
-    "lev_lnt_i": ""
+    "image_url": "0191.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0680",
     "date": "20190718",
-    "new": "NEW",
+    "new": "",
     "title": "Viyella's Tears",
     "title_sort": "VIYELLASTEARS",
     "artist": "Laur",
@@ -6675,21 +5345,14 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0193.jpg",
-    "enemy_lv": "60",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "13.3",
-    "lev_mas_i": "14.8",
-    "lev_lnt_i": ""
+    "image_url": "0193.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0670",
     "date": "20190718",
-    "new": "NEW",
+    "new": "",
     "title": "Starring Stars",
     "title_sort": "STARRINGSTARS",
     "artist": "曲：馬渕直純／歌：ASTERISM [星咲 あかり(CV：赤尾 ひかる)、藤沢 柚子(CV：久保田 梨沙)、三角 葵(CV：春野 杏)]",
@@ -6710,21 +5373,14 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0192.jpg",
-    "enemy_lv": "35",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.5",
-    "lev_lnt_i": ""
+    "image_url": "0192.jpg"
   },
   {
     "category": "チュウマイ",
     "category_id": "05",
     "id": "0690",
     "date": "20190718",
-    "new": "NEW",
+    "new": "",
     "title": "Garakuta Doll Play",
     "title_sort": "GARAKUTADOLLPLAY",
     "artist": "t+pazolite",
@@ -6745,21 +5401,14 @@
     "character": "藤沢 柚子",
     "chara_img": "img",
     "chara_id": "1020",
-    "image_url": "0194.jpg",
-    "enemy_lv": "60",
-    "enemy_type": "LEAF",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.9",
-    "lev_mas_i": "14.2",
-    "lev_lnt_i": ""
+    "image_url": "0194.jpg"
   },
   {
     "category": "チュウマイ",
     "category_id": "05",
     "id": "0700",
     "date": "20190718",
-    "new": "NEW",
+    "new": "",
     "title": "The wheel to the right",
     "title_sort": "THEWHEELTOTHERIGHT",
     "artist": "Sampling Masters MEGA",
@@ -6780,21 +5429,14 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0195.jpg",
-    "enemy_lv": "60",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.2",
-    "lev_mas_i": "13.9",
-    "lev_lnt_i": ""
+    "image_url": "0195.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0850",
     "date": "20190726",
-    "new": "NEW",
+    "new": "",
     "title": "STARTLINER",
     "title_sort": "STARTLINER",
     "artist": "曲：kz(livetune)／歌：オンゲキシューターズ",
@@ -6815,21 +5457,14 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0034.jpg",
-    "enemy_lv": "55",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
-    "lev_lnt_i": "12.8"
+    "image_url": "0034.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0710",
     "date": "20190801",
-    "new": "NEW",
+    "new": "",
     "title": "Aenbharr",
     "title_sort": "AENBHARR",
     "artist": "Project Grimoire",
@@ -6850,21 +5485,14 @@
     "character": "柏木 美亜",
     "chara_img": "img",
     "chara_id": "1150",
-    "image_url": "0196.jpg",
-    "enemy_lv": "50",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "12.6",
-    "lev_mas_i": "14.3",
-    "lev_lnt_i": ""
+    "image_url": "0196.jpg"
   },
   {
     "category": "オンゲキ",
     "category_id": "06",
     "id": "0720",
     "date": "20190801",
-    "new": "NEW",
+    "new": "",
     "title": "ω4",
     "title_sort": "ω4",
     "artist": "穴山大輔 VS 光吉猛修 VS Kai",
@@ -6885,21 +5513,14 @@
     "character": "柏木 美亜",
     "chara_img": "img",
     "chara_id": "1150",
-    "image_url": "0197.jpg",
-    "enemy_lv": "70",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "13.4",
-    "lev_mas_i": "14.9",
-    "lev_lnt_i": ""
+    "image_url": "0197.jpg"
   },
   {
     "category": "東方Project",
     "category_id": "03",
     "id": "2590",
     "date": "20190801",
-    "new": "NEW",
+    "new": "",
     "title": "チルノのパーフェクトさんすう教室",
     "title_sort": "チルノノハフエクトサンスウキヨウシツ",
     "artist": "ARM＋夕野ヨシミ (IOSYS) feat.miko",
@@ -6920,21 +5541,14 @@
     "character": "チルノ",
     "chara_img": "img",
     "chara_id": "2080",
-    "image_url": "0198.jpg",
-    "enemy_lv": "9",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.6",
-    "lev_lnt_i": ""
+    "image_url": "0198.jpg"
   },
   {
     "category": "チュウマイ",
     "category_id": "05",
     "id": "2750",
     "date": "20190808",
-    "new": "NEW",
+    "new": "",
     "title": "光線チューニング",
     "title_sort": "コウセンチユニンク",
     "artist": "ナユタン星人",
@@ -6955,21 +5569,14 @@
     "character": "三角 葵",
     "chara_img": "img",
     "chara_id": "1030",
-    "image_url": "0199.jpg",
-    "enemy_lv": "3",
-    "enemy_type": "AQUA",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.7",
-    "lev_lnt_i": ""
+    "image_url": "0199.jpg"
   },
   {
     "category": "niconico",
     "category_id": "02",
     "id": "2760",
     "date": "20190808",
-    "new": "NEW",
+    "new": "",
     "title": "ドーナツホール",
     "title_sort": "トナツホル",
     "artist": "ハチ",
@@ -6990,21 +5597,14 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0200.jpg",
-    "enemy_lv": "1",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "10.1",
-    "lev_mas_i": "13.1",
-    "lev_lnt_i": ""
+    "image_url": "0200.jpg"
   },
   {
     "category": "niconico",
     "category_id": "02",
     "id": "2770",
     "date": "20190808",
-    "new": "NEW",
+    "new": "",
     "title": "人生リセットボタン",
     "title_sort": "シンセイリセツトホタン",
     "artist": "kemu",
@@ -7025,21 +5625,14 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0201.jpg",
-    "enemy_lv": "5",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "11.3",
-    "lev_mas_i": "13.5",
-    "lev_lnt_i": ""
+    "image_url": "0201.jpg"
   },
   {
     "category": "niconico",
     "category_id": "02",
     "id": "2780",
     "date": "20190808",
-    "new": "NEW",
+    "new": "",
     "title": "妄想感傷代償連盟",
     "title_sort": "モウソウカンシヨウタイシヨウレンメイ",
     "artist": "DECO*27",
@@ -7060,13 +5653,6 @@
     "character": "星咲 あかり",
     "chara_img": "img",
     "chara_id": "1010",
-    "image_url": "0202.jpg",
-    "enemy_lv": "8",
-    "enemy_type": "FIRE",
-    "lev_adv_i": "",
-    "lev_bas_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "12.2",
-    "lev_lnt_i": ""
+    "image_url": "0202.jpg"
   }
 ]
