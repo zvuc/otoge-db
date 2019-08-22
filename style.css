@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|M+PLUS+1p:400,700&display=swap&subset=japanese');
+
 html {
     font-size: 14px;
     padding: 0;
@@ -14,15 +16,17 @@ html {
     }
 }
 body {
-    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-family: 'Josefin Sans','M PLUS 1p', -apple-system, 'Segoe UI', sans-serif;
     font-size: 1rem;
     font-feature-settings: "palt";
     padding: 0;
     margin: 0;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 button, input {
-    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-family: 'Josefin Sans','M PLUS 1p', -apple-system, 'Segoe UI', sans-serif;
     font-feature-settings: "palt";
 }
 
@@ -34,7 +38,7 @@ header {
     display: flex;
     align-items: center;
     padding: 10px 15px;
-    border-bottom: 3px solid #ff1b71;
+    border-bottom: 3px solid #0096da;
     background-color: #efefef;
     overflow: hidden;
 }
@@ -79,7 +83,7 @@ header .lastupdated span {
     margin-bottom: 10px;
     padding: 2px 10px;
     background-color: #444;
-    background-image: linear-gradient(to bottom, #5c0c2a 0%, #000 60%);
+    background-image: linear-gradient(to bottom, #fef000 0%, #fffbb4 20%);
     overflow: hidden;
 }
 
@@ -91,7 +95,7 @@ header .lastupdated span {
     margin: 1px 0;
     font-size: 1rem;
     height: 40px;
-    color: #fff;
+    color: #333;
     overflow: visible;
     border: none;
     box-shadow: none;
@@ -116,18 +120,17 @@ header .lastupdated span {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #444;
+    background-color: #eee;
     transform: skewX(-40deg);
 }
 
 .column-toggle-bar .dt-buttons > button.dt-button:hover:before {
-    background-color: #444;
-    background-image: linear-gradient(to top, #22877e 0%, #444 20%);
-    box-shadow: 0 -2px 0 0 #3be5d6 inset, 0 2px 0 0 #3be5d6 inset;
+    background-color: #eee;
+    box-shadow: 0 -2px 0 0 #e84a92 inset, 0 2px 0 0 #e84a92 inset;
 }
 
 .column-toggle-bar .dt-buttons > button.dt-button:active:before {
-    background-color: #333;
+    background-color: #aaa;
 }
 
 .column-toggle-bar .dt-buttons > button.dt-button span {
