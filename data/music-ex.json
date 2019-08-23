@@ -7691,7 +7691,7 @@
     "chara_img": "img",
     "chara_id": "5200",
     "image_url": "0220.jpg",
-    "enemy_lv": "",
+    "enemy_lv": "1",
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
