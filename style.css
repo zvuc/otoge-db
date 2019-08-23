@@ -131,7 +131,8 @@ header .lastupdated span {
 
 @media screen and (max-width: 480px) {
     .column-toggle-bar {
-        overflow-x: auto 
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; 
     }
 }
 
