@@ -8465,8 +8465,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "11.6",
+    "lev_mas_i": "13.8",
     "lev_lnt_i": ""
   },
   {
@@ -8501,7 +8501,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.5",
     "lev_lnt_i": ""
   },
   {
@@ -8535,8 +8535,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "10.7",
+    "lev_mas_i": "13.0",
     "lev_lnt_i": ""
   },
   {
@@ -8571,7 +8571,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "13.4",
     "lev_lnt_i": ""
   }
 ]
