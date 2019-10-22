@@ -150,6 +150,12 @@
                                     row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
                                     return row.chap_display;
                                 }
+                                // 02xxx : chapter 2
+                                else if (row.chap_id.substr(1,1) == "3") {
+                                    row.chap_book = "3";
+                                    row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                    return row.chap_display;
+                                }
                                 // 00xxx : default mylist
                                 else {
                                     row.chap_display = row.chapter;
