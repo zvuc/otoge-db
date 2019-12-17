@@ -150,17 +150,32 @@
                                     row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
                                     return row.chap_display;
                                 }
-                                // 02xxx : chapter 2
+                                // 03xxx : chapter 3
                                 else if (row.chap_id.substr(1,1) == "3") {
-                                    row.chap_book = "3";
-                                    row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                    return row.chap_display;
+                                    // 0308x : chapter 3 side
+                                    if (row.chap_id.substr(0,4) == "0308") {
+                                        row.chap_book = "3";
+                                        row.chap_chapter = row.chap_id.substr(4,1);
+                                        row.chap_display = row.chap_book + '-S' + row.chap_chapter + ' ' + row.chapter;
+                                        return row.chap_display;
+                                    }
+                                    else {
+                                        row.chap_book = "3";
+                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                        return row.chap_display;
+                                    }
                                 }
                                 // 00xxx : default mylist
                                 else {
                                     row.chap_display = row.chapter;
                                     return row.chap_display;
                                 }
+                            }
+                            // 80xxx : Event chapters
+                            else if (row.chap_id.substr(0,2) == "80") {
+                                row.chap_book = "SP2";
+                                row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                return row.chap_display;
                             }
                             // 99xxx : Event chapters
                             else if (row.chap_id.substr(0,2) == "99") {
