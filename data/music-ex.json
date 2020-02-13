@@ -9550,8 +9550,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "11.0",
+    "lev_mas_i": "12.8",
     "lev_lnt_i": ""
   },
   {
@@ -9585,7 +9585,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "10.4",
     "lev_mas_i": "13.3",
     "lev_lnt_i": ""
   },
@@ -9621,7 +9621,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.8",
     "lev_lnt_i": ""
   },
   {
@@ -9655,8 +9655,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "10.4",
+    "lev_mas_i": "12.9",
     "lev_lnt_i": ""
   },
   {
@@ -9690,7 +9690,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "11.0",
     "lev_mas_i": "13.6",
     "lev_lnt_i": ""
   },
@@ -10040,7 +10040,7 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "10.5",
     "lev_mas_i": "13.6",
     "lev_lnt_i": ""
   },
@@ -10251,7 +10251,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.7",
     "lev_lnt_i": ""
   },
   {
@@ -10286,7 +10286,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.8",
     "lev_lnt_i": ""
   },
   {
@@ -10321,7 +10321,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "13.7",
     "lev_lnt_i": ""
   }
 ]
