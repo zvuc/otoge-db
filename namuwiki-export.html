@@ -23,11 +23,11 @@
             <tr>
                 <!-- 0 --><th class="never"><span>ID (system)</span></th>
                 <!-- 1 --><th class="all toggle"><span>#</span></th>
+                <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
                 <!-- 2 --><th class="all"><span>A</span></th>
                 <!-- 3 --><th class="all"><span>曲名</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
                 <!-- 5 --><th class="never"><span>アーティスト</span></th>
-                <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
                 <!-- 7 --><th class="never"><span>カテゴリID</span></th>
                 <!-- 8 --><th class="never"><span>チャプターID</span></th>
                 <!-- 9 --><th class="all toggle"><span>チャプター</span></th>
@@ -72,6 +72,39 @@
                     visible: false
                 },
                 { 
+                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#ddd,#000>&lt;width=0>&lt;:>",
+                    displayTitle: "カテゴリ",
+                    data: "category",
+                    className: "category",
+                    render: function ( data, type, row ) {
+                        if ( type === 'display' ) {
+                            if (row.category === "オンゲキ") {
+                                return '||&lt;bgcolor=#ff7dab&gt;';
+                            }
+                            else if (row.category === "チュウマイ") {
+                                return '||&lt;bgcolor=#42b6ff&gt;';
+                            }
+                            else if (row.category === "東方Project") {
+                                return '||&lt;bgcolor=#cf3eff&gt;';
+                            }
+                            else if (row.category === "niconico") {
+                                return '||&lt;bgcolor=#ffd822&gt;';
+                            }
+                            else if (row.category === "VARIETY") {
+                                return '||&lt;bgcolor=#00c312&gt;';
+                            }
+                            else {
+                                return '||&lt;bgcolor=#f06&gt;';
+                            }
+                        }
+                        // use chara_id for sort
+                        else {
+                            return data;
+                        }
+                    },
+                    filterable: true
+                },
+                { 
                     displayTitle: "アルバムアート",
                     data: "image_url",
                     className: "jacket",
@@ -84,14 +117,14 @@
                     visible: false
                 },
                 { 
-                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#ddd>&lt;:>'''곡명 / 아티스트'''",
+                    title: "||&lt;:>'''곡명 / 아티스트'''",
                     displayTitle: "曲名",
                     data: "title",
                     className: "song-title",
                     render: function ( data, type, row ) {
                         // If display or filter data is requested, return title
                         if ( type === 'display' || type === 'filter' ) {
-                            return '||&lt;(>\'\'\'[['+data+']]\'\'\' \[br\] {{{-2 {{{#666 '+ row.artist +'}}} }}}';
+                            return '||&lt;(>\'\'\'[['+data+']]\'\'\' \[br\] {{{-2 {{{#888 '+ row.artist +'}}} }}}';
                         }
                         // Else type detection or sorting data, return title_sort
                         else {
@@ -106,17 +139,10 @@
                     visible: false
                 },
                 { 
-                    title: "&lt;:>'''아티스트'''",
+                    title: "||&lt;:>'''아티스트'''",
                     displayTitle: "アーティスト",
                     data: "artist",
                     className: "artist",
-                },
-                { 
-                    title: "&lt;:>'''장르'''",
-                    displayTitle: "カテゴリ",
-                    data: "category",
-                    className: "category",
-                    filterable: true
                 },
                 { 
                     displayTitle: "カテゴリID",
@@ -132,7 +158,7 @@
                 },
                 {
                     // combine chap_id + chapter
-                    title: "&lt;:>'''챕터'''",
+                    title: "||&lt;:>'''챕터'''",
                     displayTitle: "チャプター",
                     data: function( row, type, set, meta ) {
                         if (type === 'sort') {
@@ -152,11 +178,32 @@
                                     row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
                                     return row.chap_display;
                                 }
+                                // 03xxx : chapter 3
+                                else if (row.chap_id.substr(1,1) == "3") {
+                                    // 0308x : chapter 3 side
+                                    if (row.chap_id.substr(0,4) == "0308") {
+                                        row.chap_book = "3";
+                                        row.chap_chapter = row.chap_id.substr(4,1);
+                                        row.chap_display = row.chap_book + '-S' + row.chap_chapter + ' ' + row.chapter;
+                                        return row.chap_display;
+                                    }
+                                    else {
+                                        row.chap_book = "3";
+                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                        return row.chap_display;
+                                    }
+                                }
                                 // 00xxx : default mylist
                                 else {
                                     row.chap_display = row.chapter;
                                     return row.chap_display;
                                 }
+                            }
+                            // 80xxx : Event chapters
+                            else if (row.chap_id.substr(0,2) == "80") {
+                                row.chap_book = "SP2";
+                                row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                                return row.chap_display;
                             }
                             // 99xxx : Event chapters
                             else if (row.chap_id.substr(0,2) == "99") {
@@ -178,12 +225,12 @@
                 },
                 { 
                     displayTitle: "属性",
-                    title: "&lt;:>'''속성'''",
+                    title: "||&lt;:>'''대전상대'''",
                     data: "enemy_type",
                     className: "type",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
-                            return '<span class="type-icon ' + data.toLowerCase() + '"><span>&lt;:>[[파일:ongeki_type_' + data.toLowerCase() + '.png|width=20]]<\/span><\/span>';
+                            return '||<span class="type-icon ' + data.toLowerCase() + '"><span>[[파일:ongeki_type_' + data.toLowerCase() + '.png|width=20]]<\/span><\/span>' + row.character + ' \[br\] Lv.' + row.enemy_lv;
                         }
                         // use chara_id for sort
                         else {
@@ -200,7 +247,7 @@
                 },
                 { 
                     displayTitle: "相手キャラ",
-                    title: "&lt;:>'''상대 캐릭터'''",
+                    title: "||&lt;:>'''상대 캐릭터'''",
                     data: "character",
                     className: "character",
                     render: function ( data, type, row ) {
@@ -214,33 +261,52 @@
                     },
                     customDropdownSortSource: 'chara_id',
                     width: "10em",
-                    filterable: true
+                    filterable: true,
+                    visible: false
                 },
                 { 
                     displayTitle: "相手レベル",
-                    title: "&lt;:>&lt;width=60>'''Lv'''",
+                    title: "||&lt;:>&lt;width=60>'''Lv'''",
                     data: "enemy_lv",
                     className: "enemy-lv",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
-                            return '&lt;:> Lv.' + data;
+                            return '||&lt;:> Lv.' + data;
                         }
-                        // use chara_id for sort
                         else {
                             return data;
                         }
                     },
                     customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
                     width: "4em",
-                    filterable: true
+                    filterable: true,
+                    visible: false
                 },
                 { 
                     //  BASIC
                     displayTitle: "BASIC",
-                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#65d346> {{{#fff '''BSC'''}}}",
+                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#65d346,#000> {{{#fff,#65d346 '''BSC'''}}}",
                     data: sortLevels('lev_bas', 'lev_bas_i'),
                     className: "lv lv-bsc",
-                    render: renderLvNum('lev_bas', 'lev_bas_i'),
+                    render: function ( data, type, row ) {
+                        if ( type === 'display' ) {
+                            if ( row.lev_lnt === "" ) {
+                                return "||&lt;:>" + data;
+                            }
+                            // show LUN level in place if it exists
+                            else {
+                                if (row.lev_lnt_i != "") {
+                                    return '||&lt;-4>&lt;:>&lt;bgcolor=#fff,#000> {{{#d9362c \'\'\'LUNATIC\'\'\' }}}' + row.lev_lnt + ' {{{-2 {{{#888 (' + row.lev_lnt_i + ')}}} }}}'
+                                } 
+                                else {
+                                    return '||&lt;-4>&lt;:>&lt;bgcolor=#fff,#000> {{{#d9362c \'\'\'LUNATIC\'\'\'}}}' + row.lev_lnt;
+                                }
+                            }
+                        }
+                        else {
+                            return data;
+                        }
+                    },
                     customDropdownSortSource: sortByLeadingZeros('lev_bas'),
                     width: "3rem",
                     filterable: true
@@ -248,10 +314,10 @@
                 { 
                     //  ADVANCED
                     displayTitle: "ADVANCED",
-                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#fbe64d> {{{#fff '''ADV'''}}}",
+                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#fbe64d,#000> {{{#fff,#fbe64d '''ADV'''}}}",
                     data: sortLevels('lev_adv', 'lev_adv_i'),
                     className: "lv lv-adv",
-                    render: renderLvNum('lev_adv', 'lev_adv_i'),
+                    render: renderLvNumIfNotLunatic('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv'),
                     width: "3rem",
                     filterable: true
@@ -259,10 +325,10 @@
                 { 
                     //  EXPERT
                     displayTitle: "EXPERT",
-                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#ea3886> {{{#fff '''EXP'''}}}",
+                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#ea3886,#000> {{{#fff,#ea3886 '''EXP'''}}}",
                     data: sortLevels('lev_exc', 'lev_exc_i'),
                     className: "lv lv-exp",
-                    render: renderLvNum('lev_exc', 'lev_exc_i'),
+                    render: renderLvNumIfNotLunatic('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc'),
                     width: "3rem",
                     filterable: true
@@ -270,21 +336,25 @@
                 { 
                     //  MASTER
                     displayTitle: "MASTER",
-                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#a547d5> {{{#fff '''MAS'''}}}",
+                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#a547d5,#000> {{{#fff,#a547d5 '''MAS'''}}}",
                     data: sortLevels('lev_mas', 'lev_mas_i'),
                     className: "lv lv-mas",
-                    render: renderLvNum('lev_mas', 'lev_mas_i'),
+                    render: renderLvNumIfNotLunatic('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas'),
                     width: "3rem",
                     filterable: true
                 },
                 { 
-                    //  LUNATIC
+                    //  LUNATIC -> row end for namuwiki export
                     displayTitle: "LUNATIC",
-                    title: "&lt;:>&lt;width=60>&lt;bgcolor=#fff> {{{#d9362c '''LUN'''}}}",
+                    // title: "||&lt;:>&lt;width=60>&lt;bgcolor=#fff,#000> {{{#d9362c,#eee '''LUN'''}}}",
+                    title: "||",
                     data: sortLevels('lev_lnt', 'lev_lnt_i'),
                     className: "lv lv-lnt",
-                    render: renderLvNum('lev_lnt', 'lev_lnt_i'),
+                    // render: renderLvNum('lev_lnt', 'lev_lnt_i'),
+                    render: function ( data, type, row ) {
+                        return "||";
+                    },
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
                     width: "3rem",
                     filterable: true
@@ -343,12 +413,30 @@
                 return function ( data, type, row ) {
                     if ( type === 'display' ) {
                         if (row[precise_lv] != "") {
-                            return '&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span> <span class="lv-num-precise">{{{-2 {{{#666 (' + row[precise_lv] + ')}}} }}}<\/span>';
+                            return '&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span> <span class="lv-num-precise">[br] {{{-2 {{{#888 (' + row[precise_lv] + ')}}} }}}<\/span>';
                         } 
                         else if (row[simple_lv] != "") {
                             return '&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span>';
                         } else {
-                            return '&lt;:> <span class="lv-num-simple">—<\/span>';
+                            return '&lt;:> <span class="lv-num-simple">{{{#888 — }}}<\/span>';
+                        }
+                    }
+                    else {
+                        return data;
+                    }
+                }
+            }
+
+            function renderLvNumIfNotLunatic(simple_lv, precise_lv) {
+                return function ( data, type, row ) {
+                    if ( type === 'display' && row.lev_lnt === "") {
+                        if (row[precise_lv] != "") {
+                            return '||&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span> <span class="lv-num-precise">[br] {{{-2 {{{#888 (' + row[precise_lv] + ')}}} }}}<\/span>';
+                        } 
+                        else if (row[simple_lv] != "") {
+                            return '||&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span>';
+                        } else {
+                            return '||&lt;:> <span class="lv-num-simple">{{{#888 — }}}<\/span>';
                         }
                     }
                     else {
@@ -401,7 +489,7 @@
                         extend: 'csvHtml5',
                         text: 'Export to CSV',
                         fieldBoundary: '',
-                        fieldSeparator: '||',
+                        fieldSeparator: '',
                         exportOptions: {
                             columns: ':visible',
                         }
@@ -410,7 +498,7 @@
                         extend: 'copyHtml5',
                         text: 'Copy to Clipboard',
                         fieldBoundary: '',
-                        fieldSeparator: '||',
+                        fieldSeparator: '',
                         exportOptions: {
                             columns: ':visible',
                         },
