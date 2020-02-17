@@ -72,29 +72,29 @@
                     visible: false
                 },
                 { 
-                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#ddd,#000>&lt;width=0>&lt;:>",
+                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#ddd,#000>&lt;width=1px>&lt;:>",
                     displayTitle: "カテゴリ",
                     data: "category",
                     className: "category",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
                             if (row.category === "オンゲキ") {
-                                return '||&lt;bgcolor=#ff7dab&gt;';
+                                return '||&lt;:>{{{-1 {{{#ff7dab \'\'\'O\'\'\'}}} }}}';
                             }
                             else if (row.category === "チュウマイ") {
-                                return '||&lt;bgcolor=#42b6ff&gt;';
+                                return '||&lt;:>{{{-1 {{{#42b6ff \'\'\'C\'\'\'}}} }}}';
                             }
                             else if (row.category === "東方Project") {
-                                return '||&lt;bgcolor=#cf3eff&gt;';
+                                return '||&lt;:>{{{-1 {{{#cf3eff \'\'\'東\'\'\'}}} }}}';
                             }
                             else if (row.category === "niconico") {
-                                return '||&lt;bgcolor=#ffd822&gt;';
+                                return '||&lt;:>{{{-1 {{{#f5ac00,#ffd822 \'\'\'N\'\'\'}}} }}}';
                             }
                             else if (row.category === "VARIETY") {
-                                return '||&lt;bgcolor=#00c312&gt;';
+                                return '||&lt;:>{{{-1 {{{#00c312 \'\'\'V\'\'\'}}} }}}';
                             }
                             else {
-                                return '||&lt;bgcolor=#f06&gt;';
+                                return '||&lt;:>{{{-1 {{{#f06 \'\'\'P\'\'\'}}} }}}';
                             }
                         }
                         // use chara_id for sort
@@ -225,7 +225,7 @@
                 },
                 { 
                     displayTitle: "属性",
-                    title: "||&lt;:>'''대전상대'''",
+                    title: "||&lt;:>&lt;width=20%>'''대전상대'''",
                     data: "enemy_type",
                     className: "type",
                     render: function ( data, type, row ) {
@@ -285,7 +285,7 @@
                 { 
                     //  BASIC
                     displayTitle: "BASIC",
-                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#65d346,#000> {{{#fff,#65d346 '''BSC'''}}}",
+                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#65d346,#000> {{{#fff,#65d346 '''B'''}}}",
                     data: sortLevels('lev_bas', 'lev_bas_i'),
                     className: "lv lv-bsc",
                     render: function ( data, type, row ) {
@@ -314,7 +314,7 @@
                 { 
                     //  ADVANCED
                     displayTitle: "ADVANCED",
-                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#fbe64d,#000> {{{#fff,#fbe64d '''ADV'''}}}",
+                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#fbe64d,#000> {{{#fff,#fbe64d '''A'''}}}",
                     data: sortLevels('lev_adv', 'lev_adv_i'),
                     className: "lv lv-adv",
                     render: renderLvNumIfNotLunatic('lev_adv', 'lev_adv_i'),
@@ -325,7 +325,7 @@
                 { 
                     //  EXPERT
                     displayTitle: "EXPERT",
-                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#ea3886,#000> {{{#fff,#ea3886 '''EXP'''}}}",
+                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#ea3886,#000> {{{#fff,#ea3886 '''E'''}}}",
                     data: sortLevels('lev_exc', 'lev_exc_i'),
                     className: "lv lv-exp",
                     render: renderLvNumIfNotLunatic('lev_exc', 'lev_exc_i'),
@@ -336,7 +336,7 @@
                 { 
                     //  MASTER
                     displayTitle: "MASTER",
-                    title: "||&lt;:>&lt;width=60>&lt;bgcolor=#a547d5,#000> {{{#fff,#a547d5 '''MAS'''}}}",
+                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#a547d5,#000> {{{#fff,#a547d5 '''M'''}}}",
                     data: sortLevels('lev_mas', 'lev_mas_i'),
                     className: "lv lv-mas",
                     render: renderLvNumIfNotLunatic('lev_mas', 'lev_mas_i'),
@@ -347,7 +347,7 @@
                 { 
                     //  LUNATIC -> row end for namuwiki export
                     displayTitle: "LUNATIC",
-                    // title: "||&lt;:>&lt;width=60>&lt;bgcolor=#fff,#000> {{{#d9362c,#eee '''LUN'''}}}",
+                    // title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#fff,#000> {{{#d9362c,#eee '''LUN'''}}}",
                     title: "||",
                     data: sortLevels('lev_lnt', 'lev_lnt_i'),
                     className: "lv lv-lnt",
@@ -497,6 +497,8 @@
                     {
                         extend: 'copyHtml5',
                         text: 'Copy to Clipboard',
+                        messageTop: '{{{#!wiki style=\"word-break: normal\" ',
+                        messageBottom: '}}}',
                         fieldBoundary: '',
                         fieldSeparator: '',
                         exportOptions: {
