@@ -1,0 +1,611 @@
+html {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+@media screen and (min-width: 1440px) {
+    html {
+        font-size: 16px;
+    }
+}
+body {
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-feature-settings: "palt";
+    padding: 0;
+    margin: 0;
+}
+
+button, input {
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-feature-settings: "palt";
+}
+
+a {
+    color: #ff1b71;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 3px solid #ff1b71;
+    background-color: #efefef;
+    overflow: hidden;
+}
+h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+h1 a:hover {
+    text-decoration: underline;
+}
+header .lastupdated {
+    position: relative;
+    display: inline-block;
+    padding: 5px 30px 5px 30px;
+    margin-left: auto;
+    margin-right: -30px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+header .lastupdated:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #111;
+    transform: skewX(-40deg);
+}
+
+header .lastupdated span {
+    position: relative;
+}
+
+.column-toggle-bar {
+    display: block;
+    margin-bottom: 10px;
+    padding: 2px 10px;
+    background-color: #444;
+    background-image: linear-gradient(to bottom, #5c0c2a 0%, #000 60%);
+    overflow: hidden;
+}
+
+.column-toggle-bar .dt-buttons {
+    float: none;
+}
+.column-toggle-bar .dt-buttons > button.dt-button {
+    position: relative;
+    margin: 1px 0;
+    font-size: 1rem;
+    height: 40px;
+    color: #fff;
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding: 5px 20px;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:hover,
+.column-toggle-bar .dt-buttons > button.dt-button:active,
+.column-toggle-bar .dt-buttons > button.dt-button:active:hover,
+.column-toggle-bar .dt-buttons > button.dt-button:focus
+.column-toggle-bar .dt-buttons > button.dt-button.active {
+    border: none;
+    box-shadow: none;
+    background: none; 
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #444;
+    transform: skewX(-40deg);
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:hover:before {
+    background-color: #444;
+    background-image: linear-gradient(to top, #22877e 0%, #444 20%);
+    box-shadow: 0 -2px 0 0 #3be5d6 inset, 0 2px 0 0 #3be5d6 inset;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button:active:before {
+    background-color: #333;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button span {
+    position: relative;
+}
+
+div.dt-button-collection button.dt-button,
+div.dt-button-collection div.dt-button,
+div.dt-button-collection a.dt-button {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: block;
+    float: none;
+    margin-bottom: 4px;
+    margin-right: 0;
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%2111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 1rem;
+}
+
+div.dt-button-collection button.dt-button:hover:not(.disabled),
+div.dt-button-collection div.dt-button:hover:not(.disabled),
+div.dt-button-collection a.dt-button:hover:not(.disabled){
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+
+div.dt-button-collection button.dt-button:active:not(.disabled),
+div.dt-button-collection button.dt-button.active:not(.disabled),
+div.dt-button-collection div.dt-button:active:not(.disabled),
+div.dt-button-collection div.dt-button.active:not(.disabled),
+div.dt-button-collection a.dt-button:active:not(.disabled),
+div.dt-button-collection a.dt-button.active:not(.disabled) {
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%23111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+div.dt-button-collection button.dt-button:active:hover:not(.disabled),
+div.dt-button-collection button.dt-button.active:hover:not(.disabled),
+div.dt-button-collection div.dt-button:active:hover:not(.disabled),
+div.dt-button-collection div.dt-button.active:hover:not(.disabled),
+div.dt-button-collection a.dt-button:active:hover:not(.disabled),
+div.dt-button-collection a.dt-button.active:hover:not(.disabled) {
+    border: none;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
+    border-image-slice: 0 30 fill;
+    border-image-width: 0 30px;
+    border-image-repeat: repeat;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+div.dt-button-collection.fixed {
+  border-radius: 0;
+  padding: 10px 15px;
+}
+
+.toolbar {
+    display: flex;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.toolbar.filters {
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.toolbar.filters .select-wrap {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.toolbar.filters .select-wrap .label {
+    display: block;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+.toolbar.filters select {
+    font-size: 1rem;
+    min-width: 70px;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    font-size: 16px;
+}
+.toolbar.filters select option[data-default] {
+    color: #aaa;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    font-size: 16px;
+}
+
+.dataTables_wrapper .dataTables_length select option {
+    font-size: 14px;
+}
+
+.dataTables_wrapper .dataTables_info {
+    padding: 0;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-left: auto;
+    margin-top: 0;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    font-size: 16px;
+}
+
+/* main table */
+#table_wrapper {
+    padding: 0 0 10px 0;
+}
+
+.table-inner {
+    width: 100%;
+    position: relative;
+}
+
+#table {
+    border-top: 1px solid #ddd;
+}
+
+.dataTables_scroll .dataTables_scrollHead {
+    position: sticky !important;
+    position: -webkit-sticky !important;
+    top: 0;
+    z-index: 2;
+    background-color: #fff;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+.dataTables_scroll .dataTables_scrollHead thead th {
+    height: 20px !important;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    border-bottom: 0;
+}
+
+
+table.dataTable thead th,
+table.dataTable thead td {
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+/* override sorting button */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  background-image: none;
+}
+
+table.dataTable thead th {
+    position: relative;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: inline-block;
+    margin-left: 3px;
+    width: 19px;
+    height: 100%;
+    background-image: url("datatables/images/sort_both.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+table.dataTable thead .sorting_asc:after {
+    background-image: url("datatables/images/sort_asc.png");
+}
+table.dataTable thead .sorting_desc:after {
+    background-image: url("datatables/images/sort_desc.png");
+}
+table.dataTable thead .sorting_asc_disabled:after {
+    background-image: url("datatables/images/sort_asc_disabled.png");
+}
+table.dataTable thead .sorting_desc_disabled:after {
+    background-image: url("datatables/images/sort_desc_disabled.png");
+}
+
+thead span {
+    display: block;
+}
+
+thead th.nowrap {
+    white-space: nowrap;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom-color: #aaa;
+}
+
+/* rowgroup header */
+tr.dtrg-start td div {
+    display: inline-block;
+    position: sticky;
+    position: -webkit-sticky;
+    left: 10px;
+}
+
+/* column contents */
+tbody td.id {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8em;
+    padding-right: 0 !important;
+}
+
+
+table.dataTable thead th.jacket,
+table.dataTable tbody td.jacket {
+    padding-right: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    height: 50px;
+    width: 50px !important;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #fff 90%, rgba(255,255,255,0));
+    z-index: 1;
+}
+
+tbody tr.odd td.jacket {
+    background-image: linear-gradient(to right, #f9f9f9 90%, rgba(249,249,249,0));
+}
+tbody tr:hover td.jacket {
+    background-image: linear-gradient(to right, #f6f6f6 90%, rgba(246,246,246,0));
+}
+
+th.jacket,
+td.jacket {
+    min-width: 50px;
+    max-width: 50px;
+}
+th.jacket span {
+    visibility: hidden;
+}
+
+td.jacket img {
+    width: 50px;
+    height: 50px;
+}
+
+
+table.dataTable thead th.song-title,
+table.dataTable tbody td.song-title {
+    min-width: 180px;
+    padding-left: 0px;
+}
+
+td.song-title .inner-wrap {
+
+}
+
+td.song-title .title {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 480px) {
+    td.song-title .title {
+        font-size: 1.1em;
+    }
+}
+
+.artist-display {
+    display: none;
+}
+
+td.song-title .artist-display {
+    display: block;
+    margin-top: 0.2em;
+    font-size: 0.8em;
+    color: #666;
+}
+
+td.artist {
+}
+
+th.category,
+td.category {
+    min-width: 90px;
+}
+td.category {
+    font-size: 0.9em;
+}
+@media screen and (max-width: 640px) {
+    td.category {
+        font-size: 1em;
+    }
+}
+
+th.chapter,
+td.chapter {
+    min-width: 100px;
+}
+
+td.chapter {
+    font-size: 0.9em;
+}
+
+@media screen and (max-width: 640px) {
+    td.chapter {
+        font-size: 1em;
+    }
+}
+
+tbody td.title-sort {
+    font-size: 0.7em;
+}
+
+th.type,
+td.type {
+    text-align: center;
+}
+
+.type-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.type-icon span {
+    display: none;
+}
+
+.type-icon.leaf {
+    background-image: url('../../img/card_icon_leaf.png');
+}
+.type-icon.fire {
+    background-image: url('../../img/card_icon_fire.png');
+}
+.type-icon.aqua {
+    background-image: url('../../img/card_icon_aqua.png');
+}
+
+th.character,
+td.character {
+    max-width: 200px;
+}
+
+td.character {
+    font-size: 0.9em;
+}
+@media screen and (max-width: 640px) {
+    td.character {
+        font-size: 1em;
+    }
+}
+
+th.lv,
+td.lv {
+    max-width: 3rem;
+}
+
+th.lv select {
+    max-width: 4.5em;
+}
+
+tbody td.lv {
+    font-size: 1.1em;
+}
+
+.lv-bsc {
+    background: rgba(231,249,231,0.5);
+}
+.lv-adv {
+    background: rgba(255,244,201,0.5);
+}
+.lv-exp {
+    background: rgba(255,224,224,0.5);
+}
+.lv-mas {
+    background: rgba(248,237,255,0.5);
+}
+.lv-lnt {
+    background: rgba(255,255,255,0.5);
+}
+
+.lv-bsc.sorting_1 {
+    background: rgba(231,249,231,1) !important;
+}
+.lv-adv.sorting_1 {
+    background: rgba(255,244,201,1) !important;
+}
+.lv-exp.sorting_1 {
+    background: rgba(255,224,224,1) !important;
+}
+.lv-mas.sorting_1 {
+    background: rgba(248,237,255,1) !important;
+}
+.lv-lnt.sorting_1 {
+    background: rgba(255,255,255,1) !important;
+}
+
+.lv-num-simple {
+
+}
+
+.lv-num-precise {
+    display: block;
+    color: #999;
+    font-size: 0.8em;
+}
+.lv-num-precise:not(:empty):before {
+    content: "(";
+}
+.lv-num-precise:not(:empty):after {
+    content: ")";
+}
+
+tbody td.date {
+    text-align: center;
+}
+
+/* Details */
+.dtr-modal-content h2 .artist {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #666;
+}
+
+table.dtr-details tr td {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+table.dtr-details tr td:first-child {
+    font-weight: bold;
+}
+
+table.dtr-details li span.dtr.data {
+    display: block;
+}
+
+.paging {
+    padding: 0 10px;
+}
+
+footer {
+    padding: 25px 15px 15px 15px;
+    font-size: 0.8em;
+    color: #666;
+}
