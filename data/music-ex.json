@@ -31,7 +31,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -65,8 +65,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.1",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "13.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -101,7 +101,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.3",
+    "lev_mas_i": "11.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -136,7 +136,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.7",
+    "lev_mas_i": "11.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -171,7 +171,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.8",
+    "lev_mas_i": "11.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -206,7 +206,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -241,7 +241,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -275,8 +275,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.2",
-    "lev_mas_i": "13.8",
+    "lev_exc_i": "10.2⚠️",
+    "lev_mas_i": "13.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -308,11 +308,11 @@
     "image_url": "0009.jpg",
     "enemy_lv": "1",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "11.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -343,11 +343,11 @@
     "image_url": "0010.jpg",
     "enemy_lv": "1",
     "enemy_type": "FIRE",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "10.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -381,7 +381,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -416,7 +416,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -450,8 +450,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.7",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -486,7 +486,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.5",
+    "lev_mas_i": "11.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -521,7 +521,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -556,7 +556,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -588,11 +588,11 @@
     "image_url": "0017.jpg",
     "enemy_lv": "20",
     "enemy_type": "FIRE",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "11.0⚠️",
     "lev_mas_i": "13.5⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -626,7 +626,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -658,11 +658,11 @@
     "image_url": "0019.jpg",
     "enemy_lv": "5",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "VARIETY",
@@ -693,11 +693,11 @@
     "image_url": "0020.jpg",
     "enemy_lv": "10",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "11.0⚠️",
     "lev_mas_i": "13.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "チュウマイ",
@@ -728,11 +728,11 @@
     "image_url": "0021.jpg",
     "enemy_lv": "8",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "11.2⚠️",
     "lev_mas_i": "12.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -766,7 +766,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -801,7 +801,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -836,7 +836,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.8",
+    "lev_mas_i": "11.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -871,7 +871,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -906,7 +906,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -940,8 +940,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.5",
-    "lev_mas_i": "12.9",
+    "lev_exc_i": "10.5⚠️",
+    "lev_mas_i": "12.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -976,7 +976,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1008,11 +1008,11 @@
     "image_url": "0029.jpg",
     "enemy_lv": "1",
     "enemy_type": "FIRE",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "10.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -1046,7 +1046,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.0",
+    "lev_mas_i": "11.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1078,11 +1078,11 @@
     "image_url": "0031.jpg",
     "enemy_lv": "1",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "10.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -1116,7 +1116,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.7",
+    "lev_mas_i": "11.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1148,11 +1148,11 @@
     "image_url": "0033.jpg",
     "enemy_lv": "1",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "10.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -1186,7 +1186,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.0",
+    "lev_mas_i": "11.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1221,7 +1221,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.4",
+    "lev_mas_i": "11.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1256,7 +1256,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1290,8 +1290,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.6",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1326,7 +1326,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1360,8 +1360,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "12.9",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "12.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1396,7 +1396,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.8",
+    "lev_mas_i": "11.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1430,8 +1430,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1463,11 +1463,11 @@
     "image_url": "0042.jpg",
     "enemy_lv": "30",
     "enemy_type": "FIRE",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "10.8⚠️",
     "lev_mas_i": "12.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -1501,7 +1501,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.3",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1536,7 +1536,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1571,7 +1571,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.4",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1605,8 +1605,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.2",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "13.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1641,7 +1641,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1675,8 +1675,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.5",
+    "lev_exc_i": "10.4⚠️",
+    "lev_mas_i": "13.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1710,8 +1710,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1746,7 +1746,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.1",
+    "lev_mas_i": "12.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1781,7 +1781,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.0",
+    "lev_mas_i": "11.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1816,7 +1816,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1851,7 +1851,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "10.9",
+    "lev_mas_i": "10.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1885,8 +1885,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.1",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1921,7 +1921,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1955,8 +1955,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "10.4⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -1990,8 +1990,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.0",
-    "lev_mas_i": "14.3",
+    "lev_exc_i": "12.0⚠️",
+    "lev_mas_i": "14.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2026,7 +2026,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.6",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2061,7 +2061,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.4",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2095,8 +2095,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.1",
-    "lev_mas_i": "14.1",
+    "lev_exc_i": "12.1⚠️",
+    "lev_mas_i": "14.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2131,7 +2131,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2166,7 +2166,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.4",
+    "lev_mas_i": "11.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2202,7 +2202,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "14.0"
+    "lev_lnt_i": "14.0⚠️"
   },
   {
     "category": "niconico",
@@ -2237,7 +2237,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "14.0"
+    "lev_lnt_i": "14.0⚠️"
   },
   {
     "category": "niconico",
@@ -2271,7 +2271,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2306,7 +2306,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2340,8 +2340,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.3",
-    "lev_mas_i": "12.9",
+    "lev_exc_i": "10.3⚠️",
+    "lev_mas_i": "12.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2376,7 +2376,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2411,7 +2411,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2445,8 +2445,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.3",
-    "lev_mas_i": "13.7",
+    "lev_exc_i": "10.3⚠️",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2481,7 +2481,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2516,7 +2516,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2551,7 +2551,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.9",
+    "lev_mas_i": "12.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2586,7 +2586,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2620,8 +2620,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "14.0",
+    "lev_exc_i": "11.7⚠️",
+    "lev_mas_i": "14.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2656,7 +2656,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2691,7 +2691,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2726,7 +2726,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2761,7 +2761,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2796,7 +2796,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2831,7 +2831,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2865,8 +2865,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.6",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2900,8 +2900,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.3",
-    "lev_mas_i": "13.6",
+    "lev_exc_i": "10.3⚠️",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2936,7 +2936,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -2971,7 +2971,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.7",
+    "lev_mas_i": "11.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3005,8 +3005,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.3",
-    "lev_mas_i": "14.2",
+    "lev_exc_i": "12.3⚠️",
+    "lev_mas_i": "14.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3040,8 +3040,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.3",
-    "lev_mas_i": "14.7",
+    "lev_exc_i": "12.3⚠️",
+    "lev_mas_i": "14.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3076,7 +3076,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.4",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3110,8 +3110,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "13.5",
+    "lev_exc_i": "10.8⚠️",
+    "lev_mas_i": "13.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3145,8 +3145,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.8",
-    "lev_mas_i": "14.2",
+    "lev_exc_i": "11.8⚠️",
+    "lev_mas_i": "14.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3181,7 +3181,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3215,8 +3215,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "13.8",
+    "lev_exc_i": "11.7⚠️",
+    "lev_mas_i": "13.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3251,7 +3251,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.2",
+    "lev_mas_i": "13.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3285,8 +3285,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.8",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3321,7 +3321,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3356,7 +3356,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3391,7 +3391,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.4",
+    "lev_mas_i": "11.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3426,7 +3426,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "10.9",
+    "lev_mas_i": "10.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3460,8 +3460,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.5",
-    "lev_mas_i": "14.0",
+    "lev_exc_i": "11.5⚠️",
+    "lev_mas_i": "14.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3496,7 +3496,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3531,7 +3531,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3567,7 +3567,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "13.9"
+    "lev_lnt_i": "13.9⚠️"
   },
   {
     "category": "POPS＆ANIME",
@@ -3601,7 +3601,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3636,7 +3636,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3671,7 +3671,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3706,7 +3706,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3741,7 +3741,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.1",
+    "lev_mas_i": "13.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3775,8 +3775,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "13.4",
-    "lev_mas_i": "14.9",
+    "lev_exc_i": "13.4⚠️",
+    "lev_mas_i": "14.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3810,8 +3810,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "13.2",
-    "lev_mas_i": "14.9",
+    "lev_exc_i": "13.2⚠️",
+    "lev_mas_i": "14.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3845,8 +3845,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.7",
-    "lev_mas_i": "14.5",
+    "lev_exc_i": "12.7⚠️",
+    "lev_mas_i": "14.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3878,11 +3878,11 @@
     "image_url": "0111.jpg",
     "enemy_lv": "55",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "12.9⚠️",
     "lev_mas_i": "14.4⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -3913,11 +3913,11 @@
     "image_url": "0112.jpg",
     "enemy_lv": "5",
     "enemy_type": "FIRE",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "11.5⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -3951,7 +3951,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -3986,7 +3986,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4021,7 +4021,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4056,7 +4056,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4090,8 +4090,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.4⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4126,7 +4126,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4161,7 +4161,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4196,7 +4196,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4231,7 +4231,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4266,7 +4266,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4301,7 +4301,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4335,8 +4335,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.2",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.2⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4371,7 +4371,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4403,11 +4403,11 @@
     "image_url": "0126.jpg",
     "enemy_lv": "5",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "10.0⚠️",
     "lev_mas_i": "12.9⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -4441,7 +4441,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4473,11 +4473,11 @@
     "image_url": "0128.jpg",
     "enemy_lv": "5",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.9⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -4511,7 +4511,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.1",
+    "lev_mas_i": "12.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4546,7 +4546,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4581,7 +4581,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4616,7 +4616,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4648,11 +4648,11 @@
     "image_url": "0133.jpg",
     "enemy_lv": "5",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -4685,8 +4685,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.8",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4720,8 +4720,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.9",
-    "lev_mas_i": "13.8",
+    "lev_exc_i": "11.9⚠️",
+    "lev_mas_i": "13.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4757,7 +4757,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "13.0"
+    "lev_lnt_i": "13.0⚠️"
   },
   {
     "category": "オンゲキ",
@@ -4788,11 +4788,11 @@
     "image_url": "0137.jpg",
     "enemy_lv": "8",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.9⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -4825,8 +4825,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.3",
-    "lev_mas_i": "13.0",
+    "lev_exc_i": "11.3⚠️",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4861,7 +4861,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4896,7 +4896,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.1",
+    "lev_mas_i": "12.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -4928,11 +4928,11 @@
     "image_url": "0141.jpg",
     "enemy_lv": "1",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "11.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -4965,8 +4965,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "13.1",
-    "lev_mas_i": "14.6",
+    "lev_exc_i": "13.1⚠️",
+    "lev_mas_i": "14.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5000,8 +5000,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "13.7",
+    "lev_exc_i": "11.7⚠️",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5036,7 +5036,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5068,11 +5068,11 @@
     "image_url": "0145.jpg",
     "enemy_lv": "10",
     "enemy_type": "FIRE",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "11.1⚠️",
     "lev_mas_i": "13.0⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -5106,7 +5106,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.7",
+    "lev_mas_i": "11.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5141,7 +5141,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5176,7 +5176,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5211,7 +5211,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.0",
+    "lev_mas_i": "11.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5246,7 +5246,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5278,11 +5278,11 @@
     "image_url": "0151.jpg",
     "enemy_lv": "20",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "11.2⚠️",
     "lev_mas_i": "13.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -5315,8 +5315,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.9",
-    "lev_mas_i": "13.5",
+    "lev_exc_i": "10.9⚠️",
+    "lev_mas_i": "13.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5352,7 +5352,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "13.7"
+    "lev_lnt_i": "13.7⚠️"
   },
   {
     "category": "オンゲキ",
@@ -5385,8 +5385,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "13.4",
+    "lev_exc_i": "10.8⚠️",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5421,7 +5421,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.1",
+    "lev_mas_i": "11.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5453,11 +5453,11 @@
     "image_url": "0156.jpg",
     "enemy_lv": "1",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "11.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "VARIETY",
@@ -5491,7 +5491,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.6",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5526,7 +5526,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5561,7 +5561,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5596,7 +5596,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5631,7 +5631,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5665,8 +5665,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.6",
-    "lev_mas_i": "13.1",
+    "lev_exc_i": "10.6⚠️",
+    "lev_mas_i": "13.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5701,7 +5701,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5736,7 +5736,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.5",
+    "lev_mas_i": "13.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5771,7 +5771,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5806,7 +5806,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5840,8 +5840,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5876,7 +5876,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "14.4",
+    "lev_mas_i": "14.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5910,8 +5910,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.4",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5946,7 +5946,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -5978,11 +5978,11 @@
     "image_url": "0172.jpg",
     "enemy_lv": "8",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "10.0⚠️",
     "lev_mas_i": "12.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "東方Project",
@@ -6015,8 +6015,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6051,7 +6051,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.1",
+    "lev_mas_i": "12.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6086,7 +6086,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.9",
+    "lev_mas_i": "12.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6121,7 +6121,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6156,7 +6156,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.1",
+    "lev_mas_i": "12.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6191,7 +6191,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6225,8 +6225,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.9",
-    "lev_mas_i": "13.4",
+    "lev_exc_i": "10.9⚠️",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6262,7 +6262,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "14.0"
+    "lev_lnt_i": "14.0⚠️"
   },
   {
     "category": "VARIETY",
@@ -6295,8 +6295,8 @@
     "enemy_type": "LEAF",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.4",
-    "lev_mas_i": "13.7",
+    "lev_exc_i": "11.4⚠️",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6331,7 +6331,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6365,8 +6365,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.1",
-    "lev_mas_i": "12.7",
+    "lev_exc_i": "10.1⚠️",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6401,7 +6401,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6436,7 +6436,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6470,8 +6470,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.4",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6506,7 +6506,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.8",
+    "lev_mas_i": "11.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6538,11 +6538,11 @@
     "image_url": "0188.jpg",
     "enemy_lv": "30",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "10.1⚠️",
     "lev_mas_i": "13.0⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -6573,11 +6573,11 @@
     "image_url": "0189.jpg",
     "enemy_lv": "10",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -6611,7 +6611,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6646,7 +6646,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6680,8 +6680,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "13.3",
-    "lev_mas_i": "14.8",
+    "lev_exc_i": "13.3⚠️",
+    "lev_mas_i": "14.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6716,7 +6716,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6748,11 +6748,11 @@
     "image_url": "0194.jpg",
     "enemy_lv": "60",
     "enemy_type": "LEAF",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
     "lev_exc_i": "12.9⚠️",
     "lev_mas_i": "14.1⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "チュウマイ",
@@ -6785,8 +6785,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.2",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "12.2⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6822,7 +6822,7 @@
     "lev_bas_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "12.8"
+    "lev_lnt_i": "12.8⚠️"
   },
   {
     "category": "オンゲキ",
@@ -6855,8 +6855,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "12.6",
-    "lev_mas_i": "14.3",
+    "lev_exc_i": "12.6⚠️",
+    "lev_mas_i": "14.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6890,8 +6890,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "13.4",
-    "lev_mas_i": "14.9",
+    "lev_exc_i": "13.4⚠️",
+    "lev_mas_i": "14.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6923,11 +6923,11 @@
     "image_url": "0198.jpg",
     "enemy_lv": "9",
     "enemy_type": "AQUA",
-    "lev_adv_i": "⚠️",
-    "lev_bas_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_adv_i": "",
+    "lev_bas_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "チュウマイ",
@@ -6960,8 +6960,8 @@
     "enemy_type": "AQUA",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.7",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -6995,8 +6995,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "10.1",
-    "lev_mas_i": "13.1",
+    "lev_exc_i": "10.1⚠️",
+    "lev_mas_i": "13.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7030,8 +7030,8 @@
     "enemy_type": "FIRE",
     "lev_adv_i": "",
     "lev_bas_i": "",
-    "lev_exc_i": "11.3",
-    "lev_mas_i": "13.5",
+    "lev_exc_i": "11.3⚠️",
+    "lev_mas_i": "13.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7066,7 +7066,7 @@
     "lev_adv_i": "",
     "lev_bas_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7101,7 +7101,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7133,11 +7133,11 @@
     "image_url": "0204.jpg",
     "enemy_lv": "3",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.4⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -7168,11 +7168,11 @@
     "image_url": "0205.jpg",
     "enemy_lv": "8",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -7206,7 +7206,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7238,11 +7238,11 @@
     "image_url": "0207.jpg",
     "enemy_lv": "12",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "13.1⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -7273,11 +7273,11 @@
     "image_url": "0208.jpg",
     "enemy_lv": "16",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "10.6⚠️",
     "lev_mas_i": "13.5⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -7308,11 +7308,11 @@
     "image_url": "0209.jpg",
     "enemy_lv": "20",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "11.1⚠️",
     "lev_mas_i": "13.4⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -7345,8 +7345,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.4",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "11.4⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7381,7 +7381,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.1",
+    "lev_mas_i": "12.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7413,11 +7413,11 @@
     "image_url": "0212.jpg",
     "enemy_lv": "12",
     "enemy_type": "AQUA",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.4⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -7448,11 +7448,11 @@
     "image_url": "0213.jpg",
     "enemy_lv": "8",
     "enemy_type": "AQUA",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.3⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -7486,7 +7486,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.0",
+    "lev_mas_i": "12.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7518,11 +7518,11 @@
     "image_url": "0215.jpg",
     "enemy_lv": "8",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.3⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -7555,8 +7555,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.5",
-    "lev_mas_i": "12.8",
+    "lev_exc_i": "10.5⚠️",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7590,8 +7590,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "13.7",
+    "lev_exc_i": "10.8⚠️",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7625,8 +7625,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "14.2",
+    "lev_exc_i": "11.7⚠️",
+    "lev_mas_i": "14.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7660,8 +7660,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.6",
-    "lev_mas_i": "13.8",
+    "lev_exc_i": "11.6⚠️",
+    "lev_mas_i": "13.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7696,7 +7696,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7731,7 +7731,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7763,11 +7763,11 @@
     "image_url": "0222.jpg",
     "enemy_lv": "7",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "東方Project",
@@ -7798,11 +7798,11 @@
     "image_url": "0223.jpg",
     "enemy_lv": "15",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "10.9⚠️",
     "lev_mas_i": "13.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "東方Project",
@@ -7835,8 +7835,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.6",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.6⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7868,11 +7868,11 @@
     "image_url": "0225.jpg",
     "enemy_lv": "25",
     "enemy_type": "AQUA",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "12.3⚠️",
     "lev_mas_i": "14.3⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "niconico",
@@ -7906,7 +7906,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.8",
+    "lev_mas_i": "11.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -7942,7 +7942,7 @@
     "lev_adv_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "12.9"
+    "lev_lnt_i": "12.9⚠️"
   },
   {
     "category": "VARIETY",
@@ -7977,7 +7977,7 @@
     "lev_adv_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "14.7"
+    "lev_lnt_i": "14.7⚠️"
   },
   {
     "category": "POPS＆ANIME",
@@ -8011,7 +8011,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.7",
+    "lev_mas_i": "11.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8046,7 +8046,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8081,7 +8081,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8113,11 +8113,11 @@
     "image_url": "0232.jpg",
     "enemy_lv": "3",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -8151,7 +8151,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8185,8 +8185,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.2",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "13.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8218,11 +8218,11 @@
     "image_url": "0235.jpg",
     "enemy_lv": "10",
     "enemy_type": "LEAF",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "10.5⚠️",
     "lev_mas_i": "13.4⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "東方Project",
@@ -8256,7 +8256,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8290,8 +8290,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.8",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8323,11 +8323,11 @@
     "image_url": "0238.jpg",
     "enemy_lv": "30",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "13.2⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -8358,11 +8358,11 @@
     "image_url": "0239.jpg",
     "enemy_lv": "30",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "12.9⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -8395,8 +8395,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "12.1",
-    "lev_mas_i": "14.5",
+    "lev_exc_i": "12.1⚠️",
+    "lev_mas_i": "14.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8428,11 +8428,11 @@
     "image_url": "0241.jpg",
     "enemy_lv": "20",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "11.5⚠️",
     "lev_mas_i": "13.7⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "東方Project",
@@ -8463,11 +8463,11 @@
     "image_url": "0242.jpg",
     "enemy_lv": "35",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "11.6⚠️",
     "lev_mas_i": "13.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -8501,7 +8501,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8535,8 +8535,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.0",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8571,7 +8571,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.4",
+    "lev_mas_i": "13.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8606,7 +8606,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8638,11 +8638,11 @@
     "image_url": "0247.jpg",
     "enemy_lv": "1",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "11.9⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "オンゲキ",
@@ -8676,7 +8676,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8710,8 +8710,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "12.2",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "12.2⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8743,11 +8743,11 @@
     "image_url": "0250.jpg",
     "enemy_lv": "50",
     "enemy_type": "AQUA",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
     "lev_exc_i": "11.8⚠️",
     "lev_mas_i": "13.8⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "東方Project",
@@ -8780,8 +8780,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.8",
-    "lev_mas_i": "13.5",
+    "lev_exc_i": "10.8⚠️",
+    "lev_mas_i": "13.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8815,8 +8815,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "12.1",
-    "lev_mas_i": "14.0",
+    "lev_exc_i": "12.1⚠️",
+    "lev_mas_i": "14.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8850,8 +8850,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.9",
-    "lev_mas_i": "14.5",
+    "lev_exc_i": "11.9⚠️",
+    "lev_mas_i": "14.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8886,7 +8886,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8918,11 +8918,11 @@
     "image_url": "0255.jpg",
     "enemy_lv": "7",
     "enemy_type": "FIRE",
-    "lev_bas_i": "⚠️",
-    "lev_adv_i": "⚠️",
-    "lev_exc_i": "⚠️",
+    "lev_bas_i": "",
+    "lev_adv_i": "",
+    "lev_exc_i": "",
     "lev_mas_i": "11.6⚠️",
-    "lev_lnt_i": "⚠️"
+    "lev_lnt_i": ""
   },
   {
     "category": "POPS＆ANIME",
@@ -8956,7 +8956,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.6",
+    "lev_mas_i": "12.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -8990,8 +8990,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "13.2",
-    "lev_mas_i": "14.8",
+    "lev_exc_i": "13.2⚠️",
+    "lev_mas_i": "14.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9026,7 +9026,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9060,8 +9060,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "13.0",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9095,8 +9095,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.6",
-    "lev_mas_i": "13.9",
+    "lev_exc_i": "11.6⚠️",
+    "lev_mas_i": "13.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9131,7 +9131,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.2",
+    "lev_mas_i": "12.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9166,7 +9166,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9201,7 +9201,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.3",
+    "lev_mas_i": "12.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9236,7 +9236,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.4",
+    "lev_mas_i": "12.4⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9271,7 +9271,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.1",
+    "lev_mas_i": "13.1⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9305,8 +9305,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.2",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "13.2⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9341,7 +9341,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9376,7 +9376,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9411,7 +9411,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.9",
+    "lev_mas_i": "11.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9445,8 +9445,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.0",
-    "lev_mas_i": "12.7",
+    "lev_exc_i": "10.0⚠️",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9481,7 +9481,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "14.0",
+    "lev_mas_i": "14.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9517,7 +9517,7 @@
     "lev_adv_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": "14.2"
+    "lev_lnt_i": "14.2⚠️"
   },
   {
     "category": "チュウマイ",
@@ -9550,8 +9550,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "12.8",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9585,8 +9585,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.4⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9621,7 +9621,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9655,8 +9655,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.4",
-    "lev_mas_i": "12.9",
+    "lev_exc_i": "10.4⚠️",
+    "lev_mas_i": "12.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9690,8 +9690,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.0",
-    "lev_mas_i": "13.6",
+    "lev_exc_i": "11.0⚠️",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9726,7 +9726,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.5",
+    "lev_mas_i": "12.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9760,8 +9760,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.7",
-    "lev_mas_i": "13.3",
+    "lev_exc_i": "10.7⚠️",
+    "lev_mas_i": "13.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9796,7 +9796,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9831,7 +9831,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9865,8 +9865,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "12.7",
-    "lev_mas_i": "14.5",
+    "lev_exc_i": "12.7⚠️",
+    "lev_mas_i": "14.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9900,8 +9900,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "13.1",
-    "lev_mas_i": "14.9",
+    "lev_exc_i": "13.1⚠️",
+    "lev_mas_i": "14.9⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9936,7 +9936,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -9971,7 +9971,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "11.5",
+    "lev_mas_i": "11.5⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10006,7 +10006,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10040,8 +10040,8 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "10.5",
-    "lev_mas_i": "13.6",
+    "lev_exc_i": "10.5⚠️",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10075,8 +10075,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.1",
-    "lev_mas_i": "13.7",
+    "lev_exc_i": "11.1⚠️",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10111,7 +10111,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.0",
+    "lev_mas_i": "13.0⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10145,8 +10145,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.7",
-    "lev_mas_i": "13.6",
+    "lev_exc_i": "11.7⚠️",
+    "lev_mas_i": "13.6⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10180,8 +10180,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "12.3",
-    "lev_mas_i": "13.8",
+    "lev_exc_i": "12.3⚠️",
+    "lev_mas_i": "13.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10215,8 +10215,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "11.9",
-    "lev_mas_i": "14.3",
+    "lev_exc_i": "11.9⚠️",
+    "lev_mas_i": "14.3⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10251,7 +10251,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.7",
+    "lev_mas_i": "12.7⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10286,7 +10286,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "12.8",
+    "lev_mas_i": "12.8⚠️",
     "lev_lnt_i": ""
   },
   {
@@ -10321,7 +10321,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "13.7",
+    "lev_mas_i": "13.7⚠️",
     "lev_lnt_i": ""
   },
   {
