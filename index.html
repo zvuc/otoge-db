@@ -8,15 +8,29 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="datatables/datatables.min.js"></script>
-    <link rel="stylesheet" href="datatables/datatables.min.css">
+    <link rel="stylesheet" href="datatables/datatables.css">
     <link rel="stylesheet" href="style.css">
 
     <title>オンゲキ収録曲DB</title>
 </head>
 <body>
     <header>
-        <h1><a href="#" class="reset-search">ONGEKI DB</a> <span>SUMMER</span><span class="plus">PLUS</span></h1>
-        <div class="lastupdated"><span>DATA: 20200220</span></div>
+        <h1>
+            <a href="#" class="reset-search">
+                <span class="main">ONGEKI DB</span>
+                <span class="sub">SUMMER <span class="sub plus">PLUS</span></span>
+            </a>
+        </h1>
+        <div class="aside">
+            <div class="lastupdated"><span>DATA: 20200220</span></div>
+            <div class="theme-switcher">
+                <span class="label"></span>
+                <label class="switch" for="themeToggleCheckbox">
+                    <input type="checkbox" id="themeToggleCheckbox" checked />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </div>
     </header>
     <div class="notice-bar">
         ⚠️ 譜面定数はまだSUMMER ver.時点でのものであり、最新の情報と異なる場合があります。ご了承ください。
@@ -55,6 +69,25 @@
     </footer>
 
     <script>
+        // theme switcher
+        const toggleSwitch = document.getElementById('themeToggleCheckbox');
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleSwitch.checked = false;
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+            else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }    
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
         $(document).ready(function() {
             var columns_params = [
                 { 
