@@ -89,7 +89,7 @@
 
 
     --ui-color-page-background: var(--ui-color-background-100);
-    --ui-color-text: var(--ui-color-foreground-095);
+    --ui-color-text: var(--ui-color-foreground-090);
     --ui-color-form-background: var(--ui-color-background-100);
     --ui-color-form-border: var(--ui-color-foreground-020);
     --ui-color-btn: var(--ui-color-background-070);
@@ -143,7 +143,7 @@
 
 
         --ui-color-page-background: var(--ui-color-background-100);
-        --ui-color-text: var(--ui-color-foreground-095);
+        --ui-color-text: var(--ui-color-foreground-090);
         --ui-color-form-background: var(--ui-color-background-100);
         --ui-color-form-border: var(--ui-color-foreground-020);
         --ui-color-btn: var(--ui-color-background-070);
@@ -244,7 +244,7 @@ header:before {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
+    left: -2px;
     right: 0;
     height: 3px;
     background-image: linear-gradient(to right, rgb(var(--color-ongeki-summer-accent-01)) 0%, rgb(var(--color-ongeki-summer-accent-01)) 340px, #fff 340px, #fff 800px);
@@ -436,7 +436,7 @@ input:checked + .slider:before {
 .column-toggle-bar {
     display: block;
     margin-bottom: 10px;
-    padding: 2px 10px;
+    padding: 2px 8px;
     background-color: rgb(var(--ui-color-background-080));
     border-top: 2px solid rgb(var(--ui-color-background-100));
     overflow: hidden;
@@ -449,26 +449,38 @@ input:checked + .slider:before {
 }
 
 .column-toggle-bar .dt-buttons {
+    display: flex;
+    flex-flow: wrap;
     float: none;
 }
 
 @media screen and (max-width: 480px) {
     .column-toggle-bar .dt-buttons {
-        display: flex;
+        flex-flow: nowrap;
     }
 }
 .column-toggle-bar .dt-buttons > button.dt-button {
+    flex: 0 0 auto;
     position: relative;
-    margin: 1px 0;
+    margin: 2px 2px;
     font-weight: bold;
     font-size: 1rem;
-    height: 40px;
+    height: 35px;
     color: rgb(var(--ui-color-foreground-090));
     overflow: visible;
     border: none;
     box-shadow: none;
     background: none;
-    padding: 5px 20px;
+    padding: 5px 15px;
+}
+
+.column-toggle-bar .dt-buttons > button.dt-button.config-btn {
+    margin-right: 0;
+}
+@media screen and (min-width: 800px) {
+    .column-toggle-bar .dt-buttons > button.dt-button.config-btn {
+        margin-left: auto;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -657,11 +669,11 @@ div.dt-button-collection.fixed {
 }
 
 .dataTables_wrapper .dataTables_length select {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .dataTables_wrapper .dataTables_length select option {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .dataTables_wrapper .dataTables_info {
@@ -680,6 +692,7 @@ div.dt-button-collection.fixed {
     padding: 5px 10px;
     border-radius: 2px;
     -webkit-appearance: none;
+    color: rgb(var(--ui-color-text));
 }
 
 .dataTables_wrapper .dataTables_filter input:focus {
@@ -804,21 +817,7 @@ table.dataTable tbody td.jacket {
     left: 0;
     height: 50px;
     width: 50px !important;
-    background-color: rgb(var(--ui-color-table-row-bg));
-    mask-image: 
-        linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
-    -webkit-mask-image: 
-        linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
     z-index: 1;
-}
-
-tbody tr.odd td.jacket {
-    background-color: 
-        rgb(var(--ui-color-table-row-bg-odd));
-}
-tbody tr:hover td.jacket {
-    background-color: 
-        rgb(var(--ui-color-table-row-bg-hover));
 }
 
 th.jacket,
@@ -829,7 +828,24 @@ td.jacket {
 th.jacket span {
     visibility: hidden;
 }
-
+td.jacket .img-wrap {
+    display: block;
+    margin: -8px -10px;
+    padding: 8px 10px;
+    background-color: rgb(var(--ui-color-table-row-bg));
+    mask-image: 
+        linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
+    -webkit-mask-image: 
+        linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
+}
+tbody tr.odd td.jacket .img-wrap {
+    background-color: 
+        rgb(var(--ui-color-table-row-bg-odd));
+}
+tbody tr:hover td.jacket .img-wrap {
+    background-color: 
+        rgb(var(--ui-color-table-row-bg-hover));
+}
 td.jacket img {
     width: 50px;
     height: 50px;
@@ -998,12 +1014,12 @@ tbody td.lv {
     color: rgb(var(--ui-color-foreground-060));
     font-size: 0.8em;
 }
-.lv-num-precise:not(:empty):before {
+/*.lv-num-precise:not(:empty):before {
     content: "(";
 }
 .lv-num-precise:not(:empty):after {
     content: ")";
-}
+}*/
 
 tbody td.date {
     text-align: center;
