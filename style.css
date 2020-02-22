@@ -56,6 +56,59 @@
     --current-theme-icon: "🔆";
 }
 
+:root[data-theme="dark"] {
+    --ui-color-background-100: 17,17,17; /* #111 */
+    --ui-color-background-098: 22,22,22; /* #161616 */
+    --ui-color-background-095: 26,26,26; /* #1a1a1a */
+    --ui-color-background-093: 36,36,36; /* #242424 */
+    --ui-color-background-090: 46,46,46; /* #2e2e2e */
+    --ui-color-background-080: 58,58,58; /* #3a3a3a */
+    --ui-color-background-070: 74,74,74; /* #4a4a4a */
+    --ui-color-background-060: 92,92,92; /* #5c5c5c */
+    --ui-color-background-050: 107,107,107; /* #6b6b6b */
+    --ui-color-background-040: 121,121,121; /* #797979 */
+    --ui-color-background-030: 158,158,158; /* #9e9e9e */
+    --ui-color-background-020: 175,175,175; /* #afafaf */
+    --ui-color-background-010: 193,193,193; /* #c1c1c1 */
+    
+    --ui-color-foreground-100: 255,255,255; /* #fff */
+    --ui-color-foreground-098: 250,250,250; /* #fafafa */
+    --ui-color-foreground-095: 247,247,247; /* #f7f7f7 */
+    --ui-color-foreground-090: 241,241,241; /* #f1f1f1 */
+    --ui-color-foreground-080: 236,236,236; /* #ececec */
+    --ui-color-foreground-070: 218,218,218; /* #dadada */
+    --ui-color-foreground-060: 193,193,193; /* #c1c1c1 */
+    --ui-color-foreground-050: 175,175,175; /* #afafaf */
+    --ui-color-foreground-040: 158,158,158; /* #9e9e9e */
+    --ui-color-foreground-030: 121,121,121; /* #797979 */
+    --ui-color-foreground-020: 107,107,107; /* #6b6b6b */
+    --ui-color-foreground-010: 92,92,92; /* #5c5c5c */
+
+    --ui-color-foreground-inverted: 255,255,255; /* #fff */
+    --ui-color-background-inverted: 0,0,0; /* #000 */
+
+
+    --ui-color-page-background: var(--ui-color-background-100);
+    --ui-color-text: var(--ui-color-foreground-095);
+    --ui-color-form-background: var(--ui-color-background-100);
+    --ui-color-form-border: var(--ui-color-foreground-020);
+    --ui-color-btn: var(--ui-color-background-070);
+    --ui-color-btn-active: var(--ui-color-background-050);
+    --ui-color-highlight: var(--color-ongeki-summer-accent-01);
+    --ui-color-primary: var(--color-ongeki-summer-accent-02);
+    --ui-color-warning-bg: 84,83,29; /* #54531d */
+
+    --ui-color-table-row-bg: var(--ui-color-background-100);
+    --ui-color-table-row-bg-odd: var(--ui-color-background-098);
+    --ui-color-table-row-bg-hover: var(--ui-color-background-095);
+    --ui-color-table-row-bg-sorting: var(--ui-color-background-095);
+    --ui-color-table-row-border: var(--ui-color-background-080);
+    --ui-color-table-row-group-bg: var(--ui-color-background-093);
+    --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
+
+    --current-theme-icon: "🌘";
+}
+
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         --ui-color-background-100: 17,17,17; /* #111 */
@@ -111,63 +164,13 @@
     }
 }
 
-:root[data-theme="dark"] {
-    --ui-color-background-100: 17,17,17; /* #111 */
-    --ui-color-background-098: 22,22,22; /* #161616 */
-    --ui-color-background-095: 26,26,26; /* #1a1a1a */
-    --ui-color-background-093: 36,36,36; /* #242424 */
-    --ui-color-background-090: 46,46,46; /* #2e2e2e */
-    --ui-color-background-080: 58,58,58; /* #3a3a3a */
-    --ui-color-background-070: 74,74,74; /* #4a4a4a */
-    --ui-color-background-060: 92,92,92; /* #5c5c5c */
-    --ui-color-background-050: 107,107,107; /* #6b6b6b */
-    --ui-color-background-040: 121,121,121; /* #797979 */
-    --ui-color-background-030: 158,158,158; /* #9e9e9e */
-    --ui-color-background-020: 175,175,175; /* #afafaf */
-    --ui-color-background-010: 193,193,193; /* #c1c1c1 */
-    
-    --ui-color-foreground-100: 255,255,255; /* #fff */
-    --ui-color-foreground-098: 250,250,250; /* #fafafa */
-    --ui-color-foreground-095: 247,247,247; /* #f7f7f7 */
-    --ui-color-foreground-090: 241,241,241; /* #f1f1f1 */
-    --ui-color-foreground-080: 236,236,236; /* #ececec */
-    --ui-color-foreground-070: 218,218,218; /* #dadada */
-    --ui-color-foreground-060: 193,193,193; /* #c1c1c1 */
-    --ui-color-foreground-050: 175,175,175; /* #afafaf */
-    --ui-color-foreground-040: 158,158,158; /* #9e9e9e */
-    --ui-color-foreground-030: 121,121,121; /* #797979 */
-    --ui-color-foreground-020: 107,107,107; /* #6b6b6b */
-    --ui-color-foreground-010: 92,92,92; /* #5c5c5c */
-
-    --ui-color-foreground-inverted: 255,255,255; /* #fff */
-    --ui-color-background-inverted: 0,0,0; /* #000 */
-
-
-    --ui-color-page-background: var(--ui-color-background-100);
-    --ui-color-text: var(--ui-color-foreground-095);
-    --ui-color-form-background: var(--ui-color-background-100);
-    --ui-color-form-border: var(--ui-color-foreground-020);
-    --ui-color-btn: var(--ui-color-background-070);
-    --ui-color-btn-active: var(--ui-color-background-050);
-    --ui-color-highlight: var(--color-ongeki-summer-accent-01);
-    --ui-color-primary: var(--color-ongeki-summer-accent-02);
-    --ui-color-warning-bg: 84,83,29; /* #54531d */
-
-    --ui-color-table-row-bg: var(--ui-color-background-100);
-    --ui-color-table-row-bg-odd: var(--ui-color-background-098);
-    --ui-color-table-row-bg-hover: var(--ui-color-background-095);
-    --ui-color-table-row-bg-sorting: var(--ui-color-background-095);
-    --ui-color-table-row-border: var(--ui-color-background-080);
-    --ui-color-table-row-group-bg: var(--ui-color-background-093);
-    --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
-
-    --current-theme-icon: "🌘";
-}
-
 html {
     font-size: 14px;
     padding: 0;
     margin: 0;
+    background: rgb(var(--ui-color-page-background));
+    color: rgb(var(--ui-color-text));
+    transition: background-color 0.3s;
 }
 @media screen and (max-width: 480px) {
     html {
@@ -179,17 +182,23 @@ html {
         font-size: 16px;
     }
 }
+
+html.transitioning *,
+html.transitioning *:before,
+html.transitioning *:after,
+html.transitioning button {
+    transition-property: background, border-color;
+    transition-duration: 0.3s;
+}
 body {
     font-family: -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3","Hiragino Sans GB", "Meiryo", "Segoe UI", sans-serif;
     font-size: 1rem;
     font-feature-settings: "palt";
     padding: 0;
     margin: 0;
+    background: rgb(var(--ui-color-page-background));
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background: rgb(var(--ui-color-page-background));
-    color: rgb(var(--ui-color-text));
-    transition: background-color 0.2s, color 0.2s;
 }
 
 button, input {
@@ -485,15 +494,23 @@ input:checked + .slider:before {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: transparent;
-    background-image: 
-        linear-gradient(45deg, transparent 8px, rgb(var(--ui-color-btn)) 8px),
-        linear-gradient(rgb(var(--ui-color-btn)) 0%, rgb(var(--ui-color-btn)) 100%),
-        linear-gradient(225deg, transparent 8px, rgb(var(--ui-color-btn)) 8px),
-        linear-gradient(rgb(var(--ui-color-btn)) 0%, rgb(var(--ui-color-btn)) 100%);
-    background-position: bottom left, top left, top right, bottom right;
-    background-size: 50.1% 50.1%;
-    background-repeat: no-repeat;
+    background-color: rgb(var(--ui-color-btn));
+    mask-image: 
+        linear-gradient(45deg, transparent 8px, rgb(0,0,0) 8px),
+        linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
+        linear-gradient(225deg, transparent 8px, rgb(0,0,0) 8px),
+        linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+    -webkit-mask-image: 
+        linear-gradient(45deg, transparent 8px, rgb(0,0,0) 8px),
+        linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
+        linear-gradient(225deg, transparent 8px, rgb(0,0,0) 8px),
+        linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+    mask-position: bottom left, top left, top right, bottom right;
+    -webkit-mask-position: bottom left, top left, top right, bottom right;
+    mask-size: 50.1% 50.1%;
+    -webkit-mask-size: 50.1% 50.1%;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
 }
 
 .column-toggle-bar .dt-buttons > button.dt-button:hover {
@@ -520,6 +537,7 @@ input:checked + .slider:before {
 }
 
 .column-toggle-bar .dt-buttons > button.dt-button:active:before {
+    background-color: rgb(var(--ui-color-btn-active));
     background-image: 
         linear-gradient(45deg, transparent 8px, rgb(var(--ui-color-btn-active)) 8px),
         linear-gradient(rgb(var(--ui-color-btn-active)) 0%, rgb(var(--ui-color-btn-active)) 100%),
@@ -786,19 +804,21 @@ table.dataTable tbody td.jacket {
     left: 0;
     height: 50px;
     width: 50px !important;
-    background-color: transparent;
-    background-image: 
-        linear-gradient(to right, rgb(var(--ui-color-table-row-bg)) 90%, rgba(var(--ui-color-table-row-bg),0));
+    background-color: rgb(var(--ui-color-table-row-bg));
+    mask-image: 
+        linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
+    -webkit-mask-image: 
+        linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
     z-index: 1;
 }
 
 tbody tr.odd td.jacket {
-    background-image: 
-        linear-gradient(to right, rgb(var(--ui-color-table-row-bg-odd)) 90%, rgba(var(--ui-color-table-row-bg-odd),0));
+    background-color: 
+        rgb(var(--ui-color-table-row-bg-odd));
 }
 tbody tr:hover td.jacket {
-    background-image: 
-        linear-gradient(to right, rgb(var(--ui-color-table-row-bg-hover)) 90%, rgba(var(--ui-color-table-row-bg-hover),0));
+    background-color: 
+        rgb(var(--ui-color-table-row-bg-hover));
 }
 
 th.jacket,
