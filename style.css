@@ -54,6 +54,7 @@
     --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
     --current-theme-icon: "🔆";
+    --sort-arrows-opacity: 1;
 }
 
 :root[data-theme="dark"] {
@@ -107,6 +108,7 @@
     --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
     --current-theme-icon: "🌘";
+    --sort-arrows-opacity: 0.3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -161,6 +163,7 @@
         --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
         --current-theme-icon: "🌘";
+        --sort-arrows-opacity: 0.3;
     }
 }
 
@@ -187,7 +190,7 @@ html.transitioning *,
 html.transitioning *:before,
 html.transitioning *:after,
 html.transitioning button {
-    transition-property: background, border-color;
+    transition-property: background, border-color, opacity;
     transition-duration: 0.3s;
 }
 body {
@@ -220,6 +223,10 @@ select {
     color: rgb(var(--foreground));
     -moz-appearance: none;
     -webkit-appearance: none;
+}
+
+select:hover {
+    background-color: rgb(var(--ui-color-background-090));
 }
 
 select:focus {
@@ -797,12 +804,15 @@ table.dataTable thead .sorting_desc_disabled:after {
     background-image: url("datatables/images/sort_both.png");
     background-position: right center;
     background-repeat: no-repeat;
+    opacity: var(--sort-arrows-opacity);
 }
 table.dataTable thead .sorting_asc:after {
     background-image: url("datatables/images/sort_asc.png");
+    opacity: 1;
 }
 table.dataTable thead .sorting_desc:after {
     background-image: url("datatables/images/sort_desc.png");
+    opacity: 1;
 }
 table.dataTable thead .sorting_asc_disabled:after {
     background-image: url("datatables/images/sort_asc_disabled.png");
