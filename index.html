@@ -40,7 +40,7 @@
                 <!-- 2 --><th class="all"><span>A</span></th>
                 <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
-                <!-- 5 --><th class="never"><span>アーティスト</span></th>
+                <!-- 5 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 6 --><th class="all toggle"><span>ジャンル</span></th>
                 <!-- 7 --><th class="never"><span>ジャンルID</span></th>
                 <!-- 8 --><th class="never"><span>チャプターID</span></th>
@@ -142,22 +142,23 @@
                     displayTitle: "#",
                     data: "image_url",
                     className: "id",
-                    searchable: false,
+                    data: function(row) {
+                        return row.image_url.split(".")[0];
+                    },
+                    render: renderInWrapper(),
                     width: "20px",
-                    render: function(data) {
-                        return data.split(".")[0];
-                    }
+                    searchable: false
                 },
                 { 
                     displayTitle: "アルバムアート",
                     data: "image_url",
                     className: "jacket",
-                    orderable: false,
-                    searchable: false,
                     render: function(data) {
-                        return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span>';
+                        return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span><span class="index">' + data.split(".")[0] + '<\/span>';
                     },
-                    width: "50px"
+                    width: "50px",
+                    orderable: false,
+                    searchable: false
                 },
                 { 
                     displayTitle: "曲名",
@@ -184,15 +185,25 @@
                     visible: false
                 },
                 { 
-                    displayTitle: "アーティスト",
-                    data: "artist",
+                    // redundant (fake) merged title column for mobile
+                    displayTitle: "曲名・アーティスト",
+                    data: "title",
                     className: "artist",
-                    visible: false
+                    render: function ( data, type, row ) {
+                        // If display or filter data is requested, return title
+                        if ( type === 'display' ) {
+                            return '<div class="inner-wrap"><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
+                        }
+                        else {
+                            return row.artist;
+                        }
+                    }
                 },
                 { 
                     displayTitle: "ジャンル",
                     data: "category",
                     className: "category",
+                    render: renderInWrapper(),
                     customDropdownSortSource: 'category_id',
                     filterable: true
                 },
@@ -271,6 +282,7 @@
                     },
                     className: "chapter",
                     width: "15em",
+                    render: renderInWrapper(),
                     filterable: true
                 },
                 { 
@@ -279,7 +291,7 @@
                     className: "type",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
-                            return '<span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span>';
+                            return '<div class="inner-wrap"><span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span></div>';
                         }
                         // use chara_id for sort
                         else {
@@ -300,7 +312,7 @@
                     className: "character",
                     render: function ( data, type, row ) {
                         if ( type === 'display' || type === 'filter' ) {
-                            return data;
+                            return '<div class="inner-wrap">' + data + '<\/div>';
                         }
                         // use chara_id for sort
                         else {
@@ -317,7 +329,7 @@
                     className: "enemy-lv",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
-                            return 'Lv.' + data;
+                            return '<div class="inner-wrap">Lv.' + data + '<\/div>';
                         }
                         // use chara_id for sort
                         else {
@@ -388,6 +400,7 @@
                     data: "date",
                     className: "date",
                     filterable: true,
+                    render: renderInWrapper(),
                     width: "4em"
                 }
             ];
@@ -427,7 +440,18 @@
             function renderLvNum(simple_lv, precise_lv) {
                 return function ( data, type, row ) {
                     if ( type === 'display' ) {
-                        return '<span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span>';
+                        return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
+                    }
+                    else {
+                        return data;
+                    }
+                }
+            }
+
+            function renderInWrapper() {
+                return function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<div class="inner-wrap">' + data + '<\/div>';
                     }
                     else {
                         return data;
