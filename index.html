@@ -467,29 +467,36 @@
                 "buttons": [
                     {
                         extend: 'colvisRestore',
-                        text: 'RESET',
+                        text: '全表示',
+                    },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     text: '全レベル ON',
+                    //     show: [ 14, 15, 16, 17, 18 ]
+                    // },
+                    {
+                        extend: 'colvisGroup',
+                        text: '譜面レベルのみ',
+                        hide: [ 6, 8, 9, 10, 12, 13, 20 ],
+                        show: [ 14, 15, 16, 17, 18 ],
                     },
                     {
                         extend: 'colvisGroup',
-                        text: '全難易度 ON',
-                        show: [ 14, 15, 16, 17, 18 ]
+                        text: 'EXPERT以上のみ',
+                        hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 20 ],
+                        show: [ 16, 17, 18 ]
                     },
-                    {
-                        extend: 'colvisGroup',
-                        text: 'EXP以下 OFF',
-                        hide: [ 14, 15 ]
-                    },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     className: 'asdf',
+                    //     text: 'ジャンル・チャプタ OFF',
+                    //     hide: [ 6, 9 ]
+                    // },
                     {
                         extend: 'colvisGroup',
                         className: 'asdf',
-                        text: 'ジャンル・チャプタ OFF',
-                        hide: [ 6, 9 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        className: 'asdf',
-                        text: '相手・Lv OFF',
-                        hide: [ 10, 12, 13 ]
+                        text: '属性・Lv 表示',
+                        show: [ 10, 13 ]
                     },
                     {
                         extend: 'colvis',
@@ -503,7 +510,7 @@
                 ],
                 "columns": columns_params,
                 "deferRender": true,
-                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lf><"toolbar"i><"table-inner"rt><"paging"p>',
+                "dom": '<"column-toggle-bar"B><"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"il>><"table-inner"rt><"paging"p>',
                 "language": {
                     "sEmptyTable":     "テーブルにデータがありません",
                     "sInfo":           " _TOTAL_ 曲中 _START_〜_END_ まで表示中",
@@ -666,6 +673,8 @@
             // table.on( 'search.dt', function () {
             //     console.log('search happened')
             // } );
+
+            $(".column-toggle-bar").prepend('<span class="label">ビューカスタマイズ</span>');
     
 
             $('a.reset-search').on('click', function(){
