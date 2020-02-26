@@ -787,8 +787,11 @@ div.dt-button-collection.fixed {
     position: relative;
 }
 
-#table {
-    border-top: 1px solid rgb(var(--ui-color-table-row-border));
+table#table {
+    display: none;
+}
+table#table.dataTable {
+    display: block;
 }
 
 .dataTables_scroll .dataTables_scrollHead {
@@ -1061,8 +1064,12 @@ table.dataTable td.song-title .title {
     }
 }
 
+table.dataTable thead th.artist,
 table.dataTable tbody td.artist {
-    min-width: 180px;
+    min-width: 160px;
+}
+
+table.dataTable tbody td.artist {
     z-index: 0;
 }
 
@@ -1156,6 +1163,7 @@ td.character {
 
 th.lv,
 td.lv {
+    min-width: 35px;
     max-width: 3rem;
 }
 
@@ -1215,7 +1223,9 @@ tbody td.lv {
     content: ")";
 }*/
 
+thead th.date,
 tbody td.date {
+    min-width: 50px;
     text-align: center;
 }
 
