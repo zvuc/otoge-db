@@ -935,7 +935,9 @@ table.dataTable tbody td.jacket {
     position: sticky;
     left: 0;
     height: 50px;
-    width: 60px !important;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 0 !important;
     z-index: 2;
     /*background-color: inherit;*/
 }
@@ -955,17 +957,10 @@ td.jacket .index {
     font-size: 0.6em;
     font-variant-numeric: tabular-nums;
 }
-@media screen and (max-width: 480px) {
-    td.jacket .index {
-        display: block;
-        width: 50px;
-        opacity: 0.6;
-    }
-}
 
 td.jacket .img-wrap {
     display: block;
-    margin: -8px -10px;
+    width: 55px;
     padding: 12px 8px 12px 8px;
     background-color: rgb(var(--ui-color-table-row-bg));
     mask-image: 
@@ -989,6 +984,20 @@ table.dataTable td.jacket img {
     border-radius: 1px;
 }
 
+@media screen and (max-width: 480px) {
+    td.jacket .index {
+        display: block;
+        width: 50px;
+        opacity: 0.6;
+    }
+    td.jacket .img-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
 
 table.dataTable thead th.song-title,
 table.dataTable tbody td.song-title {
@@ -1012,20 +1021,29 @@ table.dataTable td.song-title .title {
     table.dataTable tbody td.song-title {
         position: sticky;
         position: -webkit-sticky;
-        left: 70px;
+        left: 60px;
         min-width: 0;
         z-index: 1;
         padding: 0;
+        background-color: inherit;
     }
     table.dataTable tbody td.song-title .inner-wrap {
         position: absolute;
         top: 0;
-        left: -40px;
-        right: calc(-1 * (100vw - 70px));
-        max-width: calc(100vw - 70px);
-        padding: 8px 5px 5px 40px;
+        left: 0;
+        right: calc(-1 * (100vw - 60px));
+        /*max-width: calc(100vw - 60px);*/
+        padding: 8px 12px;
         background-color: rgb(var(--ui-color-table-row-bg));
         border-bottom: 1px solid rgba(var(--ui-color-table-row-border),0.5);
+    }
+
+    table.dataTable tbody tr.odd td.song-title .inner-wrap {
+        background-color: rgb(var(--ui-color-table-row-bg-odd));
+    }
+    
+    table.dataTable tbody tr:hover td.song-title .inner-wrap {
+        background-color: rgb(var(--ui-color-table-row-bg-hover));
     }
 
     table.dataTable tbody td.song-title .title {
