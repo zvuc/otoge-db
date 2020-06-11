@@ -325,15 +325,17 @@ table.dataTable {
 	thead th.song-title,
 	tbody td.song-title {
 		min-width: 180px;
+		width: auto;
 	}
 
 	tbody td.song-title {
 		background-color: transparent;
+
+		.title {
+			font-weight: bold;
+		}
 	}
 
-	td.song-title .title {
-		font-weight: bold;
-	}
 
 	@media screen and (max-width: 480px) {
 		thead th.song-title {
