@@ -1,0 +1,44 @@
+{
+  "name": "ongeki-db",
+  "id": "ongeki-db",
+  "version": "1.0.0",
+  "description": "Song information viewer for Ongeki",
+  "keywords": [
+    "ongeki"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zvuc/ongeki-db"
+  },
+  "homepage": "https//ongeki.usagi.moe",
+  "license": "MIT",
+  "author": {
+    "name": "Hansol Kim <zvuc@usagi.moe>",
+    "url": "https://xenosium.com"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "cssnano": "^4.1.10",
+    "less": "^3.11.1",
+    "postcss-cli": "^7.1.1",
+    "postcss-load-config": "^2.1.0",
+    "postcss-plugin": "^1.0.0",
+    "watch": "^1.0.2"
+  },
+  "postcss": {
+    "map": false,
+    "plugins": {
+      "autoprefixer": {},
+      "cssnano": {}
+    }
+  },
+  "less-watch-compiler": {
+    "minified": false
+  },
+  "scripts": {
+    "build": "yarn less && yarn postcss",
+    "less": "lessc src/style.less style.css",
+    "postcss": "postcss style.css -o style.css --verbose",
+    "watch": "watch 'yarn build' ./src -d"
+  }
+}
