@@ -96,17 +96,31 @@ table#table {
 
 .dataTables_scroll {
 	.dataTables_scrollHead {
+		position: relative;
 		width: auto !important;
 		min-width: 100% !important;
 		position: sticky !important;
 		top: 0;
 		z-index: 3;
 		background-color: rgb(var(--ui-color-table-row-bg));
-		box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 		backdrop-filter: blur(20px);
 
 		@supports (backdrop-filter: blur(20px)) {
-			background-color: rgba(var(--ui-color-table-row-bg),0.5);
+			background-color: rgba(var(--ui-color-table-row-bg),0.8);
+		}
+
+		.dataTables_scrollHeadInner {
+			position: relative;
+
+			&:after {
+				box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+				content: "";
+				position: absolute;
+				bottom: 0px;
+				height: 1px;
+				width: 100%;
+				background-color: rgba(0,0,0,0.2);
+			}
 		}
 
 		thead th {

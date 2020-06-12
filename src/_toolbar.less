@@ -1,31 +1,42 @@
 .dataTables_wrapper {
 	.column-toggle-bar {
 		display: block;
-		padding: 2px 8px;
+		padding: 0;
 		background-color: rgb(var(--ui-color-background-080));
 		border-top: 2px solid rgb(var(--ui-color-background-100));
-		overflow: hidden;
-
-		@media screen and (max-width: 480px) {
-			overflow-x: auto;
-		}
 
 		span.label {
 			display: block;
 			font-size: 0.75rem;
 			font-weight: bold;
-			padding: 3px 0;
+			padding: 5px 15px 0px 15px;
 			margin-bottom: 3px;
 			color: rgb(var(--ui-color-foreground-050));
+
+			@media screen and (max-width: 480px) {
+				padding: 5px 10px 0 10px;
+			}
 		}
 
 		.dt-buttons {
 			display: flex;
 			flex-flow: wrap;
 			float: none;
+			overflow: hidden;
+			padding: 2px 13px;
 
 			@media screen and (max-width: 480px) {
+				padding: 2px 8px;
+				overflow-x: auto;
 				flex-flow: nowrap;
+
+				&:after {
+					content: "";
+					flex: 0 0 auto;
+					display: inline-block;
+					width: 8px;
+					height: 8px;
+				}
 			}
 
 			& > button.dt-button {
@@ -206,7 +217,11 @@
 
 	.toolbar {
 		display: flex;
-		padding: 0 10px;
+		padding: 0 15px;
+
+		@media screen and (max-width: 480px) {
+			padding: 0 10px;
+		}
 	}
 
 	// filters
@@ -240,6 +255,7 @@
 			font-size: 16px;
 			min-width: 70px;
 			max-width: 100px;
+			margin: 0;
 
 			option[data-default] {
 				color: rgb(var(--ui-color-foreground-050));
@@ -277,7 +293,7 @@
 			background-color: rgb(var(--ui-color-form-background));
 			border: 2px solid rgb(var(--ui-color-form-border));
 			height: 32px;
-			margin-top: 3px;
+			margin: 3px 0 0 0;
 			padding: 2px 10px;
 			border-radius: 2px;
 			-webkit-appearance: none;

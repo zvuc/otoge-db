@@ -9,6 +9,10 @@ header {
 	background-image: repeating-linear-gradient(130deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0.2), rgba(255,255,255,0.2) 3px, rgba(255,255,255,0) 4px, rgba(255,255,255,0) 6px), linear-gradient(to right, #fdf953, rgba(255,255,0,0));
 	overflow: hidden;
 
+	@media screen and (max-width: 480px) {
+		padding: 3px 10px;
+	}
+
 	&:before {
 		content: "";
 		position: absolute;
@@ -42,7 +46,7 @@ header {
 			color: inherit;
 			text-decoration: none;
 			color: #fff;
-			line-height: 0.7;
+			line-height: 0.5;
 			vertical-align: middle;
 
 			&:hover {
@@ -130,6 +134,10 @@ header {
 	padding: 5px 20px 5px 30px;
 	display: inline-flex;
 	align-items: center;
+
+	@media screen and (max-width: 480px) {
+		padding-right: 10px;
+	}
 
 	&:before {
 		content: "";
