@@ -183,7 +183,8 @@
                     displayTitle: "曲名 (読み)",
                     data: "title_sort",
                     className: "title-sort",
-                    visible: false
+                    visible: false,
+                    searchable: false
                 },
                 { 
                     // redundant (fake) merged title column for mobile
@@ -198,7 +199,8 @@
                         else {
                             return row.title_sort;
                         }
-                    }
+                    },
+                    searchable: false
                 },
                 { 
                     displayTitle: "ジャンル",
