@@ -12910,7 +12910,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.2",
     "lev_mas_i": "14.8",
     "lev_lnt_i": ""
   },
@@ -12945,7 +12945,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.3",
     "lev_mas_i": "14.9",
     "lev_lnt_i": ""
   }
