@@ -12770,7 +12770,7 @@
     "enemy_type": "",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "10.5",
     "lev_mas_i": "13.1",
     "lev_lnt_i": ""
   },
@@ -12840,7 +12840,7 @@
     "enemy_type": "",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "10.1",
     "lev_mas_i": "13.2",
     "lev_lnt_i": ""
   },
