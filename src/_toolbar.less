@@ -2,8 +2,9 @@
 	.column-toggle-bar {
 		display: block;
 		padding: 0;
-		background-color: rgb(var(--ui-color-background-080));
-		border-top: 2px solid rgb(var(--ui-color-background-100));
+		background: var(--toolbar-bg);
+		border-top: 1px solid rgb(var(--ui-color-background-100));
+		border-bottom: 1px solid rgb(var(--ui-color-background-090));
 
 		span.label {
 			display: block;
@@ -43,7 +44,9 @@
 				flex: 0 0 auto;
 				position: relative;
 				margin: 2px 2px;
-				font-size: 1rem;
+				font-size: 0.9em;
+				letter-spacing: -0.02em;
+				font-weight: bold;
 				height: 35px;
 				color: rgb(var(--ui-color-foreground-090));
 				overflow: visible;
@@ -82,56 +85,48 @@
 					bottom: 0;
 					left: 0;
 					right: 0;
-					background-color: rgb(var(--ui-color-btn));
+					background-color: rgba(var(--ui-color-btn),0.5);
 					mask-image: 
-						linear-gradient(45deg, transparent 8px, rgb(0,0,0) 8px),
+						linear-gradient(45deg, transparent 7px, rgb(0,0,0) 8px),
 						linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
-						linear-gradient(225deg, transparent 8px, rgb(0,0,0) 8px),
-						linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
-					-webkit-mask-image: 
-						linear-gradient(45deg, transparent 8px, rgb(0,0,0) 8px),
-						linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
-						linear-gradient(225deg, transparent 8px, rgb(0,0,0) 8px),
+						linear-gradient(225deg, transparent 7px, rgb(0,0,0) 8px),
 						linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
 					mask-position: bottom left, top left, top right, bottom right;
-					-webkit-mask-position: bottom left, top left, top right, bottom right;
 					mask-size: 50.1% 50.1%;
-					-webkit-mask-size: 50.1% 50.1%;
 					mask-repeat: no-repeat;
-					-webkit-mask-repeat: no-repeat;
 				}
 
 				&:hover {
-					background-image: 
-						linear-gradient(45deg, transparent 6px, rgb(var(--ui-color-highlight)) 6px),
-						linear-gradient(rgb(var(--ui-color-highlight)) 0%, rgb(var(--ui-color-highlight)) 100%),
-						linear-gradient(225deg, transparent 6px, rgb(var(--ui-color-highlight)) 6px),
-						linear-gradient(rgb(var(--ui-color-highlight)) 0%, rgb(var(--ui-color-highlight)) 100%);
-					background-position: bottom left, top left, top right, bottom right;
-					background-size: 50.1% 50.1%;
-					background-repeat: no-repeat;
+					border-radius: 0;
+
+					&:before {
+						background-color: rgba(var(--ui-color-btn),0.8);
+						background-image: 
+							linear-gradient(to right, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-02)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+							linear-gradient(to left, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-02)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+							linear-gradient(45deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px),
+							linear-gradient(225deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px);
+						background-position: bottom right, top left, bottom left, top right;
+						background-size: calc(100% - 11px) 2px, calc(100% - 11px) 2px, 14px 14px, 14px 14px;
+						background-repeat: no-repeat;
+					}
 				}
 
 				&:active {
-					background-image: 
-						linear-gradient(45deg, transparent 6px, rgb(var(--color-ongeki-summer-accent-03)) 6px),
-						linear-gradient(rgb(var(--color-ongeki-summer-accent-03)) 0%, rgb(var(--color-ongeki-summer-accent-03)) 100%),
-						linear-gradient(225deg, transparent 6px, rgb(var(--color-ongeki-summer-accent-03)) 6px),
-						linear-gradient(rgb(var(--color-ongeki-summer-accent-03)) 0%, rgb(var(--color-ongeki-summer-accent-03)) 100%) !important;
-					background-position: bottom left, top left, top right, bottom right !important;
-					background-size: 50.1% 50.1% !important;
-					background-repeat: no-repeat !important;
-					color: rgb(var(--ui-color-foreground-inverted));
+					border-radius: 0;
+
+					&:before {
+						background-color: rgb(var(--ui-color-btn-active));
+						background-image: 
+							linear-gradient(to right, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-03)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+							linear-gradient(to left, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-03)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+							linear-gradient(45deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px),
+							linear-gradient(225deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px);
+						background-position: bottom right, top left, bottom left, top right;
+						background-size: calc(100% - 11px) 2px, calc(100% - 11px) 2px, 14px 14px, 14px 14px !important;
+					}
 				}
 
-				&:active:before {
-					background-color: rgb(var(--ui-color-btn-active));
-					background-image: 
-						linear-gradient(45deg, transparent 8px, rgb(var(--ui-color-btn-active)) 8px),
-						linear-gradient(rgb(var(--ui-color-btn-active)) 0%, rgb(var(--ui-color-btn-active)) 100%),
-						linear-gradient(225deg, transparent 8px, rgb(var(--ui-color-btn-active)) 8px),
-						linear-gradient(rgb(var(--ui-color-btn-active)) 0%, rgb(var(--ui-color-btn-active)) 100%);
-				}
 
 				span {
 					position: relative;
@@ -244,7 +239,7 @@
 
 			.label {
 				display: block;
-				font-size: 0.9rem;
+				font-size: 0.75rem;
 				font-weight: bold;
 				margin-bottom: 3px;
 			}

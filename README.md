@@ -19,6 +19,14 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
     python3 scripts/main.py
     ```
 
+## Notes for Local Development
+#### Build Scripts
+`build` : builds LESS stylesheet and runs PostCSS.
+`watch` : watches changes to stylesheet for local development
+
+#### Local Dev Environment
+Just open `index.html` and refresh manually. Simple as the good old year 2000.
+
 ## Notes
 - This webpage is hosted and run entirely on Github Pages without any additional backend servers attached.
 - `/data/music.json` : Copy of original JSON file provided by SEGA

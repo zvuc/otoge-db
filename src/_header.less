@@ -1,28 +1,53 @@
+@header-height-mobile: 50px;
+@header-height: 70px;
+
 header {
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 40px;
-	padding: 3px 15px;
-	border-bottom: 3px solid rgb(var(--color-ongeki-summer-accent-02));
-	background-color: rgb(var(--ui-color-background-090));
-	background-image: repeating-linear-gradient(130deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0.2), rgba(255,255,255,0.2) 3px, rgba(255,255,255,0) 4px, rgba(255,255,255,0) 6px), linear-gradient(to right, #fdf953, rgba(255,255,0,0));
+	height: @header-height-mobile;
+	padding: 0 10px;
+	// border-bottom: 3px solid rgb(var(--color-ongeki-red-accent-02));
+	// background-color: rgb(var(--ui-color-background-090));
+	background-image: 
+		linear-gradient(
+			45deg,
+			rgba(var(--color-ongeki-red-accent-02),0.2) 0%,
+			rgba(var(--color-ongeki-red-accent-02),0) 20%
+		),
+		linear-gradient(
+			45deg,
+			rgba(var(--color-ongeki-red-accent-03),0) 70%,
+			rgba(var(--color-ongeki-red-accent-02),0.1) 80%,
+			rgba(var(--color-ongeki-red-accent-01),0.3) 90%
+		);
 	overflow: hidden;
 
-	@media screen and (max-width: 480px) {
-		padding: 3px 10px;
+	@media screen and (min-width: 480px) {
+		padding: 0 15px;
+		height: @header-height;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	& > * {
+		position: relative;
 	}
 
 	&:before {
 		content: "";
 		position: absolute;
 		top: 0;
-		left: -2px;
+		bottom: 0;
+		left: 0;
 		right: 0;
-		height: 3px;
-		background-image: linear-gradient(to right, rgb(var(--color-ongeki-summer-accent-01)) 0%, rgb(var(--color-ongeki-summer-accent-01)) 100%);
-		transform: skewX(-40deg);
+		background-image: url('./img/tri-pattern.svg');
+		opacity: 0.08;
+		filter: var(--bg-pattern-filter);
 	}
+
 	// &:after {
 	//     content: "";
 	//     position: absolute;
@@ -30,11 +55,12 @@ header {
 	//     left: 0;
 	//     right: 0;
 	//     height: 3px;
-	//     background-image: linear-gradient(to right, #fff 0%, #fff 300px, rgb(var(--color-ongeki-summer-accent-02)) 300px, rgb(var(--color-ongeki-summer-accent-02)) 90% );
+	//     background-image: linear-gradient(to right, #fff 0%, #fff 300px, rgb(var(--color-ongeki-red-accent-02)) 300px, rgb(var(--color-ongeki-red-accent-02)) 90% );
 	//     transform: skewX(-40deg);
 	// }
 
 	h1 {
+		flex: 1 1 auto;
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 900;
 		margin: 0 15px 0 0;
@@ -48,64 +74,56 @@ header {
 			color: #fff;
 			line-height: 0.5;
 			vertical-align: middle;
+			margin-left: -10px;
+			margin-right: 10px;
 
 			&:hover {
 				text-decoration: none;
 			}
 			span {
 				display: inline-block;
-			}
-			span.main {
-				line-height: 0.9;
-				text-shadow: 
-					0 -1px 2px rgb(var(--color-ongeki-summer-accent-02)), 
-					1px 0 0 rgb(var(--color-ongeki-summer-accent-01)), 
-					0 0 10px rgb(var(--color-ongeki-summer-accent-02)), 
-					0 0 5px rgb(var(--color-ongeki-summer-accent-02));
-			}
 
-			&:hover span.main {
-				text-shadow: 
-					0 -1px 2px rgb(var(--color-ongeki-summer-accent-02)), 
-					1px 0 0 rgb(var(--color-ongeki-summer-accent-01)), 
-					0 0 15px rgb(var(--color-ongeki-summer-accent-02)),
-					0 0 15px rgb(var(--color-ongeki-summer-accent-02)), 
-					0 0 5px rgb(var(--color-ongeki-summer-accent-02));
 			}
+			span.ongeki-db-logo {
+				width: calc(100vw - 180px);
+				max-width: 160px;
+				height: @header-height-mobile;
+				background-image: var(--ongeki-db-logo-url);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: 0 0px;
 
-			span.sub {
-				color: rgb(var(--color-ongeki-summer-accent-02));
-				font-size: 0.5em;
-				letter-spacing: -0.03em;
-				text-shadow: 0 0 3px #fff, 1px 1px 2px #fff, -1px -1px 2px #fff;
-				
-				&.plus {
-					color: rgb(var(--color-ongeki-summer-accent-01));
-					font-size: inherit;
-					margin-left: 0.2em;
-					letter-spacing: -0.03em;
-					text-shadow: 0 0 3px #fff, 1px 1px 2px #fff, -1px -1px 2px #fff;
+				@media screen and (min-width: 480px) {
+					width: 250px;
+					max-width: none;
+					height: @header-height;
+					background-position: -10px -5px;
 				}
+			}
+
+			span.hidden {
+				display: none;
 			}
 		}
 	}
 
 	.aside {
+		flex: 0 1 0;
 		position: relative;
 		display: inline-flex;
-		height: 46px;
-		align-items: center;
-		padding: 0 10px 0 30px;
-		margin-top: -3px;
-		margin-bottom: -3px;
+		height: @header-height-mobile;
+		align-items: stretch;
+		padding: 0 15px 0 20px;
 		margin-left: auto;
 		margin-right: -35px;
 		color: rgb(var(--ui-color-foreground-100));
 		text-transform: uppercase;
 		z-index: 1;
 
-		@media screen and (max-width: 480px) {
-			padding-left: 15px;
+		@media screen and (min-width: 480px) {
+			padding-left: 30px;
+			height: @header-height;
+			
 		}
 
 		&:before {
@@ -113,16 +131,31 @@ header {
 			position: absolute;
 			top: 0;
 			right: 0;
+			left: -3px;
+			bottom: 0;
+			background-image: 
+				linear-gradient(
+					to bottom,
+					rgba(var(--color-ongeki-red-accent-01),1) 0%,
+					rgba(var(--color-ongeki-red-accent-02),1) 100%
+				);
+			transform: skewX(-30deg);
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
 			left: 0;
 			bottom: 0;
 			background-color: rgb(var(--ui-color-background-100));
-			border-left: 3px solid rgb(var(--color-ongeki-summer-accent-03));;
-			/*box-shadow: -5px 0 0 rgb(var(--color-ongeki-summer-accent-03));*/
-			transform: skewX(-40deg);
+			transform: skewX(-30deg);
 		}
 
-		span {
+		& > div {
 			position: relative;
+			z-index: 1;
 		}
 	}
 }
@@ -136,6 +169,7 @@ header {
 	align-items: center;
 
 	@media screen and (max-width: 480px) {
+		padding-left: 15px;
 		padding-right: 10px;
 	}
 
@@ -147,8 +181,8 @@ header {
 		left: 0;
 		bottom: 0;
 		background-color: rgb(var(--ui-color-background-100));
-		border-left: 3px solid rgb(var(--ui-color-background-080));;
-		transform: skewX(-40deg);
+		border-left: 2px solid rgb(var(--ui-color-background-080));;
+		transform: skewX(-30deg);
 	}
 
 	.label:before {
@@ -203,9 +237,15 @@ header {
 
 
 .lastupdated {
+	display: flex;
+	align-items: center;
 	position: relative;
-	padding: 5px 10px 5px 0;
+	padding: 5px 0 5px 0;
 	text-align: right;
+
+	@media screen and (min-width: 480px) {
+		padding-right: 10px;
+	}
 }
 
 
