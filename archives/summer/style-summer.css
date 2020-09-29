@@ -406,21 +406,21 @@ table.dataTable thead .sorting_desc_disabled:after {
     margin-left: 3px;
     width: 19px;
     height: 100%;
-    background-image: url("datatables/images/sort_both.png");
+    background-image: url("../../datatables/images/sort_both.png");
     background-position: right center;
     background-repeat: no-repeat;
 }
 table.dataTable thead .sorting_asc:after {
-    background-image: url("datatables/images/sort_asc.png");
+    background-image: url("../../datatables/images/sort_asc.png");
 }
 table.dataTable thead .sorting_desc:after {
-    background-image: url("datatables/images/sort_desc.png");
+    background-image: url("../../datatables/images/sort_desc.png");
 }
 table.dataTable thead .sorting_asc_disabled:after {
-    background-image: url("datatables/images/sort_asc_disabled.png");
+    background-image: url("../../datatables/images/sort_asc_disabled.png");
 }
 table.dataTable thead .sorting_desc_disabled:after {
-    background-image: url("datatables/images/sort_desc_disabled.png");
+    background-image: url("../../datatables/images/sort_desc_disabled.png");
 }
 
 thead span {
@@ -570,13 +570,13 @@ td.type {
 }
 
 .type-icon.leaf {
-    background-image: url('img/card_icon_leaf.png');
+    background-image: url('../../img/card_icon_leaf.png');
 }
 .type-icon.fire {
-    background-image: url('img/card_icon_fire.png');
+    background-image: url('../../img/card_icon_fire.png');
 }
 .type-icon.aqua {
-    background-image: url('img/card_icon_aqua.png');
+    background-image: url('../../img/card_icon_aqua.png');
 }
 
 th.character,
