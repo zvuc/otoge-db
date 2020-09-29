@@ -2,6 +2,7 @@
 
 html {
 	font-size: 14px;
+	min-height: 100%;
 	height: 100%;
 	padding: 0;
 	margin: 0;
@@ -753,15 +754,38 @@ footer {
 	margin-top: 10px;
 	padding: 15px 15px 15px 15px;
 	background-color: rgb(var(--ui-color-background-095));
-}
-footer .archives-link {
-	padding: 5px 0;
-	font-size: 0.9rem;
-	border-bottom: 1px solid rgb(var(--ui-color-background-090));
-	margin-bottom: 10px;
-}
-footer > p {
-	font-size: 0.8em;
-	color: rgb(var(--ui-color-foreground-060));
+
+	.archives-link {
+		padding: 5px 0;
+		font-size: 0.9rem;
+		border-bottom: 1px solid rgb(var(--ui-color-background-090));
+		margin-bottom: 10px;
+	}
+
+	.disclaimer {
+		display: flex;
+		width: 100%;
+
+		.content {
+			margin-right: auto;
+
+			p {
+				margin-top: 0;
+				font-size: 0.8em;
+				color: rgb(var(--ui-color-foreground-060));
+			}
+		}
+		
+		.footer-logo {
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+			background-image: url('./img/ongeki-db-icon.png');
+			background-repeat: no-repeat;
+			background-size: 100%;
+			margin-left: 10px;
+		}	
+	}
+
 }
 
