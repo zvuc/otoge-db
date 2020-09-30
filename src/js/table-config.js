@@ -182,12 +182,12 @@ $(document).ready(function() {
             data: "character",
             className: "character",
             render: function ( data, type, row ) {
-                if ( type === 'display' || type === 'filter' ) {
+                if ( type === 'display' ) {
                     return '<div class="inner-wrap">' + data + '<\/div>';
                 }
                 // use chara_id for sort
                 else {
-                    return row.chara_id;
+                    return data;
                 }
             },
             customDropdownSortSource: 'chara_id',
@@ -218,7 +218,7 @@ $(document).ready(function() {
             render: renderLvNum('lev_bas', 'lev_bas_i'),
             customDropdownSortSource: sortByLeadingZeros('lev_bas'),
             width: "3rem",
-            filterable: true
+            filterable: flat_view ? false : true
         },
         { 
             //  ADVANCED
@@ -228,7 +228,7 @@ $(document).ready(function() {
             render: renderLvNum('lev_adv', 'lev_adv_i'),
             customDropdownSortSource: sortByLeadingZeros('lev_adv'),
             width: "3rem",
-            filterable: true
+            filterable: flat_view ? false : true
         },
         { 
             //  EXPERT
@@ -238,7 +238,7 @@ $(document).ready(function() {
             render: renderLvNum('lev_exc', 'lev_exc_i'),
             customDropdownSortSource: sortByLeadingZeros('lev_exc'),
             width: "3rem",
-            filterable: true
+            filterable: flat_view ? false : true
         },
         { 
             //  MASTER
@@ -248,7 +248,7 @@ $(document).ready(function() {
             render: renderLvNum('lev_mas', 'lev_mas_i'),
             customDropdownSortSource: sortByLeadingZeros('lev_mas'),
             width: "3rem",
-            filterable: true
+            filterable: flat_view ? false : true
         },
         { 
             //  LUNATIC
@@ -258,7 +258,44 @@ $(document).ready(function() {
             render: renderLvNum('lev_lnt', 'lev_lnt_i'),
             customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
             width: "3rem",
-            filterable: true
+            filterable: flat_view ? false : true
+        },
+        {
+            //  chart_diff
+            displayTitle: "譜面",
+            data: ( flat_view ? 'chart_diff' : null ),
+            className: "lv-name",
+            width: "3rem",
+            createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
+                $(td).addClass( rowData.chart_diff );
+            }) : null,
+            searchable: false,
+            visible: false
+        },
+        {
+            //  chart_lev (for sort)
+            displayTitle: "難易度フループ",
+            data: ( flat_view ? 'chart_lev' : null ),
+            className: "lv",
+            width: "4rem",
+            customDropdownSortSource: sortByLeadingZeros('chart_lev'),
+            filterable: flat_view,
+            visible: false
+        },
+        {
+            //  chart_lev_i
+            displayTitle: "難易度",
+            data: ( flat_view ? 'chart_lev_i' : null ),
+            className: "lv lv-name",
+            render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i')
+            : null ),
+            width: "4rem",
+            createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
+                $(td).addClass( rowData.chart_diff );
+            }) : null,
+            filterable: false,
+            searchable: false,
+            visible: flat_view
         },
         { 
             displayTitle: "NEW",
@@ -276,7 +313,10 @@ $(document).ready(function() {
         }
     ];
 
-    var default_order = [[20, 'desc'],[9, 'asc'],[0, 'asc']];
+    var default_order = 
+        flat_view ?
+            [[21, 'desc']] :
+            [[23, 'desc'],[9, 'asc'],[0, 'asc']];
     
     function sortLevels(col_a, col_b) {
         return function ( row, type, set, meta ) {
@@ -319,6 +359,41 @@ $(document).ready(function() {
         }
     }
 
+    function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv) {
+        return function ( data, type, row ) {
+            if ( type === 'display' ) {
+                switch (row[chart_diff]) {
+                    case 'lev_bas' :
+                        var chart_diff_display = 'BSC'
+                        break;
+                    case 'lev_adv' :
+                        var chart_diff_display = 'ADV'
+                        break;
+                    case 'lev_exc' :
+                        var chart_diff_display = 'EXP'
+                        break;
+                    case 'lev_mas' :
+                        var chart_diff_display = 'MAS'
+                        break;
+                    case 'lev_lnt' :
+                        var chart_diff_display = 'LNT'
+                        break;
+                }
+
+
+                // this means that precise_lv data is not actually present
+                if ( row[simple_lv] == row[precise_lv] ) {
+                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-simple">' + row[simple_lv] + '<\/span><\/div>';
+                } else {
+                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
+                }
+            }
+            else {
+                return data;
+            }
+        }
+    }
+
     function renderInWrapper() {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
@@ -330,216 +405,243 @@ $(document).ready(function() {
         }
     }
 
-    var table = $('#table').DataTable( {
-        "ajax": {
-            url: "data/music-ex.json",
-            dataSrc: ""
-        },
-        "buttons": [
-            {
-                extend: 'colvisRestore',
-                text: '全表示',
-            },
-            // {
-            //     extend: 'colvisGroup',
-            //     text: '全レベル ON',
-            //     show: [ 14, 15, 16, 17, 18 ]
+    $.getJSON("data/music-ex.json", (data) => {
+        const processed_data =
+            ( flat_view ? (
+                data
+                    .map(obj =>
+                        ['lev_bas', 'lev_adv', 'lev_exc', 'lev_mas', 'lev_lnt']
+                            .map(chart_diff =>
+                                obj[chart_diff]
+                                    ? {
+                                        ...obj,
+                                        chart_diff,
+                                        chart_lev: obj[chart_diff],
+                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7'))
+                                    }
+                                    : null
+                            )
+                    )
+                    .flat()
+                    .filter(obj => !!obj)
+                )
+                : data 
+            );
+
+        var table = $('#table').DataTable( {
+            // "ajax": {
+            //     url: "data/music-ex.json",
+            //     dataSrc: ""
             // },
-            {
-                extend: 'colvisGroup',
-                text: '譜面レベルのみ',
-                hide: [ 6, 8, 9, 10, 12, 13, 20 ],
-                show: [ 14, 15, 16, 17, 18 ],
+            data: processed_data,
+            "buttons": [
+                {
+                    extend: 'colvisRestore',
+                    text: '全表示',
+                },
+                // {
+                //     extend: 'colvisGroup',
+                //     text: '全レベル ON',
+                //     show: [ 14, 15, 16, 17, 18 ]
+                // },
+                {
+                    extend: 'colvisGroup',
+                    text: '譜面レベルのみ',
+                    hide: [ 6, 8, 9, 10, 12, 13, 23 ],
+                    show: [ 14, 15, 16, 17, 18 ],
+                },
+                {
+                    extend: 'colvisGroup',
+                    text: 'EXPERT以上のみ',
+                    hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 23 ],
+                    show: [ 16, 17, 18 ]
+                },
+                // {
+                //     extend: 'colvisGroup',
+                //     className: 'asdf',
+                //     text: 'ジャンル・チャプタ OFF',
+                //     hide: [ 6, 9 ]
+                // },
+                {
+                    extend: 'colvisGroup',
+                    className: 'asdf',
+                    text: '属性・Lv 表示',
+                    show: [ 10, 13 ]
+                },
+                {
+                    extend: 'colvis',
+                    className: 'config-btn',
+                    columns: '.toggle',
+                    text: 'カスタム設定',
+                    collectionTitle: "表示・隠すカラムを選択",
+                    collectionLayout: "fixed",
+                    fade: 150
+                },
+            ],
+            "columns": columns_params,
+            "deferRender": true,
+            "dom": '<"column-toggle-bar"B><"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"il>><"table-inner"rt><"paging"p>',
+            "language": {
+                "sEmptyTable":     "テーブルにデータがありません",
+                "sInfo":           " _TOTAL_ 曲中 _START_〜_END_ まで表示中",
+                "sInfoEmpty":      " 0 曲中 0〜0 まで表示中",
+                "sInfoFiltered":   "（全 _MAX_ 曲）",
+                "sInfoPostFix":    "",
+                "sInfoThousands":  ",",
+                "sLengthMenu":     "1ページ表示 _MENU_",
+                "sLoadingRecords": "読み込み中...",
+                "sProcessing":     "処理中...",
+                "sSearch":         "キーワード検索",
+                "sZeroRecords":    "一致するレコードがありません",
+                "oPaginate": {
+                    "sFirst":    "先頭",
+                    "sLast":     "最終",
+                    "sNext":     "次",
+                    "sPrevious": "前"
+                },
+                "oAria": {
+                    "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
+                    "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
+                }
             },
-            {
-                extend: 'colvisGroup',
-                text: 'EXPERT以上のみ',
-                hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 20 ],
-                show: [ 16, 17, 18 ]
-            },
-            // {
-            //     extend: 'colvisGroup',
-            //     className: 'asdf',
-            //     text: 'ジャンル・チャプタ OFF',
-            //     hide: [ 6, 9 ]
-            // },
-            {
-                extend: 'colvisGroup',
-                className: 'asdf',
-                text: '属性・Lv 表示',
-                show: [ 10, 13 ]
-            },
-            {
-                extend: 'colvis',
-                className: 'config-btn',
-                columns: '.toggle',
-                text: 'カスタム設定',
-                collectionTitle: "表示・隠すカラムを選択",
-                collectionLayout: "fixed",
-                fade: 150
-            },
-        ],
-        "columns": columns_params,
-        "deferRender": true,
-        "dom": '<"column-toggle-bar"B><"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"il>><"table-inner"rt><"paging"p>',
-        "language": {
-            "sEmptyTable":     "テーブルにデータがありません",
-            "sInfo":           " _TOTAL_ 曲中 _START_〜_END_ まで表示中",
-            "sInfoEmpty":      " 0 曲中 0〜0 まで表示中",
-            "sInfoFiltered":   "（全 _MAX_ 曲）",
-            "sInfoPostFix":    "",
-            "sInfoThousands":  ",",
-            "sLengthMenu":     "1ページ表示 _MENU_",
-            "sLoadingRecords": "読み込み中...",
-            "sProcessing":     "処理中...",
-            "sSearch":         "キーワード検索",
-            "sZeroRecords":    "一致するレコードがありません",
-            "oPaginate": {
-                "sFirst":    "先頭",
-                "sLast":     "最終",
-                "sNext":     "次",
-                "sPrevious": "前"
-            },
-            "oAria": {
-                "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
-                "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
-            }
-        },
-        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-        "order": default_order, 
-        "responsive": {
-            details: {
-                type: 'column',
-                target: 'tr',
-                display: $.fn.dataTable.Responsive.display.modal( {
-                    header: function ( row ) {
-                        var data = row.data();
-                        return data.title + '<br><span class="artist">' + data.artist + '<\/span>';
-                    }
-                } ),
-                renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-            }
-        },
-        "rowGroup": {
-            dataSrc: 'date',
-            startRender: function ( rows, group ) {
-                return '<div>' + group +' 追加<\/div>';
-                // enable rows count again when I find a way to show all rows in other pages
-                // return group +'更新 ('+rows.count()+'曲)';
-            }
-        },
-        "scrollX": true,
-
-        initComplete: function() {
-            var rows = this.api().rows().data();
-
-            // Generate Filter dropdown per columns
-            this.api().columns().every(function() {
-                var order = table.order();
-                var column = this;
-                var column_data = column.data();
-                var column_param = columns_params[column.index()];
-
-                if ("filterable" in column_param) {
-                    var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.displayTitle + '</span></div>')
-                        .appendTo( $('.toolbar.filters') );
-                    var select = $('<select><option value="" selected data-default>——</option></select>')
-                        .appendTo( selectWrap )
-                        .on( 'change', function() {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-                            
-                            // when applying filter, control rowgroup visibility
-                            if(column.index() === 20 || (val === "" && order[0][0] === 20)) {
-                                column.rowGroup().enable();
-                                // console.log('group enabled (filter)');
-                            } else {
-                                column.rowGroup().disable();
-                                // console.log('group disabled (filter active)');
-                            }
-
-                            column
-                                .search( val ? '^'+val+'$' : '', true, false )
-                                .draw();
-                        });
-
-
-                    // column parameter has customDropdownSortSource option
-                    if (column_param.customDropdownSortSource) {
-                        column_data = column_data.map(function(_, index) {
-                            // get index of column
-                            return index;
-                        }).sort(function(index_a, index_b) {
-                            // get index_a-th row and index_b-th row
-                            var row_a = rows[index_a], row_b = rows[index_b];
-                            // if customDropdownSortSource option is function type use it as comparator
-                            if (typeof column_param.customDropdownSortSource === 'function') {
-                                return column_param.customDropdownSortSource(row_a, row_b);
-                            // if customDropdownSortSource option is string type use it as comparator column key
-                            } else {
-                                return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
-                            }
-                            // get column data again since we converted this array to row array in previous lines
-                        }).map(function(index) {
-                            // get index-th column's data
-                            return column_data[index];
-                        });
-                    } else {
-                        column_data = column_data.sort();
-                    }
-
-                    // reverse sort for date
-                    if (column_param.data == 'date') {
-                      column_data.reverse();
-                    }
-                    
-                    // draw option list
-                    column_data.unique().each(function ( d, j ) {
-                        if (d != ''){
-                            select.append( '<option value="'+d+'">'+d+'</option>' );
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+            "order": default_order, 
+            "responsive": {
+                details: {
+                    type: 'column',
+                    target: 'tr',
+                    display: $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                            var data = row.data();
+                            return data.title + '<br><span class="artist">' + data.artist + '<\/span>';
                         }
-                    });
+                    } ),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll()
                 }
-            });
-    
-            table.on( 'order.dt', function () {
-                var order = table.order();
-                var search = table.columns().search();
-                var searchActive = false;
+            },
+            "rowGroup": {
+                dataSrc: 'date',
+                startRender: !flat_view ? ( function ( rows, group ) {
+                    return '<div>' + group +' 追加<\/div>';
+                    // enable rows count again when I find a way to show all rows in other pages
+                    // return group +'更新 ('+rows.count()+'曲)';
+                }) : null
+            },
+            "scrollX": true,
 
-                // console.log('Reorder happened!');
-                // console.log(order);
+            initComplete: function () {
+                var rows = this.api().rows().data();
 
-                for (let k = 0; k < search.length; k = k+1) {
-                    if (k in search && search[k] !== "") {
-                        searchActive = true;
-                        // console.log(searchActive);
-                        break;
+                // Generate Filter dropdown per columns
+                var table = this.api();
+                table.columns().every(function () {
+                    var order = table.order();
+                    var column = this;
+                    var column_data = column.data();
+                    var column_param = columns_params[column.index()];
+
+                    if (("filterable" in column_param) && (column_param.filterable == true)) {
+                        var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.displayTitle + '</span></div>')
+                            .appendTo($('.toolbar.filters'));
+                        var select = $('<select><option value="" selected data-default>——</option></select>')
+                            .appendTo(selectWrap)
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                // when applying filter, control rowgroup visibility
+                                if (column.index() === 23 || (val === "" && order[0][0] === 23)) {
+                                    column.rowGroup().enable();
+                                    // console.log('group enabled (filter)');
+                                } else {
+                                    column.rowGroup().disable();
+                                    // console.log('group disabled (filter active)');
+                                }
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+
+                        // column parameter has customDropdownSortSource option
+                        if (column_param.customDropdownSortSource) {
+                            column_data = column_data.map(function (_, index) {
+                                // get index of column
+                                return index;
+                            }).sort(function (index_a, index_b) {
+                                // get index_a-th row and index_b-th row
+                                var row_a = rows[index_a], row_b = rows[index_b];
+                                // if customDropdownSortSource option is function type use it as comparator
+                                if (typeof column_param.customDropdownSortSource === 'function') {
+                                    return column_param.customDropdownSortSource(row_a, row_b);
+                                    // if customDropdownSortSource option is string type use it as comparator column key
+                                } else {
+                                    return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
+                                }
+                                // get column data again since we converted this array to row array in previous lines
+                            }).map(function (index) {
+                                // get index-th column's data
+                                return column_data[index];
+                            });
+                        } else {
+                            column_data = column_data.sort();
+                        }
+
+                        // reverse sort for date
+                        if (column_param.data == 'date') {
+                            column_data.reverse();
+                        }
+
+                        // draw option list
+                        column_data.unique().each(function (d, j) {
+                            if (d != '') {
+                                select.append('<option value="' + d + '">' + d + '</option>');
+                            }
+                        });
                     }
-                }                       
+                });
 
-                // Disable rowgroup unless sorting by date
-                if ( order[0][0] !== 20 ) {
-                    table.rowGroup().disable();
-                    // console.log('group disabled (sorting by non-date column)');
-                    return;
-                } 
-                // enable rowgroup if sorting by date AND search is inactive
-                else if ( (order[0][0] === 20) && !searchActive ) {
-                    table.rowGroup().enable();
-                    // console.log('group enabled (sorting by date + search inactive)');
-                    return;
-                }
-                // do nothing
-                else {
-                    // console.log('do nothing');
-                    return;
-                }
-                table.draw();
-            } );
-        }
+                table.on('order.dt', function () {
+                    var order = table.order();
+                    var search = table.columns().search();
+                    var searchActive = false;
+
+                    // console.log('Reorder happened!');
+                    // console.log(order);
+
+                    for (let k = 0; k < search.length; k = k + 1) {
+                        if (k in search && search[k] !== "") {
+                            searchActive = true;
+                            // console.log(searchActive);
+                            break;
+                        }
+                    }
+
+                    // Disable rowgroup unless sorting by date
+                    if (order[0][0] !== 23) {
+                        table.rowGroup().disable();
+                        // console.log('group disabled (sorting by non-date column)');
+                        return;
+                    }
+                    // enable rowgroup if sorting by date AND search is inactive
+                    else if ((order[0][0] === 23) && !searchActive) {
+                        table.rowGroup().enable();
+                        // console.log('group enabled (sorting by date + search inactive)');
+                        return;
+                    }
+                    // do nothing
+                    else {
+                        // console.log('do nothing');
+                        return;
+                    }
+                    table.draw();
+                });
+            }
+        });
     });
+
 
     // table.on( 'search.dt', function () {
     //     console.log('search happened')
@@ -550,7 +652,7 @@ $(document).ready(function() {
 
     $('a.reset-search').on('click', function(){
         table
-            .order([[20, 'desc'],[9, 'asc'],[0, 'asc']]) //FIXME: why doesn't work with just calling var?
+            .order([[23, 'desc'],[9, 'asc'],[0, 'asc']]) //FIXME: why doesn't work with just calling var?
             .search('')
             .columns().search('')
             .draw();
@@ -559,4 +661,5 @@ $(document).ready(function() {
 
         console.log('search reset');
     });
+
 });
