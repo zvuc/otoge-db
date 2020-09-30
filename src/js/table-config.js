@@ -478,9 +478,9 @@ $(document).ready(function() {
             "dom": '<"column-toggle-bar"B><"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"il>><"table-inner"rt><"paging"p>',
             "language": {
                 "sEmptyTable":     "テーブルにデータがありません",
-                "sInfo":           " _TOTAL_ 曲中 _START_〜_END_ まで表示中",
-                "sInfoEmpty":      " 0 曲中 0〜0 まで表示中",
-                "sInfoFiltered":   "（全 _MAX_ 曲）",
+                "sInfo":           " _TOTAL_項目 (_START_〜_END_ 表示中)",
+                "sInfoEmpty":      " 0 項目",
+                "sInfoFiltered":   "（全 _MAX_ 項目）",
                 "sInfoPostFix":    "",
                 "sInfoThousands":  ",",
                 "sLengthMenu":     "1ページ表示 _MENU_",
