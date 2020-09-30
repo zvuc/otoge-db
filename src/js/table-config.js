@@ -287,7 +287,7 @@ $(document).ready(function() {
             displayTitle: "難易度",
             data: ( flat_view ? 'chart_lev_i' : null ),
             className: "lv lv-name",
-            render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i')
+            render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display')
             : null ),
             width: "4rem",
             createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
@@ -359,7 +359,7 @@ $(document).ready(function() {
         }
     }
 
-    function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv) {
+    function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
                 switch (row[chart_diff]) {
@@ -380,13 +380,7 @@ $(document).ready(function() {
                         break;
                 }
 
-
-                // this means that precise_lv data is not actually present
-                if ( row[simple_lv] == row[precise_lv] ) {
-                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-simple">' + row[simple_lv] + '<\/span><\/div>';
-                } else {
-                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
-                }
+                return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span><\/div>';
             }
             else {
                 return data;
@@ -417,7 +411,8 @@ $(document).ready(function() {
                                         ...obj,
                                         chart_diff,
                                         chart_lev: obj[chart_diff],
-                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7'))
+                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
+                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '(' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + ')'
                                     }
                                     : null
                             )
@@ -437,7 +432,7 @@ $(document).ready(function() {
             "buttons": [
                 {
                     extend: 'colvisRestore',
-                    text: '全表示',
+                    text: '全カラムON',
                 },
                 // {
                 //     extend: 'colvisGroup',
@@ -465,7 +460,7 @@ $(document).ready(function() {
                 {
                     extend: 'colvisGroup',
                     className: 'asdf',
-                    text: '属性・Lv 表示',
+                    text: '属性・Lv ON',
                     show: [ 10, 13 ]
                 },
                 {
@@ -638,6 +633,11 @@ $(document).ready(function() {
                     }
                     table.draw();
                 });
+
+                $('#table').addClass('loading-done');
+                $('html').removeClass('table-loading');
+
+                $('.column-toggle-bar').prepend('<span class="label">カラムON/OFF</span>');
             }
         });
     });
@@ -646,9 +646,6 @@ $(document).ready(function() {
     // table.on( 'search.dt', function () {
     //     console.log('search happened')
     // } );
-
-    $(".column-toggle-bar").prepend('<span class="label">ビューカスタマイズ</span>');
-
 
     $('a.reset-search').on('click', function(){
         table

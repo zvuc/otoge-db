@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="page-loading">
+<html class="page-loading table-loading">
 <head>
     <meta charset="UTF-8"> 
 
@@ -51,6 +51,19 @@
             </div>
         </div>
     </header>
+    <nav class="site-navigation">
+        <a href="../" class="btn">デフォルトビュー</a>
+        <a href="./" class="btn active">レベルビュー</a>
+    </nav>
+
+    <div id="site-loader">
+        <span class="loader">
+            <span class="loader-tri t1"></span>
+            <span class="loader-tri t2"></span>
+            <span class="loader-tri t3"></span>
+        </span>
+    </div>
+
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
@@ -84,15 +97,6 @@
         </thead>
     </table>
 
-    <div id="site-loader">
-        <span class="loader">
-            <span class="loader-tri t1"></span>
-            <span class="loader-tri t2"></span>
-            <span class="loader-tri t3"></span>
-        </span>
-    </div>
-
-
     <footer id="site-footer">
         <div class="notice-bar">
             ⚠️ マークされた譜面定数はまだSUMMER PLUS ver.時点でのものであり、最新の情報と異なる場合があります。
@@ -113,6 +117,8 @@
         var flat_view = true;
     </script>
     <script defer src="./functions.js"></script>
+    <!-- <script defer src="./src/js/table-config.js"></script>
+    <script defer src="./src/js/page-functions.js"></script> -->
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
     <script>

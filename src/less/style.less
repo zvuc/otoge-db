@@ -35,6 +35,12 @@ html {
 			display: flex;
 		}
 	}
+
+	&.table-loading {
+		#site-loader {
+			display: flex;
+		}
+	}
 }
 
 
@@ -44,7 +50,7 @@ html {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	min-height: 400px;
+	min-height: 90vh;
 }
 
 .loader {
@@ -200,7 +206,7 @@ a {
 	color: #ff1b71;
 }
 
-// header
+@import '_elements.less';
 @import '_header.less';
 @import '_toolbar.less';
 
@@ -217,9 +223,14 @@ a {
 
 table#table {
 	display: none;
+	visibility: hidden;
 
 	&.dataTable {
 		display: table-row-group;
+	}
+
+	&.loading-done {
+		visibility: visible;
 	}
 }
 
@@ -810,7 +821,7 @@ footer {
 		}
 		
 		.footer-logo {
-			flex: 1 0 auto;
+			flex: 0 0 auto;
 			display: inline-block;
 			width: 48px;
 			height: 48px;
