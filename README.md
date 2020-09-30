@@ -19,6 +19,14 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
     python3 scripts/main.py
     ```
 
+## Notes for Local Development
+#### Build Scripts
+- `build` : minify+concat JS files, builds LESS stylesheet, runs PostCSS and minify.
+- `watch` : watches changes to stylesheet for local development
+
+#### Local Dev Environment
+Just open `index.html` and refresh manually. Simple as the good old year 2000.
+
 ## Notes
 - This webpage is hosted and run entirely on Github Pages without any additional backend servers attached.
 - `/data/music.json` : Copy of original JSON file provided by SEGA
@@ -29,9 +37,11 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
 - [@kiding](https://github.com/kiding/) : auto update datestamp
 
 ## Feedback
-Contact [@zvuc_](https://twitter.com/zvuc_) for inquiries.
+Contact [@zvuc_](https://twitter.com/zvuc_) for any suggestions or inquiries.
 
 ## Copyright
-MIT License for all code in this repository.
-All image assets and other copyrighted materials are owned by SEGA or their respective owners.
+- MIT License for all code in this repository.
+- All vector image assets used in this website are produced independently from scratch, however intellectual rights for the original designs are credited to SEGA.
+- ONGEKI and ONGEKI Logo are trademarks of SEGA. All jacket images are owned by SEGA and/or their respective owners.
+- ONGEKI DB is a fan project. It is not afilliated with nor endorsed by SEGA.
 

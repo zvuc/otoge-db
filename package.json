@@ -20,6 +20,7 @@
     "autoprefixer": "^9.8.0",
     "cssnano": "^4.1.10",
     "less": "^3.11.1",
+    "minify": "^6.0.0",
     "postcss-cli": "^7.1.1",
     "postcss-load-config": "^2.1.0",
     "postcss-plugin": "^1.0.0",
@@ -36,9 +37,10 @@
     "minified": false
   },
   "scripts": {
-    "build": "yarn less && yarn postcss",
-    "less": "lessc src/style.less style.css",
+    "build": "yarn minify && yarn less && yarn postcss",
+    "less": "lessc src/less/style.less style.css",
     "postcss": "postcss style.css -o style.css --verbose",
+    "minify": "minify src/js/*.js > functions.js",
     "watch": "watch 'yarn build' ./src -d"
   }
 }

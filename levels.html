@@ -30,7 +30,7 @@
     <link rel="apple-touch-icon" sizes="512x512" href="./img/ongeki-db-icon-512.png" />
     <link rel="apple-touch-icon-precomposed" href="./img/ongeki-db-icon-512.png" />
 
-    <title>オンゲキDB ver. RED</title>
+    <title>オンゲキDB ver. RED / LV13</title>
 </head>
 <body>
     <header>
@@ -41,7 +41,7 @@
             </a>
         </h1>
         <div class="aside">
-            <div class="lastupdated"><span>DATA: 20200930</span></div>
+            <div class="lastupdated"><span>DATA: 20200917</span></div>
             <div class="theme-switcher">
                 <span class="label"></span>
                 <label class="switch" for="themeToggleCheckbox">
@@ -52,8 +52,8 @@
         </div>
     </header>
     <nav class="site-navigation">
-        <a href="/" class="btn active">デフォルトビュー</a>
-        <a href="./levels.html" class="btn">レベルビュー</a>
+        <a href="../" class="btn">デフォルトビュー</a>
+        <a href="./" class="btn active">レベルビュー</a>
     </nav>
 
     <div id="site-loader">
@@ -81,15 +81,15 @@
                 <!-- 11 --><th class="never"><span>キャラID</span></th>
                 <!-- 12 --><th class="all toggle nowrap"><span>相手キャラ</span></th>
                 <!-- 13 --><th class="all toggle"><span>Lv</span></th>
-                <!-- 14 --><th class="all toggle"><span>BSC</span></th>
-                <!-- 15 --><th class="all toggle"><span>ADV</span></th>
-                <!-- 16 --><th class="all toggle"><span>EXP</span></th>
-                <!-- 17 --><th class="all toggle"><span>MAS</span></th>
-                <!-- 18 --><th class="all toggle"><span>LNT</span></th>
+                <!-- 14 --><th class="never"><span>BSC</span></th>
+                <!-- 15 --><th class="never"><span>ADV</span></th>
+                <!-- 16 --><th class="never"><span>EXP</span></th>
+                <!-- 17 --><th class="never"><span>MAS</span></th>
+                <!-- 18 --><th class="never"><span>LNT</span></th>
 
-                <!-- 19 --><th class="never"><span>譜面</span></th>
-                <!-- 20 --><th class="never"><span>難易度(ソート用)</span></th>
-                <!-- 21 --><th class="never"><span>難易度</span></th>
+                <!-- 19 --><th class="all"><span>譜面</span></th>
+                <!-- 20 --><th class="all"><span>難易度(ソート用)</span></th>
+                <!-- 21 --><th class="all"><span>難易度</span></th>
 
                 <!-- 22 --><th class="never"><span>NEW</span></th>
                 <!-- 23 --><th class="all toggle"><span>追加日</span></th>
@@ -114,9 +114,11 @@
     </footer>
 
     <script>
-        var flat_view = false;
+        var flat_view = true;
     </script>
     <script defer src="./functions.js"></script>
+    <!-- <script defer src="./src/js/table-config.js"></script>
+    <script defer src="./src/js/page-functions.js"></script> -->
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
     <script>

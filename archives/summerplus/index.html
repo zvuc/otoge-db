@@ -7,28 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="datatables/datatables.min.js"></script>
-    <link rel="stylesheet" href="datatables/datatables.min.css">
-    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="../../datatables/datatables.min.js"></script>
+    <link rel="stylesheet" href="../../datatables/datatables.css">
+    <link rel="stylesheet" href="style-summerplus.css?20200224">
 
     <title>オンゲキ収録曲DB</title>
 </head>
 <body>
     <header>
-        <h1>オンゲキ収録曲DB (나무마크 테이블 출력용)</h1>
-        <div class="lastupdated"><span>DATA: 20200930</span></div>
+        <h1>
+            <a href="#" class="reset-search">
+                <span class="main">ONGEKI DB</span>
+                <span class="sub">SUMMER <span class="sub plus">PLUS</span></span>
+            </a>
+        </h1>
+        <div class="aside">
+            <div class="lastupdated"><span>DATA: 20200917</span></div>
+            <div class="theme-switcher">
+                <span class="label"></span>
+                <label class="switch" for="themeToggleCheckbox">
+                    <input type="checkbox" id="themeToggleCheckbox" checked />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </div>
     </header>
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
                 <!-- 0 --><th class="never"><span>ID (system)</span></th>
                 <!-- 1 --><th class="all toggle"><span>#</span></th>
-                <!-- 6 --><th class="all toggle"><span>カテゴリ</span></th>
                 <!-- 2 --><th class="all"><span>A</span></th>
-                <!-- 3 --><th class="all"><span>曲名</span></th>
+                <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
-                <!-- 5 --><th class="never"><span>アーティスト</span></th>
-                <!-- 7 --><th class="never"><span>カテゴリID</span></th>
+                <!-- 5 --><th class="all"><span>曲名・アーティスト</span></th>
+                <!-- 6 --><th class="all toggle"><span>ジャンル</span></th>
+                <!-- 7 --><th class="never"><span>ジャンルID</span></th>
                 <!-- 8 --><th class="never"><span>チャプターID</span></th>
                 <!-- 9 --><th class="all toggle"><span>チャプター</span></th>
                 <!-- 10 --><th class="all toggle nowrap"><span>属性</span></th>
@@ -40,18 +54,82 @@
                 <!-- 16 --><th class="all toggle"><span>EXP</span></th>
                 <!-- 17 --><th class="all toggle"><span>MAS</span></th>
                 <!-- 18 --><th class="all toggle"><span>LNT</span></th>
-                <!-- 19 --><th class="all"><span>NEW</span></th>
+                <!-- 19 --><th class="never"><span>NEW</span></th>
                 <!-- 20 --><th class="all toggle"><span>追加日</span></th>
             </tr>
         </thead>
     </table>
-    
+
+
     <footer>
+        <div class="notice-bar">
+            ⚠️ マークされた譜面定数はまだSUMMER ver.時点でのものであり、最新の情報と異なる場合があります。
+        </div>
+        <div class="archives-link">
+            <p><b>Ongeki DB Archives:</b> <a href="/archives/ongekiplus">Ongeki Plus</a> / <a href="/archives/summer">Summer</a> </p>
+        </div>
         <p><b>DISCLAIMER: This website is not in any way affiliated with or endorsed by SEGA. All copyrighted materials owned by their respective owners.</b></p>
         <p>Made by <a href="https://twitter.com/zvuc_" target="_blank" rel="noopener">@zvuc_</a> / Contributions & feedback on <a href="https://github.com/zvuc/ongeki-db" target="_blank" rel="noopener">GitHub</a></p>
     </footer>
 
     <script>
+        // theme switcher
+        const toggleSwitch = document.getElementById('themeToggleCheckbox');
+        const root = document.documentElement;
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleSwitch.checked = false;
+            root.setAttribute('data-theme', 'dark');
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            toggleSwitch.checked = true;
+            root.setAttribute('data-theme', 'light');
+        }
+
+        whichTransitionEvent = () => {
+            let t,
+                el = document.createElement("fakeelement");
+
+            let transitions = {
+                "transition"      : "transitionend",
+                "OTransition"     : "oTransitionEnd",
+                "MozTransition"   : "transitionend",
+                "WebkitTransition": "webkitTransitionEnd"
+            }
+
+            for (t in transitions){
+                if (el.style[t] !== undefined){
+                    return transitions[t];
+                }
+            }
+        }
+
+        let transitionEvent = whichTransitionEvent(),
+            item = document.querySelector('.circle'),
+            message = document.querySelector('.footer'),
+            counter = 1;
+        
+        function switchTheme(e) {
+            root.classList.toggle('transitioning');
+
+            if (e.target.checked) {
+                root.setAttribute('data-theme', 'light');
+            }
+            else {
+                root.setAttribute('data-theme', 'dark');
+            } 
+
+            root.addEventListener(transitionEvent, transitionEndCallback);
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
+        transitionEndCallback = (e) => {
+            root.removeEventListener(transitionEvent, transitionEndCallback);
+            root.classList.remove('transitioning');
+        }
+
         $(document).ready(function() {
             var columns_params = [
                 { 
@@ -64,88 +142,76 @@
                     displayTitle: "#",
                     data: "image_url",
                     className: "id",
-                    searchable: false,
+                    data: function(row) {
+                        return row.image_url.split(".")[0];
+                    },
+                    render: renderInWrapper(),
                     width: "20px",
-                    render: function(data) {
-                        return data.split(".")[0];
-                    },
-                    visible: false
-                },
-                { 
-                    title: "||&lt;tablewidth=100%>&lt;rowbgcolor=#ddd,#000>&lt;width=1px>&lt;:>",
-                    displayTitle: "カテゴリ",
-                    data: "category",
-                    className: "category",
-                    render: function ( data, type, row ) {
-                        if ( type === 'display' ) {
-                            if (row.category === "オンゲキ") {
-                                return '||&lt;:>{{{-1 {{{#ff7dab \'\'\'O\'\'\'}}} }}}';
-                            }
-                            else if (row.category === "チュウマイ") {
-                                return '||&lt;:>{{{-1 {{{#42b6ff \'\'\'C\'\'\'}}} }}}';
-                            }
-                            else if (row.category === "東方Project") {
-                                return '||&lt;:>{{{-1 {{{#cf3eff \'\'\'東\'\'\'}}} }}}';
-                            }
-                            else if (row.category === "niconico") {
-                                return '||&lt;:>{{{-1 {{{#f5ac00,#ffd822 \'\'\'N\'\'\'}}} }}}';
-                            }
-                            else if (row.category === "VARIETY") {
-                                return '||&lt;:>{{{-1 {{{#00c312 \'\'\'V\'\'\'}}} }}}';
-                            }
-                            else {
-                                return '||&lt;:>{{{-1 {{{#f06 \'\'\'P\'\'\'}}} }}}';
-                            }
-                        }
-                        // use chara_id for sort
-                        else {
-                            return data;
-                        }
-                    },
-                    filterable: true
+                    searchable: false
                 },
                 { 
                     displayTitle: "アルバムアート",
                     data: "image_url",
                     className: "jacket",
-                    orderable: false,
-                    searchable: false,
                     render: function(data) {
-                        return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><span style="display:none">[[파일:' + data.split(".")[0] + '.jpg]]<\/span><\/span>';
+                        return '<span class="img-wrap"><img src=\"../../jacket/' + data.split(".")[0] + '.jpg\"\/><\/span><span class="index">' + data.split(".")[0] + '<\/span>';
                     },
                     width: "50px",
-                    visible: false
+                    orderable: false,
+                    searchable: false
                 },
                 { 
-                    title: "||&lt;:>'''곡명 / 아티스트'''",
                     displayTitle: "曲名",
                     data: "title",
                     className: "song-title",
                     render: function ( data, type, row ) {
                         // If display or filter data is requested, return title
-                        if ( type === 'display' || type === 'filter' ) {
-                            return '||&lt;(>\'\'\'[['+data+']]\'\'\' \[br\] {{{-2 {{{#888 '+ row.artist +'}}} }}}';
+                        if ( type === 'display' ) {
+                            return '<div class="inner-wrap"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
+                        }
+                        else if ( type === 'filter' ) {
+                            return data;
                         }
                         // Else type detection or sorting data, return title_sort
                         else {
                             return row.title_sort;
                         }
-                    }
+                    },
+                    width: "80vw",
                 },
                 {
                     displayTitle: "曲名 (読み)",
                     data: "title_sort",
                     className: "title-sort",
-                    visible: false
+                    visible: false,
+                    searchable: false
                 },
                 { 
-                    title: "||&lt;:>'''아티스트'''",
-                    displayTitle: "アーティスト",
-                    data: "artist",
+                    // redundant (fake) merged title column for mobile
+                    displayTitle: "曲名・アーティスト",
+                    data: "title",
                     className: "artist",
+                    render: function ( data, type, row ) {
+                        // If display or filter data is requested, return title
+                        if ( type === 'display' ) {
+                            return '<div class="inner-wrap"><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
+                        }
+                        else {
+                            return row.title_sort;
+                        }
+                    },
+                    searchable: false
                 },
                 { 
-                    displayTitle: "カテゴリID",
+                    displayTitle: "ジャンル",
+                    data: "category",
+                    className: "category",
+                    render: renderInWrapper(),
+                    customDropdownSortSource: 'category_id',
+                    filterable: true
+                },
+                { 
+                    displayTitle: "ジャンルID",
                     data: "category_id",
                     width: "90px",
                     visible: false
@@ -158,7 +224,6 @@
                 },
                 {
                     // combine chap_id + chapter
-                    title: "||&lt;:>'''챕터'''",
                     displayTitle: "チャプター",
                     data: function( row, type, set, meta ) {
                         if (type === 'sort') {
@@ -220,17 +285,16 @@
                     },
                     className: "chapter",
                     width: "15em",
-                    filterable: true,
-                    visible: false
+                    render: renderInWrapper(),
+                    filterable: true
                 },
                 { 
                     displayTitle: "属性",
-                    title: "||&lt;:>&lt;width=20%>'''대전상대'''",
                     data: "enemy_type",
                     className: "type",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
-                            return '||<span class="type-icon ' + data.toLowerCase() + '"><span>[[파일:ongeki_type_' + data.toLowerCase() + '.png|width=20]]<\/span><\/span>' + row.character + ' \[br\] Lv.' + row.enemy_lv;
+                            return '<div class="inner-wrap"><span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span></div>';
                         }
                         // use chara_id for sort
                         else {
@@ -247,12 +311,11 @@
                 },
                 { 
                     displayTitle: "相手キャラ",
-                    title: "||&lt;:>'''상대 캐릭터'''",
                     data: "character",
                     className: "character",
                     render: function ( data, type, row ) {
                         if ( type === 'display' || type === 'filter' ) {
-                            return data;
+                            return '<div class="inner-wrap">' + data + '<\/div>';
                         }
                         // use chara_id for sort
                         else {
@@ -261,52 +324,30 @@
                     },
                     customDropdownSortSource: 'chara_id',
                     width: "10em",
-                    filterable: true,
-                    visible: false
+                    filterable: true
                 },
                 { 
                     displayTitle: "相手レベル",
-                    title: "||&lt;:>&lt;width=60>'''Lv'''",
                     data: "enemy_lv",
                     className: "enemy-lv",
                     render: function ( data, type, row ) {
                         if ( type === 'display' ) {
-                            return '||&lt;:> Lv.' + data;
+                            return '<div class="inner-wrap">Lv.' + data + '<\/div>';
                         }
+                        // use chara_id for sort
                         else {
                             return data;
                         }
                     },
                     customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
-                    width: "4em",
-                    filterable: true,
-                    visible: false
+                    width: "4em"
                 },
                 { 
                     //  BASIC
                     displayTitle: "BASIC",
-                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#65d346,#000> {{{#fff,#65d346 '''B'''}}}",
                     data: sortLevels('lev_bas', 'lev_bas_i'),
                     className: "lv lv-bsc",
-                    render: function ( data, type, row ) {
-                        if ( type === 'display' ) {
-                            if ( row.lev_lnt === "" ) {
-                                return "||&lt;:>" + data;
-                            }
-                            // show LUN level in place if it exists
-                            else {
-                                if (row.lev_lnt_i != "") {
-                                    return '||&lt;-4>&lt;:>&lt;bgcolor=#fff,#000> {{{#d9362c \'\'\'LUNATIC\'\'\' }}}' + row.lev_lnt + ' {{{-2 {{{#888 (' + row.lev_lnt_i + ')}}} }}}'
-                                } 
-                                else {
-                                    return '||&lt;-4>&lt;:>&lt;bgcolor=#fff,#000> {{{#d9362c \'\'\'LUNATIC\'\'\'}}}' + row.lev_lnt;
-                                }
-                            }
-                        }
-                        else {
-                            return data;
-                        }
-                    },
+                    render: renderLvNum('lev_bas', 'lev_bas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_bas'),
                     width: "3rem",
                     filterable: true
@@ -314,10 +355,9 @@
                 { 
                     //  ADVANCED
                     displayTitle: "ADVANCED",
-                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#fbe64d,#000> {{{#fff,#fbe64d '''A'''}}}",
                     data: sortLevels('lev_adv', 'lev_adv_i'),
                     className: "lv lv-adv",
-                    render: renderLvNumIfNotLunatic('lev_adv', 'lev_adv_i'),
+                    render: renderLvNum('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv'),
                     width: "3rem",
                     filterable: true
@@ -325,10 +365,9 @@
                 { 
                     //  EXPERT
                     displayTitle: "EXPERT",
-                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#ea3886,#000> {{{#fff,#ea3886 '''E'''}}}",
                     data: sortLevels('lev_exc', 'lev_exc_i'),
                     className: "lv lv-exp",
-                    render: renderLvNumIfNotLunatic('lev_exc', 'lev_exc_i'),
+                    render: renderLvNum('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc'),
                     width: "3rem",
                     filterable: true
@@ -336,48 +375,40 @@
                 { 
                     //  MASTER
                     displayTitle: "MASTER",
-                    title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#a547d5,#000> {{{#fff,#a547d5 '''M'''}}}",
                     data: sortLevels('lev_mas', 'lev_mas_i'),
                     className: "lv lv-mas",
-                    render: renderLvNumIfNotLunatic('lev_mas', 'lev_mas_i'),
+                    render: renderLvNum('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas'),
                     width: "3rem",
                     filterable: true
                 },
                 { 
-                    //  LUNATIC -> row end for namuwiki export
+                    //  LUNATIC
                     displayTitle: "LUNATIC",
-                    // title: "||&lt;:>&lt;width=5%>&lt;bgcolor=#fff,#000> {{{#d9362c,#eee '''LUN'''}}}",
-                    title: "||",
                     data: sortLevels('lev_lnt', 'lev_lnt_i'),
                     className: "lv lv-lnt",
-                    // render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-                    render: function ( data, type, row ) {
-                        return "||";
-                    },
+                    render: renderLvNum('lev_lnt', 'lev_lnt_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
                     width: "3rem",
                     filterable: true
                 },
                 { 
                     displayTitle: "NEW",
-                    title: "",
                     data: "new",
                     searchable: false,
-                    orderable: false,
-                    render: function ( data, type, row ) {
-                        return "";
-                    }
+                    visible: false
                 },
                 { 
                     displayTitle: "追加日",
                     data: "date",
                     className: "date",
                     filterable: true,
-                    width: "4em",
-                    visible: false
+                    render: renderInWrapper(),
+                    width: "4em"
                 }
             ];
+
+            var default_order = [[20, 'desc'],[9, 'asc'],[0, 'asc']];
             
             function sortLevels(col_a, col_b) {
                 return function ( row, type, set, meta ) {
@@ -412,14 +443,7 @@
             function renderLvNum(simple_lv, precise_lv) {
                 return function ( data, type, row ) {
                     if ( type === 'display' ) {
-                        if (row[precise_lv] != "") {
-                            return '&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span> <span class="lv-num-precise">[br] {{{-2 {{{#888 (' + row[precise_lv] + ')}}} }}}<\/span>';
-                        } 
-                        else if (row[simple_lv] != "") {
-                            return '&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span>';
-                        } else {
-                            return '&lt;:> <span class="lv-num-simple">{{{#888 — }}}<\/span>';
-                        }
+                        return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
                     }
                     else {
                         return data;
@@ -427,17 +451,10 @@
                 }
             }
 
-            function renderLvNumIfNotLunatic(simple_lv, precise_lv) {
+            function renderInWrapper() {
                 return function ( data, type, row ) {
-                    if ( type === 'display' && row.lev_lnt === "") {
-                        if (row[precise_lv] != "") {
-                            return '||&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span> <span class="lv-num-precise">[br] {{{-2 {{{#888 (' + row[precise_lv] + ')}}} }}}<\/span>';
-                        } 
-                        else if (row[simple_lv] != "") {
-                            return '||&lt;:> <span class="lv-num-simple">' + row[simple_lv] + '<\/span>';
-                        } else {
-                            return '||&lt;:> <span class="lv-num-simple">{{{#888 — }}}<\/span>';
-                        }
+                    if ( type === 'display' ) {
+                        return '<div class="inner-wrap">' + data + '<\/div>';
                     }
                     else {
                         return data;
@@ -447,69 +464,56 @@
 
             var table = $('#table').DataTable( {
                 "ajax": {
-                    url: "data/music-ex.json",
+                    url: "20200917-summerplus-final-music-ex.json",
                     dataSrc: ""
                 },
                 "buttons": [
                     {
                         extend: 'colvisRestore',
-                        text: '全カラム表示',
+                        text: '全表示',
+                    },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     text: '全レベル ON',
+                    //     show: [ 14, 15, 16, 17, 18 ]
+                    // },
+                    {
+                        extend: 'colvisGroup',
+                        text: '譜面レベルのみ',
+                        hide: [ 6, 8, 9, 10, 12, 13, 20 ],
+                        show: [ 14, 15, 16, 17, 18 ],
                     },
                     {
                         extend: 'colvisGroup',
-                        text: '全難易度表示',
-                        show: [ 14, 15, 16, 17, 18 ]
+                        text: 'EXPERT以上のみ',
+                        hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 20 ],
+                        show: [ 16, 17, 18 ]
                     },
-                    {
-                        extend: 'colvisGroup',
-                        text: 'EXPERT以下を隠す',
-                        hide: [ 14, 15 ]
-                    },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     className: 'asdf',
+                    //     text: 'ジャンル・チャプタ OFF',
+                    //     hide: [ 6, 9 ]
+                    // },
                     {
                         extend: 'colvisGroup',
                         className: 'asdf',
-                        text: 'カテゴリ・チャプターを隠す',
-                        hide: [ 6, 9 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        className: 'asdf',
-                        text: '相手情報を隠す',
-                        hide: [ 10, 12, 13 ]
+                        text: '属性・Lv 表示',
+                        show: [ 10, 13 ]
                     },
                     {
                         extend: 'colvis',
+                        className: 'config-btn',
                         columns: '.toggle',
                         text: 'カスタム設定',
                         collectionTitle: "表示・隠すカラムを選択",
                         collectionLayout: "fixed",
                         fade: 150
                     },
-                    {
-                        extend: 'csvHtml5',
-                        text: 'Export to CSV',
-                        fieldBoundary: '',
-                        fieldSeparator: '',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    {
-                        extend: 'copyHtml5',
-                        text: 'Copy to Clipboard',
-                        messageTop: '{{{#!wiki style=\"word-break: normal\" ',
-                        messageBottom: '}}}',
-                        fieldBoundary: '',
-                        fieldSeparator: '',
-                        exportOptions: {
-                            columns: ':visible',
-                        },
-                        title: ""
-                    }
                 ],
                 "columns": columns_params,
                 "deferRender": true,
-                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lf><"toolbar"i><"table-inner"rt><"paging"p>',
+                "dom": '<"column-toggle-bar"B><"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"il>><"table-inner"rt><"paging"p>',
                 "language": {
                     "sEmptyTable":     "テーブルにデータがありません",
                     "sInfo":           " _TOTAL_ 曲中 _START_〜_END_ まで表示中",
@@ -517,10 +521,10 @@
                     "sInfoFiltered":   "（全 _MAX_ 曲）",
                     "sInfoPostFix":    "",
                     "sInfoThousands":  ",",
-                    "sLengthMenu":     "1ページ表示曲数 _MENU_",
+                    "sLengthMenu":     "1ページ表示 _MENU_",
                     "sLoadingRecords": "読み込み中...",
                     "sProcessing":     "処理中...",
-                    "sSearch":         "検索:",
+                    "sSearch":         "キーワード検索",
                     "sZeroRecords":    "一致するレコードがありません",
                     "oPaginate": {
                         "sFirst":    "先頭",
@@ -534,7 +538,7 @@
                     }
                 },
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[20, 'asc'],[9,'asc'],[0,'asc']], 
+                "order": default_order, 
                 "responsive": {
                     details: {
                         type: 'column',
@@ -581,10 +585,10 @@
                                     // when applying filter, control rowgroup visibility
                                     if(column.index() === 20 || (val === "" && order[0][0] === 20)) {
                                         column.rowGroup().enable();
-                                        console.log('group enabled (filter)');
+                                        // console.log('group enabled (filter)');
                                     } else {
                                         column.rowGroup().disable();
-                                        console.log('group disabled (filter active)');
+                                        // console.log('group disabled (filter active)');
                                     }
 
                                     column
@@ -616,6 +620,11 @@
                             } else {
                                 column_data = column_data.sort();
                             }
+
+                            // reverse sort for date
+                            if (column_param.data == 'date') {
+                              column_data.reverse();
+                            }
                             
                             // draw option list
                             column_data.unique().each(function ( d, j ) {
@@ -631,13 +640,13 @@
                         var search = table.columns().search();
                         var searchActive = false;
 
-                        console.log('Reorder happened!');
-                        console.log(order);
+                        // console.log('Reorder happened!');
+                        // console.log(order);
 
                         for (let k = 0; k < search.length; k = k+1) {
                             if (k in search && search[k] !== "") {
                                 searchActive = true;
-                                console.log(searchActive);
+                                // console.log(searchActive);
                                 break;
                             }
                         }                       
@@ -645,18 +654,18 @@
                         // Disable rowgroup unless sorting by date
                         if ( order[0][0] !== 20 ) {
                             table.rowGroup().disable();
-                            console.log('group disabled (sorting by non-date column)');
+                            // console.log('group disabled (sorting by non-date column)');
                             return;
                         } 
                         // enable rowgroup if sorting by date AND search is inactive
                         else if ( (order[0][0] === 20) && !searchActive ) {
                             table.rowGroup().enable();
-                            console.log('group enabled (sorting by date + search inactive)');
+                            // console.log('group enabled (sorting by date + search inactive)');
                             return;
                         }
                         // do nothing
                         else {
-                            console.log('do nothing');
+                            // console.log('do nothing');
                             return;
                         }
                         table.draw();
@@ -667,9 +676,22 @@
             // table.on( 'search.dt', function () {
             //     console.log('search happened')
             // } );
-        });
 
-        
+            $(".column-toggle-bar").prepend('<span class="label">ビューカスタマイズ</span>');
+    
+
+            $('a.reset-search').on('click', function(){
+                table
+                    .order([[20, 'desc'],[9, 'asc'],[0, 'asc']]) //FIXME: why doesn't work with just calling var?
+                    .search('')
+                    .columns().search('')
+                    .draw();
+
+                $('.toolbar.filters select').prop('selectedIndex',0);
+
+                console.log('search reset');
+            });
+        });
     </script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>

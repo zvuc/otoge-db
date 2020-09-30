@@ -1,7 +1,7 @@
 .variables-light() {
-    --color-ongeki-summer-accent-01: 232,74,146; /* #e84a92 */
-    --color-ongeki-summer-accent-02: 0,150,218; /* #0096da */
-    --color-ongeki-summer-accent-03: 253,249,83; /* #fdf953 */
+    --color-ongeki-red-accent-01: 253,42,37; /* #fd2a25 */
+    --color-ongeki-red-accent-02: 255,142,0; /* #ff8e00 */
+    --color-ongeki-red-accent-03: 253,249,83; /* #fdf953 */
 
     --ui-color-background-100: 255,255,255; /* #fff */
     --ui-color-background-098: 250,250,250; /* #fafafa */
@@ -35,13 +35,14 @@
     
     --ui-color-page-background: var(--ui-color-background-100);
     --ui-color-text: var(--ui-color-foreground-095);
-    --ui-color-form-background: var(--ui-color-background-100);
-    --ui-color-form-border: var(--ui-color-foreground-020);
-    --ui-color-btn: var(--ui-color-background-070);
-    --ui-color-btn-active: var(--ui-color-background-050);
-    --ui-color-highlight: var(--color-ongeki-summer-accent-01);
-    --ui-color-primary: var(--color-ongeki-summer-accent-02);
-    --ui-color-warning-bg: var(--color-ongeki-summer-accent-03);
+    --ui-color-form-background: 204,193,211; /* #ccc1d3 */
+    --ui-color-form-border: 156,137,174; /* #9c89ae */
+    --ui-color-btn: 204,193,211; /* #ccc1d3 */
+    --ui-color-btn-highlight: 156,137,174; /* #9c89ae */
+    --ui-color-btn-active: 178,168,186; /* #b2a8ba */
+    --ui-color-highlight: var(--color-ongeki-red-accent-01);
+    --ui-color-primary: var(--color-ongeki-red-accent-02);
+    --ui-color-warning-bg: var(--color-ongeki-red-accent-03);
 
     --ui-color-table-row-bg: var(--ui-color-background-100);
     --ui-color-table-row-bg-odd: var(--ui-color-background-098);
@@ -51,8 +52,21 @@
     --ui-color-table-row-group-bg: var(--ui-color-background-093);
     --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
+    --lv-color-bsc: 31,132,3; /* #1f8403 */
+    --lv-color-adv: 162,94,6; /* #a25e06 */
+    --lv-color-exp: 234,56,134; /* #ea3886 */
+    --lv-color-mas: 165,71,213; /* #a547d5 */
+    --lv-color-lnt: 217,54,44; /* #d9362c */
+
+    --toolbar-bg: linear-gradient(25deg, #f0eaf2 50%, #b5caf4 120%);
+    --toolbar-btn-color: 227,218,232; /* #e3dae8 */
+
     --current-theme-icon: "🔆";
-    --sort-arrows-opacity: 1;
+    --sort-arrows-opacity: 0.8;
+
+    --bg-pattern-filter: invert(1);
+
+    --ongeki-db-logo-url: url('./img/ongeki-db-logo-lite-light.svg');
 }
 
 .variables-dark() {
@@ -89,13 +103,14 @@
 
     --ui-color-page-background: var(--ui-color-background-100);
     --ui-color-text: var(--ui-color-foreground-090);
-    --ui-color-form-background: var(--ui-color-background-100);
-    --ui-color-form-border: var(--ui-color-foreground-020);
-    --ui-color-btn: var(--ui-color-background-070);
-    --ui-color-btn-active: var(--ui-color-background-050);
-    --ui-color-highlight: var(--color-ongeki-summer-accent-01);
-    --ui-color-primary: var(--color-ongeki-summer-accent-02);
-    --ui-color-warning-bg: 84,83,29; /* #54531d */
+    --ui-color-form-background: 63,49,71; /* #3f3147 */
+    --ui-color-form-border: 109,88,130; /* #6d5882 */
+    --ui-color-btn: 63,49,71; /* #3f3147 */
+    --ui-color-btn-highlight: 109,88,130; /* #6d5882 */
+    --ui-color-btn-active: 83,71,91; /* #53475b */
+    --ui-color-highlight: var(--color-ongeki-red-accent-01);
+    --ui-color-primary: var(--color-ongeki-red-accent-02);
+    --ui-color-warning-bg: var(--color-ongeki-red-accent-03);
 
     --ui-color-table-row-bg: var(--ui-color-background-100);
     --ui-color-table-row-bg-odd: var(--ui-color-background-098);
@@ -105,8 +120,21 @@
     --ui-color-table-row-group-bg: var(--ui-color-background-093);
     --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
+    --lv-color-bsc: 101,211,70; /* #65d346 */
+    --lv-color-adv: 251,230,77; /* #fbe64d */
+    --lv-color-exp: 234,56,134; /* #ea3886 */
+    --lv-color-mas: 165,71,213; /* #a547d5 */
+    --lv-color-lnt: 217,54,44; /* #d9362c */
+
+    --toolbar-bg: linear-gradient(25deg, #141528 55%, #1b213a 98%, #3355a3 110%);
+    --toolbar-btn-color: 63,49,71; /* #3f3147 */
+
     --current-theme-icon: "🌘";
-    --sort-arrows-opacity: 0.3;
+    --sort-arrows-opacity: 0.8;
+
+    --bg-pattern-filter: invert(0);
+
+    --ongeki-db-logo-url: url('./img/ongeki-db-logo-lite-dark.svg');
 }
 
 // actual output

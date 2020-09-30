@@ -1,0 +1,112 @@
+.btn {
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	margin: 2px 2px;
+	font-size: 0.9em;
+	letter-spacing: -0.02em;
+	font-weight: bold;
+	height: 35px;
+	color: rgb(var(--ui-color-foreground-090));
+	overflow: visible;
+	border: none;
+	border-radius: 0;
+	box-sizing: border-box;
+	box-shadow: none;
+	background: none;
+	padding: 5px 15px;
+	background-color: rgba(var(--ui-color-btn),0.5);
+	text-decoration: none;
+	mask-image: 
+		linear-gradient(45deg, transparent 7px, rgb(0,0,0) 8px),
+		linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
+		linear-gradient(225deg, transparent 7px, rgb(0,0,0) 8px),
+		linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+	mask-position: bottom left, top left, top right, bottom right;
+	mask-size: 50.1% 50.1%;
+	mask-repeat: no-repeat;
+	transition-property: background-color;
+	transition-duration: 0.2s;
+
+	@media screen and (max-width: 480px) {
+		margin-right: 3px;
+	}
+
+	&:hover,
+	&:active,
+	&:active:hover,
+	&:focus
+	&.active {
+		border: none;
+		box-shadow: none;
+		background: none; 
+	}
+
+
+	&:before { 
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-repeat: no-repeat;
+		background-image: 
+				linear-gradient(to right, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-02)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+				linear-gradient(to left, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-02)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+				linear-gradient(45deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px),
+				linear-gradient(225deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px);
+		background-position: bottom right, top left, bottom left, top right;
+		background-size: calc(100% - 11px) 2px, calc(100% - 11px) 2px, 14px 14px, 14px 14px;
+		opacity: 0;
+		transition-property: background-image, background-color, opacity;
+		transition-duration: 0.2s;
+	}
+
+	&:hover {
+		background-color: rgba(var(--ui-color-btn),0.8);
+		border-radius: 0;
+		transition-duration: 0s;
+
+		&:before {
+			opacity: 1;
+			transition-duration: 0s;
+		}
+	}
+
+	&:active {
+		background-color: rgb(var(--ui-color-btn-active));
+		border-radius: 0;
+		transition-duration: 0s;
+
+		&:before {
+			background-image: 
+				linear-gradient(to right, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-03)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+				linear-gradient(to left, rgb(var(--color-ongeki-red-accent-01)) 0%, rgb(var(--color-ongeki-red-accent-03)) 50%, rgb(var(--color-ongeki-red-accent-01)) 100%),
+				linear-gradient(45deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px),
+				linear-gradient(225deg, transparent 7px, rgb(var(--color-ongeki-red-accent-01)) 8px, rgb(var(--color-ongeki-red-accent-01)) 9.5px, transparent 9.5px);
+			opacity: 1;
+			transition-duration: 0s;
+		}
+	}
+
+	&.active {
+		border-radius: 0;
+		transition-duration: 0s;
+
+		&:before {
+			background-image: 
+				linear-gradient(to right, rgb(var(--color-ongeki-red-accent-02)) 0%, rgb(var(--color-ongeki-red-accent-03)) 50%, rgb(var(--color-ongeki-red-accent-02)) 100%),
+				linear-gradient(to left, rgb(var(--color-ongeki-red-accent-02)) 0%, rgb(var(--color-ongeki-red-accent-03)) 50%, rgb(var(--color-ongeki-red-accent-02)) 100%),
+				linear-gradient(45deg, transparent 7px, rgb(var(--color-ongeki-red-accent-02)) 8px, rgb(var(--color-ongeki-red-accent-02)) 9.5px, transparent 9.5px),
+				linear-gradient(225deg, transparent 7px, rgb(var(--color-ongeki-red-accent-02)) 8px, rgb(var(--color-ongeki-red-accent-02)) 9.5px, transparent 9.5px);
+			opacity: 1;
+			transition-duration: 0s;
+		}
+	}
+
+
+	span {
+		position: relative;
+	}
+}
