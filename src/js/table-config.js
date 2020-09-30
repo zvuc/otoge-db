@@ -2,12 +2,14 @@ $(document).ready(function() {
     var columns_params = [
         { 
             displayTitle: "ID (system)",
+            id: "id",
             data: "id",
             className: "id",
             visible: false
         },
         { 
             displayTitle: "#",
+            id: "index",
             data: "image_url",
             className: "id",
             data: function(row) {
@@ -19,6 +21,7 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "アルバムアート",
+            id: "jacket",
             data: "image_url",
             className: "jacket",
             render: function(data) {
@@ -30,6 +33,7 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "曲名",
+            id: "title",
             data: "title",
             className: "song-title",
             render: function ( data, type, row ) {
@@ -49,6 +53,7 @@ $(document).ready(function() {
         },
         {
             displayTitle: "曲名 (読み)",
+            id: "title_sort",
             data: "title_sort",
             className: "title-sort",
             visible: false,
@@ -57,6 +62,7 @@ $(document).ready(function() {
         { 
             // redundant (fake) merged title column for mobile
             displayTitle: "曲名・アーティスト",
+            id: "title_merged",
             data: "title",
             className: "artist",
             render: function ( data, type, row ) {
@@ -72,6 +78,7 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "ジャンル",
+            id: "category",
             data: "category",
             className: "category",
             render: renderInWrapper(),
@@ -80,12 +87,14 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "ジャンルID",
+            id: "category_id",
             data: "category_id",
             width: "90px",
             visible: false
         },
         { 
             displayTitle: "チャプターID",
+            id: "chap_id",
             data: "chap_id",
             className: "chapter-id",
             visible: false
@@ -93,8 +102,9 @@ $(document).ready(function() {
         {
             // combine chap_id + chapter
             displayTitle: "チャプター",
+            id: "chap",
             data: function( row, type, set, meta ) {
-                if (type === 'sort') {
+                if ( type === 'sort' || type === 'meta') {
                     return row.chap_id;
                 } else {
                     row.chap_chapter = row.chap_id.substr(3,2);
@@ -158,6 +168,7 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "属性",
+            id: "enemy_type",
             data: "enemy_type",
             className: "type",
             render: function ( data, type, row ) {
@@ -174,11 +185,13 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "キャラID",
+            id: "chara_id",
             data: "chara_id",
             visible: false
         },
         { 
             displayTitle: "相手キャラ",
+            id: "character",
             data: "character",
             className: "character",
             render: function ( data, type, row ) {
@@ -196,6 +209,7 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "相手レベル",
+            id: "enemy_lv",
             data: "enemy_lv",
             className: "enemy-lv",
             render: function ( data, type, row ) {
@@ -213,6 +227,7 @@ $(document).ready(function() {
         { 
             //  BASIC
             displayTitle: "BASIC",
+            id: "lev_bas",
             data: sortLevels('lev_bas', 'lev_bas_i'),
             className: "lv lv-bsc",
             render: renderLvNum('lev_bas', 'lev_bas_i'),
@@ -223,6 +238,7 @@ $(document).ready(function() {
         { 
             //  ADVANCED
             displayTitle: "ADVANCED",
+            id: "lev_adv",
             data: sortLevels('lev_adv', 'lev_adv_i'),
             className: "lv lv-adv",
             render: renderLvNum('lev_adv', 'lev_adv_i'),
@@ -233,6 +249,7 @@ $(document).ready(function() {
         { 
             //  EXPERT
             displayTitle: "EXPERT",
+            id: "lev_exc",
             data: sortLevels('lev_exc', 'lev_exc_i'),
             className: "lv lv-exp",
             render: renderLvNum('lev_exc', 'lev_exc_i'),
@@ -243,6 +260,7 @@ $(document).ready(function() {
         { 
             //  MASTER
             displayTitle: "MASTER",
+            id: "lev_mas",
             data: sortLevels('lev_mas', 'lev_mas_i'),
             className: "lv lv-mas",
             render: renderLvNum('lev_mas', 'lev_mas_i'),
@@ -253,6 +271,7 @@ $(document).ready(function() {
         { 
             //  LUNATIC
             displayTitle: "LUNATIC",
+            id: "lev_lnt",
             data: sortLevels('lev_lnt', 'lev_lnt_i'),
             className: "lv lv-lnt",
             render: renderLvNum('lev_lnt', 'lev_lnt_i'),
@@ -263,6 +282,7 @@ $(document).ready(function() {
         {
             //  chart_diff
             displayTitle: "譜面",
+            id: "chart_diff",
             data: ( flat_view ? 'chart_diff' : null ),
             className: "lv-name",
             width: "3rem",
@@ -275,6 +295,7 @@ $(document).ready(function() {
         {
             //  chart_lev (for sort)
             displayTitle: "難易度グループ",
+            id: "chart_lev",
             data: ( flat_view ? 'chart_lev' : null ),
             className: "lv",
             width: "4rem",
@@ -285,6 +306,7 @@ $(document).ready(function() {
         {
             //  chart_lev_i
             displayTitle: "難易度",
+            id: "chart_lev_i",
             data: ( flat_view ? 'chart_lev_i' : null ),
             className: "lv lv-name",
             render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display')
@@ -299,12 +321,14 @@ $(document).ready(function() {
         },
         { 
             displayTitle: "NEW",
+            id: "new",
             data: "new",
             searchable: false,
             visible: false
         },
         { 
             displayTitle: "追加日",
+            id: "date",
             data: "date",
             className: "date",
             filterable: true,
@@ -525,6 +549,7 @@ $(document).ready(function() {
             "scrollX": true,
 
             initComplete: function () {
+                var searchParams = new URLSearchParams(window.location.search);
                 var rows = this.api().rows().data();
 
                 // Generate Filter dropdown per columns
@@ -538,28 +563,43 @@ $(document).ready(function() {
                     if (("filterable" in column_param) && (column_param.filterable == true)) {
                         var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.displayTitle + '</span></div>')
                             .appendTo($('.toolbar.filters'));
-                        var select = $('<select><option value="" selected data-default>——</option></select>')
-                            .appendTo(selectWrap)
-                            .on('change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex(
-                                    $(this).val()
-                                );
+                        var select = $('<select><option value="" selected data-default>——</option></select>');
 
-                                // when applying filter, control rowgroup visibility
-                                if (column.index() === 23 || (val === "" && order[0][0] === 23)) {
-                                    column.rowGroup().enable();
-                                    // console.log('group enabled (filter)');
+                        select.appendTo(selectWrap);
+
+                        select.on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            // when applying filter, control rowgroup visibility
+                            if (column.index() === 23 || (val === "" && order[0][0] === 23)) {
+                                column.rowGroup().enable();
+                                // console.log('group enabled (filter)');
+                            } else {
+                                column.rowGroup().disable();
+                                // console.log('group disabled (filter active)');
+                            }
+
+                            // update URL params on change
+                            if ('URLSearchParams' in window) {
+                                if (val === "") {
+                                    searchParams.delete(column_param.id);
                                 } else {
-                                    column.rowGroup().disable();
-                                    // console.log('group disabled (filter active)');
+                                    searchParams.set(column_param.id, val);
                                 }
+                                var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+                                history.pushState(null, '', newRelativePathQuery);
+                            }
 
-                                column
-                                    .search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
+                            var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString() + window.location.hash;
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
 
 
-                            });
+                        });
 
 
                         // column parameter has customDropdownSortSource option
@@ -597,8 +637,59 @@ $(document).ready(function() {
                                 select.append('<option value="' + d + '">' + d + '</option>');
                             }
                         });
+
+                        // set value for select on page init
+                        if ('URLSearchParams' in window) {
+                            function unescapeSlashes(str) {
+                              if (str !== null) {
+                                  // add another escaped slash if the string ends with an odd
+                                  // number of escaped slashes which will crash JSON.parse
+                                  let parsedStr = str.replace(/(^|[^\\])(\\\\)*\\$/, "$&\\");
+
+                                  try {
+                                    parsedStr = JSON.parse(`"${parsedStr}"`);
+                                  } catch(e) {
+                                    return str;
+                                  }
+                                  return str.replace(/(^|[^\\])(\\\\)*\\$/, "$&\\") ;
+                              } else {
+                                  return str;
+                              }
+                            }
+
+                            var searchParamValue = searchParams.get(column_param.id);
+                            if ( searchParamValue !== null ) {
+                                console.log(searchParamValue);
+                                var value = unescapeSlashes(searchParamValue)
+                                console.log(value);
+                                column_data.unique().each(function (d) {
+                                    select.val(value).prop("selected", true);
+                                });
+                            }
+                        }
+
                     }
+
                 });
+
+                // filter according to URL params on initial load
+                if ('URLSearchParams' in window) {
+                    searchParams.forEach(function (value, key) {
+                        table.columns().every(function () {
+                            var order = table.order();
+                            var column = this;
+                            var column_data = column.data();
+                            var column_param = columns_params[column.index()];
+                            var searchParamValue = searchParams.get(column_param.id);
+
+                            if ( searchParamValue !== null ) {
+                                column.search(searchParamValue ? '^' + searchParamValue + '$' : '', true, false);
+                            }
+                        });
+                    });
+
+                    table.draw();
+                }
 
                 table.on('order.dt', function () {
                     var order = table.order();

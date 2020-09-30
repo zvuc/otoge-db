@@ -55,6 +55,11 @@ transitionEndCallback = (e) => {
     root.classList.remove('transitioning');
 }
 
+function updateQueryStringParameter(uri, key, value) {
+    var searchParams = new URLSearchParams(uri);
+    searchParams.set(key, value);
+}
+
 $(document).ready(function() {
     $('html').removeClass('page-loading');
 });
