@@ -675,8 +675,8 @@ table.dataTable {
 
 	th.lv-name,
 	td.lv-name {
-		min-width: 50px;
-		max-width: 5rem;
+		min-width: 80px;
+		max-width: 8rem;
 	}
 
 	th.lv select {
@@ -746,6 +746,16 @@ table.dataTable {
 		background: rgba(255,255,255,0.2) !important;
 	}
 
+	.lv-num-wrap {
+		display: flex;
+		align-items: baseline;
+
+		.lv-num-precise {
+			text-align: right;
+			margin-left: auto;
+		}
+	}
+
 	.lv-num-simple {
 
 	}
@@ -755,12 +765,18 @@ table.dataTable {
 		color: rgb(var(--ui-color-foreground-060));
 		font-size: 0.8em;
 	}
-	/*.lv-num-precise:not(:empty):before {
-		content: "(";
+
+	.lv-num-precise .approx {
+		display: block;
+		color: rgba(var(--ui-color-foreground-060),0.4);
+
+		&:before {
+			content: "(";
+		}
+		&:after {
+			content: ")";
+		}
 	}
-	.lv-num-precise:not(:empty):after {
-		content: ")";
-	}*/
 
 	thead th.date,
 	tbody td.date {

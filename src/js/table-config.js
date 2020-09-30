@@ -364,23 +364,23 @@ $(document).ready(function() {
             if ( type === 'display' ) {
                 switch (row[chart_diff]) {
                     case 'lev_bas' :
-                        var chart_diff_display = 'BSC'
+                        var chart_diff_display = 'BASIC'
                         break;
                     case 'lev_adv' :
-                        var chart_diff_display = 'ADV'
+                        var chart_diff_display = 'ADVANCED'
                         break;
                     case 'lev_exc' :
-                        var chart_diff_display = 'EXP'
+                        var chart_diff_display = 'EXPERT'
                         break;
                     case 'lev_mas' :
-                        var chart_diff_display = 'MAS'
+                        var chart_diff_display = 'MASTER'
                         break;
                     case 'lev_lnt' :
-                        var chart_diff_display = 'LNT'
+                        var chart_diff_display = 'LUNATIC'
                         break;
                 }
 
-                return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span><\/div>';
+                return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
             }
             else {
                 return data;
@@ -412,7 +412,7 @@ $(document).ready(function() {
                                         chart_diff,
                                         chart_lev: obj[chart_diff],
                                         chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '(' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + ')'
+                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>'
                                     }
                                     : null
                             )
