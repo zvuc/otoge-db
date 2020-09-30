@@ -274,7 +274,7 @@ $(document).ready(function() {
         },
         {
             //  chart_lev (for sort)
-            displayTitle: "難易度フループ",
+            displayTitle: "難易度グループ",
             data: ( flat_view ? 'chart_lev' : null ),
             className: "lv",
             width: "4rem",
@@ -557,6 +557,8 @@ $(document).ready(function() {
                                 column
                                     .search(val ? '^' + val + '$' : '', true, false)
                                     .draw();
+
+
                             });
 
 
