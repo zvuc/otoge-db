@@ -56,64 +56,69 @@
 	}
 
 	div.dt-button-collection {
-		button.dt-button,
-		div.dt-button,
-		a.dt-button {
-			position: relative;
-			left: 0;
-			right: 0;
-			width: 100%;
-			display: block;
-			float: none;
-			margin-bottom: 4px;
-			margin-right: 0;
-			border: none;
-			border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%2111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
-			border-image-slice: 0 30 fill;
-			border-image-width: 0 30px;
-			border-image-repeat: repeat;
-			background-color: transparent;
-			background-image: none;
-			box-shadow: none;
-			color: #fff;
-			font-size: 1rem;
-
-			&:not(.disabled) {
-				&:hover{
-					border: none;
-					border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
-					border-image-slice: 0 30 fill;
-					border-image-width: 0 30px;
-					border-image-repeat: repeat;
-					background-color: transparent;
-					background-image: none;
-					box-shadow: none;
-				}
-
-				&:active,
-				&.active {
-					border: none;
-					border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%23111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
-					border-image-slice: 0 30 fill;
-					border-image-width: 0 30px;
-					border-image-repeat: repeat;
-					background-color: transparent;
-					background-image: none;
-					box-shadow: none;
-
-					&:hover {
-						border: none;
-						border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
-						border-image-slice: 0 30 fill;
-						border-image-width: 0 30px;
-						border-image-repeat: repeat;
-						background-color: transparent;
-						background-image: none;
-						box-shadow: none;
-					}
-				}
-			}
+		button.dt-button {
+			&:extend(.btn all);
+			margin: 0 0 4px 0;
 		}
+
+		// button.dt-button,
+		// div.dt-button,
+		// a.dt-button {
+		// 	position: relative;
+		// 	left: 0;
+		// 	right: 0;
+		// 	width: 100%;
+		// 	display: block;
+		// 	float: none;
+		// 	margin-bottom: 4px;
+		// 	margin-right: 0;
+		// 	border: none;
+		// 	border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%2111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
+		// 	border-image-slice: 0 30 fill;
+		// 	border-image-width: 0 30px;
+		// 	border-image-repeat: repeat;
+		// 	background-color: transparent;
+		// 	background-image: none;
+		// 	box-shadow: none;
+		// 	color: #fff;
+		// 	font-size: 1rem;
+
+		// 	&:not(.disabled) {
+		// 		&:hover{
+		// 			border: none;
+		// 			border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%23ff1b71'/></svg>");
+		// 			border-image-slice: 0 30 fill;
+		// 			border-image-width: 0 30px;
+		// 			border-image-repeat: repeat;
+		// 			background-color: transparent;
+		// 			background-image: none;
+		// 			box-shadow: none;
+		// 		}
+
+		// 		&:active,
+		// 		&.active {
+		// 			border: none;
+		// 			border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23333'/><stop offset='1' stop-color='%23111'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
+		// 			border-image-slice: 0 30 fill;
+		// 			border-image-width: 0 30px;
+		// 			border-image-repeat: repeat;
+		// 			background-color: transparent;
+		// 			background-image: none;
+		// 			box-shadow: none;
+
+		// 			&:hover {
+		// 				border: none;
+		// 				border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'><defs><linearGradient id='a' gradientTransform='rotate(90)'><stop offset='0' stop-color='%23444'/><stop offset='1' stop-color='%23222'/></linearGradient></defs><path d='M30 0h140l30 50-30 50H30L0 50 30 0z' fill='url(%23a)'/><path d='M164.3 10l24 40-24 40H35.7l-24-40 24-40h128.6M170 0H30L0 50l30 50h140l30-50-30-50z'/><path d='M11.8 50l14 23.3V26.7L11.8 50zm162.4-23.3v46.6l14-23.3-14-23.3z' fill='%233be5d6'/></svg>");
+		// 				border-image-slice: 0 30 fill;
+		// 				border-image-width: 0 30px;
+		// 				border-image-repeat: repeat;
+		// 				background-color: transparent;
+		// 				background-image: none;
+		// 				box-shadow: none;
+		// 			}
+		// 		}
+		// 	}
+		// }
 
 		&.fixed {
 		  border-radius: 0;
