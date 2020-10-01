@@ -779,7 +779,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.9",
     "lev_lnt_i": ""
   },
   {
@@ -1127,7 +1127,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "12.9",
     "lev_lnt_i": ""
   },
   {
@@ -1735,7 +1735,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.7",
     "lev_mas_i": "14.1",
     "lev_lnt_i": ""
   },
@@ -3040,7 +3040,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.5",
     "lev_mas_i": "14.9",
     "lev_lnt_i": ""
   },
@@ -3069,7 +3069,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.2",
     "lev_mas_i": "14.9",
     "lev_lnt_i": ""
   },
@@ -3098,7 +3098,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.9",
     "lev_mas_i": "14.5",
     "lev_lnt_i": ""
   },
@@ -3127,8 +3127,8 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "13.0",
+    "lev_mas_i": "14.3",
     "lev_lnt_i": ""
   },
   {
@@ -3997,7 +3997,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.0",
     "lev_mas_i": "14.6",
     "lev_lnt_i": ""
   },
@@ -5360,7 +5360,7 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.2",
     "lev_mas_i": "14.8",
     "lev_lnt_i": ""
   },
@@ -5418,8 +5418,8 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_exc_i": "13.0",
+    "lev_mas_i": "14.2",
     "lev_lnt_i": ""
   },
   {
@@ -5505,7 +5505,7 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.1",
     "lev_mas_i": "14.9",
     "lev_lnt_i": ""
   },
@@ -6086,7 +6086,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "13.8",
     "lev_lnt_i": ""
   },
   {
@@ -6317,7 +6317,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.7",
     "lev_mas_i": "14.4",
     "lev_lnt_i": ""
   },
@@ -6551,7 +6551,7 @@
     "lev_adv_i": "",
     "lev_exc_i": "",
     "lev_mas_i": "",
-    "lev_lnt_i": ""
+    "lev_lnt_i": "12.8"
   },
   {
     "new": "",
@@ -7448,7 +7448,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.4",
     "lev_mas_i": "14.8",
     "lev_lnt_i": ""
   },
@@ -8202,7 +8202,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.0",
     "lev_mas_i": "14.9",
     "lev_lnt_i": ""
   },
@@ -8638,7 +8638,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "14.0",
     "lev_lnt_i": ""
   },
   {
@@ -8666,7 +8666,7 @@
     "enemy_type": "FIRE",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.7",
     "lev_mas_i": "13.9",
     "lev_lnt_i": ""
   },
@@ -9595,7 +9595,7 @@
     "lev_bas_i": "",
     "lev_adv_i": "",
     "lev_exc_i": "",
-    "lev_mas_i": "",
+    "lev_mas_i": "14.3",
     "lev_lnt_i": ""
   },
   {
@@ -10058,7 +10058,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.8",
     "lev_mas_i": "14.6",
     "lev_lnt_i": ""
   },
@@ -10319,7 +10319,7 @@
     "enemy_type": "AQUA",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.9",
     "lev_mas_i": "14.5",
     "lev_lnt_i": ""
   },
@@ -10464,7 +10464,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "12.9",
     "lev_mas_i": "14.5",
     "lev_lnt_i": ""
   },
@@ -10696,7 +10696,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.2",
     "lev_mas_i": "14.8",
     "lev_lnt_i": ""
   },
@@ -10725,7 +10725,7 @@
     "enemy_type": "LEAF",
     "lev_bas_i": "",
     "lev_adv_i": "",
-    "lev_exc_i": "",
+    "lev_exc_i": "13.3",
     "lev_mas_i": "14.9",
     "lev_lnt_i": ""
   },

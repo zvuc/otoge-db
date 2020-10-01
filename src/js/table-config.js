@@ -348,7 +348,7 @@ $(document).ready(function() {
 
     var default_order = 
         flat_view ?
-            [[21, 'desc']] :
+            [[21, 'desc'],[13, 'desc'],[23, 'desc']] :
             [[23, 'desc'],[9, 'asc'],[0, 'asc']];
     
     function sortLevels(col_a, col_b) {
