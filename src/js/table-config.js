@@ -568,12 +568,15 @@ $(document).ready(function() {
                         select.appendTo(selectWrap);
 
                         select.on('change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
+                            var val = $(this).val();
+                            var val_e = $.fn.dataTable.util.escapeRegex(
                                 $(this).val()
                             );
 
+                            // var val = $(this).val();
+
                             // when applying filter, control rowgroup visibility
-                            if (column.index() === 23 || (val === "" && order[0][0] === 23)) {
+                            if (column.index() === 23 || (val_e === "" && order[0][0] === 23)) {
                                 column.rowGroup().enable();
                                 // console.log('group enabled (filter)');
                             } else {
@@ -582,20 +585,10 @@ $(document).ready(function() {
                             }
 
                             // update URL params on change
-                            if ('URLSearchParams' in window) {
-                                if (val === "") {
-                                    searchParams.delete(column_param.id);
-                                } else {
-                                    searchParams.set(column_param.id, val);
-                                }
-                                var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
-                                history.pushState(null, '', newRelativePathQuery);
-                            }
-
-                            var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString() + window.location.hash;
+                            updateQueryStringParameter(column_param, val);
 
                             column
-                                .search(val ? '^' + val + '$' : '', true, false)
+                                .search(val_e ? '^' + val_e + '$' : '', true, false)
                                 .draw();
 
 
@@ -659,9 +652,7 @@ $(document).ready(function() {
 
                             var searchParamValue = searchParams.get(column_param.id);
                             if ( searchParamValue !== null ) {
-                                console.log(searchParamValue);
                                 var value = unescapeSlashes(searchParamValue)
-                                console.log(value);
                                 column_data.unique().each(function (d) {
                                     select.val(value).prop("selected", true);
                                 });
@@ -676,14 +667,15 @@ $(document).ready(function() {
                 if ('URLSearchParams' in window) {
                     searchParams.forEach(function (value, key) {
                         table.columns().every(function () {
-                            var order = table.order();
                             var column = this;
-                            var column_data = column.data();
                             var column_param = columns_params[column.index()];
                             var searchParamValue = searchParams.get(column_param.id);
+                            var searchParamValue_e = $.fn.dataTable.util.escapeRegex(
+                                decodeURIComponent(searchParamValue)
+                            );
 
                             if ( searchParamValue !== null ) {
-                                column.search(searchParamValue ? '^' + searchParamValue + '$' : '', true, false);
+                                column.search(searchParamValue ? '^' + searchParamValue_e + '$' : '', true, false);
                             }
                         });
                     });
@@ -740,12 +732,20 @@ $(document).ready(function() {
     //     console.log('search happened')
     // } );
 
+    $('a.lv-filter-btn').on('click', function(){
+
+    });
+
     $('a.reset-search').on('click', function(){
+        var table = $('#table').DataTable();
+
         table
-            .order([[23, 'desc'],[9, 'asc'],[0, 'asc']]) //FIXME: why doesn't work with just calling var?
+            .order(default_order) //FIXME: why doesn't work with just calling var?
             .search('')
             .columns().search('')
             .draw();
+
+        clearQueryStringParameter();
 
         $('.toolbar.filters select').prop('selectedIndex',0);
 

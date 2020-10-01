@@ -55,9 +55,28 @@ transitionEndCallback = (e) => {
     root.classList.remove('transitioning');
 }
 
-function updateQueryStringParameter(uri, key, value) {
-    var searchParams = new URLSearchParams(uri);
-    searchParams.set(key, value);
+function updateQueryStringParameter(param, val) {
+    var searchParams = new URLSearchParams(window.location.search);
+
+    if ('URLSearchParams' in window) {
+        if (val === "") {
+            searchParams.delete(param.id);
+        } else {
+            searchParams.set(param.id, val);
+        }
+        var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+        history.pushState(null, '', newRelativePathQuery);
+    }
+}
+
+function clearQueryStringParameter() {
+    var searchParams = new URLSearchParams(window.location.search);
+
+    if ('URLSearchParams' in window) {
+        // searchParams.delete(param.id);
+        var newRelativePathQuery = window.location.pathname;
+        history.pushState(null, '', newRelativePathQuery);
+    }
 }
 
 $(document).ready(function() {
