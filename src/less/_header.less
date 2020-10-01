@@ -258,8 +258,25 @@ header {
 
 .site-navigation {
 	display: flex;
-	padding: 2px 13px;
+	align-items: center;
+	padding: 4px 13px;
 	background: var(--toolbar-bg);
-	border-top: 1px solid rgb(var(--ui-color-background-100));
-	border-bottom: 1px solid rgb(var(--ui-color-background-090));
+	border-top: 1px solid rgb(var(--ui-color-background-080));
+	border-bottom: 1px solid rgb(var(--ui-color-background-080));
+
+	@media screen and (max-width: 480px) {
+		padding: 2px 8px;
+	}
+
+	select.lv-switcher {
+		min-width: 120px;
+		height: 35px;
+		font-size: 1.1em;
+		margin-left: auto;
+		font-weight: bold;
+
+		option {
+			font-weight: normal;
+		}
+	}
 }

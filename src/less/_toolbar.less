@@ -1,4 +1,39 @@
 .dataTables_wrapper {
+
+	.dt-buttons {
+		display: flex;
+		flex-flow: wrap;
+		float: none;
+		overflow: hidden;
+		padding: 0;
+
+		@media screen and (max-width: 480px) {
+			padding: 2px 8px;
+			overflow-x: auto;
+			flex-flow: nowrap;
+
+			&:after {
+				content: "";
+				flex: 0 0 auto;
+				display: inline-block;
+				width: 8px;
+				height: 8px;
+			}
+		}
+
+		& > button.dt-button {
+			&:extend(.btn all);
+
+			&.config-btn {
+				margin-right: 0;
+
+				@media screen and (min-width: 800px) {
+					margin-left: auto;
+				}
+			}
+		}
+	}
+
 	.column-toggle-bar {
 		display: block;
 		padding: 0;
@@ -17,39 +52,7 @@
 			}
 		}
 
-		.dt-buttons {
-			display: flex;
-			flex-flow: wrap;
-			float: none;
-			overflow: hidden;
-			padding: 2px 13px;
-
-			@media screen and (max-width: 480px) {
-				padding: 2px 8px;
-				overflow-x: auto;
-				flex-flow: nowrap;
-
-				&:after {
-					content: "";
-					flex: 0 0 auto;
-					display: inline-block;
-					width: 8px;
-					height: 8px;
-				}
-			}
-
-			& > button.dt-button {
-				&:extend(.btn all);
-
-				&.config-btn {
-					margin-right: 0;
-
-					@media screen and (min-width: 800px) {
-						margin-left: auto;
-					}
-				}
-			}
-		}
+		
 	}
 
 	div.dt-button-collection {
@@ -188,12 +191,19 @@
 		@media screen and (min-width: 640px) {
 			border-left: 1px solid rgb(var(--ui-color-background-080));
 		}
+		.dataTables_filter {
+			width: 100%;
 
-		.dataTables_filter label {
-			display: block;
-			line-height: 1;
-			font-size: 0.75rem;
-			font-weight: bold;
+			@media screen and (min-width: 640px) {
+				width: auto;
+			}
+
+			label {
+				display: block;
+				line-height: 1;
+				font-size: 0.75rem;
+				font-weight: bold;
+			}
 		}
 	}
 
@@ -210,6 +220,7 @@
 			display: block;
 			font-size: 16px;
 			height: 32px;
+			width: 100%;
 			margin: 3px 0 0 0;
 			padding: 2px 4px 2px 25px;
 			background-color: rgb(var(--ui-color-form-background));
@@ -277,7 +288,7 @@
 
 	.dataTables_length {
 		select {
-			height: 25px;
+			height: 30px;
 			padding-top: 0;
 			padding-bottom: 0;
 			font-size: 16px;
@@ -305,8 +316,39 @@
 
 		.info {
 			display: flex;
+			flex-flow: wrap;
 			align-items: center;
-			justify-content: space-between;
+		}
+
+		#table_info {
+			margin-right: auto;
+
+			@media screen and (max-width: 480px) {
+				width: 100%;
+				margin-right: 0;
+				order: 3;
+				margin-top: 5px;
+			}
+		}
+
+		#table_length {
+			@media screen and (max-width: 480px) {
+				margin-left: auto;
+				order: 2;
+			}
+		}
+
+		.dt-buttons {
+			margin-left: 10px;
+
+			button.dt-button {
+				height: 30px;
+			}
+
+			@media screen and (max-width: 480px) {
+				margin-left: 0;
+				padding: 0;
+			}
 		}
 	}
 }

@@ -60,9 +60,9 @@ function updateQueryStringParameter(param, val) {
 
     if ('URLSearchParams' in window) {
         if (val === "") {
-            searchParams.delete(param.id);
+            searchParams.delete(param);
         } else {
-            searchParams.set(param.id, val);
+            searchParams.set(param, val);
         }
         var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
         history.pushState(null, '', newRelativePathQuery);
@@ -73,10 +73,26 @@ function clearQueryStringParameter() {
     var searchParams = new URLSearchParams(window.location.search);
 
     if ('URLSearchParams' in window) {
-        // searchParams.delete(param.id);
         var newRelativePathQuery = window.location.pathname;
         history.pushState(null, '', newRelativePathQuery);
     }
+}
+
+function unescapeSlashes(str) {
+  if (str !== null) {
+      // add another escaped slash if the string ends with an odd
+      // number of escaped slashes which will crash JSON.parse
+      let parsedStr = str.replace(/(^|[^\\])(\\\\)*\\$/, "$&\\");
+
+      try {
+        parsedStr = JSON.parse(`"${parsedStr}"`);
+      } catch(e) {
+        return str;
+      }
+      return str.replace(/(^|[^\\])(\\\\)*\\$/, "$&\\") ;
+  } else {
+      return str;
+  }
 }
 
 $(document).ready(function() {
