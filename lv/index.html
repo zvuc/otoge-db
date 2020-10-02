@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="datatables/datatables.min.js"></script>
-    <link rel="stylesheet" href="style.css?20200931">
+    <script type="text/javascript" src="datatables/datatables.custom.min.js?20201002"></script>
+    <link rel="stylesheet" href="style.css?20201002">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="オンゲキDB">
@@ -52,6 +52,11 @@
             </div>
         </div>
     </header>
+
+    <nav class="menu open">
+        
+    </nav>
+
     <nav class="site-navigation">
         <a href="../" class="btn">SONGS／曲</a>
         <button class="btn active reset-search">CHARTS／譜面</button>
@@ -81,14 +86,6 @@
             <option value="1">LEVEL 1</option>
             <option value="0">LEVEL 0</option>
         </select>
-        <!-- <button class="btn lv-filter-btn" data-lv="14+">14+</button>
-        <button class="btn lv-filter-btn" data-lv="14">14</button>
-        <button class="btn lv-filter-btn" data-lv="13+">13+</button>
-        <button class="btn lv-filter-btn" data-lv="13">13</button>
-        <button class="btn lv-filter-btn" data-lv="12+">12+</button>
-        <button class="btn lv-filter-btn" data-lv="12">12</button>
-        <button class="btn lv-filter-btn" data-lv="11+">11+</button>
-        <button class="btn lv-filter-btn" data-lv="11">11</button> -->
     </nav>
 
     <div id="site-loader">
@@ -103,31 +100,32 @@
         <thead>
             <tr>
                 <!-- 0 --><th class="never"><span>ID (system)</span></th>
-                <!-- 1 --><th class="all toggle"><span>#</span></th>
+                <!-- 1 --><th class="all"><span>#</span></th>
                 <!-- 2 --><th class="all"><span>A</span></th>
                 <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
                 <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
                 <!-- 5 --><th class="all"><span>曲名・アーティスト</span></th>
-                <!-- 6 --><th class="all toggle"><span>ジャンル</span></th>
+                <!-- 6 --><th class="min-tablet toggle"><span>ジャンル</span></th>
                 <!-- 7 --><th class="never"><span>ジャンルID</span></th>
                 <!-- 8 --><th class="never"><span>チャプターID</span></th>
-                <!-- 9 --><th class="all toggle"><span>チャプター</span></th>
+                <!-- 9 --><th class="min-tablet toggle"><span>チャプター</span></th>
                 <!-- 10 --><th class="all toggle nowrap"><span>属性</span></th>
                 <!-- 11 --><th class="never"><span>キャラID</span></th>
                 <!-- 12 --><th class="all toggle nowrap"><span>相手キャラ</span></th>
                 <!-- 13 --><th class="all toggle"><span>Lv</span></th>
-                <!-- 14 --><th class="never"><span>BSC</span></th>
-                <!-- 15 --><th class="never"><span>ADV</span></th>
-                <!-- 16 --><th class="never"><span>EXP</span></th>
-                <!-- 17 --><th class="never"><span>MAS</span></th>
-                <!-- 18 --><th class="never"><span>LNT</span></th>
+                <!-- 14 --><th class="none"><span>BSC</span></th>
+                <!-- 15 --><th class="none"><span>ADV</span></th>
+                <!-- 16 --><th class="none"><span>EXP</span></th>
+                <!-- 17 --><th class="none"><span>MAS</span></th>
+                <!-- 18 --><th class="none"><span>LNT</span></th>
 
-                <!-- 19 --><th class="all"><span>譜面</span></th>
-                <!-- 20 --><th class="all"><span>難易度(ソート用)</span></th>
-                <!-- 21 --><th class="all"><span>難易度</span></th>
+                <!-- 19 --><th class="all"><span>難易度</span></th>
+                <!-- 20 --><th class="all"><span>レベル</span></th>
+                <!-- 21 --><th class="all"><span>譜面レベル</span></th>
 
                 <!-- 22 --><th class="never"><span>NEW</span></th>
                 <!-- 23 --><th class="all toggle"><span>追加日</span></th>
+                <!-- 24 --><th class="none"><span>Details</span></th>
             </tr>
         </thead>
     </table>

@@ -95,6 +95,14 @@ function unescapeSlashes(str) {
   }
 }
 
+function appendSelectboxStateClass(select, val) {
+    if (val !== "") {
+        select.addClass('changed');
+    } else {
+        select.removeClass('changed');
+    }
+}
+
 $(document).ready(function() {
     $('html').removeClass('page-loading');
 });

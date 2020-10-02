@@ -20383,19 +20383,19 @@ Responsive.display = {
 
 				var modal = $('<div class="dtr-modal"/>')
 					.append( $('<div class="dtr-modal-display"/>')
-						.append( $('<div class="dtr-modal-content"/>')
-							.append( render() )
-						)
-						.append( $('<div class="dtr-modal-close">&times;</div>' )
+						.append( $('<div class="dtr-modal-background"/>')
 							.click( function () {
 								close();
 							} )
 						)
-					)
-					.append( $('<div class="dtr-modal-background"/>')
-						.click( function () {
-							close();
-						} )
+						.append( $('<div class="dtr-modal-content"/>')
+							.append( render() )
+							.append( $('<div class="dtr-modal-close">&times;</div>' )
+								.click( function () {
+									close();
+								} )
+							)
+						)
 					)
 					.appendTo( 'body' );
 
@@ -20415,7 +20415,7 @@ Responsive.display = {
 
 			if ( options && options.header ) {
 				$('div.dtr-modal-content').prepend(
-					'<h2>'+options.header( row )+'</h2>'
+					options.header( row )
 				);
 			}
 		};
@@ -20546,7 +20546,7 @@ Responsive.renderer = {
 					'';
 
 				return '<tr '+klass+' data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-						'<td>'+col.title+':'+'</td> '+
+						'<td>'+col.title+'</td> '+
 						'<td>'+col.data+'</td>'+
 					'</tr>';
 			} ).join('');

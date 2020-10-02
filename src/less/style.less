@@ -1,3 +1,5 @@
+@import (reference) '_variables.less';
+
 @import '_css-variables.less';
 @import 'datatables.less';
 
@@ -553,27 +555,10 @@ table.dataTable {
 		align-items: flex-end;
 	}
 
-	.type-icon {
-		display: inline-block;
-		width: 20px;
-		height: 20px;
-		background-repeat: no-repeat;
-		background-size: 100%;
-	}
-
-	.type-icon span {
+	.element-type-icon .label-text {
 		display: none;
 	}
 
-	.type-icon.leaf {
-		background-image: url('img/type-icon-leaf.svg');
-	}
-	.type-icon.fire {
-		background-image: url('img/type-icon-fire.svg');
-	}
-	.type-icon.aqua {
-		background-image: url('img/type-icon-aqua.svg');
-	}
 
 	th.character,
 	td.character {
@@ -709,23 +694,196 @@ table.dataTable {
 }// end table.dataTable
 
 /* Details */
-.dtr-modal-content h2 .artist {
-	font-size: 0.8em;
-	font-weight: normal;
-	color: rgb(var(--ui-color-foreground-060));
+div.dtr-modal div.dtr-modal-content {
+	padding: 0;
+	font-size: 14px;
+
+	@media screen and (min-width: 640px) {
+		font-size: 16px;
+	}
+
+	@corner-size: 8px;
+	@border-thickness: 3px;
+	@border-color: rgb(var(--ui-color-foreground-070));
+	@border-color-accent: rgb(var(--ui-color-foreground-070));
+
+	background-image: 
+		linear-gradient(to left, @border-color 0%, @border-color-accent 50%, @border-color 100%),
+		linear-gradient(225deg, @border-color @corner-size, @border-color (@corner-size + 2px), transparent (@corner-size + 2px));
+	background-position:
+		top left,
+		top right;
+	background-size: 
+		calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
+		(@corner-size + 6px) (@corner-size + 6px);
+	background-repeat: no-repeat;
+	border: none;
+	border-radius: 0;
+	mask-image: 
+		linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+		linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
+		linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+		linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+	mask-position: bottom left, top left, top right, bottom right;
+	mask-size: 50.1% 50.1%;
+	mask-repeat: no-repeat;
+
+
+	.modal-header { 
+		padding: 15px;
+		background-color: rgba(var(--ui-color-background-080),0.5);
+		margin-bottom: 10px;
+
+		@media screen and (min-width: 640px) {
+			display: flex;
+			align-items: center;
+			margin-bottom: 0;
+		}
+
+		.img-wrap {
+			flex: 0 0 auto;
+			display: inline-flex;
+			margin-bottom: 10px; 
+			padding: 2px;
+			border: 1px solid rgba(var(--ui-color-foreground-050),0.5);
+			border-radius: 2px;
+
+			@media screen and (min-width: 640px) {
+				margin-bottom: 0;
+			}
+
+			
+			img {
+				width: 150px;
+				height: 150px;
+			}
+		}
+
+		.content-wrap {
+			flex: 1 1 auto;
+			margin-left: 0;
+
+			@media screen and (min-width: 640px) {
+				margin-left: 20px;
+			}
+		}
+	
+		.title {
+			display: block;
+			font-size: 1.5em;
+			font-weight: bold;
+			letter-spacing: -0.02em;
+		}
+
+		.artist {
+			display: block;
+			font-size: 1em;
+			font-weight: normal;
+			color: rgb(var(--ui-color-foreground-060));
+		}
+
+	}
+
 }
 
-table.dtr-details tr td {
-	padding: 5px 0;
-	border-bottom: 1px solid #ccc;
-}
+table.dtr-details {
+	border-collapse: collapse;
+	margin-bottom: 10px;
 
-table.dtr-details tr td:first-child {
-	font-weight: bold;
-}
+	tr {
+		&.detail-hidden,
+		&.id, &.jacket, &.song-title, &.artist {
+			display: none;
+		}
 
-table.dtr-details li span.dtr.data {
-	display: block;
+		td {
+			height: 28px;
+			padding: 7px 15px;
+			border-bottom: 1px solid rgb(var(--ui-color-background-080));
+
+			@media screen and (min-width: 480px) {
+				height: 33px;
+			}
+		}
+		&:first-child td {
+			border-top: 1px solid rgb(var(--ui-color-background-080));
+		}
+
+		td:first-child {
+			max-width: 130px;
+			font-weight: bold;
+			color: rgb(var(--ui-color-foreground-060));
+
+			@media screen and (min-width: 480px) {
+				max-width: 150px;
+				width: 150px;
+			}
+		}
+	}
+
+	li span.dtr.data {
+		display: block;
+	}
+
+	.index {
+		display: none;
+	}
+
+	.diff-name {
+		margin-right: 5px;
+	}
+
+	.lv-num-precise:not(:empty) {
+		margin-left: 4px;
+
+		&:before {
+			content: "(";
+		}
+
+		&:after {
+			content: ")";
+		}
+	}
+
+	.lv-num-simple {
+		font-size: 1.1em;
+
+		&:empty:before {
+			content: "--";
+			color: rgb(var(--ui-color-foreground-030));
+		}
+	}
+
+	.lv-bsc, .lev_bas {
+		td:first-child span {
+			// background: rgba(101,211,70,0.1);
+			color: rgb(var(--lv-color-bsc));
+		}
+	}
+	.lv-adv, .lev_adv {
+		td:first-child span {
+			// background: rgba(251,230,77,0.1);
+			color: rgb(var(--lv-color-adv));
+		}
+	}
+	.lv-exp, .lev_exc {
+		td:first-child span {
+			// background: rgba(234,56,134,0.1);
+			color: rgb(var(--lv-color-exp));
+		}
+	}
+	.lv-mas, .lev_mas {
+		td:first-child span {
+			// background: rgba(165,71,213,0.1);
+			color: rgb(var(--lv-color-mas));
+		}
+	}
+	.lv-lnt, .lev_lnt {
+		td:first-child span {
+			// background: rgba(255,255,255,0.1);
+			color: rgb(var(--lv-color-lnt));
+		}
+	}
 }
 
 .paging {

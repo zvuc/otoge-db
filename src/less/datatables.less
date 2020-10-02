@@ -912,7 +912,7 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   padding: 0;
 }
 table.dataTable > tbody > tr.child ul.dtr-details > li {
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid rgb(var(--ui-color-background-070));
   padding: 0.5em 0;
 }
 table.dataTable > tbody > tr.child ul.dtr-details > li:first-child {
@@ -939,40 +939,49 @@ div.dtr-modal {
 }
 div.dtr-modal div.dtr-modal-display {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  width: 50%;
-  height: 50%;
   overflow: auto;
   margin: auto;
+  padding-top: 20px;
   z-index: 102;
-  overflow: auto;
-  background-color: #f5f5f7;
-  border: 1px solid black;
-  border-radius: 0.5em;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
 }
 div.dtr-modal div.dtr-modal-content {
+  flex: 0 0 auto;
   position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: auto;
   padding: 1em;
+  background-color: rgb(var(--ui-color-background-095));
+  border-radius: 0.5em;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 div.dtr-modal div.dtr-modal-close {
   position: absolute;
   top: 6px;
   right: 6px;
-  width: 22px;
-  height: 22px;
-  border: 1px solid #eaeaea;
-  background-color: #f9f9f9;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  line-height: 34px;
+  // border: 1px solid #eaeaea;
   text-align: center;
   border-radius: 3px;
   cursor: pointer;
   z-index: 12;
 }
 div.dtr-modal div.dtr-modal-close:hover {
-  background-color: #eaeaea;
+  background-color: rgba(var(--ui-color-background-050),0.5);
 }
 div.dtr-modal div.dtr-modal-background {
   position: fixed;
@@ -980,7 +989,6 @@ div.dtr-modal div.dtr-modal-background {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 101;
   background: rgba(0, 0, 0, 0.6);
 }
 

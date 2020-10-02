@@ -147,7 +147,8 @@
 	// filters
 	.toolbar.filters {
 		flex: 1 1 auto;
-		display: block;
+		display: flex;
+		align-items: center;
 		padding-top: 10px;
 		padding-bottom: 10px;
 		border-bottom: 1px solid rgb(var(--ui-color-background-080));
@@ -155,6 +156,15 @@
 		overflow: hidden;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
+
+		// spacer
+		&:after {
+			flex: 0 0 auto;
+			content: "";
+			display: block;
+			width: 5px;
+			height: 10px;
+		}
 
 		.select-wrap {
 			display: inline-block;
@@ -176,9 +186,28 @@
 			min-width: 70px;
 			max-width: 100px;
 			margin: 0;
+			color: rgba(var(--ui-color-foreground-050),0.5);
+			transition: max-width 0.2s;
 
-			option[data-default] {
-				color: rgb(var(--ui-color-foreground-050));
+			@media screen and (min-width: 800px) {
+				max-width: 120px;
+			}
+
+			option {
+				color: rgb(var(--ui-color-foreground-100));
+
+				&[data-default] {
+					color: rgb(var(--ui-color-foreground-050));
+				}
+			}
+
+			&.changed {
+				color: inherit;
+				max-width: 150px;
+
+				@media screen and (min-width: 800px) {
+					max-width: 200px;
+				}
 			}
 		}
 

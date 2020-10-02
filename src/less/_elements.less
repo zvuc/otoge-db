@@ -1,5 +1,5 @@
-button, input {
-	font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3","Hiragino Sans GB", "Meiryo", "Segoe UI", sans-serif;
+button, input, select {
+	font-family: @font-stack;
 	font-feature-settings: "palt";
 }
 
@@ -16,7 +16,7 @@ a {
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	margin: 2px 2px;
+	margin: 0;
 	font-size: 0.9em;
 	letter-spacing: -0.02em;
 	font-weight: bold;
@@ -198,5 +198,54 @@ select {
 			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
 		// border-color: rgb(var(--ui-color-primary));
 		transition-duration: 0s;
+	}
+}
+
+.element-type-icon {
+	display: inline-flex;
+	align-items: center;
+
+	.icon {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+
+	.label-text {
+		margin-left: 4px;
+	}
+
+	&.leaf .icon {
+		background-image: url('img/type-icon-leaf.svg');
+	}
+	&.fire .icon {
+		background-image: url('img/type-icon-fire.svg');
+	}
+	&.aqua .icon {
+		background-image: url('img/type-icon-aqua.svg');
+	}
+}
+
+.diff-name {
+	&.lv-bsc, &.lev_bas {
+		color: rgb(var(--lv-color-bsc));
+	}
+
+	&.lv-adv, &.lev_adv {
+		color: rgb(var(--lv-color-adv));
+	}
+
+	&.lv-exp, &.lev_exc {
+		color: rgb(var(--lv-color-exp));
+	}
+
+	&.lv-mas, &.lev_mas {
+		color: rgb(var(--lv-color-mas));
+	}
+
+	&.lv-lnt, &.lev_lnt {
+		color: rgb(var(--lv-color-lnt));
 	}
 }

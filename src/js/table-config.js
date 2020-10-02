@@ -51,7 +51,7 @@ $(document).ready(function() {
                     return row.title_sort;
                 }
             },
-            width: "80vw",
+            width: "80vw"
         },
         {
             displayTitle: "曲名 (読み)",
@@ -175,7 +175,7 @@ $(document).ready(function() {
             className: "type",
             render: function ( data, type, row ) {
                 if ( type === 'display' ) {
-                    return '<div class="inner-wrap"><span class="type-icon ' + data.toLowerCase() + '"><span>' + data + '<\/span><\/span></div>';
+                    return '<div class="inner-wrap"><span class="element-type-icon ' + data.toLowerCase() + '"><span class="icon"><\/span><span class="label-text">' + data + '<\/span><\/span></div>';
                 }
                 // use chara_id for sort
                 else {
@@ -291,11 +291,12 @@ $(document).ready(function() {
             displayTitle: "譜面",
             name: "chart_diff",
             data: ( flat_view ? 'chart_diff' : null ),
-            className: "lv-name",
+            className: "lv-name detail-hidden",
             width: "3rem",
             createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
                 $(td).addClass( rowData.chart_diff );
             }) : null,
+            render: renderChartDifficultyName('chart_diff'),
             searchable: false,
             visible: false
         },
@@ -304,7 +305,7 @@ $(document).ready(function() {
             displayTitle: "難易度グループ",
             name: "chart_lev",
             data: ( flat_view ? 'chart_lev' : null ),
-            className: "lv",
+            className: "lv detail-hidden",
             width: "4rem",
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
@@ -316,7 +317,7 @@ $(document).ready(function() {
             displayTitle: "譜面レベル",
             name: "chart_lev_i",
             data: ( flat_view ? 'chart_lev_i' : null ),
-            className: "lv lv-name",
+            className: "lv lv-name detail-hidden",
             render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display')
             : null ),
             width: "4rem",
@@ -343,6 +344,13 @@ $(document).ready(function() {
             render: renderInWrapper(),
             reverseSortOrder: true,
             width: "4em"
+        },
+        { 
+            displayTitle: "(details)",
+            name: "details",
+            data: "id",
+            className: "details detail-hidden",
+            width: "10px"
         }
     ];
 
@@ -395,23 +403,7 @@ $(document).ready(function() {
     function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
-                switch (row[chart_diff]) {
-                    case 'lev_bas' :
-                        var chart_diff_display = 'BASIC'
-                        break;
-                    case 'lev_adv' :
-                        var chart_diff_display = 'ADVANCED'
-                        break;
-                    case 'lev_exc' :
-                        var chart_diff_display = 'EXPERT'
-                        break;
-                    case 'lev_mas' :
-                        var chart_diff_display = 'MASTER'
-                        break;
-                    case 'lev_lnt' :
-                        var chart_diff_display = 'LUNATIC'
-                        break;
-                }
+                var chart_diff_display = convertDifficultyNames(row[chart_diff]);                
 
                 return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
             }
@@ -419,6 +411,41 @@ $(document).ready(function() {
                 return data;
             }
         }
+    }
+
+    function renderChartDifficultyName(chart_diff) {
+        return function ( data, type, row ) {
+            if ( type === 'display' ) {
+                var chart_diff_display = convertDifficultyNames(row[chart_diff]);       
+
+                return '<span class="diff-name">' + chart_diff_display + '</span>';
+            }
+            else {
+                return data;
+            }
+        }
+    }
+
+    function convertDifficultyNames(src) {
+        switch (src) {
+            case 'lev_bas' :
+                var chart_diff_display = 'BASIC'
+                break;
+            case 'lev_adv' :
+                var chart_diff_display = 'ADVANCED'
+                break;
+            case 'lev_exc' :
+                var chart_diff_display = 'EXPERT'
+                break;
+            case 'lev_mas' :
+                var chart_diff_display = 'MASTER'
+                break;
+            case 'lev_lnt' :
+                var chart_diff_display = 'LUNATIC'
+                break;
+        }
+
+        return chart_diff_display;
     }
 
     function renderInWrapper() {
@@ -546,7 +573,11 @@ $(document).ready(function() {
                     display: $.fn.dataTable.Responsive.display.modal( {
                         header: function ( row ) {
                             var data = row.data();
-                            return data.title + '<br><span class="artist">' + data.artist + '<\/span>';
+                            return '<div class="modal-header"><div class="img-wrap">' + 
+                                '<img src=\"jacket/' + data.image_url.split(".")[0] + '.jpg\"\/>' +
+                                '<\/div><div class="content-wrap">' +
+                                '<span class="title">' + data.title + '<\/span>' +
+                                '<span class="artist">' + data.artist + '<\/span><\/div><\/div>'
                         }
                     } ),
                     renderer: $.fn.dataTable.Responsive.renderer.tableAll()
@@ -576,7 +607,7 @@ $(document).ready(function() {
                     if (("filterable" in column_param) && (column_param.filterable == true)) {
                         var selectWrap = $('<div class="select-wrap"><span class="label">' + column_param.displayTitle + '</span></div>')
                             .appendTo($('.toolbar.filters'));
-                        var select = $('<select id="' + column_param.name + '"><option value="" selected data-default>——</option></select>');
+                        var select = $('<select id="' + column_param.name + '"><option value="" data-default>——</option></select>');
 
                         select.appendTo(selectWrap);
 
@@ -585,6 +616,8 @@ $(document).ready(function() {
                             var val_e = $.fn.dataTable.util.escapeRegex(
                                 $(this).val()
                             );
+
+                            appendSelectboxStateClass($(this), val);
 
                             // var val = $(this).val();
 
@@ -652,6 +685,7 @@ $(document).ready(function() {
                                 column_data.unique().each(function (d) {
                                     select.val(value);
                                 });
+                                appendSelectboxStateClass(select, value);
                             }
                         }
 
