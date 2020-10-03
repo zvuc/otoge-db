@@ -161,60 +161,45 @@
                     title: "||&lt;:>'''챕터'''",
                     displayTitle: "チャプター",
                     data: function( row, type, set, meta ) {
-                        if (type === 'sort') {
+                        if ( type === 'sort' || type === 'meta') {
                             return row.chap_id;
                         } else {
-                            row.chap_chapter = row.chap_id.substr(3,2);
-                            if (row.chap_id.substr(0,1) == "0") {
-                                // 01xxx : chapter 1
-                                if (row.chap_id.substr(1,1) == "1") {
-                                    row.chap_book = "1";
-                                    row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                    return row.chap_display;
+                            var chap_id = row.chap_id;
+                            var chap_chapter = chap_id.substr(3,2);
+
+                            // 0xxxx : Normal chapters
+                            if (chap_id.substr(0,1) == "0") {
+                                var chap_book = chap_id.substr(1,1);
+
+                                // 0xx8x : side chapter
+                                if (chap_id.substr(3,1) == "8") {
+                                    var chap_book = chap_id.substr(1,1);
+                                    var chap_chapter = 'S' + chap_id.substr(4,1);
+                                }
+
+                                // 0xxxx: chapters
+                                if (chap_book > "0") {
+                                    return chap_book + '-' + chap_chapter + ' ' + row.chapter;
                                 } 
-                                // 02xxx : chapter 2
-                                else if (row.chap_id.substr(1,1) == "2") {
-                                    row.chap_book = "2";
-                                    row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                    return row.chap_display;
-                                }
-                                // 03xxx : chapter 3
-                                else if (row.chap_id.substr(1,1) == "3") {
-                                    // 0308x : chapter 3 side
-                                    if (row.chap_id.substr(0,4) == "0308") {
-                                        row.chap_book = "3";
-                                        row.chap_chapter = row.chap_id.substr(4,1);
-                                        row.chap_display = row.chap_book + '-S' + row.chap_chapter + ' ' + row.chapter;
-                                        return row.chap_display;
-                                    }
-                                    else {
-                                        row.chap_book = "3";
-                                        row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                        return row.chap_display;
-                                    }
-                                }
                                 // 00xxx : default mylist
                                 else {
-                                    row.chap_display = row.chapter;
-                                    return row.chap_display;
+                                    return row.chapter;
                                 }
                             }
                             // 80xxx : Event chapters
-                            else if (row.chap_id.substr(0,2) == "80") {
-                                row.chap_book = "SP2";
-                                row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                return row.chap_display;
+                            else if (chap_id.substr(0,2) == "80") {
+                                var chap_book = "SP2";
+                                return chap_book + '-' + chap_chapter + ' ' + row.chapter;
                             }
                             // 99xxx : Event chapters
-                            else if (row.chap_id.substr(0,2) == "99") {
-                                row.chap_book = "SP";
-                                row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
-                                return row.chap_display;
+                            else if (chap_id.substr(0,2) == "99") {
+                                var chap_book = "SP";
+                                return chap_book + '-' + chap_chapter + ' ' + row.chapter;
                             }
                             // Others?
                             else {
-                                row.chap_display = row.chap_id + ' ' + row.chapter;
-                                return row.chap_display;
+                                chap_display = chap_id + ' ' + row.chapter;
+                                return chap_display;
                             }
                         }
                     },
