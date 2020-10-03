@@ -18,7 +18,7 @@
         <h1>オンゲキ収録曲DB (나무마크 테이블 출력용)</h1>
         <div class="lastupdated"><span>DATA: 20200930</span></div>
     </header>
-    <table id="table" class="display" style="width:100%">
+    <table id="table" class="display loading-done" style="width:100%">
         <thead>
             <tr>
                 <!-- 0 --><th class="never"><span>ID (system)</span></th>
@@ -375,7 +375,8 @@
                     className: "date",
                     filterable: true,
                     width: "4em",
-                    visible: false
+                    visible: false,
+                    reverseSortOrder: true
                 }
             ];
             
@@ -451,40 +452,40 @@
                     dataSrc: ""
                 },
                 "buttons": [
-                    {
-                        extend: 'colvisRestore',
-                        text: '全カラム表示',
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        text: '全難易度表示',
-                        show: [ 14, 15, 16, 17, 18 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        text: 'EXPERT以下を隠す',
-                        hide: [ 14, 15 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        className: 'asdf',
-                        text: 'カテゴリ・チャプターを隠す',
-                        hide: [ 6, 9 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        className: 'asdf',
-                        text: '相手情報を隠す',
-                        hide: [ 10, 12, 13 ]
-                    },
-                    {
-                        extend: 'colvis',
-                        columns: '.toggle',
-                        text: 'カスタム設定',
-                        collectionTitle: "表示・隠すカラムを選択",
-                        collectionLayout: "fixed",
-                        fade: 150
-                    },
+                    // {
+                    //     extend: 'colvisRestore',
+                    //     text: '全カラム表示',
+                    // },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     text: '全難易度表示',
+                    //     show: [ 14, 15, 16, 17, 18 ]
+                    // },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     text: 'EXPERT以下を隠す',
+                    //     hide: [ 14, 15 ]
+                    // },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     className: 'asdf',
+                    //     text: 'カテゴリ・チャプターを隠す',
+                    //     hide: [ 6, 9 ]
+                    // },
+                    // {
+                    //     extend: 'colvisGroup',
+                    //     className: 'asdf',
+                    //     text: '相手情報を隠す',
+                    //     hide: [ 10, 12, 13 ]
+                    // },
+                    // {
+                    //     extend: 'colvis',
+                    //     columns: '.toggle',
+                    //     text: 'カスタム設定',
+                    //     collectionTitle: "表示・隠すカラムを選択",
+                    //     collectionLayout: "fixed",
+                    //     fade: 150
+                    // },
                     {
                         extend: 'csvHtml5',
                         text: 'Export to CSV',
@@ -615,6 +616,11 @@
                                 });
                             } else {
                                 column_data = column_data.sort();
+                            }
+
+                            // reverse sort for date
+                            if (column_param.reverseSortOrder) {
+                                column_data.reverse();
                             }
                             
                             // draw option list
