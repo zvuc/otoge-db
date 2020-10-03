@@ -138,6 +138,12 @@ $(document).ready(function() {
                                 return row.chap_display;
                             }
                         }
+                        // 04xxx : chapter 4
+                        else if (row.chap_id.substr(1,1) == "4") {
+                            row.chap_book = "4";
+                            row.chap_display = row.chap_book + '-' + row.chap_chapter + ' ' + row.chapter;
+                            return row.chap_display;
+                        }
                         // 00xxx : default mylist
                         else {
                             row.chap_display = row.chapter;
