@@ -6,13 +6,13 @@ $(document).ready(function() {
             displayTitle: "ID (system)",
             name: "id",
             data: "id",
-            className: "id",
+            className: "id detail-hidden",
             visible: false
         },
         { 
             displayTitle: "#",
             name: "index",
-            data: "image_url",
+            data: "image_url detail-hidden",
             className: "id",
             data: function(row) {
                 return row.image_url.split(".")[0];
@@ -25,7 +25,7 @@ $(document).ready(function() {
             displayTitle: "アルバムアート",
             name: "jacket",
             data: "image_url",
-            className: "jacket",
+            className: "jacket detail-hidden",
             render: function(data) {
                 return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span><span class="index">' + data.split(".")[0] + '<\/span>';
             },
@@ -41,7 +41,11 @@ $(document).ready(function() {
             render: function ( data, type, row ) {
                 // If display or filter data is requested, return title
                 if ( type === 'display' ) {
-                    return '<div class="inner-wrap"><span class="title">' + data + '<\/span><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
+                    return '<div class="inner-wrap">' +
+                            ( row.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
+                            '<span class="title">' + data + '<\/span>' +
+                            '<span class="artist-display hidden">' + row.artist + '<\/span>'+
+                        '<\/div>';
                 }
                 else if ( type === 'filter' ) {
                     return data;
@@ -66,7 +70,7 @@ $(document).ready(function() {
             displayTitle: "曲名・アーティスト",
             name: "title_merged",
             data: "title",
-            className: "artist",
+            className: "artist detail-hidden",
             render: function ( data, type, row ) {
                 // If display or filter data is requested, return title
                 if ( type === 'display' ) {
@@ -346,9 +350,9 @@ $(document).ready(function() {
             width: "4em"
         },
         { 
-            displayTitle: "(details)",
-            name: "details",
-            data: "id",
+            displayTitle: "BONUS",
+            name: "bonus",
+            data: "bonus",
             className: "details detail-hidden",
             width: "10px"
         }
@@ -602,6 +606,7 @@ $(document).ready(function() {
                             return '<div class="modal-header"><div class="img-wrap">' + 
                                 '<img src=\"jacket/' + data.image_url.split(".")[0] + '.jpg\"\/>' +
                                 '<\/div><div class="content-wrap">' +
+                                ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                                 '<span class="title">' + data.title + '<\/span>' +
                                 '<span class="artist">' + data.artist + '<\/span><\/div><\/div>'
                         }
