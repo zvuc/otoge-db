@@ -290,14 +290,29 @@ $(document).ready(function() {
             //  chart_diff
             displayTitle: "譜面",
             name: "chart_diff",
-            data: ( flat_view ? 'chart_diff' : null ),
+            data: 
+                function( row, type, set, meta ) {
+                    if ( flat_view == true ) {
+                        if ( type === 'sort' || type === 'meta') {
+                            console.log(row.chart_diff);
+                            return row.chart_diff;
+                        } 
+                        else {
+                            return convertDifficultyNames(row.chart_diff);
+                        }
+                    } else {
+                        return null;
+                    }
+                },
             className: "lv-name detail-hidden",
             width: "3rem",
             createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
                 $(td).addClass( rowData.chart_diff );
             }) : null,
-            render: renderChartDifficultyName('chart_diff'),
-            searchable: false,
+            render: flat_view ? renderChartDifficultyName('chart_diff') : null,
+            customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff') : null,
+            searchable: flat_view,
+            filterable: flat_view,
             visible: false
         },
         {
@@ -426,26 +441,52 @@ $(document).ready(function() {
         }
     }
 
-    function convertDifficultyNames(src) {
-        switch (src) {
-            case 'lev_bas' :
-                var chart_diff_display = 'BASIC'
-                break;
-            case 'lev_adv' :
-                var chart_diff_display = 'ADVANCED'
-                break;
-            case 'lev_exc' :
-                var chart_diff_display = 'EXPERT'
-                break;
-            case 'lev_mas' :
-                var chart_diff_display = 'MASTER'
-                break;
-            case 'lev_lnt' :
-                var chart_diff_display = 'LUNATIC'
-                break;
+    function convertDifficultyNames(src,sort) {
+        if ( !sort ) {
+            switch (src) {
+                case 'lev_bas' :
+                    var chart_diff_display = 'BASIC'
+                    break;
+                case 'lev_adv' :
+                    var chart_diff_display = 'ADVANCED'
+                    break;
+                case 'lev_exc' :
+                    var chart_diff_display = 'EXPERT'
+                    break;
+                case 'lev_mas' :
+                    var chart_diff_display = 'MASTER'
+                    break;
+                case 'lev_lnt' :
+                    var chart_diff_display = 'LUNATIC'
+                    break;
+            }
+        } else {
+            switch (src) {
+                case 'lev_bas' :
+                    var chart_diff_display = '1 BASIC'
+                    break;
+                case 'lev_adv' :
+                    var chart_diff_display = '2 ADVANCED'
+                    break;
+                case 'lev_exc' :
+                    var chart_diff_display = '3 EXPERT'
+                    break;
+                case 'lev_mas' :
+                    var chart_diff_display = '4 MASTER'
+                    break;
+                case 'lev_lnt' :
+                    var chart_diff_display = '5 LUNATIC'
+                    break;
+            }
         }
 
         return chart_diff_display;
+    }
+
+    function sortByDifficultyCategory(column) {
+        return function (row_a, row_b) {
+            return convertDifficultyNames(row_a[column],true).localeCompare(convertDifficultyNames(row_b[column],true));
+        }
     }
 
     function renderInWrapper() {
@@ -770,13 +811,16 @@ $(document).ready(function() {
             $(this).val()
         );
 
+        // simply filter if select is changed on /lv/ page
         if( select.data("type") == "filter") {
             table.column('chart_lev:name').search(val_e ? '^' + val_e + '$' : '', true, false);
 
             updateQueryStringParameter('chart_lev',val);
 
             table.draw();
-        } else {
+        } 
+        // redirect to /lv/ subpage with querystring if selected on main page
+        else {
             window.location.href = '/lv?chart_lev=' + encodeURIComponent(val);
         }
 
