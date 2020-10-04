@@ -609,6 +609,12 @@ $(document).ready(function() {
                                 ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                                 '<span class="title">' + data.title + '<\/span>' +
                                 '<span class="artist">' + data.artist + '<\/span><\/div><\/div>'
+                        },
+                        footer: function ( row ) {
+                            var data = row.data();
+                            return '<div class="modal-footer">' +
+                                ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1 + '<\/span>' : '' ) +
+                                '<\/div>'
                         }
                     } ),
                     renderer: $.fn.dataTable.Responsive.renderer.tableAll()

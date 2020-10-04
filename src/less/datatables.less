@@ -929,26 +929,24 @@ table.dataTable > tbody > tr.child span.dtr-title {
 
 div.dtr-modal {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   z-index: 100;
-  padding: 10em 1em;
+  padding: 0 1em;
+  overflow: auto;
 }
 div.dtr-modal div.dtr-modal-display {
-  position: absolute;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
-  margin: auto;
-  padding-top: 20px;
+  width: 100%;
   z-index: 102;
 }
 div.dtr-modal div.dtr-modal-content {
@@ -956,8 +954,9 @@ div.dtr-modal div.dtr-modal-content {
   position: relative;
   width: 100%;
   max-width: 800px;
+  box-sizing: border-box;
   height: auto;
-  margin: auto;
+  margin: 20px 0;
   padding: 1em;
   background-color: rgb(var(--ui-color-background-095));
   border-radius: 0.5em;

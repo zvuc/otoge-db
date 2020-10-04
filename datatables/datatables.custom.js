@@ -20418,6 +20418,12 @@ Responsive.display = {
 					options.header( row )
 				);
 			}
+
+			if ( options && options.footer ) {
+				$('div.dtr-modal-content').append(
+					options.footer( row )
+				);
+			}
 		};
 	}
 };
