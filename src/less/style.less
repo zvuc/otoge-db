@@ -565,14 +565,35 @@ table.dataTable {
 	th.type,
 	td.type {
 		text-align: center;
+
+		@media screen and (max-width: 640px) {
+			padding-left: 5px;
+			padding-right: 15px;
+		}
 	}
 
 	td.type .inner-wrap {
-		align-items: flex-end;
+		display: flex;
+		justify-content: flex-end;
 	}
 
-	.element-type-icon .label-text {
-		display: none;
+	.element-type-icon {
+		@media screen and (min-width: 1440px) {
+			.icon {
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		.label-text {
+			display: none;
+		}
+	}
+
+	td.type:not([style^="display: none"]) + td.character {
+		@media screen and (max-width: 640px) {
+			padding-left: 0;
+		}
 	}
 
 
