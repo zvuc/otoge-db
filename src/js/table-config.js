@@ -613,7 +613,7 @@ $(document).ready(function() {
                         footer: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-footer">' +
-                                ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1 + '<\/span>' : '' ) +
+                                ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1.replace(/\s+ピアプロロゴ/, '<span class="piapro">piapro</span>') + '<\/span>' : '' ) +
                                 '<\/div>'
                         }
                     } ),
