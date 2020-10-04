@@ -284,6 +284,10 @@ table.dataTable {
 
 table.dataTable {
 
+	tbody tr:not(.dtrg-group) {
+		height: 75px;
+	}
+
 	/* rowgroup header */
 	tr.dtrg-start td div {
 		display: inline-block;
@@ -315,6 +319,7 @@ table.dataTable {
 		@media screen and (max-width: 480px) {
 			tr:not(.dtrg-group) td {
 				padding-top: 35px;
+				padding-bottom: 5px;
 			}
 		}
 	}
@@ -350,8 +355,11 @@ table.dataTable {
 		visibility: hidden;
 	}
 	td.jacket {
-		vertical-align: top !important;
-		padding-top: 8px !important;
+
+		@media screen and (max-width: 480px) {
+			padding-top: 8px !important;
+			vertical-align: top !important;
+		}
 
 		img {
 			display: block;
@@ -377,6 +385,11 @@ table.dataTable {
 		}
 
 		.img-wrap {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
 			display: block;
 			width: 55px;
 			padding: 12px 8px 12px 8px;
@@ -387,11 +400,6 @@ table.dataTable {
 				linear-gradient(to right, rgb(0,0,0) 90%, rgba(0,0,0,0));
 
 			@media screen and (max-width: 480px) {
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
 			}
 		}
 	}
@@ -446,6 +454,13 @@ table.dataTable {
 				padding: 8px 12px;
 				background-color: rgb(var(--ui-color-table-row-bg));
 				border-bottom: 1px solid rgba(var(--ui-color-table-row-border),0.5);
+				flex-flow: row nowrap;
+				justify-content: flex-start;
+				align-items: center;
+			}
+
+			.bonus {
+				margin-right: 4px;
 			}
 
 			.title {
