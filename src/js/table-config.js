@@ -366,10 +366,10 @@ $(document).ready(function() {
     function sortLevels(col_a, col_b) {
         return function ( row, type, set, meta ) {
             if ( type === 'sort' ) {
-                if ( row[col_b] === "" ) {
+                if ( row[col_b]['precise_lv'] === "" ) {
                     return addLeadingZero(row[col_a]);
                 } else {
-                    return addLeadingZero(row[col_b]);
+                    return addLeadingZero(row[col_b]['precise_lv']);
                 }
             }
             else {
@@ -396,7 +396,7 @@ $(document).ready(function() {
     function renderLvNum(simple_lv, precise_lv) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
-                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
+                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv]['precise_lv'] + '<\/span><\/div>';
             }
             else {
                 return data;
@@ -501,8 +501,8 @@ $(document).ready(function() {
                                         ...obj,
                                         chart_diff,
                                         chart_lev: obj[chart_diff],
-                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>'
+                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`][`precise.lv`] || obj[chart_diff].replace('+', '.7')),
+                                        chart_lev_i_display: obj[`${chart_diff}_i`][`precise_lv`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>'
                                     }
                                     : null
                             )
@@ -515,7 +515,7 @@ $(document).ready(function() {
         return processed_data;
     }
 
-    $.getJSON("data/music-ex.json", (data) => {
+    $.getJSON("data/music-ex2.json", (data) => {
         
 
         var table = $('#table').DataTable( {
@@ -617,7 +617,19 @@ $(document).ready(function() {
                                 '<\/div>'
                         }
                     } ),
-                    renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+                    // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+                    renderer: function(api, rowIdx, columns) {
+                        var data = $.map(columns, function(col, i) {
+                            return '<tr class="' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                '<td>' + col.title + ':' + '</td> ' +
+                                '<td>' + col.data + '</td>' +
+                                '</tr>';
+                        }).join('');
+
+                        return data ?
+                            $('<table/>').append(data) :
+                            false;
+                    }
                 }
             },
             "rowGroup": {
