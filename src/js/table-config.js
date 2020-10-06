@@ -12,8 +12,8 @@ $(document).ready(function() {
         { 
             displayTitle: "#",
             name: "index",
-            data: "image_url detail-hidden",
-            className: "id",
+            data: "image_url",
+            className: "id detail-hidden",
             data: function(row) {
                 return row.image_url.split(".")[0];
             },
@@ -37,7 +37,7 @@ $(document).ready(function() {
             displayTitle: "曲名",
             name: "title",
             data: "title",
-            className: "song-title",
+            className: "song-title detail-hidden",
             render: function ( data, type, row ) {
                 // If display or filter data is requested, return title
                 if ( type === 'display' ) {
@@ -161,7 +161,7 @@ $(document).ready(function() {
             displayTitle: "属性",
             name: "enemy_type",
             data: "enemy_type",
-            className: "type",
+            className: "chara type",
             render: function ( data, type, row ) {
                 if ( type === 'display' ) {
                     return '<div class="inner-wrap"><span class="element-type-icon ' + data.toLowerCase() + '"><span class="icon"><\/span><span class="label-text">' + data + '<\/span><\/span></div>';
@@ -184,7 +184,7 @@ $(document).ready(function() {
             displayTitle: "相手キャラ",
             name: "character",
             data: "character",
-            className: "character",
+            className: "chara character",
             render: function ( data, type, row ) {
                 if ( type === 'display' ) {
                     return '<div class="inner-wrap">' + data + '<\/div>';
@@ -202,7 +202,7 @@ $(document).ready(function() {
             displayTitle: "相手レベル",
             name: "enemy_lv",
             data: "enemy_lv",
-            className: "enemy-lv",
+            className: "chara enemy-lv",
             render: function ( data, type, row ) {
                 if ( type === 'display' ) {
                     return '<div class="inner-wrap">Lv.' + data + '<\/div>';
@@ -362,6 +362,14 @@ $(document).ready(function() {
         flat_view ?
             [[21, 'desc'],[13, 'desc'],[23, 'desc']] :
             [[23, 'desc'],[9, 'asc'],[0, 'asc']];
+
+    function checkPropertyAndValueExists(json, property) {
+        if (json.hasOwnProperty(property)) {
+            return json[property] !== "" ? true : false;
+        } else {
+            return false;
+        }
+    }
     
     function sortLevels(col_a, col_b) {
         return function ( row, type, set, meta ) {
@@ -619,15 +627,81 @@ $(document).ready(function() {
                     } ),
                     // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
                     renderer: function(api, rowIdx, columns) {
-                        var data = $.map(columns, function(col, i) {
-                            return '<tr class="' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                '<td>' + col.title + ':' + '</td> ' +
-                                '<td>' + col.data + '</td>' +
-                                '</tr>';
+                        var row = api.row(rowIdx);
+                        var data = row.data();
+                        var chara_id = data['chara_id'];
+                        var lunatic = data['lev_lnt'] !== "" ? "lunatic" : "";
+
+                        var normalRows = $.map(columns, function(col, i) {
+                            var column_param = columns_params[col.columnIndex];
+                            // console.log(api.column(col.columnIndex).data());
+                            // console.log(data);
+                            // console.log(col);
+
+                            // generic
+                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ') && !col.className.includes('chara ')) {
+                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                '<span class="row-label">' + col.title + '</span> ' + '<span>' + col.data + '</span>' +
+                                '</div>'
+                            }
                         }).join('');
 
-                        return data ?
-                            $('<table/>').append(data) :
+                        var charaRows = $.map(columns, function(col, i) {
+                            var column_param = columns_params[col.columnIndex];
+
+                            // chara
+                            if (!col.className.includes('detail-hidden') && col.className.includes('chara ')) {
+                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                '<span class="row-label">' + column_param.displayTitle + '</span> ' + '<span>' + col.data + '</span>' +
+                                '</div>'
+                            }
+                        }).join('');
+
+                        var chartRows = $.map(columns, function(col, i) {
+                            var column_param = columns_params[col.columnIndex];
+
+                            // lv display
+                            if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
+                                var lv_i = column_param['name'].concat('_i');
+                                // console.log(column_param['name'].concat('_i'));
+
+                                
+
+                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
+                                    '<span class="content-col">' +
+                                        '<span class="main-info-wrap">' + col.data + '</span>' +
+                                        '<span class="sub-info-wrap">' +
+                                            '<span class="notes">' + ( checkPropertyAndValueExists(data[lv_i], 'notes') ? '<span class="label">Chain</span><span>' + data[lv_i]['notes'] + '</span>' : "") + '</span>' +
+                                            '<span class="bells">' + ( checkPropertyAndValueExists(data[lv_i], 'bells') ? '<span class="label">Bell</span><span>' + data[lv_i]['bells'] + '</span>' : "") + '</span>' +
+                                            '<span class="designer">' + ( checkPropertyAndValueExists(data[lv_i], 'designer') ? '<span class="label">Designer</span><span>' + data[lv_i]['designer'] + '</span>' : "") + '</span>' +
+                                            '<span class="chart-link">' + ( checkPropertyAndValueExists(data[lv_i], 'chart_link') ? '<a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[lv_i]['chart_link'] +'.htm">sdvx.in 譜面</a>' : "") + '</span>' +
+                                        '</span>' +
+                                    '</span>' +
+                                    '</div>'
+                            }
+                        }).join('');
+
+                        var combinedRows = $('<div class="table-wrapper"/>')
+                                                .append(
+                                                    $('<div class="details-table chara-details"/>')
+                                                        .append('<div class="table-header"><span class="th-label">CHARACTER INFO</span></div>')
+                                                        .append(charaRows)
+                                                        .append(chara_id.substr(0,1) == "1" ? '<span class="chara-img" style="background-image: url(\'./img/chara/' + chara_id + '.png\');"></span>': "")
+                                                )
+                                                .append(
+                                                    $('<div class="details-table chart-details '+ lunatic +'"/>')
+                                                        .append('<div class="table-header"><span class="th-label">CHART INFO</span></div>')
+                                                        .append(chartRows)
+                                                )
+                                                .append(
+                                                    $('<div class="details-table misc-details"/>')
+                                                        .append('<div class="table-header"><span class="th-label">SONG INFO</span></div>')
+                                                        .append(normalRows)
+                                                );
+
+                        return combinedRows ?
+                            combinedRows :
                             false;
                     }
                 }

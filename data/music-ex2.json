@@ -12704,10 +12704,18 @@
          "precise_lv":""
       },
       "lev_exc_i":{
-         "precise_lv":"12.6"
+         "precise_lv":"12.6",
+         "notes":"1146",
+         "bells":"259",
+         "chart_link":"",
+         "designer":"ロシェ@ペンギン"
       },
       "lev_mas_i":{
-         "precise_lv":"14.7"
+         "precise_lv":"14.7",
+         "notes":"1613",
+         "bells":"93",
+         "chart_link":"02/02124mst",
+         "designer":"MSЯ-100S"
       },
       "lev_lnt_i":{
          "precise_lv":""
