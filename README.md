@@ -32,9 +32,17 @@ Just open `index.html` and refresh manually. Simple as the good old year 2000.
 - `/data/music.json` : Copy of original JSON file provided by SEGA
 - `/data/music-ex.json`: Augmented JSON file containing additional data (Enemy type / lv / precise lv) (actually used file in the webpage)
 
-## Contributors
+## Credits
+### Code Contributions
 - [@Ryudnar](https://github.com/Ryudnar) : song data download automation script
 - [@kiding](https://github.com/kiding/) : auto update datestamp
+
+### Other Contributions & Data Sources
+- [@u7gisan](https://twitter.com/u7gisan) : Song type, character lv info report
+- [@TSUBAKI_ONGEKI](https://twitter.com/TSUBAKI_ONGEKI) : Song detail info fillout
+- [@Rinsaku471](https://twitter.com/Rinsaku471) : Chart precise lv data source (11~14+)
+- [@RKS49019722](https://twitter.com/RKS49019722) : Chart precise lv data source (11~14+)
+- [@hikkey7th](https://twitter.com/hikkey7th) : Chart precise lv data source (10,10+)
 
 ## Feedback
 Contact [@zvuc_](https://twitter.com/zvuc_) for any suggestions or inquiries.
