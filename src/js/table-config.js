@@ -374,10 +374,10 @@ $(document).ready(function() {
     function sortLevels(col_a, col_b) {
         return function ( row, type, set, meta ) {
             if ( type === 'sort' ) {
-                if ( row[col_b]['precise_lv'] === "" ) {
+                if ( row[col_b] === "" ) {
                     return addLeadingZero(row[col_a]);
                 } else {
-                    return addLeadingZero(row[col_b]['precise_lv']);
+                    return addLeadingZero(row[col_b]);
                 }
             }
             else {
@@ -404,7 +404,7 @@ $(document).ready(function() {
     function renderLvNum(simple_lv, precise_lv) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
-                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv]['precise_lv'] + '<\/span><\/div>';
+                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
             }
             else {
                 return data;
@@ -509,8 +509,8 @@ $(document).ready(function() {
                                         ...obj,
                                         chart_diff,
                                         chart_lev: obj[chart_diff],
-                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`][`precise.lv`] || obj[chart_diff].replace('+', '.7')),
-                                        chart_lev_i_display: obj[`${chart_diff}_i`][`precise_lv`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>'
+                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
+                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>'
                                     }
                                     : null
                             )
@@ -523,7 +523,7 @@ $(document).ready(function() {
         return processed_data;
     }
 
-    $.getJSON("data/music-ex2.json", (data) => {
+    $.getJSON("data/music-ex.json", (data) => {
         
 
         var table = $('#table').DataTable( {
@@ -662,20 +662,22 @@ $(document).ready(function() {
 
                             // lv display
                             if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
-                                var lv_i = column_param['name'].concat('_i');
-                                // console.log(column_param['name'].concat('_i'));
+                                var chart_name = column_param['name'];
 
-                                
+                                var notes = chart_name.concat('_notes');
+                                var bells = chart_name.concat('_bells');
+                                var designer = chart_name.concat('_designer');
+                                var chartLink = chart_name.concat('_chart_link');                                
 
                                 return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                     '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
                                     '<span class="content-col">' +
                                         '<span class="main-info-wrap">' + col.data + '</span>' +
                                         '<span class="sub-info-wrap">' +
-                                            '<span class="notes">' + ( checkPropertyAndValueExists(data[lv_i], 'notes') ? '<span class="label">Chain</span><span>' + data[lv_i]['notes'] + '</span>' : "") + '</span>' +
-                                            '<span class="bells">' + ( checkPropertyAndValueExists(data[lv_i], 'bells') ? '<span class="label">Bell</span><span>' + data[lv_i]['bells'] + '</span>' : "") + '</span>' +
-                                            '<span class="designer">' + ( checkPropertyAndValueExists(data[lv_i], 'designer') ? '<span class="label">Designer</span><span>' + data[lv_i]['designer'] + '</span>' : "") + '</span>' +
-                                            '<span class="chart-link">' + ( checkPropertyAndValueExists(data[lv_i], 'chart_link') ? '<a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[lv_i]['chart_link'] +'.htm">sdvx.in 譜面</a>' : "") + '</span>' +
+                                            '<span class="notes">' + ( checkPropertyAndValueExists(data, notes) ? '<span class="label">Chain</span><span>' + data[notes] + '</span>' : "") + '</span>' +
+                                            '<span class="bells">' + ( checkPropertyAndValueExists(data, bells) ? '<span class="label">Bell</span><span>' + data[bells] + '</span>' : "") + '</span>' +
+                                            '<span class="designer">' + ( checkPropertyAndValueExists(data, designer) ? '<span class="label">Designer</span><span>' + data[designer] + '</span>' : "") + '</span>' +
+                                            '<span class="chart-link">' + ( checkPropertyAndValueExists(data, chartLink) ? '<a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm">sdvx.in 譜面</a>' : "") + '</span>' +
                                         '</span>' +
                                     '</span>' +
                                     '</div>'
