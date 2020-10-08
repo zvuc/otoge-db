@@ -83,6 +83,14 @@ $(document).ready(function() {
             searchable: false
         },
         { 
+            displayTitle: "BPM",
+            name: "bpm",
+            data: "bpm",
+            className: "details",
+            searchable: false,
+            visible: false
+        },
+        { 
             displayTitle: "ジャンル",
             name: "category",
             data: "category",
@@ -340,9 +348,28 @@ $(document).ready(function() {
             visible: false
         },
         { 
-            displayTitle: "BPM",
-            name: "bpm",
-            data: "bpm",
+            displayTitle: "ノート数",
+            name: "chart_notes",
+            data: ( flat_view ? "chart_notes" : null ),
+            className: "details detail-hidden",
+            searchable: false,
+            visible: false
+        },
+        { 
+            displayTitle: "ベル",
+            name: "chart_bells",
+            data: ( flat_view ? "chart_bells" : null ),
+            className: "details detail-hidden",
+            searchable: false,
+            visible: false
+        },
+        { 
+            displayTitle: "譜面作者",
+            name: "chart_designer",
+            data: ( flat_view ? "chart_designer" : null ),
+            width: "15em",
+            className: "details detail-hidden",
+            filterable: flat_view,
             searchable: false,
             visible: false
         },
@@ -367,8 +394,8 @@ $(document).ready(function() {
 
     var default_order = 
         flat_view ?
-            [[21, 'desc'],[13, 'desc'],[24, 'desc']] :
-            [[24, 'desc'],[9, 'asc'],[0, 'asc']];
+            [[22, 'desc'],[14, 'desc'],[27, 'desc']] :
+            [[27, 'desc'],[9, 'asc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
@@ -517,7 +544,10 @@ $(document).ready(function() {
                                         chart_diff,
                                         chart_lev: obj[chart_diff],
                                         chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>'
+                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>',
+                                        chart_notes: obj[`${chart_diff}_notes`],
+                                        chart_bells: obj[`${chart_diff}_bells`],
+                                        chart_designer: obj[`${chart_diff}_designer`]
                                     }
                                     : null
                             )
@@ -754,7 +784,7 @@ $(document).ready(function() {
                             // var val = $(this).val();
 
                             // when applying filter, control rowgroup visibility
-                            if (column.index() === 24 || (val_e === "" && order[0][0] === 24)) {
+                            if (column.index() === 27 || (val_e === "" && order[0][0] === 27)) {
                                 column.rowGroup().enable();
                                 // console.log('group enabled (filter)');
                             } else {
@@ -862,13 +892,13 @@ $(document).ready(function() {
                     }
 
                     // Disable rowgroup unless sorting by date
-                    if (order[0][0] !== 24) {
+                    if (order[0][0] !== 27) {
                         table.rowGroup().disable();
                         // console.log('group disabled (sorting by non-date column)');
                         return;
                     }
                     // enable rowgroup if sorting by date AND search is inactive
-                    else if ((order[0][0] === 24) && !searchActive) {
+                    else if ((order[0][0] === 27) && !searchActive) {
                         table.rowGroup().enable();
                         // console.log('group enabled (sorting by date + search inactive)');
                         return;
@@ -889,10 +919,14 @@ $(document).ready(function() {
         });
     });
 
-
-    // table.on( 'search.dt', function () {
-    //     console.log('search happened')
-    // } );
+    
+    // recalculate columns on colvis change event
+    $('#table').on( 'column-visibility.dt', function () {
+        console.log('colvis event');
+        $.fn.dataTable
+            .tables( { visible: true, api: true } )
+            .columns.adjust();
+    } );
 
     $('select#chart_lev').on('change', function(){
         var table = $('#table').DataTable();
