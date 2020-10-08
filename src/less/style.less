@@ -452,7 +452,7 @@ table.dataTable {
 				left: 0;
 				/*right: calc(-1 * (100vw - 60px));*/
 				width: calc(100vw - 60px - 12px - 12px);
-				padding: 8px 12px;
+				padding: 8px 10px;
 				background-color: rgb(var(--ui-color-table-row-bg));
 				border-bottom: 1px solid rgba(var(--ui-color-table-row-border),0.5);
 				flex-flow: row nowrap;
@@ -863,13 +863,13 @@ div.dtr-modal-content .details-table {
 	}
 
 	.row {
-		display: flex;
-		align-items: center;
 		min-height: 28px;
 		padding: 7px 15px;
 		border-bottom: 1px solid rgb(var(--ui-color-background-080));
 
 		@media screen and (min-width: 480px) {
+			display: flex;
+			align-items: flex-start;
 			min-height: 33px;
 		}
 
@@ -879,15 +879,29 @@ div.dtr-modal-content .details-table {
 		}
 
 		.row-label {
+			display: block;
 			flex: 0 0 auto;
-			max-width: 130px;
+			width: 100%;
+			font-size: 0.8em;
+			margin-bottom: 3px;
 			font-weight: bold;
-			color: rgb(var(--ui-color-foreground-060));
+			color: rgb(var(--ui-color-foreground-050));
 
 			@media screen and (min-width: 480px) {
+				width: 110px;
+				max-width: 110px;
+				margin-bottom: 0;
+				font-size: 0.9em;
+			}
+
+			@media screen and (min-width: 660px) {
 				max-width: 150px;
 				width: 150px;
 			}
+		}
+
+		& > span {
+			padding: 5px 0;
 		}
 	}
 
@@ -899,10 +913,10 @@ div.dtr-modal-content .details-table {
 		display: inline-block;
 		width: 124px;
 		height: 124px;
-		background-size: 105%;
+		background-size: 100%;
 		background-position: center;
 		background-repeat: no-repeat;
-		border-radius: 2px;
+		border-radius: 100px;
 		background-color: rgb(var(--ui-color-background-100));
 		border: 2px solid rgb(var(--ui-color-background-080));
 		overflow: hidden;
@@ -938,7 +952,7 @@ div.dtr-modal-content .details-table {
 	}
 
 	.lv-num-simple {
-		font-size: 1.1em;
+		font-size: 1.2em;
 
 		&:empty:before {
 			content: "--";
@@ -989,11 +1003,16 @@ div.dtr-modal-content .details-table {
 	.sub-info-wrap {
 		flex: 1 0 auto;
 		display: flex;
+		flex-flow: row wrap;
+
+		&:not(:empty) {
+			margin-top: 5px;
+		}
 
 		& > span:not(:empty) {
 			display: flex;
-			align-items: flex-end;
-			height: 28px;
+			align-items: baseline;
+			margin-top: 5px;
 			margin-right: 15px;
 
 			.label {
@@ -1005,6 +1024,7 @@ div.dtr-modal-content .details-table {
 			}
 
 			span {
+				font-size: 0.9em;
 				color: rgb(var(--ui-color-foreground-080));
 			}
 
@@ -1016,12 +1036,12 @@ div.dtr-modal-content .details-table {
 				min-width: 75px;
 			}
 
-			&.chart-link {
-				margin-left: auto;
-				margin-right: 0;
-			}
 		}
+	}
 
+	.chart-link {
+		display: block;
+		margin-top: 10px;
 	}
 }
 

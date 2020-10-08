@@ -340,6 +340,13 @@ $(document).ready(function() {
             visible: false
         },
         { 
+            displayTitle: "BPM",
+            name: "bpm",
+            data: "bpm",
+            searchable: false,
+            visible: false
+        },
+        { 
             displayTitle: "追加日",
             name: "date",
             data: "date",
@@ -360,8 +367,8 @@ $(document).ready(function() {
 
     var default_order = 
         flat_view ?
-            [[21, 'desc'],[13, 'desc'],[23, 'desc']] :
-            [[23, 'desc'],[9, 'asc'],[0, 'asc']];
+            [[21, 'desc'],[13, 'desc'],[24, 'desc']] :
+            [[24, 'desc'],[9, 'asc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
@@ -545,13 +552,13 @@ $(document).ready(function() {
                 // {
                 //     extend: 'colvisGroup',
                 //     text: '譜面レベルのみ',
-                //     hide: [ 6, 8, 9, 10, 12, 13, 23 ],
+                //     hide: [ 6, 8, 9, 10, 12, 13, 24 ],
                 //     show: [ 14, 15, 16, 17, 18 ],
                 // },
                 // {
                 //     extend: 'colvisGroup',
                 //     text: 'EXPERT以上のみ',
-                //     hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 23 ],
+                //     hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 24 ],
                 //     show: [ 16, 17, 18 ]
                 // },
                 // {
@@ -674,11 +681,11 @@ $(document).ready(function() {
                                     '<span class="content-col">' +
                                         '<span class="main-info-wrap">' + col.data + '</span>' +
                                         '<span class="sub-info-wrap">' +
-                                            '<span class="notes">' + ( checkPropertyAndValueExists(data, notes) ? '<span class="label">Chain</span><span>' + data[notes] + '</span>' : "") + '</span>' +
-                                            '<span class="bells">' + ( checkPropertyAndValueExists(data, bells) ? '<span class="label">Bell</span><span>' + data[bells] + '</span>' : "") + '</span>' +
-                                            '<span class="designer">' + ( checkPropertyAndValueExists(data, designer) ? '<span class="label">Designer</span><span>' + data[designer] + '</span>' : "") + '</span>' +
-                                            '<span class="chart-link">' + ( checkPropertyAndValueExists(data, chartLink) ? '<a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm">sdvx.in 譜面</a>' : "") + '</span>' +
+                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes"><span class="label">Chain</span><span>' + data[notes] + '</span></span>' : "") +
+                                            ( checkPropertyAndValueExists(data, bells) ? '<span class="bells"><span class="label">Bell</span><span>' + data[bells] + '</span></span>' : "") +
+                                            ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
+                                        ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm">sdvx.in 譜面</a></span>' : "") +
                                     '</span>' +
                                     '</div>'
                             }
@@ -747,7 +754,7 @@ $(document).ready(function() {
                             // var val = $(this).val();
 
                             // when applying filter, control rowgroup visibility
-                            if (column.index() === 23 || (val_e === "" && order[0][0] === 23)) {
+                            if (column.index() === 24 || (val_e === "" && order[0][0] === 24)) {
                                 column.rowGroup().enable();
                                 // console.log('group enabled (filter)');
                             } else {
@@ -855,13 +862,13 @@ $(document).ready(function() {
                     }
 
                     // Disable rowgroup unless sorting by date
-                    if (order[0][0] !== 23) {
+                    if (order[0][0] !== 24) {
                         table.rowGroup().disable();
                         // console.log('group disabled (sorting by non-date column)');
                         return;
                     }
                     // enable rowgroup if sorting by date AND search is inactive
-                    else if ((order[0][0] === 23) && !searchActive) {
+                    else if ((order[0][0] === 24) && !searchActive) {
                         table.rowGroup().enable();
                         // console.log('group enabled (sorting by date + search inactive)');
                         return;
