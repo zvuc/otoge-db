@@ -848,30 +848,38 @@ div.dtr-modal div.dtr-modal-content {
 
 }
 
-table.dtr-details {
-	border-collapse: collapse;
-	margin-bottom: 10px;
+div.dtr-modal-content .details-table {
+	position: relative;
+	width: 100%;
+	margin: 10px 0 5px 0;
 
-	tr {
+	// commons
+	.table-header {
+		padding: 5px 15px;
+		border-bottom: 2px solid rgb(var(--ui-color-background-080));
+		font-weight: bold;
+		font-size: 0.8em;
+		color: rgb(var(--ui-color-foreground-080));
+	}
+
+	.row {
+		display: flex;
+		align-items: center;
+		min-height: 28px;
+		padding: 7px 15px;
+		border-bottom: 1px solid rgb(var(--ui-color-background-080));
+
+		@media screen and (min-width: 480px) {
+			min-height: 33px;
+		}
+
 		&.detail-hidden,
 		&.id, &.jacket, &.song-title, &.artist {
 			display: none;
 		}
 
-		td {
-			height: 28px;
-			padding: 7px 15px;
-			border-bottom: 1px solid rgb(var(--ui-color-background-080));
-
-			@media screen and (min-width: 480px) {
-				height: 33px;
-			}
-		}
-		&:first-child td {
-			border-top: 1px solid rgb(var(--ui-color-background-080));
-		}
-
-		td:first-child {
+		.row-label {
+			flex: 0 0 auto;
 			max-width: 130px;
 			font-weight: bold;
 			color: rgb(var(--ui-color-foreground-060));
@@ -883,12 +891,34 @@ table.dtr-details {
 		}
 	}
 
-	li span.dtr.data {
-		display: block;
+	// chara details
+	.chara-img {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		display: inline-block;
+		width: 124px;
+		height: 124px;
+		background-size: 105%;
+		background-position: center;
+		background-repeat: no-repeat;
+		border-radius: 2px;
+		background-color: rgb(var(--ui-color-background-100));
+		border: 2px solid rgb(var(--ui-color-background-080));
+		overflow: hidden;
 	}
 
-	.index {
-		display: none;
+	// chart details
+	&.chart-details:not(.lunatic) {
+		.lv-lnt {
+			display: none;
+		}
+	}
+
+	&.chart-details.lunatic {
+		.lv-bsc, .lv-adv, .lv-exp, .lv-mas {
+			display: none;
+		}
 	}
 
 	.diff-name {
@@ -917,34 +947,81 @@ table.dtr-details {
 	}
 
 	.lv-bsc, .lev_bas {
-		td:first-child span {
+		.row-label span {
 			// background: rgba(101,211,70,0.1);
 			color: rgb(var(--lv-color-bsc));
 		}
 	}
 	.lv-adv, .lev_adv {
-		td:first-child span {
+		.row-label span {
 			// background: rgba(251,230,77,0.1);
 			color: rgb(var(--lv-color-adv));
 		}
 	}
 	.lv-exp, .lev_exc {
-		td:first-child span {
+		.row-label span {
 			// background: rgba(234,56,134,0.1);
 			color: rgb(var(--lv-color-exp));
 		}
 	}
 	.lv-mas, .lev_mas {
-		td:first-child span {
+		.row-label span {
 			// background: rgba(165,71,213,0.1);
 			color: rgb(var(--lv-color-mas));
 		}
 	}
 	.lv-lnt, .lev_lnt {
-		td:first-child span {
+		.row-label span {
 			// background: rgba(255,255,255,0.1);
 			color: rgb(var(--lv-color-lnt));
 		}
+	}
+
+	.content-col {
+		flex: 1 1 auto;
+	}
+
+	.main-info-wrap {
+		width: 100px;
+		display: flex;
+	}
+
+	.sub-info-wrap {
+		flex: 1 0 auto;
+		display: flex;
+
+		& > span:not(:empty) {
+			display: flex;
+			align-items: flex-end;
+			height: 28px;
+			margin-right: 15px;
+
+			.label {
+				font-size: 0.8em;
+				text-transform: uppercase;
+				font-weight: bold;
+				color: rgb(var(--ui-color-foreground-030));
+				margin-right: 5px;
+			}
+
+			span {
+				color: rgb(var(--ui-color-foreground-080));
+			}
+
+			&.notes {
+				min-width: 90px;
+			}
+
+			&.bells {
+				min-width: 75px;
+			}
+
+			&.chart-link {
+				margin-left: auto;
+				margin-right: 0;
+			}
+		}
+
 	}
 }
 
