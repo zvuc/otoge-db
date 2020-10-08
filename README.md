@@ -3,11 +3,6 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
 
 このツールは、SEGAの音ゲー「オンゲキ」の収録曲データをより便利に閲覧できるように制作されたビュアーです。
 
-## Data Sources
-- Base data source: https://ongeki.sega.jp/assets/data/music.json
-- Enemy type & level data: [オンゲキ攻略wiki](https://ongeki.gamerch.com/%E5%B1%9E%E6%80%A7%E5%88%A5%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7)
-- Precise LV data (譜面定数): [OngekiScoreLog](https://ongeki-score.net/music), Twitter for latest data (Mostly [@masa_9713](https://twitter.com/masa_9713))
-
 ## How to fetch and apply new data
 - You'll need Python3 to run scripts on command line.
 - Install requirements
@@ -37,12 +32,16 @@ Just open `index.html` and refresh manually. Simple as the good old year 2000.
 - [@Ryudnar](https://github.com/Ryudnar) : song data download automation script
 - [@kiding](https://github.com/kiding/) : auto update datestamp
 
-### Other Contributions & Data Sources
-- [@u7gisan](https://twitter.com/u7gisan) : Song type, character lv info report
+### Team Ongeki DB
+- [@u7gisan](https://twitter.com/u7gisan) : Song type, character lv info report, song detail info fillout
 - [@TSUBAKI_ONGEKI](https://twitter.com/TSUBAKI_ONGEKI) : Song detail info fillout
+
+### Other Contributions & Data Sources
 - [@Rinsaku471](https://twitter.com/Rinsaku471) : Chart precise lv data source (11~14+)
 - [@RKS49019722](https://twitter.com/RKS49019722) : Chart precise lv data source (11~14+)
 - [@hikkey7th](https://twitter.com/hikkey7th) : Chart precise lv data source (10,10+)
+- [SEGA Official Music Data](https://ongeki.sega.jp/assets/data/music.json) : base JSON file
+- [オンゲキ攻略wiki](https://ongeki.gamerch.com/%E5%B1%9E%E6%80%A7%E5%88%A5%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7) : Enemy type, level, chart detail info
 
 ## Feedback
 Contact [@zvuc_](https://twitter.com/zvuc_) for any suggestions or inquiries.
