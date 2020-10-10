@@ -551,6 +551,22 @@ table.dataTable {
 
 	td.chapter {
 		font-size: 0.9em;
+
+		.chap-id-badge:not(:empty) {
+			display: inline-flex;
+			padding: 2px 6px;
+			font-size: 0.8em;
+			line-height: 1;
+			background-color: rgba(var(--ui-color-background-070),0.4);
+			font-weight: bold;
+			letter-spacing: -0.02em;
+			border-radius: 50px;
+			margin-right: 4px;
+		}
+
+		.chap-name {
+			// display: block;
+		}
 	}
 
 	@media screen and (max-width: 640px) {
@@ -725,6 +741,10 @@ table.dataTable {
 
 	td.details {
 		font-size: 0.9em;
+	}
+
+	td.notecount {
+		text-align: right;
 	}
 
 	thead th.date,

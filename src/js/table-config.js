@@ -121,48 +121,21 @@ $(document).ready(function() {
                 if ( type === 'sort' || type === 'meta') {
                     return row.chap_id;
                 } else {
-                    var chap_id = row.chap_id;
-                    var chap_chapter = chap_id.substr(3,2);
-
-                    // 0xxxx : Normal chapters
-                    if (chap_id.substr(0,1) == "0") {
-                        var chap_book = chap_id.substr(1,1);
-
-                        // 0xx8x : side chapter
-                        if (chap_id.substr(3,1) == "8") {
-                            var chap_book = chap_id.substr(1,1);
-                            var chap_chapter = 'S' + chap_id.substr(4,1);
-                        }
-
-                        // 0xxxx: chapters
-                        if (chap_book > "0") {
-                            return chap_book + '-' + chap_chapter + ' ' + row.chapter;
-                        } 
-                        // 00xxx : default mylist
-                        else {
-                            return row.chapter;
-                        }
-                    }
-                    // 80xxx : Event chapters
-                    else if (chap_id.substr(0,2) == "80") {
-                        var chap_book = "SP2";
-                        return chap_book + '-' + chap_chapter + ' ' + row.chapter;
-                    }
-                    // 99xxx : Event chapters
-                    else if (chap_id.substr(0,2) == "99") {
-                        var chap_book = "SP";
-                        return chap_book + '-' + chap_chapter + ' ' + row.chapter;
-                    }
-                    // Others?
-                    else {
-                        chap_display = chap_id + ' ' + row.chapter;
-                        return chap_display;
-                    }
+                    var chap_id_display = parseChapId(row, true);
+                    return chap_id_display + row.chapter
                 }
             },
             className: "chapter",
             width: "15em",
-            render: renderInWrapper(),
+            render: function ( data, type, row ) {
+                if ( type === 'display' ) {
+                    var chap_id_display = parseChapId(row, true);
+                    return '<div class="inner-wrap"><span class="chap-id-badge">' + chap_id_display + '<\/span><span class="chap-name">' + row.chapter + '<\/span><\/div>';
+                }
+                else {
+                    return data;
+                }
+            },
             filterable: true
         },
         { 
@@ -351,7 +324,8 @@ $(document).ready(function() {
             displayTitle: "ノート数",
             name: "chart_notes",
             data: ( flat_view ? "chart_notes" : null ),
-            className: "details detail-hidden",
+            className: "details notecount detail-hidden",
+            width: "6em",
             searchable: false,
             visible: false
         },
@@ -359,7 +333,8 @@ $(document).ready(function() {
             displayTitle: "ベル",
             name: "chart_bells",
             data: ( flat_view ? "chart_bells" : null ),
-            className: "details detail-hidden",
+            className: "details notecount detail-hidden",
+            width: "5em",
             searchable: false,
             visible: false
         },
@@ -558,6 +533,45 @@ $(document).ready(function() {
                 : data 
             );
         return processed_data;
+    }
+
+    function parseChapId(row, includeTrailingSpace) {
+        var chap_id = row.chap_id;
+        var chap_chapter = chap_id.substr(3,2);
+
+        // 0xxxx : Normal chapters
+        if (chap_id.substr(0,1) == "0") {
+            var chap_book = chap_id.substr(1,1);
+
+            // 0xx8x : side chapter
+            if (chap_id.substr(3,1) == "8") {
+                var chap_book = chap_id.substr(1,1);
+                var chap_chapter = 'S' + chap_id.substr(4,1);
+            }
+
+            // 0xxxx: chapters
+            if (chap_book > "0") {
+                return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
+            } 
+            // 00xxx : default mylist
+            else {
+                return '';
+            }
+        }
+        // 80xxx : Event chapters
+        else if (chap_id.substr(0,2) == "80") {
+            var chap_book = "SP2";
+            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
+        }
+        // 99xxx : Event chapters
+        else if (chap_id.substr(0,2) == "99") {
+            var chap_book = "SP";
+            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
+        }
+        // Others?
+        else {
+            return chap_id + (includeTrailingSpace ? ' ' : '');
+        }
     }
 
     $.getJSON("data/music-ex.json", (data) => {
