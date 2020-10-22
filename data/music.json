@@ -7543,7 +7543,7 @@
     "lev_exc": "8",
     "lev_mas": "11+",
     "lev_lnt": "",
-    "image_url": "0342.jpg"
+    "image_url": "0189.jpg"
   },
   {
     "new": "",
@@ -8844,7 +8844,7 @@
     "image_url": "0400.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20201015",
     "title": "コネクト",
     "title_sort": "コネクト",
@@ -8866,7 +8866,7 @@
     "image_url": "0401.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20201015",
     "title": "Shiny Smily Story",
     "title_sort": "SHINYSMILYSTORY",
@@ -8888,7 +8888,7 @@
     "image_url": "0402.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20201015",
     "title": "beautiful tomorrow",
     "title_sort": "BEAUTIFULTOMORROW",
@@ -8908,5 +8908,49 @@
     "lev_mas": "12",
     "lev_lnt": "",
     "image_url": "0403.jpg"
+  },
+  {
+    "new": "NEW",
+    "date": "20201022",
+    "title": "ガヴリールドロップキック",
+    "title_sort": "カウリルトロツフキツク",
+    "artist": "ガヴリール（富田美憂），ヴィーネ（大西沙織），サターニャ（大空直美），ラフィエル（花澤香菜）「ガヴリールドロップアウト」",
+    "id": "4590",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "逢坂 茜",
+    "chara_id": "1120",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "bonus": "",
+    "copyright1": "©2016 うかみ／ＫＡＤＯＫＡＷＡ　アスキー・メディアワークス／ガヴリールドロップアウト製作委員会",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exc": "9+",
+    "lev_mas": "12+",
+    "lev_lnt": "",
+    "image_url": "0404.jpg"
+  },
+  {
+    "new": "NEW",
+    "date": "20201022",
+    "title": "よいまちカンターレ",
+    "title_sort": "ヨイマチカンタレ",
+    "artist": "コーロまちカド(シャミ子･桃･リリス･ミカン)/CV:小原好美･鬼頭明里･高橋未奈美･高柳知葉「まちカドまぞく」",
+    "id": "3310",
+    "chap_id": "99055",
+    "chapter": "まちカドまぞく",
+    "character": "吉田 優子",
+    "chara_id": "5510",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "bonus": "",
+    "copyright1": "©伊藤いづも・芳文社／まちカドまぞく製作委員会",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exc": "10",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "0405.jpg"
   }
 ]
