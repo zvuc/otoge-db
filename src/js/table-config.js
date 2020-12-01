@@ -345,7 +345,7 @@ $(document).ready(function() {
             width: "15em",
             className: "details detail-hidden",
             filterable: flat_view,
-            searchable: false,
+            searchable: flat_view,
             visible: false
         },
         { 
