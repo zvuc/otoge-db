@@ -12,14 +12,15 @@ $(document).ready(function() {
         { 
             displayTitle: "#",
             name: "index",
-            data: "image_url",
+            data: "id",
             className: "id detail-hidden",
             data: function(row) {
-                return row.image_url.split(".")[0];
+                return row.id;
             },
             render: renderInWrapper(),
             width: "20px",
-            searchable: false
+            searchable: false,
+            visible: false
         },
         { 
             displayTitle: "アルバムアート",
@@ -27,7 +28,7 @@ $(document).ready(function() {
             data: "image_url",
             className: "jacket detail-hidden",
             render: function(data) {
-                return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span><span class="index">' + data.split(".")[0] + '<\/span>';
+                return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span>';
             },
             width: "50px",
             orderable: false,
