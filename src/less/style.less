@@ -790,6 +790,18 @@ div.dtr-modal div.dtr-modal-content {
 	mask-size: 50.1% 50.1%;
 	mask-repeat: no-repeat;
 
+	@keyframes modal-enter {
+		0% {
+			opacity: 0;
+			transform: translateY(35px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	animation: modal-enter 0.15s ease-out both;
+
 
 	.modal-header { 
 		padding: 15px;
@@ -844,12 +856,9 @@ div.dtr-modal div.dtr-modal-content {
 			color: rgb(var(--ui-color-foreground-060));
 		}
 
-	}
-
-	.modal-footer {
 		.copyright {
 			display: block;
-			padding: 15px 20px;
+			margin-top: 15px;
 			font-size: 0.8em;
 			color: rgb(var(--ui-color-foreground-040));
 			white-space: pre-line;
@@ -870,31 +879,63 @@ div.dtr-modal div.dtr-modal-content {
 		}
 	}
 
+	.modal-footer {
+		.report {
+			font-size: 0.9em;
+			text-align: center;
+			padding: 15px 20px;
+
+			a {
+				color: rgb(var(--ui-color-foreground-060));
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
 }
 
 div.dtr-modal-content .details-table {
 	position: relative;
 	width: 100%;
-	margin: 10px 0 5px 0;
+	margin: 15px 0 5px 0;
 
 	// commons
 	.table-header {
-		padding: 5px 15px;
-		border-bottom: 2px solid rgb(var(--ui-color-background-080));
+		display: flex;
+		align-items: center;
+		padding: 5px 0 5px 15px;
 		font-weight: bold;
-		font-size: 0.8em;
-		color: rgb(var(--ui-color-foreground-080));
+		font-size: 1.1em;
+		letter-spacing: 0.04em;
+		color: rgb(var(--ui-color-foreground-030));
+
+		&:after {
+			content: "";
+			flex: 1 1 auto;
+			margin-left: 10px;
+			border-bottom: 2px solid rgb(var(--ui-color-background-080));
+		}
 	}
 
 	.row {
+		display: grid;
+		grid-column-gap: 5px;
 		min-height: 28px;
-		padding: 7px 15px;
-		border-bottom: 1px solid rgb(var(--ui-color-background-080));
+		padding: 7px 15px 7px 0;
+		margin-left: 15px;
+		border-bottom: 1px solid rgba(var(--ui-color-background-080),0.5);
 
 		@media screen and (min-width: 480px) {
-			display: flex;
-			align-items: flex-start;
+			grid-template-columns: 110px auto;
 			min-height: 33px;
+		}
+
+		@media screen and (min-width: 660px) {
+			grid-template-columns: 150px auto min-content;
 		}
 
 		&.detail-hidden,
@@ -907,25 +948,30 @@ div.dtr-modal-content .details-table {
 			flex: 0 0 auto;
 			width: 100%;
 			font-size: 0.8em;
-			margin-bottom: 3px;
 			font-weight: bold;
 			color: rgb(var(--ui-color-foreground-050));
 
 			@media screen and (min-width: 480px) {
-				width: 110px;
-				max-width: 110px;
 				margin-bottom: 0;
 				font-size: 0.9em;
 			}
+		}
 
-			@media screen and (min-width: 660px) {
-				max-width: 150px;
-				width: 150px;
+		.content-col {
+			grid-row: 2;
+
+			@media screen and (min-width: 480px) {
+				grid-column: 2;
+				grid-row: 1;
 			}
 		}
 
 		& > span {
-			padding: 5px 0;
+			padding: 3px 0;
+
+			@media screen and (min-width: 480px) {
+				padding: 5px 0;
+			}
 		}
 	}
 
@@ -976,7 +1022,11 @@ div.dtr-modal-content .details-table {
 	}
 
 	.lv-num-simple {
-		font-size: 1.2em;
+		font-size: 1.3em;
+
+		@media screen and (min-width: 480px) {
+			font-size: 1.2em;
+		}
 
 		&:empty:before {
 			content: "--";
@@ -1017,6 +1067,7 @@ div.dtr-modal-content .details-table {
 
 	.content-col {
 		flex: 1 1 auto;
+		grid-column: 1;
 	}
 
 	.main-info-wrap {
@@ -1060,12 +1111,65 @@ div.dtr-modal-content .details-table {
 				min-width: 75px;
 			}
 
+			&.designer {
+				width: 100%;
+				margin-right: 0;
+			}
+
 		}
 	}
 
 	.chart-link {
-		display: block;
-		margin-top: 10px;
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+
+		@media screen and (min-width: 480px) {
+			grid-column: 3;
+			grid-row: 1;
+		}
+
+		.btn {
+			display: inline-flex;
+			max-width: 100px;
+			height: auto;
+			flex-flow: column;
+			letter-spacing: 0.02em;
+			font-size: 0.9em;
+
+			@media screen and (min-width: 660px) {
+				max-width: none;
+				flex-flow: row;
+				align-items: center;
+				white-space: nowrap;
+			}
+
+			.img {
+				flex: 0 0 auto;
+				width: 47px;
+				height: 40px;
+				background-image: url('./img/chart-ref.png');
+				background-repeat: no-repeat;
+				background-size: 100%;
+				border-radius: 2px;
+				margin-bottom: 3px;
+
+				@media screen and (min-width: 660px) {
+					order: 2;
+					margin: 0 0 0 10px;
+				}
+			}
+		}
+
+		.chart-provider {
+			display: block;
+			margin-top: 3px;
+			font-size: 0.75em;
+			color: rgb(var(--ui-color-foreground-060));
+		}
 	}
 }
 

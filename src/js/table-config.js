@@ -668,12 +668,14 @@ $(document).ready(function() {
                                 '<\/div><div class="content-wrap">' +
                                 ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                                 '<span class="title">' + data.title + '<\/span>' +
-                                '<span class="artist">' + data.artist + '<\/span><\/div><\/div>'
+                                '<span class="artist">' + data.artist + '<\/span>' +
+                                ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1.replace(/\s+ピアプロロゴ/, '<span class="piapro">piapro</span>') + '<\/span>' : '' ) +
+                                '<\/div><\/div>'
                         },
                         footer: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-footer">' +
-                                ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1.replace(/\s+ピアプロロゴ/, '<span class="piapro">piapro</span>') + '<\/span>' : '' ) +
+                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23%E3%82%AA%E3%83%B3%E3%82%B2%E3%82%ADDB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 欠けている情報・間違いを報告する（Twitter）<\/a><\/div>' +
                                 '<\/div>'
                         }
                     } ),
@@ -730,8 +732,8 @@ $(document).ready(function() {
                                             ( checkPropertyAndValueExists(data, bells) ? '<span class="bells"><span class="label">Bell</span><span>' + data[bells] + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
-                                        ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm">sdvx.in 譜面</a></span>' : "") +
                                     '</span>' +
+                                    ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm"><span class="img"></span><span>譜面確認</span></a><span class="chart-provider">sdvx.in 提供</span></span>' : "") +
                                     '</div>'
                             }
                         }).join('');
@@ -739,18 +741,18 @@ $(document).ready(function() {
                         var combinedRows = $('<div class="table-wrapper"/>')
                                                 .append(
                                                     $('<div class="details-table chara-details"/>')
-                                                        .append('<div class="table-header"><span class="th-label">CHARACTER INFO</span></div>')
+                                                        .append('<div class="table-header"><span class="th-label">CHARACTER</span></div>')
                                                         .append(charaRows)
                                                         .append(chara_id.substr(0,1) == "1" ? '<span class="chara-img" style="background-image: url(\'./img/chara/' + chara_id + '.png\');"></span>': "")
                                                 )
                                                 .append(
                                                     $('<div class="details-table chart-details '+ lunatic +'"/>')
-                                                        .append('<div class="table-header"><span class="th-label">CHART INFO</span></div>')
+                                                        .append('<div class="table-header"><span class="th-label">CHART</span></div>')
                                                         .append(chartRows)
                                                 )
                                                 .append(
                                                     $('<div class="details-table misc-details"/>')
-                                                        .append('<div class="table-header"><span class="th-label">SONG INFO</span></div>')
+                                                        .append('<div class="table-header"><span class="th-label">SONG METADATA</span></div>')
                                                         .append(normalRows)
                                                 );
 
