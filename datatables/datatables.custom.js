@@ -20376,12 +20376,28 @@ Responsive.display = {
 		return function ( row, update, render ) {
 			if ( ! update ) {
 				// Show a modal
+				var scrollPos = $(window).scrollTop();
+
+				$("body").css('top', (scrollPos * -1)).addClass("modal-open")
+
 				var close = function () {
-					modal.remove(); // will tidy events for us
+					modal
+						.addClass('anim-leave')
+						.on('animationend webkitAnimationEnd oAnimationEnd', function () {
+							modal
+								.removeClass('anim-leave')
+								.remove(); // will tidy events for us
+						})
+					$("body").removeClass("modal-open").css('top', '');
+					$(window).scrollTop(scrollPos);
 					$(document).off( 'keypress.dtr' );
 				};
 
 				var modal = $('<div class="dtr-modal"/>')
+					.addClass('anim-enter')
+					.on('animationend webkitAnimationEnd oAnimationEnd', function () {
+						modal.removeClass('anim-enter')
+					})
 					.append( $('<div class="dtr-modal-display"/>')
 						.append( $('<div class="dtr-modal-background"/>')
 							.click( function () {
@@ -20397,7 +20413,7 @@ Responsive.display = {
 							)
 						)
 					)
-					.appendTo( 'body' );
+					.appendTo( 'body' )
 
 				$(document).on( 'keyup.dtr', function (e) {
 					if ( e.keyCode === 27 ) {

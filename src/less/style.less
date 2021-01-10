@@ -46,6 +46,11 @@ html {
 	}
 }
 
+body.modal-open {
+	overflow: hidden;
+	position: fixed;
+}
+
 
 // loader
 #site-loader {
@@ -756,6 +761,73 @@ table.dataTable {
 }// end table.dataTable
 
 /* Details */
+div.dtr-modal {
+	&.anim-enter {
+		@keyframes dummy-anim {
+			0%,100% {
+				opacity: 1;
+			}
+		}
+		animation: dummy-anim 0.3s;
+
+		div.dtr-modal-background {
+			@keyframes fade-in {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			animation: fade-in 0.3s;
+		}
+
+		div.dtr-modal-content {
+			@keyframes modal-enter {
+				0% {
+					opacity: 0;
+					transform: translateY(35px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			animation: modal-enter 0.15s ease-out;
+		}
+	}
+
+	&.anim-leave {
+		animation: dummy-anim 0.3s;
+
+		div.dtr-modal-background {
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			animation: fade-out 0.2s 0.1s;
+		}
+
+		div.dtr-modal-content {
+			@keyframes modal-leave {
+				0% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				100% {
+					opacity: 0;
+					transform: translateY(35px);
+				}
+			}
+			animation: modal-leave 0.3s ease-in;
+		}
+	}
+}
+
 div.dtr-modal div.dtr-modal-content {
 	padding: 0;
 	font-size: 14px;
@@ -789,19 +861,6 @@ div.dtr-modal div.dtr-modal-content {
 	mask-position: bottom left, top left, top right, bottom right;
 	mask-size: 50.1% 50.1%;
 	mask-repeat: no-repeat;
-
-	@keyframes modal-enter {
-		0% {
-			opacity: 0;
-			transform: translateY(35px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	animation: modal-enter 0.15s ease-out both;
-
 
 	.modal-header { 
 		padding: 15px;
