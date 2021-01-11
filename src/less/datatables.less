@@ -928,39 +928,42 @@ table.dataTable > tbody > tr.child span.dtr-title {
 }
 
 div.dtr-modal {
-  position: fixed;
+  position: absolute;
+  box-sizing: border-box;
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   top: 0;
   left: 0;
-  height: 100%;
+  right: 0;
   width: 100%;
+  min-height: 100%;
   z-index: 100;
-  padding: 0 1em;
-  overflow: auto;
+  padding: 20px 1em;
+  // overflow: auto;
 }
-div.dtr-modal div.dtr-modal-display {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  z-index: 102;
-}
+// div.dtr-modal div.dtr-modal-display {
+//   margin: auto;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   z-index: 102;
+// }
 div.dtr-modal div.dtr-modal-content {
-  flex: 0 0 auto;
   position: relative;
   width: 100%;
   max-width: 800px;
   box-sizing: border-box;
   height: auto;
-  margin: 20px 0;
+  margin: auto;
   padding: 1em;
   background-color: rgb(var(--ui-color-background-095));
   border-radius: 0.5em;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  will-change: transform, opacity;
 }
 div.dtr-modal div.dtr-modal-close {
   position: absolute;

@@ -20378,7 +20378,8 @@ Responsive.display = {
 				// Show a modal
 				var scrollPos = $(window).scrollTop();
 
-				$("body").css('top', (scrollPos * -1)).addClass("modal-open")
+				$("#app-wrapper").css('top', (scrollPos * -1)).addClass("modal-open")
+				$(window).scrollTop(0);
 
 				var close = function () {
 					modal
@@ -20387,9 +20388,9 @@ Responsive.display = {
 							modal
 								.removeClass('anim-leave')
 								.remove(); // will tidy events for us
+								$("#app-wrapper").removeClass("modal-open").css('top', '');
+								$(window).scrollTop(scrollPos);
 						})
-					$("body").removeClass("modal-open").css('top', '');
-					$(window).scrollTop(scrollPos);
 					$(document).off( 'keypress.dtr' );
 				};
 
@@ -20398,21 +20399,20 @@ Responsive.display = {
 					.on('animationend webkitAnimationEnd oAnimationEnd', function () {
 						modal.removeClass('anim-enter')
 					})
-					.append( $('<div class="dtr-modal-display"/>')
-						.append( $('<div class="dtr-modal-background"/>')
+					.append( $('<div class="dtr-modal-background"/>')
+						.click( function () {
+							close();
+						} )
+					)
+					.append( $('<div class="dtr-modal-content"/>')
+						.append( render() )
+						.append( $('<div class="dtr-modal-close">&times;</div>' )
 							.click( function () {
 								close();
 							} )
 						)
-						.append( $('<div class="dtr-modal-content"/>')
-							.append( render() )
-							.append( $('<div class="dtr-modal-close">&times;</div>' )
-								.click( function () {
-									close();
-								} )
-							)
-						)
 					)
+					
 					.appendTo( 'body' )
 
 				$(document).on( 'keyup.dtr', function (e) {
