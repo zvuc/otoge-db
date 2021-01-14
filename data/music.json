@@ -10051,7 +10051,7 @@
     "image_url": "b5c3b1766ef4.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210107",
     "title": "YAMINABE☆PANIC ～ご馳走詰め込みフルコース～",
     "title_sort": "YAMINABEPANICコチソウツメコメフルコス",
@@ -10074,7 +10074,7 @@
     "image_url": "100d8d1a240d.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210107",
     "title": "ビターチョコデコレーション",
     "title_sort": "ヒタチヨコテコレシヨン",
@@ -10097,7 +10097,7 @@
     "image_url": "0b1b161498e8.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210107",
     "title": "ウミユリ海底譚",
     "title_sort": "ウミユリカイテイタン",
@@ -10118,5 +10118,51 @@
     "lev_mas": "12",
     "lev_lnt": "",
     "image_url": "e8363953c8f6.jpg"
+  },
+  {
+    "new": "NEW",
+    "date": "20210114",
+    "title": "Falsum Atlantis.",
+    "title_sort": "FALSUMATLANTIS",
+    "artist": "kanone",
+    "id": "2000",
+    "chap_id": "04003",
+    "chapter": "輝く、三つ星",
+    "character": "皇城 セツナ",
+    "chara_id": "1170",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "0da844e03cdc.jpg"
+  },
+  {
+    "new": "NEW",
+    "date": "20210114",
+    "title": "Don't Fight The Music",
+    "title_sort": "DONTFIGHTTHEMUSIC",
+    "artist": "黒魔",
+    "id": "2010",
+    "chap_id": "04003",
+    "chapter": "輝く、三つ星",
+    "character": "皇城 セツナ",
+    "chara_id": "1170",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "5",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "3dcde921f420.jpg"
   }
 ]
