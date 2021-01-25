@@ -104,13 +104,13 @@ function appendSelectboxStateClass(select, val) {
 }
 
 $("#hide-notice-btn").on("click", function(){    
-    $(".notice-wrap").removeClass('visible');
-    localStorage.setItem("noticeNewAddress", $(".notice-wrap").removeClass('visible'));
+    $('.notice-wrap').removeClass('visible');
+    localStorage.setItem("noticeNewAddress", $('.notice-wrap').is(':visible'));
 });
 
 
 $(document).ready(function() {
     $('html').removeClass('page-loading');
 
-    localStorage.noticeNewAddress == "false" ? '' : $(".notice-wrap").addClass('visible');
+    localStorage.noticeNewAddress == "false" ? '' : $('.notice-wrap').addClass('visible');
 });
