@@ -75,7 +75,7 @@ body {
 	position: fixed;
 	left: var(--padding-size);
 	bottom: 15px;
-	bottom: calc(15px + env(safe-area-inset-bottom));
+	bottom: max(15px,env(safe-area-inset-bottom));
 	max-width: calc(100vw - 40px);
 	display: none;
 	z-index: 100;
@@ -97,14 +97,18 @@ body {
 		overflow: hidden;
 		transform-origin: 30px center;
 
+		@media screen and (max-width: 640px) {
+			width: 100%;
+		}
+
 		@supports (backdrop-filter: blur(20px)) {
 			backdrop-filter: blur(20px);
-			background: rgba(var(--ui-color-warning-bg),0.5);
+			background: rgba(var(--ui-color-warning-bg),0.7);
 		}
 
 		@keyframes notice-bar-enter {
 			0% {
-				transform: translateY(130%);
+				transform: translateY(200%);
 			}
 
 			100% {
@@ -135,7 +139,6 @@ body {
 		color: rgba(var(--ui-color-foreground-inverted));
 		background: rgba(var(--ui-color-background-inverted),0.8);
 		margin-right: 5px;
-		animation: notice-bar-content-enter 0.3s 1.5s both;
 	}
 
 	.msg-text {
@@ -492,8 +495,8 @@ table.dataTable {
 		/*background-color: inherit;*/
 
 		@media screen and (min-width: 480px) {
-			min-width: 70px;
-			max-width: 70px;
+			min-width: 65px;
+			max-width: 65px;
 		}
 	}
 	
@@ -906,13 +909,15 @@ table.dataTable {
 
 /* Details */
 div.dtr-modal {
+	backdrop-filter: blur(10px);
+
 	&.anim-enter {
 		@keyframes dummy-anim {
 			0%,100% {
 				visibility: visible;
 			}
 		}
-		animation: dummy-anim 0.3s;
+		animation: dummy-anim 0.15s;
 
 		div.dtr-modal-background {
 			@keyframes fade-in {
@@ -923,7 +928,7 @@ div.dtr-modal {
 					opacity: 1;
 				}
 			}
-			animation: fade-in 0.3s;
+			// animation: fade-in 0.3s;
 		}
 
 		div.dtr-modal-content {
@@ -954,7 +959,7 @@ div.dtr-modal {
 					opacity: 0;
 				}
 			}
-			animation: fade-out 0.1s 0.1s;
+			animation: fade-out 0.2s;
 		}
 
 		div.dtr-modal-content {
