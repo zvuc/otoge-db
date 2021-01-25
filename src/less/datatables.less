@@ -942,6 +942,11 @@ div.dtr-modal {
   z-index: 100;
   padding: 20px 1em;
   // overflow: auto;
+
+  @media screen and (max-width: 479px) {
+    padding: 0 0 0 50px;
+    justify-content: flex-end;
+  }
 }
 // div.dtr-modal div.dtr-modal-display {
 //   margin: auto;
@@ -965,24 +970,47 @@ div.dtr-modal div.dtr-modal-content {
   overflow: hidden;
   will-change: transform, opacity;
 }
-div.dtr-modal div.dtr-modal-close {
+div.dtr-modal-close {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  display: flex;
-  align-items: baseline;
+  top: 10px;
+  right: 10px;
+  align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  font-size: 30px;
-  line-height: 34px;
-  // border: 1px solid #eaeaea;
   text-align: center;
-  border-radius: 3px;
+  border-radius: 30px;
   cursor: pointer;
   z-index: 12;
+  display: none;
+
+  div.dtr-modal-content & {
+    display: flex;
+  }
+
+  @media screen and (max-width: 479px) {
+    display: flex;
+    position: fixed;
+
+    div.dtr-modal-content & {
+      display: none;
+    }
+  }
+
+  &:before {
+    content: "";
+    @color: #000;
+    @svg-data: escape('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="@{color}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l8 8M12 4l-8 8"/></svg>');
+    background-image: url('data:image/svg+xml,@{svg-data}');
+    background-position: center;
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    filter: var(--copyright-filter);
+  }
 }
-div.dtr-modal div.dtr-modal-close:hover {
+div.dtr-modal-close:hover {
   background-color: rgba(var(--ui-color-background-050),0.5);
 }
 div.dtr-modal div.dtr-modal-background {
@@ -990,8 +1018,20 @@ div.dtr-modal div.dtr-modal-background {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -200px;
   background: rgba(0, 0, 0, 0.6);
+
+  @media screen and (max-width: 479px) {
+    &:after {
+      content: "";
+      position: fixed;
+      top: -200px;
+      left: 50px;
+      right: 0;
+      bottom: -200px;
+      background-color: rgb(var(--ui-color-background-095));
+    }
+  }
 }
 
 @media screen and (max-width: 767px) {

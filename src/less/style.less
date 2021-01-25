@@ -68,6 +68,7 @@ body {
 	&.modal-open {
 		overflow: hidden;
 		position: fixed;
+		filter: blur(10px);
 	}
 }
 
@@ -108,7 +109,7 @@ body {
 
 		@keyframes notice-bar-enter {
 			0% {
-				transform: translateY(200%);
+				transform: translateY(300%);
 			}
 
 			100% {
@@ -909,15 +910,13 @@ table.dataTable {
 
 /* Details */
 div.dtr-modal {
-	backdrop-filter: blur(10px);
-
 	&.anim-enter {
 		@keyframes dummy-anim {
 			0%,100% {
 				visibility: visible;
 			}
 		}
-		animation: dummy-anim 0.15s;
+		animation: dummy-anim 0.3s;
 
 		div.dtr-modal-background {
 			@keyframes fade-in {
@@ -928,7 +927,13 @@ div.dtr-modal {
 					opacity: 1;
 				}
 			}
-			// animation: fade-in 0.3s;
+			animation: fade-in 0.3s both;
+
+			@media screen and (max-width: 479px) {
+				&:after {
+					animation: modal-enter-mobile 0.3s cubic-bezier(0.22, 0.61, 0.1, 1) both;
+				}
+			}
 		}
 
 		div.dtr-modal-content {
@@ -942,8 +947,22 @@ div.dtr-modal {
 					transform: translateY(0);
 				}
 			}
-			animation: modal-enter 0.15s cubic-bezier(0.22, 0.61, 0.1, 1) both;
+			@keyframes modal-enter-mobile {
+				0% {
+					opacity: 0;
+					transform: translateX(200px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+			animation: modal-enter 0.3s cubic-bezier(0.22, 0.61, 0.1, 1) both;
 			transform-origin: center;
+
+			@media screen and (max-width: 479px) {
+				animation-name: modal-enter-mobile;
+			}
 		}
 	}
 
@@ -973,14 +992,29 @@ div.dtr-modal {
 					transform: translateY(35px);
 				}
 			}
-			animation: modal-leave 0.2s ease-in both;
+			@keyframes modal-leave-mobile {
+				0% {
+					opacity: 1;
+					transform: translateX(0);
+				}
+				100% {
+					opacity: 0;
+					transform: translateX(250px);
+				}
+			}
+			animation: modal-leave 0.2s cubic-bezier(0.5, 0, 0.75, 0) both;
 			transform-origin: center;
+
+			@media screen and (max-width: 479px) {
+				animation-name: modal-leave-mobile;
+			}
 		}
 	}
 }
 
 div.dtr-modal div.dtr-modal-content {
 	padding: 0;
+	border-radius: 0;
 	font-size: 14px;
 
 	@media screen and (min-width: 640px) {
@@ -992,26 +1026,28 @@ div.dtr-modal div.dtr-modal-content {
 	@border-color: rgb(var(--ui-color-foreground-070));
 	@border-color-accent: rgb(var(--ui-color-foreground-070));
 
-	background-image: 
-		linear-gradient(to left, @border-color 0%, @border-color-accent 50%, @border-color 100%),
-		linear-gradient(225deg, @border-color @corner-size, @border-color (@corner-size + 2px), transparent (@corner-size + 2px));
-	background-position:
-		top left,
-		top right;
-	background-size: 
-		calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
-		(@corner-size + 6px) (@corner-size + 6px);
-	background-repeat: no-repeat;
-	border: none;
-	border-radius: 0;
-	mask-image: 
-		linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
-		linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
-		linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
-		linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
-	mask-position: bottom left, top left, top right, bottom right;
-	mask-size: 50.1% 50.1%;
-	mask-repeat: no-repeat;
+	@media screen and (min-width: 480px) {
+		background-image: 
+			linear-gradient(to left, @border-color 0%, @border-color-accent 50%, @border-color 100%),
+			linear-gradient(225deg, @border-color @corner-size, @border-color (@corner-size + 2px), transparent (@corner-size + 2px));
+		background-position:
+			top left,
+			top right;
+		background-size: 
+			calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
+			(@corner-size + 6px) (@corner-size + 6px);
+		background-repeat: no-repeat;
+		border: none;
+		border-radius: 0;
+		mask-image: 
+			linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+			linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
+			linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+			linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+		mask-position: bottom left, top left, top right, bottom right;
+		mask-size: 50.1% 50.1%;
+		mask-repeat: no-repeat;
+	}
 
 	.modal-header { 
 		padding: 15px;
@@ -1035,11 +1071,15 @@ div.dtr-modal div.dtr-modal-content {
 			@media screen and (min-width: 640px) {
 				margin-bottom: 0;
 			}
-
 			
 			img {
-				width: 150px;
-				height: 150px;
+				width: 80px;
+				height: 80px;
+
+				@media screen and (min-width: 640px) {
+					width: 150px;
+					height: 150px;
+				}
 			}
 		}
 
@@ -1094,6 +1134,10 @@ div.dtr-modal div.dtr-modal-content {
 			font-size: 0.9em;
 			text-align: center;
 			padding: 15px 20px;
+
+			@media screen and (max-width: 479px) {
+				padding-bottom: calc(15px + env(safe-area-inset-bottom)); 
+			}
 
 			a {
 				color: rgb(var(--ui-color-foreground-060));

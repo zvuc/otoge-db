@@ -20406,11 +20406,16 @@ Responsive.display = {
 					)
 					.append( $('<div class="dtr-modal-content"/>')
 						.append( render() )
-						.append( $('<div class="dtr-modal-close">&times;</div>' )
+						.append( $('<div class="dtr-modal-close inner"></div>' )
 							.click( function () {
 								close();
 							} )
 						)
+					)
+					.append( $('<div class="dtr-modal-close"></div>' )
+						.click( function () {
+							close();
+						} )
 					)
 					
 					.appendTo( 'body' )
