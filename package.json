@@ -19,6 +19,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.0",
     "cssnano": "^4.1.10",
+    "imageoptim-cli": "^3.0.2",
     "less": "^3.11.1",
     "minify": "^6.0.0",
     "postcss-cli": "^7.1.1",
@@ -41,6 +42,9 @@
     "less": "lessc src/less/style.less style.css",
     "postcss": "postcss style.css -o style.css --verbose",
     "minify": "minify src/js/*.js > functions.js && minify datatables/datatables.custom.js > datatables/datatables.custom.min.js",
-    "watch": "watch 'yarn build' ./src -d"
+    "watch": "watch 'yarn build' ./src -d",
+    "fetch": "python3 scripts/main.py",
+    "imageoptim": "cat diffs.txt | xargs imageoptim",
+    "update": "yarn fetch && yarn imageoptim" 
   }
 }
