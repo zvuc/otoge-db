@@ -1,6 +1,75 @@
 [
   {
     "new": "NEW",
+    "date": "20210211",
+    "title": "スクランブル交際",
+    "title_sort": "スクランフルコウサイ",
+    "artist": "DECO*27",
+    "id": "4690",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "早乙女 彩華",
+    "chara_id": "1080",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©OTOIRO",
+    "lev_bas": "2",
+    "lev_adv": "7+",
+    "lev_exc": "10",
+    "lev_mas": "12+",
+    "lev_lnt": "",
+    "image_url": "2dfddc9b179c.jpg"
+  },
+  {
+    "new": "NEW",
+    "date": "20210211",
+    "title": "吉原ラメント",
+    "title_sort": "ヨシワララメント",
+    "artist": "亜沙",
+    "id": "4680",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "桜井 春菜",
+    "chara_id": "1070",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "重音テト© 線/小山乃舞世/ツインドリル",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exc": "10+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "6699215ddc3b.jpg"
+  },
+  {
+    "new": "NEW",
+    "date": "20210211",
+    "title": "クライングハート",
+    "title_sort": "クラインクハト",
+    "artist": "アイリス・ディセンバー・アンクライ(石上静香), パトリシア・オブ・エンド(高森奈津美)「ノラと皇女と野良猫ハート2」",
+    "id": "3460",
+    "chap_id": "99048",
+    "chapter": "ノラと皇女と野良猫ハート",
+    "character": "アイリス・ディセンバー・アンクライ",
+    "chara_id": "5860",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© HARUKAZE",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exc": "9+",
+    "lev_mas": "12",
+    "lev_lnt": "",
+    "image_url": "c2b5a28e4bc6.jpg"
+  },
+  {
+    "new": "",
     "date": "20210204",
     "title": "fulgente (flip-side color mix)",
     "title_sort": "FULGENTEFLIPSIDECOLORMIX",
@@ -23,7 +92,7 @@
     "image_url": "48f8534df837.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210204",
     "title": "エピクロスの虹はもう見えない",
     "title_sort": "エヒクロスノニシハモウミエナイ",
@@ -46,7 +115,7 @@
     "image_url": "74b9063f1a8f.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210204",
     "title": "Kiss Me Kiss -早乙女 彩華ソロver.-",
     "title_sort": "KISSMEKISSサオトメアヤカソロVER",
@@ -69,7 +138,7 @@
     "image_url": "1762d5368771.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210204",
     "title": "Kiss Me Kiss -桜井 春菜ソロver.-",
     "title_sort": "KISSMEKISSサクライハルナソVER",
@@ -92,7 +161,7 @@
     "image_url": "6a86245614a8.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210204",
     "title": "明星ロケット",
     "title_sort": "アケホシロケツト",
@@ -115,7 +184,7 @@
     "image_url": "85a3e9e2e8fd.jpg"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20210204",
     "title": "天狗の落とし文 feat. ｙｔｒ",
     "title_sort": "テンクノオトシフミFEATYTR",
