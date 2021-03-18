@@ -32,16 +32,13 @@ Just open `index.html` and refresh manually. Simple as the good old year 2000.
 - [@Ryudnar](https://github.com/Ryudnar) : song data download automation script
 - [@kiding](https://github.com/kiding/) : auto update datestamp
 
-### Team Ongeki DB
-- [@u7gisan](https://twitter.com/u7gisan) : Song type, character lv info report, song detail info fillout
-- [@TSUBAKI_ONGEKI](https://twitter.com/TSUBAKI_ONGEKI) : Song detail info fillout
-
 ### Other Contributions & Data Sources
-- [@Rinsaku471](https://twitter.com/Rinsaku471) : Chart precise lv data source (11~14+)
-- [@RKS49019722](https://twitter.com/RKS49019722) : Chart precise lv data source (11~14+)
-- [@hikkey7th](https://twitter.com/hikkey7th) : Chart precise lv data source (10,10+)
 - [SEGA Official Music Data](https://ongeki.sega.jp/assets/data/music.json) : base JSON file
 - [オンゲキ攻略wiki](https://ongeki.gamerch.com/%E5%B1%9E%E6%80%A7%E5%88%A5%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7) : Enemy type, level, chart detail info
+- Precise chart level data (譜面定数) [@RKS49019722](https://twitter.com/RKS49019722) [@Rinsaku471](https://twitter.com/Rinsaku471) [@46189_ext](https://twitter.com/46189_ext) [@hikkey7th](https://twitter.com/hikkey7th) [@suoineau_ac](https://twitter.com/suoineau_ac) [@hayato_ongeki](https://twitter.com/hayato_ongeki)
+
+### Special Thanks to 
+- [@u7gisan](https://twitter.com/u7gisan), [@TSUBAKI_ONGEKI](https://twitter.com/TSUBAKI_ONGEKI)
 
 ## Feedback
 Contact [@zvuc_](https://twitter.com/zvuc_) for any suggestions or inquiries.
