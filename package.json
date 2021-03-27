@@ -41,7 +41,7 @@
     "build": "yarn minify && yarn less && yarn postcss",
     "less": "lessc src/less/style.less style.css",
     "postcss": "postcss style.css -o style.css --verbose",
-    "minify": "minify src/js/*.js > functions.js && minify datatables/datatables.custom.js > datatables/datatables.custom.min.js",
+    "minify": "minify src/js/core.*.js > functions.js && minify datatables/datatables.custom.js > datatables/datatables.custom.min.js && minify src/js/jquery*.js > jquery.min.js",
     "watch": "watch 'yarn build' ./src -d",
     "fetch": "python3 scripts/main.py",
     "imageoptim": "cat diffs.txt | xargs imageoptim",
