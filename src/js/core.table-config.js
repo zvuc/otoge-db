@@ -559,6 +559,11 @@ $(document).ready(function() {
                 return '';
             }
         }
+        // 70xxx : Memory chapters
+        else if (chap_id.substr(0,2) == "70") {
+            var chap_book = "M";
+            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
+        }
         // 80xxx : Event chapters
         else if (chap_id.substr(0,2) == "80") {
             var chap_book = "SP2";
