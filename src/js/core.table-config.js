@@ -28,7 +28,7 @@ $(document).ready(function() {
             data: "image_url",
             className: "jacket detail-hidden",
             render: function(data) {
-                return '<span class="img-wrap"><img src=\"jacket/' + data.split(".")[0] + '.jpg\"\/><\/span>';
+                return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
             },
             width: "50px",
             orderable: false,
@@ -664,7 +664,7 @@ $(document).ready(function() {
                         header: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-header"><div class="img-wrap">' + 
-                                '<img src=\"jacket/' + data.image_url.split(".")[0] + '.jpg\"\/>' +
+                                '<img src=\"jacket/' + data.image_url + '\"\/>' +
                                 '<\/div><div class="content-wrap">' +
                                 ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                                 '<span class="title">' + data.title + '<\/span>' +
