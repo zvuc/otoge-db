@@ -1,5 +1,5 @@
 @header-height-mobile: 50px;
-@header-height: 70px;
+@header-height: 60px;
 
 header {
 	position: relative;
@@ -7,19 +7,20 @@ header {
 	align-items: center;
 	height: @header-height-mobile;
 	padding: 0 10px;
-	// border-bottom: 3px solid rgb(var(--color-ongeki-red-accent-02));
+	// border-bottom: 3px solid rgb(var(--color-ongeki-accent-02));
 	// background-color: rgb(var(--ui-color-background-090));
 	background-image: 
 		linear-gradient(
 			45deg,
-			rgba(var(--color-ongeki-red-accent-02),0.2) 0%,
-			rgba(var(--color-ongeki-red-accent-02),0) 20%
+			rgba(var(--color-ongeki-accent-02),0.2) 0%,
+			rgba(var(--color-ongeki-accent-02),0) 20%
 		),
 		linear-gradient(
 			45deg,
-			rgba(var(--color-ongeki-red-accent-03),0) 70%,
-			rgba(var(--color-ongeki-red-accent-02),0.1) 80%,
-			rgba(var(--color-ongeki-red-accent-01),0.3) 90%
+			rgba(var(--color-ongeki-accent-04),0.0) 50%,
+			rgba(var(--color-ongeki-accent-03),0.1) 70%,
+			rgba(var(--color-ongeki-accent-02),0.2) 85%,
+			rgba(var(--color-ongeki-accent-01),0.3) 110%
 		);
 	overflow: hidden;
 
@@ -55,7 +56,7 @@ header {
 	//     left: 0;
 	//     right: 0;
 	//     height: 3px;
-	//     background-image: linear-gradient(to right, #fff 0%, #fff 300px, rgb(var(--color-ongeki-red-accent-02)) 300px, rgb(var(--color-ongeki-red-accent-02)) 90% );
+	//     background-image: linear-gradient(to right, #fff 0%, #fff 300px, rgb(var(--color-ongeki-accent-02)) 300px, rgb(var(--color-ongeki-accent-02)) 90% );
 	//     transform: skewX(-40deg);
 	// }
 
@@ -88,15 +89,15 @@ header {
 				max-width: 160px;
 				height: @header-height-mobile;
 				background-image: var(--ongeki-db-logo-url);
-				background-size: cover;
+				background-size: contain;
 				background-repeat: no-repeat;
-				background-position: 0 0px;
+				background-position: left center;
 
 				@media screen and (min-width: 480px) {
-					width: 250px;
+					width: 200px;
 					max-width: none;
 					height: @header-height;
-					background-position: -10px -5px;
+					background-position: left center;
 				}
 			}
 
@@ -135,8 +136,9 @@ header {
 			background-image: 
 				linear-gradient(
 					to bottom,
-					rgba(var(--color-ongeki-red-accent-01),1) 0%,
-					rgba(var(--color-ongeki-red-accent-02),1) 100%
+					rgba(var(--color-ongeki-accent-01),1) 0%,
+					rgba(var(--color-ongeki-accent-02),1) 50%,
+					rgba(var(--color-ongeki-accent-03),1) 100%
 				);
 			transform: skewX(-30deg);
 		}
@@ -248,12 +250,23 @@ header {
 }
 
 .site-navigation {
+	position: relative;
 	display: flex;
 	align-items: center;
 	padding: 4px 13px;
-	background: var(--toolbar-bg);
 	border-top: 1px solid rgb(var(--ui-color-background-080));
 	border-bottom: 1px solid rgb(var(--ui-color-background-080));
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		background: var(--toolbar-bg);
+		opacity: var(--toolbar-bg-opacity);
+	}
 
 	@media screen and (max-width: 480px) {
 		padding: 2px 8px;
