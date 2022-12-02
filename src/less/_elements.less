@@ -89,8 +89,9 @@ a {
 		}
 	}
 
-	&:active {
-		background-color: rgb(var(--ui-color-btn-active));
+	&:active,
+	&:active:hover {
+		background-color: rgb(var(--ui-color-btn-active),0.3);
 		border-radius: 0;
 		transition-duration: 0s;
 
@@ -108,7 +109,14 @@ a {
 	&.active {
 		border-radius: 0;
 		transition-duration: 0s;
-		background-color: rgba(var(--color-ongeki-accent-02),0.3);
+		background-color: rgba(var(--ui-color-btn-active),0.2);
+		background-image: linear-gradient(45deg, 
+			rgba(var(--color-ongeki-accent-02),0.4) 0%, 
+			rgba(var(--color-ongeki-accent-03),0.2) 30%, 
+			rgba(var(--color-ongeki-accent-03),0.2) 70%, 
+			rgba(var(--color-ongeki-accent-04),0.4) 100%
+		);
+		text-shadow: 0 0 3px rgb(var(--ui-color-background-100),0.8);
 
 		&:before {
 			background-image: 
@@ -131,9 +139,9 @@ a {
 select {
 	@corner-size: 4px;
 	@border-thickness: 2px;
-	@border-color: rgb(var(--ui-color-btn-highlight));
-	@border-color-accent: rgb(var(--ui-color-btn-highlight));
-	@border-color-focus: rgb(var(--ui-color-primary));
+	@border-color: rgb(var(--ui-color-form-border));
+	@border-color-accent: rgb(var(--ui-color-form-border-accent));
+	@border-color-focus: rgb(var(--ui-color-form-border-active));
 
 	text-overflow: ellipsis;
 	height: 32px;
@@ -141,8 +149,8 @@ select {
 	font-size: 16px;
 	background-color: rgba(var(--ui-color-btn),0.2);
 	background-image: 
-		linear-gradient(to right, @border-color 0%, @border-color-accent 50%, @border-color 100%),
-		linear-gradient(to left, @border-color 0%, @border-color-accent 50%, @border-color 100%),
+		linear-gradient(to right, @border-color 0%, @border-color 50%, @border-color 100%),
+		linear-gradient(to left, @border-color 0%, @border-color 50%, @border-color 100%),
 		linear-gradient(45deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 		linear-gradient(225deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
@@ -187,8 +195,8 @@ select {
 		outline: none;
 		background-color: rgba(var(--ui-color-btn),0.7);
 		background-image: 
-			linear-gradient(to right, @border-color-focus 0%, @border-color-focus 50%, @border-color-focus 100%),
-			linear-gradient(to left, @border-color-focus 0%, @border-color-focus 50%, @border-color-focus 100%),
+			linear-gradient(to right, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
+			linear-gradient(to left, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
 			linear-gradient(45deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 			linear-gradient(225deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
