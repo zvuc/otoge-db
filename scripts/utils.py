@@ -68,6 +68,7 @@ def _add_song_new_data_name(song):
     song['lev_adv_notes'] = ""
     song['lev_adv_bells'] = ""
     song['lev_adv_designer'] = ""
+    song['lev_adv_chart_link'] = ""
     song['lev_exc_i'] = ""
     song['lev_exc_notes'] = ""
     song['lev_exc_bells'] = ""
