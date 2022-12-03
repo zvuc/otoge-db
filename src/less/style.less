@@ -1057,6 +1057,7 @@ div.dtr-modal div.dtr-modal-content {
 	}
 
 	.modal-header { 
+		position: relative;
 		padding: 15px;
 		background-color: rgba(var(--ui-color-background-080),0.2);
 		background-image: linear-gradient(45deg, 
@@ -1142,6 +1143,67 @@ div.dtr-modal div.dtr-modal-content {
 				opacity: 0.5;
 			}
 		}
+
+		.quicklinks {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			align-items: center;
+			padding: 15px 20px;
+
+			@media screen and (max-width: 640px) {
+				position: relative;
+				margin: 20px -20px 0 -20px;
+				padding: 15px 20px 0 20px;
+				border-top: 1px solid rgba(var(--ui-color-foreground-100),0.1);
+			}
+
+			.label {
+				font-size: 0.85em;
+				color: rgb(var(--ui-color-foreground-040));
+				margin-right: 3px;
+			}
+
+			a {
+				position: relative;
+				display: inline-flex;
+				align-items: center;
+				color: rgb(var(--ui-color-foreground-060));
+				text-decoration: none;
+				padding: 0.5em 0.9em;
+				font-size: 0.9em;
+				font-weight: bold;
+				margin-left: 3px;
+				border-radius: 3px;
+				background-color: rgba(var(--ui-color-background-100),0.6);
+
+				@media screen and (max-width: 640px) {
+					margin-left: 0;
+					margin-right: 5px;
+				}
+
+				&:hover {
+					background-color: rgba(var(--ui-color-background-090),0.8);
+					box-shadow: 0 0 0 2px rgba(var(--ui-color-background-100),0.6) inset;
+					text-decoration: none;
+				}
+
+				&.youtube {
+					&:before {
+						content: "";
+						display: inline-block;
+						width: 16px;
+						height: 12px;
+						background-image: url('./img/yt-icon.svg');
+						background-size: contain;
+						background-position: center;
+						background-repeat: no-repeat;
+						margin-right: 4px;
+					}
+				}
+			}
+		}
 	}
 
 	.modal-footer {
@@ -1198,13 +1260,19 @@ div.dtr-modal-content .details-table {
 		margin-left: 15px;
 		border-bottom: 1px solid rgba(var(--ui-color-background-080),0.5);
 
+		&.lv {
+			@media screen and (max-width: 480px) {
+				grid-template-columns: 1fr auto;
+			}
+		}
+
 		@media screen and (min-width: 480px) {
-			grid-template-columns: 110px auto;
+			grid-template-columns: 110px 1fr auto;
 			min-height: 33px;
 		}
 
 		@media screen and (min-width: 660px) {
-			grid-template-columns: 150px auto min-content;
+			grid-template-columns: 150px 1fr min-content;
 		}
 
 		&.detail-hidden,
@@ -1219,6 +1287,7 @@ div.dtr-modal-content .details-table {
 			font-size: 0.8em;
 			font-weight: bold;
 			color: rgb(var(--ui-color-foreground-050));
+			white-space: nowrap;
 
 			@media screen and (min-width: 480px) {
 				margin-bottom: 0;
