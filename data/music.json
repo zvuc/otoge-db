@@ -18791,7 +18791,7 @@
     "image_url": "d68195e5281bdaa7.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221124",
     "title": "Cosmic Train",
     "title_sort": "COSMICTRAIN",
@@ -18814,7 +18814,7 @@
     "image_url": "aa41e3ea9c2d7254.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221124",
     "title": "渦状銀河のシンフォニエッタ",
     "title_sort": "カシヨウキンカノシンフオニエツタ",
@@ -18837,7 +18837,7 @@
     "image_url": "42097b37f19a165f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -星咲 あかりソロver.-",
     "title_sort": "HEADLINERホシサキアカリソロVER",
@@ -18860,7 +18860,7 @@
     "image_url": "8a0103dbd7fa24da.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -藤沢 柚子ソロver.-",
     "title_sort": "HEADLINERフシサワユスソロVER",
@@ -18883,7 +18883,7 @@
     "image_url": "2c5b1fbd0bfd8d34.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -三角 葵ソロver.-",
     "title_sort": "HEADLINERミスミアオイソロVER",
@@ -18906,7 +18906,7 @@
     "image_url": "27288c749c65b67f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -高瀬 梨緒ソロver.-",
     "title_sort": "HEADLINERタカセリオソロVER",
@@ -18929,7 +18929,7 @@
     "image_url": "53d48799dfa79c4a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -桜井 春菜ソロver.-",
     "title_sort": "HEADLINERサクライハルナソロVER",
@@ -18952,7 +18952,7 @@
     "image_url": "9753674480a7d399.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -柏木 咲姫ソロver.-",
     "title_sort": "HEADLINERカシワキサキソロVER",
@@ -18975,7 +18975,7 @@
     "image_url": "7851286138602059.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -逢坂 茜ソロver.-",
     "title_sort": "HEADLINERオウサカアカネソロVER",
@@ -18998,7 +18998,7 @@
     "image_url": "82362d57ed45f205.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -日向 千夏ソロver.-",
     "title_sort": "HEADLINERヒナタチナツソロVER",
@@ -19021,7 +19021,7 @@
     "image_url": "62e66a7f0448ad6c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "HEADLINER -皇城 セツナソロver.-",
     "title_sort": "HEADLINERスメラキセツナソロVER",
@@ -19044,7 +19044,7 @@
     "image_url": "63f54a5d5543710f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "青空コントレール -星咲 あかりソロver.-",
     "title_sort": "アオソラコントレルホシサキアカリソロVER",
@@ -19067,7 +19067,7 @@
     "image_url": "5a1bd13a76db1d39.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221130",
     "title": "青空コントレール -日向 千夏ソロver.-",
     "title_sort": "アオソラコントレルヒナタチナツソロVER",
@@ -19088,5 +19088,74 @@
     "lev_mas": "11+",
     "lev_lnt": "",
     "image_url": "9312a31073943ee7.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20221208",
+    "title": "レイニーカラー・ウォーターカラー",
+    "title_sort": "レイニカラウオツタカラ",
+    "artist": "烏屋茶房 feat.利香",
+    "id": "500840",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "三角 葵",
+    "chara_id": "1030",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exc": "9+",
+    "lev_mas": "12+",
+    "lev_lnt": "",
+    "image_url": "ea05a5b02845f4ff.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20221208",
+    "title": "グッバイ宣言",
+    "title_sort": "クツハイセンケン",
+    "artist": "Chinozo",
+    "id": "200980",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "東雲 つむぎ",
+    "chara_id": "1160",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exc": "10",
+    "lev_mas": "12+",
+    "lev_lnt": "",
+    "image_url": "db5d54c9fc1d09a7.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20221208",
+    "title": "私たち、四季を遊ぶんです！！",
+    "title_sort": "ワタシタチシキヲアソフンテス",
+    "artist": "Re:STAGE! ALL IDOL「Re:ステージ！プリズムステップ」",
+    "id": "900910",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "式宮 舞菜",
+    "chara_id": "5360",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "lunatic": "1",
+    "bonus": "",
+    "copyright1": "© Re:STAGE! PROJECT",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exc": "",
+    "lev_mas": "",
+    "lev_lnt": "14",
+    "image_url": "1360a9e58f35cc01.png"
   }
 ]
