@@ -84,6 +84,7 @@ def _add_song_new_data_name(song):
     song['lev_lnt_bells'] = ""
     song['lev_lnt_designer'] = ""
     song['lev_lnt_chart_link'] = ""
+    song['version'] = "bright MEMORY"
     return song
 
 def renew_lastupdated(local_music_json_path, local_html_path):
