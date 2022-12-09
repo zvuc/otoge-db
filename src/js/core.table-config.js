@@ -92,6 +92,16 @@ $(document).ready(function() {
             visible: false
         },
         { 
+            displayTitle: "バージョン",
+            name: "version",
+            data: "version",
+            className: "details",
+            filterable: true,
+            render: renderInWrapper(),
+            customDropdownSortSource: "date",
+            width: "12em"
+        },
+        { 
             displayTitle: "ジャンル",
             name: "category",
             data: "category",
@@ -370,8 +380,8 @@ $(document).ready(function() {
 
     var default_order = 
         flat_view ?
-            [[22, 'desc'],[14, 'desc'],[27, 'desc']] :
-            [[27, 'desc'],[9, 'asc'],[0, 'asc']];
+            [[23, 'desc'],[15, 'desc'],[28, 'desc']] :
+            [[28, 'desc'],[10, 'asc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
