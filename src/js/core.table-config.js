@@ -686,8 +686,9 @@ $(document).ready(function() {
                                 '<span class="artist">' + data.artist + '<\/span>' +
                                 ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1.replace(/\s+ピアプロロゴ/, '<span class="piapro">piapro</span>') + '<\/span>' : '' ) +
                                 '<div class="quicklinks">' +
-                                '<a class="wiki" href="https:\/\/gamerch.com\/ongeki\/search?q=' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
-                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=オンゲキ+譜面確認+' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow">YouTube<\/a>' +
+                                '<a class="wiki" href="https:\/\/wikiwiki.jp\/gameongeki\/' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
+                                '<a class="wiki" href="https:\/\/gamerch.com\/ongeki\/search?q=' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow">Wiki(旧)<\/a>' +
+                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=オンゲキ+譜面確認+' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
                                 '<\/div>' +
                                 '<\/div><\/div>'
                         },
