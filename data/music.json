@@ -19090,7 +19090,7 @@
     "image_url": "9312a31073943ee7.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221208",
     "title": "レイニーカラー・ウォーターカラー",
     "title_sort": "レイニカラウオツタカラ",
@@ -19113,7 +19113,7 @@
     "image_url": "ea05a5b02845f4ff.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221208",
     "title": "グッバイ宣言",
     "title_sort": "クツハイセンケン",
@@ -19136,7 +19136,7 @@
     "image_url": "db5d54c9fc1d09a7.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20221208",
     "title": "私たち、四季を遊ぶんです！！",
     "title_sort": "ワタシタチシキヲアソフンテス",
@@ -19157,5 +19157,51 @@
     "lev_mas": "",
     "lev_lnt": "14",
     "image_url": "1360a9e58f35cc01.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20221222",
+    "title": "TECHNOPOLIS 2085",
+    "title_sort": "TECHNOPOLIS2085",
+    "artist": "PRASTIK DANCEFLOOR",
+    "id": "500810",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "藍原 椿",
+    "chara_id": "1060",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "9",
+    "lev_exc": "13",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "3403069e3e98c8ac.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20221222",
+    "title": "キラメケ→Shoot it Now!",
+    "title_sort": "キラメケSHOOTITNOW",
+    "artist": "t+pazolite feat.ななひら",
+    "id": "500830",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "柏木 美亜",
+    "chara_id": "1150",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exc": "10+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "bde9792f625218ca.png"
   }
 ]
