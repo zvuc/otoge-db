@@ -87,7 +87,7 @@ $(document).ready(function() {
             displayTitle: "BPM",
             name: "bpm",
             data: "bpm",
-            className: "details",
+            className: "details bpm",
             searchable: false,
             visible: false
         },
@@ -95,7 +95,7 @@ $(document).ready(function() {
             displayTitle: "バージョン",
             name: "version",
             data: "version",
-            className: "details",
+            className: "details version",
             filterable: true,
             render: renderInWrapper(),
             customDropdownSortSource: "date",

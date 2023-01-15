@@ -691,6 +691,11 @@ table.dataTable {
 		}
 	}
 
+	th.version,
+	td.version {
+		min-width: 70px;
+	}
+
 	th.category,
 	td.category {
 		min-width: 90px;
@@ -749,9 +754,15 @@ table.dataTable {
 		}
 	}
 
+	td.type {
+		@media screen and (max-width: 640px) {
+			padding-right: 10px;
+		}
+	}
+
 	td.type .inner-wrap {
 		display: flex;
-		justify-content: flex-end;
+		justify-content: center;
 	}
 
 	.element-type-icon {

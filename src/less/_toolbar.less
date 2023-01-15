@@ -128,10 +128,11 @@
 
 	.toolbar-group {
 		margin-bottom: 10px;
+		display: flex;
+		align-items: stretch;
+		border-bottom: 1px solid rgb(var(--ui-color-background-080));
 
 		@media screen and (min-width: 640px) {
-			display: flex;
-			align-items: stretch;
 		}
 	}
 
@@ -151,7 +152,6 @@
 		align-items: center;
 		padding-top: 10px;
 		padding-bottom: 10px;
-		border-bottom: 1px solid rgb(var(--ui-color-background-080));
 		white-space: nowrap;
 		overflow: hidden;
 		overflow-x: auto;
@@ -215,25 +215,49 @@
 
 	// search
 	.toolbar.search {
+		position: relative;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-end;
 		padding-top: 10px;
 		padding-bottom: 10px;
-		border-bottom: 1px solid rgb(var(--ui-color-background-080));
+		width: 80px;
 
 		@media screen and (min-width: 640px) {
-			border-left: 1px solid rgb(var(--ui-color-background-080));
+			min-width: 240px;
 		}
+
 		.dataTables_filter {
-			width: 100%;
+			flex-shrink: 0;
+			display: flex;
+			align-items: center;
+			margin: -10px -15px -10px -10px;
+			padding: 10px 15px 10px 10px;
+			width: ~'calc(100vw - 20px)';
+			height: 100%;
+			max-width: 80px;
+			transition: max-width 0.3s;
+			background: rgb(var(--ui-color-page-background));
+			box-shadow: -1px 0 0 rgb(var(--ui-color-background-080));
 
 			@media screen and (min-width: 640px) {
 				width: auto;
+				max-width: none;
+				margin: -10px -15px;
+				padding: 10px 15px;
+			}
+
+			&:focus-within {
+				max-width: 320px;
+
+				@media screen and (min-width: 640px) {
+					max-width: none;
+				}
 			}
 
 			label {
 				display: block;
+				width: 100%;
 				line-height: 1;
 				font-size: 0.75rem;
 				font-weight: bold;
