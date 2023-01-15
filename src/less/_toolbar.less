@@ -231,8 +231,8 @@
 			flex-shrink: 0;
 			display: flex;
 			align-items: center;
-			margin: -10px -15px -10px -10px;
-			padding: 10px 15px 10px 10px;
+			margin: -10px;
+			padding: 10px;
 			width: ~'calc(100vw - 20px)';
 			height: 100%;
 			max-width: 80px;
@@ -240,15 +240,25 @@
 			background: rgb(var(--ui-color-page-background));
 			box-shadow: -1px 0 0 rgb(var(--ui-color-background-080));
 
+			@media screen and (min-width: 480px) {
+				margin-left: -15px;
+				margin-right: -15px;
+				padding-right: 15px;
+				padding-left: 15px;
+				max-width: 120px;
+			}
+
 			@media screen and (min-width: 640px) {
 				width: auto;
 				max-width: none;
-				margin: -10px -15px;
-				padding: 10px 15px;
 			}
 
 			&:focus-within {
-				max-width: 320px;
+				max-width: 100vw;
+
+				@media screen and (min-width: 480px) {
+					max-width: 240px;
+				}
 
 				@media screen and (min-width: 640px) {
 					max-width: none;
