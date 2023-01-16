@@ -112,5 +112,14 @@ function appendSelectboxStateClass(select, val) {
 $(document).ready(function() {
     $('html').removeClass('page-loading');
 
+    fetch('https://api.github.com/repos/zvuc/ongeki-db/commits?per_page=1')
+        .then(res => res.json())
+        .then(res => {
+            let commitDateTime = new Date(res[0].commit.committer.date);
+            document.getElementById('latest-commit-content').innerHTML = res[0].commit.message;
+            document.getElementById('latest-commit').setAttribute('href', res[0].html_url);
+            document.getElementById('latest-commit-date').innerHTML = commitDateTime.toISOString().split('T')[0]
+    })
+
     // localStorage.noticeNewAddress == "false" ? '' : $('.notice-wrap').addClass('visible');
 });

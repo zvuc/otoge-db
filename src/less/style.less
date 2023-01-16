@@ -186,6 +186,37 @@ body {
 	}
 }
 
+.commit-bar {
+	display: flex;
+	align-items: center;
+	background: rgb(var(--ui-color-background-090));
+	padding: 7px 15px;
+	border-radius: 3px;
+
+	svg {
+		margin-right: 4px;
+	}
+
+	.commit-label {
+		font-weight: bold;
+		margin-right: 5px;
+	}
+
+	#latest-commit-date {
+		margin-left: 5px;
+		color: rgb(var(--ui-color-foreground-060));
+
+		&:not(:empty) {
+			&:before {
+				content: "(";
+			}
+			&:after {
+				content: ")";
+			}
+		}
+	}
+}
+
 // loader
 #site-loader {
 	display: none;
