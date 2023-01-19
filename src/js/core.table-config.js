@@ -45,6 +45,7 @@ $(document).ready(function() {
                     return '<div class="inner-wrap">' +
                             ( row.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                             '<span class="title">' + data + '<\/span>' +
+                            '<span class="dash hidden"> - <\/span>' +
                             '<span class="artist-display hidden">' + row.artist + '<\/span>'+
                         '<\/div>';
                 }
@@ -68,7 +69,7 @@ $(document).ready(function() {
         },
         { 
             // redundant (fake) merged title column for mobile
-            displayTitle: "曲名・アーティスト",
+            displayTitle: "アーティスト",
             name: "title_merged",
             data: "title",
             className: "artist detail-hidden",
