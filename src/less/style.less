@@ -187,8 +187,6 @@ body {
 }
 
 .commit-bar {
-	display: flex;
-	align-items: center;
 	background: rgb(var(--ui-color-background-090));
 	padding: 7px 15px;
 	border-radius: 3px;
@@ -198,8 +196,18 @@ body {
 	}
 
 	.commit-label {
+		display: flex;
+		align-items: center;
+		font-size: 0.9em;
 		font-weight: bold;
-		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+
+	#latest-commit {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: inherit;
 	}
 
 	#latest-commit-date {

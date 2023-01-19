@@ -116,7 +116,13 @@ $(document).ready(function() {
         .then(res => res.json())
         .then(res => {
             let commitDateTime = new Date(res[0].commit.committer.date);
-            document.getElementById('latest-commit-content').innerHTML = res[0].commit.message;
+            let commitMsg = res[0].commit.message;
+            // if multi-line commit message
+            if(commitMsg.split('\n')[1] !== undefined) {
+                document.getElementById('latest-commit-content').innerHTML = commitMsg.split('\n').slice(2).join('<br>');
+            } else {
+                document.getElementById('latest-commit-content').innerHTML = commitMsg;
+            }
             document.getElementById('latest-commit').setAttribute('href', res[0].html_url);
             document.getElementById('latest-commit-date').innerHTML = commitDateTime.toISOString().split('T')[0]
     })
