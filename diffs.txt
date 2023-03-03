@@ -9,3 +9,6 @@ jacket/2cc38f5f3bd1ecdd.png
 jacket/8b4a2f3d655a2642.png
 jacket/220acfde768dff0f.png
 jacket/4d8fac6dffab001b.png
+jacket/25540904e00d597f.png
+jacket/38e5795cd40a5501.png
+jacket/119220d2b74a17d5.png
