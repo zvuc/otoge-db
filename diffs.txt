@@ -1,6 +1,2 @@
-jacket/73e33e5e563ba3ba.png
-jacket/aade5c3bbdafc8a5.png
-jacket/e61820ee8914b0d0.png
-jacket/c7ca396b90617333.png
-jacket/5ab5414aa44d6a03.png
-jacket/52451a15ee96a612.png
+jacket/cfa4d08a133c1e62.png
+jacket/5b5ad8311d7f5638.png

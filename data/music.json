@@ -19780,7 +19780,7 @@
     "image_url": "e61820ee8914b0d0.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20230713",
     "title": "with U",
     "title_sort": "WITHU",
@@ -19803,7 +19803,7 @@
     "image_url": "c7ca396b90617333.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20230713",
     "title": "Knight Rider",
     "title_sort": "KNIGHTRIDER",
@@ -19826,7 +19826,7 @@
     "image_url": "5ab5414aa44d6a03.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20230713",
     "title": "Invisible Frenzy",
     "title_sort": "INVISIBLEFRENZY",
@@ -19847,5 +19847,51 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "52451a15ee96a612.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20230726",
+    "title": "夏宵スターマイン",
+    "title_sort": "ナツヨイスタマイン",
+    "artist": "曲：本多友紀（Arte Refact）／歌：オンゲキシューターズ",
+    "id": "600940",
+    "chap_id": "05001",
+    "chapter": "第5章",
+    "character": "三角 葵",
+    "chara_id": "1030",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "7",
+    "lev_exc": "10",
+    "lev_mas": "12+",
+    "lev_lnt": "",
+    "image_url": "cfa4d08a133c1e62.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20230726",
+    "title": "オン×ステージ！",
+    "title_sort": "オンステシ",
+    "artist": "曲：塩野 海／歌：星咲 あかり(CV：赤尾 ひかる)、式宮 舞菜(CV：牧野 天音)",
+    "id": "600930",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "星咲 あかり",
+    "chara_id": "1010",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© Re:STAGE! PROJECT",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exc": "10",
+    "lev_mas": "12",
+    "lev_lnt": "",
+    "image_url": "5b5ad8311d7f5638.png"
   }
 ]
