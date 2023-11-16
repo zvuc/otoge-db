@@ -1,0 +1,12 @@
+- name: Run Python Script
+  # You may pin to the exact commit or the version.
+  # uses: jannekem/run-python-script-action@4a15c914fc5c168c5fd388e3ded9919af522c175
+  uses: jannekem/run-python-script-action@v1.6
+  with:
+    # Python script
+    script: python3 scripts/main.py
+    # Fail step if the return code from running the script is non-zero
+    fail-on-error: # optional, default is true
+    # Include utility functions
+    util: # optional, default is true
+          
