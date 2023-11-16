@@ -680,6 +680,7 @@ $(document).ready(function() {
                         header: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-header"><div class="img-wrap">' + 
+                            var wiki_encoded_url = encodeURIComponent(data.title.replace(/&/g, '＆').replace(/:/g, '：').replace('[','［').replace(']','］').replace('#','＃'));
                                 '<img src=\"jacket/' + data.image_url + '\"\/>' +
                                 '<\/div><div class="content-wrap">' +
                                 ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
@@ -687,9 +688,9 @@ $(document).ready(function() {
                                 '<span class="artist">' + data.artist + '<\/span>' +
                                 ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1.replace(/\s+ピアプロロゴ/, '<span class="piapro">piapro</span>') + '<\/span>' : '' ) +
                                 '<div class="quicklinks">' +
-                                '<a class="wiki" href="https:\/\/wikiwiki.jp\/gameongeki\/' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
-                                '<a class="wiki" href="https:\/\/gamerch.com\/ongeki\/search?q=' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow">Wiki(旧)<\/a>' +
-                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=オンゲキ+譜面確認+' + encodeURIComponent(data.title) + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
+                                '<a class="wiki" href="https:\/\/wikiwiki.jp\/gameongeki\/' + wiki_encoded_url + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
+                                '<a class="wiki" href="https:\/\/gamerch.com\/ongeki\/search?q=' + wiki_encoded_url + '" target="_blank" rel="noopener noreferer nofollow">Wiki(旧)<\/a>' +
+                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=オンゲキ+譜面確認+' + wiki_encoded_url + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
                                 '<\/div>' +
                                 '<\/div><\/div>'
                         },
