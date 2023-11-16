@@ -4,6 +4,27 @@ import json
 import re
 from datetime import datetime
 from functools import reduce
+from bs4 import BeautifulSoup
+
+CHARACTER_TABLE = {
+    "星咲 あかり": "FIRE",
+    "藤沢 柚子": "LEAF",
+    "三角 葵": "AQUA",
+    "高瀬 梨緒": "AQUA",
+    "結城 莉玖": "FIRE",
+    "藍原 椿": "LEAF",
+    "桜井 春菜": "FIRE",
+    "早乙女 彩華": "AQUA",
+    "井之原 小星": "LEAF",
+    "柏木 咲姫": "AQUA",
+    "九條 楓": "LEAF",
+    "逢坂 茜": "FIRE",
+    "珠洲島 有栖": "AQUA",
+    "日向 千夏": "LEAF",
+    "柏木 美亜": "FIRE",
+    "東雲 つむぎ": "AQUA",
+    "皇城 セツナ": "FIRE"
+}
 
 def load_new_song_data(local_music_json_path, server_music_json_path):
     with open(local_music_json_path, 'r', encoding='utf-8') as f:
@@ -12,7 +33,7 @@ def load_new_song_data(local_music_json_path, server_music_json_path):
 
     server_music_data = requests.get(server_music_json_path).json()
     server_music_map = _json_to_id_value_map(server_music_data)
-    
+
     if len(server_music_map) > len(local_music_map):
         with open(local_music_json_path, 'w', encoding='utf-8') as f:
             json.dump(server_music_data, f, ensure_ascii=False, indent=2)
@@ -55,6 +76,58 @@ def _record_new_song_jacket_id(song, local_diffs_log_path):
 def _add_song_data_to_ex_data(song, ex_data):
     ex_data.append(_add_song_new_data_name(song))
 
+def _parse_wikiwiki(song, wiki):
+    soup = BeautifulSoup(wiki.text, 'html.parser')
+    tables = soup.select("#body table")
+
+    overview = tables[0].select("tr")
+    overview_heads = [tr.find('th').text for tr in overview]
+    overview_data = [td.select('td:not([rowspan])')[0].text for td in overview]
+    overview_hash = dict(zip(overview_heads, overview_data))
+
+    character_level = overview_hash["対戦相手"].split(" Lv.")
+    character = character_level[0]
+    level = character_level[1]
+
+    details = tables[1]
+    details_heads = [th.text for th in details.select("thead th")]
+    details_data = [[cell.text for cell in level.select("th,td")] for level in details.select("tbody tr")]
+
+    for level in details_data:
+        level_hash = dict(zip(details_heads, level))
+
+        if level_hash['難易度'] == 'BASIC':
+            song["lev_bas_notes"] = level_hash["総ノート数"]
+            song["lev_bas_bells"] = level_hash["BELL"]
+            song["lev_bas_i"] = level_hash["譜面定数"]
+            song["lev_bas_designer"] = level_hash["譜面製作者"]
+        elif level_hash['難易度'] == 'ADVANCED':
+            song["lev_adv_notes"] = level_hash["総ノート数"]
+            song["lev_adv_bells"] = level_hash["BELL"]
+            song["lev_adv_i"] = level_hash["譜面定数"]
+            song["lev_adv_designer"] = level_hash["譜面製作者"]
+        elif level_hash['難易度'] == 'EXPERT':
+            song["lev_exc_notes"] = level_hash["総ノート数"]
+            song["lev_exc_bells"] = level_hash["BELL"]
+            song["lev_exc_i"] = level_hash["譜面定数"]
+            song["lev_exc_designer"] = level_hash["譜面製作者"]
+        elif level_hash['難易度'] == 'MASTER':
+            song["lev_mas_notes"] = level_hash["総ノート数"]
+            song["lev_mas_bells"] = level_hash["BELL"]
+            song["lev_mas_i"] = level_hash["譜面定数"]
+            song["lev_mas_designer"] = level_hash["譜面製作者"]
+        elif level_hash['難易度'] == 'LUNATIC':
+            song["lev_lnt_notes"] = level_hash["総ノート数"]
+            song["lev_lnt_bells"] = level_hash["BELL"]
+            song["lev_lnt_i"] = level_hash["譜面定数"]
+            song["lev_lnt_designer"] = level_hash["譜面製作者"]
+
+    song['enemy_lv'] = level
+    song['enemy_type'] = CHARACTER_TABLE.get(character, None)
+    song['bpm'] = overview_hash['BPM']
+
+    return song
+
 
 def _add_song_new_data_name(song):
     song['enemy_lv'] = ""
@@ -85,7 +158,14 @@ def _add_song_new_data_name(song):
     song['lev_lnt_designer'] = ""
     song['lev_lnt_chart_link'] = ""
     song['version'] = "bright MEMORY"
-    return song
+
+    url = 'https://wikiwiki.jp/gameongeki/' + song['title']
+    wiki = requests.get(url)
+
+    if not wiki.ok:
+        return song
+    else:
+        return _parse_wikiwiki(song, wiki)
 
 def renew_lastupdated(local_music_json_path, local_html_path):
     with open(local_music_json_path, 'r', encoding='utf-8') as f:
