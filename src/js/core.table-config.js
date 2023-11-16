@@ -679,8 +679,8 @@ $(document).ready(function() {
                     display: $.fn.dataTable.Responsive.display.modal( {
                         header: function ( row ) {
                             var data = row.data();
-                            return '<div class="modal-header"><div class="img-wrap">' + 
                             var wiki_encoded_url = encodeURIComponent(data.title.replace(/&/g, '＆').replace(/:/g, '：').replace('[','［').replace(']','］').replace('#','＃'));
+                            return '<div class="modal-header" style="--img:url(jacket/' + data.image_url + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
                                 '<img src=\"jacket/' + data.image_url + '\"\/>' +
                                 '<\/div><div class="content-wrap">' +
                                 ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +

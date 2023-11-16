@@ -1128,11 +1128,59 @@ div.dtr-modal div.dtr-modal-content {
 			margin-bottom: 0;
 		}
 
+		.header-img {
+			--dots: radial-gradient(circle,rgba(0,0,0,) 30%,rgba(0,0,0,0) 90%) 0 0/5px 5px;
+			position: absolute;
+			inset: 0;
+			background: var(--dots);
+			background-color: rgba(var(--ui-color-background-080),0.2);
+			filter: contrast(8);
+			overflow: hidden;
+			z-index: -1;
+
+			&:before {
+				content: "";
+				position: absolute;
+				inset: -10px;
+				background-image: 
+					linear-gradient(
+						to top, 
+						rgba(var(--ui-color-background-100),var(--modal-bg-img-intensity)) 30%,
+						rgb(var(--ui-color-background-100),0)
+					), 
+					var(--img);
+				background-size: cover;
+				background-position: center;
+				filter: var(--modal-bg-img-filter);
+				mix-blend-mode: var(--modal-bg-img-mix-blend-mode, hard-light);
+			}
+		}
+
+		.header-img-overlay {
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+
+			@media screen and (min-width: 480px) {
+				background-image: 
+					linear-gradient(to left, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-04)) 100%),
+					linear-gradient(225deg, rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
+				background-position:
+					top left,
+					top right;
+				background-size: 
+					calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
+					(@corner-size + 6px) (@corner-size + 6px);
+				background-repeat: no-repeat;
+			}
+		}
+
 		.img-wrap {
 			flex: 0 0 auto;
 			display: inline-flex;
 			margin-bottom: 10px; 
 			padding: 2px;
+			background-color: rgb(var(--ui-color-background-100),0);
 			border: 1px solid rgba(var(--ui-color-foreground-050),0.5);
 			border-radius: 2px;
 
