@@ -8,6 +8,7 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
 - Install requirements
     ```
     pip3 install requests
+    pip3 install bs4
     ```
 - Run script to download JSON and new song images from server
     ```
@@ -37,7 +38,7 @@ Just open `index.html` and refresh manually. Simple as the good old year 2000.
 - [オンゲキ攻略wiki](https://ongeki.gamerch.com/%E5%B1%9E%E6%80%A7%E5%88%A5%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7) : Enemy type, level, chart detail info
 - Precise chart level data (譜面定数) [@RKS49019722](https://twitter.com/RKS49019722) [@Rinsaku471](https://twitter.com/Rinsaku471) [@46189_ext](https://twitter.com/46189_ext) [@hikkey7th](https://twitter.com/hikkey7th) [@suoineau_ac](https://twitter.com/suoineau_ac) [@hayato_ongeki](https://twitter.com/hayato_ongeki)
 
-### Special Thanks to 
+### Special Thanks to
 - [@u7gisan](https://twitter.com/u7gisan), [@TSUBAKI_ONGEKI](https://twitter.com/TSUBAKI_ONGEKI)
 
 ## Feedback
@@ -48,4 +49,3 @@ Contact [@zvuc_](https://twitter.com/zvuc_) for any suggestions or inquiries.
 - All vector image assets used in this website are produced independently from scratch, however intellectual rights for the original designs are credited to SEGA.
 - ONGEKI and ONGEKI Logo are trademarks of SEGA. All jacket images are owned by SEGA and/or their respective owners.
 - ONGEKI DB is a fan project. It is not afilliated with nor endorsed by SEGA.
-
