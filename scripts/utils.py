@@ -2,28 +2,29 @@ import requests
 import urllib.request
 import json
 import re
+import ipdb
 from datetime import datetime
 from functools import reduce
 from bs4 import BeautifulSoup
 
 CHARACTER_TABLE = {
-    "星咲 あかり": "FIRE",
-    "藤沢 柚子": "LEAF",
-    "三角 葵": "AQUA",
-    "高瀬 梨緒": "AQUA",
-    "結城 莉玖": "FIRE",
-    "藍原 椿": "LEAF",
-    "桜井 春菜": "FIRE",
-    "早乙女 彩華": "AQUA",
-    "井之原 小星": "LEAF",
-    "柏木 咲姫": "AQUA",
-    "九條 楓": "LEAF",
-    "逢坂 茜": "FIRE",
-    "珠洲島 有栖": "AQUA",
-    "日向 千夏": "LEAF",
-    "柏木 美亜": "FIRE",
-    "東雲 つむぎ": "AQUA",
-    "皇城 セツナ": "FIRE"
+    "星咲あかり": "FIRE",
+    "藤沢柚子": "LEAF",
+    "三角葵": "AQUA",
+    "高瀬梨緒": "AQUA",
+    "結城莉玖": "FIRE",
+    "藍原椿": "LEAF",
+    "桜井春菜": "FIRE",
+    "早乙女彩華": "AQUA",
+    "井之原小星": "LEAF",
+    "柏木咲姫": "AQUA",
+    "九條楓": "LEAF",
+    "逢坂茜": "FIRE",
+    "珠洲島有栖": "AQUA",
+    "日向千夏": "LEAF",
+    "柏木美亜": "FIRE",
+    "東雲つむぎ": "AQUA",
+    "皇城セツナ": "FIRE"
 }
 
 def load_new_song_data(local_music_json_path, server_music_json_path):
@@ -80,9 +81,16 @@ def _parse_wikiwiki(song, wiki):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
 
-    overview = tables[0].select("tr")
-    overview_heads = [tr.find('th').text for tr in overview]
-    overview_data = [td.select('td:not([rowspan])')[0].text for td in overview]
+    overview_heads = tables[0].select('th')
+
+    if song['lunatic'] == '1':
+        overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
+    else:
+        overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
+
+    overview_heads = [head.text for head in overview_heads]
+    overview_data = [data[0].text for data in overview_data]
+
     overview_hash = dict(zip(overview_heads, overview_data))
 
     character_level = overview_hash["対戦相手"].split(" Lv.")
@@ -93,37 +101,37 @@ def _parse_wikiwiki(song, wiki):
     details_heads = [th.text for th in details.select("thead th")]
     details_data = [[cell.text for cell in level.select("th,td")] for level in details.select("tbody tr")]
 
-    for level in details_data:
-        level_hash = dict(zip(details_heads, level))
+    for details_datum in details_data:
+        level_hash = dict(zip(details_heads, details_datum))
 
-        if level_hash['難易度'] == 'BASIC':
-            song["lev_bas_notes"] = level_hash["総ノート数"]
-            song["lev_bas_bells"] = level_hash["BELL"]
+        if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
+            song["lev_bas_notes"] = level_hash["総ノート数"].replace(',', '')
+            song["lev_bas_bells"] = level_hash["BELL"].replace(',', '')
             song["lev_bas_i"] = level_hash["譜面定数"]
             song["lev_bas_designer"] = level_hash["譜面製作者"]
-        elif level_hash['難易度'] == 'ADVANCED':
-            song["lev_adv_notes"] = level_hash["総ノート数"]
-            song["lev_adv_bells"] = level_hash["BELL"]
+        elif song['lunatic'] == '' and level_hash['難易度'] == 'ADVANCED':
+            song["lev_adv_notes"] = level_hash["総ノート数"].replace(',', '')
+            song["lev_adv_bells"] = level_hash["BELL"].replace(',', '')
             song["lev_adv_i"] = level_hash["譜面定数"]
             song["lev_adv_designer"] = level_hash["譜面製作者"]
-        elif level_hash['難易度'] == 'EXPERT':
-            song["lev_exc_notes"] = level_hash["総ノート数"]
-            song["lev_exc_bells"] = level_hash["BELL"]
+        elif song['lunatic'] == '' and level_hash['難易度'] == 'EXPERT':
+            song["lev_exc_notes"] = level_hash["総ノート数"].replace(',', '')
+            song["lev_exc_bells"] = level_hash["BELL"].replace(',', '')
             song["lev_exc_i"] = level_hash["譜面定数"]
             song["lev_exc_designer"] = level_hash["譜面製作者"]
-        elif level_hash['難易度'] == 'MASTER':
-            song["lev_mas_notes"] = level_hash["総ノート数"]
-            song["lev_mas_bells"] = level_hash["BELL"]
+        elif song['lunatic'] == '' and level_hash['難易度'] == 'MASTER':
+            song["lev_mas_notes"] = level_hash["総ノート数"].replace(',', '')
+            song["lev_mas_bells"] = level_hash["BELL"].replace(',', '')
             song["lev_mas_i"] = level_hash["譜面定数"]
             song["lev_mas_designer"] = level_hash["譜面製作者"]
-        elif level_hash['難易度'] == 'LUNATIC':
-            song["lev_lnt_notes"] = level_hash["総ノート数"]
-            song["lev_lnt_bells"] = level_hash["BELL"]
+        elif song['lunatic'] == '1' and level_hash['難易度'] == 'LUNATIC':
+            song["lev_lnt_notes"] = level_hash["総ノート数"].replace(',', '')
+            song["lev_lnt_bells"] = level_hash["BELL"].replace(',', '')
             song["lev_lnt_i"] = level_hash["譜面定数"]
             song["lev_lnt_designer"] = level_hash["譜面製作者"]
 
     song['enemy_lv'] = level
-    song['enemy_type'] = CHARACTER_TABLE.get(character, None)
+
     song['bpm'] = overview_hash['BPM']
 
     return song
@@ -131,7 +139,7 @@ def _parse_wikiwiki(song, wiki):
 
 def _add_song_new_data_name(song):
     song['enemy_lv'] = ""
-    song['enemy_type'] = ""
+    song['enemy_type'] = CHARACTER_TABLE.get(song['character'].replace(' ', ''), '')
     song['bpm'] = ""
     song['lev_bas_i'] = ""
     song['lev_bas_notes'] = ""
@@ -159,11 +167,20 @@ def _add_song_new_data_name(song):
     song['lev_lnt_chart_link'] = ""
     song['version'] = "bright MEMORY"
 
-    url = 'https://wikiwiki.jp/gameongeki/' + song['title']
+    title = song['title'].replace('&', '＆').replace(':', '：').replace('[', '［').replace(']', '］').replace('#', '＃')
+
+    url = 'https://wikiwiki.jp/gameongeki/' + title
     wiki = requests.get(url)
 
     if not wiki.ok:
-        return song
+        title = title.replace('\'', '’')
+        url = 'https://wikiwiki.jp/gameongeki/' + title
+        wiki = requests.get(url)
+
+        if not wiki.ok:
+            return song
+        else:
+            return _parse_wikiwiki(song, wiki)
     else:
         return _parse_wikiwiki(song, wiki)
 
