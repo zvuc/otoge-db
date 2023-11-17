@@ -706,6 +706,7 @@ $(document).ready(function() {
                         var row = api.row(rowIdx);
                         var data = row.data();
                         var chara_id = data['chara_id'];
+                        var enemy_type = data['enemy_type'];
                         var lunatic = data['lev_lnt'] !== "" ? "lunatic" : "";
 
                         var normalRows = $.map(columns, function(col, i) {
@@ -765,7 +766,7 @@ $(document).ready(function() {
                                                     $('<div class="details-table chara-details"/>')
                                                         .append('<div class="table-header"><span class="th-label">CHARACTER</span></div>')
                                                         .append(charaRows)
-                                                        .append(chara_id.substr(0,1) == "1" ? '<span class="chara-img" style="background-image: url(\'./img/chara/' + chara_id + '.png\');"></span>': "")
+                                                        .append(chara_id.substr(0,1) == "1" ? '<span class="chara-img '+ enemy_type.toLowerCase() +'" style="--chara-img: url(\'./img/chara/' + chara_id + '.png\');"></span>': "")
                                                 )
                                                 .append(
                                                     $('<div class="details-table chart-details '+ lunatic +'"/>')
