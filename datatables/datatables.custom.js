@@ -22611,8 +22611,21 @@ Responsive.display = {
 		return function (row, update, render, closeCallback) {
 			if (!update) {
 				// Show a modal
+				var scrollPos = $(window).scrollTop();
+
+				$("#app-wrapper").css('top', (scrollPos * -1)).addClass("modal-open")
+				$(window).scrollTop(0);
+
 				var close = function () {
-					modal.remove(); // will tidy events for us
+					modal
+						.addClass('anim-leave')
+						.on('animationend webkitAnimationEnd oAnimationEnd', function () {
+							modal
+								.removeClass('anim-leave')
+								.remove(); // will tidy events for us
+								$("#app-wrapper").removeClass("modal-open").css('top', '');
+								$(window).scrollTop(scrollPos);
+						})
 					$(document).off('keypress.dtr');
 					$(row.node()).removeClass('parent');
 
@@ -22620,23 +22633,27 @@ Responsive.display = {
 				};
 
 				var modal = $('<div class="dtr-modal"/>')
-					.append(
-						$('<div class="dtr-modal-display"/>')
-							.append(
-								$('<div class="dtr-modal-content"/>')
-									.data('dtr-row-idx', row.index())
-									.append(render())
-							)
-							.append(
-								$('<div class="dtr-modal-close">&times;</div>').click(function () {
-									close();
-								})
-							)
-					)
-					.append(
-						$('<div class="dtr-modal-background"/>').click(function () {
+					.addClass('anim-enter')
+					.on('animationend webkitAnimationEnd oAnimationEnd', function () {
+						modal.removeClass('anim-enter')
+					})
+					.append( $('<div class="dtr-modal-background"/>')
+						.click( function () {
 							close();
-						})
+						} )
+					)
+					.append( $('<div class="dtr-modal-content"/>')
+						.append( render() )
+						.append( $('<div class="dtr-modal-close inner"></div>' )
+							.click(function () {
+								close();
+							})
+						)
+					)
+					.append( $('<div class="dtr-modal-close"></div>' )
+						.click( function () {
+							close();
+						} )
 					)
 					.appendTo('body');
 
@@ -22663,7 +22680,17 @@ Responsive.display = {
 			}
 
 			if (options && options.header) {
-				$('div.dtr-modal-content').prepend('<h2>' + options.header(row) + '</h2>');
+				// Modded by zvuc: 
+				// $('div.dtr-modal-content').prepend('<h2>' + options.header(row) + '</h2>');
+				$('div.dtr-modal-content').prepend(
+					options.header( row )
+				);
+			}
+
+			if ( options && options.footer ) {
+				$('div.dtr-modal-content').append(
+					options.footer( row )
+				);
 			}
 
 			return true;
