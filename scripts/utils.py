@@ -5,7 +5,8 @@ import re
 import ipdb
 from datetime import datetime
 from functools import reduce
-from bs4 import BeautifulSoup
+from wikiwiki import _update_song_wiki_data
+
 
 CHARACTER_TABLE = {
     "星咲あかり": "FIRE",
@@ -59,8 +60,9 @@ def renew_music_ex_data(new_song_list, local_music_ex_json_path, server_music_ja
     for song in new_song_list:
         _download_song_jacket(song, server_music_jacket_base_url)
         _add_song_data_to_ex_data(song, local_music_ex_data)
-        _record_new_song_jacket_id(song, local_diffs_log_path)
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " new song data downloaded : " + song['title'])
+        _update_song_wiki_data(song)
+        _record_new_song_jacket_id(song, local_diffs_log_path)
 
     with open(local_music_ex_json_path, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
@@ -75,69 +77,9 @@ def _record_new_song_jacket_id(song, local_diffs_log_path):
 
 
 def _add_song_data_to_ex_data(song, ex_data):
-    ex_data.append(_add_song_new_data_name(song))
+    ex_data.append(_add_ex_data_template(song))
 
-def _parse_wikiwiki(song, wiki):
-    soup = BeautifulSoup(wiki.text, 'html.parser')
-    tables = soup.select("#body table")
-
-    overview_heads = tables[0].select('th')
-
-    if song['lunatic'] == '1':
-        overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
-    else:
-        overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
-
-    overview_heads = [head.text for head in overview_heads]
-    overview_data = [data[0].text for data in overview_data]
-
-    overview_hash = dict(zip(overview_heads, overview_data))
-
-    character_level = overview_hash["対戦相手"].split(" Lv.")
-    character = character_level[0]
-    level = character_level[1]
-
-    details = tables[1]
-    details_heads = [th.text for th in details.select("thead th")]
-    details_data = [[cell.text for cell in level.select("th,td")] for level in details.select("tbody tr")]
-
-    for details_datum in details_data:
-        level_hash = dict(zip(details_heads, details_datum))
-
-        if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
-            song["lev_bas_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_bas_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_bas_i"] = level_hash["譜面定数"]
-            song["lev_bas_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '' and level_hash['難易度'] == 'ADVANCED':
-            song["lev_adv_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_adv_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_adv_i"] = level_hash["譜面定数"]
-            song["lev_adv_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '' and level_hash['難易度'] == 'EXPERT':
-            song["lev_exc_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_exc_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_exc_i"] = level_hash["譜面定数"]
-            song["lev_exc_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '' and level_hash['難易度'] == 'MASTER':
-            song["lev_mas_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_mas_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_mas_i"] = level_hash["譜面定数"]
-            song["lev_mas_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '1' and level_hash['難易度'] == 'LUNATIC':
-            song["lev_lnt_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_lnt_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_lnt_i"] = level_hash["譜面定数"]
-            song["lev_lnt_designer"] = level_hash["譜面製作者"]
-
-    song['enemy_lv'] = level
-
-    song['bpm'] = overview_hash['BPM']
-
-    return song
-
-
-def _add_song_new_data_name(song):
+def _add_ex_data_template(song):
     song['enemy_lv'] = ""
     song['enemy_type'] = CHARACTER_TABLE.get(song['character'].replace(' ', ''), '')
     song['bpm'] = ""
@@ -166,23 +108,10 @@ def _add_song_new_data_name(song):
     song['lev_lnt_designer'] = ""
     song['lev_lnt_chart_link'] = ""
     song['version'] = "bright MEMORY"
+    song['wikiwiki_url'] = ""
 
-    title = song['title'].replace('&', '＆').replace(':', '：').replace('[', '［').replace(']', '］').replace('#', '＃')
+    return song
 
-    url = 'https://wikiwiki.jp/gameongeki/' + title
-    wiki = requests.get(url)
-
-    if not wiki.ok:
-        title = title.replace('\'', '’')
-        url = 'https://wikiwiki.jp/gameongeki/' + title
-        wiki = requests.get(url)
-
-        if not wiki.ok:
-            return song
-        else:
-            return _parse_wikiwiki(song, wiki)
-    else:
-        return _parse_wikiwiki(song, wiki)
 
 def renew_lastupdated(local_music_json_path, local_html_path):
     with open(local_music_json_path, 'r', encoding='utf-8') as f:
@@ -202,3 +131,5 @@ def renew_lastupdated(local_music_json_path, local_html_path):
 
     with open(local_html_path, 'w', encoding='utf-8') as f:
         f.write(local_html_data)
+
+
