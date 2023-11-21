@@ -32,7 +32,7 @@ jobs:
       - name: Extract datestamp from script output
         id: extract_date
         run: |
-          datestamp=$(echo "${{ steps.run_script.outputs.output }}" | sed -n 's/^DATA: \([0-9]\{8\}\)$/\1/p')
+          datestamp=$(echo "${{ steps.run_script.outputs.output }}" | sed -n 's/^.*DATA: \([0-9]\{8\}\).*$/\1/p')
           echo "::set-output name=datestamp::$datestamp"
 
       - name: Check script output
