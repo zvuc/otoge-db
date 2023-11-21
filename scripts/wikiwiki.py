@@ -9,11 +9,24 @@ from bs4 import BeautifulSoup
 wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
 
 # Update on top of existing music-ex
-def update_songs_extra_data(local_music_ex_json_path, date_from, date_until):
+def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, song_id):
     with open(local_music_ex_json_path, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+    # prioritize id search if provided
+    if not song_id == 0:
+        target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
+    else:
+        latest_date = int(get_last_date(local_music_json_path))
+
+        if date_from == 0:
+            date_from = latest_date
+
+        if date_until == 0:
+            date_until = latest_date
+
+        target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -35,6 +48,16 @@ def _filter_songs_by_date(song_list, date_from, date_until):
         song_date_int = int(song.get("date"))
 
         if date_from <= song_date_int <= date_until:
+            target_song_list.append(song)
+
+    return target_song_list
+
+
+def _filter_songs_by_id(song_list, song_id):
+    target_song_list = []
+
+    for song in song_list:
+        if song_id == int(song.get("id")):
             target_song_list.append(song)
 
     return target_song_list
