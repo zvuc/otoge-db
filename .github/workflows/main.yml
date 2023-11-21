@@ -1,4 +1,4 @@
-name: Run fetch new songs script and create PR if there are updates
+name: Fetch new songs and create PR
 
 on:
   push:
@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
@@ -39,21 +39,24 @@ jobs:
             echo "::set-output name=create_pr::false"
           fi
 
+      - name: Switch to master branch
+        if: steps.check_script.outputs.create_pr == 'true'
+        run: git checkout master
+
       - name: Create new branch and commit changes
         if: steps.check_script.outputs.create_pr == 'true'
         run: |
-          git checkout -b new-branch
+          git checkout -b add-new-songs
           git add .
           git commit -m "Run script: Fetch new songs from SEGA server"
-          git push origin new-branch
+          git push origin add-new-songs
 
       - name: Create Pull Request
         if: steps.check_script.outputs.create_pr == 'true'
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "Run script: Fetch new songs from SEGA server"
-          branch: new-branch
+          branch: add-new-songs
           base: master
           title: "Automated PR: Run script to fetch new songs"
           body: ${{ steps.run_script.outputs.output }}
-          
