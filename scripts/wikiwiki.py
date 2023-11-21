@@ -17,7 +17,7 @@ def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, son
     if not song_id == 0:
         target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
     else:
-        latest_date = int(get_last_date(local_music_json_path))
+        latest_date = int(get_last_date(local_music_ex_json_path))
 
         if date_from == 0:
             date_from = latest_date
@@ -78,7 +78,7 @@ def _update_song_wiki_data(song):
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         url = song['wikiwiki_url']
         wiki = requests.get(url)
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKBLUE + " (URL already present!) : " + song['title'] + bcolors.ENDC)
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKBLUE + ' ' + song['id'] + " (URL already present!) : " + song['title'] + bcolors.ENDC)
         return _parse_wikiwiki(song, wiki, url)
 
     # If not, guess URL from title
@@ -94,7 +94,7 @@ def _update_song_wiki_data(song):
 
             if not wiki.ok:
                 # give up
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " failed to guess wiki page : " + song['title'] + bcolors.ENDC)
+                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + ' ' + song['id'] + " failed to guess wiki page : " + song['title'] + bcolors.ENDC)
                 return song
 
             else:
@@ -113,17 +113,18 @@ def _parse_wikiwiki(song, wiki, url):
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + ' ' + song['id'] + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
         return song
 
     # find the overview table
     overview_table = None
+    # ipdb.set_trace()
     for table in tables:
         rows = table.find_all('tr')
         if len(rows) > 1:
             second_row_th = rows[1].find('th')
             if second_row_th and second_row_th.get_text(strip=True) == 'タイトル':
-                img_in_first_col = rows[0].find('img')
+                img_in_first_col = rows[0].find('td',{'rowspan': True})
                 if img_in_first_col:
                     overview_table = table
                     break
@@ -139,21 +140,30 @@ def _parse_wikiwiki(song, wiki, url):
         overview_heads = [head.text for head in overview_heads]
         overview_data = [data[0].text for data in overview_data]
         overview_hash = dict(zip(overview_heads, overview_data))
+
+        # Find enemy lv data
+        if 'LV.' in overview_hash["対戦相手"].upper():
+            enemy_info = overview_hash["対戦相手"].upper().split("LV.")
+            enemy_name = enemy_info[0]
+            enemy_lv = enemy_info[1]
+            song['enemy_lv'] = enemy_lv
+
+            # If character name includes type info, use it
+            if 'FIRE' in enemy_name:
+                song['enemy_type'] = 'FIRE'
+            elif 'AQUA' in enemy_name:
+                song['enemy_type'] = 'AQUA'
+            elif 'LEAF' in enemy_name:
+                song['enemy_type'] = 'LEAF'
+
+        else:
+            # fail
+            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - enemy lv not found : " + song['title'] + bcolors.ENDC)
+            
     else:
         # fail
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - overview table not found : " + song['title'] + bcolors.ENDC)
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - overview table not found : " + song['title'] + bcolors.ENDC)
 
-
-    # Find enemy lv data
-    if 'Lv.' in overview_hash["対戦相手"]:
-        enemy_info = overview_hash["対戦相手"].split(" Lv.")
-        enemy_name = enemy_info[0]
-        enemy_lv = enemy_info[1]
-        song['enemy_lv'] = enemy_lv
-    else:
-        # fail
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - enemy lv not found : " + song['title'] + bcolors.ENDC)
-        
 
     # find the charts table
     charts_table = None
@@ -197,16 +207,16 @@ def _parse_wikiwiki(song, wiki, url):
                     song["lev_lnt_i"] = level_hash["譜面定数"]
                     song["lev_lnt_designer"] = level_hash["譜面製作者"]
         else:
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
+            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
     else:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
     
 
     song['bpm'] = overview_hash['BPM']
 
     song['wikiwiki_url'] = url
 
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKGREEN + " updated song extra data from wiki : " + song['title'] + bcolors.ENDC)
+    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKGREEN + ' ' + song['id'] + " updated song extra data from wiki : " + song['title'] + bcolors.ENDC)
 
     return song
 
