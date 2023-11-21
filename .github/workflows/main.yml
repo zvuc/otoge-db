@@ -1,14 +1,58 @@
-name: Fetch new songs
-on: 
-  # workflow_dispatch:
-  pull_request:
+name: Run fetch new songs script and create PR if there are updates
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
-  fetch_new_songs:
+  run_script_and_create_pr:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
-      - run: pip3 install -r requirements.txt && python3 scripts/main.py
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Python script and capture output
+        id: run_script
+        run: |
+          output=$(python scripts/main.py)
+          echo "::set-output name=output::$output"
+
+      - name: Check script output
+        run: |
+          if [[ ${{ steps.run_script.outputs.output }} == *"new song data downloaded"* ]]; then
+            echo "New song data downloaded. Creating a pull request."
+            echo "::set-output name=create_pr::true"
+          else
+            echo "Nothing updated. Skipping pull request creation."
+            echo "::set-output name=create_pr::false"
+          fi
+
+      - name: Create new branch and commit changes
+        if: steps.check_script.outputs.create_pr == 'true'
+        run: |
+          git checkout -b new-branch
+          git add .
+          git commit -m "Run script: Fetch new songs from SEGA server"
+          git push origin new-branch
+
+      - name: Create Pull Request
+        if: steps.check_script.outputs.create_pr == 'true'
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "Run script: Fetch new songs from SEGA server"
+          branch: new-branch
+          base: master
+          title: "Automated PR: Run script to fetch new songs"
+          body: ${{ steps.run_script.outputs.output }}
