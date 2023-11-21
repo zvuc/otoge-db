@@ -23,11 +23,15 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run Python script and capture output
+      - name: Run main.py script and capture output
         id: run_script
         run: |
           output=$(python scripts/main.py)
           echo "::set-output name=output::$output"
+
+      - name: Extract datestamp from script output
+        id: extract_date
+        run: echo "::set-output name=datestamp::$(echo ${{ steps.run_script.outputs.output }} | grep -oP 'DATA: \K\d{8}')"
 
       - name: Check script output
         id: check_script
@@ -44,20 +48,25 @@ jobs:
       #   if: steps.check_script.outputs.create_pr == 'true'
       #   run: git checkout master
 
+      - name: Configure Git user
+        if: steps.check_script.outputs.create_pr == 'true'
+        run: |
+          git config --global user.email "noreply@github.com"
+          git config --global user.name "GitHub Actions"
+
       - name: Create new branch and commit changes
         if: steps.check_script.outputs.create_pr == 'true'
         run: |
-          git checkout -b add-new-songs
+          git checkout -b add-new-song-${{ steps.extract_date.outputs.datestamp }}
           git add .
-          git commit -m "Run script: Fetch new songs from SEGA server"
-          git push origin add-new-songs
+          git commit -m "[Automated] Add song data ${{ steps.extract_date.outputs.datestamp }}"
+          git push origin add-new-song-${{ steps.extract_date.outputs.datestamp }}
 
       - name: Create Pull Request
         if: steps.check_script.outputs.create_pr == 'true'
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "Run script: Fetch new songs from SEGA server"
-          branch: add-new-songs
+          branch: add-new-song-${{ steps.extract_date.outputs.datestamp }}
           base: master
-          title: "Automated PR: Run script to fetch new songs"
+          title: "[Automation] Update website with new song data (${{ steps.extract_date.outputs.datestamp }})"
           body: ${{ steps.run_script.outputs.output }}
