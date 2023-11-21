@@ -30,6 +30,7 @@ jobs:
           echo "::set-output name=output::$output"
 
       - name: Check script output
+        id: check_script
         run: |
           if [[ "${{ steps.run_script.outputs.output }}" == *"new song data downloaded"* ]]; then
             echo "New song data downloaded. Creating a pull request."
@@ -39,9 +40,9 @@ jobs:
             echo "::set-output name=create_pr::false"
           fi
 
-      - name: Switch to master branch
-        if: steps.check_script.outputs.create_pr == 'true'
-        run: git checkout master
+      # - name: Switch to master branch
+      #   if: steps.check_script.outputs.create_pr == 'true'
+      #   run: git checkout master
 
       - name: Create new branch and commit changes
         if: steps.check_script.outputs.create_pr == 'true'
