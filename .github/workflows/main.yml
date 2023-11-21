@@ -56,3 +56,4 @@ jobs:
           base: master
           title: "Automated PR: Run script to fetch new songs"
           body: ${{ steps.run_script.outputs.output }}
+          
