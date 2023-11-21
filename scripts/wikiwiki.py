@@ -1,5 +1,7 @@
 import requests
 import json
+import ipdb
+from terminal import bcolors
 from datetime import datetime
 from functools import reduce
 from bs4 import BeautifulSoup
@@ -52,7 +54,7 @@ def _update_song_wiki_data(song):
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         url = song['wikiwiki_url']
         wiki = requests.get(url)
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " (URL already present!) : " + song['title'])
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKBLUE + " (URL already present!) : " + song['title'] + bcolors.ENDC)
         return _parse_wikiwiki(song, wiki, url)
 
     # If not, guess URL from title
@@ -68,7 +70,7 @@ def _update_song_wiki_data(song):
 
             if not wiki.ok:
                 # give up
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " failed to guess wiki page : " + song['title'])
+                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " failed to guess wiki page : " + song['title'] + bcolors.ENDC)
                 return song
 
             else:
@@ -85,7 +87,12 @@ def _parse_wikiwiki(song, wiki, url):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
 
-    overview_heads = tables[0].select('th')
+    if len(tables) == 0:
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
+        return song
+    else:
+        overview_heads = tables[0].select('th')
+
 
     if song['lunatic'] == '1':
         overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
@@ -93,6 +100,12 @@ def _parse_wikiwiki(song, wiki, url):
         overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
 
     overview_heads = [head.text for head in overview_heads]
+
+    if not any(overview_data):
+        # boom
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
+        return song
+
     overview_data = [data[0].text for data in overview_data]
 
     overview_hash = dict(zip(overview_heads, overview_data))
@@ -140,7 +153,7 @@ def _parse_wikiwiki(song, wiki, url):
 
     song['wikiwiki_url'] = url
 
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " updated song extra data from wiki : " + song['title'])
+    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKGREEN + " updated song extra data from wiki : " + song['title'] + bcolors.ENDC)
 
     return song
 
