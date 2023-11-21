@@ -27,48 +27,49 @@ jobs:
         id: run_script
         run: |
           output=$(python scripts/main.py)
-          echo "::set-output name=output::$output"
+          echo "output=${output}" >> $GITHUB_ENV
 
       - name: Extract datestamp from script output
         id: extract_date
         run: |
-          datestamp=$(echo "${{ steps.run_script.outputs.output }}" | sed -n 's/^.*DATA: \([0-9]\{8\}\).*$/\1/p')
-          echo "::set-output name=datestamp::$datestamp"
+          datestamp=$(echo "${{ env.output }}" | sed -n 's/^.*DATA: \([0-9]\{8\}\).*$/\1/p')
+
+          echo "datestamp=${datestamp}" >> $GITHUB_ENV
 
       - name: Check script output
         id: check_script
         run: |
-          if [[ "${{ steps.run_script.outputs.output }}" == *"new song data downloaded"* ]]; then
+          if [[ "${{ env.output }}" == *"new song data downloaded"* ]]; then
             echo "New song data downloaded. Creating a pull request."
-            echo "::set-output name=create_pr::true"
+            echo "create_pr=true" >> $GITHUB_ENV
           else
             echo "Nothing updated. Skipping pull request creation."
-            echo "::set-output name=create_pr::false"
+            echo "create_pr=false" >> $GITHUB_ENV
           fi
 
       # - name: Switch to master branch
-      #   if: steps.check_script.outputs.create_pr == 'true'
+      #   if: env.create_pr == 'true'
       #   run: git checkout master
 
       - name: Configure Git user
-        if: steps.check_script.outputs.create_pr == 'true'
+        if: env.create_pr == 'true'
         run: |
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
       - name: Create new branch and commit changes
-        if: steps.check_script.outputs.create_pr == 'true'
+        if: env.create_pr == 'true'
         run: |
-          git checkout -b add-new-song-${{ steps.extract_date.outputs.datestamp }}
+          git checkout -b add-new-song-${{ env.datestamp }}
           git add .
-          git commit -m "[Automated] Add song data ${{ steps.extract_date.outputs.datestamp }}"
-          git push origin add-new-song-${{ steps.extract_date.outputs.datestamp }}
+          git commit -m "[Automated] Add song data ${{ env.datestamp }}"
+          git push origin add-new-song-${{ env.datestamp }}
 
       - name: Create Pull Request
-        if: steps.check_script.outputs.create_pr == 'true'
+        if: env.create_pr == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: add-new-song-${{ steps.extract_date.outputs.datestamp }}
+          branch: add-new-song-${{ env.datestamp }}
           base: master
-          title: "[Automation] Update website with new song data (${{ steps.extract_date.outputs.datestamp }})"
-          body: ${{ steps.run_script.outputs.output }}
+          title: "[Automation] Update website with new song data (${{ env.datestamp }})"
+          body: ${{ env.output }}
