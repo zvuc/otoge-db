@@ -31,7 +31,7 @@ jobs:
 
       - name: Check script output
         run: |
-          if [[ ${{ steps.run_script.outputs.output }} == *"new song data downloaded"* ]]; then
+          if [[ "${{ steps.run_script.outputs.output }}" == *"new song data downloaded"* ]]; then
             echo "New song data downloaded. Creating a pull request."
             echo "::set-output name=create_pr::true"
           else
