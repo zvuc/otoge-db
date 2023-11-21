@@ -88,9 +88,7 @@ def _parse_wikiwiki(song, wiki, url):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
 
-    
-
-    # If no tables at all, exit
+    # If there are no tables in page at all, exit
     if len(tables) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
         return song
@@ -107,9 +105,32 @@ def _parse_wikiwiki(song, wiki, url):
                     overview_table = table
                     break
 
-    if not overview_table:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - No overview table! Skipping song : " + song['title'] + bcolors.ENDC)
-        return song
+    if overview_table:
+        overview_heads = overview_table.select('th')
+
+        if song['lunatic'] == '1':
+            overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
+        else:
+            overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
+
+        overview_heads = [head.text for head in overview_heads]
+        overview_data = [data[0].text for data in overview_data]
+        overview_hash = dict(zip(overview_heads, overview_data))
+    else:
+        # fail
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - overview table not found : " + song['title'] + bcolors.ENDC)
+
+
+    # Find enemy lv data
+    if 'Lv.' in overview_hash["対戦相手"]:
+        enemy_info = overview_hash["対戦相手"].split(" Lv.")
+        enemy_name = enemy_info[0]
+        enemy_lv = enemy_info[1]
+        song['enemy_lv'] = enemy_lv
+    else:
+        # fail
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - enemy lv not found : " + song['title'] + bcolors.ENDC)
+        
 
     # find the charts table
     charts_table = None
@@ -119,68 +140,44 @@ def _parse_wikiwiki(song, wiki, url):
             charts_table = table
             break
     
-    if not charts_table:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - No chart table! Skipping song : " + song['title'] + bcolors.ENDC)
-        return song
-    
-    overview_heads = overview_table.select('th')
+    if charts_table:
+        charts_table_head = [th.text for th in charts_table.select("thead th")]
+        charts_data = [[cell.text for cell in level.select("th,td")] for level in charts_table.select("tbody tr")]
 
+        if any(charts_table_head) and '難易度' in charts_table_head[0]:
+            for chart_details in charts_data:
+                level_hash = dict(zip(charts_table_head, chart_details))
 
-    if song['lunatic'] == '1':
-        overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
+                if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
+                    song["lev_bas_notes"] = level_hash["総ノート数"].replace(',', '')
+                    song["lev_bas_bells"] = level_hash["BELL"].replace(',', '')
+                    song["lev_bas_i"] = level_hash["譜面定数"]
+                    song["lev_bas_designer"] = level_hash["譜面製作者"]
+                elif song['lunatic'] == '' and level_hash['難易度'] == 'ADVANCED':
+                    song["lev_adv_notes"] = level_hash["総ノート数"].replace(',', '')
+                    song["lev_adv_bells"] = level_hash["BELL"].replace(',', '')
+                    song["lev_adv_i"] = level_hash["譜面定数"]
+                    song["lev_adv_designer"] = level_hash["譜面製作者"]
+                elif song['lunatic'] == '' and level_hash['難易度'] == 'EXPERT':
+                    song["lev_exc_notes"] = level_hash["総ノート数"].replace(',', '')
+                    song["lev_exc_bells"] = level_hash["BELL"].replace(',', '')
+                    song["lev_exc_i"] = level_hash["譜面定数"]
+                    song["lev_exc_designer"] = level_hash["譜面製作者"]
+                elif song['lunatic'] == '' and level_hash['難易度'] == 'MASTER':
+                    song["lev_mas_notes"] = level_hash["総ノート数"].replace(',', '')
+                    song["lev_mas_bells"] = level_hash["BELL"].replace(',', '')
+                    song["lev_mas_i"] = level_hash["譜面定数"]
+                    song["lev_mas_designer"] = level_hash["譜面製作者"]
+                elif song['lunatic'] == '1' and level_hash['難易度'] == 'LUNATIC':
+                    song["lev_lnt_notes"] = level_hash["総ノート数"].replace(',', '')
+                    song["lev_lnt_bells"] = level_hash["BELL"].replace(',', '')
+                    song["lev_lnt_i"] = level_hash["譜面定数"]
+                    song["lev_lnt_designer"] = level_hash["譜面製作者"]
+        else:
+            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
     else:
-        overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
-
-    overview_heads = [head.text for head in overview_heads]
-    overview_data = [data[0].text for data in overview_data]
-    overview_hash = dict(zip(overview_heads, overview_data))
-
-    # if character lv data is improper, exit
-    if not 'Lv.' in overview_hash["対戦相手"]:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - no enemy lv! Skipping song : " + song['title'] + bcolors.ENDC)
-        return song
-
-    character_level = overview_hash["対戦相手"].split(" Lv.")
-    character = character_level[0]
-    level = character_level[1]
-
-    charts_table_head = [th.text for th in charts_table.select("thead th")]
-    charts_data = [[cell.text for cell in level.select("th,td")] for level in charts_table.select("tbody tr")]
-
-    if not any(charts_table_head) or not '難易度' in charts_table_head[0]:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - no chart details! Skipping song : " + song['title'] + bcolors.ENDC)
-        return song
-
-    for chart_details in charts_data:
-        level_hash = dict(zip(charts_table_head, chart_details))
-
-        if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
-            song["lev_bas_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_bas_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_bas_i"] = level_hash["譜面定数"]
-            song["lev_bas_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '' and level_hash['難易度'] == 'ADVANCED':
-            song["lev_adv_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_adv_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_adv_i"] = level_hash["譜面定数"]
-            song["lev_adv_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '' and level_hash['難易度'] == 'EXPERT':
-            song["lev_exc_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_exc_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_exc_i"] = level_hash["譜面定数"]
-            song["lev_exc_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '' and level_hash['難易度'] == 'MASTER':
-            song["lev_mas_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_mas_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_mas_i"] = level_hash["譜面定数"]
-            song["lev_mas_designer"] = level_hash["譜面製作者"]
-        elif song['lunatic'] == '1' and level_hash['難易度'] == 'LUNATIC':
-            song["lev_lnt_notes"] = level_hash["総ノート数"].replace(',', '')
-            song["lev_lnt_bells"] = level_hash["BELL"].replace(',', '')
-            song["lev_lnt_i"] = level_hash["譜面定数"]
-            song["lev_lnt_designer"] = level_hash["譜面製作者"]
-
-    song['enemy_lv'] = level
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
+    
 
     song['bpm'] = overview_hash['BPM']
 
