@@ -3,7 +3,7 @@ name: Run fetch new songs script and create PR if there are updates
 on:
   push:
     branches:
-      - master
+      - automation
   workflow_dispatch:
 
 jobs:
