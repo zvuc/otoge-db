@@ -88,12 +88,42 @@ def _parse_wikiwiki(song, wiki, url):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
 
+    
+
     # If no tables at all, exit
     if len(tables) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
         return song
-    else:
-        overview_heads = tables[0].select('th')
+
+    # find the overview table
+    overview_table = None
+    for table in tables:
+        rows = table.find_all('tr')
+        if len(rows) > 1:
+            second_row_th = rows[1].find('th')
+            if second_row_th and second_row_th.get_text(strip=True) == 'タイトル':
+                img_in_first_col = rows[0].find('img')
+                if img_in_first_col:
+                    overview_table = table
+                    break
+
+    if not overview_table:
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - No overview table! Skipping song : " + song['title'] + bcolors.ENDC)
+        return song
+
+    # find the charts table
+    charts_table = None
+    for table in tables:
+        th_elements = table.select('th:nth-of-type(1), th:nth-of-type(2)')
+        if len(th_elements) > 2 and th_elements[0].get_text(strip=True) == '難易度' and th_elements[1].get_text(strip=True) == '楽曲Lv':
+            charts_table = table
+            break
+    
+    if not charts_table:
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - No chart table! Skipping song : " + song['title'] + bcolors.ENDC)
+        return song
+    
+    overview_heads = overview_table.select('th')
 
 
     if song['lunatic'] == '1':
@@ -102,17 +132,8 @@ def _parse_wikiwiki(song, wiki, url):
         overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
 
     overview_heads = [head.text for head in overview_heads]
-
-    # If page was loaded but data is incomplete, exit
-    if not any(overview_data):
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
-        return song
-
     overview_data = [data[0].text for data in overview_data]
-
     overview_hash = dict(zip(overview_heads, overview_data))
-
-    # ipdb.set_trace()
 
     # if character lv data is improper, exit
     if not 'Lv.' in overview_hash["対戦相手"]:
@@ -123,17 +144,15 @@ def _parse_wikiwiki(song, wiki, url):
     character = character_level[0]
     level = character_level[1]
 
-    # If main table exists but not chart details, exit
-    if len(tables) == 1:
+    charts_table_head = [th.text for th in charts_table.select("thead th")]
+    charts_data = [[cell.text for cell in level.select("th,td")] for level in charts_table.select("tbody tr")]
+
+    if not any(charts_table_head) or not '難易度' in charts_table_head[0]:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - no chart details! Skipping song : " + song['title'] + bcolors.ENDC)
         return song
 
-    details = tables[1]
-    details_heads = [th.text for th in details.select("thead th")]
-    details_data = [[cell.text for cell in level.select("th,td")] for level in details.select("tbody tr")]
-
-    for details_datum in details_data:
-        level_hash = dict(zip(details_heads, details_datum))
+    for chart_details in charts_data:
+        level_hash = dict(zip(charts_table_head, chart_details))
 
         if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
             song["lev_bas_notes"] = level_hash["総ノート数"].replace(',', '')
