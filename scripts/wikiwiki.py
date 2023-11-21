@@ -88,6 +88,7 @@ def _parse_wikiwiki(song, wiki, url):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
 
+    # If no tables at all, exit
     if len(tables) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
         return song
@@ -102,8 +103,8 @@ def _parse_wikiwiki(song, wiki, url):
 
     overview_heads = [head.text for head in overview_heads]
 
+    # If page was loaded but data is incomplete, exit
     if not any(overview_data):
-        # boom
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
         return song
 
@@ -111,9 +112,21 @@ def _parse_wikiwiki(song, wiki, url):
 
     overview_hash = dict(zip(overview_heads, overview_data))
 
+    # ipdb.set_trace()
+
+    # if character lv data is improper, exit
+    if not 'Lv.' in overview_hash["対戦相手"]:
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - no enemy lv! Skipping song : " + song['title'] + bcolors.ENDC)
+        return song
+
     character_level = overview_hash["対戦相手"].split(" Lv.")
     character = character_level[0]
     level = character_level[1]
+
+    # If main table exists but not chart details, exit
+    if len(tables) == 1:
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + " Parse failed - no chart details! Skipping song : " + song['title'] + bcolors.ENDC)
+        return song
 
     details = tables[1]
     details_heads = [th.text for th in details.select("thead th")]
