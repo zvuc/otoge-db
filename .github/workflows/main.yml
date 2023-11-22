@@ -70,14 +70,6 @@ jobs:
           git push origin add-new-song-${{ env.DATESTAMP }}
 
       - name: Create Pull Request
+        run: gh pr create -B ${{ github.ref_name }} -H add-new-song-${{ env.DATESTAMP }} --title "[Automation] Update website with new song data (${{ env.DATESTAMP }})" --body '${{ steps.run_script.outputs.OUTPUT_LOG }}'
         env:
-          CREATE_PR: ${{ steps.check_script.outputs.CREATE_PR }}
-          DATESTAMP: ${{ steps.extract_date.outputs.DATESTAMP }}
-          OUTPUT_LOG: ${{ steps.run_script.outputs.OUTPUT_LOG }}
-        if: env.CREATE_PR == 'true'
-        uses: peter-evans/create-pull-request@v4
-        with:
-          branch: add-new-song-${{ env.DATESTAMP }}
-          base: ${{ github.ref_name }}
-          title: "[Automation] Update website with new song data (${{ env.DATESTAMP }})"
-          body: ${{ env.OUTPUT_LOG }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
