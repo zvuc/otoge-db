@@ -26,11 +26,10 @@ jobs:
       - name: Run main.py script and capture output
         id: run_script
         run: |
-          output_log=$(python scripts/main.py)
           {
             echo "OUTPUT_LOG<<EOF"
-            ${output_log}
-            echo EOF
+            python scripts/main.py
+            echo "EOF"
           } >> "$GITHUB_ENV"
 
       - name: Extract datestamp from script output
