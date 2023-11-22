@@ -26,7 +26,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/main.py
+            python scripts/main.py --nocolors
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
