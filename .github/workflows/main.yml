@@ -28,16 +28,16 @@ jobs:
             echo "OUTPUT_LOG<<EOF"
             python scripts/main.py
             echo "EOF"
-          } >> "$GITHUB_ENV"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Extract datestamp from script output
         id: extract_date
         env:
           OUTPUT_LOG: ${{ steps.run_script.outputs.OUTPUT_LOG }}
         run: |
-          datestamp=$(echo "${{ env.OUTPUT_LOG }}" | sed -n 's/^.*DATA: \([0-9]\{8\}\).*$/\1/p')
+          datestamp=12345678
 
-          echo "datestamp=${datestamp}" >> "$GITHUB_ENV"
+          echo "datestamp=$datestamp" >> "$GITHUB_OUTPUT"
 
       - name: Check script output
         id: check_script
@@ -46,10 +46,10 @@ jobs:
         run: |
           if [[ "${{ env.OUTPUT_LOG }}" == *"new song data downloaded"* ]]; then
             echo "New song data downloaded. Creating a pull request."
-            echo "CREATE_PR=true" >> "$GITHUB_ENV"
+            echo "CREATE_PR=true" >> "$GITHUB_OUTPUT"
           else
             echo "Nothing updated. Skipping pull request creation."
-            echo "CREATE_PR=false" >> "$GITHUB_ENV"
+            echo "CREATE_PR=false" >> "$GITHUB_OUTPUT"
           fi
 
       # - name: Switch to master branch
