@@ -1,7 +1,8 @@
 name: Fetch new songs and create PR
 
 on:
-  push:
+  schedule:
+    - cron: '0 8 * * THU'
   workflow_dispatch:
 
 jobs:
