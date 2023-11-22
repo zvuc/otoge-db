@@ -78,6 +78,6 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: add-new-song-${{ env.DATESTAMP }}
-          base: ${{ github.base_ref }}
+          base: ${{ github.ref_name }}
           title: "[Automation] Update website with new song data (${{ env.DATESTAMP }})"
           body: ${{ env.OUTPUT_LOG }}
