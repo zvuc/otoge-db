@@ -1,19 +1,38 @@
-# Ongeki Song DB Table
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/zvuc/ongeki-db/blob/master/img/ongeki-db-logo-2022-wob.svg?raw=true">
+  <img alt="Ongeki DB Logo" src="https://github.com/zvuc/ongeki-db/blob/master/img/ongeki-db-logo-2022-bow.svg?raw=true" width="400">
+</picture>
+
+# Ongeki DB (https://ongeki.info)
 This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'. Based on the public data provided from the official homepage (https://ongeki.sega.jp/music/), this tool enables user to view information easier by using custom sort and filter options.
 
 このツールは、SEGAの音ゲー「オンゲキ」の収録曲データをより便利に閲覧できるように制作されたビュアーです。
 
 ## How to fetch and apply new data
-- You'll need Python3 to run scripts on command line.
+- You'll need Python 3.x to run scripts on command line.
 - Install requirements
     ```
-    pip3 install requests
-    pip3 install bs4
+    pip install -r requirements.txt
     ```
-- Run script to download JSON and new song images from server
+- Run script to download JSON and new song images from server, then fetch additional data from wiki
     ```
-    python3 scripts/main.py
+    python scripts/main.py
     ```
+    | Argument | Description |
+    | --- | --- | 
+    | `--nocolors` | Don't print colors to terminal messages |
+    | `--skipwiki` | Skip the wiki fetching part |
+
+- Run script to fetch wiki data (Enemy lv, Chart details, BPM)
+    ```
+    python scripts/update-wiki-data.py
+    ```
+    | Argument | Description |
+    | --- | --- | 
+    | `--date_from` | Set start of date range to target songs (Default: latest date in music-ex.json file) |
+    | `--date_until` | Set end of date range to target songs (Default: latest date in music-ex.json file) |
+    | `--id` | Explicitly specify a single song to update |
+    | `--nocolors` | Don't print colors to terminal messages |
 
 ## Notes for Local Development
 #### Build Scripts
@@ -22,6 +41,7 @@ This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'
 
 #### Local Dev Environment
 Just open `index.html` and refresh manually. Simple as the good old year 2000.
+Or, you can also do `python3 -m http.server` to quickly run a local server.
 
 ## Notes
 - This webpage is hosted and run entirely on Github Pages without any additional backend servers attached.
