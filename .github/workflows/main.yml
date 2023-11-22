@@ -73,3 +73,4 @@ jobs:
         run: gh pr create -B ${{ github.ref_name }} -H 'add-new-song-${{ env.DATESTAMP }}' --title "[Automation] Update website with new song data (${{ env.DATESTAMP }})" --body '${{ steps.run_script.outputs.OUTPUT_LOG }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DATESTAMP: ${{ steps.extract_date.outputs.DATESTAMP }}
