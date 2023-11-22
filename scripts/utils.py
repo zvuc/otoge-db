@@ -47,7 +47,7 @@ def _json_to_id_value_map(json):
     return {int(song['id']):song for song in json}
 
 
-def renew_music_ex_data(new_song_list, local_music_ex_json_path, server_music_jacket_base_url, local_diffs_log_path):
+def renew_music_ex_data(new_song_list, local_music_ex_json_path, server_music_jacket_base_url, local_diffs_log_path, msgcolor):
     if len(new_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
@@ -61,7 +61,7 @@ def renew_music_ex_data(new_song_list, local_music_ex_json_path, server_music_ja
         _download_song_jacket(song, server_music_jacket_base_url)
         _add_song_data_to_ex_data(song, local_music_ex_data)
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " new song data downloaded : " + song['title'])
-        _update_song_wiki_data(song)
+        _update_song_wiki_data(song, msgcolor)
         _record_new_song_jacket_id(song, local_diffs_log_path)
 
     with open(local_music_ex_json_path, 'w', encoding='utf-8') as f:

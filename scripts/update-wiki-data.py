@@ -9,8 +9,8 @@ parser = argparse.ArgumentParser(description='Description of your script')
 parser.add_argument('--date_from', type=int, default=0, help='Date range from')
 parser.add_argument('--date_until', type=int, default=0, help='Date range until')
 parser.add_argument('--id', type=int, default=0, help='Song ID')
+parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
 
 args = parser.parse_args()
 
-
-update_songs_extra_data(local_music_ex_json_path, args.date_from, args.date_until, args.id)
+update_songs_extra_data(local_music_ex_json_path, args.date_from, args.date_until, args.id, args.nocolors)

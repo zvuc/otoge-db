@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup
 wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
 
 # Update on top of existing music-ex
-def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, song_id):
+def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, song_id, msgcolor):
+    # ipdb.set_trace()
     with open(local_music_ex_json_path, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
@@ -35,7 +36,7 @@ def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, son
     f = open("diffs.txt", 'w')
 
     for song in target_song_list:
-        _update_song_wiki_data(song)
+        _update_song_wiki_data(song, msgcolor)
 
     with open(local_music_ex_json_path, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
@@ -63,7 +64,7 @@ def _filter_songs_by_id(song_list, song_id):
     return target_song_list
 
 
-def _update_song_wiki_data(song):
+def _update_song_wiki_data(song, msgcolor):
     title = (
         song['title']
         .replace('&', '＆')
@@ -78,8 +79,9 @@ def _update_song_wiki_data(song):
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         url = song['wikiwiki_url']
         wiki = requests.get(url)
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKBLUE + ' ' + song['id'] + " (URL already present!) : " + song['title'] + bcolors.ENDC)
-        return _parse_wikiwiki(song, wiki, url)
+
+        _print_message(bcolors.OKBLUE, song, "(URL already present!)", msgcolor)
+        return _parse_wikiwiki(song, wiki, url, msgcolor)
 
     # If not, guess URL from title
     else:
@@ -94,31 +96,31 @@ def _update_song_wiki_data(song):
 
             if not wiki.ok:
                 # give up
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + ' ' + song['id'] + " failed to guess wiki page : " + song['title'] + bcolors.ENDC)
+                _print_message(bcolors.FAIL, song, "failed to guess wiki page", msgcolor)
                 return song
 
             else:
                 url = guess_url
-                return _parse_wikiwiki(song, wiki, url)
+                return _parse_wikiwiki(song, wiki, url, msgcolor)
                 
         else:
             url = guess_url
             
-            return _parse_wikiwiki(song, wiki, url)
+            return _parse_wikiwiki(song, wiki, url, msgcolor)
 
 
-def _parse_wikiwiki(song, wiki, url):
+def _parse_wikiwiki(song, wiki, url, msgcolor):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.FAIL + ' ' + song['id'] + " Parse failed! Skipping song : " + song['title'] + bcolors.ENDC)
+        _print_message(bcolors.FAIL, song, "Parse failed! Skipping song", msgcolor)
         return song
 
     # find the overview table
     overview_table = None
-    # ipdb.set_trace()
+    
     for table in tables:
         rows = table.find_all('tr')
         if len(rows) > 1:
@@ -158,11 +160,11 @@ def _parse_wikiwiki(song, wiki, url):
 
         else:
             # fail
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - enemy lv not found : " + song['title'] + bcolors.ENDC)
+            _print_message(bcolors.WARNING, song, "Warning - enemy lv not found", msgcolor)
             
     else:
         # fail
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - overview table not found : " + song['title'] + bcolors.ENDC)
+        _print_message(bcolors.WARNING, song, "Warning - overview table not found", msgcolor)
 
 
     # find the charts table
@@ -207,16 +209,16 @@ def _parse_wikiwiki(song, wiki, url):
                     song["lev_lnt_i"] = level_hash["譜面定数"]
                     song["lev_lnt_designer"] = level_hash["譜面製作者"]
         else:
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
+            _print_message(bcolors.WARNING, song, "Warning - No chart table found", msgcolor)
     else:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.WARNING + ' ' + song['id'] + " Warning - No chart table found : " + song['title'] + bcolors.ENDC)
+        _print_message(bcolors.WARNING, song, "Warning - No chart table found", msgcolor)
     
 
     song['bpm'] = overview_hash['BPM']
 
     song['wikiwiki_url'] = url
 
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + bcolors.OKGREEN + ' ' + song['id'] + " updated song extra data from wiki : " + song['title'] + bcolors.ENDC)
+    _print_message(bcolors.OKGREEN, song, "Updated song extra data from wiki", msgcolor)
 
     return song
 
@@ -230,3 +232,14 @@ def get_last_date(local_music_json_path):
     lastupdated = reduce(lambda x, y: x if x > y else y, all_dates).strftime('%Y%m%d')
     
     return lastupdated
+
+def _print_message(color_name, song, message, msgcolor):
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    reset_color = bcolors.ENDC
+
+    # if --nocolor
+    if msgcolor:
+        color_name = ''
+        reset_color = ''
+
+    print(timestamp + color_name + ' ' + song['id'] + ' ' + message + ' : ' + song['title'] + reset_color)
