@@ -2,8 +2,6 @@ name: Fetch new songs and create PR
 
 on:
   push:
-    branches:
-      - automation
   workflow_dispatch:
 
 jobs:
