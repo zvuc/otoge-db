@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: master
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -84,6 +82,6 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: add-new-song-${{ env.DATESTAMP }}
-          base: master
+          base: ${{ github.base_ref }}
           title: "[Automation] Update website with new song data (${{ env.DATESTAMP }})"
           body: ${{ env.OUTPUT_LOG }}
