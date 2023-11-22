@@ -26,23 +26,18 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/main.py --nocolors
+            python scripts/main.py
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
       - name: Extract datestamp from script output
         id: extract_date
-        env:
-          OUTPUT_LOG: ${{ steps.run_script.outputs.OUTPUT_LOG }}
-        run: |
-          echo "datestamp=$(cat data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
+        run: echo "datestamp=$(cat data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
 
       - name: Check script output
         id: check_script
-        env:
-          OUTPUT_LOG: ${{ steps.run_script.outputs.OUTPUT_LOG }}
         run: |
-          if [[ "${{ env.OUTPUT_LOG }}" == *"new song data downloaded"* ]]; then
+          if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"new song data downloaded"* ]]; then
             echo "New song data downloaded. Creating a pull request."
             echo "CREATE_PR=true" >> "$GITHUB_OUTPUT"
           else
@@ -51,25 +46,27 @@ jobs:
           fi
 
       - name: Configure Git user
-        env:
-          CREATE_PR: ${{ steps.check_script.outputs.CREATE_PR }}
-        if: env.CREATE_PR == 'true'
+        if: steps.check_script.outputs.CREATE_PR == 'true'
         run: |
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
       - name: Create new branch and commit changes
+        if: steps.check_script.outputs.CREATE_PR == 'true'
         env:
-          CREATE_PR: ${{ steps.check_script.outputs.CREATE_PR }}
-          DATESTAMP: ${{ steps.extract_date.outputs.DATESTAMP }}
-        if: env.CREATE_PR == 'true'
+          UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
-          git checkout -b add-new-song-${{ env.DATESTAMP }}
+          git checkout -b add-new-song-${{ steps.extract_date.outputs.DATESTAMP }}
           git add .
-          git commit -m "[Automated] Add song data ${{ env.DATESTAMP }}"
-          git push origin add-new-song-${{ env.DATESTAMP }}
+          git commit -m "[Automated] Add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
+          git push origin add-new-song-${{ steps.extract_date.outputs.DATESTAMP }}
 
       - name: Create Pull Request
-        run: gh pr create -B ${{ github.ref_name }} -H add-new-song-${{ env.DATESTAMP }} --title "[Automation] Update website with new song data (${{ env.DATESTAMP }})" --body '${{ steps.run_script.outputs.OUTPUT_LOG }}'
+        run: |
+          gh pr create \
+          -B ${{ github.ref_name }} \
+          -H 'add-new-song-${{ steps.extract_date.outputs.DATESTAMP }}' \
+          --title "[Automation] Update website with new song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+          --body '${{ steps.run_script.outputs.OUTPUT_LOG }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
