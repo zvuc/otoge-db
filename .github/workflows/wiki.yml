@@ -61,6 +61,7 @@ jobs:
           git push origin apply-wiki-${{ steps.extract_date.outputs.DATESTAMP }}
 
       - name: Create Pull Request
+        if: steps.check_script.outputs.CREATE_PR == 'true'
         run: |
           gh pr create \
           -B ${{ github.ref_name }} \
