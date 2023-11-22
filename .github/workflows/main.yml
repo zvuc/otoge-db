@@ -50,10 +50,6 @@ jobs:
             echo "CREATE_PR=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # - name: Switch to master branch
-      #   if: env.create_pr == 'true'
-      #   run: git checkout master
-
       - name: Configure Git user
         env:
           CREATE_PR: ${{ steps.check_script.outputs.CREATE_PR }}
