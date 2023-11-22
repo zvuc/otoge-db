@@ -30,12 +30,13 @@ Just open `index.html` and refresh manually. Simple as the good old year 2000.
 
 ## Credits
 ### Code Contributions
-- [@Ryudnar](https://github.com/Ryudnar) : song data download automation script
-- [@kiding](https://github.com/kiding/) : auto update datestamp
+- [@Ryudnar](https://github.com/Ryudnar) : Base script for song data downloading
+- [@kiding](https://github.com/kiding/) : Update datestamp on update
+- [@ssankim](https://github.com/ssankim/) : Wiki fetch script & Github Actions workflow help
 
 ### Other Contributions & Data Sources
 - [SEGA Official Music Data](https://ongeki.sega.jp/assets/data/music.json) : base JSON file
-- [オンゲキ攻略wiki](https://ongeki.gamerch.com/%E5%B1%9E%E6%80%A7%E5%88%A5%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7) : Enemy type, level, chart detail info
+- [オンゲキ攻略wiki](https://wikiwiki.jp/gameongeki/) : Enemy type, level, chart detail info
 - Precise chart level data (譜面定数) [@RKS49019722](https://twitter.com/RKS49019722) [@Rinsaku471](https://twitter.com/Rinsaku471) [@46189_ext](https://twitter.com/46189_ext) [@hikkey7th](https://twitter.com/hikkey7th) [@suoineau_ac](https://twitter.com/suoineau_ac) [@hayato_ongeki](https://twitter.com/hayato_ongeki)
 
 ### Special Thanks to
