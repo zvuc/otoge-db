@@ -1,3 +1,4 @@
+import const
 import requests
 import json
 import ipdb
@@ -9,16 +10,16 @@ from bs4 import BeautifulSoup
 wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
 
 # Update on top of existing music-ex
-def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, song_id, msgcolor):
+def update_songs_extra_data(date_from, date_until, song_id, msgcolor):
     # ipdb.set_trace()
-    with open(local_music_ex_json_path, 'r', encoding='utf-8') as f:
+    with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
     # prioritize id search if provided
     if not song_id == 0:
         target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
     else:
-        latest_date = int(get_last_date(local_music_ex_json_path))
+        latest_date = int(get_last_date(const.LOCAL_MUSIC_EX_JSON_PATH))
 
         if date_from == 0:
             date_from = latest_date
@@ -38,7 +39,7 @@ def update_songs_extra_data(local_music_ex_json_path, date_from, date_until, son
     for song in target_song_list:
         _update_song_wiki_data(song, msgcolor)
 
-    with open(local_music_ex_json_path, 'w', encoding='utf-8') as f:
+    with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
@@ -224,8 +225,8 @@ def _parse_wikiwiki(song, wiki, url, msgcolor):
 
 
 
-def get_last_date(local_music_json_path):
-    with open(local_music_json_path, 'r', encoding='utf-8') as f:
+def get_last_date(LOCAL_MUSIC_JSON_PATH):
+    with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
 
     all_dates = [datetime.strptime(x['date'], '%Y%m%d').date() for x in local_music_data]
