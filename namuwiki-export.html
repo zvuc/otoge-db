@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="datatables/datatables.min.js"></script>
-    <link rel="stylesheet" href="datatables/datatables.min.css">
+    <script type="text/javascript" src="datatables/datatables.custom.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <title>オンゲキ収録曲DB</title>
@@ -40,7 +39,6 @@
                 <!-- 16 --><th class="all toggle"><span>EXP</span></th>
                 <!-- 17 --><th class="all toggle"><span>MAS</span></th>
                 <!-- 18 --><th class="all toggle"><span>LNT</span></th>
-                <!-- 19 --><th class="all"><span>NEW</span></th>
                 <!-- 20 --><th class="all toggle"><span>追加日</span></th>
             </tr>
         </thead>
@@ -130,7 +128,8 @@
                         else {
                             return row.title_sort;
                         }
-                    }
+                    },
+                    width: "100vw"
                 },
                 {
                     displayTitle: "曲名 (読み)",
@@ -293,7 +292,7 @@
                         }
                     },
                     customDropdownSortSource: sortByLeadingZeros('lev_bas'),
-                    width: "3rem",
+                    width: "5rem",
                     filterable: true
                 },
                 { 
@@ -304,7 +303,7 @@
                     className: "lv lv-adv",
                     render: renderLvNumIfNotLunatic('lev_adv', 'lev_adv_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_adv'),
-                    width: "3rem",
+                    width: "5rem",
                     filterable: true
                 },
                 { 
@@ -315,7 +314,7 @@
                     className: "lv lv-exp",
                     render: renderLvNumIfNotLunatic('lev_exc', 'lev_exc_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_exc'),
-                    width: "3rem",
+                    width: "5rem",
                     filterable: true
                 },
                 { 
@@ -326,7 +325,7 @@
                     className: "lv lv-mas",
                     render: renderLvNumIfNotLunatic('lev_mas', 'lev_mas_i'),
                     customDropdownSortSource: sortByLeadingZeros('lev_mas'),
-                    width: "3rem",
+                    width: "5rem",
                     filterable: true
                 },
                 { 
@@ -341,27 +340,27 @@
                         return "||";
                     },
                     customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
-                    width: "3rem",
+                    width: "5rem",
                     filterable: true
                 },
                 { 
-                    displayTitle: "NEW",
-                    title: "",
-                    data: "new",
-                    searchable: false,
-                    orderable: false,
-                    render: function ( data, type, row ) {
-                        return "";
-                    }
-                },
-                { 
                     displayTitle: "追加日",
-                    data: "date",
+                    name: "date",
+                    data: function( row, type, set, meta ) {
+                        return formatDate(row.date)
+                    },
                     className: "date",
                     filterable: true,
-                    width: "4em",
-                    visible: false,
-                    reverseSortOrder: true
+                    render: function ( data, type, row ) {
+                        if ( type === 'display' ) {
+                            return '<div class="inner-wrap">'+ data +'<\/div>';
+                        }
+                        else {
+                            return data;
+                        }
+                    },
+                    reverseSortOrder: true,
+                    visible: false
                 }
             ];
             
@@ -431,6 +430,28 @@
                 }
             }
 
+            function formatDate(inputDate, dateFormat) {
+                // Parse input date string
+                var year = inputDate.slice(0, 4);
+                var month = inputDate.slice(4, 6);
+                var day = inputDate.slice(6, 8);
+                var ISOdate = `${year}-${month}-${day}`
+
+                // Format the date as "YYYY-MM-DD"
+                if (dateFormat == 'JP') {
+                    var days_of_week = ["日", "月", "火", "水", "木", "金", "土"];
+                    var current_year = new Date().getFullYear();
+                    var day_of_week = days_of_week[new Date(ISOdate).getDay()];
+                    var year_print = (current_year == year) ? '' : `${year}/`;
+                    var formatted_date = year_print + `${month}/${day}(${day_of_week})`;
+                }
+                else {
+                    var formatted_date = ISOdate;
+                }
+
+                return formatted_date;
+            }
+
             var table = $('#table').DataTable( {
                 "ajax": {
                     url: "data/music-ex.json",
@@ -495,7 +516,7 @@
                 ],
                 "columns": columns_params,
                 "deferRender": true,
-                "dom": '<"column-toggle-bar"B><"toolbar filters"><"toolbar"lf><"toolbar"i><"table-inner"rt><"paging"p>',
+                "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
                 "language": {
                     "sEmptyTable":     "テーブルにデータがありません",
                     "sInfo":           " _TOTAL_ 曲中 _START_〜_END_ まで表示中",
@@ -520,24 +541,24 @@
                     }
                 },
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-                "order": [[20, 'asc'],[9,'asc'],[0,'asc']], 
-                "responsive": {
-                    details: {
-                        type: 'column',
-                        target: 'tr',
-                        display: $.fn.dataTable.Responsive.display.modal( {
-                            header: function ( row ) {
-                                var data = row.data();
-                                return data.title + '<br><span class="artist">' + data.artist + '<\/span>';
-                            }
-                        } ),
-                        renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-                    }
-                },
+                "order": [[19, 'asc'],[9,'asc'],[0,'asc']], 
+                // "responsive": {
+                //     details: {
+                //         type: 'column',
+                //         target: 'tr',
+                //         display: $.fn.dataTable.Responsive.display.modal( {
+                //             header: function ( row ) {
+                //                 var data = row.data();
+                //                 return data.title + '<br><span class="artist">' + data.artist + '<\/span>';
+                //             }
+                //         } ),
+                //         renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+                //     }
+                // },
                 "rowGroup": {
                     dataSrc: 'date',
                     startRender: function ( rows, group ) {
-                        return '<div>' + group +' 追加<\/div>';
+                        return '<div>' + formatDate(group, 'JP') +' 追加<\/div>';
                         // enable rows count again when I find a way to show all rows in other pages
                         // return group +'更新 ('+rows.count()+'曲)';
                     }
