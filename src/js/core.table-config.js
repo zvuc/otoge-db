@@ -363,10 +363,21 @@ $(document).ready(function() {
         { 
             displayTitle: "追加日",
             name: "date",
-            data: "date",
+            // data: "date",
+            data: function( row, type, set, meta ) {
+                return formatDate(row.date)
+            },
             className: "date",
             filterable: true,
-            render: renderInWrapper(),
+            // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
+            render: function ( data, type, row ) {
+                if ( type === 'display' ) {
+                    return '<div class="inner-wrap">'+ data +'<\/div>';
+                }
+                else {
+                    return data;
+                }
+            },
             reverseSortOrder: true,
             width: "4em"
         },
@@ -591,6 +602,28 @@ $(document).ready(function() {
         }
     }
 
+    function formatDate(inputDate, dateFormat) {
+        // Parse input date string
+        var year = inputDate.slice(0, 4);
+        var month = inputDate.slice(4, 6);
+        var day = inputDate.slice(6, 8);
+        var ISOdate = `${year}-${month}-${day}`
+
+        // Format the date as "YYYY-MM-DD"
+        if (dateFormat == 'JP') {
+            var days_of_week = ["日", "月", "火", "水", "木", "金", "土"];
+            var current_year = new Date().getFullYear();
+            var day_of_week = days_of_week[new Date(ISOdate).getDay()];
+            var year_print = (current_year == year) ? '' : `${year}/`;
+            var formatted_date = year_print + `${month}/${day}(${day_of_week})`;
+        }
+        else {
+            var formatted_date = ISOdate;
+        }
+
+        return formatted_date;
+    }
+
     $.getJSON("data/music-ex.json", (data) => {
         
 
@@ -800,7 +833,7 @@ $(document).ready(function() {
             "rowGroup": {
                 dataSrc: 'date',
                 startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-                    return '<div>' + group +' 追加<\/div>';
+                    return '<div>' + formatDate(group, 'JP') +' 追加<\/div>';
                     // enable rows count again when I find a way to show all rows in other pages
                     // return group +'更新 ('+rows.count()+'曲)';
                 }) : null
