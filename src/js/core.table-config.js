@@ -276,7 +276,6 @@ $(document).ready(function() {
                 function( row, type, set, meta ) {
                     if ( flat_view == true ) {
                         if ( type === 'sort' || type === 'meta') {
-                            console.log(row.chart_diff);
                             return row.chart_diff;
                         } 
                         else {
@@ -756,9 +755,6 @@ $(document).ready(function() {
 
                         var normalRows = $.map(columns, function(col, i) {
                             var column_param = columns_params[col.columnIndex];
-                            // console.log(api.column(col.columnIndex).data());
-                            // console.log(data);
-                            // console.log(col);
 
                             // generic
                             if (!col.className.includes('detail-hidden') && !col.className.includes('lv ') && !col.className.includes('chara ')) {
@@ -965,13 +961,9 @@ $(document).ready(function() {
                     var search = table.columns().search();
                     var searchActive = false;
 
-                    // console.log('Reorder happened!');
-                    // console.log(order);
-
                     for (let k = 0; k < search.length; k = k + 1) {
                         if (k in search && search[k] !== "") {
                             searchActive = true;
-                            // console.log(searchActive);
                             break;
                         }
                     }
@@ -1007,7 +999,6 @@ $(document).ready(function() {
     
     // recalculate columns on colvis change event
     $('#table').on( 'column-visibility.dt', function () {
-        console.log('colvis event');
         $.fn.dataTable
             .tables( { visible: true, api: true } )
             .columns.adjust();
@@ -1033,10 +1024,6 @@ $(document).ready(function() {
         else {
             window.location.href = '/lv?chart_lev=' + encodeURIComponent(val);
         }
-
-        // select.val(String(val));
-
-        // console.log(val);
     });
 
     // update chart_lev selectbox value on page load
