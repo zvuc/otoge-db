@@ -5,6 +5,7 @@ on:
 
 jobs:
   fetch_from_wiki:
+    name: Fetch from wiki
     runs-on: ubuntu-latest
 
     steps:

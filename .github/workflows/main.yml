@@ -7,6 +7,7 @@ on:
 
 jobs:
   run_script_and_create_pr:
+    name: Run script and create PR
     runs-on: ubuntu-latest
 
     steps:
