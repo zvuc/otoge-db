@@ -73,8 +73,8 @@ jobs:
         run: |
           gh pr create \
           -B ${{ github.ref_name }} \
-          -H 'apply-wiki-${{ steps.extract_date.outputs.DATESTAMP }}' \
+          -H "apply-wiki-${{ steps.extract_date.outputs.DATESTAMP }}" \
           --title "[Automation] Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
-          --body '${{ steps.run_script.outputs.OUTPUT_LOG }}'
+          --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
