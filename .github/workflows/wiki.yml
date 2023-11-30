@@ -1,6 +1,8 @@
 name: Fetch data from wiki
 
 on:
+  schedule:
+    - cron: '0 2 * * THU'
   workflow_dispatch:
 
 jobs:
