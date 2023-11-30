@@ -66,7 +66,7 @@ def renew_music_ex_data(new_song_list, msgcolor, skipwiki):
         if not skipwiki:
             _update_song_wiki_data(song, msgcolor)
             
-        _record_new_song_jacket_id(song, const.LOCAL_DIFFS_LOG_PATH)
+        _record_new_song_jacket_id(song)
 
     with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
