@@ -33,7 +33,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --nocolors
+            python scripts/update-wiki-data.py --nocolors --escape
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
