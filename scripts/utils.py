@@ -51,7 +51,7 @@ def _json_to_id_value_map(json):
 
 def renew_music_ex_data(new_song_list, nocolors, escape, skipwiki):
     if len(new_song_list) == 0:
-        _print_message("nothing updated", '', nocolors, '', escape)
+        _print_message("Nothing updated", '', nocolors, '', escape)
         return
 
     f = open("diffs.txt", 'w')
@@ -62,7 +62,7 @@ def renew_music_ex_data(new_song_list, nocolors, escape, skipwiki):
     for song in new_song_list:
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
-        _print_message("new song data downloaded", song, nocolors, bcolors.OKGREEN, escape)
+        _print_message("New song added", song, nocolors, bcolors.OKGREEN, escape)
         
         if not skipwiki:
             _update_song_wiki_data(song, nocolors, escape)

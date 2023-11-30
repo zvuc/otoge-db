@@ -39,7 +39,7 @@ jobs:
       - name: Check script output
         id: check_script
         run: |
-          if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"updated song extra data from wiki"* ]]; then
+          if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"Updated song extra data from wiki"* ]]; then
             echo "Updated song data from wiki. Creating a pull request."
             echo "CREATE_PR=true" >> "$GITHUB_OUTPUT"
           else
