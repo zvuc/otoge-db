@@ -4,6 +4,7 @@ import urllib.request
 import json
 import re
 import ipdb
+from terminal import bcolors
 from datetime import datetime
 from functools import reduce
 from wikiwiki import _update_song_wiki_data
@@ -48,9 +49,9 @@ def _json_to_id_value_map(json):
     return {int(song['id']):song for song in json}
 
 
-def renew_music_ex_data(new_song_list, msgcolor, skipwiki):
+def renew_music_ex_data(new_song_list, nocolors, escape, skipwiki):
     if len(new_song_list) == 0:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
+        _print_message("nothing updated", '', nocolors, '', escape)
         return
 
     f = open("diffs.txt", 'w')
@@ -61,10 +62,10 @@ def renew_music_ex_data(new_song_list, msgcolor, skipwiki):
     for song in new_song_list:
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " new song data downloaded : " + song['title'])
+        _print_message("new song data downloaded", song, nocolors, bcolors.OKGREEN, escape)
         
         if not skipwiki:
-            _update_song_wiki_data(song, msgcolor)
+            _update_song_wiki_data(song, nocolors, escape)
             
         _record_new_song_jacket_id(song)
 
@@ -137,3 +138,26 @@ def renew_lastupdated(dest_html_path):
         f.write(local_html_data)
 
 
+
+def _print_message(message, song, nocolors, color_name, escape):
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    reset_color = bcolors.ENDC
+
+    if song:
+        song_id = song['id']
+
+        # if --escape is set
+        if escape:
+            song_title = ' : ' + song['title'].replace("'", r"\'")
+        else:
+            song_title = ' : ' + song['title']
+    else:
+        song_id = ''
+        song_title = ''
+
+    # if --nocolors is set
+    if nocolors:
+        color_name = ''
+        reset_color = ''
+
+    print(timestamp + color_name + ' ' + song_id + ' ' + message + song_title + reset_color)
