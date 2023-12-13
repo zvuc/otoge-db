@@ -59,21 +59,34 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Create new branch and commit changes
+        id: checkout_branch_commit
         if: steps.check_script.outputs.CREATE_PR == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
-          git checkout -b apply-wiki-${{ steps.extract_date.outputs.DATESTAMP }}
           git add .
-          git commit -m "[Automated] Apply updated data from wiki ${{ steps.extract_date.outputs.DATESTAMP }}"
-          git push origin apply-wiki-${{ steps.extract_date.outputs.DATESTAMP }}
+          if echo `git diff --quiet && git diff --staged --quiet`; then
+            echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
+            echo "No changes. Skipping PR request"
+          else
+            if git show-ref --quiet refs/heads/update-${{ steps.extract_date.outputs.DATESTAMP }}; then
+              echo "Branch already exists, switching to existing branch"
+              git checkout update-${{ steps.extract_date.outputs.DATESTAMP }}
+            else
+              git checkout -b update-${{ steps.extract_date.outputs.DATESTAMP }}
+            fi
+            git commit -m "[Automated] Apply updated data from wiki ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git push origin update-${{ steps.extract_date.outputs.DATESTAMP }}
+            echo "Commited changes."
+            echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Create Pull Request
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        if: steps.check_script.outputs.CREATE_PR == 'true' && steps.checkout_branch_commit.outputs.HAS_DIFFS == 'true'
         run: |
           gh pr create \
           -B ${{ github.ref_name }} \
-          -H "apply-wiki-${{ steps.extract_date.outputs.DATESTAMP }}" \
+          -H "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
           --title "[Automation] Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
           --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
         env:
