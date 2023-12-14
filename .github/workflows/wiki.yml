@@ -84,6 +84,8 @@ jobs:
       - name: Create Pull Request
         if: steps.check_script.outputs.CREATE_PR == 'true' && steps.checkout_branch_commit.outputs.HAS_DIFFS == 'true'
         run: |
+          gh pr comment ${{ github.ref_name }} \
+          --body "${{ steps.run_script.outputs.OUTPUT_LOG }}" || \
           gh pr create \
           -B ${{ github.ref_name }} \
           -H "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
