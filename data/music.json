@@ -20332,7 +20332,7 @@
     "image_url": "9a2511e60e47ffea.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20231130",
     "title": "WE'RE BACK!!",
     "title_sort": "WEREBACK",
@@ -20355,7 +20355,7 @@
     "image_url": "ef2d2fca02abe112.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20231130",
     "title": "N3V3R G3T OV3R",
     "title_sort": "N3V3RG3TOVER",
@@ -20378,7 +20378,7 @@
     "image_url": "6d6d57679a83d7f3.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20231130",
     "title": "Geki Geki!! 激闘Break Out!! -藤沢 柚子ソロver.-",
     "title_sort": "GEKIGEKIケキトウBREAKOUTフシサワユスソロVER",
@@ -20401,7 +20401,7 @@
     "image_url": "7b272a7152e76e7b.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20231130",
     "title": "Geki Geki!! 激闘Break Out!! -井之原 小星ソロver.-",
     "title_sort": "GEKIGEKIケキトウBREAKOUTイノハラコホシソロVER",
@@ -20424,7 +20424,7 @@
     "image_url": "d47efee282b43c2f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20231130",
     "title": "Geki Geki!! 激闘Break Out!! -逢坂 茜ソロver.-",
     "title_sort": "GEKIGEKIケキトウBREAKOUTオウサカアカネソロVER",
@@ -20445,5 +20445,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "17f05aab19f0eebd.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20231214",
+    "title": "Prominence",
+    "title_sort": "PROMINENCE",
+    "artist": "曲：下野 隼／歌：皇城 セツナ(CV：八巻 アンナ)、式宮 碧音(CV：髙橋 ミナミ)",
+    "id": "600860",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "皇城 セツナ",
+    "chara_id": "1170",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© Re:STAGE! PROJECT",
+    "lev_bas": "6",
+    "lev_adv": "9+",
+    "lev_exc": "12+",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "cf35bfb03fcfb334.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20231214",
+    "title": "Apollo -onoken AxSwing Remix-",
+    "title_sort": "APOLLOONOKENAXSWINGREMIX",
+    "artist": "onoken",
+    "id": "600850",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "皇城 セツナ",
+    "chara_id": "1170",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "8+",
+    "lev_exc": "12",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "4452769f15d274d6.png"
   }
 ]
