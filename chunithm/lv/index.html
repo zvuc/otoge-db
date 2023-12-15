@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="page-loading table-loading">
+<head>
+    <base href="../"/>
+
+    <meta charset="UTF-8"> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    
+    <meta name="description" content="セガの音ゲー「オンゲキ」の楽曲一覧、譜面データなどを閲覧できるデータベースです。" />
+    <meta name="keywords" content="オンゲキ,オンゲキDB,オンゲキ楽曲リスト,楽曲リスト,楽曲一覧,楽曲収録曲,曲リスト,曲検索,譜面,譜面定数,敵レベル,属性,バージョン別,相手キャラ" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="オンゲキDB">
+    <meta property="og:title" content="オンゲキDB ver. bright MEMORY">
+    <meta property="og:description" content="セガの音ゲー「オンゲキ」の楽曲一覧や譜面データなどを閲覧できるデータベースです。">
+    <meta property="og:url" content="https://ongeki.info/">
+    <meta property="og:image" content="https://ongeki.info/img/ongeki-db-og.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="オンゲキDB">
+    <meta name="twitter:title" content="オンゲキDB ver. bright MEMORY">
+    <meta name="twitter:description" content="セガの音ゲー「オンゲキ」の楽曲一覧や譜面データなどを閲覧できるデータベースです。">
+    <meta name="twitter:image" content="https://ongeki.info/img/ongeki-db-og.jpg">
+    <meta name="twitter:url" content="https://ongeki.info/">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="datatables/datatables.custom.min.js?20210126"></script>
+    <link rel="stylesheet" href="./style.css?20231217">
+
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="32x32" href="./img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="512x512" href="./img/ongeki-db-icon-512.png" />
+    <link rel="apple-touch-icon-precomposed" href="./img/ongeki-db-icon-512.png" />
+
+    <title>オンゲキDB :: 譜面別</title>
+</head>
+<body>
+    <div id="app-wrapper">
+        <!-- <div class="notice-wrap">
+            <div class="notice-bar">
+                <span class="new-badge">NEW</span><span class="msg-text">オンゲキDBサイトのアドレスが新しくなりました→ <b>ongeki.info</b><br>ブックマークなどの更新はお忘れずに！</span>
+                <button id="hide-notice-btn" class="close-btn"></button>
+            </div>
+        </div> -->
+        <header>
+            <h1>
+                <a href="./">
+                    <span class="ongeki-db-logo"></span>
+                    <span class="hidden" aria-hidden="true">オンゲキDB : オンゲキ楽曲リスト</span>
+                </a>
+            </h1>
+            <div class="aside">
+                <div class="lastupdated"><span>DATA: 20231214</span></div>
+                <div class="theme-switcher">
+                    <span class="label"></span>
+                    <label class="switch" for="themeToggleCheckbox">
+                        <input type="checkbox" id="themeToggleCheckbox" checked />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+            </div>
+        </header>
+
+        <nav class="menu open">
+            
+        </nav>
+
+        <nav class="site-navigation">
+            <a href="./" class="btn">SONGS／曲</a>
+            <button class="btn active reset-search">CHARTS／譜面</button>
+            <select class="lv-switcher" name="lv-switcher" id="chart_lev" data-type="filter">
+                <option value="" selected="" data-default="">LEVEL ALL</option>
+                <option value="15">LEVEL 15</option>
+                <option value="14+">LEVEL 14+</option>
+                <option value="14">LEVEL 14</option>
+                <option value="13+">LEVEL 13+</option>
+                <option value="13">LEVEL 13</option>
+                <option value="12+">LEVEL 12+</option>
+                <option value="12">LEVEL 12</option>
+                <option value="11+">LEVEL 11+</option>
+                <option value="11">LEVEL 11</option>
+                <option value="10+">LEVEL 10+</option>
+                <option value="10">LEVEL 10</option>
+                <option value="9+">LEVEL 9+</option>
+                <option value="9">LEVEL 9</option>
+                <option value="8+">LEVEL 8+</option>
+                <option value="8">LEVEL 8</option>
+                <option value="7+">LEVEL 7+</option>
+                <option value="7">LEVEL 7</option>
+                <option value="6">LEVEL 6</option>
+                <option value="5">LEVEL 5</option>
+                <option value="4">LEVEL 4</option>
+                <option value="3">LEVEL 3</option>
+                <option value="2">LEVEL 2</option>
+                <option value="1">LEVEL 1</option>
+                <option value="0">LEVEL 0</option>
+            </select>
+        </nav>
+
+        <div id="site-loader">
+            <span class="loader">
+                <span class="loader-tri t1"></span>
+                <span class="loader-tri t2"></span>
+                <span class="loader-tri t3"></span>
+                <span class="loader-tri t4"></span>
+                <span class="loader-tri t5"></span>
+            </span>
+        </div>
+
+        <table id="table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <!-- 0 --><th class="never"><span>ID (system)</span></th>
+                    <!-- 1 --><th class="all"><span>#</span></th>
+                    <!-- 2 --><th class="all"><span>A</span></th>
+                    <!-- 3 --><th class="all"><span>曲名・アーティスト</span></th>
+                    <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
+                    <!-- 5 --><th class="all"><span>曲名・アーティスト</span></th>
+
+                    <!-- 6 --><th class="toggle"><span>BPM</span></th>
+
+                    <!-- 7 --><th class="all toggle"><span>バージョン</span></th>
+                    <!-- 8 --><th class="min-tablet toggle nowrap"><span>ジャンル</span></th>
+
+                    <!-- 9 --><th class="none"><span>BSC</span></th>
+                    <!-- 10 --><th class="none"><span>ADV</span></th>
+                    <!-- 11 --><th class="none"><span>EXP</span></th>
+                    <!-- 12 --><th class="none"><span>MAS</span></th>
+                    <!-- 13 --><th class="none"><span>ULT</span></th>
+                    <!-- 14 --><th class="none"><span>WE</span></th>
+                    <!-- 15 --><th class="none"><span>WE☆</span></th>
+
+                    <!-- 16 --><th class="all"><span>難易度名</span></th>
+                    <!-- 17 --><th class="all"><span>レベル</span></th>
+                    <!-- 18 --><th class="all"><span>難易度</span></th>
+
+
+                    <!-- 19 --><th class="toggle"><span>ノート数</span></th>
+                    <!-- 20 --><th class="toggle"><span>TAP</span></th>
+                    <!-- 21 --><th class="toggle"><span>HOLD</span></th>
+                    <!-- 22 --><th class="toggle"><span>SLIDE</span></th>
+                    <!-- 23 --><th class="toggle"><span>AIR</span></th>
+                    <!-- 24 --><th class="toggle"><span>FLICK</span></th>
+                    <!-- 25 --><th class="toggle"><span>譜面作者</span></th>
+                    
+                    <!-- 26 --><th class="all toggle"><span>追加日</span></th>
+                    
+                    <!-- 27 --><th class="none detail-hidden"><span>NEW</span></th>
+
+                </tr>
+            </thead>
+        </table>
+
+        <footer id="site-footer">
+            <!-- <div class="notice-bar">
+                ⚠️ マークされた譜面定数はまだSUMMER PLUS ver.時点でのものであり、最新の情報と異なる場合があります。
+            </div> -->
+            <div class="commit-bar">
+                <span class="commit-label"><svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                    <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg><span>最新の更新内容</span><span id="latest-commit-date"></span></span>
+                <a id="latest-commit"><span id="latest-commit-content">Loading...</span></a>
+            </div>
+            <div class="disclaimer">
+                <div class="content">
+                    <p><b>DISCLAIMER: Ongeki DB is a fan project. It is not in any way affiliated with or endorsed by SEGA. The original オンゲキ Logo is a trademark of SEGA CORPORATION. All copyrighted materials are owned by their respective owners.</b></p>
+                    <p>Made by <a href="https://twitter.com/zvuc_" target="_blank" rel="noopener">@zvuc_</a> / Contributions & feedback on <a href="https://github.com/zvuc/ongeki-db" target="_blank" rel="noopener">GitHub</a></p>
+                </div>
+                <div class="footer-logo"></div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        var flat_view = true;
+    </script>
+    <!-- <script defer src="./functions.js?20221204"></script> -->
+    <script defer src="./src/js/core.table-config.js"></script>
+    <script defer src="./src/js/core.page-functions.js"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-141271073-1');
+      gtag('config', 'G-YZ8GJR7QFL');
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+SERVER_MUSIC_DATA_URL = "https://chunithm.sega.jp/storage/json/music.json"
+SERVER_MUSIC_JACKET_BASE_URL = "https://new.chunithm-net.com/chuni-mobile/html/mobile/img/"
+LOCAL_MUSIC_JSON_PATH = "data/music.json"
+LOCAL_MUSIC_EX_JSON_PATH = "data/music-ex.json"
+LOCAL_DIFFS_LOG_PATH = "diffs.txt"
+LOCAL_INDEX_HTML_PATH = "index.html"
+LOCAL_LEVELS_HTML_PATH = "lv/index.html"
+LOCAL_NAMUWIKI_EXPORT_PATH = "namuwiki-export.html"
