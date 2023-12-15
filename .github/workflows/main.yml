@@ -1,4 +1,4 @@
-name: Fetch new songs and create PR
+name: Fetch new songs
 
 on:
   schedule:
@@ -28,7 +28,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run main.py script and capture output
+      - name: Run main script and capture output
         id: run_script
         run: |
           {

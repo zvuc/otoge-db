@@ -1,4 +1,4 @@
-name: Fetch data from wiki
+name: Fetch from wiki & sdvx.in
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   fetch_from_wiki:
-    name: Fetch from wiki
+    name: Fetch from wiki & sdvx.in
     runs-on: ubuntu-latest
 
     steps:
@@ -28,12 +28,13 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run main.py script and capture output
+      - name: Run wiki script and capture output
         id: run_script
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
             python scripts/update-wiki-data.py --nocolors --escape
+            python scripts/update-chartguide-data.py --nocolors --escape
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
