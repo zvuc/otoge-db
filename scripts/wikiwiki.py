@@ -185,30 +185,30 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                 level_hash = dict(zip(charts_table_head, chart_details))
 
                 if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
-                    song["lev_bas_notes"] = level_hash["総ノート数"].replace(',', '')
-                    song["lev_bas_bells"] = level_hash["BELL"].replace(',', '')
-                    song["lev_bas_i"] = level_hash["譜面定数"]
-                    song["lev_bas_designer"] = level_hash["譜面製作者"]
+                    _update_song_key(song["lev_bas_notes"], level_hash["総ノート数"], remove_comma=True)
+                    _update_song_key(song["lev_bas_bells"], level_hash["BELL"], remove_comma=True)
+                    _update_song_key(song["lev_bas_i"], level_hash["譜面定数"])
+                    _update_song_key(song["lev_bas_designer"], level_hash["譜面製作者"])
                 elif song['lunatic'] == '' and level_hash['難易度'] == 'ADVANCED':
-                    song["lev_adv_notes"] = level_hash["総ノート数"].replace(',', '')
-                    song["lev_adv_bells"] = level_hash["BELL"].replace(',', '')
-                    song["lev_adv_i"] = level_hash["譜面定数"]
-                    song["lev_adv_designer"] = level_hash["譜面製作者"]
+                    _update_song_key(song["lev_adv_notes"], level_hash["総ノート数"], remove_comma=True)
+                    _update_song_key(song["lev_adv_bells"], level_hash["BELL"], remove_comma=True)
+                    _update_song_key(song["lev_adv_i"], level_hash["譜面定数"])
+                    _update_song_key(song["lev_adv_designer"], level_hash["譜面製作者"])
                 elif song['lunatic'] == '' and level_hash['難易度'] == 'EXPERT':
-                    song["lev_exc_notes"] = level_hash["総ノート数"].replace(',', '')
-                    song["lev_exc_bells"] = level_hash["BELL"].replace(',', '')
-                    song["lev_exc_i"] = level_hash["譜面定数"]
-                    song["lev_exc_designer"] = level_hash["譜面製作者"]
+                    _update_song_key(song["lev_exc_notes"], level_hash["総ノート数"], remove_comma=True)
+                    _update_song_key(song["lev_exc_bells"], level_hash["BELL"], remove_comma=True)
+                    _update_song_key(song["lev_exc_i"], level_hash["譜面定数"])
+                    _update_song_key(song["lev_exc_designer"], level_hash["譜面製作者"])
                 elif song['lunatic'] == '' and level_hash['難易度'] == 'MASTER':
-                    song["lev_mas_notes"] = level_hash["総ノート数"].replace(',', '')
-                    song["lev_mas_bells"] = level_hash["BELL"].replace(',', '')
-                    song["lev_mas_i"] = level_hash["譜面定数"]
-                    song["lev_mas_designer"] = level_hash["譜面製作者"]
+                    _update_song_key(song["lev_mas_notes"], level_hash["総ノート数"], remove_comma=True)
+                    _update_song_key(song["lev_mas_bells"], level_hash["BELL"], remove_comma=True)
+                    _update_song_key(song["lev_mas_i"], level_hash["譜面定数"])
+                    _update_song_key(song["lev_mas_designer"], level_hash["譜面製作者"])
                 elif song['lunatic'] == '1' and level_hash['難易度'] == 'LUNATIC':
-                    song["lev_lnt_notes"] = level_hash["総ノート数"].replace(',', '')
-                    song["lev_lnt_bells"] = level_hash["BELL"].replace(',', '')
-                    song["lev_lnt_i"] = level_hash["譜面定数"]
-                    song["lev_lnt_designer"] = level_hash["譜面製作者"]
+                    _update_song_key(song["lev_lnt_notes"], level_hash["総ノート数"], remove_comma=True)
+                    _update_song_key(song["lev_lnt_bells"], level_hash["BELL"], remove_comma=True)
+                    _update_song_key(song["lev_lnt_i"], level_hash["譜面定数"])
+                    _update_song_key(song["lev_lnt_designer"], level_hash["譜面製作者"])
         else:
             _print_message("Warning - No chart table found", song, nocolors, bcolors.WARNING, escape)
     else:
@@ -234,6 +234,19 @@ def get_last_date(LOCAL_MUSIC_JSON_PATH):
     
     return lastupdated
 
+def _update_song_key(key, new_data, remove_comma=False):
+    # if source is not empty, don't overwrite
+    if not (key == ''):
+        return
+    # Only overwrite if new data is not empty
+    if not (new_data == ''):
+        key = new_data
+
+        if remove_comma:
+            key.replace(',', '')
+            return
+        else:
+            return
 
 def _print_message(message, song, nocolors, color_name, escape):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
