@@ -28,10 +28,18 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Configure Git user
+        run: |
+          git config --global user.email "noreply@github.com"
+          git config --global user.name "GitHub Actions"
+
       - name: Checkout branch if already exists
         id: checkout_existing_branch
         run: |
-          git checkout -b  $(git branch -r --sort='-committerdate' | grep origin/update-\* | head -n 1 | sed 's/^origin\///') $(git branch -r --sort='-committerdate' | grep origin/update-\* | head -n 1)
+          git fetch origin
+          git checkout \
+              -b $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1 | sed 's/^origin\///') \
+              --track $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1)
 
       - name: Run wiki script and capture output
         id: run_script
@@ -52,26 +60,20 @@ jobs:
         run: |
           if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"Updated song extra data from wiki"* ]]; then
             echo "Updated song data from wiki. Creating a pull request."
-            echo "CREATE_PR=true" >> "$GITHUB_OUTPUT"
+            echo "COMMIT=true" >> "$GITHUB_OUTPUT"
           else
             echo "Nothing updated. Skipping pull request creation."
-            echo "CREATE_PR=false" >> "$GITHUB_OUTPUT"
+            echo "COMMIT=false" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Configure Git user
-        if: steps.check_script.outputs.CREATE_PR == 'true'
-        run: |
-          git config --global user.email "noreply@github.com"
-          git config --global user.name "GitHub Actions"
 
       - name: Create new branch and commit changes
         id: checkout_branch_commit
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        if: steps.check_script.outputs.COMMIT == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           git add .
-          if echo `git diff --quiet && git diff --staged --quiet`; then
+          if output=$(git status --porcelain) && [ -z "$output" ]; then
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
@@ -87,10 +89,10 @@ jobs:
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create Pull Request
-        if: steps.check_script.outputs.CREATE_PR == 'true' && steps.checkout_branch_commit.outputs.HAS_DIFFS == 'true'
+      - name: Create PR (if does not exist)
+        if: steps.checkout_branch_commit.outputs.HAS_DIFFS == 'true'
         run: |
-          gh pr comment ${{ github.ref_name }} \
+          gh pr comment "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
           --body "${{ steps.run_script.outputs.OUTPUT_LOG }}" || \
           gh pr create \
           -B ${{ github.ref_name }} \

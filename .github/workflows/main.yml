@@ -75,7 +75,7 @@ jobs:
       - name: Create Pull Request
         if: steps.check_script.outputs.CREATE_PR == 'true'
         run: |
-          gh pr comment ${{ github.ref_name }} \
+          gh pr comment "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
           --body "${{ steps.run_script.outputs.OUTPUT_LOG }}" || \
           gh pr create \
           --base ${{ github.ref_name }} \
