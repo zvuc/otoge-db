@@ -93,7 +93,6 @@ def _update_song_chartguide_data(song, nocolors, escape):
     version_num = VERSION_MAPPING.get(song['version'])
 
     if song['lunatic'] == '1':
-        _print_message("Song is lunatic", song, nocolors, bcolors.ENDC, escape)
         charts = ['luna']
     else:
         charts = ['exp','mas']
@@ -102,13 +101,17 @@ def _update_song_chartguide_data(song, nocolors, escape):
     for chart in charts:
         if chart == 'luna':
             lv_page_url = sdvxin_base_url + 'lunatic.htm'
-            target_key = 'lev_luna_chart_link' 
+            target_key = 'lev_lnt_chart_link'
         elif chart == 'exp':
             lv_page_url = sdvxin_base_url + song['lev_exc'] + '.htm'
             target_key = 'lev_exc_chart_link' 
         elif chart == 'mas':
             lv_page_url = sdvxin_base_url + song['lev_mas'] + '.htm'
             target_key = 'lev_mas_chart_link' 
+
+        if not song[target_key] == '':
+            _print_message(f"Link already exists! ({chart})", song, nocolors, bcolors.ENDC, escape)
+            continue
 
         request = requests.get(lv_page_url)
         request.encoding = 'ansi'
