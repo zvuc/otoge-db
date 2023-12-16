@@ -7,7 +7,7 @@ from datetime import datetime
 from functools import reduce
 from bs4 import BeautifulSoup
 
-wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
+wiki_base_url = 'https://wikiwiki.jp/chunithmwiki/'
 
 # Update on top of existing music-ex
 def update_songs_extra_data(date_from, date_until, song_id, nocolors, escape):
@@ -125,20 +125,23 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     for table in tables:
         rows = table.find_all('tr')
         if len(rows) > 1:
-            second_row_th = rows[1].find('th')
-            if second_row_th and second_row_th.get_text(strip=True) == 'タイトル':
-                img_in_first_col = rows[0].find('td',{'rowspan': True})
-                if img_in_first_col:
+            first_row_th = rows[0].find('th')
+            if first_row_th and first_row_th.get_text(strip=True) == '楽曲情報':
+                second_row_th = rows[1].find('th')
+                if second_row_th and second_row_th.get_text(strip=True) == 'タイトル':
                     overview_table = table
                     break
 
     if overview_table:
         overview_heads = overview_table.select('th')
 
-        if song['lunatic'] == '1':
-            overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
-        else:
-            overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
+        # no need to take care of worldsend
+        # if song['we_kanji'] != '':
+        #     overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
+        # else:
+        #     overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
+
+        overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
 
         overview_heads = [head.text for head in overview_heads]
         overview_data = [data[0].text for data in overview_data]
@@ -172,7 +175,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     charts_table = None
     for table in tables:
         th_elements = table.select('th:nth-of-type(1), th:nth-of-type(2)')
-        if len(th_elements) > 2 and th_elements[0].get_text(strip=True) == '難易度' and th_elements[1].get_text(strip=True) == '楽曲Lv':
+        if len(th_elements) > 2 and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[1].get_text(strip=True) == '総数':
             charts_table = table
             break
     
@@ -180,40 +183,72 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         charts_table_head = [th.text for th in charts_table.select("thead th")]
         charts_data = [[cell.text for cell in level.select("th,td")] for level in charts_table.select("tbody tr")]
 
-        if any(charts_table_head) and '難易度' in charts_table_head[0]:
+        if any(charts_table_head) and 'Lv' in charts_table_head[0]:
             for chart_details in charts_data:
                 level_hash = dict(zip(charts_table_head, chart_details))
 
-                if song['lunatic'] == '' and level_hash['難易度'] == 'BASIC':
-                    _update_song_key(song["lev_bas_notes"], level_hash["総ノート数"], remove_comma=True)
-                    _update_song_key(song["lev_bas_bells"], level_hash["BELL"], remove_comma=True)
-                    _update_song_key(song["lev_bas_i"], level_hash["譜面定数"])
-                    _update_song_key(song["lev_bas_designer"], level_hash["譜面製作者"])
-                elif song['lunatic'] == '' and level_hash['難易度'] == 'ADVANCED':
-                    _update_song_key(song["lev_adv_notes"], level_hash["総ノート数"], remove_comma=True)
-                    _update_song_key(song["lev_adv_bells"], level_hash["BELL"], remove_comma=True)
-                    _update_song_key(song["lev_adv_i"], level_hash["譜面定数"])
-                    _update_song_key(song["lev_adv_designer"], level_hash["譜面製作者"])
-                elif song['lunatic'] == '' and level_hash['難易度'] == 'EXPERT':
-                    _update_song_key(song["lev_exc_notes"], level_hash["総ノート数"], remove_comma=True)
-                    _update_song_key(song["lev_exc_bells"], level_hash["BELL"], remove_comma=True)
-                    _update_song_key(song["lev_exc_i"], level_hash["譜面定数"])
-                    _update_song_key(song["lev_exc_designer"], level_hash["譜面製作者"])
-                elif song['lunatic'] == '' and level_hash['難易度'] == 'MASTER':
-                    _update_song_key(song["lev_mas_notes"], level_hash["総ノート数"], remove_comma=True)
-                    _update_song_key(song["lev_mas_bells"], level_hash["BELL"], remove_comma=True)
-                    _update_song_key(song["lev_mas_i"], level_hash["譜面定数"])
-                    _update_song_key(song["lev_mas_designer"], level_hash["譜面製作者"])
-                elif song['lunatic'] == '1' and level_hash['難易度'] == 'LUNATIC':
-                    _update_song_key(song["lev_lnt_notes"], level_hash["総ノート数"], remove_comma=True)
-                    _update_song_key(song["lev_lnt_bells"], level_hash["BELL"], remove_comma=True)
-                    _update_song_key(song["lev_lnt_i"], level_hash["譜面定数"])
-                    _update_song_key(song["lev_lnt_designer"], level_hash["譜面製作者"])
+                if song['we_kanji'] == '' and level_hash['Lv'] == song["lev_bas"]:
+                    _update_song_key(song["lev_bas_notes"], level_hash["総数"], remove_comma=True)
+                    _update_song_key(song["lev_bas_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    _update_song_key(song["lev_bas_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    _update_song_key(song["lev_bas_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    _update_song_key(song["lev_bas_notes_air"], level_hash["Air"], remove_comma=True)
+                    _update_song_key(song["lev_bas_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # _update_song_key(song["lev_bas_i"], level_hash["譜面定数"])
+                    # _update_song_key(song["lev_bas_designer"], level_hash["譜面製作者"])
+                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_adv"]:
+                    _update_song_key(song["lev_adv_notes"], level_hash["総数"], remove_comma=True)
+                    _update_song_key(song["lev_adv_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    _update_song_key(song["lev_adv_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    _update_song_key(song["lev_adv_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    _update_song_key(song["lev_adv_notes_air"], level_hash["Air"], remove_comma=True)
+                    _update_song_key(song["lev_adv_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # _update_song_key(song["lev_adv_i"], level_hash["譜面定数"])
+                    # _update_song_key(song["lev_adv_designer"], level_hash["譜面製作者"])
+                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_exp"]:
+                    _update_song_key(song["lev_exc_notes"], level_hash["総数"], remove_comma=True)
+                    _update_song_key(song["lev_exc_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    _update_song_key(song["lev_exc_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    _update_song_key(song["lev_exc_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    _update_song_key(song["lev_exc_notes_air"], level_hash["Air"], remove_comma=True)
+                    _update_song_key(song["lev_exc_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # _update_song_key(song["lev_exc_i"], level_hash["譜面定数"])
+                    # _update_song_key(song["lev_exc_designer"], level_hash["譜面製作者"])
+                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_mas"]:
+                    _update_song_key(song["lev_mas_notes"], level_hash["総数"], remove_comma=True)
+                    _update_song_key(song["lev_mas_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    _update_song_key(song["lev_mas_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    _update_song_key(song["lev_mas_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    _update_song_key(song["lev_mas_notes_air"], level_hash["Air"], remove_comma=True)
+                    _update_song_key(song["lev_mas_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # _update_song_key(song["lev_mas_i"], level_hash["譜面定数"])
+                    # _update_song_key(song["lev_mas_designer"], level_hash["譜面製作者"])
+                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_ult"]:
+                    _update_song_key(song["lev_ult_notes"], level_hash["総数"], remove_comma=True)
+                    _update_song_key(song["lev_ult_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    _update_song_key(song["lev_ult_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    _update_song_key(song["lev_ult_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    _update_song_key(song["lev_ult_notes_air"], level_hash["Air"], remove_comma=True)
+                    _update_song_key(song["lev_ult_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # _update_song_key(song["lev_ult_i"], level_hash["譜面定数"])
+                    # _update_song_key(song["lev_ult_designer"], level_hash["譜面製作者"])
+                # WORLDS END
+                elif song['we_kanji'] != '' and level_hash['Lv'] == song["lev_adv"]:
+                    _update_song_key(song["lev_we_notes"], level_hash["総数"], remove_comma=True)
+                    _update_song_key(song["lev_we_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    _update_song_key(song["lev_we_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    _update_song_key(song["lev_we_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    _update_song_key(song["lev_we_notes_air"], level_hash["Air"], remove_comma=True)
+                    _update_song_key(song["lev_we_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # _update_song_key(song["lev_we_i"], level_hash["譜面定数"])
+                    # _update_song_key(song["lev_we_designer"], level_hash["譜面製作者"])
         else:
             _print_message("Warning - No chart table found", song, nocolors, bcolors.WARNING, escape)
     else:
         _print_message("Warning - No chart table found", song, nocolors, bcolors.WARNING, escape)
     
+
+    # TODO: Parse constant and chart designer
 
     song['bpm'] = overview_hash['BPM']
 
