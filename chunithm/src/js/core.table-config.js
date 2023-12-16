@@ -107,6 +107,7 @@ $(document).ready(function() {
             data: "catname",
             className: "category",
             render: renderInWrapper(),
+            width: "12em",
             filterable: true
         },
         { 
@@ -409,9 +410,13 @@ $(document).ready(function() {
     function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
-                var chart_diff_display = convertDifficultyNames(row[chart_diff]);                
-
-                return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
+                var chart_diff_display = convertDifficultyNames(row[chart_diff]);
+                if (row[chart_diff] === 'we_kanji') {
+                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">☆' + row[precise_lv_display] + '<\/span></span><\/div>';
+                }
+                else {
+                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
+                }
             }
             else {
                 return data;
@@ -498,36 +503,55 @@ $(document).ready(function() {
     }
 
     function flattenMusicData(data, flat_view) {
-        const processed_data =
-            ( flat_view ? (
-                data
-                    .map(obj =>
-                        ['lev_bas', 'lev_adv', 'lev_exp', 'lev_mas', 'lev_ult', 'lev_we']
-                            .map(chart_diff =>
-                                obj[chart_diff]
-                                    ? {
-                                        ...obj,
-                                        chart_diff,
-                                        chart_lev: obj[chart_diff],
-                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>',
-                                        chart_notes: obj[`${chart_diff}_notes`],
-                                        chart_notes_tap: obj[`${chart_diff}_notes_tap`],
-                                        chart_notes_hold: obj[`${chart_diff}_notes_hold`],
-                                        chart_notes_slide: obj[`${chart_diff}_notes_slide`],
-                                        chart_notes_air: obj[`${chart_diff}_notes_air`],
-                                        chart_notes_flick: obj[`${chart_diff}_notes_flick`],
-                                        chart_designer: obj[`${chart_diff}_designer`]
-                                    }
-                                    : null
-                            )
-                    )
-                    .flat()
-                    .filter(obj => !!obj)
+        if (flat_view) {
+            return data
+                .map(obj =>
+                    ['lev_bas', 'lev_adv', 'lev_exp', 'lev_mas', 'lev_ult', 'we_kanji']
+                        .map(chart_diff => processChartData(obj, chart_diff))
                 )
-                : data 
-            );
-        return processed_data;
+                .flat()
+                .filter(obj => !!obj);
+        } else {
+            return data;
+        }
+    }
+
+    function processChartData(obj, chart_diff) {
+        if (obj[chart_diff]) {
+            if (chart_diff === 'we_kanji') {
+                return {
+                    ...obj,
+                    chart_diff,
+                    chart_lev: obj[chart_diff],
+                    chart_lev_i: obj[`we_star`],
+                    chart_lev_i_display: obj[`we_star`],
+                    chart_notes: obj[`lev_we_notes`],
+                    chart_notes_tap: obj[`lev_we_notes_tap`],
+                    chart_notes_hold: obj[`lev_we_notes_hold`],
+                    chart_notes_slide: obj[`lev_we_notes_slide`],
+                    chart_notes_air: obj[`lev_we_notes_air`],
+                    chart_notes_flick: obj[`lev_we_notes_flick`],
+                    chart_designer: obj[`lev_we_designer`]
+                }
+            }
+            else {
+                return {
+                    ...obj,
+                    chart_diff,
+                    chart_lev: obj[chart_diff],
+                    chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
+                    chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1)}</span>`,
+                    chart_notes: obj[`${chart_diff}_notes`],
+                    chart_notes_tap: obj[`${chart_diff}_notes_tap`],
+                    chart_notes_hold: obj[`${chart_diff}_notes_hold`],
+                    chart_notes_slide: obj[`${chart_diff}_notes_slide`],
+                    chart_notes_air: obj[`${chart_diff}_notes_air`],
+                    chart_notes_flick: obj[`${chart_diff}_notes_flick`],
+                    chart_designer: obj[`${chart_diff}_designer`]
+                };
+            }
+        }
+        return null;
     }
 
     function formatDate(inputDate, dateFormat) {
@@ -649,7 +673,7 @@ $(document).ready(function() {
                                 .replaceAll('#','＃')
                                 .replaceAll('"','”')
                             );
-                            var wiki_url_guess = 'https:\/\/wikiwiki.jp\/gameongeki\/' + encoded_title;
+                            var wiki_url_guess = 'https:\/\/wikiwiki.jp\/chunithmwiki\/' + encoded_title;
 
                             var wiki_url = data['wikiwiki_url'] ? data['wikiwiki_url'] : wiki_url_guess;
 
