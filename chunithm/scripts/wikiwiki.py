@@ -2,6 +2,7 @@ import const
 import requests
 import json
 import ipdb
+import re
 from terminal import bcolors
 from datetime import datetime
 from functools import reduce
@@ -121,14 +122,14 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
 
     # find the overview table
     overview_table = None
-    
+
     for table in tables:
         rows = table.find_all('tr')
         if len(rows) > 1:
-            first_row_th = rows[0].find('th')
-            if first_row_th and first_row_th.get_text(strip=True) == '楽曲情報':
-                second_row_th = rows[1].find('th')
-                if second_row_th and second_row_th.get_text(strip=True) == 'タイトル':
+            first_row = rows[0].find('td',{'colspan': True})
+            if first_row and first_row.get_text(strip=True) == '楽曲情報':
+                second_row = rows[1].find('th')
+                if second_row and second_row.get_text(strip=True) == 'ジャンル':
                     overview_table = table
                     break
 
@@ -147,24 +148,19 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         overview_data = [data[0].text for data in overview_data]
         overview_hash = dict(zip(overview_heads, overview_data))
 
-        # Find enemy lv data
-        if 'LV.' in overview_hash["対戦相手"].upper():
-            enemy_info = overview_hash["対戦相手"].upper().split("LV.")
-            enemy_name = enemy_info[0]
-            enemy_lv = enemy_info[1]
-            song['enemy_lv'] = enemy_lv
-
-            # If character name includes type info, use it
-            if 'FIRE' in enemy_name:
-                song['enemy_type'] = 'FIRE'
-            elif 'AQUA' in enemy_name:
-                song['enemy_type'] = 'AQUA'
-            elif 'LEAF' in enemy_name:
-                song['enemy_type'] = 'LEAF'
+        # Find release data
+        if '配信' in overview_hash["解禁方法"].upper():
+            release_dates = overview_hash["解禁方法"].upper()    
+            earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates).group()
+            date_num_parts = earliest_release_date.split('/')
+            formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
+            
+            if earliest_release_date:
+                song['date'] = formatted_date
 
         else:
             # fail
-            _print_message("Warning - enemy lv not found", song, nocolors, bcolors.WARNING, escape)
+            _print_message("Warning - date not found", song, nocolors, bcolors.WARNING, escape)
             
     else:
         # fail
@@ -180,7 +176,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
             break
     
     if charts_table:
-        charts_table_head = [th.text for th in charts_table.select("thead th")]
+        charts_table_head = [th.text for th in charts_table.select("thead th:not([colspan='5'])")]
         charts_data = [[cell.text for cell in level.select("th,td")] for level in charts_table.select("tbody tr")]
 
         if any(charts_table_head) and 'Lv' in charts_table_head[0]:
@@ -188,60 +184,72 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                 level_hash = dict(zip(charts_table_head, chart_details))
 
                 if song['we_kanji'] == '' and level_hash['Lv'] == song["lev_bas"]:
-                    _update_song_key(song["lev_bas_notes"], level_hash["総数"], remove_comma=True)
-                    _update_song_key(song["lev_bas_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    _update_song_key(song["lev_bas_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    _update_song_key(song["lev_bas_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    _update_song_key(song["lev_bas_notes_air"], level_hash["Air"], remove_comma=True)
-                    _update_song_key(song["lev_bas_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # _update_song_key(song["lev_bas_i"], level_hash["譜面定数"])
-                    # _update_song_key(song["lev_bas_designer"], level_hash["譜面製作者"])
+                    song["lev_bas_notes"] = _update_song_key(song["lev_bas_notes"], level_hash["総数"], remove_comma=True)
+                    song["lev_bas_notes_tap"] = _update_song_key(song["lev_bas_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    song["lev_bas_notes_hold"] = _update_song_key(song["lev_bas_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    song["lev_bas_notes_slide"] = _update_song_key(song["lev_bas_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    song["lev_bas_notes_air"] = _update_song_key(song["lev_bas_notes_air"], level_hash["Air"], remove_comma=True)
+                    song["lev_bas_notes_flick"] = _update_song_key(song["lev_bas_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # song["lev_bas_i"] = _update_song_key(song["lev_bas_i"], level_hash["譜面定数"])
+                    # song["lev_bas_designer"] = _update_song_key(song["lev_bas_designer"], level_hash["譜面製作者"])
+                    _print_message(f"Wrote info {level_hash} for BAS", song, nocolors, bcolors.OKGREEN, escape)
+                    continue
                 elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_adv"]:
-                    _update_song_key(song["lev_adv_notes"], level_hash["総数"], remove_comma=True)
-                    _update_song_key(song["lev_adv_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    _update_song_key(song["lev_adv_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    _update_song_key(song["lev_adv_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    _update_song_key(song["lev_adv_notes_air"], level_hash["Air"], remove_comma=True)
-                    _update_song_key(song["lev_adv_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # _update_song_key(song["lev_adv_i"], level_hash["譜面定数"])
-                    # _update_song_key(song["lev_adv_designer"], level_hash["譜面製作者"])
+                    song["lev_adv_notes"] = _update_song_key(song["lev_adv_notes"], level_hash["総数"], remove_comma=True)
+                    song["lev_adv_notes_tap"] = _update_song_key(song["lev_adv_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    song["lev_adv_notes_hold"] = _update_song_key(song["lev_adv_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    song["lev_adv_notes_slide"] = _update_song_key(song["lev_adv_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    song["lev_adv_notes_air"] = _update_song_key(song["lev_adv_notes_air"], level_hash["Air"], remove_comma=True)
+                    song["lev_adv_notes_flick"] = _update_song_key(song["lev_adv_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # song["lev_adv_i"] = _update_song_key(song["lev_adv_i"], level_hash["譜面定数"])
+                    # song["lev_adv_designer"] = _update_song_key(song["lev_adv_designer"], level_hash["譜面製作者"])
+                    _print_message(f"Wrote info {level_hash} for ADV", song, nocolors, bcolors.OKGREEN, escape)
+                    continue
                 elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_exp"]:
-                    _update_song_key(song["lev_exc_notes"], level_hash["総数"], remove_comma=True)
-                    _update_song_key(song["lev_exc_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    _update_song_key(song["lev_exc_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    _update_song_key(song["lev_exc_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    _update_song_key(song["lev_exc_notes_air"], level_hash["Air"], remove_comma=True)
-                    _update_song_key(song["lev_exc_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # _update_song_key(song["lev_exc_i"], level_hash["譜面定数"])
-                    # _update_song_key(song["lev_exc_designer"], level_hash["譜面製作者"])
+                    song["lev_exp_notes"] = _update_song_key(song["lev_exp_notes"], level_hash["総数"], remove_comma=True)
+                    song["lev_exp_notes_tap"] = _update_song_key(song["lev_exp_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    song["lev_exp_notes_hold"] = _update_song_key(song["lev_exp_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    song["lev_exp_notes_slide"] = _update_song_key(song["lev_exp_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    song["lev_exp_notes_air"] = _update_song_key(song["lev_exp_notes_air"], level_hash["Air"], remove_comma=True)
+                    song["lev_exp_notes_flick"] = _update_song_key(song["lev_exp_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # song["lev_exc_i"] = _update_song_key(song["lev_exc_i"], level_hash["譜面定数"])
+                    # song["lev_exc_designer"] = _update_song_key(song["lev_exc_designer"], level_hash["譜面製作者"])
+                    _print_message(f"Wrote info {level_hash} for EXP", song, nocolors, bcolors.OKGREEN, escape)
+                    continue
                 elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_mas"]:
-                    _update_song_key(song["lev_mas_notes"], level_hash["総数"], remove_comma=True)
-                    _update_song_key(song["lev_mas_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    _update_song_key(song["lev_mas_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    _update_song_key(song["lev_mas_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    _update_song_key(song["lev_mas_notes_air"], level_hash["Air"], remove_comma=True)
-                    _update_song_key(song["lev_mas_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # _update_song_key(song["lev_mas_i"], level_hash["譜面定数"])
-                    # _update_song_key(song["lev_mas_designer"], level_hash["譜面製作者"])
+                    song["lev_mas_notes"] = _update_song_key(song["lev_mas_notes"], level_hash["総数"], remove_comma=True)
+                    song["lev_mas_notes_tap"] = _update_song_key(song["lev_mas_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    song["lev_mas_notes_hold"] = _update_song_key(song["lev_mas_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    song["lev_mas_notes_slide"] = _update_song_key(song["lev_mas_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    song["lev_mas_notes_air"] = _update_song_key(song["lev_mas_notes_air"], level_hash["Air"], remove_comma=True)
+                    song["lev_mas_notes_flick"] = _update_song_key(song["lev_mas_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # song["lev_mas_i"] = _update_song_key(song["lev_mas_i"], level_hash["譜面定数"])
+                    # song["lev_mas_designer"] = _update_song_key(song["lev_mas_designer"], level_hash["譜面製作者"])
+                    _print_message(f"Wrote info {level_hash} for MAS", song, nocolors, bcolors.OKGREEN, escape)
+                    continue
                 elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_ult"]:
-                    _update_song_key(song["lev_ult_notes"], level_hash["総数"], remove_comma=True)
-                    _update_song_key(song["lev_ult_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    _update_song_key(song["lev_ult_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    _update_song_key(song["lev_ult_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    _update_song_key(song["lev_ult_notes_air"], level_hash["Air"], remove_comma=True)
-                    _update_song_key(song["lev_ult_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # _update_song_key(song["lev_ult_i"], level_hash["譜面定数"])
-                    # _update_song_key(song["lev_ult_designer"], level_hash["譜面製作者"])
+                    song["lev_ult_notes"] = _update_song_key(song["lev_ult_notes"], level_hash["総数"], remove_comma=True)
+                    song["lev_ult_notes_tap"] = _update_song_key(song["lev_ult_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    song["lev_ult_notes_hold"] = _update_song_key(song["lev_ult_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    song["lev_ult_notes_slide"] = _update_song_key(song["lev_ult_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    song["lev_ult_notes_air"] = _update_song_key(song["lev_ult_notes_air"], level_hash["Air"], remove_comma=True)
+                    song["lev_ult_notes_flick"] = _update_song_key(song["lev_ult_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # song["lev_ult_i"] = _update_song_key(song["lev_ult_i"], level_hash["譜面定数"])
+                    # song["lev_ult_designer"] = _update_song_key(song["lev_ult_designer"], level_hash["譜面製作者"])
+                    _print_message(f"Wrote info {level_hash} for ULT", song, nocolors, bcolors.OKGREEN, escape)
+                    continue
                 # WORLDS END
                 elif song['we_kanji'] != '' and level_hash['Lv'] == song["lev_adv"]:
-                    _update_song_key(song["lev_we_notes"], level_hash["総数"], remove_comma=True)
-                    _update_song_key(song["lev_we_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    _update_song_key(song["lev_we_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    _update_song_key(song["lev_we_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    _update_song_key(song["lev_we_notes_air"], level_hash["Air"], remove_comma=True)
-                    _update_song_key(song["lev_we_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # _update_song_key(song["lev_we_i"], level_hash["譜面定数"])
-                    # _update_song_key(song["lev_we_designer"], level_hash["譜面製作者"])
+                    song["lev_we_notes"] = _update_song_key(song["lev_we_notes"], level_hash["総数"], remove_comma=True)
+                    song["lev_we_notes_tap"] = _update_song_key(song["lev_we_notes_tap"], level_hash["Tap"], remove_comma=True)
+                    song["lev_we_notes_hold"] = _update_song_key(song["lev_we_notes_hold"], level_hash["Hold"], remove_comma=True)
+                    song["lev_we_notes_slide"] = _update_song_key(song["lev_we_notes_slide"], level_hash["Slide"], remove_comma=True)
+                    song["lev_we_notes_air"] = _update_song_key(song["lev_we_notes_air"], level_hash["Air"], remove_comma=True)
+                    song["lev_we_notes_flick"] = _update_song_key(song["lev_we_notes_flick"], level_hash["Flick"], remove_comma=True)
+                    # song["lev_we_i"] = _update_song_key(song["lev_we_i"], level_hash["譜面定数"])
+                    # song["lev_we_designer"] = _update_song_key(song["lev_we_designer"], level_hash["譜面製作者"])
+                    _print_message(f"Wrote info {level_hash} for WE", song, nocolors, bcolors.OKGREEN, escape)
+                    continue
         else:
             _print_message("Warning - No chart table found", song, nocolors, bcolors.WARNING, escape)
     else:
@@ -272,16 +280,16 @@ def get_last_date(LOCAL_MUSIC_JSON_PATH):
 def _update_song_key(key, new_data, remove_comma=False):
     # if source is not empty, don't overwrite
     if not (key == ''):
-        return
+        return key
     # Only overwrite if new data is not empty
     if not (new_data == ''):
         key = new_data
 
         if remove_comma:
             key.replace(',', '')
-            return
+            return key
         else:
-            return
+            return key
 
 def _print_message(message, song, nocolors, color_name, escape):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
