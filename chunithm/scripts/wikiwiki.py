@@ -3,12 +3,34 @@ import requests
 import json
 import ipdb
 import re
+import copy
 from terminal import bcolors
 from datetime import datetime
 from functools import reduce
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
 
 wiki_base_url = 'https://wikiwiki.jp/chunithmwiki/'
+
+VERSION_DATES = {
+    "無印": "2015/07/16",
+    "PLUS": "2016/02/04",
+    "AIR": "2016/08/25",
+    "AIR+": "2017/02/09",
+    "STAR": "2017/08/24",
+    "STAR+": "2018/03/08",
+    "AMAZON": "2018/10/25",
+    "AMAZON+": "2019/04/11",
+    "CRYSTAL": "2019/10/24",
+    "CRYSTAL+": "2020/07/16",
+    "PARADISE": "2021/01/21",
+    "PARADISE×": "2021/05/13",
+    "NEW": "2021/11/04",
+    "NEW+": "2022/04/14",
+    "SUN": "2022/10/13",
+    "SUN+": "2023/05/11",
+    "LUMINOUS": "2023/12/14"
+}
+
 
 # Update on top of existing music-ex
 def update_songs_extra_data(date_from, date_until, song_id, nocolors, escape):
@@ -67,6 +89,8 @@ def _filter_songs_by_id(song_list, song_id):
 
 
 def _update_song_wiki_data(song, nocolors, escape):
+    _print_message(f"{song['id']} {song['title']}", nocolors, bcolors.ENDC, escape)
+
     title = (
         song['title']
         .replace('&', '＆')
@@ -82,7 +106,6 @@ def _update_song_wiki_data(song, nocolors, escape):
         url = song['wikiwiki_url']
         wiki = requests.get(url)
 
-        _print_message("(URL already present!)", song, nocolors, bcolors.OKBLUE, escape)
         return _parse_wikiwiki(song, wiki, url, nocolors, escape)
 
     # If not, guess URL from title
@@ -98,26 +121,32 @@ def _update_song_wiki_data(song, nocolors, escape):
 
             if not wiki.ok:
                 # give up
-                _print_message("failed to guess wiki page", song, nocolors, bcolors.FAIL, escape)
+                _print_message("failed to guess wiki page", nocolors, bcolors.FAIL, escape)
                 return song
 
             else:
                 url = guess_url
+                _print_message("Found URL by guess!", nocolors, bcolors.OKBLUE, escape)
                 return _parse_wikiwiki(song, wiki, url, nocolors, escape)
                 
         else:
             url = guess_url
-            
+            _print_message("Found URL by guess!", nocolors, bcolors.OKBLUE, escape)
             return _parse_wikiwiki(song, wiki, url, nocolors, escape)
 
 
 def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
+    old_song = copy.copy(song)
+
+    # Sanitize any unwanted footnote tooltips
+    for footnotes in soup.find_all('a', class_='tooltip'):
+        footnotes.decompose()
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        _print_message("Parse failed! Skipping song", song, nocolors, bcolors.FAIL, escape)
+        _print_message("Parse failed! Skipping song", nocolors, bcolors.FAIL, escape)
         return song
 
     # find the overview table
@@ -135,134 +164,130 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
 
     if overview_table:
         overview_heads = overview_table.select('th')
-
-        # no need to take care of worldsend
-        # if song['we_kanji'] != '':
-        #     overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
-        # else:
-        #     overview_data = [head.find_parent('tr').select('td:not([rowspan])') for head in overview_heads]
-
         overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
 
         overview_heads = [head.text for head in overview_heads]
         overview_data = [data[0].text for data in overview_data]
-        overview_hash = dict(zip(overview_heads, overview_data))
+        overview_dict = dict(zip(overview_heads, overview_data))
 
-        # Find release data
-        if '配信' in overview_hash["解禁方法"].upper():
-            release_dates = overview_hash["解禁方法"].upper()    
+        # Find release date
+        formatted_date = ''
+        if '配信' in overview_dict["解禁方法"]:
+            release_dates = overview_dict["解禁方法"]    
             earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates).group()
             date_num_parts = earliest_release_date.split('/')
             formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
-            
-            if earliest_release_date:
-                song['date'] = formatted_date
+        elif '初期' in overview_dict["解禁方法"]:
+            formatted_date = '20150716' # CHUNITHM launch date
+        
+        if not formatted_date == '':
+            # ipdb.set_trace()
+            diff_count = [0]
+            _update_song_key(song, 'date', formatted_date, diff_count=diff_count)
+
+            if diff_count[0] > 0:
+                _print_message("Added release date", nocolors, bcolors.OKGREEN, escape)
 
         else:
             # fail
-            _print_message("Warning - date not found", song, nocolors, bcolors.WARNING, escape)
+            _print_message("Warning - date not found", nocolors, bcolors.WARNING, escape)
             
     else:
         # fail
-        _print_message("Warning - overview table not found", song, nocolors, bcolors.WARNING, escape)
+        _print_message("Warning - overview table not found", nocolors, bcolors.WARNING, escape)
+
+
+    # Find constant and chart designer
+    # ipdb.set_trace()
+    chart_constant_designer_text = None
+    chart_constant_designer_spans = soup.find_all('span', style='font-size:11px')
+    
+    # Check if the matched span is the correct one
+    for chart_constant_designer_span in chart_constant_designer_spans:
+        if '譜面作者' in chart_constant_designer_span.get_text(strip=True):
+
+            # separate text lines
+            text = ''
+            for child_node in chart_constant_designer_span:
+                if isinstance(child_node, NavigableString):
+                    text += str(child_node).strip()
+                elif isinstance(child_node, Tag):
+                    if child_node.name != 'br':
+                        text += child_node.text.strip()
+                    else:
+                        text += '\n'
+                
+            chart_constant_designer = text.strip().split('\n')
+
+            # check if separated text includes 譜面定数 in second row
+            if '譜面定数' in chart_constant_designer[1]:
+                
+                chart_designers_text = chart_constant_designer[0]
+                chart_constants_text = chart_constant_designer[1]
+
+                chart_designers_dict = _construct_constant_designer_dict(chart_designers_text, 'designer')
+                chart_constants_dict = _construct_constant_designer_dict(chart_constants_text, 'i')
+                chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
+                # It's a match!
+                break
 
 
     # find the charts table
     charts_table = None
     for table in tables:
-        th_elements = table.select('th:nth-of-type(1), th:nth-of-type(2)')
-        if len(th_elements) > 2 and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[1].get_text(strip=True) == '総数':
+        th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
+        if len(th_elements) == 2 and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[1].get_text(strip=True) == '総数':
             charts_table = table
             break
     
+    # Update chart details
     if charts_table:
-        charts_table_head = [th.text for th in charts_table.select("thead th:not([colspan='5'])")]
-        charts_data = [[cell.text for cell in level.select("th,td")] for level in charts_table.select("tbody tr")]
+        # ipdb.set_trace()
+        charts_table_head = [th.text for th in charts_table.select("thead th:not([colspan='5']), thead td:not([colspan='5'])")]
+        charts_data = [[cell.text for cell in chart.select("th,td")] for chart in charts_table.select("tbody tr")]
 
         if any(charts_table_head) and 'Lv' in charts_table_head[0]:
             for chart_details in charts_data:
-                level_hash = dict(zip(charts_table_head, chart_details))
+                chart_dict = dict(zip(charts_table_head, chart_details))
 
-                if song['we_kanji'] == '' and level_hash['Lv'] == song["lev_bas"]:
-                    song["lev_bas_notes"] = _update_song_key(song["lev_bas_notes"], level_hash["総数"], remove_comma=True)
-                    song["lev_bas_notes_tap"] = _update_song_key(song["lev_bas_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    song["lev_bas_notes_hold"] = _update_song_key(song["lev_bas_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    song["lev_bas_notes_slide"] = _update_song_key(song["lev_bas_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    song["lev_bas_notes_air"] = _update_song_key(song["lev_bas_notes_air"], level_hash["Air"], remove_comma=True)
-                    song["lev_bas_notes_flick"] = _update_song_key(song["lev_bas_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # song["lev_bas_i"] = _update_song_key(song["lev_bas_i"], level_hash["譜面定数"])
-                    # song["lev_bas_designer"] = _update_song_key(song["lev_bas_designer"], level_hash["譜面製作者"])
-                    _print_message(f"Wrote info {level_hash} for BAS", song, nocolors, bcolors.OKGREEN, escape)
+                if song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_bas"]:
+                    _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'bas', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_adv"]:
-                    song["lev_adv_notes"] = _update_song_key(song["lev_adv_notes"], level_hash["総数"], remove_comma=True)
-                    song["lev_adv_notes_tap"] = _update_song_key(song["lev_adv_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    song["lev_adv_notes_hold"] = _update_song_key(song["lev_adv_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    song["lev_adv_notes_slide"] = _update_song_key(song["lev_adv_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    song["lev_adv_notes_air"] = _update_song_key(song["lev_adv_notes_air"], level_hash["Air"], remove_comma=True)
-                    song["lev_adv_notes_flick"] = _update_song_key(song["lev_adv_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # song["lev_adv_i"] = _update_song_key(song["lev_adv_i"], level_hash["譜面定数"])
-                    # song["lev_adv_designer"] = _update_song_key(song["lev_adv_designer"], level_hash["譜面製作者"])
-                    _print_message(f"Wrote info {level_hash} for ADV", song, nocolors, bcolors.OKGREEN, escape)
+                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_adv"]:
+                    _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'adv', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_exp"]:
-                    song["lev_exp_notes"] = _update_song_key(song["lev_exp_notes"], level_hash["総数"], remove_comma=True)
-                    song["lev_exp_notes_tap"] = _update_song_key(song["lev_exp_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    song["lev_exp_notes_hold"] = _update_song_key(song["lev_exp_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    song["lev_exp_notes_slide"] = _update_song_key(song["lev_exp_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    song["lev_exp_notes_air"] = _update_song_key(song["lev_exp_notes_air"], level_hash["Air"], remove_comma=True)
-                    song["lev_exp_notes_flick"] = _update_song_key(song["lev_exp_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # song["lev_exc_i"] = _update_song_key(song["lev_exc_i"], level_hash["譜面定数"])
-                    # song["lev_exc_designer"] = _update_song_key(song["lev_exc_designer"], level_hash["譜面製作者"])
-                    _print_message(f"Wrote info {level_hash} for EXP", song, nocolors, bcolors.OKGREEN, escape)
+                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_exp"]:
+                    _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'exp', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_mas"]:
-                    song["lev_mas_notes"] = _update_song_key(song["lev_mas_notes"], level_hash["総数"], remove_comma=True)
-                    song["lev_mas_notes_tap"] = _update_song_key(song["lev_mas_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    song["lev_mas_notes_hold"] = _update_song_key(song["lev_mas_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    song["lev_mas_notes_slide"] = _update_song_key(song["lev_mas_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    song["lev_mas_notes_air"] = _update_song_key(song["lev_mas_notes_air"], level_hash["Air"], remove_comma=True)
-                    song["lev_mas_notes_flick"] = _update_song_key(song["lev_mas_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # song["lev_mas_i"] = _update_song_key(song["lev_mas_i"], level_hash["譜面定数"])
-                    # song["lev_mas_designer"] = _update_song_key(song["lev_mas_designer"], level_hash["譜面製作者"])
-                    _print_message(f"Wrote info {level_hash} for MAS", song, nocolors, bcolors.OKGREEN, escape)
+                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_mas"]:
+                    _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'mas', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and level_hash['Lv'] == song["lev_ult"]:
-                    song["lev_ult_notes"] = _update_song_key(song["lev_ult_notes"], level_hash["総数"], remove_comma=True)
-                    song["lev_ult_notes_tap"] = _update_song_key(song["lev_ult_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    song["lev_ult_notes_hold"] = _update_song_key(song["lev_ult_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    song["lev_ult_notes_slide"] = _update_song_key(song["lev_ult_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    song["lev_ult_notes_air"] = _update_song_key(song["lev_ult_notes_air"], level_hash["Air"], remove_comma=True)
-                    song["lev_ult_notes_flick"] = _update_song_key(song["lev_ult_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # song["lev_ult_i"] = _update_song_key(song["lev_ult_i"], level_hash["譜面定数"])
-                    # song["lev_ult_designer"] = _update_song_key(song["lev_ult_designer"], level_hash["譜面製作者"])
-                    _print_message(f"Wrote info {level_hash} for ULT", song, nocolors, bcolors.OKGREEN, escape)
+                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_ult"]:
+                    _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'ult', nocolors, escape)
                     continue
                 # WORLDS END
-                elif song['we_kanji'] != '' and level_hash['Lv'] == song["lev_adv"]:
-                    song["lev_we_notes"] = _update_song_key(song["lev_we_notes"], level_hash["総数"], remove_comma=True)
-                    song["lev_we_notes_tap"] = _update_song_key(song["lev_we_notes_tap"], level_hash["Tap"], remove_comma=True)
-                    song["lev_we_notes_hold"] = _update_song_key(song["lev_we_notes_hold"], level_hash["Hold"], remove_comma=True)
-                    song["lev_we_notes_slide"] = _update_song_key(song["lev_we_notes_slide"], level_hash["Slide"], remove_comma=True)
-                    song["lev_we_notes_air"] = _update_song_key(song["lev_we_notes_air"], level_hash["Air"], remove_comma=True)
-                    song["lev_we_notes_flick"] = _update_song_key(song["lev_we_notes_flick"], level_hash["Flick"], remove_comma=True)
-                    # song["lev_we_i"] = _update_song_key(song["lev_we_i"], level_hash["譜面定数"])
-                    # song["lev_we_designer"] = _update_song_key(song["lev_we_designer"], level_hash["譜面製作者"])
-                    _print_message(f"Wrote info {level_hash} for WE", song, nocolors, bcolors.OKGREEN, escape)
+                elif song['we_kanji'] != '' and chart_dict['Lv'][0] == song["we_kanji"]:
+                    _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'we', nocolors, escape)
                     continue
         else:
-            _print_message("Warning - No chart table found", song, nocolors, bcolors.WARNING, escape)
+            _print_message("Warning - No chart table found", nocolors, bcolors.WARNING, escape)
     else:
-        _print_message("Warning - No chart table found", song, nocolors, bcolors.WARNING, escape)
-    
+        _print_message("Warning - No chart table found", nocolors, bcolors.WARNING, escape)
 
-    # TODO: Parse constant and chart designer
+    # Update BPM
+    if overview_dict['BPM']:
+        diff_count = [0]
+        _update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
-    song['bpm'] = overview_hash['BPM']
+        if diff_count[0] > 0:
+            _print_message("Added BPM", nocolors, bcolors.OKGREEN, escape)
 
     song['wikiwiki_url'] = url
 
-    _print_message("Updated song extra data from wiki", song, nocolors, bcolors.OKGREEN, escape)
+    if old_song == song:
+        _print_message("Done (Nothing updated)", nocolors, bcolors.ENDC, escape)
+    # else:
+    #     _print_message("Updated song extra data from wiki", nocolors, bcolors.OKGREEN, escape)
 
     return song
 
@@ -277,39 +302,86 @@ def get_last_date(LOCAL_MUSIC_JSON_PATH):
     
     return lastupdated
 
-def _update_song_key(key, new_data, remove_comma=False):
+def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, chart, nocolors, escape):
+    
+    diff_count = [0]
+    _update_song_key(song, f"lev_{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
+    _update_song_key(song, f"lev_{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)
+    _update_song_key(song, f"lev_{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=diff_count)
+    _update_song_key(song, f"lev_{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=diff_count)
+    _update_song_key(song, f"lev_{chart}_notes_air", chart_dict["Air"], remove_comma=True, diff_count=diff_count)
+    _update_song_key(song, f"lev_{chart}_notes_flick", chart_dict["Flick"], remove_comma=True, diff_count=diff_count)
+
+    if chart_constant_designer_dict:
+        # ipdb.set_trace()
+        # in some cases WE may be labled as WE戻 or 狂☆4...
+        if chart == 'we':
+            try:
+                designer_key = chart_constant_designer_dict[f"lev_{chart}_designer"]
+                _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
+            except KeyError:
+                # try alternative syntax
+                designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
+                _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=diff_count)
+        else:
+            _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
+    
+    if not chart == 'we' and chart_constant_designer_dict:
+        _update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+
+    if diff_count[0] > 0:
+        _print_message(f"Added chart details for {chart.upper()}", nocolors, bcolors.OKGREEN, escape)
+
+
+def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
     # if source is not empty, don't overwrite
-    if not (key == ''):
-        return key
-    # Only overwrite if new data is not empty
-    if not (new_data == ''):
-        key = new_data
+    if not (song[key] == ''):
+        return
+    # Only overwrite if new data is not empty and is not same
+    if not (new_data == '') and not (song[key] == new_data):
+        diff_count[0] += 1
+        song[key] = new_data
 
         if remove_comma:
-            key.replace(',', '')
-            return key
-        else:
-            return key
+            song[key] = song[key].replace(',', '')
+        
+        return
 
-def _print_message(message, song, nocolors, color_name, escape):
+def _construct_constant_designer_dict(text, key_name):
+    # Use regular expression to find content within brackets
+    match = re.search(r'【(.*?)】', text)
+
+    if match:
+        content_within_brackets = match.group(1)
+        
+        # Split key-value pairs using '、' as the delimiter
+        pairs = content_within_brackets.split('、')
+
+        # Separate key and value using '…' and construct a dictionary
+        dictionary = {}
+        for pair in pairs:
+            key, value = pair.split('…', 1)
+            dictionary[key] = value
+
+        # transform key names into lev_{chart} format
+        formatted_dict = {}
+        for key, value in dictionary.items():
+            formatted_key = f"lev_{key.lower()}_{key_name}"
+            formatted_dict[formatted_key] = value
+        return formatted_dict
+    else:
+        return None
+
+def _print_message(message, nocolors, color_name, escape):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     reset_color = bcolors.ENDC
 
-    if song:
-        song_id = song['id']
-
-        # if --escape is set
-        if escape:
-            song_title = ' : ' + song['title'].replace("'", r"\'")
-        else:
-            song_title = ' : ' + song['title']
-    else:
-        song_id = ''
-        song_title = ''
+    if escape:
+        message = message.replace("'", r"\'")
 
     # if --nocolors is set
     if nocolors:
         color_name = ''
         reset_color = ''
 
-    print(timestamp + color_name + ' ' + song_id + ' ' + message + song_title + reset_color)
+    print(timestamp + ' ' + color_name + message + reset_color)
