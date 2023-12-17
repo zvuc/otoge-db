@@ -40,7 +40,12 @@ def update_songs_extra_data(date_from, date_until, song_id, nocolors, escape):
 
     # prioritize id search if provided
     if not song_id == 0:
-        target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
+        if '-' in song_id:
+            id_from = song_id.split('-')[0]
+            id_to = song_id.split('-')[-1]
+            target_song_list = _filter_songs_by_id_range(local_music_ex_data, id_from, id_to)
+        else:
+            target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
     else:
         latest_date = int(get_last_date(const.LOCAL_MUSIC_EX_JSON_PATH))
 
@@ -73,6 +78,18 @@ def _filter_songs_by_date(song_list, date_from, date_until):
         song_date_int = int(song.get("date"))
 
         if date_from <= song_date_int <= date_until:
+            target_song_list.append(song)
+
+    return target_song_list
+
+def _filter_songs_by_id_range(song_list, id_from, id_to):
+    # ipdb.set_trace()
+    target_song_list = []
+
+    for song in song_list:
+        song_id_int = int(song.get("id"))
+
+        if int(id_from) <= song_id_int <= int(id_to):
             target_song_list.append(song)
 
     return target_song_list
@@ -181,18 +198,21 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
             formatted_date = '20150716' # CHUNITHM launch date
         
         # Write date and guess version
-        if not formatted_date == '' and song['we_kanji']:
-            ipdb.set_trace()
-            diff_count = [0]
-            _update_song_key(song, 'date', formatted_date, diff_count=diff_count)
-            _update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
-            
-            if diff_count[0] > 0:
-                _print_message("Added release date", nocolors, bcolors.OKGREEN, escape)
-
+        if song['we_kanji'] == '':
+            if not formatted_date == '':
+                # ipdb.set_trace()
+                diff_count = [0]
+                _update_song_key(song, 'date', formatted_date, diff_count=diff_count)
+                _update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
+                
+                if diff_count[0] > 0:
+                    _print_message("Added date and version", nocolors, bcolors.OKGREEN, escape)
+            else:
+                # fail
+                _print_message("Warning - date not found", nocolors, bcolors.WARNING, escape)
         else:
-            # fail
-            _print_message("Warning - date not found", nocolors, bcolors.WARNING, escape)
+            # Skip for WE
+            _print_message("Skipped date (WE)", nocolors, bcolors.WARNING, escape)
             
     else:
         # fail
