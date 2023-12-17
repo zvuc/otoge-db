@@ -12,23 +12,23 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 wiki_base_url = 'https://wikiwiki.jp/chunithmwiki/'
 
 VERSION_DATES = {
-    "無印": "2015/07/16",
-    "PLUS": "2016/02/04",
-    "AIR": "2016/08/25",
-    "AIR+": "2017/02/09",
-    "STAR": "2017/08/24",
-    "STAR+": "2018/03/08",
-    "AMAZON": "2018/10/25",
-    "AMAZON+": "2019/04/11",
-    "CRYSTAL": "2019/10/24",
-    "CRYSTAL+": "2020/07/16",
-    "PARADISE": "2021/01/21",
-    "PARADISE×": "2021/05/13",
-    "NEW": "2021/11/04",
-    "NEW+": "2022/04/14",
-    "SUN": "2022/10/13",
-    "SUN+": "2023/05/11",
-    "LUMINOUS": "2023/12/14"
+    "無印": "20150716",
+    "PLUS": "20160204",
+    "AIR": "20160825",
+    "AIR+": "20170209",
+    "STAR": "20170824",
+    "STAR+": "20180308",
+    "AMAZON": "20181025",
+    "AMAZON+": "20190411",
+    "CRYSTAL": "20191024",
+    "CRYSTAL+": "20200716",
+    "PARADISE": "20210121",
+    "PARADISE×": "20210513",
+    "NEW": "20211104",
+    "NEW+": "20220414",
+    "SUN": "20221013",
+    "SUN+": "20230511",
+    "LUMINOUS": "20231214"
 }
 
 
@@ -180,11 +180,13 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         elif '初期' in overview_dict["解禁方法"]:
             formatted_date = '20150716' # CHUNITHM launch date
         
-        if not formatted_date == '':
-            # ipdb.set_trace()
+        # Write date and guess version
+        if not formatted_date == '' and song['we_kanji']:
+            ipdb.set_trace()
             diff_count = [0]
             _update_song_key(song, 'date', formatted_date, diff_count=diff_count)
-
+            _update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
+            
             if diff_count[0] > 0:
                 _print_message("Added release date", nocolors, bcolors.OKGREEN, escape)
 
@@ -371,6 +373,19 @@ def _construct_constant_designer_dict(text, key_name):
         return formatted_dict
     else:
         return None
+
+def _guess_version(release_date):
+    closest_version = None
+    closest_difference = float('inf')
+
+    for version, version_date in VERSION_DATES.items():
+        difference = int(release_date) - int(version_date)
+
+        if 0 <= difference < closest_difference:
+            closest_difference = difference
+            closest_version = version
+
+    return closest_version
 
 def _print_message(message, nocolors, color_name, escape):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
