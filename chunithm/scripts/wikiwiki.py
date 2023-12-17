@@ -99,7 +99,7 @@ def _filter_songs_by_id(song_list, song_id):
     target_song_list = []
 
     for song in song_list:
-        if song_id == int(song.get("id")):
+        if int(song_id) == int(song.get("id")):
             target_song_list.append(song)
 
     return target_song_list
@@ -247,8 +247,8 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                 chart_designers_text = chart_constant_designer[0]
                 chart_constants_text = chart_constant_designer[1]
 
-                chart_designers_dict = _construct_constant_designer_dict(chart_designers_text, 'designer')
-                chart_constants_dict = _construct_constant_designer_dict(chart_constants_text, 'i')
+                chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
+                chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
                 chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
                 # It's a match!
                 break
@@ -269,22 +269,23 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         charts_data = [[cell.text for cell in chart.select("th,td")] for chart in charts_table.select("tbody tr")]
 
         if any(charts_table_head) and 'Lv' in charts_table_head[0]:
-            for chart_details in charts_data:
+            for index, chart_details in enumerate(charts_data):
+                # ipdb.set_trace()
                 chart_dict = dict(zip(charts_table_head, chart_details))
 
-                if song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_bas"]:
+                if song['we_kanji'] == '' and index == 0:
                     _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'bas', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_adv"]:
+                elif song['we_kanji'] == '' and index == 1:
                     _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'adv', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_exp"]:
+                elif song['we_kanji'] == '' and index == 2:
                     _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'exp', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_mas"]:
+                elif song['we_kanji'] == '' and index == 3:
                     _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'mas', nocolors, escape)
                     continue
-                elif song['we_kanji'] == '' and chart_dict['Lv'] == song["lev_ult"]:
+                elif song['we_kanji'] == '' and index == 4:
                     _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, 'ult', nocolors, escape)
                     continue
                 # WORLDS END
@@ -346,10 +347,18 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
                 designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
                 _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=diff_count)
         else:
-            _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
+            try:
+                _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
+            except:
+                if chart not in ('bas', 'adv'):
+                    _print_message(f"Warning - No designer found ({chart.upper()})", nocolors, bcolors.WARNING, escape)
     
     if not chart == 'we' and chart_constant_designer_dict:
-        _update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+        try:
+            _update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+        except:
+            if chart not in ('bas', 'adv'):
+                _print_message(f"Warning - No constant found ({chart.upper()})", nocolors, bcolors.WARNING, escape)
 
     if diff_count[0] > 0:
         _print_message(f"Added chart details for {chart.upper()}", nocolors, bcolors.OKGREEN, escape)
@@ -369,15 +378,22 @@ def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
         
         return
 
-def _construct_constant_designer_dict(text, key_name):
+def _construct_constant_designer_dict(song, text, key_name):
+    # ipdb.set_trace()
     # Use regular expression to find content within brackets
     match = re.search(r'【(.*?)】', text)
 
     if match:
-        content_within_brackets = match.group(1)
+        content_within_brackets = '【' + match.group(1)
         
         # Split key-value pairs using '、' as the delimiter
-        pairs = content_within_brackets.split('、')
+        pairs = {}
+        if song['we_kanji']:
+            pattern = re.compile(fr'[、【](?=EXP|MAS|WE|{re.escape(song["we_kanji"])})')
+        else:
+            pattern = re.compile(r'[、【](?=EXP|MAS|WE)')
+        pairs = re.split(pattern, content_within_brackets)
+        pairs = [item for item in pairs if item]
 
         # Separate key and value using '…' and construct a dictionary
         dictionary = {}
