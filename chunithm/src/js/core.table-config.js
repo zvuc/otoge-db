@@ -173,10 +173,11 @@ $(document).ready(function() {
         { 
             //  WORLD'S END (Kanji)
             displayTitle: "WORLD'S END",
-            name: "we_kanji",
+            name: "lev_we",
             data: "we_kanji",
             className: "lv lv-we",
             render: renderWorldsEnd('we_kanji', 'we_star'),
+            customDropdownSortSource: sortByLeadingZeros('we_star'),
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true
@@ -185,8 +186,8 @@ $(document).ready(function() {
             //  WORLD'S END
             displayTitle: "WORLD'S END☆",
             name: "we_star",
-            data: "we_star",
-            className: "lv lv-we",
+            data: convertWEStars('we_star'),
+            className: "lv lv-we we-star",
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true
@@ -396,10 +397,42 @@ $(document).ready(function() {
         }
     }
 
+    function convertWEStars(we_star) {
+        const conversionTable = {
+            "1": "1",
+            "3": "2",
+            "5": "3",
+            "7": "4",
+            "9": "5"
+        };
+
+        if (conversionTable.hasOwnProperty(we_star)) {
+            return conversionTable[we_star];
+        } else {
+            return we_star;
+        }
+    }
+
+    function displayWEStars(we_star) {
+        const conversionTable = {
+            "1": "☆",
+            "3": "☆☆",
+            "5": "☆☆☆",
+            "7": "☆☆☆☆",
+            "9": "☆☆☆☆☆"
+        };
+
+        if (conversionTable.hasOwnProperty(we_star)) {
+            return conversionTable[we_star];
+        } else {
+            return we_star;
+        }
+    }
+
     function renderWorldsEnd(we_kanji, we_star) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
-                return row[we_kanji] !== '' ? '<div class="inner-wrap"><span class="lv-num-simple">' + row[we_kanji] + '<\/span><span class="lv-num-precise">☆' + row[we_star] + '<\/span><\/div>' : '';
+                return row[we_kanji] !== '' ? '<div class="inner-wrap"><span class="lv-num-simple">' + row[we_kanji] + '<\/span><span class="lv-num-precise">☆' + convertWEStars(row[we_star]) + '<\/span><\/div>' : '';
             }
             else {
                 return data;
@@ -523,8 +556,8 @@ $(document).ready(function() {
                     ...obj,
                     chart_diff,
                     chart_lev: obj[chart_diff],
-                    chart_lev_i: obj[`we_star`],
-                    chart_lev_i_display: obj[`we_star`],
+                    chart_lev_i: convertWEStars(obj[`we_star`]),
+                    chart_lev_i_display: convertWEStars(obj[`we_star`]),
                     chart_notes: obj[`lev_we_notes`],
                     chart_notes_tap: obj[`lev_we_notes_tap`],
                     chart_notes_hold: obj[`lev_we_notes_hold`],
@@ -701,6 +734,7 @@ $(document).ready(function() {
 
                         var row = api.row(rowIdx);
                         var data = row.data();
+                        var ultima = data['lev_ult'] !== "" ? "ultima" : "";
                         var worldsend = data['we_kanji'] !== "" ? "worldsend" : "";
 
                         var normalRows = $.map(columns, function(col, i) {
@@ -719,8 +753,8 @@ $(document).ready(function() {
 
                             // lv display
                             if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
-                                console.log(chart_name);
                                 var chart_name = column_param['name'];
+                                console.log(chart_name);
 
                                 var notes = chart_name.concat('_notes');
                                 var notes_tap = chart_name.concat('_notes_tap');
@@ -735,9 +769,9 @@ $(document).ready(function() {
                                 return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                     '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
                                     '<span class="content-col">' +
-                                        '<span class="main-info-wrap">' + col.data + '</span>' +
+                                        '<span class="main-info-wrap">' + (worldsend ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['we_kanji'] + '</span><span class="lv-num-precise">☆' + displayWEStars(data['we_star']) + '</span></div>') : col.data) + '</span>' +
                                         '<span class="sub-info-wrap">' +
-                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes"><span class="label">Chain</span><span>' + data[notes] + '</span></span>' : "") +
+                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes"><span class="label">Max Combo</span><span>' + data[notes] + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
@@ -754,7 +788,7 @@ $(document).ready(function() {
 
                         var combinedRows = $('<div class="table-wrapper"/>')
                                                 .append(
-                                                    $('<div class="details-table chart-details '+ worldsend +'"/>')
+                                                    $('<div class="details-table chart-details '+ worldsend + ultima + '"/>')
                                                         .append('<div class="table-header"><span class="th-label">CHART</span></div>')
                                                         .append(chartRows)
                                                 )
