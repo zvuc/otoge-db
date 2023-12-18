@@ -239,7 +239,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     for chart_constant_designer_span in chart_constant_designer_spans:
         # ipdb.set_trace()
         # Designer and Constant within same <span>
-        if '譜面作者【' and '譜面定数【' in chart_constant_designer_span.get_text(strip=True):
+        if '譜面作者【' in chart_constant_designer_span.get_text(strip=True) and '譜面定数【' in chart_constant_designer_span.get_text(strip=True):
             # separate text lines
             text = ''
             for child_node in chart_constant_designer_span:
@@ -262,11 +262,11 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         # Designer and Constant within separate spans
         else:
             # Find designer row
-            if '譜面作者【' and not '譜面定数【' in chart_constant_designer_span.get_text(strip=True):
+            if '譜面作者【' in chart_constant_designer_span.get_text(strip=True) and not '譜面定数【' in chart_constant_designer_span.get_text(strip=True):
                 chart_designers_text = chart_constant_designer_span.get_text(strip=True)
                 chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
             # Find constants row
-            elif '譜面定数【' and not '譜面作者【' in chart_constant_designer_span.get_text(strip=True):
+            elif '譜面定数【' in chart_constant_designer_span.get_text(strip=True) and not '譜面作者【' in chart_constant_designer_span.get_text(strip=True):
                 chart_constants_text = chart_constant_designer_span.get_text(strip=True)
                 chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
                 break
