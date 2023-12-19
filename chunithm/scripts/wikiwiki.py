@@ -182,7 +182,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     for table in tables:
         rows = table.find_all('tr')
         if len(rows) > 1:
-            first_row = rows[0].find('td',{'colspan': True})
+            first_row = rows[0].find(lambda tag: tag.name in ['th', 'td'],{'colspan': True})
             if first_row and first_row.get_text(strip=True) == '楽曲情報':
                 second_row = rows[1].find('th')
                 if second_row and second_row.get_text(strip=True) == 'ジャンル':
