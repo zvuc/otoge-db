@@ -131,7 +131,9 @@ def _update_song_wiki_data(song, nocolors, escape):
         url = song['wikiwiki_url']
         wiki = requests.get(url)
 
-        return _parse_wikiwiki(song, wiki, url, nocolors, escape)
+        # Skip if URL present
+        # return _parse_wikiwiki(song, wiki, url, nocolors, escape)
+        _print_message("(Skipping)", nocolors, bcolors.ENDC, escape)
 
     # If not, guess URL from title
     else:
@@ -196,19 +198,20 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         overview_data = [data[0].text if data else None for data in overview_data]
         overview_dict = dict(zip(overview_heads, overview_data))
 
-        # Find release date
-        formatted_date = ''
-        if '初期' in overview_dict["解禁方法"]:
-            formatted_date = '20150716' # CHUNITHM launch date
-        elif '配信' in overview_dict["解禁方法"]:
-            release_dates = overview_dict["解禁方法"]
-            earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates).group()
-            if earliest_release_date:
-                date_num_parts = earliest_release_date.split('/')
-                formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
         
         # Write date and guess version
         if not song['we_kanji']:
+            # Find release date
+            formatted_date = ''
+            if '初期' in overview_dict["解禁方法"]:
+                formatted_date = '20150716' # CHUNITHM launch date
+            elif '配信' in overview_dict["解禁方法"]:
+                release_dates = overview_dict["解禁方法"]
+                earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates).group()
+                if earliest_release_date:
+                    date_num_parts = earliest_release_date.split('/')
+                    formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
+
             if not formatted_date == '':
                 # ipdb.set_trace()
                 diff_count = [0]
@@ -223,10 +226,18 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         else:
             # Skip for WE
             _print_message("Skipped date (WE)", nocolors, bcolors.WARNING, escape)
-            
+
+        # Update BPM
+        if overview_dict['BPM']:
+            diff_count = [0]
+            _update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
+
+            if diff_count[0] > 0:
+                _print_message("Added BPM", nocolors, bcolors.OKGREEN, escape)
     else:
         # fail
         _print_message("Warning - overview table not found", nocolors, bcolors.WARNING, escape)
+
 
 
     # Find constant and chart designer
@@ -345,13 +356,6 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     else:
         _print_message("Warning - No chart table found", nocolors, bcolors.WARNING, escape)
 
-    # Update BPM
-    if overview_dict['BPM']:
-        diff_count = [0]
-        _update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
-
-        if diff_count[0] > 0:
-            _print_message("Added BPM", nocolors, bcolors.OKGREEN, escape)
 
     song['wikiwiki_url'] = url
 
