@@ -4,6 +4,8 @@ import json
 import ipdb
 import re
 import copy
+import random
+import time
 from terminal import bcolors
 from datetime import datetime
 from functools import reduce
@@ -77,6 +79,8 @@ def update_songs_extra_data(date_from, date_until, song_id, nocolors, escape):
         with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
+        time.sleep(random.randint(2,5))
+
 
 def _filter_songs_by_date(song_list, date_from, date_until):
     target_song_list = []
@@ -137,13 +141,13 @@ def _update_song_wiki_data(song, nocolors, escape):
     # If not, guess URL from title
     else:
         guess_url = wiki_base_url + title
-        wiki = requests.get(guess_url)
+        wiki = requests.get(guess_url, timeout=5)
 
         if not wiki.ok:
             # try replacing special character as fallback
             title = title.replace('\'', '’')
             guess_url = wiki_base_url + title
-            wiki = requests.get(guess_url)
+            wiki = requests.get(guess_url, timeout=5)
 
             if not wiki.ok:
                 # give up
