@@ -233,7 +233,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                 _print_message("Added BPM", nocolors, bcolors.OKGREEN, escape)
     else:
         # fail
-        _print_message("Warning - overview table not found", nocolors, bcolors.WARNING, escape)
+        _print_message("Warning - overview table not found", nocolors, bcolors.FAIL, escape)
 
 
 
@@ -381,9 +381,9 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                     we_data_dict = dict(zip(charts_table_head, we_data))
                     _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', nocolors, escape)
         else:
-            _print_message("Warning - No chart table found", nocolors, bcolors.WARNING, escape)
+            _print_message("Warning - No chart table found", nocolors, bcolors.FAIL, escape)
     else:
-        _print_message("Warning - No chart table found", nocolors, bcolors.WARNING, escape)
+        _print_message("Warning - No chart table found", nocolors, bcolors.FAIL, escape)
 
 
     song['wikiwiki_url'] = url
