@@ -9,17 +9,27 @@ from functools import reduce
 from bs4 import BeautifulSoup, Comment
 
 VERSION_MAPPING = {
-    'ONGEKI': '01',
-    'ONGEKI plus': '01',
-    'SUMMER': '02',
-    'SUMMER plus': '02',
-    'RED': '03',
-    'RED plus': '03',
-    'bright': '04',
-    'bright MEMORY': '04'
+    "無印": "01",
+    "PLUS": "01",
+    "AIR": "02",
+    "AIR+": "02",
+    "STAR": "03",
+    "STAR+": "03",
+    "AMAZON": "04",
+    "AMAZON+": "04",
+    "CRYSTAL": "05",
+    "CRYSTAL+": "05",
+    "PARADISE": "06",
+    "PARADISE×": "06",
+    "NEW": "07",
+    "NEW+": "07",
+    "SUN": "08",
+    "SUN+": "08",
+    "LUMINOUS": "09"
 }
 
-sdvxin_base_url = 'https://sdvx.in/ongeki/sort/'
+
+sdvxin_base_url = 'https://sdvx.in/chunithm/'
 
 # Update on top of existing music-ex
 def update_chartguide_data(date_from, date_until, song_id, nocolors, escape):
@@ -92,22 +102,32 @@ def _update_song_chartguide_data(song, nocolors, escape):
 
     version_num = VERSION_MAPPING.get(song['version'])
 
-    if song['lunatic'] == '1':
-        charts = ['luna']
-    else:
-        charts = ['exp','mas']
     
 
+    if song['we_kanji']:
+        charts = ['end']
+    elif song['lev_ult'] != "":
+        charts = ['exp','mas','ult']
+    else:
+        charts = ['exp','mas']
+
     for chart in charts:
-        if chart == 'luna':
-            lv_page_url = sdvxin_base_url + 'lunatic.htm'
-            target_key = 'lev_lnt_chart_link'
+        if chart == 'end':
+            lv_page_url = sdvxin_base_url + 'end.htm'
+            target_key = 'lev_we_chart_link'
+            url_pattern = '/chunithm/end'
         elif chart == 'exp':
-            lv_page_url = sdvxin_base_url + song['lev_exc'] + '.htm'
-            target_key = 'lev_exc_chart_link' 
+            lv_page_url = sdvxin_base_url + '/sort/' + song['lev_exp'] + '.htm'
+            target_key = 'lev_exp_chart_link' 
+            url_pattern = '/chunithm/0'
         elif chart == 'mas':
-            lv_page_url = sdvxin_base_url + song['lev_mas'] + '.htm'
+            lv_page_url = sdvxin_base_url + '/sort/' + song['lev_mas'] + '.htm'
             target_key = 'lev_mas_chart_link' 
+            url_pattern = '/chunithm/0'
+        elif chart == 'ult':
+            lv_page_url = sdvxin_base_url + '/sort/ultima.htm'
+            target_key = 'lev_ult_chart_link' 
+            url_pattern = '/chunithm/ult'
 
         if not song[target_key] == '':
             _print_message(f"Link already exists! ({chart})", song, nocolors, bcolors.ENDC, escape)
@@ -119,12 +139,17 @@ def _update_song_chartguide_data(song, nocolors, escape):
         soup = BeautifulSoup(request.text, 'html.parser')
         song_dict = {}
 
-        # Find all script tags with src attribute starting with "/ongeki/"
-        script_tags = soup.find_all('script', src=lambda s: s and s.startswith("/ongeki/0"))
+        # Find all script tags with src attribute starting with "/chunithm/"
+        script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
 
         # Extract song_id and song_title and add to the dictionary
         for script_tag in script_tags:
-            extracted_song_id = script_tag['src'].split('/')[-1].split('sort.js')[0]
+            script_src = script_tag['src']
+
+            if chart in script_src:
+                extracted_song_id = script_src.split('/')[-1].split(f'{chart}.js')[0]
+            elif 'sort' in script_src:
+                extracted_song_id = script_src.split('/')[-1].split(f'sort.js')[0]
             
             # Find the trailing HTML comment (song_title)
             extracted_song_title = script_tag.find_next(text=lambda text:isinstance(text, Comment))
@@ -133,10 +158,12 @@ def _update_song_chartguide_data(song, nocolors, escape):
                 extracted_song_title = extracted_song_title.strip()
                 song_dict[extracted_song_id] = extracted_song_title
 
+        # ipdb.set_trace()
+
         song_id = _extract_song_id(song_dict, song['title'])
 
         if song_id:
-            song[target_key] = version_num + '/' + song_id + chart
+            song[target_key] = song_id[:2] + '/' + song_id + chart
             _print_message(f"Updated chart link ({chart})", song, nocolors, bcolors.OKGREEN, escape)
         else:
             _print_message("No matching ID", song, nocolors, bcolors.FAIL, escape)
@@ -146,9 +173,21 @@ def _update_song_chartguide_data(song, nocolors, escape):
 
 def _extract_song_id(song_dict, song_title):
     # ipdb.set_trace()
+    
     for song_id, title in song_dict.items():
         if title == song_title:
             return song_id
+        else: 
+            # try fallback pairs
+            song_title_alt = (
+                song_title
+                .replace('Ä', 'A')
+                .replace('ø', 'o')
+                .replace('é', 'e')
+                .replace('ö', 'o')
+            )
+            if title == song_title_alt:
+                return song_id
 
 
 def get_last_date(LOCAL_MUSIC_JSON_PATH):
