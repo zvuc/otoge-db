@@ -253,8 +253,7 @@ $(document).ready(function() {
             data: ( flat_view ? "chart_notes" : null ),
             className: "details notecount detail-hidden",
             width: "6em",
-            searchable: false,
-            visible: false
+            searchable: false
         },
         { 
             displayTitle: "TAP",
@@ -308,8 +307,7 @@ $(document).ready(function() {
             width: "15em",
             className: "details detail-hidden",
             filterable: flat_view,
-            searchable: flat_view,
-            visible: false
+            searchable: flat_view
         },
         { 
             displayTitle: "追加日",
@@ -1000,7 +998,7 @@ $(document).ready(function() {
         } 
         // redirect to /lv/ subpage with querystring if selected on main page
         else {
-            window.location.href = '/lv?chart_lev=' + encodeURIComponent(val);
+            window.location.href = './lv?chart_lev=' + encodeURIComponent(val);
         }
     });
 
