@@ -36,10 +36,16 @@ jobs:
       - name: Checkout branch if already exists
         id: checkout_existing_branch
         run: |
-          git fetch origin
-          git checkout \
-              -b $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1 | sed 's/^origin\///') \
-              --track $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1)
+          existing_branch=$(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1 | sed 's/^origin\///')
+          if [ -n "$existing_branch" ]; then
+            echo "Existing branch found. Checking out branch"
+            git fetch origin
+            git checkout \
+                -b $existing_branch \
+                --track $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1)
+          else
+            echo "No existing branch found"
+          fi
 
       - name: Run wiki script and capture output
         id: run_script
