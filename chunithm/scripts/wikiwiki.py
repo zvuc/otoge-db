@@ -244,7 +244,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     chart_constants_dict = {}
     
     for chart_constant_designer_span in chart_constant_designer_spans:
-        # ipdb.set_trace()
+        
         chart_constant_designer_span_text = chart_constant_designer_span.get_text(strip=True)
         
         # Count number of text in brackets
@@ -252,7 +252,8 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
 
         if brackets_count == 0:
             continue
-        # Designer and Constant within same <span>
+        
+        # 2 brackets within same <span>
         if brackets_count == 2:
             if '譜面作者【' in chart_constant_designer_span_text and '譜面定数【' in chart_constant_designer_span_text:
                 # separate text lines
@@ -275,20 +276,33 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
                     break
             else:
+                # Sometimes the brackets are missing the header text
+                # Try finding the 00.0 constant format
                 match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_constant_designer_span_text)
+                match_other = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(.*?)】',chart_constant_designer_span_text)
 
                 if re.match(r'\d{2}\.\d', match.group(3)) is not None:
                     chart_constants_text = match.group()
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
-                    break
-        # Designer and Constant within separate spans
+                    
+                    # try looking for designer bracket nearby
+                    # even if it doesnt have a title
+                    if re.match(r'\d{2}\.\d', match_other.group(3)) is None:
+                        chart_designers_text = match_other.group()
+                        chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
+                        break
+                    else:
+                        break
+        
+        # Just one bracket in span
         elif brackets_count == 1:
-            # Find designer row
+            # Find if it's either designer or constants
+            # Designer
             if '譜面作者【' in chart_constant_designer_span_text:
                 chart_designers_text = chart_constant_designer_span_text
                 chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
 
-            # Find constants row
+            # Constants
             if '譜面定数【' in chart_constant_designer_span_text:
                 # match = re.search(r'【(.*?)】', chart_constant_designer_span_text).group(1)
                 match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_constant_designer_span_text)
@@ -423,7 +437,10 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
     
     if not chart == 'we' and chart_constant_designer_dict:
         try:
-            _update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+            if re.search(r'(\d{2}\.\d)',chart_constant_designer_dict[f"lev_{chart}_i"]):
+                _update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+            else:
+                raise Exception(f"Constant for {chart.upper()} is invalid")
         except:
             if chart not in ('bas', 'adv'):
                 _print_message(f"Warning - No constant found ({chart.upper()})", nocolors, bcolors.WARNING, escape)
