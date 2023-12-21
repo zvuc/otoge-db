@@ -142,28 +142,30 @@ def _update_song_chartguide_data(song, nocolors, escape):
         # Find all script tags with src attribute starting with "/chunithm/"
         script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
 
-        # Extract song_id and song_title and add to the dictionary
+        # Extract script tag src and song_title and add to the dictionary
         for script_tag in script_tags:
             script_src = script_tag['src']
-
-            if chart in script_src:
-                extracted_song_id = script_src.split('/')[-1].split(f'{chart}.js')[0]
-            elif 'sort' in script_src:
-                extracted_song_id = script_src.split('/')[-1].split(f'sort.js')[0]
             
             # Find the trailing HTML comment (song_title)
             extracted_song_title = script_tag.find_next(text=lambda text:isinstance(text, Comment))
             
             if extracted_song_title:
                 extracted_song_title = extracted_song_title.strip()
-                song_dict[extracted_song_id] = extracted_song_title
+                song_dict[script_src] = extracted_song_title
 
         # ipdb.set_trace()
 
         song_id = _extract_song_id(song_dict, song['title'])
 
         if song_id:
-            song[target_key] = song_id[:2] + '/' + song_id + chart
+            # extract song_id from src
+            if chart == 'ult' or chart == 'end':
+                song_id = song_id.split('/')[-1].split(f'.js')[0]
+                song[target_key] = chart + '/' + song_id
+            elif 'sort' in script_src:
+                song_id = script_src.split('/')[-1].split(f'sort.js')[0]
+                song[target_key] = song_id[:2] + '/' + song_id + chart
+
             _print_message(f"Updated chart link ({chart})", song, nocolors, bcolors.OKGREEN, escape)
         else:
             _print_message("No matching ID", song, nocolors, bcolors.FAIL, escape)
@@ -173,7 +175,7 @@ def _update_song_chartguide_data(song, nocolors, escape):
 
 def _extract_song_id(song_dict, song_title):
     # ipdb.set_trace()
-    
+
     for song_id, title in song_dict.items():
         if title == song_title:
             return song_id

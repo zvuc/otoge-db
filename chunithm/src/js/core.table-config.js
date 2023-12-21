@@ -779,7 +779,7 @@ $(document).ready(function() {
                                             ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
                                     '</span>' +
-                                    ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm"><span class="img"></span><span>譜面確認</span></a><span class="chart-provider">sdvx.in 提供</span></span>' : "") +
+                                    ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/chunithm/'+ data[chartLink] +'.htm"><span class="img"></span><span>譜面確認</span></a><span class="chart-provider">sdvx.in 提供</span></span>' : "") +
                                     '</div>'
                             }
                         }).join('');
