@@ -76,10 +76,10 @@ def update_songs_extra_data(date_from, date_until, song_id, nocolors, escape):
     for song in target_song_list:
         _update_song_wiki_data(song, nocolors, escape)
 
+        # time.sleep(random.randint(1,2))
+
         with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
-
-        time.sleep(random.randint(2,5))
 
 
 def _filter_songs_by_date(song_list, date_from, date_until):
@@ -127,16 +127,16 @@ def _update_song_wiki_data(song, nocolors, escape):
         .replace('#', '＃')
         .replace('"', '”')
     )
-
+    
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
-        # url = song['wikiwiki_url']
-        # wiki = requests.get(url)
+        url = song['wikiwiki_url']
+        wiki = requests.get(url)
 
-        # return _parse_wikiwiki(song, wiki, url, nocolors, escape)
+        return _parse_wikiwiki(song, wiki, url, nocolors, escape)
 
         # Skip if URL present
-        _print_message("(Skipping)", nocolors, bcolors.ENDC, escape)
+        # _print_message("(Skipping)", nocolors, bcolors.ENDC, escape)
 
     # If not, guess URL from title
     else:
@@ -207,10 +207,11 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
             formatted_date = ''
             if '初期' in overview_dict["解禁方法"]:
                 formatted_date = '20150716' # CHUNITHM launch date
-            elif '配信' in overview_dict["解禁方法"]:
+            else:
                 release_dates = overview_dict["解禁方法"]
-                earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates).group()
+                earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates)
                 if earliest_release_date:
+                    earliest_release_date = earliest_release_date.group()
                     date_num_parts = earliest_release_date.split('/')
                     formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
 
@@ -258,7 +259,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
             continue
         
         # 2 brackets within same <span>
-        if brackets_count == 2:
+        elif brackets_count == 2:
             if '譜面作者【' in chart_constant_designer_span_text and '譜面定数【' in chart_constant_designer_span_text:
                 # separate text lines
                 text = ''
@@ -303,8 +304,18 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
             # Find if it's either designer or constants
             # Designer
             if '譜面作者【' in chart_constant_designer_span_text:
-                chart_designers_text = chart_constant_designer_span_text
-                chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
+                match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(.*?)】',chart_constant_designer_span_text)
+
+                if match is not None and re.match(r'\d{2}\.\d', match.group(3)) is None:
+                    chart_designers_text = chart_constant_designer_span_text
+                    chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
+                elif match is None and song['we_kanji']:
+                    # Song is WE only
+                    chart_designers_text = chart_constant_designer_span_text
+                    match = re.search(r'【(.*?)】', chart_designers_text)
+                    if match:
+                        match = match.group(1)
+                        chart_designers_dict = {f"lev_{song['we_kanji']}_designer": match}
 
             # Constants
             if '譜面定数【' in chart_constant_designer_span_text:
@@ -315,77 +326,80 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                     chart_constants_text = chart_constant_designer_span_text
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
                     break
+        else:
+            _print_message(f"Warning - No designer/constant info found ({chart.upper()})", nocolors, bcolors.WARNING, escape)
             
     
     chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
 
     # find the charts table
     charts_table = None
+    charts_data = []
     for table in tables:
         th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
         if len(th_elements) == 2 and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[1].get_text(strip=True) == '総数':
-            charts_table = table
-            break
+            charts_table_head = [th.text for th in table.select("thead th:not([colspan='5']), thead td:not([colspan='5'])")]
+            
+            if any(charts_table_head) and 'Lv' in charts_table_head[0]:
+                charts_table = table
+                # Found the charts table
+                break
+            else:
+                _print_message("Warning - No chart table found", nocolors, bcolors.FAIL, escape)
     
     # Update chart details
     if charts_table:
-        charts_table_head = [th.text for th in charts_table.select("thead th:not([colspan='5']), thead td:not([colspan='5'])")]
-        # charts_data = [[cell.text for cell in chart.select("th,td")] for chart in charts_table.select("tbody tr")]
-        charts_data = []
+        if song['lev_bas']:
+            bas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["bas"]}' in tag.get('style', ''))
+            # bas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["bas"]}.*')})
+            if bas_row:
+                bas_row = bas_row.find_parent()
+                bas_data = [cell.text for cell in bas_row]
+                bas_data_dict = dict(zip(charts_table_head, bas_data))
+                _update_song_chart_details(song, bas_data_dict, chart_constant_designer_dict, 'bas', nocolors, escape)
+        if song['lev_adv']:
+            adv_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["adv"]}' in tag.get('style', ''))
+            # adv_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["adv"]}.*')})
+            if adv_row:
+                adv_row = adv_row.find_parent()
+                adv_data = [cell.text for cell in adv_row]
+                adv_data_dict = dict(zip(charts_table_head, adv_data))
+                _update_song_chart_details(song, adv_data_dict, chart_constant_designer_dict, 'adv', nocolors, escape)
+        if song['lev_exp']:
+            exp_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["exp"]}' in tag.get('style', ''))
+            # exp_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["exp"]}.*')})
+            if exp_row:
+                exp_row = exp_row.find_parent()
+                exp_data = [cell.text for cell in exp_row]
+                exp_data_dict = dict(zip(charts_table_head, exp_data))
+                _update_song_chart_details(song, exp_data_dict, chart_constant_designer_dict, 'exp', nocolors, escape)
+        if song['lev_mas']:
+            mas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["mas"]}' in tag.get('style', ''))
+            # mas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["mas"]}.*')})
+            if mas_row:
+                mas_row = mas_row.find_parent()
+                mas_data = [cell.text for cell in mas_row]
+                mas_data_dict = dict(zip(charts_table_head, mas_data))
+                _update_song_chart_details(song, mas_data_dict, chart_constant_designer_dict, 'mas', nocolors, escape)
+        if song['lev_ult']:
+            ult_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["ult"]}' in tag.get('style', ''))
+            # ult_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["ult"]}.*')})
+            if ult_row:
+                ult_row = ult_row.find_parent()
+                ult_data = [cell.text for cell in ult_row]
+                ult_data_dict = dict(zip(charts_table_head, ult_data))
+                _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', nocolors, escape)
+        if song['we_kanji']:
+            we_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and 'white' in tag.get('style', ''))
+            # we_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["we"]}.*')})
+            if we_row and song['we_kanji'] in we_row.get_text(strip=True):
+                we_row_parent = we_row.find_parent()
+                for br_tag in we_row_parent.find_all('br'):
+                    br_tag.decompose()
+                we_data = [cell.text for cell in we_row_parent]
+                we_data_dict = dict(zip(charts_table_head, we_data))
+                _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', nocolors, escape)
 
-        if any(charts_table_head) and 'Lv' in charts_table_head[0]:
-            if song['lev_bas']:
-                bas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["bas"]}' in tag.get('style', ''))
-                # bas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["bas"]}.*')})
-                if bas_row:
-                    bas_row = bas_row.find_parent()
-                    bas_data = [cell.text for cell in bas_row]
-                    bas_data_dict = dict(zip(charts_table_head, bas_data))
-                    _update_song_chart_details(song, bas_data_dict, chart_constant_designer_dict, 'bas', nocolors, escape)
-            if song['lev_adv']:
-                adv_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["adv"]}' in tag.get('style', ''))
-                # adv_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["adv"]}.*')})
-                if adv_row:
-                    adv_row = adv_row.find_parent()
-                    adv_data = [cell.text for cell in adv_row]
-                    adv_data_dict = dict(zip(charts_table_head, adv_data))
-                    _update_song_chart_details(song, adv_data_dict, chart_constant_designer_dict, 'adv', nocolors, escape)
-            if song['lev_exp']:
-                exp_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["exp"]}' in tag.get('style', ''))
-                # exp_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["exp"]}.*')})
-                if exp_row:
-                    exp_row = exp_row.find_parent()
-                    exp_data = [cell.text for cell in exp_row]
-                    exp_data_dict = dict(zip(charts_table_head, exp_data))
-                    _update_song_chart_details(song, exp_data_dict, chart_constant_designer_dict, 'exp', nocolors, escape)
-            if song['lev_mas']:
-                mas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["mas"]}' in tag.get('style', ''))
-                # mas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["mas"]}.*')})
-                if mas_row:
-                    mas_row = mas_row.find_parent()
-                    mas_data = [cell.text for cell in mas_row]
-                    mas_data_dict = dict(zip(charts_table_head, mas_data))
-                    _update_song_chart_details(song, mas_data_dict, chart_constant_designer_dict, 'mas', nocolors, escape)
-            if song['lev_ult']:
-                ult_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["ult"]}' in tag.get('style', ''))
-                # ult_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["ult"]}.*')})
-                if ult_row:
-                    ult_row = ult_row.find_parent()
-                    ult_data = [cell.text for cell in ult_row]
-                    ult_data_dict = dict(zip(charts_table_head, ult_data))
-                    _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', nocolors, escape)
-            if song['we_kanji']:
-                we_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and 'white' in tag.get('style', ''))
-                # we_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["we"]}.*')})
-                if we_row and song['we_kanji'] in we_row:
-                    we_row_parent = we_row.find_parent()
-                    for br_tag in we_row_parent.find_all('br'):
-                        br_tag.decompose()
-                    we_data = [cell.text for cell in we_row_parent]
-                    we_data_dict = dict(zip(charts_table_head, we_data))
-                    _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', nocolors, escape)
-        else:
-            _print_message("Warning - No chart table found", nocolors, bcolors.FAIL, escape)
     else:
         _print_message("Warning - No chart table found", nocolors, bcolors.FAIL, escape)
 
@@ -429,9 +443,12 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
                 designer_key = chart_constant_designer_dict[f"lev_{chart}_designer"]
                 _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
             except KeyError:
-                # try alternative syntax
-                designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
-                _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=diff_count)
+                try:
+                    # try alternative syntax
+                    designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
+                    _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=diff_count)
+                except:
+                    _print_message(f"Warning - No designer found ({chart.upper()})", nocolors, bcolors.WARNING, escape)
         else:
             try:
                 _update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
@@ -458,7 +475,7 @@ def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
     if not (song[key] == ''):
         return
     # Only overwrite if new data is not empty and is not same
-    if not (new_data == '') and not (song[key] == new_data):
+    if not (new_data == '') and not (song[key] == new_data) and not (new_data == "??") and not (new_data == "???"):
         diff_count[0] += 1
         song[key] = new_data
 
