@@ -33,20 +33,6 @@ jobs:
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Checkout branch if already exists
-        id: checkout_existing_branch
-        run: |
-          existing_branch=$(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1 | sed 's/^origin\///')
-          if [ -n "$existing_branch" ]; then
-            echo "Existing branch found. Checking out branch"
-            git fetch origin
-            git checkout \
-                -b $existing_branch \
-                --track $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1)
-          else
-            echo "No existing branch found"
-          fi
-
       - name: Run wiki script and capture output
         id: run_script
         run: |
@@ -72,21 +58,42 @@ jobs:
             echo "COMMIT=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Get existing branch if already exists
+        id: get_existing_branch
+        if: steps.check_script.outputs.COMMIT == 'true'
+        run: |
+          existing_branch=$(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1 | sed 's/^origin\///')
+          echo "${existing_branch}"
+          if [ ! -z "${existing_branch}" ]; then
+            echo "Existing branch found. Checking out branch"
+            echo "EXISTING_BRANCH=${existing_branch}" >> "$GITHUB_OUTPUT"
+          else
+            echo "No existing branch found"
+          fi
+
       - name: Create new branch and commit changes
         id: checkout_branch_commit
         if: steps.check_script.outputs.COMMIT == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
+          echo ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }}
+
           git add .
+
           if output=$(git status --porcelain) && [ -z "$output" ]; then
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
-            if git show-ref --quiet refs/heads/update-${{ steps.extract_date.outputs.DATESTAMP }}; then
-              echo "Branch already exists, switching to existing branch"
-              git checkout update-${{ steps.extract_date.outputs.DATESTAMP }}
+            if [ ! -z ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }} ]; then
+              echo "Branch already exists, checkout existing branch"
+
+              git fetch origin
+              git checkout \
+                -b ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }} \
+                --track $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/update-\* | head -n 1)
             else
+              echo "Creating new branch"
               git checkout -b update-${{ steps.extract_date.outputs.DATESTAMP }}
             fi
             git commit -m "[Automated] Apply updated data from wiki ${{ steps.extract_date.outputs.DATESTAMP }}"
@@ -95,15 +102,29 @@ jobs:
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create PR (if does not exist)
+      - name: Checkout existing PR or create new
         if: steps.checkout_branch_commit.outputs.HAS_DIFFS == 'true'
         run: |
-          gh pr comment "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
-          --body "${{ steps.run_script.outputs.OUTPUT_LOG }}" || \
-          gh pr create \
-          -B ${{ github.ref_name }} \
-          -H "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
-          --title "[Automation] Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
-          --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          if [ ! -z ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }} ]; then
+            if [[ $(gh pr list --state merged --head ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }} | grep ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }}) ]]; then
+              echo "Previous PR for this branch is already merged. Create new PR"
+              gh pr create \
+                -B ${{ github.ref_name }} \
+                -H "${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }}" \
+                --title "[Automation] Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+                --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+            else
+              echo "Add comment to existing open PR"
+              gh pr comment ${{ steps.get_existing_branch.outputs.EXISTING_BRANCH }} \
+                --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+            fi
+          else
+            echo "No previous PR found. Create new PR"
+            gh pr create \
+              -B ${{ github.ref_name }} \
+              -H "update-${{ steps.extract_date.outputs.DATESTAMP }}" \
+              --title "[Automation] Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
