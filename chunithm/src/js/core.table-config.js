@@ -190,7 +190,7 @@ $(document).ready(function() {
             className: "lv lv-we we-star",
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: false
         },
         {
             //  chart_diff

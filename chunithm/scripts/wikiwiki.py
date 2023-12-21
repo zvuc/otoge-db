@@ -42,7 +42,6 @@ CHART_COLORS = {
 
 # Update on top of existing music-ex
 def update_songs_extra_data(date_from, date_until, song_id, nocolors, escape):
-    # ipdb.set_trace()
     with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
@@ -91,7 +90,6 @@ def _filter_songs_by_date(song_list, date_from, date_until):
     return target_song_list
 
 def _filter_songs_by_id_range(song_list, id_from, id_to):
-    # ipdb.set_trace()
     target_song_list = []
 
     for song in song_list:
@@ -128,11 +126,12 @@ def _update_song_wiki_data(song, nocolors, escape):
 
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
-        url = song['wikiwiki_url']
-        wiki = requests.get(url)
+        # url = song['wikiwiki_url']
+        # wiki = requests.get(url)
+
+        # return _parse_wikiwiki(song, wiki, url, nocolors, escape)
 
         # Skip if URL present
-        # return _parse_wikiwiki(song, wiki, url, nocolors, escape)
         _print_message("(Skipping)", nocolors, bcolors.ENDC, escape)
 
     # If not, guess URL from title
@@ -190,7 +189,6 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                     break
 
     if overview_table:
-        # ipdb.set_trace()
         overview_heads = overview_table.select('th')
         overview_data = [head.find_parent('tr').select('td:last-of-type') for head in overview_heads]
 
@@ -213,7 +211,6 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                     formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
 
             if not formatted_date == '':
-                # ipdb.set_trace()
                 diff_count = [0]
                 _update_song_key(song, 'date', formatted_date, diff_count=diff_count)
                 _update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
@@ -241,7 +238,6 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
 
 
     # Find constant and chart designer
-    # ipdb.set_trace()
     chart_constant_designer_text = None
     chart_constant_designer_spans = soup.find_all('span', style='font-size:11px')
     chart_designers_dict = {}
@@ -249,38 +245,58 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     
     for chart_constant_designer_span in chart_constant_designer_spans:
         # ipdb.set_trace()
+        chart_constant_designer_span_text = chart_constant_designer_span.get_text(strip=True)
+        
+        # Count number of text in brackets
+        brackets_count = len(re.compile(r'【(.*?)】').findall(chart_constant_designer_span_text))
+
+        if brackets_count == 0:
+            continue
         # Designer and Constant within same <span>
-        if '譜面作者【' in chart_constant_designer_span.get_text(strip=True) and '譜面定数【' in chart_constant_designer_span.get_text(strip=True):
-            # separate text lines
-            text = ''
-            for child_node in chart_constant_designer_span:
-                if isinstance(child_node, NavigableString):
-                    text += str(child_node).strip()
-                elif isinstance(child_node, Tag):
-                    if child_node.name != 'br':
-                        text += child_node.text.strip()
-                    else:
-                        text += '\n'
-                
-            chart_constant_designer = text.strip().split('\n')
-            # check if separated text includes 譜面定数 in second row
-            if '譜面定数' in chart_constant_designer[1]:
-                chart_designers_text = chart_constant_designer[0]
-                chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
-                chart_constants_text = chart_constant_designer[1]
-                chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
-                break
+        if brackets_count == 2:
+            if '譜面作者【' in chart_constant_designer_span_text and '譜面定数【' in chart_constant_designer_span_text:
+                # separate text lines
+                text = ''
+                for child_node in chart_constant_designer_span:
+                    if isinstance(child_node, NavigableString):
+                        text += str(child_node).strip()
+                    elif isinstance(child_node, Tag):
+                        if child_node.name != 'br':
+                            text += child_node.text.strip()
+                        else:
+                            text += '\n'
+                    
+                chart_constant_designer = text.strip().split('\n')
+                # check if separated text includes 譜面定数 in second row
+                if '譜面定数' in chart_constant_designer[1]:
+                    chart_designers_text = chart_constant_designer[0]
+                    chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
+                    chart_constants_text = chart_constant_designer[1]
+                    chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
+                    break
+            else:
+                match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_constant_designer_span_text)
+
+                if re.match(r'\d{2}\.\d', match.group(3)) is not None:
+                    chart_constants_text = match.group()
+                    chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
+                    break
         # Designer and Constant within separate spans
-        else:
+        elif brackets_count == 1:
             # Find designer row
-            if '譜面作者【' in chart_constant_designer_span.get_text(strip=True) and not '譜面定数【' in chart_constant_designer_span.get_text(strip=True):
-                chart_designers_text = chart_constant_designer_span.get_text(strip=True)
+            if '譜面作者【' in chart_constant_designer_span_text:
+                chart_designers_text = chart_constant_designer_span_text
                 chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
+
             # Find constants row
-            elif '譜面定数【' in chart_constant_designer_span.get_text(strip=True) and not '譜面作者【' in chart_constant_designer_span.get_text(strip=True):
-                chart_constants_text = chart_constant_designer_span.get_text(strip=True)
-                chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
-                break
+            if '譜面定数【' in chart_constant_designer_span_text:
+                # match = re.search(r'【(.*?)】', chart_constant_designer_span_text).group(1)
+                match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_constant_designer_span_text)
+
+                if re.match(r'\d{2}\.\d', match.group(3)) is not None:
+                    chart_constants_text = chart_constant_designer_span_text
+                    chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
+                    break
             
     
     chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
@@ -300,7 +316,6 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         charts_data = []
 
         if any(charts_table_head) and 'Lv' in charts_table_head[0]:
-            # ipdb.set_trace()
             if song['lev_bas']:
                 bas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["bas"]}' in tag.get('style', ''))
                 # bas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["bas"]}.*')})
@@ -388,7 +403,6 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
     _update_song_key(song, f"lev_{chart}_notes_flick", chart_dict["Flick"], remove_comma=True, diff_count=diff_count)
 
     if chart_constant_designer_dict:
-        # ipdb.set_trace()
         # in some cases WE may be labled as WE戻 or 狂☆4...
         # WE戻 : https://wikiwiki.jp/chunithmwiki/B.B.K.K.B.K.K.
         # 狂☆4  : https://wikiwiki.jp/chunithmwiki/Trackless%20wilderness
@@ -433,7 +447,6 @@ def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
         return
 
 def _construct_constant_designer_dict(song, text, key_name):
-    # ipdb.set_trace()
     # Use regular expression to find content within brackets
     match = re.search(r'【(.*?)】', text)
 
