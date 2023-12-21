@@ -179,6 +179,7 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
         _print_message("Parse failed! Skipping song", nocolors, bcolors.FAIL, escape)
         return song
 
+
     # find the overview table
     overview_table = None
 
@@ -239,7 +240,6 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
     else:
         # fail
         _print_message("Warning - overview table not found", nocolors, bcolors.FAIL, escape)
-
 
 
     # Find constant and chart designer
@@ -390,9 +390,13 @@ def _parse_wikiwiki(song, wiki, url, nocolors, escape):
                 ult_data_dict = dict(zip(charts_table_head, ult_data))
                 _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', nocolors, escape)
         if song['we_kanji']:
-            we_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and 'white' in tag.get('style', ''))
-            # we_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["we"]}.*')})
-            if we_row and song['we_kanji'] in we_row.get_text(strip=True):
+            # ipdb.set_trace()
+            # Find with color
+            # we_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and 'white' in tag.get('style', ''))
+            # Find with text
+            we_row = charts_table.find(text=song['we_kanji']).find_parent(lambda tag: tag.name in ['th','td'])
+            
+            if we_row and song['we_kanji'] in we_row.get_text(strip=True).replace('?', '？').replace('!', '！'):
                 we_row_parent = we_row.find_parent()
                 for br_tag in we_row_parent.find_all('br'):
                     br_tag.decompose()
