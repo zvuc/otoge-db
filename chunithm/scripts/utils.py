@@ -73,6 +73,7 @@ def _add_ex_data_template(song):
     song['lev_bas_notes_air'] = ""
     song['lev_bas_notes_flick'] = ""
     song['lev_bas_designer'] = ""
+    song['lev_bas_chart_link'] = ""
     song['lev_adv_i'] = ""
     song['lev_adv_notes'] = ""
     song['lev_adv_notes_tap'] = ""

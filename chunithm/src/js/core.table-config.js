@@ -252,7 +252,7 @@ $(document).ready(function() {
             name: "chart_notes",
             data: ( flat_view ? "chart_notes" : null ),
             className: "details notecount detail-hidden",
-            width: "6em",
+            width: "8em",
             searchable: false
         },
         { 
@@ -305,9 +305,19 @@ $(document).ready(function() {
             name: "chart_designer",
             data: ( flat_view ? "chart_designer" : null ),
             width: "15em",
-            className: "details detail-hidden",
+            className: "details detail-hidden designer",
             filterable: flat_view,
             searchable: flat_view
+        },
+        { 
+            displayTitle: "譜面作者",
+            name: "chart_link",
+            data: ( flat_view ? "chart_link" : null ),
+            render: ( flat_view ? renderChartLinkBtn('chart_link') : null ),
+            width: "5em",
+            className: "details detail-hidden chart-link",
+            filterable: false,
+            searchable: false
         },
         { 
             displayTitle: "追加日",
@@ -342,9 +352,9 @@ $(document).ready(function() {
     var default_order = 
         flat_view ?
             // 難易度 , Lv , Date
-            [[17, 'desc'],[15, 'desc'],[15, 'desc'],[26, 'desc']] :
+            [[18, 'desc'],[17, 'desc'],[27, 'desc']] :
             // date , ID
-            [[26, 'desc'],[0, 'asc']];
+            [[27, 'desc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
@@ -386,8 +396,20 @@ $(document).ready(function() {
 
     function renderLvNum(simple_lv, precise_lv) {
         return function ( data, type, row ) {
-            if ( type === 'display' ) {
-                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
+            if ( type === 'display' ) {  
+                var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
+                if (match) {
+                    var lvnum = match[1];
+                    var plus = (match[2] === '+');
+
+                    if (plus) {
+                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                    } else {
+                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                    }
+                } else {
+                    return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                }
             }
             else {
                 return data;
@@ -408,6 +430,26 @@ $(document).ready(function() {
             return conversionTable[we_star];
         } else {
             return we_star;
+        }
+    }
+
+    function renderChartLinkBtn(chart_link) {
+        return function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return chartLinkBtn(row['chart_link'])
+            } else {
+                return data
+            }
+        }
+    }
+
+    function chartLinkBtn(chart_link) {
+        if ( chart_link !== '' ) {
+            return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/chunithm/${chart_link}.htm">
+                        <span class="img"></span><span>譜面確認</span>
+                    </a><span class="chart-provider">sdvx.in 提供</span>`;
+        } else {
+            return '';
         }
     }
 
@@ -562,7 +604,8 @@ $(document).ready(function() {
                     chart_notes_slide: obj[`lev_we_notes_slide`],
                     chart_notes_air: obj[`lev_we_notes_air`],
                     chart_notes_flick: obj[`lev_we_notes_flick`],
-                    chart_designer: obj[`lev_we_designer`]
+                    chart_designer: obj[`lev_we_designer`],
+                    chart_link: obj[`lev_we_chart_link`]
                 }
             }
             else {
@@ -578,7 +621,8 @@ $(document).ready(function() {
                     chart_notes_slide: obj[`${chart_diff}_notes_slide`],
                     chart_notes_air: obj[`${chart_diff}_notes_air`],
                     chart_notes_flick: obj[`${chart_diff}_notes_flick`],
-                    chart_designer: obj[`${chart_diff}_designer`]
+                    chart_designer: obj[`${chart_diff}_designer`],
+                    chart_link: obj[`${chart_diff}_chart_link`]
                 };
             }
         }
@@ -716,14 +760,14 @@ $(document).ready(function() {
                                 '<span class="artist">' + data.artist + '<\/span>' +
                                 '<div class="quicklinks">' +
                                 '<a class="wiki" href="' + wiki_url + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
-                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=オンゲキ+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
+                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=CHUNITHM+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
                                 '<\/div>' +
                                 '<\/div><\/div>'
                         },
                         footer: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-footer">' +
-                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23%E3%82%AA%E3%83%B3%E3%82%B2%E3%82%ADDB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
+                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23CHUNITHM_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
                                 '<\/div>'
                         }
                     } ),
@@ -752,7 +796,6 @@ $(document).ready(function() {
                             // lv display
                             if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
                                 var chart_name = column_param['name'];
-                                console.log(chart_name);
 
                                 var notes = chart_name.concat('_notes');
                                 var notes_tap = chart_name.concat('_notes_tap');
@@ -762,24 +805,23 @@ $(document).ready(function() {
                                 var notes_flick = chart_name.concat('_notes_flick');
 
                                 var designer = chart_name.concat('_designer');
-                                var chartLink = chart_name.concat('_chart_link');                                
+                                var chart_link = chart_name.concat('_chart_link');                                
 
                                 return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                     '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
                                     '<span class="content-col">' +
-                                        '<span class="main-info-wrap">' + (worldsend ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['we_kanji'] + '</span><span class="lv-num-precise">☆' + displayWEStars(data['we_star']) + '</span></div>') : col.data) + '</span>' +
+                                        '<span class="main-info-wrap">' + (worldsend ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['we_kanji'] + '</span><span class="lv-num-precise">' + displayWEStars(data['we_star']) + '</span></div>') : col.data) + '</span>' +
                                         '<span class="sub-info-wrap">' +
-                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes"><span class="label">Max Combo</span><span>' + data[notes] + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, notes_air) ? '<span class="notes_air"><span class="label">air</span><span>' + data[notes_air] + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, notes_flick) ? '<span class="notes_flick"><span class="label">flick</span><span>' + data[notes_flick] + '</span></span>' : "") +
-                                            
+                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
+                                                ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_air) ? '<span class="notes_air"><span class="label">air</span><span>' + data[notes_air] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_flick) ? '<span class="notes_flick"><span class="label">flick</span><span>' + data[notes_flick] + '</span></span>' : "") + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
                                     '</span>' +
-                                    ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/chunithm/'+ data[chartLink] +'.htm"><span class="img"></span><span>譜面確認</span></a><span class="chart-provider">sdvx.in 提供</span></span>' : "") +
+                                    ( checkPropertyAndValueExists(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
                                     '</div>'
                             }
                         }).join('');
@@ -841,9 +883,8 @@ $(document).ready(function() {
                             // var val = $(this).val();
 
                             // when applying filter, control rowgroup visibility
-                            if (column.index() === 26 || (val_e === "" && order[0][0] === 26)) {
+                            if (column.index() === 27 || (val_e === "" && order[0][0] === 27)) {
                                 column.rowGroup().enable();
-                                // console.log('group enabled (filter)');
                             } else {
                                 column.rowGroup().disable();
                                 // console.log('group disabled (filter active)');
@@ -945,13 +986,13 @@ $(document).ready(function() {
                     }
 
                     // Disable rowgroup unless sorting by date
-                    if (order[0][0] !== 25) {
+                    if (order[0][0] !== 27) {
                         table.rowGroup().disable();
                         // console.log('group disabled (sorting by non-date column)');
                         return;
                     }
                     // enable rowgroup if sorting by date AND search is inactive
-                    else if ((order[0][0] === 25) && !searchActive) {
+                    else if ((order[0][0] === 27) && !searchActive) {
                         table.rowGroup().enable();
                         // console.log('group enabled (sorting by date + search inactive)');
                         return;
