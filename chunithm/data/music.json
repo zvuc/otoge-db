@@ -1,8 +1,24 @@
 [
   {
-    "id": "2490",
+    "id": "2496",
     "catname": "POPS & ANIME",
     "newflag": "1",
+    "title": "さくゆいたいそう",
+    "reading": "サクユイタイソウ",
+    "artist": "さくゆい",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "11+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "da2cdaccbcc16009.jpg"
+  },
+  {
+    "id": "2490",
+    "catname": "POPS & ANIME",
+    "newflag": "0",
     "title": "ALIVE",
     "reading": "ALIVE",
     "artist": "ClariS「リコリス・リコイル」",
@@ -18,7 +34,7 @@
   {
     "id": "2491",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "可愛くてごめん",
     "reading": "カワイクテコメン",
     "artist": "HoneyWorks feat. ちゅーたん(CV:早見沙織)",
@@ -34,7 +50,7 @@
   {
     "id": "2492",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "トウキョウ・シャンディ・ランデヴ feat. 花譜, ツミキ",
     "reading": "トウキヨウシヤンテイランテウ",
     "artist": "MAISONdes",
@@ -50,7 +66,7 @@
   {
     "id": "2493",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "マツケンサンバⅡ",
     "reading": "マツケンサンハII",
     "artist": "松平健 [covered by 光吉猛修]",
@@ -66,7 +82,7 @@
   {
     "id": "2494",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "アイドル",
     "reading": "アイトル",
     "artist": "YOASOBI",
@@ -82,7 +98,7 @@
   {
     "id": "2495",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "STORM",
     "reading": "STORM",
     "artist": "JAM Project featuring 水木一郎、影山ヒロノブ",
@@ -2176,9 +2192,41 @@
     "image": "d5a47266b4fe0bfe.jpg"
   },
   {
-    "id": "2505",
+    "id": "2508",
     "catname": "niconico",
     "newflag": "1",
+    "title": "リレイアウター",
+    "reading": "リレイアウタウ",
+    "artist": "稲葉曇",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "e6ff48a21f6f9dea.jpg"
+  },
+  {
+    "id": "2509",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "おどロボ",
+    "reading": "オトロホ",
+    "artist": "海茶・多良レイト",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "e250cee33106255a.jpg"
+  },
+  {
+    "id": "2505",
+    "catname": "niconico",
+    "newflag": "0",
     "title": "ラブカ？",
     "reading": "ラフカ",
     "artist": "柊キライ",
@@ -2194,7 +2242,7 @@
   {
     "id": "2506",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "強風オールバック",
     "reading": "キヨウフウオウルハツク",
     "artist": "ゆこぴ",
@@ -2210,7 +2258,7 @@
   {
     "id": "2507",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "星界ちゃんと可不ちゃんのおつかい合騒曲",
     "reading": "セカイチヤントカフチヤンノオツカイカツソウキヨク",
     "artist": "南ノ南",
@@ -8544,6 +8592,22 @@
     "image": "7c538753c43c0b6c.jpg"
   },
   {
+    "id": "2530",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "VALLIS-NERIA",
+    "reading": "VALLISNERIA",
+    "artist": "DJ YOSHITAKA",
+    "lev_bas": "3",
+    "lev_adv": "7+",
+    "lev_exp": "13+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "bc9c88b3adb6137e.jpg"
+  },
+  {
     "id": "2041",
     "catname": "VARIETY",
     "newflag": "0",
@@ -8834,7 +8898,7 @@
   {
     "id": "2531",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Big Bang",
     "reading": "BIGBANG",
     "artist": "Massive New Krew「WACCA」",
@@ -8922,7 +8986,7 @@
     "lev_adv": "5",
     "lev_exp": "9+",
     "lev_mas": "13+",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "7c649691aa0c4b3d.jpg"
@@ -9200,9 +9264,25 @@
     "image": "a3aa886a109e2f30.jpg"
   },
   {
+    "id": "2528",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "Blow My Mind",
+    "reading": "BLOWMYMIND",
+    "artist": "3R2「Cytus Ⅱ」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "11+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "31f2d85d83a17865.jpg"
+  },
+  {
     "id": "2529",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Jakarta PROGRESSION",
     "reading": "JAKARTAPROGRESSION",
     "artist": "KURORAK「Cytus Ⅱ」",
@@ -9226,7 +9306,7 @@
     "lev_adv": "7",
     "lev_exp": "11+",
     "lev_mas": "14",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "e6cc4fa99f9036a7.jpg"
@@ -9344,6 +9424,38 @@
     "image": "4a4e486f80460327.jpg"
   },
   {
+    "id": "2532",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "Spasmodic",
+    "reading": "SPASMODIC",
+    "artist": "姜米條「Phigros」",
+    "lev_bas": "3",
+    "lev_adv": "7+",
+    "lev_exp": "12+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f2d688396385d66e.jpg"
+  },
+  {
+    "id": "2533",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "ΩΩPARTS",
+    "reading": "OOPARTS",
+    "artist": "かめりあ",
+    "lev_bas": "4",
+    "lev_adv": "8",
+    "lev_exp": "13+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "045ae01786c3b5f5.jpg"
+  },
+  {
     "id": "2039",
     "catname": "VARIETY",
     "newflag": "0",
@@ -9378,7 +9490,7 @@
   {
     "id": "2525",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "本物のヒーローとの戦い",
     "reading": "ホンモノノヒウロウトノタタカイ",
     "artist": "Toby Fox「UNDERTALE」",
@@ -9394,7 +9506,7 @@
   {
     "id": "2526",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "華麗なる死闘",
     "reading": "カレイナルシトウ",
     "artist": "Toby Fox「UNDERTALE」",
@@ -11136,6 +11248,22 @@
     "image": "ff999e983e57ab02.jpg"
   },
   {
+    "id": "2535",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "New York Back Raise",
+    "reading": "NEWYORKBACKRAISE",
+    "artist": "saaa + kei_iwata + stuv + わかどり",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "11+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9f060e856cb7ad10.jpg"
+  },
+  {
     "id": "6",
     "catname": "VARIETY",
     "newflag": "0",
@@ -12290,7 +12418,7 @@
   {
     "id": "2549",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "どこにもいかない",
     "reading": "トコニモイカナイ",
     "artist": "箱部なる (CV: M・A・O)",
@@ -13986,7 +14114,7 @@
   {
     "id": "2555",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Sage",
     "reading": "SAGE",
     "artist": "かめりあ",
@@ -14002,7 +14130,7 @@
   {
     "id": "2583",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "SILENT BLUE",
     "reading": "SILENTBLUE",
     "artist": "かねこちはる",
@@ -14242,7 +14370,7 @@
   {
     "id": "2553",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "オン×ステージ！",
     "reading": "オンステウシ",
     "artist": "曲：塩野 海／歌：星咲 あかり(CV：赤尾 ひかる)、式宮 舞菜(CV：牧野 天音)",
@@ -15170,7 +15298,7 @@
   {
     "id": "2554",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "MarbleBlue.",
     "reading": "MARBLEBLUE",
     "artist": "MisoilePunch♪",
@@ -20530,7 +20658,7 @@
   {
     "id": "2566",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "少女PastQ",
     "reading": "シヨウシヨPASTQ",
     "artist": "雄之助 feat.ねんね",
@@ -20546,7 +20674,7 @@
   {
     "id": "2567",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "君と夏色っ！～わんダフルバケーション～",
     "reading": "キミトナツイロツワンタフルハケウシヨン",
     "artist": "コバヤシユウヤ（IOSYS） feat.まるもこ",
@@ -20562,7 +20690,7 @@
   {
     "id": "2568",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "MyPaceInvention",
     "reading": "MYPACEINVENTION",
     "artist": "キツネリ feat.わかばやし",
@@ -20578,7 +20706,7 @@
   {
     "id": "2569",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "colorful",
     "reading": "COLORFUL",
     "artist": "higma feat.ほとけ",
@@ -20594,7 +20722,7 @@
   {
     "id": "2570",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ZegalltA",
     "reading": "ZEGALLTA",
     "artist": "Se-U-Ra",
@@ -20610,7 +20738,7 @@
   {
     "id": "2572",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "驚異の魔法",
     "reading": "キヨウイノマホウ",
     "artist": "長瀬有花",
@@ -20626,7 +20754,7 @@
   {
     "id": "2571",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ウニの歌",
     "reading": "ウニノウタ",
     "artist": "周防パトラ",
@@ -20642,7 +20770,7 @@
   {
     "id": "2573",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "liberate",
     "reading": "LIBERATE",
     "artist": "somunia × nyankobrq",
@@ -20658,7 +20786,7 @@
   {
     "id": "8278",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "セカイはまだ始まってすらいない",
     "reading": "セカイハマタハシマツテスライナイ",
     "artist": "ピノキオピー / 初音ミク / ワンダーランズ×ショウタイム「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
@@ -20674,7 +20802,7 @@
   {
     "id": "8279",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "フリーフォール",
     "reading": "フリウフオウル",
     "artist": "Zekk「WACCA」",
@@ -20690,7 +20818,7 @@
   {
     "id": "8280",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "人生攻略☆Tips",
     "reading": "シンセイコウリヤクTIPS",
     "artist": "れるりり feat.konoco",
