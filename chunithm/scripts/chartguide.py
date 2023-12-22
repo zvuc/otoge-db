@@ -240,7 +240,7 @@ def _update_song_chartguide_data(song, nocolors, escape):
 
         # ipdb.set_trace()
 
-        song_id = _extract_song_id(song_dict, song['title'])
+        song_id = _extract_song_id(song, song_dict, song['title'], nocolors, escape)
 
         if song_id:
             # extract song_id from src
@@ -254,33 +254,60 @@ def _update_song_chartguide_data(song, nocolors, escape):
             _print_message(f"Updated chart link ({chart.upper()})", nocolors, bcolors.OKGREEN, escape)
         else:
             _print_message("No matching ID", nocolors, bcolors.FAIL, escape)
-
-            # Write error to log
-            
             with open(const.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
                 f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
             return
 
     return song
 
-def _extract_song_id(song_dict, song_title):
-    # ipdb.set_trace()
-
+def _extract_song_id(song, song_dict, song_title, nocolors, escape):
     for song_id, title in song_dict.items():
+        title = title.lower()
+        song_title = song_title.lower()
+
         if title == song_title:
             return song_id
         else: 
             # try fallback pairs
             song_title_alt = (
                 song_title
-                .replace('Ä', 'A')
+                .replace('ä', 'a')
+                .replace('å', 'a')
                 .replace('ø', 'o')
                 .replace('é', 'e')
                 .replace('ö', 'o')
+                .replace('☆', '')
+                .replace('♥', '')
+                .replace('♡', '')
+                .replace('！', '!')
+                .replace('"', '”')
             )
             if title == song_title_alt:
                 return song_id
+            else:
+                # try removing subtitle
+                pattern = re.compile(r'[-～].*?[-～]')
+                song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
+                
+                if title == song_title_wo_subtitle:
+                    _print_message(f"WARNING: matched without subtitle", nocolors, bcolors.WARNING, escape)
+                    with open(const.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
+                        f.write('WARNING - matched without subtitle : ' + song['id'] + ' ' + song['title'] + '\n')
+                    return song_id
+                else:
+                    match_similarity = _compare_strings(title, song_title)
+                    if match_similarity > 80:
+                        _print_message(f"Found closest match ({round(match_similarity,2)}%)", nocolors, bcolors.WARNING, escape)
+                        return song_id
 
+
+def _compare_strings(str1, str2):
+    set1 = set(str1)
+    set2 = set(str2)
+    intersection = len(set1.intersection(set2))
+    union = len(set1.union(set2))
+    similarity_percentage = (intersection / union) * 100
+    return similarity_percentage
 
 def get_last_date(LOCAL_MUSIC_JSON_PATH):
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
