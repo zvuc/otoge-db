@@ -1,5 +1,7 @@
 import const
 import requests
+import os
+import shutil
 import json
 import ipdb
 import re
@@ -7,6 +9,7 @@ from terminal import bcolors
 from datetime import datetime
 from functools import reduce
 from bs4 import BeautifulSoup, Comment
+from urllib.request import urlopen
 
 VERSION_MAPPING = {
     "無印": "01",
@@ -28,14 +31,56 @@ VERSION_MAPPING = {
     "LUMINOUS": "09"
 }
 
+PAGES = {
+    "/sort/1.htm",
+    "/sort/2.htm",
+    "/sort/3.htm",
+    "/sort/4.htm",
+    "/sort/5.htm",
+    "/sort/6.htm",
+    "/sort/7.htm",
+    "/sort/7+.htm",
+    "/sort/8.htm",
+    "/sort/8+.htm",
+    "/sort/9.htm",
+    "/sort/9+.htm",
+    "/sort/10.htm",
+    "/sort/10+.htm",
+    "/sort/11.htm",
+    "/sort/11+.htm",
+    "/sort/12.htm",
+    "/sort/12+.htm",
+    "/sort/13.htm",
+    "/sort/13+.htm",
+    "/sort/14.htm",
+    "/sort/14+.htm",
+    "/sort/15.htm",
+    "/sort/ultima.htm",
+    "/end.htm"
+}
 
-sdvxin_base_url = 'https://sdvx.in/chunithm/'
+SDVXIN_BASE_URL = 'https://sdvx.in/chunithm'
+LOCAL_CACHE_DIR = 'sdvxin_cache'
 
 # Update on top of existing music-ex
-def update_chartguide_data(date_from, date_until, song_id, nocolors, escape):
-    
+def update_chartguide_data(date_from, date_until, song_id, nocolors, escape, clear_cache):
+    _print_message(f"Starting chart link search", nocolors, bcolors.ENDC, escape)
+
+    if clear_cache:
+        try:
+            # Delete the directory and its contents
+            shutil.rmtree(LOCAL_CACHE_DIR)
+            print(f"Cleared local cache")
+        except FileNotFoundError:
+            print(f"Directory not found: {LOCAL_CACHE_DIR}")
+        except Exception as e:
+            print(f"Error deleting directory: {e}")
+
     with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
+
+    # Create error log file if it doesn't exist
+    f = open("errors.txt", 'w')
 
     # prioritize id search if provided
     if not song_id == 0:
@@ -55,8 +100,6 @@ def update_chartguide_data(date_from, date_until, song_id, nocolors, escape):
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
-
-    f = open("diffs.txt", 'w')
 
     for song in target_song_list:
         _update_song_chartguide_data(song, nocolors, escape)
@@ -86,9 +129,30 @@ def _filter_songs_by_id(song_list, song_id):
 
     return target_song_list
 
+def _get_and_save_page_to_local(url, nocolors, escape):
+    # ipdb.set_trace()
+    full_url = SDVXIN_BASE_URL + url
+    response = requests.get(full_url)
+    response.encoding = 'ansi'
+
+    if not os.path.exists(LOCAL_CACHE_DIR):
+        os.makedirs(LOCAL_CACHE_DIR)
+
+    if response.status_code == 200:
+        # Extract the filename from the URL
+        filename = url.lstrip('/').replace('/', '_')
+        output_path = os.path.join(LOCAL_CACHE_DIR, filename)
+
+        # Save the content to a local file
+        with open(output_path, 'w', encoding='utf-8') as file:
+            file.write(response.text)
+        _print_message(f"Saved {url} to {output_path}", nocolors, bcolors.OKBLUE, escape)
+    else:
+        _print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", nocolors, bcolors.FAIL, escape)
+
 
 def _update_song_chartguide_data(song, nocolors, escape):
-    _print_message("Searching for chart link", song, nocolors, bcolors.ENDC, escape)
+    _print_message(f"{song['id']} {song['title']}", nocolors, bcolors.ENDC, escape)
 
     title = (
         song['title']
@@ -107,36 +171,57 @@ def _update_song_chartguide_data(song, nocolors, escape):
     if song['we_kanji']:
         charts = ['end']
     elif song['lev_ult'] != "":
-        charts = ['exp','mas','ult']
+        charts = ['exp','mst','ult']
     else:
-        charts = ['exp','mas']
+        charts = ['exp','mst']
 
     for chart in charts:
         if chart == 'end':
-            lv_page_url = sdvxin_base_url + 'end.htm'
+            lv_page_url = '/end.htm'
+            lv_page_file_path = '/end.htm'
             target_key = 'lev_we_chart_link'
             url_pattern = '/chunithm/end'
         elif chart == 'exp':
-            lv_page_url = sdvxin_base_url + '/sort/' + song['lev_exp'] + '.htm'
+            lv_page_url = '/sort/' + song['lev_exp'] + '.htm'
+            lv_page_file_path = '/sort_' + song['lev_exp'] + '.htm'
             target_key = 'lev_exp_chart_link' 
             url_pattern = '/chunithm/0'
-        elif chart == 'mas':
-            lv_page_url = sdvxin_base_url + '/sort/' + song['lev_mas'] + '.htm'
+        elif chart == 'mst':
+            lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
+            lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
             target_key = 'lev_mas_chart_link' 
             url_pattern = '/chunithm/0'
         elif chart == 'ult':
-            lv_page_url = sdvxin_base_url + '/sort/ultima.htm'
+            lv_page_url = '/sort/ultima.htm'
+            lv_page_file_path = '/sort_ultima.htm'
             target_key = 'lev_ult_chart_link' 
             url_pattern = '/chunithm/ult'
 
         if not song[target_key] == '':
-            _print_message(f"Link already exists! ({chart})", song, nocolors, bcolors.ENDC, escape)
+            _print_message(f"Chart link already exists! ({chart.upper()})", nocolors, bcolors.ENDC, escape)
             continue
 
-        request = requests.get(lv_page_url)
-        request.encoding = 'ansi'
 
-        soup = BeautifulSoup(request.text, 'html.parser')
+        # ipdb.set_trace()
+
+        try:
+            file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
+            with open(file_full_path, 'r', encoding='utf-8') as file:
+                content = file.read()
+        except FileNotFoundError:
+            _get_and_save_page_to_local(lv_page_url, nocolors, escape)
+
+            try:
+                file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
+                with open(file_full_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+            except:
+                _print_message(f"Cache not found ({lv_page_file_path})", nocolors, bcolors.ENDC, escape)
+        except Exception as e:
+            _print_message(f"Error reading file: {e}", nocolors, bcolors.FAIL, escape)
+            sys.exit(1)
+
+        soup = BeautifulSoup(content, 'html.parser')
         song_dict = {}
 
         # Find all script tags with src attribute starting with "/chunithm/"
@@ -163,12 +248,17 @@ def _update_song_chartguide_data(song, nocolors, escape):
                 song_id = song_id.split('/')[-1].split(f'.js')[0]
                 song[target_key] = chart + '/' + song_id
             elif 'sort' in script_src:
-                song_id = script_src.split('/')[-1].split(f'sort.js')[0]
+                song_id = song_id.split('/')[-1].split(f'sort.js')[0]
                 song[target_key] = song_id[:2] + '/' + song_id + chart
 
-            _print_message(f"Updated chart link ({chart})", song, nocolors, bcolors.OKGREEN, escape)
+            _print_message(f"Updated chart link ({chart.upper()})", nocolors, bcolors.OKGREEN, escape)
         else:
-            _print_message("No matching ID", song, nocolors, bcolors.FAIL, escape)
+            _print_message("No matching ID", nocolors, bcolors.FAIL, escape)
+
+            # Write error to log
+            
+            with open(const.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
+                f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
             return
 
     return song
@@ -201,25 +291,16 @@ def get_last_date(LOCAL_MUSIC_JSON_PATH):
     
     return lastupdated
 
-def _print_message(message, song, nocolors, color_name, escape):
+def _print_message(message, nocolors, color_name, escape):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     reset_color = bcolors.ENDC
 
-    if song:
-        song_id = song['id']
-
-        # if --escape is set
-        if escape:
-            song_title = ' : ' + song['title'].replace("'", r"\'")
-        else:
-            song_title = ' : ' + song['title']
-    else:
-        song_id = ''
-        song_title = ''
+    if escape:
+        message = message.replace("'", r"\'")
 
     # if --nocolors is set
     if nocolors:
         color_name = ''
         reset_color = ''
 
-    print(timestamp + color_name + ' ' + song_id + ' ' + message + song_title + reset_color)
+    print(timestamp + ' ' + color_name + message + reset_color)

@@ -1,4 +1,6 @@
 __pycache__
 node_modules
 .DS_Store
-/diffs.txt
+diffs.txt
+errors.txt
+sdvxin_cache
