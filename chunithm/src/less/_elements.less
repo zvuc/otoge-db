@@ -273,3 +273,42 @@ select {
 	letter-spacing: -0.02em;
 	border-radius: 50px;
 }
+
+.btn.chartlink {
+	display: inline-flex;
+	max-width: 100px;
+	height: auto;
+	flex-flow: column;
+	letter-spacing: 0.02em;
+	font-size: 0.9em;
+
+	@media screen and (min-width: 660px) {
+		max-width: none;
+		flex-flow: row;
+		align-items: center;
+		white-space: nowrap;
+	}
+
+	.img {
+		flex: 0 0 auto;
+		width: 47px;
+		height: 40px;
+		background-image: url('./img/chart-ref.png');
+		background-repeat: no-repeat;
+		background-size: 100%;
+		border-radius: 2px;
+		margin-bottom: 3px;
+
+		@media screen and (min-width: 660px) {
+			order: 2;
+			margin: 0 0 0 10px;
+		}
+	}
+}
+
+.chart-provider {
+	display: block;
+	margin-top: 3px;
+	font-size: 0.75em;
+	color: rgb(var(--ui-color-foreground-060));
+}
