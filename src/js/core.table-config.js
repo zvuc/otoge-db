@@ -529,32 +529,33 @@ $(document).ready(function() {
     }
 
     function flattenMusicData(data, flat_view) {
-        const processed_data =
-            ( flat_view ? (
-                data
-                    .map(obj =>
-                        ['lev_bas', 'lev_adv', 'lev_exc', 'lev_mas', 'lev_lnt']
-                            .map(chart_diff =>
-                                obj[chart_diff]
-                                    ? {
-                                        ...obj,
-                                        chart_diff,
-                                        chart_lev: obj[chart_diff],
-                                        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                                        chart_lev_i_display: obj[`${chart_diff}_i`] || '<span class="approx">' + parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1) + '</span>',
-                                        chart_notes: obj[`${chart_diff}_notes`],
-                                        chart_bells: obj[`${chart_diff}_bells`],
-                                        chart_designer: obj[`${chart_diff}_designer`]
-                                    }
-                                    : null
-                            )
-                    )
-                    .flat()
-                    .filter(obj => !!obj)
+        if (flat_view) {
+            return data
+                .map(obj =>
+                    ['lev_bas', 'lev_adv', 'lev_exc', 'lev_mas', 'lev_lnt']
+                        .map(chart_diff => processChartData(obj, chart_diff))
                 )
-                : data 
-            );
-        return processed_data;
+                .flat()
+                .filter(obj => !!obj);
+        } else {
+            return data;
+        }
+    }
+
+    function processChartData(obj, chart_diff) {
+        if (obj[chart_diff]) {
+            return {
+                ...obj,
+                chart_diff,
+                chart_lev: obj[chart_diff],
+                chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
+                chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1)}</span>`,
+                chart_notes: obj[`${chart_diff}_notes`],
+                chart_bells: obj[`${chart_diff}_bells`],
+                chart_designer: obj[`${chart_diff}_designer`]
+            };
+        }
+        return null;
     }
 
     function parseChapId(row, includeTrailingSpace) {

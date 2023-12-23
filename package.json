@@ -45,6 +45,11 @@
     "watch": "watch 'yarn build' ./src -d",
     "fetch": "python3 scripts/main.py",
     "imageoptim": "cat diffs.txt | xargs imageoptim",
-    "update": "yarn fetch && yarn imageoptim" 
+    "update": "yarn fetch && yarn imageoptim",
+    "chuni-build": "yarn chuni-minify && yarn chuni-less && yarn chuni-postcss",
+    "chuni-less": "lessc ./chunithm/src/less/style.less ./chunithm/style.css",
+    "chuni-postcss": "postcss ./chunithm/style.css -o ./chunithm/style.css --verbose",
+    "chuni-minify": "minify chunithm/src/js/core.*.js > chunithm/functions.js && minify chunithm/datatables/datatables.custom.js > chunithm/datatables/datatables.custom.min.js && minify chunithm/src/js/jquery*.js > chunithm/jquery.min.js",
+    "chuni-watch": "watch 'yarn chuni-build' ./chunithm/src -d"
   }
 }
