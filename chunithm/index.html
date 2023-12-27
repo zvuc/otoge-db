@@ -23,8 +23,8 @@
     <meta name="twitter:image" content="https://ongeki.info/chunithm/mg/chunithm-db-og.jpg">
     <meta name="twitter:url" content="https://ongeki.info/chunithm/">
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="datatables/datatables.custom.min.js?20231223"></script>
+    <script type="text/javascript" src="../_shared/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../_shared/datatables/datatables.custom.min.js?20231226"></script>
     <link rel="stylesheet" href="./style.css?20231223">
 
     <link rel="shortcut icon" href="./img/favicon.ico" />
@@ -112,10 +112,10 @@
                     <!-- 4 --><th class="never"><span>曲名 (読み)</span></th>
                     <!-- 5 --><th class="all"><span>曲名・アーティスト</span></th>
 
-                    <!-- 6 --><th class="toggle"><span>BPM</span></th>
+                    <!-- 6 --><th class="all toggle"><span>BPM</span></th>
 
                     <!-- 7 --><th class="all toggle"><span>バージョン</span></th>
-                    <!-- 8 --><th class="min-tablet toggle nowrap"><span>ジャンル</span></th>
+                    <!-- 8 --><th class="all toggle nowrap"><span>ジャンル</span></th>
 
                     <!-- 9 --><th class="all toggle"><span>BSC</span></th>
                     <!-- 10 --><th class="all toggle"><span>ADV</span></th>
@@ -168,9 +168,9 @@
     <script>
         var flat_view = false;
     </script>
-    <script defer src="./functions.js?20231223"></script>
-    <!-- <script defer src="./src/js/core.page-functions.js?20231223"></script>
-    <script defer src="./src/js/core.table-config.js?20231223"></script> -->
+    <!-- <script defer src="./functions.js?20231223"></script> -->
+    <script defer src="./src/js/core.page-functions.js?20231223"></script>
+    <script defer src="./src/js/core.table-config.js?20231223"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
     <script>

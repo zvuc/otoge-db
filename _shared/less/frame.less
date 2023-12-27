@@ -1,0 +1,314 @@
+:root {
+	--padding-size: 10px;
+
+	@media screen and (min-width: 480px) {
+		--padding-size: 15px;
+	}
+}
+
+html {
+	font-size: 14px;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background: rgb(var(--ui-color-page-background));
+	color: rgb(var(--ui-color-text));
+	transition: background-color 0.3s;
+	-webkit-text-size-adjust: none;
+
+	@media screen and (max-width: 480px) {
+		font-size: 12px;
+	}
+	@media screen and (min-width: 1440px) {
+		font-size: 16px;
+	}
+
+	&.transitioning *,
+	&.transitioning *:before,
+	&.transitioning *:after,
+	&.transitioning button {
+		transition-property: background-color, background-image, border-color, opacity;
+		transition-duration: 0.3s;
+	}
+
+	&.page-loading {
+
+		#table_wrapper, #site-footer {
+			display: none;
+		}
+
+		#site-loader {
+			display: flex;
+		}
+	}
+
+	&.table-loading {
+		#site-loader {
+			display: flex;
+		}
+	}
+}
+
+body {
+	position: static;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3","Hiragino Sans GB", "Meiryo", "Segoe UI", sans-serif;
+	font-size: 1rem;
+	font-feature-settings: "palt";
+	padding: 0;
+	margin: 0;
+	background: rgb(var(--ui-color-page-background));
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+#app-wrapper {
+	width: 100%;
+	
+	&.modal-open {
+		overflow: hidden;
+		position: fixed;
+		filter: blur(10px);
+	}
+}
+
+.notice-wrap {
+	position: fixed;
+	left: var(--padding-size);
+	bottom: 15px;
+	bottom: max(15px,env(safe-area-inset-bottom));
+	max-width: calc(100vw - 40px);
+	display: none;
+	z-index: 100;
+
+	html:not(.table-loading) &.visible {
+		display: block;
+	}
+
+	.notice-bar {
+		display: inline-flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		position: relative;
+		padding: 8px 10px 8px 10px;
+		border-radius: 30px;
+		min-height: 30px;
+		max-width: 640px;
+		background: rgba(var(--ui-color-warning-bg),1);
+		overflow: hidden;
+		transform-origin: 30px center;
+
+		@media screen and (max-width: 640px) {
+			width: 100%;
+		}
+
+		@supports (backdrop-filter: blur(20px)) {
+			backdrop-filter: blur(20px);
+			background: rgba(var(--ui-color-warning-bg),0.7);
+		}
+
+		@keyframes notice-bar-enter {
+			0% {
+				transform: translateY(300%);
+			}
+
+			100% {
+				transform: translateY(0);
+			}
+		}
+		animation: notice-bar-enter 0.4s 1s cubic-bezier(0, 0.59, 0.375, 1) both;
+	}
+
+	@keyframes notice-bar-content-enter {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.new-badge {
+		flex: 0 0 auto;
+		border-radius: 30px;
+		width: 50px;
+		text-align: center;
+		padding: 3px 0;
+		font-size: 0.9em;
+		font-weight: bold;
+		color: rgba(var(--ui-color-foreground-inverted));
+		background: rgba(var(--ui-color-background-inverted),0.8);
+		margin-right: 5px;
+	}
+
+	.msg-text {
+		flex: 1 1 auto;
+		animation: notice-bar-content-enter 0.3s 1.5s both;
+	}
+
+	.close-btn {
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		background: rgba(var(--ui-color-background-100),0.3);
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		text-align: center;
+		border-radius: 30px;
+		margin-left: 20px;
+		cursor: pointer;
+		z-index: 1;
+		color: inherit;
+		transition: transform 0.2s;
+		animation: notice-bar-content-enter 0.5s 2s both;
+
+		&:hover {
+			background: rgba(var(--ui-color-background-100),1);
+			transform: scale(1.1);
+		}
+
+		&:before {
+			content: "";
+			@color: #000;
+			@svg-data: escape('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path fill="none" stroke="@{color}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 2l8 8M10 2l-8 8"/></svg>');
+			background-image: url('data:image/svg+xml,@{svg-data}');
+			background-position: center;
+			background-size: 12px 12px;
+			background-repeat: no-repeat;
+			width: 16px;
+			height: 16px;
+			filter: var(--copyright-filter);
+		}
+	}
+}
+
+.commit-bar {
+	background: rgb(var(--ui-color-background-090));
+	padding: 7px 15px;
+	border-radius: 3px;
+
+	svg {
+		margin-right: 4px;
+	}
+
+	.commit-label {
+		display: flex;
+		align-items: center;
+		font-size: 0.9em;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+
+	#latest-commit {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	#latest-commit-date {
+		margin-left: 5px;
+		color: rgb(var(--ui-color-foreground-060));
+
+		&:not(:empty) {
+			&:before {
+				content: "(";
+			}
+			&:after {
+				content: ")";
+			}
+		}
+	}
+}
+
+// loader
+#site-loader {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 90vh;
+}
+
+.loader {
+	display: inline-block;
+
+	@keyframes loader-tri-anim {
+		0% {
+			filter: hue-rotate(90deg);
+			transform: scale(1.3);
+			animation-timing-function: cubic-bezier(.23,1,.32,1);
+		}
+		24% {
+			// filter: hue-rotate(90deg);
+			transform: scale(1);
+		}
+		25% {
+			filter: hue-rotate(0deg);
+			transform: scale(1.3);
+			animation-timing-function: cubic-bezier(.23,1,.32,1);	
+		}
+		49% {
+			// filter: hue-rotate(0deg);
+			transform: scale(1);
+		}
+		50% {
+			filter: hue-rotate(-90deg);
+			transform: scale(1.3);
+			animation-timing-function: cubic-bezier(.23,1,.32,1);
+		}
+		74% {
+			// filter: hue-rotate(-90deg);
+			transform: scale(1);
+		}
+		75% {
+			filter: hue-rotate(-180deg);
+			transform: scale(1.3);
+			animation-timing-function: cubic-bezier(.23,1,.32,1);
+		}
+		99% {
+			filter: hue-rotate(-270deg);
+			transform: scale(1);
+		}
+		100% {
+			filter: hue-rotate(90deg);
+			transform: scale(1.3);
+			animation-timing-function: cubic-bezier(.23,1,.32,1);
+		}
+	}
+	.loader-tri {
+		display: inline-block;
+		height: 14px;
+		width: 14px;
+		background-image: data-uri('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><polygon fill="rgb(165,234,255)" points="8,0 1.1,8 8,16 14.9,8"/></svg>');
+		background-size: 100% 100%;
+		margin: 0;
+		animation: loader-tri-anim 4s infinite both;
+
+		&.t2 {
+			animation-delay: 0.1s;
+		}
+		&.t3 {
+			animation-delay: 0.2s;
+		}
+		&.t4 {
+			animation-delay: 0.3s;
+		}
+		&.t5 {
+			animation-delay: 0.4s;
+		}
+	}
+}
+
+
+.paging {
+	padding: 0 10px;
+}
+
