@@ -1,8 +1,8 @@
 .variables-light() {
-    --color-ongeki-accent-01: 240,255,184; /* #F0FFB8 */
-    --color-ongeki-accent-02: 182,189,253; /* #B6BDFD */
-    --color-ongeki-accent-03: 165,234,255; /* #a5eaff */
-    --color-ongeki-accent-04: 254,203,243; /* #FECBF3 */
+    --color-accent-01: 240,255,184; /* #F0FFB8 */
+    --color-accent-02: 182,189,253; /* #B6BDFD */
+    --color-accent-03: 165,234,255; /* #a5eaff */
+    --color-accent-04: 254,203,243; /* #FECBF3 */
 
     --ui-color-background-100: 255,255,255; /* #fff */
     --ui-color-background-098: 250,250,250; /* #fafafa */
@@ -38,12 +38,12 @@
     --ui-color-text: var(--ui-color-foreground-095);
     --ui-color-form-background: 216,220,240; /* #d8dcf0 */ 
     --ui-color-form-border: 189,193,217; /* #bdc1d9 */ 
-    --ui-color-form-border-accent: var(--color-ongeki-accent-03); /* #a5eaff */ 
+    --ui-color-form-border-accent: var(--color-accent-03); /* #a5eaff */ 
     --ui-color-form-border-active: 146,154,194; /* #929ac2 */
     --ui-color-btn: 216,220,240; /* #d8dcf0 */ 
     --ui-color-btn-active: 146,154,194; /* #929ac2 */
-    --ui-color-highlight: var(--color-ongeki-accent-01);
-    --ui-color-primary: var(--color-ongeki-accent-02);
+    --ui-color-highlight: var(--color-accent-01);
+    --ui-color-primary: var(--color-accent-02);
     --ui-color-warning-bg: 255,227,118;
 
     --ui-color-table-row-bg: var(--ui-color-background-100);
@@ -54,16 +54,10 @@
     --ui-color-table-row-group-bg: var(--ui-color-background-093);
     --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
-    --lv-color-bsc: 31,132,3; /* #1f8403 */
-    --lv-color-adv: 162,94,6; /* #a25e06 */
-    --lv-color-exp: 234,56,134; /* #ea3886 */
-    --lv-color-mas: 165,71,213; /* #a547d5 */
-    --lv-color-lnt: 217,54,44; /* #d9362c */
-
     --toolbar-bg: linear-gradient(25deg, 
-        rgba(var(--color-ongeki-accent-02),0.5) 40%, 
-        rgba(var(--color-ongeki-accent-03),0.9) 70%, 
-        rgb(var(--color-ongeki-accent-04)) 120%);
+        rgba(var(--color-accent-02),0.5) 40%, 
+        rgba(var(--color-accent-03),0.9) 70%, 
+        rgb(var(--color-accent-04)) 120%);
     --toolbar-btn-color: 227,218,232; /* #e3dae8 */
     --toolbar-bg-opacity: 0.4;
 
@@ -79,7 +73,7 @@
     --modal-bg-img-filter: blur(2px) brightness(0.95) contrast(0.3);
     --modal-bg-img-mix-blend-mode: hard-light;
 
-    --ongeki-db-logo-url: url('./img/ongeki-db-logo-2022-bow.svg');
+    --logo-url: url('./img/ongeki-db-logo-2022-bow.svg');
 }
 
 .variables-dark() {
@@ -113,17 +107,16 @@
     --ui-color-foreground-inverted: 0,0,0; /* #000 */
     --ui-color-background-inverted: 255,255,255; /* #fff */
 
-
     --ui-color-page-background: var(--ui-color-background-100);
     --ui-color-text: var(--ui-color-foreground-090);
     --ui-color-form-background: 63,49,71; /* #3f3147 */
     --ui-color-form-border: 109,88,130; /* #6d5882 */
-    --ui-color-form-border-accent: var(--color-ongeki-accent-02); /* #B6BDFD */ 
+    --ui-color-form-border-accent: var(--color-accent-02); /* #B6BDFD */ 
     --ui-color-form-border-active: 109,88,130; /* #6d5882 */
     --ui-color-btn: 63,49,71; /* #3f3147 */
     --ui-color-btn-active: 83,71,91; /* #53475b */
-    --ui-color-highlight: var(--color-ongeki-accent-01);
-    --ui-color-primary: var(--color-ongeki-accent-02);
+    --ui-color-highlight: var(--color-accent-01);
+    --ui-color-primary: var(--color-accent-02);
     --ui-color-warning-bg: 166,117,2;
 
     --ui-color-table-row-bg: var(--ui-color-background-100);
@@ -134,16 +127,10 @@
     --ui-color-table-row-group-bg: var(--ui-color-background-093);
     --ui-color-table-row-bg-selected: 176,190,217; /* #B0BED9 */
 
-    --lv-color-bsc: 101,211,70; /* #65d346 */
-    --lv-color-adv: 251,230,77; /* #fbe64d */
-    --lv-color-exp: 234,56,134; /* #ea3886 */
-    --lv-color-mas: 165,71,213; /* #a547d5 */
-    --lv-color-lnt: 217,54,44; /* #d9362c */
-
     --toolbar-bg: linear-gradient(25deg, 
-        rgba(var(--color-ongeki-accent-02),0.7) 40%, 
-        rgba(var(--color-ongeki-accent-03),0.9) 70%, 
-        rgb(var(--color-ongeki-accent-04)) 120%);
+        rgba(var(--color-accent-02),0.7) 40%, 
+        rgba(var(--color-accent-03),0.9) 70%, 
+        rgb(var(--color-accent-04)) 120%);
     --toolbar-btn-color: 63,49,71; /* #3f3147 */
     --toolbar-bg-opacity: 0.15;
 
@@ -159,20 +146,5 @@
     --modal-bg-img-filter: blur(2px) contrast(0.3) brightness(0.95);
     --modal-bg-img-mix-blend-mode: overlay;
 
-    --ongeki-db-logo-url: url('./img/ongeki-db-logo-2022-wob.svg');
-}
-
-// actual output
-:root {
-    .variables-light();
-}
-
-:root[data-theme="dark"] {
-    .variables-dark();
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        .variables-dark();
-    }
+    --logo-url: url('./img/ongeki-db-logo-2022-wob.svg');
 }

@@ -63,10 +63,10 @@ a {
 		right: 0;
 		background-repeat: no-repeat;
 		background-image: 
-				linear-gradient(to right, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-02)) 50%, rgb(var(--color-ongeki-accent-02)) 100%),
-				linear-gradient(to left, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-02)) 50%, rgb(var(--color-ongeki-accent-02)) 100%),
-				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px));
+				linear-gradient(to right, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-02)) 50%, rgb(var(--color-accent-02)) 100%),
+				linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-02)) 50%, rgb(var(--color-accent-02)) 100%),
+				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
+				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px));
 		background-position: bottom right, top left, bottom left, top right;
 		background-size: 
 			calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
@@ -97,10 +97,10 @@ a {
 
 		&:before {
 			background-image: 
-				linear-gradient(to right, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-02)) 100%),
-				linear-gradient(to left, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-02)) 100%),
-				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px));
+				linear-gradient(to right, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-02)) 100%),
+				linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-02)) 100%),
+				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
+				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px));
 			opacity: 1;
 			transition-duration: 0s;
 		}
@@ -111,19 +111,19 @@ a {
 		transition-duration: 0s;
 		background-color: rgba(var(--ui-color-btn-active),0.2);
 		background-image: linear-gradient(45deg, 
-			rgba(var(--color-ongeki-accent-02),0.4) 0%, 
-			rgba(var(--color-ongeki-accent-03),0.2) 30%, 
-			rgba(var(--color-ongeki-accent-03),0.2) 70%, 
-			rgba(var(--color-ongeki-accent-04),0.4) 100%
+			rgba(var(--color-accent-02),0.4) 0%, 
+			rgba(var(--color-accent-03),0.2) 30%, 
+			rgba(var(--color-accent-03),0.2) 70%, 
+			rgba(var(--color-accent-04),0.4) 100%
 		);
 		text-shadow: 0 0 3px rgb(var(--ui-color-background-100),0.8);
 
 		&:before {
 			background-image: 
-				linear-gradient(to right, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-04)) 100%),
-				linear-gradient(to left, rgb(var(--color-ongeki-accent-04)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-02)) 100%),
-				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-ongeki-accent-04)) @corner-size, rgb(var(--color-ongeki-accent-04)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px));
+				linear-gradient(to right, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-04)) 100%),
+				linear-gradient(to left, rgb(var(--color-accent-04)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-02)) 100%),
+				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
+				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-accent-04)) @corner-size, rgb(var(--color-accent-04)) (@corner-size + 1.5px), transparent (@corner-size + 1.5px));
 			opacity: 1;
 			transition-duration: 0s;
 		}

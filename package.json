@@ -41,25 +41,22 @@
     "update": "yarn fetch && yarn imageoptim",
     "fetch": "python3 scripts/main.py",
     "imageoptim": "cat diffs.txt | xargs imageoptim",
-
     "build": "yarn ongeki-build && yarn chuni-build",
     "less": "yarn ongeki-less && yarn chuni-less",
     "postcss": "yarn ongeki-postcss && yarn chuni-postcss",
     "minify": "yarn ongeki-minify && yarn chuni-minify",
-    "watch": "watch 'yarn build' ./ -d",
-
+    "watch": "watch 'yarn build' ./**/src -d",
     "shared-minify": "minify _shared/datatables/datatables.custom.js > _shared/datatables/datatables.custom.min.js",
-
     "chuni-build": "yarn chuni-minify && yarn chuni-less && yarn chuni-postcss",
     "chuni-less": "lessc ./chunithm/src/less/chunithm.less ./chunithm/style.css",
     "chuni-postcss": "postcss ./chunithm/style.css -o ./chunithm/style.css --verbose",
     "chuni-minify": "yarn shared-minify && minify chunithm/src/js/core.*.js > chunithm/functions.js",
     "chuni-watch": "watch 'yarn chuni-build' ./chunithm/src -d",
-
     "ongeki-build": "yarn ongeki-minify && yarn ongeki-less && yarn ongeki-postcss",
     "ongeki-less": "lessc ./ongeki/src/less/ongeki.less ./ongeki/style.css",
     "ongeki-postcss": "postcss ./ongeki/style.css -o ./ongeki/style.css --verbose",
     "ongeki-minify": "yarn shared-minify && minify ongeki/src/js/core.*.js > ongeki/functions.js",
     "ongeki-watch": "watch 'yarn ongeki-build' ./ongeki/src -d"
-  }
+  },
+  "dependencies": {}
 }

@@ -421,14 +421,18 @@ table.dataTable {
 	}
 
 	th.category,
-	td.category {
+	td.category,
+	th.catname,
+	td.catname {
 		min-width: 90px;
 	}
-	td.category {
+	td.category,
+	td.catname {
 		font-size: 0.9em;
 	}
 	@media screen and (max-width: 640px) {
-		td.category {
+		td.category,
+		td.catname {
 			font-size: 1em;
 		}
 	}
@@ -614,7 +618,13 @@ table.dataTable {
 	}
 
 	.lv-num-simple {
+		font-weight: bold;
 
+		.plus {
+			position: relative;
+			font-size: 0.6em;
+			top: -0.7em;
+		}
 	}
 
 	.lv-num-precise {
@@ -647,6 +657,16 @@ table.dataTable {
 	tbody td.date {
 		min-width: 50px;
 		text-align: center;
+	}
+
+	td.designer {
+		font-size: 0.8em;
+	}
+
+	td.chart-link {
+		.chart-provider {
+			display: none;
+		}
 	}
 
 }// end table.dataTable

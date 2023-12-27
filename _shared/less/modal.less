@@ -119,8 +119,8 @@ div.dtr-modal div.dtr-modal-content {
 
 	@media screen and (min-width: 480px) {
 		background-image: 
-			linear-gradient(to left, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-04)) 100%),
-			linear-gradient(225deg, rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
+			linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-04)) 100%),
+			linear-gradient(225deg, rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
 		background-position:
 			top left,
 			top right;
@@ -145,10 +145,10 @@ div.dtr-modal div.dtr-modal-content {
 		padding: 15px;
 		background-color: rgba(var(--ui-color-background-080),0.2);
 		background-image: linear-gradient(45deg, 
-			rgba(var(--color-ongeki-accent-02),0.2) 0%, 
-			rgba(var(--color-ongeki-accent-03),0.1) 20%, 
-			rgba(var(--color-ongeki-accent-03),0.05) 70%, 
-			rgba(var(--color-ongeki-accent-04),0.2) 110%
+			rgba(var(--color-accent-02),0.2) 0%, 
+			rgba(var(--color-accent-03),0.1) 20%, 
+			rgba(var(--color-accent-03),0.05) 70%, 
+			rgba(var(--color-accent-04),0.2) 110%
 		);
 		margin-bottom: 10px;
 
@@ -212,8 +212,8 @@ div.dtr-modal div.dtr-modal-content {
 
 			@media screen and (min-width: 480px) {
 				background-image: 
-					linear-gradient(to left, rgb(var(--color-ongeki-accent-02)) 0%, rgb(var(--color-ongeki-accent-03)) 50%, rgb(var(--color-ongeki-accent-04)) 100%),
-					linear-gradient(225deg, rgb(var(--color-ongeki-accent-02)) @corner-size, rgb(var(--color-ongeki-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
+					linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-04)) 100%),
+					linear-gradient(225deg, rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
 				background-position:
 					top left,
 					top right;
@@ -334,7 +334,7 @@ div.dtr-modal div.dtr-modal-content {
 				color: rgb(var(--ui-color-foreground-060));
 				text-decoration: none;
 				height: 1.2em;
-				padding: 0.5em 0.9em;
+				padding: 0.7em 1em;
 				font-size: 0.9em;
 				font-weight: bold;
 				margin-left: 3px;
@@ -559,45 +559,47 @@ div.dtr-modal-content .details-table {
 	}
 
 	.lv-num-simple {
-		font-size: 1.3em;
+		font-weight: bold;
+		font-size: 1.4em;
 
 		@media screen and (min-width: 480px) {
-			font-size: 1.2em;
+			font-size: 1.3em;
 		}
 
 		&:empty:before {
 			content: "--";
 			color: rgb(var(--ui-color-foreground-030));
 		}
+
+		.plus {
+			position: relative;
+			font-size: 0.6em;
+			top: -0.7em;
+		}
 	}
 
 	.lv-bsc, .lev_bas {
 		.row-label span {
-			// background: rgba(101,211,70,0.1);
 			color: rgb(var(--lv-color-bsc));
 		}
 	}
 	.lv-adv, .lev_adv {
 		.row-label span {
-			// background: rgba(251,230,77,0.1);
 			color: rgb(var(--lv-color-adv));
 		}
 	}
-	.lv-exp, .lev_exc {
+	.lv-exp, .lev_exp, .lev_exc {
 		.row-label span {
-			// background: rgba(234,56,134,0.1);
 			color: rgb(var(--lv-color-exp));
 		}
 	}
 	.lv-mas, .lev_mas {
 		.row-label span {
-			// background: rgba(165,71,213,0.1);
 			color: rgb(var(--lv-color-mas));
 		}
 	}
 	.lv-lnt, .lev_lnt {
 		.row-label span {
-			// background: rgba(255,255,255,0.1);
 			color: rgb(var(--lv-color-lnt));
 		}
 	}
@@ -651,6 +653,14 @@ div.dtr-modal-content .details-table {
 			&.designer {
 				width: 100%;
 				margin-right: 0;
+
+				.label {
+					margin-right: 5px;
+
+					&:after {
+						content: ":";
+					}
+				}
 			}
 
 		}
@@ -669,7 +679,7 @@ div.dtr-modal-content .details-table {
 			grid-row: 1;
 		}
 
-		.btn {
+		.btn.chartlink {
 			display: inline-flex;
 			max-width: 100px;
 			height: auto;
@@ -686,7 +696,6 @@ div.dtr-modal-content .details-table {
 
 			.img {
 				flex: 0 0 auto;
-				width: 47px;
 				height: 40px;
 				background-image: url('./img/chart-ref.png');
 				background-repeat: no-repeat;
