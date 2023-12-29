@@ -95,7 +95,7 @@ def _update_song_chartguide_data(song, nocolors, escape):
     if song['lunatic'] == '1':
         charts = ['luna']
     else:
-        charts = ['exp','mas']
+        charts = ['exp','mst']
     
 
     for chart in charts:
@@ -105,7 +105,7 @@ def _update_song_chartguide_data(song, nocolors, escape):
         elif chart == 'exp':
             lv_page_url = sdvxin_base_url + song['lev_exc'] + '.htm'
             target_key = 'lev_exc_chart_link' 
-        elif chart == 'mas':
+        elif chart == 'mst':
             lv_page_url = sdvxin_base_url + song['lev_mas'] + '.htm'
             target_key = 'lev_mas_chart_link' 
 
