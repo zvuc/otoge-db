@@ -484,11 +484,19 @@ $(document).ready(function() {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
                 var chart_diff_display = convertDifficultyNames(row[chart_diff]);
-                if (row[chart_diff] === 'we_kanji') {
-                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">☆' + row[precise_lv_display] + '<\/span></span><\/div>';
-                }
-                else {
-                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
+                var precise_lv = (row[chart_diff] === 'we_kanji') ? `☆${row[precise_lv_display]}` : row[precise_lv_display];
+                var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
+                if (match) {
+                    var lvnum = match[1];
+                    var plus = (match[2] === '+');
+
+                    if (plus) {
+                        return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
+                    } else {
+                        return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
+                    }
+                } else {
+                    return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
                 }
             }
             else {
