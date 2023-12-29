@@ -101,6 +101,11 @@ function appendSelectboxStateClass(select, val) {
     }
 }
 
+function replaceUnitText(text) {
+    var item_unit = flat_view ? '譜面' : '曲';
+    return text.replace("unit", item_unit);
+}
+
 // $("#hide-notice-btn").on("click", function(){    
 //     $('.notice-wrap').removeClass('visible');
 //     localStorage.setItem("noticeNewAddress", $('.notice-wrap').is(':visible'));

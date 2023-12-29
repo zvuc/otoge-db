@@ -709,9 +709,9 @@ $(document).ready(function() {
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
             "language": {
                 "sEmptyTable":     "テーブルにデータがありません",
-                "sInfo":           " _TOTAL_項目 (_START_〜_END_ 表示中)",
-                "sInfoEmpty":      " 0 項目",
-                "sInfoFiltered":   "（全 _MAX_ 項目）",
+                "sInfo":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
+                "sInfoEmpty":      replaceUnitText(" 0 unit"),
+                "sInfoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
                 "sInfoPostFix":    "",
                 "sInfoThousands":  ",",
                 "sLengthMenu":     "1ページ表示 _MENU_",
@@ -722,8 +722,8 @@ $(document).ready(function() {
                 "oPaginate": {
                     "sFirst":    "先頭",
                     "sLast":     "最終",
-                    "sNext":     "次",
-                    "sPrevious": "前"
+                    "sNext":     "NEXT",
+                    "sPrevious": "PREV"
                 },
                 "oAria": {
                     "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",

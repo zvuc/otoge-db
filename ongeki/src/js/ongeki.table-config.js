@@ -434,8 +434,20 @@ $(document).ready(function() {
 
     function renderLvNum(simple_lv, precise_lv) {
         return function ( data, type, row ) {
-            if ( type === 'display' ) {
-                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
+            if ( type === 'display' ) {  
+                var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
+                if (match) {
+                    var lvnum = match[1];
+                    var plus = (match[2] === '+');
+
+                    if (plus) {
+                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                    } else {
+                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                    }
+                } else {
+                    return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                }
             }
             else {
                 return data;
@@ -682,9 +694,9 @@ $(document).ready(function() {
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
             "language": {
                 "sEmptyTable":     "テーブルにデータがありません",
-                "sInfo":           " _TOTAL_項目 (_START_〜_END_ 表示中)",
-                "sInfoEmpty":      " 0 項目",
-                "sInfoFiltered":   "（全 _MAX_ 項目）",
+                "sInfo":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
+                "sInfoEmpty":      replaceUnitText(" 0 unit"),
+                "sInfoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
                 "sInfoPostFix":    "",
                 "sInfoThousands":  ",",
                 "sLengthMenu":     "1ページ表示 _MENU_",
@@ -695,8 +707,8 @@ $(document).ready(function() {
                 "oPaginate": {
                     "sFirst":    "先頭",
                     "sLast":     "最終",
-                    "sNext":     "次",
-                    "sPrevious": "前"
+                    "sNext":     "NEXT",
+                    "sPrevious": "PREV"
                 },
                 "oAria": {
                     "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
