@@ -23,9 +23,9 @@
     <meta name="twitter:image" content="https://ongeki.info/chunithm/mg/chunithm-db-og.jpg">
     <meta name="twitter:url" content="https://ongeki.info/chunithm/">
 
-    <script type="text/javascript" src="../_shared/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../_shared/datatables/datatables.custom.min.js?20231226"></script>
-    <link rel="stylesheet" href="./style.css?20231223">
+    <script type="text/javascript" src="../_shared/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../_shared/datatables.custom.min.js?20231226"></script>
+    <link rel="stylesheet" href="./style.css?20231226">
 
     <link rel="shortcut icon" href="./img/favicon.ico" />
     <link rel="apple-touch-icon" sizes="32x32" href="./img/favicon.ico" />
@@ -42,6 +42,11 @@
                 <button id="hide-notice-btn" class="close-btn"></button>
             </div>
         </div> -->
+        <nav class="otogedb-nav">
+            <span class="label">OtogeDB</span>
+            <a class="nav-link" href="/ongeki"><span>ONGEKI</span></a>
+            <a class="nav-link" href="/chunithm"><span>CHUNITHM</span></a>
+        </nav>
         <header>
             <h1>
                 <a href="#" class="reset-search">
@@ -61,8 +66,10 @@
             </div>
         </header>
         <nav class="site-navigation">
-            <button class="btn active reset-search">SONGS／曲</button>
-            <a href="./lv" class="btn">CHARTS／譜面</a>
+            <div class="view-switcher">
+                <button class="btn active reset-search"><span>SONGS</span>曲</button>
+                <a href="./lv" class="btn"><span>CHARTS</span>譜面</a>
+            </div>
             <select class="lv-switcher" name="lv-switcher" id="chart_lev" data-type="href">
                 <option value="" selected="" data-default="">LEVEL ALL</option>
                 <option value="15">LEVEL 15</option>
@@ -168,9 +175,10 @@
     <script>
         var flat_view = false;
     </script>
-    <!-- <script defer src="./functions.js?20231223"></script> -->
-    <script defer src="./src/js/core.page-functions.js?20231223"></script>
-    <script defer src="./src/js/core.table-config.js?20231223"></script>
+    <!-- <script defer src="../_shared/shared-functions.js?20231223"></script>
+    <script defer src="./chunithm-functions.js?20231223"></script> -->
+    <script defer src="../_shared/src/js/shared.page-functions.js?20231223"></script>
+    <script defer src="./src/js/chunithm.table-config.js?20231223"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
     <script>

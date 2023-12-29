@@ -1,21 +1,44 @@
-@import (reference) '_variables.less';
+@import (reference) '../../../_shared/src/less/_variables.less';
 
-@import '../../../_shared/less/_css-variables.less';
-@import '../../../_shared/less/_elements.less';
-@import '../../../_shared/less/datatables.less';
-@import '../../../_shared/less/frame.less';
-@import '../../../_shared/less/header.less';
-@import '../../../_shared/less/toolbar.less';
-@import '../../../_shared/less/table.less';
-@import '../../../_shared/less/modal.less';
-@import '../../../_shared/less/footer.less';
+@import '../../../_shared/src/less/_css-variables.less';
+@import '../../../_shared/src/less/_elements.less';
+@import '../../../_shared/src/less/datatables.less';
+@import '../../../_shared/src/less/frame.less';
+@import '../../../_shared/src/less/header.less';
+@import '../../../_shared/src/less/toolbar.less';
+@import '../../../_shared/src/less/table.less';
+@import '../../../_shared/src/less/modal.less';
+@import '../../../_shared/src/less/footer.less';
+
+.chunithm-variables-common() {
+	--logo-size-mobile: 160px;
+	--logo-size: 230px;
+
+	--header-gradient-stop-01: var(--color-accent-03);
+	--header-gradient-stop-02: var(--color-accent-02);
+	--header-gradient-stop-03: var(--color-accent-01);
+	--header-gradient-stop-04: var(--color-accent-02);
+
+	--toolbar-gradient-stop-01: var(--color-accent-03);
+    --toolbar-gradient-stop-02: var(--color-accent-04);
+    --toolbar-gradient-stop-03: var(--color-accent-02);
+
+	--color-accent-primary: 245,80,159; /* #f5509f */
+    --color-accent-01: 178,251,205; /* #b2fbcd */
+    --color-accent-02: 178,145,242; /* #B291F2 */
+    --color-accent-03: 165,234,255; /* #a5eaff */
+    --color-accent-04: 254,203,243; /* #FECBF3 */
+    --chartlink-img-aspect-ratio: ~'82/100';
+
+    --footer-icon: url('./img/chunithm-db-icon.png');
+}
 
 .chunithm-variables-light() {
 	--logo-url: url('./img/chunithm-db-logo.png');
 
 	--ui-color-form-background: 216,220,240; /* #d8dcf0 */ 
     --ui-color-form-border: 189,193,217; /* #bdc1d9 */ 
-    --ui-color-form-border-accent: var(--color-accent-03); /* #a5eaff */ 
+    --ui-color-form-border-accent: var(--color-accent-02);
     --ui-color-form-border-active: 146,154,194; /* #929ac2 */
     --ui-color-btn: 216,220,240; /* #d8dcf0 */ 
     --ui-color-btn-active: 146,154,194; /* #929ac2 */
@@ -27,6 +50,12 @@
     --lv-color-ult: 255,23,61; /* #ff173d */ 
 
     --toolbar-btn-color: 227,218,232; /* #e3dae8 */
+
+    --select-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23B6BDFD' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
+    --select-active-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
+
+    --search-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23B6BDFD' d='M8.5 0C5.5 0 3 2.5 3 5.5c0 1.2.4 2.2 1 3.1L.3 12.3l1.4 1.4L5.4 10c.9.6 2 1 3.1 1 3 0 5.5-2.5 5.5-5.5S11.5 0 8.5 0zm0 9C6.6 9 5 7.4 5 5.5S6.6 2 8.5 2 12 3.6 12 5.5 10.4 9 8.5 9z'/%3E%3C/svg%3E");
+	--search-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23B6BDFD' d='M8.5 0C5.5 0 3 2.5 3 5.5c0 1.2.4 2.2 1 3.1L.3 12.3l1.4 1.4L5.4 10c.9.6 2 1 3.1 1 3 0 5.5-2.5 5.5-5.5S11.5 0 8.5 0zm0 9C6.6 9 5 7.4 5 5.5S6.6 2 8.5 2 12 3.6 12 5.5 10.4 9 8.5 9z'/%3E%3C/svg%3E");
 }
 
 .chunithm-variables-dark() {
@@ -51,6 +80,7 @@
 // Variables
 :root {
     .variables-light();
+    .chunithm-variables-common();
     .chunithm-variables-light();
 }
 
@@ -64,59 +94,6 @@
         .variables-dark();
         .chunithm-variables-dark();
     }
-}
-
-// Elements
-select {
-	@corner-size: 4px;
-	@border-thickness: 2px;
-	@border-color: rgb(var(--ui-color-form-border));
-	@border-color-accent: rgb(var(--ui-color-form-border-accent));
-	@border-color-focus: rgb(var(--ui-color-form-border-active));
-
-	background-image: 
-		linear-gradient(to right, @border-color 0%, @border-color 50%, @border-color 100%),
-		linear-gradient(to left, @border-color 0%, @border-color 50%, @border-color 100%),
-		linear-gradient(45deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-		linear-gradient(225deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23B6BDFD' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
-	
-	&:focus {
-		background-image: 
-			linear-gradient(to right, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
-			linear-gradient(to left, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
-			linear-gradient(45deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-			linear-gradient(225deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
-	}
-}
-
-// Toolbar
-.dataTables_wrapper {
-	.dataTables_filter {
-		input {
-			@corner-size: 4px;
-			@border-thickness: 2px;
-			@border-color: rgb(var(--ui-color-form-border));
-			@border-color-accent: rgb(var(--ui-color-form-border-accent));
-			@border-color-focus: rgb(var(--ui-color-form-border-active));
-			background-image: 
-				linear-gradient(to right, @border-color 0%, @border-color 50%, @border-color 100%),
-				linear-gradient(to left, @border-color 0%, @border-color 50%, @border-color 100%),
-				linear-gradient(45deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-				linear-gradient(225deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-				url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23B6BDFD' d='M8.5 0C5.5 0 3 2.5 3 5.5c0 1.2.4 2.2 1 3.1L.3 12.3l1.4 1.4L5.4 10c.9.6 2 1 3.1 1 3 0 5.5-2.5 5.5-5.5S11.5 0 8.5 0zm0 9C6.6 9 5 7.4 5 5.5S6.6 2 8.5 2 12 3.6 12 5.5 10.4 9 8.5 9z'/%3E%3C/svg%3E");
-
-			&:focus {
-				background-image: 
-					linear-gradient(to right, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
-					linear-gradient(to left, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
-					linear-gradient(45deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-					linear-gradient(225deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-					url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23B6BDFD' d='M8.5 0C5.5 0 3 2.5 3 5.5c0 1.2.4 2.2 1 3.1L.3 12.3l1.4 1.4L5.4 10c.9.6 2 1 3.1 1 3 0 5.5-2.5 5.5-5.5S11.5 0 8.5 0zm0 9C6.6 9 5 7.4 5 5.5S6.6 2 8.5 2 12 3.6 12 5.5 10.4 9 8.5 9z'/%3E%3C/svg%3E");
-			}
-		}
-	}
 }
 
 // Header

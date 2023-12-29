@@ -25,9 +25,9 @@
     <meta name="twitter:image" content="https://ongeki.info/img/ongeki-db-og.jpg">
     <meta name="twitter:url" content="https://ongeki.info/">
 
-    <script type="text/javascript" src="../_shared/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../_shared/datatables/datatables.custom.min.js?20231226"></script>
-    <link rel="stylesheet" href="style.css?20230116">
+    <script type="text/javascript" src="../_shared/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../_shared/datatables.custom.min.js?20231226"></script>
+    <link rel="stylesheet" href="./style.css?20231226">
 
     <link rel="shortcut icon" href="./img/favicon.ico" />
     <link rel="apple-touch-icon" sizes="32x32" href="./img/favicon.ico" />
@@ -44,6 +44,11 @@
                 <button id="hide-notice-btn" class="close-btn"></button>
             </div>
         </div> -->
+        <nav class="otogedb-nav">
+            <span class="label">OtogeDB</span>
+            <a class="nav-link" href="/ongeki"><span>ONGEKI</span></a>
+            <a class="nav-link" href="/chunithm"><span>CHUNITHM</span></a>
+        </nav>
         <header>
             <h1>
                 <a href="../">
@@ -62,14 +67,11 @@
                 </div>
             </div>
         </header>
-
-        <nav class="menu open">
-            
-        </nav>
-
         <nav class="site-navigation">
-            <a href="../" class="btn">SONGS／曲</a>
-            <button class="btn active reset-search">CHARTS／譜面</button>
+            <div class="view-switcher">
+                <a class="btn" href="./"><span>SONGS</span>曲</a>
+                <button class="btn active reset-search"><span>CHARTS</span>譜面</button>
+            </div>
             <select class="lv-switcher" name="lv-switcher" id="chart_lev" data-type="filter">
                 <option value="" selected="" data-default="">LEVEL ALL</option>
                 <option value="15+">LEVEL 15+</option>
@@ -177,9 +179,8 @@
     <script>
         var flat_view = true;
     </script>
-    <script defer src="./functions.js?20221204"></script>
-    <!-- <script defer src="./src/js/table-config.js"></script>
-    <script defer src="./src/js/page-functions.js"></script> -->
+    <script defer src="../_shared/shared-functions.js?20231223"></script>
+    <script defer src="./ongeki-functions.js?20231223"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
     <script>

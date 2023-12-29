@@ -27,9 +27,11 @@ html {
 	&.transitioning *,
 	&.transitioning *:before,
 	&.transitioning *:after,
-	&.transitioning button {
-		transition-property: background-color, background-image, border-color, opacity;
-		transition-duration: 0.3s;
+	&.transitioning button,
+	&.transitioning select,
+	&.transitioning input {
+		transition-property: background-color, background-image, border-color, box-shadow, color, opacity, transform !important;
+		transition-duration: 0.2s !important;
 	}
 
 	&.page-loading {
@@ -287,7 +289,7 @@ body {
 		display: inline-block;
 		height: 14px;
 		width: 14px;
-		background-image: data-uri('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><polygon fill="rgb(165,234,255)" points="8,0 1.1,8 8,16 14.9,8"/></svg>');
+		background-image: url('data:image/svg+xml;utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpolygon fill="rgb(165,234,255)" points="8,0 1.1,8 8,16 14.9,8"/%3E%3C/svg%3E');
 		background-size: 100% 100%;
 		margin: 0;
 		animation: loader-tri-anim 4s infinite both;

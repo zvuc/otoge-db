@@ -42,6 +42,7 @@ a {
 	mask-repeat: no-repeat;
 	transition-property: background-color;
 	transition-duration: 0.2s;
+	cursor: pointer;
 
 	&:hover,
 	&:active,
@@ -106,6 +107,7 @@ a {
 		}
 	}
 
+	&.active,
 	&.dt-button-active {
 		border-radius: 0;
 		transition-duration: 0s;
@@ -147,20 +149,23 @@ select {
 	height: 32px;
 	padding: 2px 20px 2px 10px;
 	font-size: 16px;
-	background-color: rgba(var(--ui-color-btn),0.2);
+	background-color: rgba(var(--ui-color-background-100),0.5);
 	background-image: 
+		linear-gradient(to right, rgba(var(--ui-color-btn),0.2) 0%, rgba(var(--ui-color-btn),0.2) 100%),
 		linear-gradient(to right, @border-color 0%, @border-color 50%, @border-color 100%),
 		linear-gradient(to left, @border-color 0%, @border-color 50%, @border-color 100%),
 		linear-gradient(45deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 		linear-gradient(225deg, transparent (@corner-size - 1px), @border-color @corner-size, @border-color (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
-		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23B6BDFD' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
 	background-position:
+		center center,
 		bottom right,
 		top left,
 		bottom left,
 		top right,
 		calc(100% - 5px) center;
 	background-size: 
+		100% 100%,
 		calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
 		calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
 		(@corner-size + 6px) (@corner-size + 6px),
@@ -195,12 +200,12 @@ select {
 		outline: none;
 		background-color: rgba(var(--ui-color-btn),0.7);
 		background-image: 
+			linear-gradient(to right, rgba(var(--ui-color-btn),0.2) 0%, rgba(var(--ui-color-btn),0.2) 100%),
 			linear-gradient(to right, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
 			linear-gradient(to left, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
 			linear-gradient(45deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 			linear-gradient(225deg, transparent (@corner-size - 1px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 1.5px), transparent (@corner-size + 1.5px)),
 			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
-		// border-color: rgb(var(--ui-color-primary));
 		transition-duration: 0s;
 	}
 }
@@ -291,13 +296,13 @@ select {
 
 	.img {
 		flex: 0 0 auto;
-		width: 30px;
-		height: 40px;
+		height: var(--chartlink-img-height, 40px);
 		background-image: url('./img/chart-ref.png');
 		background-repeat: no-repeat;
 		background-size: 100%;
 		border-radius: 2px;
 		margin-bottom: 3px;
+		aspect-ratio: var(--chartlink-img-aspect-ratio);
 
 		@media screen and (min-width: 660px) {
 			order: 2;

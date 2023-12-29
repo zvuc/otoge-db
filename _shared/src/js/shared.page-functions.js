@@ -1,6 +1,6 @@
 // theme switcher
-const toggleSwitch = document.getElementById('themeToggleCheckbox');
 const root = document.documentElement;
+const toggleSwitch = document.getElementById('themeToggleCheckbox');
 
 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     toggleSwitch.checked = false;
@@ -12,28 +12,26 @@ if (window.matchMedia('(prefers-color-scheme: light)').matches) {
     root.setAttribute('data-theme', 'light');
 }
 
-whichTransitionEvent = () => {
-    let t,
-        el = document.createElement("fakeelement");
+// Determine appropriate transitionEvent for current browser
+const getTransitionEvent = () => {
+    const el = document.createElement("fakeelement");
 
-    let transitions = {
+    const transitions = {
         "transition"      : "transitionend",
         "OTransition"     : "oTransitionEnd",
         "MozTransition"   : "transitionend",
         "WebkitTransition": "webkitTransitionEnd"
-    }
+    };
 
-    for (t in transitions){
-        if (el.style[t] !== undefined){
-            return transitions[t];
+    for (const property in transitions){
+        if (el.style[property] !== undefined){
+            return transitions[property];
         }
     }
-}
+};
 
-let transitionEvent = whichTransitionEvent(),
-    item = document.querySelector('.circle'),
-    message = document.querySelector('.footer'),
-    counter = 1;
+const transitionEvent = getTransitionEvent();
+
 
 function switchTheme(e) {
     root.classList.toggle('transitioning');
@@ -112,20 +110,20 @@ function appendSelectboxStateClass(select, val) {
 $(document).ready(function() {
     $('html').removeClass('page-loading');
 
-    fetch('https://api.github.com/repos/zvuc/ongeki-db/commits?per_page=1')
-        .then(res => res.json())
-        .then(res => {
-            let commitDateTime = new Date(res[0].commit.committer.date);
-            let commitMsg = res[0].commit.message;
-            // if multi-line commit message
-            if(commitMsg.split('\n')[1] !== undefined) {
-                document.getElementById('latest-commit-content').innerHTML = commitMsg.split('\n').slice(2).join('<br>');
-            } else {
-                document.getElementById('latest-commit-content').innerHTML = commitMsg;
-            }
-            document.getElementById('latest-commit').setAttribute('href', res[0].html_url);
-            document.getElementById('latest-commit-date').innerHTML = commitDateTime.toISOString().split('T')[0]
-    })
+    // fetch('https://api.github.com/repos/zvuc/ongeki-db/commits?per_page=1')
+    //     .then(res => res.json())
+    //     .then(res => {
+    //         let commitDateTime = new Date(res[0].commit.committer.date);
+    //         let commitMsg = res[0].commit.message;
+    //         // if multi-line commit message
+    //         if(commitMsg.split('\n')[1] !== undefined) {
+    //             document.getElementById('latest-commit-content').innerHTML = commitMsg.split('\n').slice(2).join('<br>');
+    //         } else {
+    //             document.getElementById('latest-commit-content').innerHTML = commitMsg;
+    //         }
+    //         document.getElementById('latest-commit').setAttribute('href', res[0].html_url);
+    //         document.getElementById('latest-commit-date').innerHTML = commitDateTime.toISOString().split('T')[0]
+    // })
 
     // localStorage.noticeNewAddress == "false" ? '' : $('.notice-wrap').addClass('visible');
 });

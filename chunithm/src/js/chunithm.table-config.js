@@ -25,7 +25,7 @@ $(document).ready(function() {
         { 
             displayTitle: "アルバムアート",
             name: "jacket",
-            data: "image_url",
+            data: "image",
             className: "jacket detail-hidden",
             render: function(data) {
                 return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
@@ -43,7 +43,6 @@ $(document).ready(function() {
                 // If display or filter data is requested, return title
                 if ( type === 'display' ) {
                     return '<div class="inner-wrap">' +
-                            ( row.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                             '<span class="title">' + data + '<\/span>' +
                             '<span class="dash hidden"> - <\/span>' +
                             '<span class="artist-display hidden">' + row.artist + '<\/span>'+
@@ -52,18 +51,18 @@ $(document).ready(function() {
                 else if ( type === 'filter' ) {
                     return data;
                 }
-                // Else type detection or sorting data, return title_sort
+                // Else type detection or sorting data, return reading
                 else {
-                    return row.title_sort;
+                    return row.reading;
                 }
             },
             width: "80vw"
         },
         {
             displayTitle: "曲名 (読み)",
-            name: "title_sort",
-            data: "title_sort",
-            className: "title-sort",
+            name: "reading",
+            data: "reading",
+            className: "reading",
             visible: false,
             searchable: false
         },
@@ -79,7 +78,7 @@ $(document).ready(function() {
                     return '<div class="inner-wrap"><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
                 }
                 else {
-                    return row.title_sort;
+                    return row.reading;
                 }
             },
             searchable: false
@@ -105,108 +104,11 @@ $(document).ready(function() {
         { 
             displayTitle: "ジャンル",
             name: "category",
-            data: "category",
+            data: "catname",
             className: "category",
             render: renderInWrapper(),
-            customDropdownSortSource: 'category_id',
+            width: "12em",
             filterable: true
-        },
-        { 
-            displayTitle: "ジャンルID",
-            name: "category_id",
-            data: "category_id",
-            width: "90px",
-            visible: false
-        },
-        { 
-            displayTitle: "チャプターID",
-            name: "chap_id",
-            data: "chap_id",
-            className: "chapter-id",
-            visible: false
-        },
-        {
-            // combine chap_id + chapter
-            displayTitle: "チャプター",
-            name: "chap",
-            data: function( row, type, set, meta ) {
-                if ( type === 'sort' || type === 'meta') {
-                    return row.chap_id;
-                } else {
-                    var chap_id_display = parseChapId(row, true);
-                    return chap_id_display + row.chapter
-                }
-            },
-            className: "chapter",
-            width: "15em",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    var chap_id_display = parseChapId(row, true);
-                    return '<div class="inner-wrap"><span class="chap-id-badge">' + chap_id_display + '<\/span><span class="chap-name">' + row.chapter + '<\/span><\/div>';
-                }
-                else {
-                    return data;
-                }
-            },
-            filterable: true
-        },
-        { 
-            displayTitle: "属性",
-            name: "enemy_type",
-            data: "enemy_type",
-            className: "chara type",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap"><span class="element-type-icon ' + data.toLowerCase() + '"><span class="icon"><\/span><span class="label-text">' + data + '<\/span><\/span></div>';
-                }
-                // use chara_id for sort
-                else {
-                    return data;
-                }
-            },
-            width: "40px",
-            filterable: true
-        },
-        { 
-            displayTitle: "キャラID",
-            name: "chara_id",
-            data: "chara_id",
-            visible: false
-        },
-        { 
-            displayTitle: "相手キャラ",
-            name: "character",
-            data: "character",
-            className: "chara character",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap">' + data + '<\/div>';
-                }
-                // use chara_id for sort
-                else {
-                    return data;
-                }
-            },
-            customDropdownSortSource: 'chara_id',
-            width: "10em",
-            filterable: true
-        },
-        { 
-            displayTitle: "相手レベル",
-            name: "enemy_lv",
-            data: "enemy_lv",
-            className: "chara enemy-lv",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap">Lv.' + data + '<\/div>';
-                }
-                // use chara_id for sort
-                else {
-                    return data;
-                }
-            },
-            customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
-            width: "4em"
         },
         { 
             //  BASIC
@@ -235,11 +137,11 @@ $(document).ready(function() {
         { 
             //  EXPERT
             displayTitle: "EXPERT",
-            name: "lev_exc",
-            data: sortLevels('lev_exc', 'lev_exc_i'),
+            name: "lev_exp",
+            data: sortLevels('lev_exp', 'lev_exp_i'),
             className: "lv lv-exp",
-            render: renderLvNum('lev_exc', 'lev_exc_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_exc'),
+            render: renderLvNum('lev_exp', 'lev_exp_i'),
+            customDropdownSortSource: sortByLeadingZeros('lev_exp'),
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true
@@ -257,16 +159,38 @@ $(document).ready(function() {
             filterable: flat_view ? false : true
         },
         { 
-            //  LUNATIC
-            displayTitle: "LUNATIC",
-            name: "lev_lnt",
-            data: sortLevels('lev_lnt', 'lev_lnt_i'),
-            className: "lv lv-lnt",
-            render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
+            //  ULTIMA
+            displayTitle: "ULTIMA",
+            name: "lev_ult",
+            data: sortLevels('lev_ult', 'lev_ult_i'),
+            className: "lv lv-ult",
+            render: renderLvNum('lev_ult', 'lev_ult_i'),
+            customDropdownSortSource: sortByLeadingZeros('lev_ult'),
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true
+        },
+        { 
+            //  WORLD'S END (Kanji)
+            displayTitle: "WORLD'S END",
+            name: "lev_we",
+            data: "we_kanji",
+            className: "lv lv-we",
+            render: renderWorldsEnd('we_kanji', 'we_star'),
+            customDropdownSortSource: sortByLeadingZeros('we_star'),
+            reverseSortOrder: true,
+            width: "3rem",
+            filterable: flat_view ? false : true
+        },
+        { 
+            //  WORLD'S END
+            displayTitle: "WORLD'S END☆",
+            name: "we_star",
+            data: convertWEStars('we_star'),
+            className: "lv lv-we we-star",
+            reverseSortOrder: true,
+            width: "3rem",
+            filterable: false
         },
         {
             //  chart_diff
@@ -314,8 +238,7 @@ $(document).ready(function() {
             name: "chart_lev_i",
             data: ( flat_view ? 'chart_lev_i' : null ),
             className: "lv lv-name detail-hidden",
-            render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display')
-            : null ),
+            render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display') : null ),
             width: "4rem",
             createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
                 $(td).addClass( rowData.chart_diff );
@@ -325,25 +248,53 @@ $(document).ready(function() {
             visible: flat_view
         },
         { 
-            displayTitle: "NEW",
-            name: "new",
-            data: "new",
-            searchable: false,
-            visible: false
-        },
-        { 
             displayTitle: "ノート数",
             name: "chart_notes",
             data: ( flat_view ? "chart_notes" : null ),
             className: "details notecount detail-hidden",
-            width: "6em",
+            width: "8em",
+            searchable: false
+        },
+        { 
+            displayTitle: "TAP",
+            name: "chart_notes_tap",
+            data: ( flat_view ? "chart_notes_tap" : null ),
+            className: "details notecount detail-hidden",
+            width: "5em",
             searchable: false,
             visible: false
         },
         { 
-            displayTitle: "ベル",
-            name: "chart_bells",
-            data: ( flat_view ? "chart_bells" : null ),
+            displayTitle: "HOLD",
+            name: "chart_notes_hold",
+            data: ( flat_view ? "chart_notes_hold" : null ),
+            className: "details notecount detail-hidden",
+            width: "5em",
+            searchable: false,
+            visible: false
+        },
+        { 
+            displayTitle: "SLIDE",
+            name: "chart_notes_slide",
+            data: ( flat_view ? "chart_notes_slide" : null ),
+            className: "details notecount detail-hidden",
+            width: "5em",
+            searchable: false,
+            visible: false
+        },
+        { 
+            displayTitle: "AIR",
+            name: "chart_notes_air",
+            data: ( flat_view ? "chart_notes_air" : null ),
+            className: "details notecount detail-hidden",
+            width: "5em",
+            searchable: false,
+            visible: false
+        },
+        { 
+            displayTitle: "FLICK",
+            name: "chart_notes_flick",
+            data: ( flat_view ? "chart_notes_flick" : null ),
             className: "details notecount detail-hidden",
             width: "5em",
             searchable: false,
@@ -354,10 +305,19 @@ $(document).ready(function() {
             name: "chart_designer",
             data: ( flat_view ? "chart_designer" : null ),
             width: "15em",
-            className: "details detail-hidden",
+            className: "details detail-hidden designer",
             filterable: flat_view,
-            searchable: flat_view,
-            visible: false
+            searchable: flat_view
+        },
+        { 
+            displayTitle: "譜面作者",
+            name: "chart_link",
+            data: ( flat_view ? "chart_link" : null ),
+            render: ( flat_view ? renderChartLinkBtn('chart_link') : null ),
+            width: "5em",
+            className: "details detail-hidden chart-link",
+            filterable: false,
+            searchable: false
         },
         { 
             displayTitle: "追加日",
@@ -381,18 +341,20 @@ $(document).ready(function() {
             width: "4em"
         },
         { 
-            displayTitle: "BONUS",
-            name: "bonus",
-            data: "bonus",
-            className: "details detail-hidden",
-            width: "10px"
+            displayTitle: "NEW",
+            name: "new",
+            data: "newflag",
+            className: "detail-hidden", // this column is required to ensure modal displays
+            searchable: false,
         }
     ];
 
     var default_order = 
         flat_view ?
-            [[23, 'desc'],[15, 'desc'],[28, 'desc']] :
-            [[28, 'desc'],[10, 'asc'],[0, 'asc']];
+            // 難易度 , Lv , Date
+            [[18, 'desc'],[17, 'desc'],[27, 'desc']] :
+            // date , ID
+            [[27, 'desc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
@@ -434,8 +396,83 @@ $(document).ready(function() {
 
     function renderLvNum(simple_lv, precise_lv) {
         return function ( data, type, row ) {
+            if ( type === 'display' ) {  
+                var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
+                if (match) {
+                    var lvnum = match[1];
+                    var plus = (match[2] === '+');
+
+                    if (plus) {
+                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                    } else {
+                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                    }
+                } else {
+                    return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
+                }
+            }
+            else {
+                return data;
+            }
+        }
+    }
+
+    function convertWEStars(we_star) {
+        const conversionTable = {
+            "1": "1",
+            "3": "2",
+            "5": "3",
+            "7": "4",
+            "9": "5"
+        };
+
+        if (conversionTable.hasOwnProperty(we_star)) {
+            return conversionTable[we_star];
+        } else {
+            return we_star;
+        }
+    }
+
+    function renderChartLinkBtn(chart_link) {
+        return function ( data, type, row ) {
             if ( type === 'display' ) {
-                return '<div class="inner-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv] + '<\/span><\/div>';
+                return chartLinkBtn(row['chart_link'])
+            } else {
+                return data
+            }
+        }
+    }
+
+    function chartLinkBtn(chart_link) {
+        if ( chart_link !== '' ) {
+            return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/chunithm/${chart_link}.htm">
+                        <span class="img"></span><span>譜面確認</span>
+                    </a><span class="chart-provider">sdvx.in 提供</span>`;
+        } else {
+            return '';
+        }
+    }
+
+    function displayWEStars(we_star) {
+        const conversionTable = {
+            "1": "☆",
+            "3": "☆☆",
+            "5": "☆☆☆",
+            "7": "☆☆☆☆",
+            "9": "☆☆☆☆☆"
+        };
+
+        if (conversionTable.hasOwnProperty(we_star)) {
+            return conversionTable[we_star];
+        } else {
+            return we_star;
+        }
+    }
+
+    function renderWorldsEnd(we_kanji, we_star) {
+        return function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return row[we_kanji] !== '' ? '<div class="inner-wrap"><span class="lv-num-simple">' + row[we_kanji] + '<\/span><span class="lv-num-precise">☆' + convertWEStars(row[we_star]) + '<\/span><\/div>' : '';
             }
             else {
                 return data;
@@ -446,9 +483,13 @@ $(document).ready(function() {
     function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display) {
         return function ( data, type, row ) {
             if ( type === 'display' ) {
-                var chart_diff_display = convertDifficultyNames(row[chart_diff]);                
-
-                return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
+                var chart_diff_display = convertDifficultyNames(row[chart_diff]);
+                if (row[chart_diff] === 'we_kanji') {
+                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">☆' + row[precise_lv_display] + '<\/span></span><\/div>';
+                }
+                else {
+                    return '<div class="inner-wrap"><span class="diff-name">' + chart_diff_display + '</span><span class="lv-num-wrap"><span class="lv-num-simple">' + row[simple_lv] + '<\/span><span class="lv-num-precise">' + row[precise_lv_display] + '<\/span></span><\/div>';
+                }
             }
             else {
                 return data;
@@ -478,14 +519,17 @@ $(document).ready(function() {
                 case 'lev_adv' :
                     var chart_diff_display = 'ADVANCED'
                     break;
-                case 'lev_exc' :
+                case 'lev_exp' :
                     var chart_diff_display = 'EXPERT'
                     break;
                 case 'lev_mas' :
                     var chart_diff_display = 'MASTER'
                     break;
-                case 'lev_lnt' :
-                    var chart_diff_display = 'LUNATIC'
+                case 'lev_ult' :
+                    var chart_diff_display = 'ULTIMA'
+                    break;
+                case 'we_kanji' :
+                    var chart_diff_display = 'WORLD\'S END'
                     break;
             }
         } else {
@@ -496,14 +540,17 @@ $(document).ready(function() {
                 case 'lev_adv' :
                     var chart_diff_display = '2 ADVANCED'
                     break;
-                case 'lev_exc' :
+                case 'lev_exp' :
                     var chart_diff_display = '3 EXPERT'
                     break;
                 case 'lev_mas' :
                     var chart_diff_display = '4 MASTER'
                     break;
-                case 'lev_lnt' :
-                    var chart_diff_display = '5 LUNATIC'
+                case 'lev_ult' :
+                    var chart_diff_display = '5 ULTIMA'
+                    break;
+                case 'we_kanji' :
+                    var chart_diff_display = '6 WORLD\'S END'
                     break;
             }
         }
@@ -532,7 +579,7 @@ $(document).ready(function() {
         if (flat_view) {
             return data
                 .map(obj =>
-                    ['lev_bas', 'lev_adv', 'lev_exc', 'lev_mas', 'lev_lnt']
+                    ['lev_bas', 'lev_adv', 'lev_exp', 'lev_mas', 'lev_ult', 'we_kanji']
                         .map(chart_diff => processChartData(obj, chart_diff))
                 )
                 .flat()
@@ -544,62 +591,42 @@ $(document).ready(function() {
 
     function processChartData(obj, chart_diff) {
         if (obj[chart_diff]) {
-            return {
-                ...obj,
-                chart_diff,
-                chart_lev: obj[chart_diff],
-                chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1)}</span>`,
-                chart_notes: obj[`${chart_diff}_notes`],
-                chart_bells: obj[`${chart_diff}_bells`],
-                chart_designer: obj[`${chart_diff}_designer`]
-            };
+            if (chart_diff === 'we_kanji') {
+                return {
+                    ...obj,
+                    chart_diff,
+                    chart_lev: obj[chart_diff],
+                    chart_lev_i: convertWEStars(obj[`we_star`]),
+                    chart_lev_i_display: convertWEStars(obj[`we_star`]),
+                    chart_notes: obj[`lev_we_notes`],
+                    chart_notes_tap: obj[`lev_we_notes_tap`],
+                    chart_notes_hold: obj[`lev_we_notes_hold`],
+                    chart_notes_slide: obj[`lev_we_notes_slide`],
+                    chart_notes_air: obj[`lev_we_notes_air`],
+                    chart_notes_flick: obj[`lev_we_notes_flick`],
+                    chart_designer: obj[`lev_we_designer`],
+                    chart_link: obj[`lev_we_chart_link`]
+                }
+            }
+            else {
+                return {
+                    ...obj,
+                    chart_diff,
+                    chart_lev: obj[chart_diff],
+                    chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.5')),
+                    chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.5')).toFixed(1)}</span>`,
+                    chart_notes: obj[`${chart_diff}_notes`],
+                    chart_notes_tap: obj[`${chart_diff}_notes_tap`],
+                    chart_notes_hold: obj[`${chart_diff}_notes_hold`],
+                    chart_notes_slide: obj[`${chart_diff}_notes_slide`],
+                    chart_notes_air: obj[`${chart_diff}_notes_air`],
+                    chart_notes_flick: obj[`${chart_diff}_notes_flick`],
+                    chart_designer: obj[`${chart_diff}_designer`],
+                    chart_link: obj[`${chart_diff}_chart_link`]
+                };
+            }
         }
         return null;
-    }
-
-    function parseChapId(row, includeTrailingSpace) {
-        var chap_id = row.chap_id;
-        var chap_chapter = chap_id.substr(3,2);
-
-        // 0xxxx : Normal chapters
-        if (chap_id.substr(0,1) == "0") {
-            var chap_book = chap_id.substr(1,1);
-
-            // 0xx8x : side chapter
-            if (chap_id.substr(3,1) == "8") {
-                var chap_book = chap_id.substr(1,1);
-                var chap_chapter = 'S' + chap_id.substr(4,1);
-            }
-
-            // 0xxxx: chapters
-            if (chap_book > "0") {
-                return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-            } 
-            // 00xxx : default mylist
-            else {
-                return '';
-            }
-        }
-        // 70xxx : Memory chapters
-        else if (chap_id.substr(0,2) == "70") {
-            var chap_book = "M";
-            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-        }
-        // 80xxx : Event chapters
-        else if (chap_id.substr(0,2) == "80") {
-            var chap_book = "SP2";
-            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-        }
-        // 99xxx : Event chapters
-        else if (chap_id.substr(0,2) == "99") {
-            var chap_book = "SP";
-            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-        }
-        // Others?
-        else {
-            return chap_id + (includeTrailingSpace ? ' ' : '');
-        }
     }
 
     function formatDate(inputDate, dateFormat) {
@@ -721,57 +748,44 @@ $(document).ready(function() {
                                 .replaceAll('#','＃')
                                 .replaceAll('"','”')
                             );
-                            var wiki_url_guess = 'https:\/\/wikiwiki.jp\/gameongeki\/' + encoded_title;
+                            var wiki_url_guess = 'https:\/\/wikiwiki.jp\/chunithmwiki\/' + encoded_title;
 
                             var wiki_url = data['wikiwiki_url'] ? data['wikiwiki_url'] : wiki_url_guess;
 
 
-                            return '<div class="modal-header" style="--img:url(jacket/' + data.image_url + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
-                                '<img src=\"jacket/' + data.image_url + '\"\/>' +
+                            return '<div class="modal-header" style="--img:url(jacket/' + data.image + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
+                                '<img src=\"jacket/' + data.image + '\"\/>' +
                                 '<\/div><div class="content-wrap">' +
-                                ( data.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
                                 '<span class="title">' + data.title + '<\/span>' +
                                 '<span class="artist">' + data.artist + '<\/span>' +
-                                ( data.copyright1 !== "-" ? '<span class="copyright">' + data.copyright1.replace(/\s+ピアプロロゴ/, '<span class="piapro">piapro</span>') + '<\/span>' : '' ) +
                                 '<div class="quicklinks">' +
                                 '<a class="wiki" href="' + wiki_url + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
-                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=オンゲキ+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
+                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=CHUNITHM+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
                                 '<\/div>' +
                                 '<\/div><\/div>'
                         },
                         footer: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-footer">' +
-                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23%E3%82%AA%E3%83%B3%E3%82%B2%E3%82%ADDB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
+                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23CHUNITHM_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
                                 '<\/div>'
                         }
                     } ),
                     // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
                     renderer: function(api, rowIdx, columns) {
+
                         var row = api.row(rowIdx);
                         var data = row.data();
-                        var chara_id = data['chara_id'];
-                        var enemy_type = data['enemy_type'];
-                        var lunatic = data['lev_lnt'] !== "" ? "lunatic" : "";
+                        var ultima = data['lev_ult'] !== "" ? "ultima" : "";
+                        var worldsend = data['we_kanji'] !== "" ? "worldsend" : "";
 
                         var normalRows = $.map(columns, function(col, i) {
                             var column_param = columns_params[col.columnIndex];
 
                             // generic
-                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ') && !col.className.includes('chara ')) {
+                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
                                 return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                 '<span class="row-label">' + col.title + '</span> ' + '<span>' + col.data + '</span>' +
-                                '</div>'
-                            }
-                        }).join('');
-
-                        var charaRows = $.map(columns, function(col, i) {
-                            var column_param = columns_params[col.columnIndex];
-
-                            // chara
-                            if (!col.className.includes('detail-hidden') && col.className.includes('chara ')) {
-                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                '<span class="row-label">' + column_param.displayTitle + '</span> ' + '<span>' + col.data + '</span>' +
                                 '</div>'
                             }
                         }).join('');
@@ -784,34 +798,37 @@ $(document).ready(function() {
                                 var chart_name = column_param['name'];
 
                                 var notes = chart_name.concat('_notes');
-                                var bells = chart_name.concat('_bells');
+                                var notes_tap = chart_name.concat('_notes_tap');
+                                var notes_hold = chart_name.concat('_notes_hold');
+                                var notes_slide = chart_name.concat('_notes_slide');
+                                var notes_air = chart_name.concat('_notes_air');
+                                var notes_flick = chart_name.concat('_notes_flick');
+
                                 var designer = chart_name.concat('_designer');
-                                var chartLink = chart_name.concat('_chart_link');                                
+                                var chart_link = chart_name.concat('_chart_link');                                
 
                                 return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                     '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
                                     '<span class="content-col">' +
-                                        '<span class="main-info-wrap">' + col.data + '</span>' +
+                                        '<span class="main-info-wrap">' + (worldsend ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['we_kanji'] + '</span><span class="lv-num-precise">' + displayWEStars(data['we_star']) + '</span></div>') : col.data) + '</span>' +
                                         '<span class="sub-info-wrap">' +
-                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes"><span class="label">Chain</span><span>' + data[notes] + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, bells) ? '<span class="bells"><span class="label">Bell</span><span>' + data[bells] + '</span></span>' : "") +
+                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
+                                                ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_air) ? '<span class="notes_air"><span class="label">air</span><span>' + data[notes_air] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_flick) ? '<span class="notes_flick"><span class="label">flick</span><span>' + data[notes_flick] + '</span></span>' : "") + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
                                     '</span>' +
-                                    ( checkPropertyAndValueExists(data, chartLink) ? '<span class="chart-link"><a class="btn chartlink" target="_blank" rel="noopener noreferrer" href="https://sdvx.in/ongeki/'+ data[chartLink] +'.htm"><span class="img"></span><span>譜面確認</span></a><span class="chart-provider">sdvx.in 提供</span></span>' : "") +
+                                    ( checkPropertyAndValueExists(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
                                     '</div>'
                             }
                         }).join('');
 
                         var combinedRows = $('<div class="table-wrapper"/>')
                                                 .append(
-                                                    $('<div class="details-table chara-details"/>')
-                                                        .append('<div class="table-header"><span class="th-label">CHARACTER</span></div>')
-                                                        .append(charaRows)
-                                                        .append(chara_id.substr(0,1) == "1" ? '<span class="chara-img '+ enemy_type.toLowerCase() +'" style="--chara-img: url(\'./img/chara/' + chara_id + '.png\');"></span>': "")
-                                                )
-                                                .append(
-                                                    $('<div class="details-table chart-details '+ lunatic +'"/>')
+                                                    $('<div class="details-table chart-details '+ worldsend + ultima + '"/>')
                                                         .append('<div class="table-header"><span class="th-label">CHART</span></div>')
                                                         .append(chartRows)
                                                 )
@@ -868,7 +885,6 @@ $(document).ready(function() {
                             // when applying filter, control rowgroup visibility
                             if (column.index() === 27 || (val_e === "" && order[0][0] === 27)) {
                                 column.rowGroup().enable();
-                                // console.log('group enabled (filter)');
                             } else {
                                 column.rowGroup().disable();
                                 // console.log('group disabled (filter active)');
@@ -1023,7 +1039,7 @@ $(document).ready(function() {
         } 
         // redirect to /lv/ subpage with querystring if selected on main page
         else {
-            window.location.href = '/lv?chart_lev=' + encodeURIComponent(val);
+            window.location.href = './lv?chart_lev=' + encodeURIComponent(val);
         }
     });
 
@@ -1036,7 +1052,7 @@ $(document).ready(function() {
         }
     }
 
-    $('a.reset-search').on('click', function(){
+    $('button.reset-search').on('click', function(){
         var table = $('#table').DataTable();
 
         table
@@ -1047,7 +1063,7 @@ $(document).ready(function() {
 
         clearQueryStringParameter();
 
-        $('.toolbar.filters select').prop('selectedIndex',0);
+        $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
 
         console.log('search reset');
     });
