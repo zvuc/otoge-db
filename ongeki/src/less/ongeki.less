@@ -1,0 +1,70 @@
+@import (reference) '../../../_shared/src/less/_variables.less';
+
+@import '../../../_shared/src/less/_css-variables.less';
+@import '../../../_shared/src/less/_elements.less';
+@import '../../../_shared/src/less/datatables.less';
+@import '../../../_shared/src/less/frame.less';
+@import '../../../_shared/src/less/header.less';
+@import '../../../_shared/src/less/toolbar.less';
+@import '../../../_shared/src/less/table.less';
+@import '../../../_shared/src/less/modal.less';
+@import '../../../_shared/src/less/footer.less';
+
+.ongeki-variables-common() {
+    --header-gradient-stop-01: var(--color-accent-03);
+    --header-gradient-stop-02: var(--color-accent-04);
+    --header-gradient-stop-03: var(--color-accent-01);
+    --header-gradient-stop-04: var(--color-accent-02);
+
+    --toolbar-gradient-stop-01: var(--color-accent-02);
+    --toolbar-gradient-stop-02: var(--color-accent-03);
+    --toolbar-gradient-stop-03: var(--color-accent-04);
+
+    --color-accent-primary: 20,206,248; /* #14cef8 */
+    --color-accent-01: 240,255,184; /* #F0FFB8 */
+    --color-accent-02: 182,189,253; /* #B6BDFD */
+    --color-accent-03: 165,234,255; /* #a5eaff */
+    --color-accent-04: 254,203,243; /* #FECBF3 */
+    --chartlink-img-aspect-ratio: ~'47/40';
+
+    --footer-icon: url('./img/ongeki-db-icon.png');
+}
+
+.ongeki-variables-light() {
+    --logo-url: url('./img/ongeki-db-logo-2022-bow.svg');
+
+	--lv-color-bsc: 34,173,57; /* #22ad39 */ 
+    --lv-color-adv: 243,152,0; /* #f39800 */ 
+    --lv-color-exp: 234,56,134; /* #ea3886 */
+    --lv-color-mas: 165,71,213; /* #a547d5 */
+    --lv-color-lnt: 217,54,44; /* #d9362c */
+}
+
+.ongeki-variables-dark() {
+    --logo-url: url('./img/ongeki-db-logo-2022-wob.svg');
+
+    --lv-color-bsc: 101,211,70; /* #65d346 */
+    --lv-color-adv: 251,230,77; /* #fbe64d */
+    --lv-color-exp: 234,56,134; /* #ea3886 */
+    --lv-color-mas: 165,71,213; /* #a547d5 */
+    --lv-color-lnt: 217,54,44; /* #d9362c */
+}
+
+// Variables
+:root {
+    .variables-light();
+    .ongeki-variables-common();
+    .ongeki-variables-light();
+}
+
+:root[data-theme="dark"] {
+    .variables-dark();
+    .ongeki-variables-dark();
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        .variables-dark();
+        .ongeki-variables-dark();
+    }
+}
