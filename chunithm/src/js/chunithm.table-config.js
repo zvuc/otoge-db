@@ -84,6 +84,14 @@ $(document).ready(function() {
             searchable: false
         },
         { 
+            // hidden real artist column (for search)
+            displayTitle: "アーティスト",
+            name: "artist",
+            data: "artist",
+            className: "artist detail-hidden",
+            visible: false
+        },
+        { 
             displayTitle: "BPM",
             name: "bpm",
             data: "bpm",
@@ -99,7 +107,8 @@ $(document).ready(function() {
             filterable: true,
             render: renderInWrapper(),
             customDropdownSortSource: "date",
-            width: "12em"
+            width: "12em",
+            searchable: false
         },
         { 
             displayTitle: "ジャンル",
@@ -108,7 +117,8 @@ $(document).ready(function() {
             className: "category",
             render: renderInWrapper(),
             width: "12em",
-            filterable: true
+            filterable: true,
+            searchable: false
         },
         { 
             //  BASIC
@@ -120,7 +130,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_bas'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  ADVANCED
@@ -132,7 +143,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_adv'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  EXPERT
@@ -144,7 +156,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_exp'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  MASTER
@@ -156,7 +169,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_mas'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  ULTIMA
@@ -168,7 +182,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_ult'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  WORLD'S END (Kanji)
@@ -180,7 +195,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('we_star'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  WORLD'S END
@@ -190,7 +206,8 @@ $(document).ready(function() {
             className: "lv lv-we we-star",
             reverseSortOrder: true,
             width: "3rem",
-            filterable: false
+            filterable: false,
+            searchable: false
         },
         {
             //  chart_diff
@@ -216,7 +233,7 @@ $(document).ready(function() {
             }) : null,
             render: flat_view ? renderChartDifficultyName('chart_diff') : null,
             customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff') : null,
-            searchable: flat_view,
+            searchable: false,
             filterable: flat_view,
             visible: false
         },
@@ -230,7 +247,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
             filterable: false,
-            visible: false
+            visible: false,
+            searchable: false
         },
         {
             //  chart_lev_i
@@ -251,7 +269,7 @@ $(document).ready(function() {
             displayTitle: "ノート数",
             name: "chart_notes",
             data: ( flat_view ? "chart_notes" : null ),
-            className: "details notecount detail-hidden",
+            className: "details notecount detail-hidden nowrap",
             width: "8em",
             searchable: false
         },
@@ -327,7 +345,6 @@ $(document).ready(function() {
                 return formatDate(row.date)
             },
             className: "date",
-            filterable: true,
             // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
             render: function ( data, type, row ) {
                 if ( type === 'display' ) {
@@ -338,23 +355,25 @@ $(document).ready(function() {
                 }
             },
             reverseSortOrder: true,
-            width: "4em"
+            width: "4em",
+            filterable: true,
+            searchable: false
         },
         { 
             displayTitle: "NEW",
             name: "new",
             data: "newflag",
             className: "detail-hidden", // this column is required to ensure modal displays
-            searchable: false,
+            searchable: false
         }
     ];
 
     var default_order = 
         flat_view ?
             // 難易度 , Lv , Date
-            [[18, 'desc'],[17, 'desc'],[27, 'desc']] :
+            [[19, 'desc'],[18, 'desc'],[28, 'desc']] :
             // date , ID
-            [[27, 'desc'],[0, 'asc']];
+            [[28, 'desc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
@@ -716,24 +735,25 @@ $(document).ready(function() {
             "deferRender": true,
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
             "language": {
-                "sEmptyTable":     "テーブルにデータがありません",
-                "sInfo":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
-                "sInfoEmpty":      replaceUnitText(" 0 unit"),
-                "sInfoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
-                "sInfoPostFix":    "",
-                "sInfoThousands":  ",",
-                "sLengthMenu":     "1ページ表示 _MENU_",
-                "sLoadingRecords": "読み込み中...",
-                "sProcessing":     "処理中...",
-                "sSearch":         "キーワード検索",
-                "sZeroRecords":    "一致するレコードがありません",
-                "oPaginate": {
+                "emptyTable":     "テーブルにデータがありません",
+                "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
+                "infoEmpty":      replaceUnitText(" 0 unit"),
+                "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
+                "infoPostFix":    "",
+                "infoThousands":  ",",
+                "lengthMenu":     "1ページ表示 _MENU_",
+                "loadingRecords": "読み込み中...",
+                "processing":     "処理中...",
+                "search":         "検索",
+                "searchPlaceholder": "曲名・アーティスト",
+                "zeroRecords":    "一致するレコードがありません",
+                "paginate": {
                     "sFirst":    "先頭",
                     "sLast":     "最終",
                     "sNext":     "NEXT",
                     "sPrevious": "PREV"
                 },
-                "oAria": {
+                "aria": {
                     "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
                     "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
                 }
@@ -891,7 +911,7 @@ $(document).ready(function() {
                             // var val = $(this).val();
 
                             // when applying filter, control rowgroup visibility
-                            if (column.index() === 27 || (val_e === "" && order[0][0] === 27)) {
+                            if (column.index() === 28 || (val_e === "" && order[0][0] === 28)) {
                                 column.rowGroup().enable();
                             } else {
                                 column.rowGroup().disable();

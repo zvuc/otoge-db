@@ -7,7 +7,8 @@ $(document).ready(function() {
             name: "id",
             data: "id",
             className: "id detail-hidden",
-            visible: false
+            visible: false,
+            searchable: false
         },
         { 
             displayTitle: "#",
@@ -82,7 +83,14 @@ $(document).ready(function() {
                     return row.title_sort;
                 }
             },
-            searchable: false
+        },
+        { 
+            // hidden real artist column (for search)
+            displayTitle: "アーティスト",
+            name: "artist",
+            data: "artist",
+            className: "artist detail-hidden",
+            visible: false
         },
         { 
             displayTitle: "BPM",
@@ -100,7 +108,8 @@ $(document).ready(function() {
             filterable: true,
             render: renderInWrapper(),
             customDropdownSortSource: "date",
-            width: "12em"
+            width: "12em",
+            searchable: false
         },
         { 
             displayTitle: "ジャンル",
@@ -109,21 +118,24 @@ $(document).ready(function() {
             className: "category",
             render: renderInWrapper(),
             customDropdownSortSource: 'category_id',
-            filterable: true
+            filterable: true,
+            searchable: false
         },
         { 
             displayTitle: "ジャンルID",
             name: "category_id",
             data: "category_id",
             width: "90px",
-            visible: false
+            visible: false,
+            searchable: false
         },
         { 
             displayTitle: "チャプターID",
             name: "chap_id",
             data: "chap_id",
             className: "chapter-id",
-            visible: false
+            visible: false,
+            searchable: false
         },
         {
             // combine chap_id + chapter
@@ -148,7 +160,8 @@ $(document).ready(function() {
                     return data;
                 }
             },
-            filterable: true
+            filterable: true,
+            searchable: false
         },
         { 
             displayTitle: "属性",
@@ -165,13 +178,15 @@ $(document).ready(function() {
                 }
             },
             width: "40px",
-            filterable: true
+            filterable: true,
+            searchable: false
         },
         { 
             displayTitle: "キャラID",
             name: "chara_id",
             data: "chara_id",
-            visible: false
+            visible: false,
+            searchable: false
         },
         { 
             displayTitle: "相手キャラ",
@@ -206,7 +221,8 @@ $(document).ready(function() {
                 }
             },
             customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
-            width: "4em"
+            width: "4em",
+            searchable: false
         },
         { 
             //  BASIC
@@ -230,7 +246,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_adv'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  EXPERT
@@ -242,7 +259,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_exc'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  MASTER
@@ -254,7 +272,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_mas'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         { 
             //  LUNATIC
@@ -266,7 +285,8 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
             reverseSortOrder: true,
             width: "3rem",
-            filterable: flat_view ? false : true
+            filterable: flat_view ? false : true,
+            searchable: false
         },
         {
             //  chart_diff
@@ -292,7 +312,7 @@ $(document).ready(function() {
             }) : null,
             render: flat_view ? renderChartDifficultyName('chart_diff') : null,
             customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff') : null,
-            searchable: flat_view,
+            searchable: false,
             filterable: flat_view,
             visible: false
         },
@@ -305,6 +325,7 @@ $(document).ready(function() {
             width: "4rem",
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
+            searchable: false,
             filterable: false,
             visible: false
         },
@@ -367,6 +388,7 @@ $(document).ready(function() {
                 return formatDate(row.date)
             },
             className: "date",
+            searchable: false,
             filterable: true,
             // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
             render: function ( data, type, row ) {
@@ -385,14 +407,15 @@ $(document).ready(function() {
             name: "bonus",
             data: "bonus",
             className: "details detail-hidden",
-            width: "10px"
+            width: "10px",
+            searchable: false
         }
     ];
 
     var default_order = 
         flat_view ?
-            [[23, 'desc'],[15, 'desc'],[28, 'desc']] :
-            [[28, 'desc'],[10, 'asc'],[0, 'asc']];
+            [[24, 'desc'],[16, 'desc'],[29, 'desc']] :
+            [[29, 'desc'],[11, 'asc'],[0, 'asc']];
 
     function checkPropertyAndValueExists(json, property) {
         if (json.hasOwnProperty(property)) {
@@ -705,24 +728,25 @@ $(document).ready(function() {
             "deferRender": true,
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
             "language": {
-                "sEmptyTable":     "テーブルにデータがありません",
-                "sInfo":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
-                "sInfoEmpty":      replaceUnitText(" 0 unit"),
-                "sInfoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
-                "sInfoPostFix":    "",
-                "sInfoThousands":  ",",
-                "sLengthMenu":     "1ページ表示 _MENU_",
-                "sLoadingRecords": "読み込み中...",
-                "sProcessing":     "処理中...",
-                "sSearch":         "キーワード検索",
-                "sZeroRecords":    "一致するレコードがありません",
-                "oPaginate": {
+                "emptyTable":     "テーブルにデータがありません",
+                "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
+                "infoEmpty":      replaceUnitText(" 0 unit"),
+                "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
+                "infoPostFix":    "",
+                "infoThousands":  ",",
+                "lengthMenu":     "1ページ表示 _MENU_",
+                "loadingRecords": "読み込み中...",
+                "processing":     "処理中...",
+                "search":         "検索",
+                "searchPlaceholder": "曲名・アーティスト・キャラ",
+                "zeroRecords":    "一致するレコードがありません",
+                "paginate": {
                     "sFirst":    "先頭",
                     "sLast":     "最終",
                     "sNext":     "NEXT",
                     "sPrevious": "PREV"
                 },
-                "oAria": {
+                "aria": {
                     "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
                     "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
                 }
@@ -890,7 +914,7 @@ $(document).ready(function() {
                             // var val = $(this).val();
 
                             // when applying filter, control rowgroup visibility
-                            if (column.index() === 27 || (val_e === "" && order[0][0] === 27)) {
+                            if (column.index() === 28 || (val_e === "" && order[0][0] === 28)) {
                                 column.rowGroup().enable();
                                 // console.log('group enabled (filter)');
                             } else {
