@@ -245,6 +245,10 @@
 				@media screen and (min-width: 800px) {
 					max-width: 200px;
 				}
+
+				@media screen and (min-width: 1440px) {
+					max-width: 100%;
+				}
 			}
 		}
 
@@ -256,8 +260,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
-		padding-top: 10px;
-		padding-bottom: 10px;
 		width: 80px;
 
 		@media screen and (min-width: 640px) {
@@ -327,10 +329,6 @@
 				font-weight: bold;
 			}
 		}
-	}
-
-	.dataTables_filter {
-		margin-top: 0;
 
 		input {
 			@corner-size: 4px;
@@ -388,6 +386,10 @@
 
 			&[type="search"]::-webkit-search-cancel-button {
 			    -webkit-appearance: none;
+			}
+
+			&::placeholder {
+				font-size: 0.8em;
 			}
 
 			&:hover {
