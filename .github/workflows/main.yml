@@ -33,7 +33,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/main.py --nocolors --escape --skipwiki
+            python ongeki/scripts/main.py --nocolors --escape --skipwiki
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 

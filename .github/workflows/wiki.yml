@@ -38,8 +38,8 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --nocolors --escape
-            python scripts/update-chartguide-data.py --nocolors --escape
+            python ongeki/scripts/update-wiki-data.py --nocolors --escape
+            python ongeki/scripts/update-chartguide-data.py --nocolors --escape
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
