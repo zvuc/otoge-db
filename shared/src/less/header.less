@@ -277,7 +277,8 @@ header {
 
 .site-navigation {
 	position: relative;
-	padding: 4px 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	box-shadow: 
 		0 -1px 0 0 rgb(var(--ui-color-border),0.1) inset,
 		0 1px 0 0 rgb(var(--ui-color-border),0.1) inset;
@@ -294,13 +295,15 @@ header {
 	}
 
 	@media screen and (max-width: 480px) {
-		padding: 2px 8px;
+		padding-top: 2px;
+		padding-bottom: 2px;
 	}
 
 	.container {
 		position: relative;
 		display: flex;
 		align-items: center;
+		gap: 10px;
 	}
 
 	select.lv-switcher {
@@ -322,8 +325,18 @@ header {
 
 	.view-switcher {
 		position: relative;
-		display: flex;
-		gap: 2px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		flex: 1 1 auto;
+		max-width: 180px;
+
+
+		@media screen and (min-width: 480px) {
+			flex: 0 0 auto;
+			display: flex;
+			gap: 2px;
+			max-width: none;
+		}
 
 		.btn {
 			position: relative;
