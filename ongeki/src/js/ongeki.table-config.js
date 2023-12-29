@@ -108,8 +108,7 @@ $(document).ready(function() {
             filterable: true,
             render: renderInWrapper(),
             customDropdownSortSource: "date",
-            width: "12em",
-            searchable: false
+            width: "12em"
         },
         { 
             displayTitle: "ジャンル",
@@ -118,8 +117,7 @@ $(document).ready(function() {
             className: "category",
             render: renderInWrapper(),
             customDropdownSortSource: 'category_id',
-            filterable: true,
-            searchable: false
+            filterable: true
         },
         { 
             displayTitle: "ジャンルID",
@@ -161,7 +159,6 @@ $(document).ready(function() {
                 }
             },
             filterable: true,
-            searchable: false
         },
         { 
             displayTitle: "属性",
@@ -179,7 +176,6 @@ $(document).ready(function() {
             },
             width: "40px",
             filterable: true,
-            searchable: false
         },
         { 
             displayTitle: "キャラID",
@@ -247,7 +243,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  EXPERT
@@ -260,7 +255,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  MASTER
@@ -273,7 +267,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  LUNATIC
@@ -286,7 +279,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         {
             //  chart_diff
@@ -312,7 +304,6 @@ $(document).ready(function() {
             }) : null,
             render: flat_view ? renderChartDifficultyName('chart_diff') : null,
             customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff') : null,
-            searchable: false,
             filterable: flat_view,
             visible: false
         },
@@ -326,7 +317,6 @@ $(document).ready(function() {
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
             searchable: false,
-            filterable: false,
             visible: false
         },
         {
@@ -341,7 +331,6 @@ $(document).ready(function() {
             createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
                 $(td).addClass( rowData.chart_diff );
             }) : null,
-            filterable: false,
             searchable: false,
             visible: flat_view
         },
@@ -388,7 +377,6 @@ $(document).ready(function() {
                 return formatDate(row.date)
             },
             className: "date",
-            searchable: false,
             filterable: true,
             // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
             render: function ( data, type, row ) {

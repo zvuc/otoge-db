@@ -108,7 +108,6 @@ $(document).ready(function() {
             render: renderInWrapper(),
             customDropdownSortSource: "date",
             width: "12em",
-            searchable: false
         },
         { 
             displayTitle: "ジャンル",
@@ -118,7 +117,6 @@ $(document).ready(function() {
             render: renderInWrapper(),
             width: "12em",
             filterable: true,
-            searchable: false
         },
         { 
             //  BASIC
@@ -131,7 +129,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  ADVANCED
@@ -144,7 +141,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  EXPERT
@@ -157,7 +153,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  MASTER
@@ -170,7 +165,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  ULTIMA
@@ -183,7 +177,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  WORLD'S END (Kanji)
@@ -196,7 +189,6 @@ $(document).ready(function() {
             reverseSortOrder: true,
             width: "3rem",
             filterable: flat_view ? false : true,
-            searchable: false
         },
         { 
             //  WORLD'S END
@@ -206,7 +198,6 @@ $(document).ready(function() {
             className: "lv lv-we we-star",
             reverseSortOrder: true,
             width: "3rem",
-            filterable: false,
             searchable: false
         },
         {
@@ -233,7 +224,6 @@ $(document).ready(function() {
             }) : null,
             render: flat_view ? renderChartDifficultyName('chart_diff') : null,
             customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff') : null,
-            searchable: false,
             filterable: flat_view,
             visible: false
         },
@@ -246,7 +236,6 @@ $(document).ready(function() {
             width: "4rem",
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
-            filterable: false,
             visible: false,
             searchable: false
         },
@@ -261,7 +250,6 @@ $(document).ready(function() {
             createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
                 $(td).addClass( rowData.chart_diff );
             }) : null,
-            filterable: false,
             searchable: false,
             visible: flat_view
         },
@@ -334,8 +322,6 @@ $(document).ready(function() {
             render: ( flat_view ? renderChartLinkBtn('chart_link') : null ),
             width: "5em",
             className: "details detail-hidden chart-link",
-            filterable: false,
-            searchable: false
         },
         { 
             displayTitle: "追加日",
@@ -356,8 +342,7 @@ $(document).ready(function() {
             },
             reverseSortOrder: true,
             width: "4em",
-            filterable: true,
-            searchable: false
+            filterable: true
         },
         { 
             displayTitle: "NEW",
