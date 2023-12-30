@@ -119,12 +119,20 @@ table.dataTable {
 	.lv-bsc, .lev_bas {
 		background: rgba(var(--lv-color-bsc),0.1);
 
+		&.sorting_1 {
+			background: rgba(var(--lv-color-bsc),0.2) !important;
+		}
+
 		.diff-name {
 			color: rgb(var(--lv-color-bsc));
 		}
 	}
 	.lv-adv, .lev_adv {
 		background: rgba(var(--lv-color-adv),0.1);
+
+		&.sorting_1 {
+			background: rgba(var(--lv-color-adv),0.2) !important;
+		}
 
 		.diff-name {
 			color: rgb(var(--lv-color-adv));
@@ -133,6 +141,10 @@ table.dataTable {
 	.lv-exp, .lev_exp {
 		background: rgba(var(--lv-color-exp),0.1);
 
+		&.sorting_1 {
+			background: rgba(var(--lv-color-exp),0.2) !important;
+		}
+
 		.diff-name {
 			color: rgb(var(--lv-color-exp));
 		}
@@ -140,13 +152,21 @@ table.dataTable {
 	.lv-mas, .lev_mas {
 		background: rgba(var(--lv-color-mas),0.1);
 
+		&.sorting_1 {
+			background: rgba(var(--lv-color-mas),0.2) !important;
+		}
+
 		.diff-name {
 			color: rgb(var(--lv-color-mas));
 		}
 	}
 	.lv-ult, .lev_ult {
-		background: rgba(255,255,255,0.05);
 		// background: rgba(var(--lv-color-ult),0.1);
+		background: rgba(255,255,255,0.05);
+
+		&.sorting_1 {
+			background: rgba(255,255,255,0.2) !important;
+		}
 
 		.diff-name {
 			color: rgb(var(--lv-color-ult));
@@ -168,22 +188,6 @@ table.dataTable {
 		.inner-wrap {
 			text-align: center;
 		}
-	}
-
-	.lv-bsc.sorting_1, .lev_bas.sorting_1 {
-		background: rgba(var(--lv-color-bsc),0.2) !important;
-	}
-	.lv-adv.sorting_1, .lev_adv.sorting_1 {
-		background: rgba(var(--lv-color-adv),0.2) !important;
-	}
-	.lv-exp.sorting_1, .lev_exp.sorting_1 {
-		background: rgba(var(--lv-color-exp),0.2) !important;
-	}
-	.lv-mas.sorting_1, .lev_mas.sorting_1 {
-		background: rgba(var(--lv-color-mas),0.2) !important;
-	}
-	.lv-ult.sorting_1, .lev_ult.sorting_1 {
-		background: rgba(255,255,255,0.2) !important;
 	}
 
 	.we_kanji .lv-num-simple,

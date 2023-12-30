@@ -39,7 +39,7 @@ $(document).ready(function() {
             displayTitle: "曲名",
             name: "title",
             data: "title",
-            className: "song-title detail-hidden",
+            className: "title-artist detail-hidden",
             render: function ( data, type, row ) {
                 // If display or filter data is requested, return title
                 if ( type === 'display' ) {
@@ -69,7 +69,7 @@ $(document).ready(function() {
             searchable: false
         },
         { 
-            // redundant (fake) merged title column for mobile
+            // Artist column (only on mobile - acts as title column on header)
             displayTitle: "アーティスト",
             name: "title_merged",
             data: "title",
@@ -114,7 +114,7 @@ $(document).ready(function() {
             displayTitle: "ジャンル",
             name: "category",
             data: "category",
-            className: "category",
+            className: "details category",
             render: renderInWrapper(),
             customDropdownSortSource: 'category_id',
             filterable: true
@@ -159,6 +159,7 @@ $(document).ready(function() {
                 }
             },
             filterable: true,
+            visible: false
         },
         { 
             displayTitle: "属性",
