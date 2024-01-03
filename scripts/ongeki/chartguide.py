@@ -1,34 +1,24 @@
-import const
+# import ipdb
 import requests
 import os
 import shutil
 import json
-import ipdb
 import re
-from terminal import bcolors
+from shared.common_func import *
+from ongeki.paths import *
 from datetime import datetime
-from functools import reduce
 from bs4 import BeautifulSoup, Comment
 from urllib.request import urlopen
 
 VERSION_MAPPING = {
-    "無印": "01",
-    "PLUS": "01",
-    "AIR": "02",
-    "AIR+": "02",
-    "STAR": "03",
-    "STAR+": "03",
-    "AMAZON": "04",
-    "AMAZON+": "04",
-    "CRYSTAL": "05",
-    "CRYSTAL+": "05",
-    "PARADISE": "06",
-    "PARADISE×": "06",
-    "NEW": "07",
-    "NEW+": "07",
-    "SUN": "08",
-    "SUN+": "08",
-    "LUMINOUS": "09"
+    'ONGEKI': '01',
+    'ONGEKI plus': '01',
+    'SUMMER': '02',
+    'SUMMER plus': '02',
+    'RED': '03',
+    'RED plus': '03',
+    'bright': '04',
+    'bright MEMORY': '04'
 }
 
 PAGES = {
@@ -55,16 +45,21 @@ PAGES = {
     "/sort/14.htm",
     "/sort/14+.htm",
     "/sort/15.htm",
-    "/sort/ultima.htm",
-    "/end.htm"
+    "/sort/15+.htm",
+    "/sort/lunatic.htm"
 }
 
-SDVXIN_BASE_URL = 'https://sdvx.in/chunithm'
+SDVXIN_BASE_URL = 'https://sdvx.in/ongeki'
 LOCAL_CACHE_DIR = 'sdvxin_cache'
 
 # Update on top of existing music-ex
-def update_chartguide_data(date_from, date_until, song_id, nocolors, escape, clear_cache):
-    _print_message(f"Starting chart link search", nocolors, bcolors.ENDC, escape)
+def update_chartguide_data(args):
+    print_message(f"Starting chart link search", bcolors.ENDC, args)
+
+    date_from = args.date_from
+    date_until = args.date_until
+    song_id = args.id
+    clear_cache = args.clear_cache
 
     if clear_cache:
         try:
@@ -76,7 +71,7 @@ def update_chartguide_data(date_from, date_until, song_id, nocolors, escape, cle
         except Exception as e:
             print(f"Error deleting directory: {e}")
 
-    with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
+    with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
     # Create error log file if it doesn't exist
@@ -86,7 +81,7 @@ def update_chartguide_data(date_from, date_until, song_id, nocolors, escape, cle
     if not song_id == 0:
         target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
     else:
-        latest_date = int(get_last_date(const.LOCAL_MUSIC_EX_JSON_PATH))
+        latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
         if date_from == 0:
             date_from = latest_date
@@ -102,9 +97,9 @@ def update_chartguide_data(date_from, date_until, song_id, nocolors, escape, cle
         return
 
     for song in target_song_list:
-        _update_song_chartguide_data(song, nocolors, escape)
+        _update_song_chartguide_data(song, args)
 
-    with open(const.LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
+    with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
@@ -129,7 +124,7 @@ def _filter_songs_by_id(song_list, song_id):
 
     return target_song_list
 
-def _get_and_save_page_to_local(url, nocolors, escape):
+def _get_and_save_page_to_local(url, args):
     # ipdb.set_trace()
     full_url = SDVXIN_BASE_URL + url
     response = requests.get(full_url)
@@ -146,13 +141,13 @@ def _get_and_save_page_to_local(url, nocolors, escape):
         # Save the content to a local file
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(response.text)
-        _print_message(f"Saved {url} to {output_path}", nocolors, bcolors.OKBLUE, escape)
+        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
     else:
-        _print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", nocolors, bcolors.FAIL, escape)
+        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args)
 
 
-def _update_song_chartguide_data(song, nocolors, escape):
-    _print_message(f"{song['id']} {song['title']}", nocolors, bcolors.ENDC, escape)
+def _update_song_chartguide_data(song, args):
+    print_message(f"{song['id']} {song['title']}", bcolors.ENDC, args)
 
     title = (
         song['title']
@@ -168,37 +163,30 @@ def _update_song_chartguide_data(song, nocolors, escape):
 
     
 
-    if song['we_kanji']:
-        charts = ['end']
-    elif song['lev_ult'] != "":
-        charts = ['exp','mst','ult']
+    if song['lunatic']:
+        charts = ['luna']
     else:
         charts = ['exp','mst']
 
     for chart in charts:
-        if chart == 'end':
-            lv_page_url = '/end.htm'
-            lv_page_file_path = '/end.htm'
-            target_key = 'lev_we_chart_link'
-            url_pattern = '/chunithm/end'
+        if chart == 'luna':
+            lv_page_url = '/sort/lunatic.htm'
+            lv_page_file_path = '/sort_lunatic.htm'
+            target_key = 'lev_lnt_chart_link'
+            url_pattern = '/ongeki/luna'
         elif chart == 'exp':
-            lv_page_url = '/sort/' + song['lev_exp'] + '.htm'
-            lv_page_file_path = '/sort_' + song['lev_exp'] + '.htm'
-            target_key = 'lev_exp_chart_link' 
-            url_pattern = '/chunithm/0'
+            lv_page_url = '/sort/' + song['lev_exc'] + '.htm'
+            lv_page_file_path = '/sort_' + song['lev_exc'] + '.htm'
+            target_key = 'lev_exc_chart_link' 
+            url_pattern = '/ongeki/0'
         elif chart == 'mst':
             lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
             lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
             target_key = 'lev_mas_chart_link' 
-            url_pattern = '/chunithm/0'
-        elif chart == 'ult':
-            lv_page_url = '/sort/ultima.htm'
-            lv_page_file_path = '/sort_ultima.htm'
-            target_key = 'lev_ult_chart_link' 
-            url_pattern = '/chunithm/ult'
+            url_pattern = '/ongeki/0'
 
         if not song[target_key] == '':
-            _print_message(f"Chart link already exists! ({chart.upper()})", nocolors, bcolors.ENDC, escape)
+            print_message(f"Chart link already exists! ({chart.upper()})", bcolors.ENDC, args)
             continue
 
 
@@ -209,22 +197,22 @@ def _update_song_chartguide_data(song, nocolors, escape):
             with open(file_full_path, 'r', encoding='utf-8') as file:
                 content = file.read()
         except FileNotFoundError:
-            _get_and_save_page_to_local(lv_page_url, nocolors, escape)
+            _get_and_save_page_to_local(lv_page_url, args)
 
             try:
                 file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
                 with open(file_full_path, 'r', encoding='utf-8') as file:
                     content = file.read()
             except:
-                _print_message(f"Cache not found ({lv_page_file_path})", nocolors, bcolors.ENDC, escape)
+                print_message(f"Cache not found ({lv_page_file_path})", bcolors.ENDC, args)
         except Exception as e:
-            _print_message(f"Error reading file: {e}", nocolors, bcolors.FAIL, escape)
+            print_message(f"Error reading file: {e}", bcolors.FAIL, args)
             sys.exit(1)
 
         soup = BeautifulSoup(content, 'html.parser')
         song_dict = {}
 
-        # Find all script tags with src attribute starting with "/chunithm/"
+        # Find all script tags with src attribute starting with "/ongeki/"
         script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
 
         # Extract script tag src and song_title and add to the dictionary
@@ -240,27 +228,27 @@ def _update_song_chartguide_data(song, nocolors, escape):
 
         # ipdb.set_trace()
 
-        song_id = _extract_song_id(song, song_dict, song['title'], nocolors, escape)
+        song_id = _extract_song_id(song, song_dict, song['title'], args)
 
         if song_id:
             # extract song_id from src
-            if chart == 'ult' or chart == 'end':
+            if chart == 'luna':
                 song_id = song_id.split('/')[-1].split(f'.js')[0]
                 song[target_key] = chart + '/' + song_id
             elif 'sort' in script_src:
                 song_id = song_id.split('/')[-1].split(f'sort.js')[0]
                 song[target_key] = song_id[:2] + '/' + song_id + chart
 
-            _print_message(f"Updated chart link ({chart.upper()})", nocolors, bcolors.OKGREEN, escape)
+            print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
         else:
-            _print_message("No matching ID", nocolors, bcolors.FAIL, escape)
-            with open(const.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
+            print_message("No matching ID", bcolors.FAIL, args)
+            with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
                 f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
             return
 
     return song
 
-def _extract_song_id(song, song_dict, song_title, nocolors, escape):
+def _extract_song_id(song, song_dict, song_title, args):
     for song_id, title in song_dict.items():
         title = title.lower()
         song_title = song_title.lower()
@@ -290,14 +278,14 @@ def _extract_song_id(song, song_dict, song_title, nocolors, escape):
                 song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
                 
                 if title == song_title_wo_subtitle:
-                    _print_message(f"WARNING: matched without subtitle", nocolors, bcolors.WARNING, escape)
-                    with open(const.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
+                    print_message(f"WARNING: matched without subtitle", bcolors.WARNING, args)
+                    with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
                         f.write('WARNING - matched without subtitle : ' + song['id'] + ' ' + song['title'] + '\n')
                     return song_id
                 else:
                     match_similarity = _compare_strings(title, song_title)
                     if match_similarity > 80:
-                        _print_message(f"Found closest match ({round(match_similarity,2)}%)", nocolors, bcolors.WARNING, escape)
+                        print_message(f"Found closest match ({round(match_similarity,2)}%)", bcolors.WARNING, args)
                         return song_id
 
 
@@ -308,26 +296,3 @@ def _compare_strings(str1, str2):
     union = len(set1.union(set2))
     similarity_percentage = (intersection / union) * 100
     return similarity_percentage
-
-def get_last_date(LOCAL_MUSIC_JSON_PATH):
-    with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
-        local_music_data = json.load(f)
-
-    all_dates = [datetime.strptime(x['date'], '%Y%m%d').date() for x in local_music_data]
-    lastupdated = reduce(lambda x, y: x if x > y else y, all_dates).strftime('%Y%m%d')
-    
-    return lastupdated
-
-def _print_message(message, nocolors, color_name, escape):
-    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    reset_color = bcolors.ENDC
-
-    if escape:
-        message = message.replace("'", r"\'")
-
-    # if --nocolors is set
-    if nocolors:
-        color_name = ''
-        reset_color = ''
-
-    print(timestamp + ' ' + color_name + message + reset_color)
