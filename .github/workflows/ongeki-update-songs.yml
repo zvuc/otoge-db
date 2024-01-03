@@ -1,4 +1,4 @@
-name: [Ongeki] Fetch new songs
+name: \[Ongeki\] Fetch new songs
 
 on:
   schedule:

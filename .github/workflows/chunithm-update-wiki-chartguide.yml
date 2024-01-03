@@ -1,4 +1,4 @@
-name: [Chunithm] Fetch from wiki & sdvx.in
+name: \[Chunithm\] Fetch from wiki & sdvx.in
 
 on:
   schedule:
