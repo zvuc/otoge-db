@@ -1,673 +1,482 @@
-$(document).ready(function() {
-    var searchParams = new URLSearchParams(window.location.search);
-
-    var columns_params = [
-        { 
-            displayTitle: "ID (system)",
-            name: "id",
-            data: "id",
-            className: "id detail-hidden",
-            visible: false,
-            searchable: false
+const ongeki_chart_list = {
+    'lev_bas': 'BASIC',
+    'lev_adv': 'ADVANCED',
+    'lev_exc': 'EXPERT',
+    'lev_mas': 'MASTER',
+    'lev_lnt': 'LUNATIC'
+};
+var columns_params = [
+    { 
+        displayTitle: "ID (system)",
+        name: "id",
+        data: "id",
+        className: "id detail-hidden",
+        visible: false,
+        searchable: false
+    },
+    { 
+        displayTitle: "#",
+        name: "index",
+        data: "id",
+        className: "id detail-hidden",
+        data: function(row) {
+            return row.id;
         },
-        { 
-            displayTitle: "#",
-            name: "index",
-            data: "id",
-            className: "id detail-hidden",
-            data: function(row) {
-                return row.id;
-            },
-            render: renderInWrapper(),
-            width: "20px",
-            searchable: false,
-            visible: false
+        render: renderInWrapper(),
+        width: "20px",
+        searchable: false,
+        visible: false
+    },
+    { 
+        displayTitle: "アルバムアート",
+        name: "jacket",
+        data: "image_url",
+        className: "jacket detail-hidden",
+        render: function(data) {
+            return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
         },
-        { 
-            displayTitle: "アルバムアート",
-            name: "jacket",
-            data: "image_url",
-            className: "jacket detail-hidden",
-            render: function(data) {
-                return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
-            },
-            width: "50px",
-            orderable: false,
-            searchable: false
-        },
-        { 
-            displayTitle: "曲名",
-            name: "title",
-            data: "title",
-            className: "title-artist detail-hidden",
-            render: function ( data, type, row ) {
-                // If display or filter data is requested, return title
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap">' +
-                            ( row.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
-                            '<span class="title">' + data + '<\/span>' +
-                            '<span class="dash hidden"> - <\/span>' +
-                            '<span class="artist-display hidden">' + row.artist + '<\/span>'+
-                        '<\/div>';
-                }
-                else if ( type === 'filter' ) {
-                    return data;
-                }
-                // Else type detection or sorting data, return title_sort
-                else {
-                    return row.title_sort;
-                }
-            },
-            width: "80vw"
-        },
-        {
-            displayTitle: "曲名 (読み)",
-            name: "title_sort",
-            data: "title_sort",
-            className: "title-sort",
-            visible: false,
-            searchable: false
-        },
-        { 
-            // Artist column (only on mobile - acts as title column on header)
-            displayTitle: "アーティスト",
-            name: "title_merged",
-            data: "title",
-            className: "artist detail-hidden",
-            render: function ( data, type, row ) {
-                // If display or filter data is requested, return title
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap"><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
-                }
-                else {
-                    return row.title_sort;
-                }
-            },
-        },
-        { 
-            // hidden real artist column (for search)
-            displayTitle: "アーティスト",
-            name: "artist",
-            data: "artist",
-            className: "artist detail-hidden",
-            visible: false
-        },
-        { 
-            displayTitle: "BPM",
-            name: "bpm",
-            data: "bpm",
-            className: "details bpm",
-            searchable: false,
-            visible: false
-        },
-        { 
-            displayTitle: "バージョン",
-            name: "version",
-            data: "version",
-            className: "details version",
-            filterable: true,
-            render: renderInWrapper(),
-            customDropdownSortSource: "date",
-            width: "12em"
-        },
-        { 
-            displayTitle: "ジャンル",
-            name: "category",
-            data: "category",
-            className: "details category",
-            render: renderInWrapper(),
-            customDropdownSortSource: 'category_id',
-            filterable: true
-        },
-        { 
-            displayTitle: "ジャンルID",
-            name: "category_id",
-            data: "category_id",
-            width: "90px",
-            visible: false,
-            searchable: false
-        },
-        { 
-            displayTitle: "チャプターID",
-            name: "chap_id",
-            data: "chap_id",
-            className: "chapter-id",
-            visible: false,
-            searchable: false
-        },
-        {
-            // combine chap_id + chapter
-            displayTitle: "チャプター",
-            name: "chap",
-            data: function( row, type, set, meta ) {
-                if ( type === 'sort' || type === 'meta') {
-                    return row.chap_id;
-                } else {
-                    var chap_id_display = parseChapId(row, true);
-                    return chap_id_display + row.chapter
-                }
-            },
-            className: "chapter",
-            width: "15em",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    var chap_id_display = parseChapId(row, true);
-                    return '<div class="inner-wrap"><span class="chap-id-badge">' + chap_id_display + '<\/span><span class="chap-name">' + row.chapter + '<\/span><\/div>';
-                }
-                else {
-                    return data;
-                }
-            },
-            filterable: true,
-            visible: false
-        },
-        { 
-            displayTitle: "属性",
-            name: "enemy_type",
-            data: "enemy_type",
-            className: "chara type",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap"><span class="element-type-icon ' + data.toLowerCase() + '"><span class="icon"><\/span><span class="label-text">' + data + '<\/span><\/span></div>';
-                }
-                // use chara_id for sort
-                else {
-                    return data;
-                }
-            },
-            width: "40px",
-            filterable: true,
-        },
-        { 
-            displayTitle: "キャラID",
-            name: "chara_id",
-            data: "chara_id",
-            visible: false,
-            searchable: false
-        },
-        { 
-            displayTitle: "相手キャラ",
-            name: "character",
-            data: "character",
-            className: "chara character",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap">' + data + '<\/div>';
-                }
-                // use chara_id for sort
-                else {
-                    return data;
-                }
-            },
-            customDropdownSortSource: 'chara_id',
-            width: "10em",
-            filterable: true
-        },
-        { 
-            displayTitle: "相手レベル",
-            name: "enemy_lv",
-            data: "enemy_lv",
-            className: "chara enemy-lv",
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap">Lv.' + data + '<\/div>';
-                }
-                // use chara_id for sort
-                else {
-                    return data;
-                }
-            },
-            customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
-            width: "4em",
-            searchable: false
-        },
-        { 
-            //  BASIC
-            displayTitle: "BASIC",
-            name: "lev_bas",
-            data: sortLevels('lev_bas', 'lev_bas_i'),
-            className: "lv lv-bsc",
-            render: renderLvNum('lev_bas', 'lev_bas_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_bas'),
-            reverseSortOrder: true,
-            width: "3rem",
-            filterable: flat_view ? false : true
-        },
-        { 
-            //  ADVANCED
-            displayTitle: "ADVANCED",
-            name: "lev_adv",
-            data: sortLevels('lev_adv', 'lev_adv_i'),
-            className: "lv lv-adv",
-            render: renderLvNum('lev_adv', 'lev_adv_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_adv'),
-            reverseSortOrder: true,
-            width: "3rem",
-            filterable: flat_view ? false : true,
-        },
-        { 
-            //  EXPERT
-            displayTitle: "EXPERT",
-            name: "lev_exc",
-            data: sortLevels('lev_exc', 'lev_exc_i'),
-            className: "lv lv-exp",
-            render: renderLvNum('lev_exc', 'lev_exc_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_exc'),
-            reverseSortOrder: true,
-            width: "3rem",
-            filterable: flat_view ? false : true,
-        },
-        { 
-            //  MASTER
-            displayTitle: "MASTER",
-            name: "lev_mas",
-            data: sortLevels('lev_mas', 'lev_mas_i'),
-            className: "lv lv-mas",
-            render: renderLvNum('lev_mas', 'lev_mas_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_mas'),
-            reverseSortOrder: true,
-            width: "3rem",
-            filterable: flat_view ? false : true,
-        },
-        { 
-            //  LUNATIC
-            displayTitle: "LUNATIC",
-            name: "lev_lnt",
-            data: sortLevels('lev_lnt', 'lev_lnt_i'),
-            className: "lv lv-lnt",
-            render: renderLvNum('lev_lnt', 'lev_lnt_i'),
-            customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
-            reverseSortOrder: true,
-            width: "3rem",
-            filterable: flat_view ? false : true,
-        },
-        {
-            //  chart_diff
-            displayTitle: "譜面",
-            name: "chart_diff",
-            data: 
-                function( row, type, set, meta ) {
-                    if ( flat_view == true ) {
-                        if ( type === 'sort' || type === 'meta') {
-                            return row.chart_diff;
-                        } 
-                        else {
-                            return convertDifficultyNames(row.chart_diff);
-                        }
-                    } else {
-                        return null;
-                    }
-                },
-            className: "lv-name detail-hidden",
-            width: "3rem",
-            createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
-                $(td).addClass( rowData.chart_diff );
-            }) : null,
-            render: flat_view ? renderChartDifficultyName('chart_diff') : null,
-            customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff') : null,
-            filterable: flat_view,
-            visible: false
-        },
-        {
-            //  chart_lev (for sort)
-            displayTitle: "難易度グループ",
-            name: "chart_lev",
-            data: ( flat_view ? 'chart_lev' : null ),
-            className: "lv detail-hidden",
-            width: "4rem",
-            customDropdownSortSource: sortByLeadingZeros('chart_lev'),
-            reverseSortOrder: true,
-            visible: false
-        },
-        {
-            //  chart_lev_i
-            displayTitle: "譜面レベル",
-            name: "chart_lev_i",
-            data: ( flat_view ? 'chart_lev_i' : null ),
-            className: "lv lv-name detail-hidden",
-            render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display')
-            : null ),
-            width: "4rem",
-            createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
-                $(td).addClass( rowData.chart_diff );
-            }) : null,
-            searchable: false,
-            visible: flat_view
-        },
-        { 
-            displayTitle: "NEW",
-            name: "new",
-            data: "new",
-            searchable: false,
-            visible: false
-        },
-        { 
-            displayTitle: "ノート数",
-            name: "chart_notes",
-            data: ( flat_view ? "chart_notes" : null ),
-            className: "details notecount detail-hidden",
-            width: "6em",
-            searchable: false,
-            visible: false
-        },
-        { 
-            displayTitle: "ベル",
-            name: "chart_bells",
-            data: ( flat_view ? "chart_bells" : null ),
-            className: "details notecount detail-hidden",
-            width: "5em",
-            searchable: false,
-            visible: false
-        },
-        { 
-            displayTitle: "譜面作者",
-            name: "chart_designer",
-            data: ( flat_view ? "chart_designer" : null ),
-            width: "15em",
-            className: "details detail-hidden",
-            filterable: flat_view,
-            searchable: flat_view,
-            visible: false
-        },
-        { 
-            displayTitle: "追加日",
-            name: "date",
-            // data: "date",
-            data: function( row, type, set, meta ) {
-                return formatDate(row.date)
-            },
-            className: "date",
-            filterable: true,
-            // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
-            render: function ( data, type, row ) {
-                if ( type === 'display' ) {
-                    return '<div class="inner-wrap">'+ data +'<\/div>';
-                }
-                else {
-                    return data;
-                }
-            },
-            reverseSortOrder: true,
-            width: "4em"
-        },
-        { 
-            displayTitle: "BONUS",
-            name: "bonus",
-            data: "bonus",
-            className: "details detail-hidden",
-            width: "10px",
-            searchable: false
-        }
-    ];
-
-    var default_order = 
-        flat_view ?
-            [[24, 'desc'],[16, 'desc'],[29, 'desc']] :
-            [[29, 'desc'],[11, 'asc'],[0, 'asc']];
-
-    function checkPropertyAndValueExists(json, property) {
-        if (json.hasOwnProperty(property)) {
-            return json[property] !== "" ? true : false;
-        } else {
-            return false;
-        }
-    }
-    
-    function sortLevels(col_a, col_b) {
-        return function ( row, type, set, meta ) {
-            if ( type === 'sort' ) {
-                if ( row[col_b] === "" ) {
-                    return addLeadingZero(row[col_a]);
-                } else {
-                    return addLeadingZero(row[col_b]);
-                }
-            }
-            else {
-                return row[col_a];
-            }
-        }
-    }
-
-    function addLeadingZero(s) {
-        if(s != "") {
-            lev_processed = parseInt(s) < 10 ? ('0' + s) : s;
-            return lev_processed;
-        } else {
-            return "";
-        }
-    }
-
-    function sortByLeadingZeros(column) {
-        return function (row_a, row_b) {
-            return addLeadingZero(row_a[column]).localeCompare(addLeadingZero(row_b[column]));
-        }
-    }
-
-    function renderLvNum(simple_lv, precise_lv) {
-        return function ( data, type, row ) {
-            if ( type === 'display' ) {  
-                var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
-                if (match) {
-                    var lvnum = match[1];
-                    var plus = (match[2] === '+');
-
-                    if (plus) {
-                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
-                    } else {
-                        return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
-                    }
-                } else {
-                    return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
-                }
-            }
-            else {
-                return data;
-            }
-        }
-    }
-
-    function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display) {
-        return function ( data, type, row ) {
+        width: "50px",
+        orderable: false,
+        searchable: false
+    },
+    { 
+        displayTitle: "曲名",
+        name: "title",
+        data: "title",
+        className: "title-artist detail-hidden",
+        render: function ( data, type, row ) {
+            // If display or filter data is requested, return title
             if ( type === 'display' ) {
-                var chart_diff_display = convertDifficultyNames(row[chart_diff]);
-                var precise_lv = (row[chart_diff] === 'we_kanji') ? `☆${row[precise_lv_display]}` : row[precise_lv_display];
-                var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
-                if (match) {
-                    var lvnum = match[1];
-                    var plus = (match[2] === '+');
-
-                    if (plus) {
-                        return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
-                    } else {
-                        return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
-                    }
-                } else {
-                    return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
-                }
+                return '<div class="inner-wrap">' +
+                        ( row.bonus == "1" ? '<span class="bonus">BONUS<\/span>' : "") +
+                        '<span class="title">' + data + '<\/span>' +
+                        '<span class="dash hidden"> - <\/span>' +
+                        '<span class="artist-display hidden">' + row.artist + '<\/span>'+
+                    '<\/div>';
             }
-            else {
+            else if ( type === 'filter' ) {
                 return data;
             }
-        }
-    }
-
-    function renderChartDifficultyName(chart_diff) {
-        return function ( data, type, row ) {
+            // Else type detection or sorting data, return title_sort
+            else {
+                return row.title_sort;
+            }
+        },
+        width: "80vw"
+    },
+    {
+        displayTitle: "曲名 (読み)",
+        name: "title_sort",
+        data: "title_sort",
+        className: "title-sort",
+        visible: false,
+        searchable: false
+    },
+    { 
+        // Artist column (only on mobile - acts as title column on header)
+        displayTitle: "アーティスト",
+        name: "title_merged",
+        data: "title",
+        className: "artist detail-hidden",
+        render: function ( data, type, row ) {
+            // If display or filter data is requested, return title
             if ( type === 'display' ) {
-                var chart_diff_display = convertDifficultyNames(row[chart_diff]);       
-
-                return '<span class="diff-name">' + chart_diff_display + '</span>';
+                return '<div class="inner-wrap"><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
+            }
+            else {
+                return row.title_sort;
+            }
+        },
+    },
+    { 
+        // hidden real artist column (for search)
+        displayTitle: "アーティスト",
+        name: "artist",
+        data: "artist",
+        className: "artist detail-hidden",
+        visible: false
+    },
+    { 
+        displayTitle: "BPM",
+        name: "bpm",
+        data: "bpm",
+        className: "details bpm",
+        searchable: false,
+        visible: false
+    },
+    { 
+        displayTitle: "バージョン",
+        name: "version",
+        data: "version",
+        className: "details version",
+        filterable: true,
+        render: renderInWrapper(),
+        customDropdownSortSource: "date",
+        width: "12em"
+    },
+    { 
+        displayTitle: "ジャンル",
+        name: "category",
+        data: "category",
+        className: "details category",
+        render: renderInWrapper(),
+        customDropdownSortSource: 'category_id',
+        filterable: true
+    },
+    { 
+        displayTitle: "ジャンルID",
+        name: "category_id",
+        data: "category_id",
+        width: "90px",
+        visible: false,
+        searchable: false
+    },
+    { 
+        displayTitle: "チャプターID",
+        name: "chap_id",
+        data: "chap_id",
+        className: "chapter-id",
+        visible: false,
+        searchable: false
+    },
+    {
+        // combine chap_id + chapter
+        displayTitle: "チャプター",
+        name: "chap",
+        data: function( row, type, set, meta ) {
+            if ( type === 'sort' || type === 'meta') {
+                return row.chap_id;
+            } else {
+                var chap_id_display = parseChapId(row, true);
+                return chap_id_display + row.chapter
+            }
+        },
+        className: "chapter",
+        width: "15em",
+        render: function ( data, type, row ) {
+            if ( type === 'display' ) {
+                var chap_id_display = parseChapId(row, true);
+                return '<div class="inner-wrap"><span class="chap-id-badge">' + chap_id_display + '<\/span><span class="chap-name">' + row.chapter + '<\/span><\/div>';
             }
             else {
                 return data;
             }
-        }
-    }
-
-    function convertDifficultyNames(src,sort) {
-        if ( !sort ) {
-            switch (src) {
-                case 'lev_bas' :
-                    var chart_diff_display = 'BASIC'
-                    break;
-                case 'lev_adv' :
-                    var chart_diff_display = 'ADVANCED'
-                    break;
-                case 'lev_exc' :
-                    var chart_diff_display = 'EXPERT'
-                    break;
-                case 'lev_mas' :
-                    var chart_diff_display = 'MASTER'
-                    break;
-                case 'lev_lnt' :
-                    var chart_diff_display = 'LUNATIC'
-                    break;
+        },
+        filterable: true,
+        visible: false
+    },
+    { 
+        displayTitle: "属性",
+        name: "enemy_type",
+        data: "enemy_type",
+        className: "chara type",
+        render: function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return '<div class="inner-wrap"><span class="element-type-icon ' + data.toLowerCase() + '"><span class="icon"><\/span><span class="label-text">' + data + '<\/span><\/span></div>';
             }
-        } else {
-            switch (src) {
-                case 'lev_bas' :
-                    var chart_diff_display = '1 BASIC'
-                    break;
-                case 'lev_adv' :
-                    var chart_diff_display = '2 ADVANCED'
-                    break;
-                case 'lev_exc' :
-                    var chart_diff_display = '3 EXPERT'
-                    break;
-                case 'lev_mas' :
-                    var chart_diff_display = '4 MASTER'
-                    break;
-                case 'lev_lnt' :
-                    var chart_diff_display = '5 LUNATIC'
-                    break;
+            // use chara_id for sort
+            else {
+                return data;
             }
-        }
-
-        return chart_diff_display;
-    }
-
-    function sortByDifficultyCategory(column) {
-        return function (row_a, row_b) {
-            return convertDifficultyNames(row_a[column],true).localeCompare(convertDifficultyNames(row_b[column],true));
-        }
-    }
-
-    function renderInWrapper() {
-        return function ( data, type, row ) {
+        },
+        width: "40px",
+        filterable: true,
+    },
+    { 
+        displayTitle: "キャラID",
+        name: "chara_id",
+        data: "chara_id",
+        visible: false,
+        searchable: false
+    },
+    { 
+        displayTitle: "相手キャラ",
+        name: "character",
+        data: "character",
+        className: "chara character",
+        render: function ( data, type, row ) {
             if ( type === 'display' ) {
                 return '<div class="inner-wrap">' + data + '<\/div>';
             }
+            // use chara_id for sort
             else {
                 return data;
             }
-        }
-    }
-
-    function flattenMusicData(data, flat_view) {
-        if (flat_view) {
-            return data
-                .map(obj =>
-                    ['lev_bas', 'lev_adv', 'lev_exc', 'lev_mas', 'lev_lnt']
-                        .map(chart_diff => processChartData(obj, chart_diff))
-                )
-                .flat()
-                .filter(obj => !!obj);
-        } else {
-            return data;
-        }
-    }
-
-    function processChartData(obj, chart_diff) {
-        if (obj[chart_diff]) {
-            return {
-                ...obj,
-                chart_diff,
-                chart_lev: obj[chart_diff],
-                chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
-                chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1)}</span>`,
-                chart_notes: obj[`${chart_diff}_notes`],
-                chart_bells: obj[`${chart_diff}_bells`],
-                chart_designer: obj[`${chart_diff}_designer`]
-            };
-        }
-        return null;
-    }
-
-    function parseChapId(row, includeTrailingSpace) {
-        var chap_id = row.chap_id;
-        var chap_chapter = chap_id.substr(3,2);
-
-        // 0xxxx : Normal chapters
-        if (chap_id.substr(0,1) == "0") {
-            var chap_book = chap_id.substr(1,1);
-
-            // 0xx8x : side chapter
-            if (chap_id.substr(3,1) == "8") {
-                var chap_book = chap_id.substr(1,1);
-                var chap_chapter = 'S' + chap_id.substr(4,1);
+        },
+        customDropdownSortSource: 'chara_id',
+        width: "10em",
+        filterable: true
+    },
+    { 
+        displayTitle: "相手レベル",
+        name: "enemy_lv",
+        data: "enemy_lv",
+        className: "chara enemy-lv",
+        render: function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return '<div class="inner-wrap">Lv.' + data + '<\/div>';
             }
-
-            // 0xxxx: chapters
-            if (chap_book > "0") {
-                return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-            } 
-            // 00xxx : default mylist
+            // use chara_id for sort
             else {
-                return '';
+                return data;
             }
+        },
+        customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
+        width: "4em",
+        searchable: false
+    },
+    { 
+        //  BASIC
+        displayTitle: "BASIC",
+        name: "lev_bas",
+        data: sortLevels('lev_bas', 'lev_bas_i'),
+        className: "lv lv-bsc",
+        render: renderLvNum('lev_bas', 'lev_bas_i'),
+        customDropdownSortSource: sortByLeadingZeros('lev_bas'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true
+    },
+    { 
+        //  ADVANCED
+        displayTitle: "ADVANCED",
+        name: "lev_adv",
+        data: sortLevels('lev_adv', 'lev_adv_i'),
+        className: "lv lv-adv",
+        render: renderLvNum('lev_adv', 'lev_adv_i'),
+        customDropdownSortSource: sortByLeadingZeros('lev_adv'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+    },
+    { 
+        //  EXPERT
+        displayTitle: "EXPERT",
+        name: "lev_exc",
+        data: sortLevels('lev_exc', 'lev_exc_i'),
+        className: "lv lv-exp",
+        render: renderLvNum('lev_exc', 'lev_exc_i'),
+        customDropdownSortSource: sortByLeadingZeros('lev_exc'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+    },
+    { 
+        //  MASTER
+        displayTitle: "MASTER",
+        name: "lev_mas",
+        data: sortLevels('lev_mas', 'lev_mas_i'),
+        className: "lv lv-mas",
+        render: renderLvNum('lev_mas', 'lev_mas_i'),
+        customDropdownSortSource: sortByLeadingZeros('lev_mas'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+    },
+    { 
+        //  LUNATIC
+        displayTitle: "LUNATIC",
+        name: "lev_lnt",
+        data: sortLevels('lev_lnt', 'lev_lnt_i'),
+        className: "lv lv-lnt",
+        render: renderLvNum('lev_lnt', 'lev_lnt_i'),
+        customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+    },
+    {
+        //  chart_diff
+        displayTitle: "譜面",
+        name: "chart_diff",
+        data: 
+            function( row, type, set, meta ) {
+                if ( flat_view == true ) {
+                    if ( type === 'sort' || type === 'meta') {
+                        return row.chart_diff;
+                    } 
+                    else {
+                        return convertDifficultyNames(row.chart_diff, false, ongeki_chart_list);
+                    }
+                } else {
+                    return null;
+                }
+            },
+        className: "lv-name detail-hidden",
+        width: "3rem",
+        createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
+            $(td).addClass( rowData.chart_diff );
+        }) : null,
+        render: flat_view ? renderChartDifficultyName('chart_diff', false, ongeki_chart_list) : null,
+        customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff', ongeki_chart_list) : null,
+        filterable: flat_view,
+        visible: false
+    },
+    {
+        //  chart_lev (for sort)
+        displayTitle: "難易度グループ",
+        name: "chart_lev",
+        data: ( flat_view ? 'chart_lev' : null ),
+        className: "lv detail-hidden",
+        width: "4rem",
+        customDropdownSortSource: sortByLeadingZeros('chart_lev'),
+        reverseSortOrder: true,
+        visible: false
+    },
+    {
+        //  chart_lev_i
+        displayTitle: "譜面レベル",
+        name: "chart_lev_i",
+        data: ( flat_view ? 'chart_lev_i' : null ),
+        className: "lv lv-name detail-hidden",
+        render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', ongeki_chart_list)
+        : null ),
+        width: "4rem",
+        createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
+            $(td).addClass( rowData.chart_diff );
+        }) : null,
+        searchable: false,
+        visible: flat_view
+    },
+    { 
+        displayTitle: "NEW",
+        name: "new",
+        data: "new",
+        searchable: false,
+        visible: false
+    },
+    { 
+        displayTitle: "ノート数",
+        name: "chart_notes",
+        data: ( flat_view ? "chart_notes" : null ),
+        className: "details notecount detail-hidden",
+        width: "6em",
+        searchable: false,
+        visible: false
+    },
+    { 
+        displayTitle: "ベル",
+        name: "chart_bells",
+        data: ( flat_view ? "chart_bells" : null ),
+        className: "details notecount detail-hidden",
+        width: "5em",
+        searchable: false,
+        visible: false
+    },
+    { 
+        displayTitle: "譜面作者",
+        name: "chart_designer",
+        data: ( flat_view ? "chart_designer" : null ),
+        width: "15em",
+        className: "details detail-hidden",
+        filterable: flat_view,
+        searchable: flat_view,
+        visible: false
+    },
+    { 
+        displayTitle: "追加日",
+        name: "date",
+        // data: "date",
+        data: function( row, type, set, meta ) {
+            return formatDate(row.date)
+        },
+        className: "date",
+        filterable: true,
+        // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
+        render: function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return '<div class="inner-wrap">'+ data +'<\/div>';
+            }
+            else {
+                return data;
+            }
+        },
+        reverseSortOrder: true,
+        width: "4em"
+    },
+    { 
+        displayTitle: "BONUS",
+        name: "bonus",
+        data: "bonus",
+        className: "details detail-hidden",
+        width: "10px",
+        searchable: false
+    }
+];
+
+var default_order = 
+    flat_view ?
+        [[24, 'desc'],[16, 'desc'],[29, 'desc']] :
+        [[29, 'desc'],[11, 'asc'],[0, 'asc']];
+
+function processOngekiChartData(obj, chart_diff) {
+    if (obj[chart_diff]) {
+        return {
+            ...obj,
+            chart_diff,
+            chart_lev: obj[chart_diff],
+            chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.7')),
+            chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1)}</span>`,
+            chart_notes: obj[`${chart_diff}_notes`],
+            chart_bells: obj[`${chart_diff}_bells`],
+            chart_designer: obj[`${chart_diff}_designer`]
+        };
+    }
+    return null;
+}
+
+function parseChapId(row, includeTrailingSpace) {
+    var chap_id = row.chap_id;
+    var chap_chapter = chap_id.substr(3,2);
+
+    // 0xxxx : Normal chapters
+    if (chap_id.substr(0,1) == "0") {
+        var chap_book = chap_id.substr(1,1);
+
+        // 0xx8x : side chapter
+        if (chap_id.substr(3,1) == "8") {
+            var chap_book = chap_id.substr(1,1);
+            var chap_chapter = 'S' + chap_id.substr(4,1);
         }
-        // 70xxx : Memory chapters
-        else if (chap_id.substr(0,2) == "70") {
-            var chap_book = "M";
+
+        // 0xxxx: chapters
+        if (chap_book > "0") {
             return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-        }
-        // 80xxx : Event chapters
-        else if (chap_id.substr(0,2) == "80") {
-            var chap_book = "SP2";
-            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-        }
-        // 99xxx : Event chapters
-        else if (chap_id.substr(0,2) == "99") {
-            var chap_book = "SP";
-            return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
-        }
-        // Others?
+        } 
+        // 00xxx : default mylist
         else {
-            return chap_id + (includeTrailingSpace ? ' ' : '');
+            return '';
         }
     }
-
-    function formatDate(inputDate, dateFormat) {
-        // Parse input date string
-        var year = inputDate.slice(0, 4);
-        var month = inputDate.slice(4, 6);
-        var day = inputDate.slice(6, 8);
-        var ISOdate = `${year}-${month}-${day}`
-
-        // Format the date as "YYYY-MM-DD"
-        if (dateFormat == 'JP') {
-            var days_of_week = ["日", "月", "火", "水", "木", "金", "土"];
-            var current_year = new Date().getFullYear();
-            var day_of_week = days_of_week[new Date(ISOdate).getDay()];
-            var year_print = (current_year == year) ? '' : `${year}/`;
-            var formatted_date = year_print + `${month}/${day}(${day_of_week})`;
-        }
-        else {
-            var formatted_date = ISOdate;
-        }
-
-        return formatted_date;
+    // 70xxx : Memory chapters
+    else if (chap_id.substr(0,2) == "70") {
+        var chap_book = "M";
+        return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
     }
+    // 80xxx : Event chapters
+    else if (chap_id.substr(0,2) == "80") {
+        var chap_book = "SP2";
+        return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
+    }
+    // 99xxx : Event chapters
+    else if (chap_id.substr(0,2) == "99") {
+        var chap_book = "SP";
+        return chap_book + '-' + chap_chapter + (includeTrailingSpace ? ' ' : '');
+    }
+    // Others?
+    else {
+        return chap_id + (includeTrailingSpace ? ' ' : '');
+    }
+}
 
+$(document).ready(function() {
     $.getJSON("data/music-ex.json", (data) => {
-        
-
         var table = $('#table').DataTable( {
             // "ajax": {
             //     url: "data/music-ex.json",
             //     dataSrc: ""
             // },
-            data: flattenMusicData(data, flat_view),
+            data: flattenMusicData(data, flat_view, ongeki_chart_list, processOngekiChartData),
             "buttons": [
                 // {
                 //     extend: 'colvisRestore',
@@ -1032,60 +841,4 @@ $(document).ready(function() {
             }
         });
     });
-
-    
-    // recalculate columns on colvis change event
-    $('#table').on( 'column-visibility.dt', function () {
-        $.fn.dataTable
-            .tables( { visible: true, api: true } )
-            .columns.adjust();
-    } );
-
-    $('select#chart_lev').on('change', function(){
-        var table = $('#table').DataTable();
-        var select = $(this);
-        var val = $(this).val();
-        var val_e = $.fn.dataTable.util.escapeRegex(
-            $(this).val()
-        );
-
-        // simply filter if select is changed on /lv/ page
-        if( select.data("type") == "filter") {
-            table.column('chart_lev:name').search(val_e ? '^' + val_e + '$' : '', true, false);
-
-            updateQueryStringParameter('chart_lev',val);
-
-            table.draw();
-        } 
-        // redirect to /lv/ subpage with querystring if selected on main page
-        else {
-            window.location.href = './lv?chart_lev=' + encodeURIComponent(val);
-        }
-    });
-
-    // update chart_lev selectbox value on page load
-    if ('URLSearchParams' in window) {
-        var searchParamValue = searchParams.get('chart_lev');
-        if ( searchParamValue !== null ) {
-            var value = unescapeSlashes(searchParamValue)
-            $('select#chart_lev').val(value);
-        }
-    }
-
-    $('button.reset-search').on('click', function(){
-        var table = $('#table').DataTable();
-
-        table
-            .order(default_order) //FIXME: why doesn't work with just calling var?
-            .search('')
-            .columns().search('')
-            .draw();
-
-        clearQueryStringParameter();
-
-        $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
-
-        console.log('search reset');
-    });
-
 });
