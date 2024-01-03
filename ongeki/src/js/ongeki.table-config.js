@@ -317,7 +317,6 @@ $(document).ready(function() {
             width: "4rem",
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
-            searchable: false,
             visible: false
         },
         {

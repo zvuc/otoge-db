@@ -236,8 +236,7 @@ $(document).ready(function() {
             width: "4rem",
             customDropdownSortSource: sortByLeadingZeros('chart_lev'),
             reverseSortOrder: true,
-            visible: false,
-            searchable: false
+            visible: false
         },
         {
             //  chart_lev_i
