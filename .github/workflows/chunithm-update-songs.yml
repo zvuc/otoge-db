@@ -1,4 +1,4 @@
-name: \[Chunithm\] Fetch new songs
+name: "[Chunithm] Fetch new songs"
 
 on:
   schedule:

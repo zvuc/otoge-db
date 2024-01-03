@@ -1,4 +1,4 @@
-name: \[Ongeki\] Fetch from wiki & sdvx.in
+name: "[Ongeki] Fetch from wiki & sdvx.in"
 
 on:
   schedule:
