@@ -47,20 +47,8 @@ jobs:
         id: extract_date
         run: echo "datestamp=$(cat data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
 
-      - name: Check script output
-        id: check_script
-        run: |
-          if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"Updated song extra data from wiki"* ]]; then
-            echo "Updated song data from wiki. Creating a pull request."
-            echo "COMMIT=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Nothing updated. Skipping pull request creation."
-            echo "COMMIT=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Get existing branch if already exists
         id: get_existing_branch
-        if: steps.check_script.outputs.COMMIT == 'true'
         run: |
           existing_branch=$(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/chunithm-update-\* | head -n 1 | sed 's/^origin\///')
           echo "${existing_branch}"
@@ -73,7 +61,6 @@ jobs:
 
       - name: Create new branch and commit changes
         id: checkout_branch_commit
-        if: steps.check_script.outputs.COMMIT == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |

@@ -11,6 +11,8 @@ wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
 
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
+    print_message(f"Fetching latest wiki data.", bcolors.ENDC, args)
+
     date_from = args.date_from
     date_until = args.date_until
     song_id = args.id
