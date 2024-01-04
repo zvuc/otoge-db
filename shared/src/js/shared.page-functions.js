@@ -76,23 +76,6 @@ function clearQueryStringParameter() {
     }
 }
 
-function unescapeSlashes(str) {
-  if (str !== null) {
-      // add another escaped slash if the string ends with an odd
-      // number of escaped slashes which will crash JSON.parse
-      let parsedStr = str.replace(/(^|[^\\])(\\\\)*\\$/, "$&\\");
-
-      try {
-        parsedStr = JSON.parse(`"${parsedStr}"`);
-      } catch(e) {
-        return str;
-      }
-      return str.replace(/(^|[^\\])(\\\\)*\\$/, "$&\\") ;
-  } else {
-      return str;
-  }
-}
-
 function appendSelectboxStateClass(select, val) {
     if (val !== "") {
         select.addClass('changed');
@@ -111,8 +94,10 @@ function replaceUnitText(text) {
 //     localStorage.setItem("noticeNewAddress", $('.notice-wrap').is(':visible'));
 // });
 
-
 $(document).ready(function() {
+    if ('URLSearchParams' in window) {
+        updateChartLevelSelectboxValue(searchParams);
+    }
     $('html').removeClass('page-loading');
 
     // fetch('https://api.github.com/repos/zvuc/ongeki-db/commits?per_page=1')
@@ -131,4 +116,13 @@ $(document).ready(function() {
     // })
 
     // localStorage.noticeNewAddress == "false" ? '' : $('.notice-wrap').addClass('visible');
+    
+    // google analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141271073-1');
+    gtag('config', 'G-YZ8GJR7QFL');
+
 });

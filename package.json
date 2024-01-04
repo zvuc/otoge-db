@@ -40,7 +40,6 @@
   },
   "scripts": {
     "update": "yarn fetch && yarn imageoptim",
-    "fetch": "python3 scripts/main.py",
     "imageoptim": "cat diffs.txt | xargs imageoptim",
 
     "build": "yarn shared-build & yarn ongeki-build & yarn chuni-build",
@@ -52,7 +51,7 @@
     "datatables-minify": "minify shared/src/datatables/datatables.custom.js > shared/datatables.custom.min.js",
 
     "shared-build": "yarn shared-minify",
-    "shared-minify": "minify shared/src/js/*.js > shared/shared-functions.js",
+    "shared-minify": "minify shared/src/js/shared.*.js > shared/shared-functions.js & minify shared/src/js/early-functions.js > shared/early-functions.js",
     "shared-watch": "watch 'yarn shared-build' ./shared/src/js -d",
 
     "ongeki-build": "yarn ongeki-minify & (yarn ongeki-less && yarn ongeki-postcss)",
