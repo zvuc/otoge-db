@@ -15,7 +15,7 @@ var columns_params = [
     { 
         displayTitle: "ID (system)",
         name: "id",
-        data: "id",
+        data: "sort",
         defaultContent: "",
         className: "id detail-hidden",
         visible: false
@@ -336,9 +336,9 @@ var columns_params = [
         visible: false
     },
     { 
-        displayTitle: "AIR",
-        name: "chart_notes_air",
-        data: ( flat_view ? "chart_notes_air" : null ),
+        displayTitle: "TOUCH",
+        name: "chart_notes_touch",
+        data: ( flat_view ? "chart_notes_touch" : null ),
         defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
@@ -346,9 +346,9 @@ var columns_params = [
         visible: false
     },
     { 
-        displayTitle: "FLICK",
-        name: "chart_notes_flick",
-        data: ( flat_view ? "chart_notes_flick" : null ),
+        displayTitle: "BREAK",
+        name: "chart_notes_break",
+        data: ( flat_view ? "chart_notes_break" : null ),
         defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
@@ -610,8 +610,8 @@ function maimaiProcessChartData(obj, chart_diff) {
                 chart_notes_tap: obj[`lev_utage_notes_tap`],
                 chart_notes_hold: obj[`lev_utage_notes_hold`],
                 chart_notes_slide: obj[`lev_utage_notes_slide`],
-                chart_notes_air: obj[`lev_utage_notes_air`],
-                chart_notes_flick: obj[`lev_utage_notes_flick`],
+                chart_notes_touch: obj[`lev_utage_notes_touch`],
+                chart_notes_break: obj[`lev_utage_notes_break`],
                 chart_designer: obj[`lev_utage_designer`],
                 chart_link: obj[`lev_utage_chart_link`]
             }
@@ -627,8 +627,8 @@ function maimaiProcessChartData(obj, chart_diff) {
                 chart_notes_tap: obj[`${chart_diff}_notes_tap`],
                 chart_notes_hold: obj[`${chart_diff}_notes_hold`],
                 chart_notes_slide: obj[`${chart_diff}_notes_slide`],
-                chart_notes_air: obj[`${chart_diff}_notes_air`],
-                chart_notes_flick: obj[`${chart_diff}_notes_flick`],
+                chart_notes_touch: obj[`${chart_diff}_notes_touch`],
+                chart_notes_break: obj[`${chart_diff}_notes_break`],
                 chart_designer: obj[`${chart_diff}_designer`],
                 chart_link: obj[`${chart_diff}_chart_link`]
             };
@@ -638,7 +638,7 @@ function maimaiProcessChartData(obj, chart_diff) {
 }
 
 $(document).ready(function() {
-    $.getJSON("data/maimai_songs.json", (data) => {
+    $.getJSON("data/music-ex.json", (data) => {
         var table = $('#table').DataTable( {
             // "ajax": {
             //     url: "data/music-ex.json",
@@ -780,14 +780,15 @@ $(document).ready(function() {
 
                             // lv display
                             if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
+                                console.log(column_param['name']);
                                 var chart_name = column_param['name'];
 
                                 var notes = chart_name.concat('_notes');
                                 var notes_tap = chart_name.concat('_notes_tap');
                                 var notes_hold = chart_name.concat('_notes_hold');
                                 var notes_slide = chart_name.concat('_notes_slide');
-                                var notes_air = chart_name.concat('_notes_air');
-                                var notes_flick = chart_name.concat('_notes_flick');
+                                var notes_touch = chart_name.concat('_notes_touch');
+                                var notes_break = chart_name.concat('_notes_break');
 
                                 var designer = chart_name.concat('_designer');
                                 var chart_link = chart_name.concat('_chart_link');                                
@@ -801,8 +802,8 @@ $(document).ready(function() {
                                                 ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
                                                 ( checkPropertyAndValueExists(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
                                                 ( checkPropertyAndValueExists(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
-                                                ( checkPropertyAndValueExists(data, notes_air) ? '<span class="notes_air"><span class="label">air</span><span>' + data[notes_air] + '</span></span>' : "") +
-                                                ( checkPropertyAndValueExists(data, notes_flick) ? '<span class="notes_flick"><span class="label">flick</span><span>' + data[notes_flick] + '</span></span>' : "") + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_touch) ? '<span class="notes_touch"><span class="label">air</span><span>' + data[notes_touch] + '</span></span>' : "") +
+                                                ( checkPropertyAndValueExists(data, notes_break) ? '<span class="notes_break"><span class="label">flick</span><span>' + data[notes_break] + '</span></span>' : "") + '</span></span>' : "") +
                                             ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
                                     '</span>' +
