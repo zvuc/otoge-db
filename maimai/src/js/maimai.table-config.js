@@ -1,16 +1,22 @@
-const chunithm_chart_list = {
+const maimai_chart_list = {
     'lev_bas': 'BASIC',
+    'dx_lev_bas': 'BASIC',
     'lev_adv': 'ADVANCED',
+    'dx_lev_adv': 'ADVANCED',
     'lev_exp': 'EXPERT',
+    'dx_lev_exp': 'EXPERT',
     'lev_mas': 'MASTER',
-    'lev_ult': 'ULTIMA',
-    'we_kanji': 'WORLD\'S END'
+    'dx_lev_mas': 'MASTER',
+    'lev_remas': 'Re:MASTER',
+    'dx_lev_remas': 'Re:MASTER',
+    'lev_utage': 'U·TA·GE',
 };
 var columns_params = [
     { 
         displayTitle: "ID (system)",
         name: "id",
         data: "id",
+        defaultContent: "",
         className: "id detail-hidden",
         visible: false
     },
@@ -18,6 +24,7 @@ var columns_params = [
         displayTitle: "#",
         name: "index",
         data: "id",
+        defaultContent: "",
         className: "id detail-hidden",
         data: function(row) {
             return row.id;
@@ -30,7 +37,8 @@ var columns_params = [
     { 
         displayTitle: "アルバムアート",
         name: "jacket",
-        data: "image",
+        data: "image_url",
+        defaultContent: "",
         className: "jacket detail-hidden",
         render: function(data) {
             return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
@@ -43,6 +51,7 @@ var columns_params = [
         displayTitle: "曲名",
         name: "title",
         data: "title",
+        defaultContent: "",
         className: "title-artist detail-hidden",
         render: function ( data, type, row ) {
             // If display or filter data is requested, return title
@@ -67,6 +76,7 @@ var columns_params = [
         displayTitle: "曲名 (読み)",
         name: "reading",
         data: "reading",
+        defaultContent: "",
         className: "reading",
         visible: false,
         searchable: false
@@ -76,6 +86,7 @@ var columns_params = [
         displayTitle: "アーティスト",
         name: "title_merged",
         data: "title",
+        defaultContent: "",
         className: "artist detail-hidden",
         render: function ( data, type, row ) {
             // If display or filter data is requested, return title
@@ -93,6 +104,7 @@ var columns_params = [
         displayTitle: "アーティスト",
         name: "artist",
         data: "artist",
+        defaultContent: "",
         className: "artist detail-hidden",
         visible: false
     },
@@ -100,6 +112,7 @@ var columns_params = [
         displayTitle: "BPM",
         name: "bpm",
         data: "bpm",
+        defaultContent: "",
         className: "details bpm",
         searchable: false,
         visible: false
@@ -108,28 +121,44 @@ var columns_params = [
         displayTitle: "バージョン",
         name: "version",
         data: "version",
+        defaultContent: "",
         className: "details version",
         filterable: true,
         render: renderInWrapper(),
-        customDropdownSortSource: "date",
+        // customDropdownSortSource: ( function(data) { data ? "date" : null }),
         width: "12em",
     },
     { 
         displayTitle: "ジャンル",
         name: "category",
-        data: "catname",
+        data: "catcode",
+        defaultContent: "",
         className: "details category",
         render: renderInWrapper(),
         width: "12em",
         filterable: true,
     },
     { 
+        //  Chart type
+        displayTitle: "DX/Std",
+        name: "chart_type",
+        data: maimaiGetChartTypes(),
+        defaultContent: "",
+        className: "chart-type",
+        render: maimaiRenderChartTypeBadges(),
+        // customDropdownSortSource: sortByLeadingZeros('lev_bas'),
+        // reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+    },
+    { 
         //  BASIC
         displayTitle: "BASIC",
         name: "lev_bas",
-        data: sortLevels('lev_bas', 'lev_bas_i'),
+        data: maimaiProcessLvData('lev_bas', 'lev_bas_i'),
+        defaultContent: "",
         className: "lv lv-bsc",
-        render: renderLvNum('lev_bas', 'lev_bas_i'),
+        render: maimaiRenderLvNum('lev_bas'),
         customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         reverseSortOrder: true,
         width: "3rem",
@@ -139,9 +168,10 @@ var columns_params = [
         //  ADVANCED
         displayTitle: "ADVANCED",
         name: "lev_adv",
-        data: sortLevels('lev_adv', 'lev_adv_i'),
+        data: maimaiProcessLvData('lev_adv', 'lev_adv_i'),
+        defaultContent: "",
         className: "lv lv-adv",
-        render: renderLvNum('lev_adv', 'lev_adv_i'),
+        render: maimaiRenderLvNum('lev_adv'),
         customDropdownSortSource: sortByLeadingZeros('lev_adv'),
         reverseSortOrder: true,
         width: "3rem",
@@ -151,9 +181,10 @@ var columns_params = [
         //  EXPERT
         displayTitle: "EXPERT",
         name: "lev_exp",
-        data: sortLevels('lev_exp', 'lev_exp_i'),
+        data: maimaiProcessLvData('lev_exp', 'lev_exp_i'),
+        defaultContent: "",
         className: "lv lv-exp",
-        render: renderLvNum('lev_exp', 'lev_exp_i'),
+        render: maimaiRenderLvNum('lev_exp'),
         customDropdownSortSource: sortByLeadingZeros('lev_exp'),
         reverseSortOrder: true,
         width: "3rem",
@@ -163,47 +194,52 @@ var columns_params = [
         //  MASTER
         displayTitle: "MASTER",
         name: "lev_mas",
-        data: sortLevels('lev_mas', 'lev_mas_i'),
+        data: maimaiProcessLvData('lev_mas', 'lev_mas_i'),
+        defaultContent: "",
         className: "lv lv-mas",
-        render: renderLvNum('lev_mas', 'lev_mas_i'),
+        render: maimaiRenderLvNum('lev_mas'),
         customDropdownSortSource: sortByLeadingZeros('lev_mas'),
         reverseSortOrder: true,
         width: "3rem",
         filterable: flat_view ? false : true,
     },
     { 
-        //  ULTIMA
-        displayTitle: "ULTIMA",
-        name: "lev_ult",
-        data: sortLevels('lev_ult', 'lev_ult_i'),
-        className: "lv lv-ult",
-        render: renderLvNum('lev_ult', 'lev_ult_i'),
-        customDropdownSortSource: sortByLeadingZeros('lev_ult'),
+        //  Re:MASTER
+        displayTitle: "Re:MASTER",
+        name: "lev_remas",
+        data: maimaiProcessLvData('lev_remas', 'lev_remas_i'),
+        defaultContent: "",
+        className: "lv lv-remas",
+        render: maimaiRenderLvNum('lev_remas'),
+        customDropdownSortSource: sortByLeadingZeros('lev_remas'),
         reverseSortOrder: true,
         width: "3rem",
         filterable: flat_view ? false : true,
     },
     { 
-        //  WORLD'S END (Kanji)
-        displayTitle: "WORLD'S END",
-        name: "lev_we",
-        data: "we_kanji",
-        className: "lv lv-we",
-        render: renderWorldsEnd('we_kanji', 'we_star'),
-        customDropdownSortSource: sortByLeadingZeros('we_star'),
+        //  UTAGE (Kanji)
+        displayTitle: "UTAGE (Kanji)",
+        name: "lev_utage",
+        data: "kanji",
+        defaultContent: "",
+        className: "lv lv-utage kanji",
+        render: renderUtage('kanji', 'lev_utage'),
+        // customDropdownSortSource: ( function(data) { data ? sortByLeadingZeros('lev_utage') : null }),
         reverseSortOrder: true,
         width: "3rem",
         filterable: flat_view ? false : true,
     },
     { 
-        //  WORLD'S END
-        displayTitle: "WORLD'S END☆",
-        name: "we_star",
-        data: convertWEStars('we_star'),
-        className: "lv lv-we we-star",
+        //  UTAGE
+        displayTitle: "UTAGE",
+        name: "lev_utage",
+        data: "lev_utage",
+        defaultContent: "",
+        className: "lv lv-utage",
+        customDropdownSortSource: sortByLeadingZeros('lev_utage'),
         reverseSortOrder: true,
         width: "3rem",
-        searchable: false
+        filterable: flat_view ? false : true,
     },
     {
         //  chart_diff
@@ -216,19 +252,20 @@ var columns_params = [
                         return row.chart_diff;
                     } 
                     else {
-                        return convertDifficultyNames(row.chart_diff, false, chunithm_chart_list);
+                        return convertDifficultyNames(row.chart_diff, false, maimai_chart_list);
                     }
                 } else {
                     return null;
                 }
             },
+        defaultContent: "",
         className: "lv-name detail-hidden",
         width: "3rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
             $(td).addClass( rowData.chart_diff );
         }) : null,
-        render: flat_view ? renderChartDifficultyName('chart_diff',false,chunithm_chart_list) : null,
-        customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff', chunithm_chart_list) : null,
+        render: flat_view ? renderChartDifficultyName('chart_diff',false,maimai_chart_list) : null,
+        customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff', maimai_chart_list) : null,
         filterable: flat_view,
         visible: false
     },
@@ -237,9 +274,10 @@ var columns_params = [
         displayTitle: "難易度グループ",
         name: "chart_lev",
         data: ( flat_view ? 'chart_lev' : null ),
+        defaultContent: "",
         className: "lv detail-hidden",
         width: "4rem",
-        customDropdownSortSource: sortByLeadingZeros('chart_lev'),
+        customDropdownSortSource: ( function(data) { data ? sortByLeadingZeros('chart_lev') : null }),
         reverseSortOrder: true,
         visible: false
     },
@@ -248,8 +286,9 @@ var columns_params = [
         displayTitle: "譜面レベル",
         name: "chart_lev_i",
         data: ( flat_view ? 'chart_lev_i' : null ),
+        defaultContent: "",
         className: "lv lv-name detail-hidden",
-        render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', chunithm_chart_list) : null),
+        render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', maimai_chart_list) : null),
         width: "4rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
             $(td).addClass( rowData.chart_diff );
@@ -261,6 +300,7 @@ var columns_params = [
         displayTitle: "ノート数",
         name: "chart_notes",
         data: ( flat_view ? "chart_notes" : null ),
+        defaultContent: "",
         className: "details notecount detail-hidden nowrap",
         width: "8em",
         searchable: false
@@ -269,6 +309,7 @@ var columns_params = [
         displayTitle: "TAP",
         name: "chart_notes_tap",
         data: ( flat_view ? "chart_notes_tap" : null ),
+        defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
         searchable: false,
@@ -278,6 +319,7 @@ var columns_params = [
         displayTitle: "HOLD",
         name: "chart_notes_hold",
         data: ( flat_view ? "chart_notes_hold" : null ),
+        defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
         searchable: false,
@@ -287,6 +329,7 @@ var columns_params = [
         displayTitle: "SLIDE",
         name: "chart_notes_slide",
         data: ( flat_view ? "chart_notes_slide" : null ),
+        defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
         searchable: false,
@@ -296,6 +339,7 @@ var columns_params = [
         displayTitle: "AIR",
         name: "chart_notes_air",
         data: ( flat_view ? "chart_notes_air" : null ),
+        defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
         searchable: false,
@@ -305,6 +349,7 @@ var columns_params = [
         displayTitle: "FLICK",
         name: "chart_notes_flick",
         data: ( flat_view ? "chart_notes_flick" : null ),
+        defaultContent: "",
         className: "details notecount detail-hidden",
         width: "5em",
         searchable: false,
@@ -314,6 +359,7 @@ var columns_params = [
         displayTitle: "譜面作者",
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
+        defaultContent: "",
         width: "15em",
         className: "details detail-hidden designer",
         filterable: flat_view,
@@ -323,6 +369,7 @@ var columns_params = [
         displayTitle: "譜面作者",
         name: "chart_link",
         data: ( flat_view ? "chart_link" : null ),
+        defaultContent: "",
         render: ( flat_view ? renderChartLinkBtn('chart_link') : null ),
         width: "5em",
         className: "details detail-hidden chart-link",
@@ -330,9 +377,9 @@ var columns_params = [
     { 
         displayTitle: "追加日",
         name: "date",
-        // data: "date",
+        defaultContent: "",
         data: function( row, type, set, meta ) {
-            return formatDate(row.date)
+            return formatDate(row.release)
         },
         className: "date",
         // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
@@ -352,6 +399,7 @@ var columns_params = [
         displayTitle: "NEW",
         name: "new",
         data: "newflag",
+        defaultContent: "",
         className: "detail-hidden", // this column is required to ensure modal displays
         searchable: false
     }
@@ -364,42 +412,166 @@ var default_order =
         // date , ID
         [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
 
-function convertWEStars(we_star) {
-    const conversionTable = {
-        "1": "1",
-        "3": "2",
-        "5": "3",
-        "7": "4",
-        "9": "5"
-    };
 
-    if (conversionTable.hasOwnProperty(we_star)) {
-        return conversionTable[we_star];
-    } else {
-        return we_star;
+function maimaiGetChartTypes() {
+    return function(row, data) {
+        let lev = `lev_bas`;
+        let dx_lev = `dx_lev_bas`;
+
+        // only DX chart
+        if (row[dx_lev] && !row[lev]) {
+            return 'DX';
+        } 
+
+        // only Std chart
+        if (row[lev] && !row[dx_lev]) {
+            return 'Std';
+        }
+
+        // both
+        if (row[dx_lev] && row[lev]) {
+            return 'DX & Std';
+        }
+
+        // UTAGE
+        if (row['kanji']) {
+            return 'UTAGE';
+        }
     }
 }
 
-function displayWEStars(we_star) {
-    const conversionTable = {
-        "1": "☆",
-        "3": "☆☆",
-        "5": "☆☆☆",
-        "7": "☆☆☆☆",
-        "9": "☆☆☆☆☆"
-    };
+function maimaiRenderChartTypeBadges() {
+    return function(data, type, row) {
+        if ( type === 'display') {
 
-    if (conversionTable.hasOwnProperty(we_star)) {
-        return conversionTable[we_star];
-    } else {
-        return we_star;
+            if (flat_view) {
+                if (row['chart_diff'].startsWith("dx_")) {
+                    var dx_lev = row['chart_diff'];
+                } else {
+                    var lev = row['chart_diff'];
+                }
+            } else {
+                var lev = `lev_bas`;
+                var dx_lev = `dx_lev_bas`;
+            }
+            var dx_badge = '';
+            var std_badge = '';
+            var utage_badge = ''; 
+
+            // only DX chart
+            if (row[dx_lev]) {
+                var dx_badge = `<span class="chart-type-badge dx"></span>`;
+            } 
+
+            // only Std chart
+            if (row[lev]) {
+                var std_badge = `<span class="chart-type-badge std"></span>`;
+            }
+
+            // UTAGE
+            // if (row['kanji']) {
+            //     var utage_badge = `<span class="chart-type-badge utage"></span>`;
+            // }
+
+            return `<div class="inner-wrap">${dx_badge}${std_badge}</div>`;
+        } else {
+            return data;
+        }
     }
 }
 
-function renderWorldsEnd(we_kanji, we_star) {
+function maimaiProcessLvData(lev, lev_i) {
+    return function(row, data) {
+        let dx_lev = `dx_${lev}`;
+        let dx_lev_i = `dx_${lev_i}`;
+
+        // only DX chart
+        if (row[dx_lev] && !row[lev]) {
+            // constant exists
+            return row[dx_lev];
+        } 
+
+        // only Std chart
+        if (row[lev] && !row[dx_lev]) {
+            // constant exists
+            return row[lev];
+        }
+
+        // both
+        if (row[dx_lev] && row[lev]) {
+            // constant exists
+            return row[dx_lev];
+        }
+    }
+}
+
+function maimaiRenderLvNum(lev) {
     return function ( data, type, row ) {
-        if ( type === 'display' ) {
-            return row[we_kanji] !== '' ? '<div class="inner-wrap"><span class="lv-num-simple">' + row[we_kanji] + '<\/span><span class="lv-num-precise">☆' + convertWEStars(row[we_star]) + '<\/span><\/div>' : '';
+        if ( type === 'display') {
+            var lev_i = `${lev}_i`; // lev_bas_i
+            var dx_lev = `dx_${lev}`; // dx_lev_bas
+            var dx_lev_i = `dx_${lev_i}`;
+            
+            var primary_lev = '';
+            var primary_chart_type = '';
+
+            // only DX chart
+            if (row[dx_lev] && !row[lev]) {
+                var primary_chart_type = 'DX';
+                var primary_lev = row[dx_lev];
+                var primary_lev_i = row[dx_lev_i];
+            } 
+
+            // only Std chart
+            if (row[lev] && !row[dx_lev]) {
+                var primary_chart_type = 'Std';
+                var primary_lev = row[lev];
+                var primary_lev_i = row[lev_i];
+            }
+
+            // TODO: HANDLE DUAL TYPE DISPLAY
+            // both
+            if (row[dx_lev] && row[lev]) {
+                var primary_chart_type = 'DX';
+                var primary_lev = row[dx_lev];
+                var primary_lev_i = row[dx_lev_i];
+                var secondary_chart_type = 'Std';
+                var secondary_lev = row[lev];
+                var secondary_lev_i = row[lev_i];
+            }
+
+            function maimaiLvNumHtmlTemplate(chart_type, cur_lev, cur_lev_i) {
+                var lev_i_html = (cur_lev_i ? `<span class="lv-num-precise">${cur_lev_i}</span>` : '')
+
+                // Find if + exists in lv number
+                var match = cur_lev.match(/^([0-9]{1,2})(\+)?$/);
+                var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : cur_lev);
+                var plus_html = ( match && match[2] === '+' ? '<span class="plus">+</span>' : '');
+
+                return `<span class="chart-type-label">${chart_type}</span>
+                        <span class="lv-num-simple">${lev_num_html}${plus_html}</span>
+                        ${lev_i_html}`
+            }
+            
+            if (row[dx_lev] && row[lev]) {
+                return `
+                    <div class="inner-wrap">
+                        <div class="primary">${maimaiLvNumHtmlTemplate(primary_chart_type, primary_lev, primary_lev_i)}</div>
+                        <div class="secondary">${maimaiLvNumHtmlTemplate(secondary_chart_type, secondary_lev, secondary_lev_i)}</div>
+                    </div>`;
+            } else if (row[lev] && lev === 'lev_remas' && row['dx_lev_mas'] || row[dx_lev] && dx_lev === 'dx_lev_remas' && row['lev_mas'] ) {
+                // Re:MAS when there is DX chart
+                return `
+                    <div class="inner-wrap ${ lev === 'dx_lev_remas' ? 'reverse' : '' }">
+                        <div class="primary empty">${maimaiLvNumHtmlTemplate('--', '--', '')}</div>
+                        <div class="secondary">${maimaiLvNumHtmlTemplate(primary_chart_type, primary_lev, primary_lev_i)}</div>
+                    </div>`;
+            } else {
+                return `
+                    <div class="inner-wrap">
+                        <div class="primary ${ primary_lev === '' ? 'empty' : '' }">${maimaiLvNumHtmlTemplate(primary_chart_type, primary_lev, primary_lev_i)}</div>
+                    </div>`;
+            }
         }
         else {
             return data;
@@ -407,23 +579,41 @@ function renderWorldsEnd(we_kanji, we_star) {
     }
 }
 
-function processChunithmChartData(obj, chart_diff) {
+function renderUtage(kanji, lev_utage) {
+    return function ( data, type, row ) {
+        if ( type === 'display' ) {
+            var html_output = `
+                <div class="inner-wrap">
+                    <div class="primary">
+                        <span class="lv-num-simple">${row[kanji]}</span>
+                        <span class="lv-num-precise">${row[lev_utage]}</span>
+                    </div>
+                </div>`;
+            return row[kanji] ? html_output : '';
+        }
+        else {
+            return data;
+        }
+    }
+}
+
+function maimaiProcessChartData(obj, chart_diff) {
     if (obj[chart_diff]) {
-        if (chart_diff === 'we_kanji') {
+        if (chart_diff === 'kanji') {
             return {
                 ...obj,
                 chart_diff,
                 chart_lev: obj[chart_diff],
-                chart_lev_i: convertWEStars(obj[`we_star`]),
-                chart_lev_i_display: convertWEStars(obj[`we_star`]),
-                chart_notes: obj[`lev_we_notes`],
-                chart_notes_tap: obj[`lev_we_notes_tap`],
-                chart_notes_hold: obj[`lev_we_notes_hold`],
-                chart_notes_slide: obj[`lev_we_notes_slide`],
-                chart_notes_air: obj[`lev_we_notes_air`],
-                chart_notes_flick: obj[`lev_we_notes_flick`],
-                chart_designer: obj[`lev_we_designer`],
-                chart_link: obj[`lev_we_chart_link`]
+                chart_lev_i: obj[`lev_utage`],
+                chart_lev_i_display: obj[`lev_utage`],
+                chart_notes: obj[`lev_utage_notes`],
+                chart_notes_tap: obj[`lev_utage_notes_tap`],
+                chart_notes_hold: obj[`lev_utage_notes_hold`],
+                chart_notes_slide: obj[`lev_utage_notes_slide`],
+                chart_notes_air: obj[`lev_utage_notes_air`],
+                chart_notes_flick: obj[`lev_utage_notes_flick`],
+                chart_designer: obj[`lev_utage_designer`],
+                chart_link: obj[`lev_utage_chart_link`]
             }
         }
         else {
@@ -454,7 +644,7 @@ $(document).ready(function() {
             //     url: "data/music-ex.json",
             //     dataSrc: ""
             // },
-            data: flattenMusicData(data, flat_view, chunithm_chart_list, processChunithmChartData),
+            data: flattenMusicData(data, flat_view, maimai_chart_list, maimaiProcessChartData),
             "buttons": [
                 // {
                 //     extend: 'colvisRestore',
@@ -544,26 +734,26 @@ $(document).ready(function() {
                                 .replaceAll('#','＃')
                                 .replaceAll('"','”')
                             );
-                            var wiki_url_guess = 'https:\/\/wikiwiki.jp\/chunithmwiki\/' + encoded_title;
+                            var wiki_url_guess = 'https:\/\/gamerch.com\/maimai\/search?q=' + encoded_title;
 
                             var wiki_url = data['wikiwiki_url'] ? data['wikiwiki_url'] : wiki_url_guess;
 
 
-                            return '<div class="modal-header" style="--img:url(jacket/' + data.image + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
-                                '<img src=\"jacket/' + data.image + '\"\/>' +
+                            return '<div class="modal-header" style="--img:url(jacket/' + data.image_url + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
+                                '<img src=\"jacket/' + data.image_url + '\"\/>' +
                                 '<\/div><div class="content-wrap">' +
                                 '<span class="title">' + data.title + '<\/span>' +
                                 '<span class="artist">' + data.artist + '<\/span>' +
                                 '<div class="quicklinks">' +
                                 '<a class="wiki" href="' + wiki_url + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
-                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=CHUNITHM+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
+                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=maimai+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
                                 '<\/div>' +
                                 '<\/div><\/div>'
                         },
                         footer: function ( row ) {
                             var data = row.data();
                             return '<div class="modal-footer">' +
-                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23CHUNITHM_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
+                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23maimai_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
                                 '<\/div>'
                         }
                     } ),
@@ -572,8 +762,7 @@ $(document).ready(function() {
 
                         var row = api.row(rowIdx);
                         var data = row.data();
-                        var ultima = data['lev_ult'] !== "" ? "ultima" : "";
-                        var worldsend = data['we_kanji'] !== "" ? "worldsend" : "";
+                        var utage = data['kanji'] !== "" ? "utage" : "";
 
                         var normalRows = $.map(columns, function(col, i) {
                             var column_param = columns_params[col.columnIndex];
@@ -606,7 +795,7 @@ $(document).ready(function() {
                                 return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                     '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
                                     '<span class="content-col">' +
-                                        '<span class="main-info-wrap">' + (worldsend ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['we_kanji'] + '</span><span class="lv-num-precise">' + displayWEStars(data['we_star']) + '</span></div>') : col.data) + '</span>' +
+                                        '<span class="main-info-wrap">' + (utage ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['kanji'] + '</span><span class="lv-num-precise">' + data['lev_utage'] + '</span></div>') : col.data) + '</span>' +
                                         '<span class="sub-info-wrap">' +
                                             ( checkPropertyAndValueExists(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
                                                 ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
@@ -624,7 +813,7 @@ $(document).ready(function() {
 
                         var combinedRows = $('<div class="table-wrapper"/>')
                                                 .append(
-                                                    $('<div class="details-table chart-details '+ worldsend + ultima + '"/>')
+                                                    $('<div class="details-table chart-details '+ utage + '"/>')
                                                         .append('<div class="table-header"><span class="th-label">CHART</span></div>')
                                                         .append(chartRows)
                                                 )
@@ -641,7 +830,7 @@ $(document).ready(function() {
                 }
             },
             "rowGroup": {
-                dataSrc: 'date',
+                dataSrc: 'release',
                 startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
                     return '<div>' + formatDate(group, 'JP') +' 追加<\/div>';
                     // enable rows count again when I find a way to show all rows in other pages
