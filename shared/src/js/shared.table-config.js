@@ -8,17 +8,19 @@ function checkPropertyAndValueExists(json, property) {
     }
 }
 
-function sortLevels(col_a, col_b) {
+function sortLevels(lev) {
     return function ( row, type, set, meta ) {
+        var lev_i = `${lev}_i`;
+
         if ( type === 'sort' ) {
-            if ( row[col_b] === "" ) {
-                return addLeadingZero(row[col_a]);
+            if (row[lev_i]) {
+                return addLeadingZero(row[lev_i]);
             } else {
-                return addLeadingZero(row[col_b]);
+                return addLeadingZero(row[lev]);
             }
         }
         else {
-            return row[col_a];
+            return row[lev];
         }
     }
 }
@@ -34,26 +36,24 @@ function addLeadingZero(s) {
 
 function sortByLeadingZeros(column) {
     return function (row_a, row_b) {
-        return addLeadingZero(row_a[column]).localeCompare(addLeadingZero(row_b[column]));
+        var a = ( row_a[column] ? row_a[column] : '')
+        var b = ( row_b[column] ? row_b[column] : '')
+        return addLeadingZero(a).localeCompare(addLeadingZero(b));
     }
 }
 
-function renderLvNum(simple_lv, precise_lv) {
+function renderLvNum(lev) {
     return function ( data, type, row ) {
-        if ( type === 'display' ) {  
-            var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
-            if (match) {
-                var lvnum = match[1];
-                var plus = (match[2] === '+');
+        if ( type === 'display' && row[lev]) {
+            var lev_i = `${lev}_i`;
+            var lev_i_html = (row[lev_i] ? `<span class="lv-num-precise">${row[lev_i]}</span>` : '')
 
-                if (plus) {
-                    return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
-                } else {
-                    return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
-                }
-            } else {
-                return `<div class="inner-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${row[precise_lv]}</span></div>`;
-            }
+            // Find if + exists in lv number
+            var match = row[lev].match(/^([0-9]{1,2})(\+)?$/);
+            var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : row[lev]);
+            var plus_html = (match[2] === '+' ? '<span class="plus">+</span>' : '');
+            
+            return `<div class="inner-wrap"><span class="lv-num-simple">${lev_num_html}${plus_html}${lev_i_html}</div>`;
         }
         else {
             return data;
@@ -123,7 +123,15 @@ function convertDifficultyNames(src, sort, chart_list) {
     const chart_diff_display = chart_list[src];
 
     if (sort) {
-        return `${Object.keys(chart_list).indexOf(src) + 1} ${chart_diff_display}`;
+        var index = Object.keys(chart_list).indexOf(src) + 1;
+        // For maimai
+        if (src.startsWith("dx_")) {
+            index -= 1;
+        }
+        if (index.toString().length === 1) {
+            index = '0' + index;
+        }
+        return `${index} ${chart_diff_display}`;
     }
 
     return chart_diff_display;
@@ -161,9 +169,15 @@ function flattenMusicData(data, flat_view, chart_list, process_chart_data) {
 
 function formatDate(inputDate, dateFormat) {
     // Parse input date string
-    var year = inputDate.slice(0, 4);
-    var month = inputDate.slice(4, 6);
-    var day = inputDate.slice(6, 8);
+    if (inputDate.length === 8) {
+        var year = inputDate.slice(0, 4);
+        var month = inputDate.slice(4, 6);
+        var day = inputDate.slice(6, 8);
+    } else if (inputDate.length === 6) {
+        var year = '20' + inputDate.slice(0, 2);
+        var month = inputDate.slice(2, 4);
+        var day = inputDate.slice(4, 6);
+    }
     var ISOdate = `${year}-${month}-${day}`
 
     // Format the date as "YYYY-MM-DD"
