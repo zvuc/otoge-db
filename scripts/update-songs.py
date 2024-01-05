@@ -20,6 +20,6 @@ elif not args.ongeki and not args.chunithm:
 
 new_song_data = game_module.utils.load_new_song_data()
 game_module.utils.renew_music_ex_data(new_song_data, args)
-game_module.utils.renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_INDEX_HTML_PATH, args)
-game_module.utils.renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_LEVELS_HTML_PATH, args)
-game_module.utils.renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_NAMUWIKI_EXPORT_PATH, args)
+# game_module.utils.renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_INDEX_HTML_PATH, args)
+# game_module.utils.renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_LEVELS_HTML_PATH, args)
+# game_module.utils.renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_NAMUWIKI_EXPORT_PATH, args)

@@ -37,9 +37,9 @@ def renew_music_ex_data(new_song_list, args):
     for song in new_song_list:
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
-        print_message(f"New song added: {song}", bcolors.OKGREEN, args)
+        print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
         
-        if not skipwiki:
+        if not args.skipwiki:
             _update_song_wiki_data(song, args)
             
         _record_new_song_jacket_id(song)
@@ -49,11 +49,11 @@ def renew_music_ex_data(new_song_list, args):
 
 
 def _download_song_jacket(song):
-    urllib.request.urlretrieve(SERVER_MUSIC_JACKET_BASE_URL + song['image'], 'jacket/' + song['image'])
+    urllib.request.urlretrieve(SERVER_MUSIC_JACKET_BASE_URL + song['image'], 'chunithm/jacket/' + song['image'])
 
 def _record_new_song_jacket_id(song):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
-        f.write('jacket/' + song['image'] + '\n')
+        f.write('chunithm/jacket/' + song['image'] + '\n')
 
 
 def _add_song_data_to_ex_data(song, ex_data):
