@@ -7,7 +7,7 @@ parser.add_argument('--chunithm', action="store_true", help='Perform scripts for
 parser.add_argument('--maimai', action="store_true", help='Perform scripts for maimai')
 parser.add_argument('--date_from', type=int, default=0, help='Date range from')
 parser.add_argument('--date_until', type=int, default=0, help='Date range until')
-parser.add_argument('--id', type=int, default=0, help='Song ID')
+parser.add_argument('--id', default=0, help='Song ID')
 parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
 parser.add_argument('--escape', action="store_true", help='Escape unsafe characters for git message output')
 

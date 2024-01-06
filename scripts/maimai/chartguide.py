@@ -5,7 +5,7 @@ import shutil
 import json
 import re
 from shared.common_func import *
-from chunithm.paths import *
+from maimai.paths import *
 from datetime import datetime
 from bs4 import BeautifulSoup, Comment
 from urllib.request import urlopen
