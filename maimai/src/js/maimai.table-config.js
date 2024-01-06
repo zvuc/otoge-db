@@ -120,12 +120,11 @@ var columns_params = [
     { 
         displayTitle: "バージョン",
         name: "version",
-        data: "version",
+        data: maimaiRenderVersionName(),
         defaultContent: "",
         className: "details version",
         filterable: true,
-        render: renderInWrapper(),
-        // customDropdownSortSource: ( function(data) { data ? "date" : null }),
+        customDropdownSortSource: "version",
         width: "12em",
     },
     { 
@@ -635,6 +634,49 @@ function maimaiProcessChartData(obj, chart_diff) {
         }
     }
     return null;
+}
+
+function maimaiRenderVersionName() {
+    return function( row, type, set, meta ) {
+        if ( type === 'sort' || type === 'meta') {
+            return row.version;
+        } else {
+            const version_list = {
+                "10000": "maimai",
+                "11000": "maimai PLUS",
+                "12000": "GreeN",
+                "13000": "GreeN PLUS",
+                "14000": "ORANGE",
+                "15000": "ORANGE PLUS",
+                "16000": "PiNK",
+                "17000": "PiNK PLUS",
+                "18000": "MURASAKi",
+                "18500": "MURASAKi PLUS",
+                "19000": "MiLK",
+                "19500": "MiLK PLUS",
+                "19900": "FiNALE",
+                "20000": "でらっくす",
+                "20500": "でらっくす PLUS",
+                "21000": "Splash",
+                "21500": "Splash PLUS",
+                "22000": "UNiVERSE",
+                "22500": "UNiVERSE PLUS",
+                "23000": "FESTiVAL",
+                "23500": "FESTiVAL PLUS",
+                "24000": "BUDDiES"
+            };
+
+            let closestVersion = null;
+
+            for (const versionNumber in version_list) {
+                if (row['version'] >= versionNumber && (closestVersion === null || versionNumber > closestVersion)) {
+                    closestVersion = versionNumber;
+                }
+            }
+
+            return version_list[closestVersion];
+        }
+    }
 }
 
 $(document).ready(function() {
