@@ -1,11 +1,7 @@
 var searchParams = new URLSearchParams(window.location.search);
 
-function checkPropertyAndValueExists(json, property) {
-    if (json.hasOwnProperty(property)) {
-        return json[property] !== "" ? true : false;
-    } else {
-        return false;
-    }
+function hasPropertyAndValue(json, property) {
+    return json.hasOwnProperty(property) && json[property] !== "";
 }
 
 function sortLevels(lev) {
