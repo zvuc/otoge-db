@@ -538,19 +538,6 @@ function maimaiRenderLvNum(lev) {
                 var secondary_lev = row[lev];
                 var secondary_lev_i = row[lev_i];
             }
-
-            function maimaiLvNumHtmlTemplate(chart_type, cur_lev, cur_lev_i) {
-                var lev_i_html = (cur_lev_i ? `<span class="lv-num-precise">${cur_lev_i}</span>` : '')
-
-                // Find if + exists in lv number
-                var match = cur_lev.match(/^([0-9]{1,2})(\+)?$/);
-                var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : cur_lev);
-                var plus_html = ( match && match[2] === '+' ? '<span class="plus">+</span>' : '');
-
-                return `<span class="chart-type-label">${chart_type}</span>
-                        <span class="lv-num-simple">${lev_num_html}${plus_html}</span>
-                        ${lev_i_html}`
-            }
             
             if (row[dx_lev] && row[lev]) {
                 return `
@@ -576,6 +563,19 @@ function maimaiRenderLvNum(lev) {
             return data;
         }
     }
+}
+
+function maimaiLvNumHtmlTemplate(chart_type, cur_lev, cur_lev_i) {
+    var lev_i_html = (cur_lev_i ? `<span class="lv-num-precise">${cur_lev_i}</span>` : '')
+
+    // Find if + exists in lv number
+    var match = cur_lev.match(/^([0-9]{1,2})(\+)?$/);
+    var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : cur_lev);
+    var plus_html = ( match && match[2] === '+' ? '<span class="plus">+</span>' : '');
+
+    return `<span class="chart-type-label">${chart_type}</span>
+            <span class="lv-num-simple">${lev_num_html}${plus_html}</span>
+            ${lev_i_html}`
 }
 
 function renderUtage(kanji, lev_utage) {
@@ -804,7 +804,7 @@ $(document).ready(function() {
 
                         var row = api.row(rowIdx);
                         var data = row.data();
-                        var utage = data['kanji'] !== "" ? "utage" : "";
+                        var utage = data['kanji'] ? "utage" : "";
 
                         var normalRows = $.map(columns, function(col, i) {
                             var column_param = columns_params[col.columnIndex];
@@ -822,35 +822,76 @@ $(document).ready(function() {
 
                             // lv display
                             if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
-                                console.log(column_param['name']);
                                 var chart_name = column_param['name'];
+                                console.log(chart_name);
 
-                                var notes = chart_name.concat('_notes');
-                                var notes_tap = chart_name.concat('_notes_tap');
-                                var notes_hold = chart_name.concat('_notes_hold');
-                                var notes_slide = chart_name.concat('_notes_slide');
-                                var notes_touch = chart_name.concat('_notes_touch');
-                                var notes_break = chart_name.concat('_notes_break');
+                                let lev = `lev_bas`;
+                                let dx_lev = `dx_lev_bas`;
 
-                                var designer = chart_name.concat('_designer');
-                                var chart_link = chart_name.concat('_chart_link');                                
+                                // only DX chart
+                                if (data[dx_lev] && !data[lev]) {
+                                    var prefix = 'dx_';
+                                } 
+                                // only Std chart
+                                if (data[lev] && !data[dx_lev]) {
+                                    var prefix = '';
+                                }
+                                // both
+                                if (data[dx_lev] && data[lev]) {
+                                    var prefix = 'dx_';
+                                }
 
-                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                    '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
-                                    '<span class="content-col">' +
-                                        '<span class="main-info-wrap">' + (utage ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['kanji'] + '</span><span class="lv-num-precise">' + data['lev_utage'] + '</span></div>') : col.data) + '</span>' +
-                                        '<span class="sub-info-wrap">' +
-                                            ( hasPropertyAndValue(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
-                                                ( hasPropertyAndValue(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_touch) ? '<span class="notes_touch"><span class="label">air</span><span>' + data[notes_touch] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_break) ? '<span class="notes_break"><span class="label">flick</span><span>' + data[notes_break] + '</span></span>' : "") + '</span></span>' : "") +
-                                            ( hasPropertyAndValue(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
-                                        '</span>' +
-                                    '</span>' +
-                                    ( hasPropertyAndValue(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
-                                    '</div>'
+                                
+
+                                // var notes = `${prefix}${chart_name}_notes`;
+                                // var notes_tap = `${prefix}${chart_name}_notes_tap`;
+                                // var notes_hold = `${prefix}${chart_name}_notes_hold`;
+                                // var notes_slide = `${prefix}${chart_name}_notes_slide`;
+                                // var notes_touch = `${prefix}${chart_name}_notes_touch`;
+                                // var notes_break = `${prefix}${chart_name}_notes_break`;
+
+                                // var designer = chart_name.concat('_designer');
+                                // var chart_link = chart_name.concat('_chart_link');
+
+
+                                function chart_detail_html(prefix, chart_name) {
+                                    let cur_lev = data[`${prefix}${chart_name}`];
+                                    let cur_lev_i = data[`${prefix}${chart_name}_i`]
+                                    let chart_type_badge_html = `<span class="chart-type-badge ${(prefix === 'dx_' ? 'dx' : 'std')}"></span>`
+                                    
+                                    return `
+                                        <span class="main-info-wrap">
+                                            ${(utage ? `<div class="inner-wrap"><span class="lv-num-simple">${data['kanji']}</span><span class="lv-num-precise">${data['lev_utage']}</span></div>` : maimaiLvNumHtmlTemplate(`${chart_type_badge_html}`, `${cur_lev}`, `${cur_lev_i}`) )}
+                                        </span>
+                                        <span class="sub-info-wrap">
+                                            ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ? 
+                                                `<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
+                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
+                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
+                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
+                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
+                                                </span></span>` : "")}
+                                            ${( hasPropertyAndValue(data, `${prefix}${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${prefix}${chart_name}_designer`]}</span></span>` : "")}
+                                        </span>`;
+                                };
+
+                                // Skip Re:MASTER and UTAGE if nonexistent
+                                if (chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) {
+                                    return;
+                                } else if (chart_name === 'lev_utage' && !hasPropertyAndValue(data, 'lev_utage')) {
+                                    return;
+                                } else {
+                                    return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">` +
+                                        `<span class="row-label"><span>${column_param.displayTitle}</span></span>` + 
+                                        `<span class="content-col">
+                                            ${(data[dx_lev] && !data[lev] ? `<span class="primary">${chart_detail_html('dx_',chart_name)}</span>` : '')}
+                                            ${(data[lev] && !data[dx_lev] ? `<span class="primary">${chart_detail_html('',chart_name)}</span>` : '')}
+                                            ${(data[dx_lev] && data[lev] ? `<span class="primary">${chart_detail_html('dx_',chart_name)}</span><span class="secondary">${chart_detail_html('',chart_name)}</span>` : '')}
+                                        </span>` +
+                                        // ( hasPropertyAndValue(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
+                                        '</div>'
+                                }
                             }
                         }).join('');
 
