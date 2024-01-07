@@ -778,7 +778,7 @@ $(document).ready(function() {
                             );
                             var wiki_url_guess = 'https:\/\/gamerch.com\/maimai\/search?q=' + encoded_title;
 
-                            var wiki_url = data['wikiwiki_url'] ? data['wikiwiki_url'] : wiki_url_guess;
+                            var wiki_url = data['wiki_url'] ? data['wiki_url'] : wiki_url_guess;
 
 
                             return '<div class="modal-header" style="--img:url(jacket/' + data.image_url + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
@@ -840,16 +840,16 @@ $(document).ready(function() {
                                     '<span class="content-col">' +
                                         '<span class="main-info-wrap">' + (utage ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['kanji'] + '</span><span class="lv-num-precise">' + data['lev_utage'] + '</span></div>') : col.data) + '</span>' +
                                         '<span class="sub-info-wrap">' +
-                                            ( checkPropertyAndValueExists(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
-                                                ( checkPropertyAndValueExists(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
-                                                ( checkPropertyAndValueExists(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
-                                                ( checkPropertyAndValueExists(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
-                                                ( checkPropertyAndValueExists(data, notes_touch) ? '<span class="notes_touch"><span class="label">air</span><span>' + data[notes_touch] + '</span></span>' : "") +
-                                                ( checkPropertyAndValueExists(data, notes_break) ? '<span class="notes_break"><span class="label">flick</span><span>' + data[notes_break] + '</span></span>' : "") + '</span></span>' : "") +
-                                            ( checkPropertyAndValueExists(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
+                                            ( hasPropertyAndValue(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
+                                                ( hasPropertyAndValue(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
+                                                ( hasPropertyAndValue(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
+                                                ( hasPropertyAndValue(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
+                                                ( hasPropertyAndValue(data, notes_touch) ? '<span class="notes_touch"><span class="label">air</span><span>' + data[notes_touch] + '</span></span>' : "") +
+                                                ( hasPropertyAndValue(data, notes_break) ? '<span class="notes_break"><span class="label">flick</span><span>' + data[notes_break] + '</span></span>' : "") + '</span></span>' : "") +
+                                            ( hasPropertyAndValue(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
                                         '</span>' +
                                     '</span>' +
-                                    ( checkPropertyAndValueExists(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
+                                    ( hasPropertyAndValue(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
                                     '</div>'
                             }
                         }).join('');
