@@ -799,117 +799,117 @@ $(document).ready(function() {
                                 '<\/div>'
                         }
                     } ),
-                    // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+                    
                     renderer: function(api, rowIdx, columns) {
+
+                        function generateRowHtml(col, data, prefix = '') {
+                            var column_param = columns_params[col.columnIndex];
+                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
+                                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                                            <span class="row-label">${col.title}</span>
+                                            <span>${col.data}</span>
+                                        </div>`;
+                            }
+                        }
+
+                        function generateChartLevDetailHtml(data, prefix, chart_name) {
+                            let cur_lev = data[`${prefix}${chart_name}`];
+                            let cur_lev_i = data[`${prefix}${chart_name}_i`];
+
+                            return `
+                                <span class="main-info-wrap">
+                                    ${(utage ? 
+                                        `<div class="inner-wrap"><span class="lv-num-simple">${data['kanji']}</span><span class="lv-num-precise">${data['lev_utage']}</span></div>` : 
+                                        maimaiLvNumHtmlTemplate('', `${cur_lev}`, `${cur_lev_i}`)
+                                    )}
+                                </span>
+                                <span class="sub-info-wrap">
+                                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ?
+                                        `<span class="notes-detail-wrap">
+                                            <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
+                                        </span></span>` : "")}
+                                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${prefix}${chart_name}_designer`]}</span></span>` : "")}
+                                </span>`;
+                        }
+
+                        function generateChartDetailHtml(col, data, chart_type) {
+                            var chart_name = columns_params[col.columnIndex]['name'];
+
+                            if (chart_type === 'std') {
+                                var prefix = ''
+                            } else if (chart_type === 'dx') {
+                                var prefix = 'dx_'
+                            } else if (chart_type === 'utage') {
+                                var prefix = ''
+                            }
+                            if (chart_type === 'utage' && !col.className.includes('detail-hidden') && col.className.includes('utage')) {
+                                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                                                <span class="row-label"><span class="diff-name lv-utage">U･TA･GE</span></span>
+                                                <span class="content-col">${generateChartLevDetailHtml(data, prefix, chart_name)}</span>
+                                            </div>`;
+                            } else if (chart_type !== 'utage' && !col.className.includes('detail-hidden') && col.className.includes('lv ')) {
+                                if ((chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) ||
+                                    (chart_name === 'lev_utage' && !hasPropertyAndValue(data, 'lev_utage'))) {
+                                    return;
+                                } else {
+                                    return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                                                <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
+                                                <span class="content-col">
+                                                    <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                                                    ${generateChartLevDetailHtml(data, prefix, chart_name)}
+                                                </span>
+                                            </div>`;
+                                }
+                            }
+                        }
+
+                        function generateCombinedRows(data, utage, columns, columns_params) {
+                            let lev = `lev_bas`;
+                            let dx_lev = `dx_lev_bas`;
+
+                            var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
+                            var chart_detail = columns.map(col => generateChartDetailHtml(col, data, 'std')).join('');
+                            var chart_detail_dx = columns.map(col => generateChartDetailHtml(col, data, 'dx')).join('');
+                            var chart_detail_utage = columns.map(col => generateChartDetailHtml(col, data, 'utage')).join('');
+
+                            var combinedRows =
+                                `<div class="table-wrapper">
+                                    <div class="details-table-wrap ${(data[dx_lev] && data[lev] ? 'dual' : '')}">
+                                        ${(data[dx_lev] ?
+                                        `<div class="details-table chart-details dx">
+                                            <div class="table-header"><span class="chart-type-badge dx"></span><span class="th-label">DX CHART</span></div>
+                                            ${(chart_detail_dx)}
+                                        </div>` : '')}
+                                        ${(data[lev] ?
+                                        `<div class="details-table chart-details std">
+                                            <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">STD CHART</span></div>
+                                            ${chart_detail}
+                                        </div>` : '')}
+                                        ${(utage ?
+                                        `<div class="details-table chart-details utage">
+                                            <div class="table-header"><span class="th-label">U･TA･GE CHART</span></div>
+                                            ${chart_detail_utage}
+                                        </div>` : '')}
+                                    </div>
+                                    <div class="details-table misc-details">
+                                        <div class="table-header"><span class="th-label">SONG METADATA</span></div>
+                                        ${normalRows}
+                                    </div>
+                                </div>`;
+
+                            return combinedRows ? combinedRows : false;
+                        }
 
                         var row = api.row(rowIdx);
                         var data = row.data();
                         var utage = data['kanji'] ? "utage" : "";
 
-                        var normalRows = $.map(columns, function(col, i) {
-                            var column_param = columns_params[col.columnIndex];
-
-                            // generic
-                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
-                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                '<span class="row-label">' + col.title + '</span> ' + '<span>' + col.data + '</span>' +
-                                '</div>'
-                            }
-                        }).join('');
-
-                        var chartRows = $.map(columns, function(col, i) {
-                            var column_param = columns_params[col.columnIndex];
-
-                            // lv display
-                            if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
-                                var chart_name = column_param['name'];
-                                console.log(chart_name);
-
-                                let lev = `lev_bas`;
-                                let dx_lev = `dx_lev_bas`;
-
-                                // only DX chart
-                                if (data[dx_lev] && !data[lev]) {
-                                    var prefix = 'dx_';
-                                } 
-                                // only Std chart
-                                if (data[lev] && !data[dx_lev]) {
-                                    var prefix = '';
-                                }
-                                // both
-                                if (data[dx_lev] && data[lev]) {
-                                    var prefix = 'dx_';
-                                }
-
-                                
-
-                                // var notes = `${prefix}${chart_name}_notes`;
-                                // var notes_tap = `${prefix}${chart_name}_notes_tap`;
-                                // var notes_hold = `${prefix}${chart_name}_notes_hold`;
-                                // var notes_slide = `${prefix}${chart_name}_notes_slide`;
-                                // var notes_touch = `${prefix}${chart_name}_notes_touch`;
-                                // var notes_break = `${prefix}${chart_name}_notes_break`;
-
-                                // var designer = chart_name.concat('_designer');
-                                // var chart_link = chart_name.concat('_chart_link');
-
-
-                                function chart_detail_html(prefix, chart_name) {
-                                    let cur_lev = data[`${prefix}${chart_name}`];
-                                    let cur_lev_i = data[`${prefix}${chart_name}_i`]
-                                    let chart_type_badge_html = `<span class="chart-type-badge ${(prefix === 'dx_' ? 'dx' : 'std')}"></span>`
-                                    
-                                    return `
-                                        <span class="main-info-wrap">
-                                            ${(utage ? `<div class="inner-wrap"><span class="lv-num-simple">${data['kanji']}</span><span class="lv-num-precise">${data['lev_utage']}</span></div>` : maimaiLvNumHtmlTemplate(`${chart_type_badge_html}`, `${cur_lev}`, `${cur_lev_i}`) )}
-                                        </span>
-                                        <span class="sub-info-wrap">
-                                            ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ? 
-                                                `<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
-                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
-                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
-                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
-                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
-                                                    ${( hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
-                                                </span></span>` : "")}
-                                            ${( hasPropertyAndValue(data, `${prefix}${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${prefix}${chart_name}_designer`]}</span></span>` : "")}
-                                        </span>`;
-                                };
-
-                                // Skip Re:MASTER and UTAGE if nonexistent
-                                if (chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) {
-                                    return;
-                                } else if (chart_name === 'lev_utage' && !hasPropertyAndValue(data, 'lev_utage')) {
-                                    return;
-                                } else {
-                                    return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">` +
-                                        `<span class="row-label"><span>${column_param.displayTitle}</span></span>` + 
-                                        `<span class="content-col">
-                                            ${(data[dx_lev] && !data[lev] ? `<span class="primary">${chart_detail_html('dx_',chart_name)}</span>` : '')}
-                                            ${(data[lev] && !data[dx_lev] ? `<span class="primary">${chart_detail_html('',chart_name)}</span>` : '')}
-                                            ${(data[dx_lev] && data[lev] ? `<span class="primary">${chart_detail_html('dx_',chart_name)}</span><span class="secondary">${chart_detail_html('',chart_name)}</span>` : '')}
-                                        </span>` +
-                                        // ( hasPropertyAndValue(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
-                                        '</div>'
-                                }
-                            }
-                        }).join('');
-
-                        var combinedRows = $('<div class="table-wrapper"/>')
-                                                .append(
-                                                    $('<div class="details-table chart-details '+ utage + '"/>')
-                                                        .append('<div class="table-header"><span class="th-label">CHART</span></div>')
-                                                        .append(chartRows)
-                                                )
-                                                .append(
-                                                    $('<div class="details-table misc-details"/>')
-                                                        .append('<div class="table-header"><span class="th-label">SONG METADATA</span></div>')
-                                                        .append(normalRows)
-                                                );
-
-                        return combinedRows ?
-                            combinedRows :
-                            false;
+                        return generateCombinedRows(data, utage, columns, columns_params);
                     }
                 }
             },
