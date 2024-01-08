@@ -62,18 +62,28 @@ function sortByLeadingZeros(column) {
     }
 }
 
+function lvNumHtmlTemplate(row, lev) {
+    if (row[lev]) {
+        var lev = `${lev}`;
+        var lev_i = `${lev}_i`;
+        var lev_i_html = (row[lev_i] ? `<span class="lv-num-precise">${row[lev_i]}</span>` : '')
+
+        // Find if + exists in lv number
+        var match = row[lev].match(/^([0-9]{1,2})(\+)?$/);
+        var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : row[lev]);
+        var plus_html = ((match && match[2] === '+') ? '<span class="plus">+</span>' : '');
+        
+        return `<span class="lv-num-simple">${lev_num_html}${plus_html}</span>${lev_i_html}`;
+    }
+}
+
 function renderLvNum(lev) {
     return function ( data, type, row ) {
         if ( type === 'display' && row[lev]) {
-            var lev_i = `${lev}_i`;
-            var lev_i_html = (row[lev_i] ? `<span class="lv-num-precise">${row[lev_i]}</span>` : '')
-
-            // Find if + exists in lv number
-            var match = row[lev].match(/^([0-9]{1,2})(\+)?$/);
-            var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : row[lev]);
-            var plus_html = (match[2] === '+' ? '<span class="plus">+</span>' : '');
-            
-            return `<div class="inner-wrap"><span class="lv-num-simple">${lev_num_html}${plus_html}</span>${lev_i_html}</div>`;
+            return `
+                <div class="inner-wrap">
+                    ${lvNumHtmlTemplate(row, lev)}
+                </div>`;
         }
         else {
             return data;

@@ -515,74 +515,102 @@ $(document).ready(function() {
                     } ),
                     // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
                     renderer: function(api, rowIdx, columns) {
+                        function generateRowHtml(col, data) {
+                            var column_param = columns_params[col.columnIndex];
+                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
+                                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                                            <span class="row-label">${col.title}</span>
+                                            <span>${col.data}</span>
+                                        </div>`;
+                            }
+                        }
+
+                        function generateChartLevDetailHtml(data, chart_name) {
+                            let cur_lev = data[`${chart_name}`];
+                            let cur_lev_i = data[`${chart_name}_i`];
+
+                            return `
+                                <span class="main-info-wrap">
+                                    ${(worldsend ? 
+                                        `<div class="inner-wrap"><span class="lv-num-simple">${data['we_kanji']}</span><span class="lv-num-precise">${displayWEStars(data['we_star'])}</span></div>` : 
+                                        lvNumHtmlTemplate(data, chart_name)
+                                    )}
+                                </span>
+                                <span class="sub-info-wrap">
+                                    ${(hasPropertyAndValue(data, `${chart_name}_notes`) ?
+                                        `<span class="notes-detail-wrap">
+                                            <span class="notes"><span class="label">Notes</span><span>${data[`${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                                            ${(hasPropertyAndValue(data, `${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${chart_name}_notes_tap`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${chart_name}_notes_hold`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${chart_name}_notes_slide`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${chart_name}_notes_air`) ? `<span class="notes_air"><span class="label">air</span><span>${data[`${chart_name}_notes_air`]}</span></span>` : "")}
+                                            ${(hasPropertyAndValue(data, `${chart_name}_notes_flick`) ? `<span class="notes_flick"><span class="label">flick</span><span>${data[`${chart_name}_notes_flick`]}</span></span>` : "")}
+                                        </span></span>` : "")}
+                                    ${(hasPropertyAndValue(data, `${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${chart_name}_designer`]}</span></span>` : "")}
+                                </span>
+                                ${(hasPropertyAndValue(data, `${chart_name}_chart_link`) ? `<span class="chart-link">${chartLinkBtn(data[`${chart_name}_chart_link`])}</span>` : "")}`;
+                        }
+
+                        function generateChartDetailHtml(col, data, chart_type) {
+                            if (!col.className.includes('lv ') || col.className.includes('detail-hidden')) {
+                                return;
+                            }
+                            var chart_name = columns_params[col.columnIndex]['name'];
+
+                            if (chart_type === 'worldsend' && chart_name === 'lev_we' && hasPropertyAndValue(data, 'we_kanji')) {
+                                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                                                <span class="row-label"><span class="diff-name lv-we">WORLD'S END</span></span>
+                                                <span class="content-col">${generateChartLevDetailHtml(data, chart_name)}</span>
+                                            </div>`;
+                            } else if (chart_type !== 'worldsend') {
+                                if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
+                                    (chart_name === 'lev_we' && !hasPropertyAndValue(data, 'we_kanji'))) {
+                                    return;
+                                } else {
+                                    return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                                                <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
+                                                <span class="content-col">
+                                                    <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                                                    ${generateChartLevDetailHtml(data, chart_name)}
+                                                </span>
+                                            </div>`;
+                                }
+                            }
+                        }
+
+                        function generateCombinedRows(data, worldsend, columns, columns_params) {
+                            var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
+                            var chart_detail = columns.map(col => generateChartDetailHtml(col, data)).join('');
+                            var chart_detail_worldsend = columns.map(col => generateChartDetailHtml(col, data, 'worldsend')).join('');
+
+                            var combinedRows =
+                                `<div class="table-wrapper">
+                                    <div class="details-table-wrap">
+                                        ${(worldsend ?
+                                        `<div class="details-table chart-details worldsend">
+                                            <div class="table-header"><span class="th-label">CHART</span></div>
+                                            ${chart_detail_worldsend}
+                                        </div>` : 
+                                        `<div class="details-table chart-details std">
+                                            <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">CHART</span></div>
+                                            ${chart_detail}
+                                        </div>`
+                                        )}
+                                    </div>
+                                    <div class="details-table misc-details">
+                                        <div class="table-header"><span class="th-label">SONG METADATA</span></div>
+                                        ${normalRows}
+                                    </div>
+                                </div>`;
+
+                            return combinedRows ? combinedRows : false;
+                        }
 
                         var row = api.row(rowIdx);
                         var data = row.data();
-                        var ultima = data['lev_ult'] !== "" ? "ultima" : "";
-                        var worldsend = data['we_kanji'] !== "" ? "worldsend" : "";
+                        var worldsend = data['we_kanji'] ? "worldsend" : "";
 
-                        var normalRows = $.map(columns, function(col, i) {
-                            var column_param = columns_params[col.columnIndex];
-
-                            // generic
-                            if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
-                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                '<span class="row-label">' + col.title + '</span> ' + '<span>' + col.data + '</span>' +
-                                '</div>'
-                            }
-                        }).join('');
-
-                        var chartRows = $.map(columns, function(col, i) {
-                            var column_param = columns_params[col.columnIndex];
-
-                            // lv display
-                            if (!col.className.includes('detail-hidden') && col.className.includes('lv ')) {
-                                var chart_name = column_param['name'];
-
-                                var notes = chart_name.concat('_notes');
-                                var notes_tap = chart_name.concat('_notes_tap');
-                                var notes_hold = chart_name.concat('_notes_hold');
-                                var notes_slide = chart_name.concat('_notes_slide');
-                                var notes_air = chart_name.concat('_notes_air');
-                                var notes_flick = chart_name.concat('_notes_flick');
-
-                                var designer = chart_name.concat('_designer');
-                                var chart_link = chart_name.concat('_chart_link');                                
-
-                                return '<div class="row ' + col.className + '" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                    '<span class="row-label"><span>' + column_param.displayTitle + '</span></span> ' + 
-                                    '<span class="content-col">' +
-                                        '<span class="main-info-wrap">' + (worldsend ? ('<div class="inner-wrap"><span class="lv-num-simple">' + data['we_kanji'] + '</span><span class="lv-num-precise">' + displayWEStars(data['we_star']) + '</span></div>') : col.data) + '</span>' +
-                                        '<span class="sub-info-wrap">' +
-                                            ( hasPropertyAndValue(data, notes) ? '<span class="notes-detail-wrap"><span class="notes"><span class="label">Notes</span><span>' + data[notes] + '</span></span><span class="notes-sub-detail-wrap">' +
-                                                ( hasPropertyAndValue(data, notes_tap) ? '<span class="notes_tap"><span class="label">tap</span><span>' + data[notes_tap] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_hold) ? '<span class="notes_hold"><span class="label">hold</span><span>' + data[notes_hold] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_slide) ? '<span class="notes_slide"><span class="label">slide</span><span>' + data[notes_slide] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_air) ? '<span class="notes_air"><span class="label">air</span><span>' + data[notes_air] + '</span></span>' : "") +
-                                                ( hasPropertyAndValue(data, notes_flick) ? '<span class="notes_flick"><span class="label">flick</span><span>' + data[notes_flick] + '</span></span>' : "") + '</span></span>' : "") +
-                                            ( hasPropertyAndValue(data, designer) ? '<span class="designer"><span class="label">Designer</span><span>' + data[designer] + '</span></span>' : "") +
-                                        '</span>' +
-                                    '</span>' +
-                                    ( hasPropertyAndValue(data, chart_link) ? '<span class="chart-link">' + chartLinkBtn(data[chart_link]) + '</span>' : "") +
-                                    '</div>'
-                            }
-                        }).join('');
-
-                        var combinedRows = $('<div class="table-wrapper"/>')
-                                                .append(
-                                                    $('<div class="details-table chart-details '+ worldsend + ultima + '"/>')
-                                                        .append('<div class="table-header"><span class="th-label">CHART</span></div>')
-                                                        .append(chartRows)
-                                                )
-                                                .append(
-                                                    $('<div class="details-table misc-details"/>')
-                                                        .append('<div class="table-header"><span class="th-label">SONG METADATA</span></div>')
-                                                        .append(normalRows)
-                                                );
-
-                        return combinedRows ?
-                            combinedRows :
-                            false;
+                        return generateCombinedRows(data, worldsend, columns, columns_params);
                     }
                 }
             },

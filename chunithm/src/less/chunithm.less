@@ -209,22 +209,7 @@ table.dataTable {
 /* Details */
 div.dtr-modal-content .details-table {
 	// chart details
-	&.chart-details:not(.worldsend) {
-		.lv-we {
-			display: none;
-		}
-	}
-
-	&.chart-details:not(.ultima) {
-		.lv-ult {
-			display: none;
-		}
-	}
-
 	&.chart-details.worldsend {
-		.lv-bsc, .lv-adv, .lv-exp, .lv-mas, .lv-ult, .we-star {
-			display: none;
-		}
 		.lv-we {
 			.lv-num-simple {
 				font-size: 2em;
@@ -262,90 +247,12 @@ div.dtr-modal-content .details-table {
 
 	.main-info-wrap {
 		width: 140px;
-		display: flex;
 	}
 
 	.sub-info-wrap {
-		flex: 1 0 auto;
-		display: flex;
-		flex-flow: row wrap;
 
-		&:not(:empty) {
-			margin-top: 5px;
-		}
-
-		& > span:not(:empty) {
-			display: flex;
-			align-items: baseline;
-			margin-top: 5px;
-			margin-right: 15px;
-
-			.label {
-				font-size: 0.75rem;
-				text-transform: uppercase;
-				font-weight: bold;
-				color: rgb(var(--ui-color-foreground-050));
-			}
-
-			span {
-				font-size: 0.9rem;
-				color: rgb(var(--ui-color-foreground-080));
-			}
-
+		& > span {
 			&.notes-detail-wrap {
-				display: grid;
-				grid-auto-flow: row;
-				border: 1px solid rgb(var(--ui-color-background-090));
-				border-radius: 3px;
-
-				@media screen and (min-width: 640px) {
-					grid-auto-flow: column;
-				}
-
-				span {
-					display: grid;
-				}
-				
-				.notes {
-					grid-template-columns: min-content;
-					min-width: 80px;
-					padding: 5px;
-					grid-auto-flow: column;
-					align-items: center;
-					grid-column-gap: 5px;
-
-					@media screen and (min-width: 640px) {
-						grid-auto-flow: row;
-					}
-				}
-
-				.notes-sub-detail-wrap {
-					display: grid;
-					grid-auto-flow: column;
-					grid-template-columns: 1fr;
-					grid-auto-columns: 1fr;
-					border-top: 1px solid rgb(var(--ui-color-background-090));
-
-					@media screen and (min-width: 640px) {
-						border-top: none;
-						border-left: 1px solid rgb(var(--ui-color-background-090));
-					}
-				}
-
-				span.notes_tap,
-				span.notes_slide,
-				span.notes_hold,
-				span.notes_air,
-				span.notes_flick {
-					padding: 5px;
-					min-width: 30px;
-					font-size: 0.8rem;
-
-					@media screen and (min-width: 420px) {
-						min-width: 40px;
-					}
-				}
-
 				span.notes_tap .label {
 					color: #ff5f6e;	
 				}
