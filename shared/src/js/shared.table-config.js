@@ -430,7 +430,7 @@ function toggleDateRowGroup(table) {
     table.api().draw();
 }
 
-function renderModalHeader(game_name, search_term='譜面確認') {
+function renderModalHeader(game_name, image_col, wiki_url_col, wiki_url_base, youtube_search_term='譜面確認') {
     return function(row) {
         var data = row.data();
         var encoded_title = encodeURIComponent(
@@ -442,23 +442,24 @@ function renderModalHeader(game_name, search_term='譜面確認') {
             .replaceAll('#','＃')
             .replaceAll('"','”')
         );
-        var wiki_url_guess = 'https:\/\/gamerch.com\/maimai\/search?q=' + encoded_title;
+        var image_url = data[image_col];
+        var wiki_url_guess = `${wiki_url_base}${encoded_title}`;
 
-        var wiki_url = data['wiki_url'] ? data['wiki_url'] : wiki_url_guess;
+        var wiki_url = data[wiki_url_col] ? data[wiki_url_col] : wiki_url_guess;
 
         return `
-            <div class="modal-header" style="--img:url(jacket/${data.image_url});">
+            <div class="modal-header" style="--img:url(jacket/${image_url});">
                 <span class="header-img"></span>
                 <span class="header-img-overlay"></span>
                 <div class="img-wrap">
-                    <img src="jacket/${data.image_url}" />
+                    <img src="jacket/${image_url}" />
                 </div>
                 <div class="content-wrap">
                     <span class="title">${data.title}</span>
                     <span class="artist">${data.artist}</span>
                     <div class="quicklinks">
                         <a class="wiki" href="${wiki_url}" target="_blank" rel="noopener noreferrer nofollow">Wiki</a>
-                        <a class="youtube" href="https://youtube.com/results?search_query=${game_name}+${search_term}+${encoded_title}" target="_blank" rel="noopener noreferrer nofollow"></a>
+                        <a class="youtube" href="https://youtube.com/results?search_query=${game_name}+${youtube_search_term}+${encoded_title}" target="_blank" rel="noopener noreferrer nofollow"></a>
                     </div>
                 </div>
             </div>`;
