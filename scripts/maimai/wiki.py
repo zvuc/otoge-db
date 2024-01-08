@@ -340,15 +340,16 @@ def _parse_wikiwiki(song, wiki, url, args):
             
             if any(charts_table_head) and 'Lv' in charts_table_head[0]:
                 # DX chart table
-                if 'Touch' in charts_table_head[6:7]:
+                if 'Touch' in charts_table_head[5:6]:
                     charts_table_dx = table
+                    charts_table_head_dx = charts_table_head
                 # Standard chart table
                 else:
                     charts_table = table
     
     if charts_table is None and charts_table_dx is None:
         print_message("Warning - No chart table found", bcolors.FAIL, args)
-    
+
     # Update chart details
     if charts_table:
         for chart_type in CHART_LIST:
@@ -372,7 +373,7 @@ def _parse_wikiwiki(song, wiki, url, args):
     if charts_table_dx:
         for chart_type in CHART_LIST_DX:
             if chart_type in song:
-                _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head, chart_designers_dict, args)
+                _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict, args)
         
         if 'kanji' in song:
             # Find with color
@@ -442,7 +443,6 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
         # Convert MAS to MST
         elif chart == 'lev_mas':
-            # ipdb.set_trace()
             try:
                 _update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_mst_designer"], diff_count=diff_count)
             except KeyError:
