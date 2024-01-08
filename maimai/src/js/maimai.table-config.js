@@ -143,7 +143,7 @@ var columns_params = [
         name: "chart_type",
         data: maimaiGetChartTypes(),
         defaultContent: "",
-        className: "chart-type",
+        className: "chart-type detail-hidden",
         render: maimaiRenderChartTypeBadges(),
         // customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         // reverseSortOrder: true,
@@ -569,12 +569,15 @@ function maimaiLvNumHtmlTemplate(chart_type, cur_lev, cur_lev_i) {
     var lev_i_html = (cur_lev_i ? `<span class="lv-num-precise">${cur_lev_i}</span>` : '')
 
     // Find if + exists in lv number
-    var match = cur_lev.match(/^([0-9]{1,2})(\+)?$/);
-    var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : cur_lev);
+    var match = cur_lev.match(/^([0-9]{1,2})(\+?)(\?)?$/);
+    var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : `<span class="num">${cur_lev}</span>`);
     var plus_html = ( match && match[2] === '+' ? '<span class="plus">+</span>' : '');
+    var question_html = ( match && match[3] === '?' ? '<span class="question">?</span>' : '');
 
-    return `<span class="chart-type-label">${chart_type}</span>
-            <span class="lv-num-simple">${lev_num_html}${plus_html}</span>
+    var chart_type_html = (chart_type ? `<span class="chart-type-label">${chart_type}</span>` : '');
+
+    return `${chart_type_html}
+            <span class="lv-num-simple">${lev_num_html}${plus_html}${question_html}</span>
             ${lev_i_html}`
 }
 
@@ -585,7 +588,7 @@ function renderUtage(kanji, lev_utage) {
                 <div class="inner-wrap">
                     <div class="primary">
                         <span class="lv-num-simple">${row[kanji]}</span>
-                        <span class="lv-num-precise">${row[lev_utage]}</span>
+                        <span class="lv-num-precise">${lvNumHtmlTemplate(row, lev_utage)}</span>
                     </div>
                 </div>`;
             return row[kanji] ? html_output : '';
@@ -682,45 +685,8 @@ function maimaiRenderVersionName() {
 $(document).ready(function() {
     $.getJSON("data/music-ex.json", (data) => {
         var table = $('#table').DataTable( {
-            // "ajax": {
-            //     url: "data/music-ex.json",
-            //     dataSrc: ""
-            // },
             data: flattenMusicData(data, flat_view, maimai_chart_list, maimaiProcessChartData),
             "buttons": [
-                // {
-                //     extend: 'colvisRestore',
-                //     text: '全カラムON',
-                // },
-                // {
-                //     extend: 'colvisGroup',
-                //     text: '全レベル ON',
-                //     show: [ 14, 15, 16, 17, 18 ]
-                // },
-                // {
-                //     extend: 'colvisGroup',
-                //     text: '譜面レベルのみ',
-                //     hide: [ 6, 8, 9, 10, 12, 13, 24 ],
-                //     show: [ 14, 15, 16, 17, 18 ],
-                // },
-                // {
-                //     extend: 'colvisGroup',
-                //     text: 'EXPERT以上のみ',
-                //     hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 24 ],
-                //     show: [ 16, 17, 18 ]
-                // },
-                // {
-                //     extend: 'colvisGroup',
-                //     className: 'asdf',
-                //     text: 'ジャンル・チャプタ OFF',
-                //     hide: [ 6, 9 ]
-                // },
-                // {
-                //     extend: 'colvisGroup',
-                //     className: 'asdf',
-                //     text: '属性・Lv ON',
-                //     show: [ 10, 13 ]
-                // },
                 {
                     extend: 'colvis',
                     className: 'config-btn',
@@ -734,30 +700,7 @@ $(document).ready(function() {
             "columns": columns_params,
             "deferRender": true,
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-            "language": {
-                "emptyTable":     "テーブルにデータがありません",
-                "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
-                "infoEmpty":      replaceUnitText(" 0 unit"),
-                "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
-                "infoPostFix":    "",
-                "infoThousands":  ",",
-                "lengthMenu":     "1ページ表示 _MENU_",
-                "loadingRecords": "読み込み中...",
-                "processing":     "処理中...",
-                "search":         "検索",
-                "searchPlaceholder": "曲名・アーティスト",
-                "zeroRecords":    "一致するレコードがありません",
-                "paginate": {
-                    "sFirst":    "先頭",
-                    "sLast":     "最終",
-                    "sNext":     "NEXT",
-                    "sPrevious": "PREV"
-                },
-                "aria": {
-                    "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
-                    "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
-                }
-            },
+            "language": localize_strings,
             "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
             "order": default_order, 
             "responsive": {
@@ -765,39 +708,8 @@ $(document).ready(function() {
                     type: 'column',
                     target: 'tr',
                     display: $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            var data = row.data();
-                            var encoded_title = encodeURIComponent(
-                                data.title
-                                .replaceAll('&', '＆')
-                                .replaceAll(':', '：')
-                                .replaceAll('[','［')
-                                .replaceAll(']','］')
-                                .replaceAll('#','＃')
-                                .replaceAll('"','”')
-                            );
-                            var wiki_url_guess = 'https:\/\/gamerch.com\/maimai\/search?q=' + encoded_title;
-
-                            var wiki_url = data['wiki_url'] ? data['wiki_url'] : wiki_url_guess;
-
-
-                            return '<div class="modal-header" style="--img:url(jacket/' + data.image_url + ');"><span class="header-img"></span><span class="header-img-overlay"></span><div class="img-wrap">' + 
-                                '<img src=\"jacket/' + data.image_url + '\"\/>' +
-                                '<\/div><div class="content-wrap">' +
-                                '<span class="title">' + data.title + '<\/span>' +
-                                '<span class="artist">' + data.artist + '<\/span>' +
-                                '<div class="quicklinks">' +
-                                '<a class="wiki" href="' + wiki_url + '" target="_blank" rel="noopener noreferer nofollow">Wiki<\/a>' +
-                                '<a class="youtube" href="https:\/\/youtube.com\/results?search_query=maimai+譜面確認+' + encoded_title + '" target="_blank" rel="noopener noreferer nofollow"><\/a>' +
-                                '<\/div>' +
-                                '<\/div><\/div>'
-                        },
-                        footer: function ( row ) {
-                            var data = row.data();
-                            return '<div class="modal-footer">' +
-                                '<div class="report"><a class="report-btn" href="https:\/\/twitter.com\/intent\/tweet?text=@zvuc_%0A%E3%80%90%23maimai_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A' + encodeURIComponent(data.title) +'%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" target="_blank" rel="noopener noreferer nofollow">💬 足りない情報・間違いを報告する （Twitter）<\/a><\/div>' +
-                                '<\/div>'
-                        }
+                        header: renderModalHeader('maimai', 'image_url', 'wiki_url', 'https:\/\/gamerch.com\/maimai\/search?q=', '譜面確認用 外部出力'),
+                        footer: renderModalFooter('maimai'),
                     } ),
                     
                     renderer: function(api, rowIdx, columns) {
@@ -819,7 +731,7 @@ $(document).ready(function() {
                             return `
                                 <span class="main-info-wrap">
                                     ${(utage ? 
-                                        `<div class="inner-wrap"><span class="lv-num-simple">${data['kanji']}</span><span class="lv-num-precise">${data['lev_utage']}</span></div>` : 
+                                        `<span class="lv-num-simple">${data['kanji']}</span><span class="lv-num-precise">${maimaiLvNumHtmlTemplate('',`${cur_lev}`,'')}</span>` : 
                                         maimaiLvNumHtmlTemplate('', `${cur_lev}`, `${cur_lev_i}`)
                                     )}
                                 </span>
@@ -838,6 +750,10 @@ $(document).ready(function() {
                         }
 
                         function generateChartDetailHtml(col, data, chart_type) {
+                            if (!col.className.includes('lv ')) {
+                                return;
+                            }
+
                             var chart_name = columns_params[col.columnIndex]['name'];
 
                             if (chart_type === 'std') {

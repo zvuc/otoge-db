@@ -319,6 +319,7 @@ div.dtr-modal-content {
 		@media screen and (min-width: 640px) {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
+			gap: 10px;
 		}
 
 		.details-table {
@@ -339,12 +340,17 @@ div.dtr-modal-content {
 				flex-wrap: wrap;
 
 				.diff-name {
+					display: block;
 					font-weight: bold;
 					margin-right: 7px;
 				}
 
 				.main-info-wrap {
 					width: auto;
+				}
+
+				.sub-info-wrap {
+					width: 100%;
 				}
 			}
 		}
@@ -383,105 +389,5 @@ div.dtr-modal-content {
 			}
 		}
 
-		.sub-info-wrap {
-			width: 100%;
-			flex: 1 0 auto;
-			display: flex;
-			flex-flow: row wrap;
-
-			&:not(:empty) {
-				margin-top: 5px;
-			}
-
-			& > span:not(:empty) {
-				display: flex;
-				align-items: baseline;
-				margin-top: 5px;
-				margin-right: 15px;
-
-				.label {
-					font-size: 0.75rem;
-					text-transform: uppercase;
-					font-weight: bold;
-					color: rgb(var(--ui-color-foreground-050));
-				}
-
-				span {
-					font-size: 0.9rem;
-					color: rgb(var(--ui-color-foreground-080));
-				}
-
-				&.notes-detail-wrap {
-					display: grid;
-					grid-auto-flow: row;
-					border: 1px solid rgb(var(--ui-color-background-090));
-					border-radius: 3px;
-
-					@media screen and (min-width: 780px) {
-						grid-auto-flow: column;
-					}
-
-					span {
-						display: grid;
-					}
-					
-					.notes {
-						grid-template-columns: min-content;
-						min-width: 80px;
-						padding: 5px;
-						grid-auto-flow: column;
-						align-items: center;
-						grid-column-gap: 5px;
-
-						@media screen and (min-width: 780px) {
-							grid-auto-flow: row;
-						}
-					}
-
-					.notes-sub-detail-wrap {
-						display: grid;
-						grid-auto-flow: column;
-						grid-template-columns: 1fr;
-						grid-auto-columns: 1fr;
-						border-top: 1px solid rgb(var(--ui-color-background-090));
-
-						@media screen and (min-width: 780px) {
-							border-top: none;
-							border-left: 1px solid rgb(var(--ui-color-background-090));
-						}
-					}
-
-					span.notes_tap,
-					span.notes_slide,
-					span.notes_hold,
-					span.notes_touch,
-					span.notes_break {
-						padding: 5px;
-						min-width: 30px;
-						font-size: 0.8rem;
-
-						@media screen and (min-width: 420px) {
-							min-width: 40px;
-						}
-					}
-
-					span.notes_tap .label {
-						color: #ff5f6e;	
-					}
-					span.notes_slide .label {
-						color: #ec942e;	
-					}
-					span.notes_hold .label {
-						color: #46b2fb;	
-					}
-					span.notes_touch .label {
-						color: #4bc84b;	
-					}
-					span.notes_break .label {
-						color: #00d7c8;				
-					}
-				}
-			}
-		}
 	}
 }
