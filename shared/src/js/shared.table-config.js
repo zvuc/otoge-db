@@ -1,4 +1,28 @@
 var searchParams = new URLSearchParams(window.location.search);
+var localize_strings = {
+    "emptyTable":     "テーブルにデータがありません",
+    "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
+    "infoEmpty":      replaceUnitText(" 0 unit"),
+    "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
+    "infoPostFix":    "",
+    "infoThousands":  ",",
+    "lengthMenu":     "1ページ表示 _MENU_",
+    "loadingRecords": "読み込み中...",
+    "processing":     "処理中...",
+    "search":         "検索",
+    "searchPlaceholder": "曲名・アーティスト",
+    "zeroRecords":    "一致するレコードがありません",
+    "paginate": {
+        "sFirst":    "先頭",
+        "sLast":     "最終",
+        "sNext":     "NEXT",
+        "sPrevious": "PREV"
+    },
+    "aria": {
+        "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
+        "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
+    }
+}
 
 function hasPropertyAndValue(json, property) {
     return json.hasOwnProperty(property) && json[property] !== "";
@@ -404,4 +428,53 @@ function toggleDateRowGroup(table) {
         return;
     }
     table.api().draw();
+}
+
+function renderModalHeader(game_name, search_term='譜面確認') {
+    return function(row) {
+        var data = row.data();
+        var encoded_title = encodeURIComponent(
+            data.title
+            .replaceAll('&', '＆')
+            .replaceAll(':', '：')
+            .replaceAll('[','［')
+            .replaceAll(']','］')
+            .replaceAll('#','＃')
+            .replaceAll('"','”')
+        );
+        var wiki_url_guess = 'https:\/\/gamerch.com\/maimai\/search?q=' + encoded_title;
+
+        var wiki_url = data['wiki_url'] ? data['wiki_url'] : wiki_url_guess;
+
+        return `
+            <div class="modal-header" style="--img:url(jacket/${data.image_url});">
+                <span class="header-img"></span>
+                <span class="header-img-overlay"></span>
+                <div class="img-wrap">
+                    <img src="jacket/${data.image_url}" />
+                </div>
+                <div class="content-wrap">
+                    <span class="title">${data.title}</span>
+                    <span class="artist">${data.artist}</span>
+                    <div class="quicklinks">
+                        <a class="wiki" href="${wiki_url}" target="_blank" rel="noopener noreferrer nofollow">Wiki</a>
+                        <a class="youtube" href="https://youtube.com/results?search_query=${game_name}+${search_term}+${encoded_title}" target="_blank" rel="noopener noreferrer nofollow"></a>
+                    </div>
+                </div>
+            </div>`;
+    }
+}
+
+function renderModalFooter(game_name) {
+    return function(row) {
+        var data = row.data();
+        return `
+            <div class="modal-footer">
+                <div class="report">
+                    <a class="report-btn" 
+                        href="https://twitter.com/intent/tweet?text=@zvuc_%0A%E3%80%90%23${game_name}_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A${encodeURIComponent(data.title)}%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" 
+                        target="_blank" rel="noopener noreferrer nofollow">💬 足りない情報・間違いを報告する （Twitter）</a>
+                </div>
+            </div>`;
+    }
 }

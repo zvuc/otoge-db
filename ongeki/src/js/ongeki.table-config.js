@@ -526,30 +526,7 @@ $(document).ready(function() {
             "columns": columns_params,
             "deferRender": true,
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-            "language": {
-                "emptyTable":     "テーブルにデータがありません",
-                "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
-                "infoEmpty":      replaceUnitText(" 0 unit"),
-                "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
-                "infoPostFix":    "",
-                "infoThousands":  ",",
-                "lengthMenu":     "1ページ表示 _MENU_",
-                "loadingRecords": "読み込み中...",
-                "processing":     "処理中...",
-                "search":         "検索",
-                "searchPlaceholder": "曲名・アーティスト・キャラ",
-                "zeroRecords":    "一致するレコードがありません",
-                "paginate": {
-                    "sFirst":    "先頭",
-                    "sLast":     "最終",
-                    "sNext":     "NEXT",
-                    "sPrevious": "PREV"
-                },
-                "aria": {
-                    "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
-                    "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
-                }
-            },
+            "language": localize_strings,
             "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
             "order": default_order, 
             "responsive": {
