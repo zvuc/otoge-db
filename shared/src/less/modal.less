@@ -415,6 +415,7 @@ div.dtr-modal-content .details-table {
 	}
 
 	.row {
+		position: relative;
 		display: grid;
 		grid-column-gap: 5px;
 		min-height: 28px;
@@ -423,8 +424,12 @@ div.dtr-modal-content .details-table {
 		border-bottom: 1px solid rgba(var(--ui-color-background-080),0.5);
 
 		&.lv {
+			grid-auto-flow: column;
+
 			@media screen and (max-width: 480px) {
-				grid-template-columns: 1fr auto;
+				grid-auto-flow: row;
+				grid-template-columns: 1fr;
+				grid-auto-columns: auto;
 			}
 		}
 
@@ -458,12 +463,12 @@ div.dtr-modal-content .details-table {
 		}
 
 		.content-col {
-			grid-row: 2;
+			// grid-row: 2;
 
-			@media screen and (min-width: 480px) {
-				grid-column: 2;
-				grid-row: 1;
-			}
+			// @media screen and (min-width: 480px) {
+			// 	grid-column: 2;
+			// 	grid-row: 1;
+			// }
 		}
 
 		& > span {
@@ -606,7 +611,7 @@ div.dtr-modal-content .details-table {
 
 	.content-col {
 		flex: 1 1 auto;
-		grid-column: 1;
+		// grid-column: 1;
 	}
 
 	.main-info-wrap {
@@ -667,6 +672,9 @@ div.dtr-modal-content .details-table {
 	}
 
 	.chart-link {
+		position: absolute;
+		top: 10px;
+		right: 10px;
 		grid-column: 2;
 		grid-row: 1 / span 2;
 		display: flex;
@@ -674,7 +682,10 @@ div.dtr-modal-content .details-table {
 		align-items: center;
 		justify-content: center;
 
-		@media screen and (min-width: 480px) {
+		@media screen and (min-width: 660px) {
+			position: relative;
+			top: auto;
+			right: auto;
 			grid-column: 3;
 			grid-row: 1;
 		}
@@ -706,6 +717,10 @@ div.dtr-modal-content .details-table {
 					order: 2;
 					margin: 0 0 0 10px;
 				}
+			}
+
+			span {
+				white-space: nowrap;
 			}
 		}
 

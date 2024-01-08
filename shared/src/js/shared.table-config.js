@@ -49,7 +49,7 @@ function renderLvNum(lev) {
             var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : row[lev]);
             var plus_html = (match[2] === '+' ? '<span class="plus">+</span>' : '');
             
-            return `<div class="inner-wrap"><span class="lv-num-simple">${lev_num_html}${plus_html}${lev_i_html}</div>`;
+            return `<div class="inner-wrap"><span class="lv-num-simple">${lev_num_html}${plus_html}</span>${lev_i_html}</div>`;
         }
         else {
             return data;
