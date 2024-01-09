@@ -292,13 +292,17 @@ table.dataTable {
 				visibility: hidden;
 				min-width: 0;
 			}
+
+			.artist-display {
+				margin-top: 0;
+			}
 		}
 	}
 
 	// Add title bar padding for mobile
 	tbody tr:not(.dtrg-group) td {
 		@media screen and (max-width: 480px) {
-			padding-top: 35px;
+			padding-top: 38px;
 			padding-bottom: 5px;
 		}
 	}
@@ -308,7 +312,7 @@ table.dataTable {
 		tr {
 			--row-bg: rgb(var(--ui-color-table-row-bg));
 
-			.odd {
+			&.odd {
 				--row-bg: rgb(var(--ui-color-table-row-bg-odd));
 			}
 	
