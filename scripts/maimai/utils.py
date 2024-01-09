@@ -86,7 +86,7 @@ def _add_ex_data_template(song):
 
     for level in levels:
         if f'lev_{level}' in song:
-            song[f'lev_{level}_i'] = ""
+            # song[f'lev_{level}_i'] = ""
             song[f'lev_{level}_notes'] = ""
             song[f'lev_{level}_notes_tap'] = ""
             song[f'lev_{level}_notes_hold'] = ""
@@ -95,8 +95,9 @@ def _add_ex_data_template(song):
             song[f'lev_{level}_notes_break'] = ""
 
             if level not in ['bas', 'adv']:
+                song[f'lev_{level}_i'] = ""
                 song[f'lev_{level}_designer'] = ""
-                song[f'lev_{level}_chart_link'] = ""
+                # song[f'lev_{level}_chart_link'] = ""
 
         if f'dx_lev_{level}' in song:
             song[f'dx_lev_{level}_i'] = ""
@@ -109,7 +110,7 @@ def _add_ex_data_template(song):
 
             if level not in ['bas', 'adv']:
                 song[f'dx_lev_{level}_designer'] = ""
-                song[f'dx_lev_{level}_chart_link'] = ""
+                # song[f'dx_lev_{level}_chart_link'] = ""
 
     if 'kanji' in song:
         song['lev_utage_notes'] = ""
@@ -119,7 +120,7 @@ def _add_ex_data_template(song):
         song['lev_utage_notes_touch'] = ""
         song['lev_utage_notes_break'] = ""
 
-    song['version_name'] = ""
+    # song['version_name'] = ""
     song['wiki_url'] = ""
     song['date'] = ""
 
