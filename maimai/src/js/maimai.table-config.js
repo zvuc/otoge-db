@@ -235,6 +235,7 @@ var columns_params = [
         data: "lev_utage",
         defaultContent: "",
         className: "lv lv-utage",
+        render: maimaiRenderLvNum('lev_utage'),
         customDropdownSortSource: sortByLeadingZeros('lev_utage'),
         reverseSortOrder: true,
         width: "3rem",
