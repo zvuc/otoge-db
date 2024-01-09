@@ -423,22 +423,12 @@ div.dtr-modal-content .details-table {
 		margin-left: 15px;
 		border-bottom: 1px solid rgba(var(--ui-color-background-080),0.5);
 
-		&.lv {
-			grid-auto-flow: column;
-
-			@media screen and (max-width: 480px) {
-				grid-auto-flow: row;
-				grid-template-columns: 1fr;
-				grid-auto-columns: auto;
-			}
-		}
-
 		@media screen and (min-width: 480px) {
 			grid-template-columns: 110px 1fr auto;
 			min-height: 33px;
 		}
 
-		@media screen and (min-width: 660px) {
+		@media screen and (min-width: 824px) {
 			grid-template-columns: 150px 1fr min-content;
 		}
 
@@ -448,7 +438,6 @@ div.dtr-modal-content .details-table {
 		}
 
 		.row-label {
-			display: block;
 			flex: 0 0 auto;
 			width: 100%;
 			font-size: 0.8em;
@@ -472,21 +461,85 @@ div.dtr-modal-content .details-table {
 	}
 
 	.row.lv {
+		grid-auto-flow: row;
+		grid-template-columns: 1fr;
+
+		@media screen and (max-width: 480px) {
+			grid-auto-columns: auto;
+		}
+
+		@media screen and (min-width: 660px) {
+			grid-template-columns: 150px 1fr;
+		}
+
+		@media screen and (min-width: 824px) {
+			grid-template-columns: 150px 1fr;
+		}
+
+		.row-label {
+			display: none;
+
+			@media screen and (min-width: 660px) {
+				display: block;
+			}
+		}
+
 		.content-col {
 			display: grid;
+			grid-template-rows: auto auto auto;
 			grid-auto-flow: row;
 			grid-auto-columns: min-content;
 			grid-template-columns: auto;
 			gap: 5px;
 
-			@media screen and (min-width: 980px) {
-				grid-auto-flow: row;
-				grid-template-columns: 120px auto min-content;
+			@media screen and (min-width: 824px) {
+				grid-template-columns: 110px auto;
+			}
+
+			&.has-chart-link {
+				grid-template-columns: auto;
+
+				@media screen and (min-width: 824px) {
+					grid-template-columns: 110px auto;
+					grid-template-rows: auto;
+				}
+			}
+
+			& > span {
+				grid-column: 1;
 			}
 
 			.diff-name {
-				display: none;
+				display: block;
+				font-weight: bold;
+				margin-right: 7px;
+
+				@media screen and (min-width: 660px) {
+					display: none;
+				}
 			}
+
+			.main-info-wrap {
+				width: auto;
+
+				@media screen and (min-width: 824px) {
+					flex-flow: column;
+				}
+			}
+
+			.sub-info-wrap {
+				width: 100%;
+
+				@media screen and (min-width: 824px) {
+					grid-column: 2;
+				}
+			}
+
+			.chart-link {
+				grid-column: -1;
+				grid-row: ~'1 / -1';
+			}
+		
 		}
 	}
 
@@ -510,6 +563,10 @@ div.dtr-modal-content .details-table {
 
 		@media screen and (min-width: 480px) {
 			font-size: 1.3em;
+		}
+
+		@media screen and (min-width: 824px) {
+			font-size: 1.5em;
 		}
 
 		&:empty:before {
@@ -565,6 +622,7 @@ div.dtr-modal-content .details-table {
 		flex: 1 0 auto;
 		display: flex;
 		flex-flow: row wrap;
+		align-content: center;
 		gap: 5px;
 
 		& > span:not(:empty) {
@@ -588,9 +646,14 @@ div.dtr-modal-content .details-table {
 				grid-auto-flow: row;
 				border: 1px solid rgb(var(--ui-color-background-090));
 				border-radius: 3px;
+				width: 100%;
+				max-width: 240px;
 
-				@media screen and (min-width: 640px) {
+				@media screen and (min-width: 480px) {
+					max-width: 340px;
 					grid-auto-flow: column;
+					grid-template-columns: min-content;
+					grid-auto-columns: auto;
 				}
 
 				span {
@@ -605,7 +668,7 @@ div.dtr-modal-content .details-table {
 					align-items: center;
 					grid-column-gap: 5px;
 
-					@media screen and (min-width: 640px) {
+					@media screen and (min-width: 480px) {
 						grid-auto-flow: row;
 					}
 
@@ -621,17 +684,17 @@ div.dtr-modal-content .details-table {
 					grid-auto-columns: 1fr;
 					border-top: 1px solid rgb(var(--ui-color-background-090));
 
-					@media screen and (min-width: 640px) {
+					@media screen and (min-width: 480px) {
 						border-top: none;
 						border-left: 1px solid rgb(var(--ui-color-background-090));
 					}
 
 					& > span {
-						min-width: 30px;
+						// min-width: 30px;
 						font-size: 0.8rem;
 
 						@media screen and (min-width: 420px) {
-							min-width: 45px;
+							// min-width: 45px;
 						}
 					}
 				}
@@ -655,12 +718,11 @@ div.dtr-modal-content .details-table {
 	}
 
 	.chart-link {
-		--chartlink-img-height: 30px;
-		position: absolute;
-		top: 5px;
-		right: 10px;
-		grid-column: -1;
-		grid-row: 1 / span 2;
+		--chartlink-img-height: 35px;
+		// position: absolute;
+		// top: 5px;
+		// right: 10px;
+		
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -668,9 +730,9 @@ div.dtr-modal-content .details-table {
 
 		@media screen and (min-width: 660px) {
 			--chartlink-img-height: 40px;
-			position: relative;
-			top: auto;
-			right: auto;
+			// position: relative;
+			// top: auto;
+			// right: auto;
 		}
 
 		.btn.chartlink {
@@ -679,14 +741,17 @@ div.dtr-modal-content .details-table {
 			height: auto;
 			flex-flow: column;
 			letter-spacing: 0.02em;
-			font-size: 0.9em;
+			font-size: 0.7em;
 
-			@media screen and (min-width: 660px),
-					screen and (max-width: 375px) {
+			@media screen and (min-width: 660px){
 				max-width: none;
 				flex-flow: row;
 				align-items: center;
 				white-space: nowrap;
+			}
+
+			@media screen and (min-width: 660px) {
+				font-size: 0.9em;
 			}
 
 			.img {
@@ -697,8 +762,7 @@ div.dtr-modal-content .details-table {
 				border-radius: 2px;
 				margin-bottom: 3px;
 
-				@media screen and (min-width: 660px),
-					screen and (max-width: 375px) {
+				@media screen and (min-width: 660px) {
 					order: 2;
 					margin: 0 0 0 10px;
 				}
@@ -712,8 +776,12 @@ div.dtr-modal-content .details-table {
 		.chart-provider {
 			display: block;
 			margin-top: 3px;
-			font-size: 0.75em;
+			font-size: 0.65em;
 			color: rgb(var(--ui-color-foreground-060));
+
+			@media screen and (min-width: 660px){
+				font-size: 0.75em;
+			}
 		}
 	}
 }

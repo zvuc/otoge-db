@@ -560,7 +560,10 @@ $(document).ready(function() {
                             if (chart_type === 'worldsend' && chart_name === 'lev_we' && hasPropertyAndValue(data, 'we_kanji')) {
                                 return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
                                                 <span class="row-label"><span class="diff-name lv-we">WORLD'S END</span></span>
-                                                <span class="content-col">${generateChartLevDetailHtml(data, chart_name)}</span>
+                                                <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
+                                                    <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                                                    ${generateChartLevDetailHtml(data, chart_name)}
+                                                </span>
                                             </div>`;
                             } else if (chart_type !== 'worldsend') {
                                 if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
@@ -569,7 +572,7 @@ $(document).ready(function() {
                                 } else {
                                     return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
                                                 <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
-                                                <span class="content-col">
+                                                <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
                                                     <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
                                                     ${generateChartLevDetailHtml(data, chart_name)}
                                                 </span>
