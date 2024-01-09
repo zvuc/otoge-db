@@ -726,7 +726,7 @@ $(document).ready(function() {
 
                         function generateChartLevDetailHtml(data, prefix, chart_name) {
                             let cur_lev = data[`${prefix}${chart_name}`];
-                            let cur_lev_i = data[`${prefix}${chart_name}_i`];
+                            let cur_lev_i = data[`${prefix}${chart_name}_i`] ?? '';
 
                             return `
                                 <span class="main-info-wrap">

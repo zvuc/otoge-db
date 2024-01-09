@@ -164,9 +164,15 @@ table.dataTable {
 			flex-flow: column;
 			justify-content: center;
 			margin: -5px calc(-1*var(--negative-margin));
-			padding: 5px var(--negative-margin);
+			padding: 0px var(--negative-margin);
 			border-radius: 5px;
-			min-height: 26px;
+			min-height: 34px;
+
+			@media screen and (min-width: 480px) {
+				padding-top: 5px;
+				padding-bottom: 5px;
+				min-height: 40px;
+			}
 		}
 		.empty {
 			opacity: 0;
