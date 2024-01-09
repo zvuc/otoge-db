@@ -219,6 +219,13 @@ def _parse_wikiwiki(song, wiki, url, args):
         print_message("Parse failed! Skipping song", bcolors.FAIL, args)
         return song
 
+    # ipdb.set_trace()
+
+    has_std_chart = 'lev_bas' in song
+    has_dx_chart = 'dx_lev_bas' in song
+    has_utage_chart = 'lev_utage' in song
+    has_dual_chart = has_std_chart and has_dx_chart
+    has_single_chart = (has_std_chart and not has_dx_chart) or (has_dx_chart and not has_std_chart)
 
     # find the overview table
     overview_table = None
@@ -281,16 +288,48 @@ def _parse_wikiwiki(song, wiki, url, args):
         # fail
         print_message("Warning - overview table not found", bcolors.FAIL, args)
 
+    # find the charts table
+    charts_table = None
+    charts_table_dx = None
+    charts_data = []
+    for table in tables:
+        th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
+
+        if len(th_elements) in (2, 3) and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[-1].get_text(strip=True) == '総数':
+            charts_table_head = [th.text for th in table.select("thead th:not([colspan]), thead td:not([colspan])")]
+            
+            if any(charts_table_head) and 'Lv' in charts_table_head[0]:
+                # DX chart table
+                if 'Touch' in charts_table_head[5:7]:
+                    charts_table_dx = table
+                    charts_table_head_dx = charts_table_head
+                # Standard chart table
+                else:
+                    charts_table = table
+    
+    if has_std_chart and charts_table is None:
+        print_message("Warning - No Std chart table found", bcolors.FAIL, args)
+    if has_dx_chart and charts_table_dx is None:
+        print_message("Warning - No DX chart table found", bcolors.FAIL, args)
+    if (has_dual_chart or has_utage_chart) and charts_table is None and charts_table_dx is None:
+        print_message("Warning - No chart table found", bcolors.FAIL, args)
+
 
     # Find constant and chart designer
     chart_designers_text = None
     chart_designers_spans = soup.find_all('span', style='font-size:11px')
     chart_designers_dict = {}
+
+    # count total numbers of designer dicts needed
+    if has_std_chart and has_dx_chart:
+        req_dict_count = 2
+    elif has_single_chart or has_utage_chart:
+        req_dict_count = 1
+
     
     for chart_designers_span in chart_designers_spans:
-        
         chart_designers_span_text = chart_designers_span.get_text(strip=True)
-        
+
         # Count number of text in brackets
         brackets_count = len(re.compile(r'【(.*?)】').findall(chart_designers_span_text))
 
@@ -304,9 +343,20 @@ def _parse_wikiwiki(song, wiki, url, args):
             if '譜面作者【' in chart_designers_span_text:
                 match = re.search(r'【(BAS|ADV|EXP|MST|Re:M)(…|[.]{3})(.*?)】',chart_designers_span_text)
 
-                if match is not None and re.match(r'\d{2}\.\d', match.group(3)) is None:
+                if match is not None:
                     chart_designers_text = chart_designers_span_text
-                    chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer')
+                    # chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer')
+
+                    # Check if the DX chart table is directly in front
+                    if charts_table_dx is not None and charts_table_dx == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
+                        chart_designers_dict_dx = _construct_designers_dict(song, chart_designers_text, 'designer', 'dx_')
+                        req_dict_count-=1
+
+                    # Check if the Std chart table is directly in front
+                    if charts_table is not None and charts_table == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
+                        chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer', '')
+                        req_dict_count-=1
+
                 elif match is None and 'kanji' in song:
                     # Song is WE only
                     chart_designers_text = chart_designers_span_text
@@ -314,6 +364,11 @@ def _parse_wikiwiki(song, wiki, url, args):
                     if match:
                         match = match.group(1)
                         chart_designers_dict = {f"lev_{song['kanji']}_designer": match}
+                        req_dict_count-=1
+
+            if req_dict_count == 0:
+                break
+                
 
             # Constants
             # if '譜面定数【' in chart_designers_span_text:
@@ -328,27 +383,7 @@ def _parse_wikiwiki(song, wiki, url, args):
             print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, args)
             
 
-    # find the charts table
-    charts_table = None
-    charts_table_dx = None
-    charts_data = []
-    for table in tables:
-        th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
 
-        if len(th_elements) in (2, 3) and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[-1].get_text(strip=True) == '総数':
-            charts_table_head = [th.text for th in table.select("thead th:not([colspan]), thead td:not([colspan])")]
-            
-            if any(charts_table_head) and 'Lv' in charts_table_head[0]:
-                # DX chart table
-                if 'Touch' in charts_table_head[5:6]:
-                    charts_table_dx = table
-                    charts_table_head_dx = charts_table_head
-                # Standard chart table
-                else:
-                    charts_table = table
-    
-    if charts_table is None and charts_table_dx is None:
-        print_message("Warning - No chart table found", bcolors.FAIL, args)
 
     # Update chart details
     if charts_table:
@@ -373,7 +408,7 @@ def _parse_wikiwiki(song, wiki, url, args):
     if charts_table_dx:
         for chart_type in CHART_LIST_DX:
             if chart_type in song:
-                _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict, args)
+                _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args)
         
         if 'kanji' in song:
             # Find with color
@@ -387,7 +422,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                     br_tag.decompose()
                 utage_data = [cell.text for cell in utage_row_parent]
                 utage_data_dict = dict(zip(charts_table_head, utage_data))
-                _update_song_chart_details(song, utage_data_dict, chart_designers_dict, 'utage', args)
+                _update_song_chart_details(song, utage_data_dict, chart_designers_dict_dx, 'utage', args)
 
 
     if song['wiki_url'] != url:
@@ -412,6 +447,7 @@ def _process_chart(song, chart_type, chart_color, charts_table, charts_table_hea
 
 
 def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, args):
+    # ipdb.set_trace()
     diff_count = [0]
     if '定数' in chart_dict:
         _update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
@@ -441,12 +477,6 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
                     _update_song_key(song, f"{chart}_designer", chart_designers_dict[designer_key], diff_count=diff_count)
                 except:
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
-        # Convert MAS to MST
-        elif chart == 'lev_mas':
-            try:
-                _update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_mst_designer"], diff_count=diff_count)
-            except KeyError:
-                print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
         # Convert REMAS to RE:M
         elif chart == 'lev_remas':
             try:
@@ -457,7 +487,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
             try:
                 _update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=diff_count)
             except:
-                if chart not in ('lev_bas', 'lev_adv'):
+                if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
     
     if not chart == 'lev_utage' and chart_designers_dict:
@@ -491,7 +521,7 @@ def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
         
         return
 
-def _construct_designers_dict(song, text, key_name):
+def _construct_designers_dict(song, text, key_name, prefix=''):
     # Use regular expression to find content within brackets
     match = re.search(r'【(.*?)】', text)
 
@@ -519,7 +549,9 @@ def _construct_designers_dict(song, text, key_name):
         # transform key names into lev_{chart} format
         formatted_dict = {}
         for key, value in dictionary.items():
-            formatted_key = f"lev_{key.lower()}_{key_name}"
+            if key.lower() == 'mst':
+                key = 'mas'
+            formatted_key = f"{prefix}lev_{key.lower()}_{key_name}"
             formatted_dict[formatted_key] = value
         return formatted_dict
     else:
