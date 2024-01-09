@@ -550,61 +550,85 @@ table.dataTable {
 		letter-spacing: -0.02em;
 	}
 
-	.lv-bsc, .lev_bas {
-		background: rgba(101,211,70,0.1);
+	--negative-margin: 7px;
 
-		&.sorting_1 {
-			background: rgba(101,211,70,0.2) !important;
+	@media screen and (min-width: 480px) {
+		--negative-margin: 10px;
+	}
+
+	.lv .inner-wrap {
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		line-height: 1.1;
+		margin: -5px calc(-1*var(--negative-margin));
+		padding: 0px var(--negative-margin);
+		border-radius: 5px;
+		min-height: 34px;
+
+		@media screen and (min-width: 480px) {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			min-height: 44px;
 		}
+
+		@media screen and (min-width: 1440px) {
+			min-height: 48px;
+		}
+
+		.chart-type-label {
+			display: none;
+			font-size: 0.6em;
+		}
+	}
+
+	.lv {
+		&.lv-name .inner-wrap {
+			gap: 0;
+			margin: -5px calc(-1*var(--negative-margin));
+			padding: 5px var(--negative-margin);
+			border-radius: 5px;
+		}
+	}
+
+	.lv-bsc .inner-wrap, 
+	.lev_bas .inner-wrap,
+	.dx_lev_bas .inner-wrap {
+		background: rgba(var(--lv-color-bsc),0.2);
 
 		.diff-name {
 			color: rgb(var(--lv-color-bsc));
 		}
 	}
-	.lv-adv, .lev_adv {
-		background: rgba(251,230,77,0.1);
-
-		&.sorting_1 {
-			background: rgba(251,230,77,0.2) !important;
-		}
+	.lv-adv .inner-wrap, 
+	.lev_adv .inner-wrap,
+	.dx_lev_adv .inner-wrap {
+		background: rgba(var(--lv-color-adv),0.2);
 
 		.diff-name {
 			color: rgb(var(--lv-color-adv));
 		}
 	}
-	.lv-exp, .lev_exc {
-		background: rgba(234,56,134,0.1);
-
-		&.sorting_1 {
-			background: rgba(234,56,134,0.2) !important;
-		}
+	.lv-exp .inner-wrap, 
+	.lev_exp .inner-wrap,
+	.lev_exc .inner-wrap,
+	.dx_lev_exp .inner-wrap {
+		background: rgba(var(--lv-color-exp),0.2);
 
 		.diff-name {
 			color: rgb(var(--lv-color-exp));
 		}
 	}
-	.lv-mas, .lev_mas {
-		background: rgba(165,71,213,0.1);
-
-		&.sorting_1 {
-			background: rgba(165,71,213,0.2) !important;
-		}
+	.lv-mas .inner-wrap, 
+	.lev_mas .inner-wrap,
+	.dx_lev_mas .inner-wrap {
+		background: rgba(var(--lv-color-mas),0.2);
 
 		.diff-name {
 			color: rgb(var(--lv-color-mas));
 		}
 	}
-	.lv-lnt, .lev_lnt {
-		background: rgba(255,255,255,0.1);
-
-		&.sorting_1 {
-			background: rgba(255,255,255,0.2) !important;
-		}
-
-		.diff-name {
-			color: rgb(var(--lv-color-lnt));
-		}
-	}
+	
 
 	.lv-num-wrap {
 		display: flex;

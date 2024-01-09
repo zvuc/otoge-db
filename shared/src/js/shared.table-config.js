@@ -62,18 +62,21 @@ function sortByLeadingZeros(column) {
     }
 }
 
-function lvNumHtmlTemplate(row, lev) {
+function lvNumHtmlTemplate(row, lev, print_lev_i=true) {
     if (row[lev]) {
         var lev = `${lev}`;
         var lev_i = `${lev}_i`;
-        var lev_i_html = (row[lev_i] ? `<span class="lv-num-precise">${row[lev_i]}</span>` : '')
+
+        var lev_i_html = (print_lev_i && row[lev_i] ? `<span class="lv-num-precise">${row[lev_i]}</span>` : '')
 
         // Find if + exists in lv number
-        var match = row[lev].match(/^([0-9]{1,2})(\+)?$/);
-        var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : row[lev]);
-        var plus_html = ((match && match[2] === '+') ? '<span class="plus">+</span>' : '');
-        
-        return `<span class="lv-num-simple">${lev_num_html}${plus_html}</span>${lev_i_html}`;
+        var match = row[lev].match(/^([0-9]{1,2})(\+?)(\?)?$/);
+        var lev_num_html = (match ? `<span class="num">${match[1]}</span>` : `<span class="num">${row[lev]}</span>`);
+        var plus_html = ( match && match[2] === '+' ? '<span class="plus">+</span>' : '');
+        var question_html = ( match && match[3] === '?' ? '<span class="question">?</span>' : '');
+
+        return `<span class="lv-num-simple">${lev_num_html}${plus_html}${question_html}</span>
+                ${lev_i_html}`
     }
 }
 
@@ -96,19 +99,15 @@ function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, preci
         if ( type === 'display' ) {
             var chart_diff_display = convertDifficultyNames(row[chart_diff],false,chart_link);
             var precise_lv = (row[chart_diff] === 'we_kanji') ? `☆${row[precise_lv_display]}` : row[precise_lv_display];
-            var match = row[simple_lv].match(/^([0-9]{1,2})(\+)?$/);
-            if (match) {
-                var lvnum = match[1];
-                var plus = (match[2] === '+');
 
-                if (plus) {
-                    return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span><span class="plus">+</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
-                } else {
-                    return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${lvnum}</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
-                }
-            } else {
-                return `<div class="inner-wrap"><span class="diff-name">${chart_diff_display}</span><span class="lv-num-wrap"><span class="lv-num-simple"><span class="num">${row[simple_lv]}</span></span><span class="lv-num-precise">${precise_lv}</span></span></div>`;
-            }
+            return `
+                <div class="inner-wrap">
+                    <span class="diff-name">${chart_diff_display}</span>
+                    <span class="lv-num-wrap">
+                        ${lvNumHtmlTemplate(row, simple_lv, false)}
+                        <span class="lv-num-precise">${precise_lv}</span>
+                    </span>
+                </div>`;
         }
         else {
             return data;

@@ -116,63 +116,17 @@ header {
 
 // Table
 table.dataTable {
-	.lv-bsc, .lev_bas {
-		background: rgba(var(--lv-color-bsc),0.1);
-
-		&.sorting_1 {
-			background: rgba(var(--lv-color-bsc),0.2) !important;
-		}
-
-		.diff-name {
-			color: rgb(var(--lv-color-bsc));
-		}
-	}
-	.lv-adv, .lev_adv {
-		background: rgba(var(--lv-color-adv),0.1);
-
-		&.sorting_1 {
-			background: rgba(var(--lv-color-adv),0.2) !important;
-		}
-
-		.diff-name {
-			color: rgb(var(--lv-color-adv));
-		}
-	}
-	.lv-exp, .lev_exp {
-		background: rgba(var(--lv-color-exp),0.1);
-
-		&.sorting_1 {
-			background: rgba(var(--lv-color-exp),0.2) !important;
-		}
-
-		.diff-name {
-			color: rgb(var(--lv-color-exp));
-		}
-	}
-	.lv-mas, .lev_mas {
-		background: rgba(var(--lv-color-mas),0.1);
-
-		&.sorting_1 {
-			background: rgba(var(--lv-color-mas),0.2) !important;
-		}
-
-		.diff-name {
-			color: rgb(var(--lv-color-mas));
-		}
-	}
-	.lv-ult, .lev_ult {
+	.lv-ult .inner-wrap > div, 
+	.lev_ult .inner-wrap {
 		// background: rgba(var(--lv-color-ult),0.1);
 		background: rgba(255,255,255,0.05);
-
-		&.sorting_1 {
-			background: rgba(255,255,255,0.2) !important;
-		}
 
 		.diff-name {
 			color: rgb(var(--lv-color-ult));
 		}
 	}
-	td.lv-we:not(:empty), .we_kanji:not(:empty) {
+	.lv-we .inner-wrap > div:not(:empty),
+	.we_kanji .inner-wrap:not(:empty) {
 		background-image: 
 			repeating-linear-gradient(135deg,
 				rgba(var(--lv-color-mas),0.1) 0px,
@@ -187,6 +141,10 @@ table.dataTable {
 			
 		.inner-wrap {
 			text-align: center;
+		}
+
+		.diff-name {
+			white-space: nowrap;
 		}
 	}
 
@@ -203,6 +161,12 @@ table.dataTable {
 		background-clip: text;
 		display: inline-block;
 		line-height: 1;
+	}
+
+	thead th, tbody td {
+		&.lv-name {
+			min-width: 100px;
+		}
 	}
 }// end table.dataTable
 
