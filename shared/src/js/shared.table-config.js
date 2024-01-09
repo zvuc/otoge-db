@@ -206,6 +206,8 @@ function formatDate(inputDate, dateFormat) {
         var year = '20' + inputDate.slice(0, 2);
         var month = inputDate.slice(2, 4);
         var day = inputDate.slice(4, 6);
+    } else {
+        return '';
     }
     var ISOdate = `${year}-${month}-${day}`
 

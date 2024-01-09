@@ -379,7 +379,7 @@ var columns_params = [
         name: "date",
         defaultContent: "",
         data: function( row, type, set, meta ) {
-            return formatDate(row.release)
+            return formatDate(row.date)
         },
         className: "date",
         // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
@@ -831,7 +831,7 @@ $(document).ready(function() {
                 }
             },
             "rowGroup": {
-                dataSrc: 'release',
+                dataSrc: 'date',
                 startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
                     return '<div>' + formatDate(group, 'JP') +' 追加<\/div>';
                     // enable rows count again when I find a way to show all rows in other pages

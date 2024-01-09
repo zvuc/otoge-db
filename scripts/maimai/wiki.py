@@ -451,6 +451,8 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
     diff_count = [0]
     if '定数' in chart_dict:
         _update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
+    else:
+        print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
 
     _update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
     _update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)
@@ -490,15 +492,15 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
                 if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
     
-    if not chart == 'lev_utage' and chart_designers_dict:
-        try:
-            if re.search(r'(\d{2}\.\d)',chart_designers_dict[f"{chart}_i"]):
-                _update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=diff_count)
-            else:
-                raise Exception(f"Constant for {chart.upper()} is invalid")
-        except:
-            if chart not in ('bas', 'adv'):
-                print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
+    # if not chart == 'lev_utage' and chart_designers_dict:
+    #     try:
+    #         if re.search(r'(\d{2}\.\d)',chart_designers_dict[f"{chart}_i"]):
+    #             _update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=diff_count)
+    #         else:
+    #             raise Exception(f"Constant for {chart.upper()} is invalid")
+    #     except:
+    #         if chart not in ('bas', 'adv'):
+    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
 
     if diff_count[0] > 0:
         print_message(f"Added chart details for {chart.upper()}", bcolors.OKGREEN, args)
@@ -530,10 +532,7 @@ def _construct_designers_dict(song, text, key_name, prefix=''):
         
         # Split key-value pairs using '、' as the delimiter
         pairs = {}
-        if 'kanji' in song:
-            pattern = re.compile(fr'[、【](?=EXP|MST|Re:M|{re.escape(song["kanji"])})')
-        else:
-            pattern = re.compile(r'[、【](?=EXP|MST|Re:M)')
+        pattern = re.compile(fr'[、【](?=EXP|MST|Re:M|宴|光|覚|蛸|蔵|狂|星|宴|協)')
         pairs = re.split(pattern, content_within_brackets)
         pairs = [item for item in pairs if item]
 
@@ -551,6 +550,8 @@ def _construct_designers_dict(song, text, key_name, prefix=''):
         for key, value in dictionary.items():
             if key.lower() == 'mst':
                 key = 'mas'
+            if key.lower() == 're:m':
+                key = 'remas'
             formatted_key = f"{prefix}lev_{key.lower()}_{key_name}"
             formatted_dict[formatted_key] = value
         return formatted_dict
