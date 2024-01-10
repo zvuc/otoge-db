@@ -265,16 +265,25 @@ def _parse_wikiwiki(song, wiki, url, args):
         # Write date and guess version
         if 'kanji' not in song:
             # Find release date
+            try:
+                date_row = overview_dict["配信日"]
+            except KeyError:
+                try:
+                    date_row = overview_dict["本配信日"]
+                except KeyError:
+                    print_message("Warning - date not found", bcolors.WARNING, args, errors_log)
+
             formatted_date = ''
-            if '初期' in overview_dict["配信日"]:
-                formatted_date = '20121107' # maimai launch date
-            else:
-                release_dates = overview_dict["配信日"]
-                earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates)
-                if earliest_release_date:
-                    earliest_release_date = earliest_release_date.group()
-                    date_num_parts = earliest_release_date.split('/')
-                    formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
+            if date_row:
+                if '初期' in date_row:
+                    formatted_date = '20121107' # maimai launch date
+                else:
+                    release_dates = date_row
+                    earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates)
+                    if earliest_release_date:
+                        earliest_release_date = earliest_release_date.group()
+                        date_num_parts = earliest_release_date.split('/')
+                        formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
 
             if not formatted_date == '':
                 diff_count = [0]
