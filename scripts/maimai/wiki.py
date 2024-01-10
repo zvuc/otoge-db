@@ -38,21 +38,21 @@ VERSION_DATES = {
     "LUMINOUS": "20231214"
 }
 
-CHART_LIST = {
+CHART_LIST = [
    "lev_bas",
    "lev_adv",
    "lev_exp",
    "lev_mas",
    "lev_remas"
-}
+]
 
-CHART_LIST_DX = {
+CHART_LIST_DX = [
    "dx_lev_bas",
    "dx_lev_adv",
    "dx_lev_exp",
    "dx_lev_mas",
    "dx_lev_remas"
-}
+]
 
 CHART_COLORS = {
    "lev_bas": "98fb98",
@@ -163,7 +163,7 @@ def _update_song_wiki_data(song, args):
         if args.noskip:
             url = song['wiki_url']
             try:
-                wiki = requests.get(url, timeout=3, headers=request_headers, allow_redirects=True)
+                wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
             except requests.RequestException as e:
                 print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
 
@@ -178,7 +178,7 @@ def _update_song_wiki_data(song, args):
         search_title = title.replace('-',' ')
         guess_url = f'https://www.google.com/search?hl=en&q={search_title}%20maimai%E3%80%80%E6%94%BB%E7%95%A5wiki&btnI=I'
         try:
-            search_results = requests.get(guess_url, timeout=1)
+            search_results = requests.get(guess_url, timeout=5)
         except requests.RequestException as e:
             print_message(f"Error while loading Google Search results: {e}", bcolors.FAIL, args, errors_log)
             return song
@@ -205,7 +205,7 @@ def _update_song_wiki_data(song, args):
                 time.sleep(random.randint(1,2))
 
                 try:
-                    wiki = requests.get(first_matched_url, timeout=3, headers=request_headers, allow_redirects=True)
+                    wiki = requests.get(first_matched_url, timeout=5, headers=request_headers, allow_redirects=True)
                 except requests.RequestException as e:
                     print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
                     return song
