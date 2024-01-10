@@ -108,8 +108,6 @@ def update_songs_extra_data(args):
     for song in target_song_list:
         _update_song_wiki_data(song, args)
 
-        # time.sleep(random.randint(1,2))
-
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
@@ -148,7 +146,7 @@ def _filter_songs_by_id(song_list, song_id):
 
 
 def _update_song_wiki_data(song, args):
-    print_message(f"{song['sort']} {song['title']}", bcolors.ENDC, args)
+    print_message(f"{song['sort']} {song['title']}", bcolors.ENDC, args, errors_log)
 
     title = (
         song['title']
@@ -162,20 +160,27 @@ def _update_song_wiki_data(song, args):
     
     # use existing URL if already present
     if 'wiki_url' in song and song['wiki_url']:
-        url = song['wiki_url']
-        wiki = requests.get(url, timeout=3, headers=request_headers, allow_redirects=True)
+        # url = song['wiki_url']
+        # try:
+        #     wiki = requests.get(url, timeout=3, headers=request_headers, allow_redirects=True)
+        # except requests.RequestException as e:
+        #     print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
 
-        return _parse_wikiwiki(song, wiki, url, args)
+        # return _parse_wikiwiki(song, wiki, url, args)
 
         # Skip if URL present
-        # print_message("(Skipping)", bcolors.ENDC, args)
+        print_message("(Skipping)", bcolors.ENDC, args)
 
     # If not, guess URL from title
     else:
         # guess_url = wiki_base_url + title
         search_title = title.replace('-',' ')
         guess_url = f'https://www.google.com/search?hl=en&q={search_title}%20maimai%E3%80%80%E6%94%BB%E7%95%A5wiki&btnI=I'
-        search_results = requests.get(guess_url, timeout=1)
+        try:
+            search_results = requests.get(guess_url, timeout=1)
+        except requests.RequestException as e:
+            print_message(f"Error while loading Google Search results: {e}", bcolors.FAIL, args, errors_log)
+            return song
 
         if not search_results.ok:
             # give up
@@ -196,7 +201,14 @@ def _update_song_wiki_data(song, args):
             first_matched_url = filtered_urls[0] if filtered_urls else None
 
             if first_matched_url:
-                wiki = requests.get(first_matched_url, timeout=3, headers=request_headers, allow_redirects=True)
+                time.sleep(random.randint(1,2))
+
+                try:
+                    wiki = requests.get(first_matched_url, timeout=3, headers=request_headers, allow_redirects=True)
+                except requests.RequestException as e:
+                    print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
+                    return song
+
                 print_message("Found URL by guess!", bcolors.OKBLUE, args)
                 return _parse_wikiwiki(song, wiki, first_matched_url, args)
             else:
@@ -205,6 +217,7 @@ def _update_song_wiki_data(song, args):
 
 
 def _parse_wikiwiki(song, wiki, url, args):
+    critical_errors = 0
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("body .main table")
     old_song = copy.copy(song)
@@ -286,6 +299,7 @@ def _parse_wikiwiki(song, wiki, url, args):
     else:
         # fail
         print_message("Warning - overview table not found", bcolors.FAIL, args, errors_log)
+        critical_errors+=1
 
     # find the charts table
     charts_table = None
@@ -308,10 +322,13 @@ def _parse_wikiwiki(song, wiki, url, args):
     
     if has_std_chart and charts_table is None:
         print_message("Warning - No Std chart table found", bcolors.FAIL, args, errors_log)
+        critical_errors+=1
     if has_dx_chart and charts_table_dx is None:
         print_message("Warning - No DX chart table found", bcolors.FAIL, args, errors_log)
+        critical_errors+=1
     if (has_dual_chart or has_utage_chart) and charts_table is None and charts_table_dx is None:
         print_message("Warning - No chart table found", bcolors.FAIL, args, errors_log)
+        critical_errors+=1
 
 
     # Find constant and chart designer
@@ -426,7 +443,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 _update_song_chart_details(song, utage_data_dict, chart_designers_dict_dx, 'utage', args)
 
 
-    if song['wiki_url'] != url:
+    if song['wiki_url'] != url and critical_errors == 0:
         song['wiki_url'] = url
         print_message("Saved wiki URL", bcolors.OKBLUE, args)
 
