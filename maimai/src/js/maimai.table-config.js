@@ -217,19 +217,6 @@ var columns_params = [
         filterable: flat_view ? false : true,
     },
     { 
-        //  UTAGE (Kanji)
-        displayTitle: "UTAGE (Kanji)",
-        name: "lev_utage",
-        data: "kanji",
-        defaultContent: "",
-        className: "lv lv-utage kanji",
-        render: renderUtage('kanji', 'lev_utage'),
-        // customDropdownSortSource: ( function(data) { data ? sortByLeadingZeros('lev_utage') : null }),
-        reverseSortOrder: true,
-        width: "3rem",
-        filterable: flat_view ? false : true,
-    },
-    { 
         //  UTAGE
         displayTitle: "UTAGE",
         name: "lev_utage",
@@ -238,6 +225,19 @@ var columns_params = [
         className: "lv lv-utage detail-hidden",
         render: maimaiRenderLvNum('lev_utage'),
         customDropdownSortSource: sortByLeadingZeros('lev_utage'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+    },
+    { 
+        //  UTAGE (Kanji)
+        displayTitle: "UTAGE(漢字)",
+        name: "lev_utage",
+        data: "kanji",
+        defaultContent: "",
+        className: "lv lv-utage kanji",
+        render: renderUtage('kanji', 'lev_utage'),
+        // customDropdownSortSource: ( function(data) { data ? sortByLeadingZeros('lev_utage') : null }),
         reverseSortOrder: true,
         width: "3rem",
         filterable: flat_view ? false : true,
