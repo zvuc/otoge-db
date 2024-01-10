@@ -5,7 +5,7 @@ from functools import reduce
 from .terminal import bcolors
 from datetime import datetime
 
-def print_message(message, color_name, args):
+def print_message(message, color_name, args, log=''):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     reset_color = bcolors.ENDC
 
@@ -16,6 +16,11 @@ def print_message(message, color_name, args):
     if args.nocolors:
         color_name = ''
         reset_color = ''
+
+    if log:
+        if bcolors.FAIL in color_name or bcolors.WARNING in color_name:
+            with open(log, 'a', encoding='utf-8') as f:
+                f.write(timestamp + ' ' + message + '\n')
 
     print(timestamp + ' ' + color_name + message + reset_color)
 
