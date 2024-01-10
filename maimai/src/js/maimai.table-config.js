@@ -408,7 +408,7 @@ var columns_params = [
 var default_order = 
     flat_view ?
         // 難易度 , Lv , Date
-        [[getColumnIndexByName('chart_lev'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']] :
+        [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']] :
         // date , ID
         [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
 
