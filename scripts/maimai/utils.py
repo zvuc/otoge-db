@@ -113,12 +113,28 @@ def _add_ex_data_template(song):
                 # song[f'dx_lev_{level}_chart_link'] = ""
 
     if 'kanji' in song:
-        song['lev_utage_notes'] = ""
-        song['lev_utage_notes_tap'] = ""
-        song['lev_utage_notes_hold'] = ""
-        song['lev_utage_notes_slide'] = ""
-        song['lev_utage_notes_touch'] = ""
-        song['lev_utage_notes_break'] = ""
+        if 'buddy' in song:
+            song['lev_utage_left_notes'] = ""
+            song['lev_utage_left_notes_tap'] = ""
+            song['lev_utage_left_notes_hold'] = ""
+            song['lev_utage_left_notes_slide'] = ""
+            song['lev_utage_left_notes_touch'] = ""
+            song['lev_utage_left_notes_break'] = ""
+            song['lev_utage_right_notes'] = ""
+            song['lev_utage_right_notes_tap'] = ""
+            song['lev_utage_right_notes_hold'] = ""
+            song['lev_utage_right_notes_slide'] = ""
+            song['lev_utage_right_notes_touch'] = ""
+            song['lev_utage_right_notes_break'] = ""
+        else:
+            song['lev_utage_notes'] = ""
+            song['lev_utage_notes_tap'] = ""
+            song['lev_utage_notes_hold'] = ""
+            song['lev_utage_notes_slide'] = ""
+            song['lev_utage_notes_touch'] = ""
+            song['lev_utage_notes_break'] = ""
+
+        song['lev_utage_notes_designer'] = ""
 
     # song['version_name'] = ""
     song['wiki_url'] = ""

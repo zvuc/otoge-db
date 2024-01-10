@@ -109,6 +109,18 @@
 	}
 }
 
+.buddy-badge {
+	display: inline-flex;
+	padding: 2px 6px;
+	font-size: 0.7em;
+	line-height: 1;
+	background-color: #4a0909;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	border-radius: 50px;
+}
+
 .chart-type-badge {
 	position: relative;
 	display: inline-block;
@@ -329,26 +341,35 @@ div.dtr-modal-content {
 			display: none;
 		}
 
-		&.chart-details.worldsend {
-			.lv-we {
-				.lv-num-simple {
-					font-size: 2em;
-					font-weight: 500;
-					color: transparent;
-					background-image: 
-						radial-gradient(circle at bottom right, rgba(var(--lv-color-mas)) 0%, rgba(var(--lv-color-mas),0) 60%),
-						radial-gradient(circle at top right, rgba(var(--lv-color-exp)) 0%, rgba(var(--lv-color-exp),0) 50%),
-						radial-gradient(circle at top left, rgba(var(--lv-color-bsc)) 0%, rgba(var(--lv-color-bsc),0) 70%),
-						linear-gradient(to right, rgba(var(--lv-color-adv)),rgba(var(--lv-color-adv)));
-					background-clip: text;
-					display: inline-block;
-					line-height: 1;
-				}
-			}
-			.lv-num-precise {
-				&:before,
-				&:after {
-					content: "";
+		.sub-info-wrap {
+			& > span:not(:empty) {
+				&.notes-detail-wrap.buddy {
+					grid-template-columns: min-content auto;
+
+					@media screen and (min-width: 480px) {
+						grid-template-columns: min-content min-content;
+					}
+
+					.side {
+						display: flex;
+						align-items: center;
+						height: 100%;
+						min-width: 0;
+						background-color: rgba(var(--ui-color-background-080),0.4);
+						grid-row: span 2;
+
+						@media screen and (min-width: 480px) {
+							grid-row: auto;
+						}
+					}
+
+					.notes, .notes-sub-detail-wrap {
+						grid-column: 2;
+
+						@media screen and (min-width: 480px) {
+							grid-column: auto;
+						}
+					}
 				}
 			}
 		}

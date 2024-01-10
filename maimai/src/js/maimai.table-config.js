@@ -57,6 +57,7 @@ var columns_params = [
             // If display or filter data is requested, return title
             if ( type === 'display' ) {
                 return '<div class="inner-wrap">' +
+                        ( row.buddy == "○" ? '<span class="buddy-badge">バディ<\/span>' : "") +
                         '<span class="title">' + data + '<\/span>' +
                         '<span class="dash hidden"> - <\/span>' +
                         '<span class="artist-display hidden">' + row.artist + '<\/span>'+
@@ -234,7 +235,7 @@ var columns_params = [
         name: "lev_utage",
         data: "lev_utage",
         defaultContent: "",
-        className: "lv lv-utage",
+        className: "lv lv-utage detail-hidden",
         render: maimaiRenderLvNum('lev_utage'),
         customDropdownSortSource: sortByLeadingZeros('lev_utage'),
         reverseSortOrder: true,
@@ -725,9 +726,54 @@ $(document).ready(function() {
                             }
                         }
 
+                        function generateChartNoteDetailHtml(data, prefix, chart_name) {
+                            if (utage && data['buddy']) {
+                                return `
+                                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes`) ?
+                                    `<span class="notes-detail-wrap buddy">
+                                        <span class="side">L</span>
+                                        <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_left_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_left_notes_tap`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_left_notes_hold`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_left_notes_slide`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_left_notes_touch`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_left_notes_break`]}</span></span>` : "")}
+                                    </span></span>` 
+                                    : "")}
+                                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes`) ?
+                                    `<span class="notes-detail-wrap buddy">
+                                        <span class="side">R</span>
+                                        <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_right_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_right_notes_tap`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_right_notes_hold`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_right_notes_slide`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_right_notes_touch`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_right_notes_break`]}</span></span>` : "")}
+                                    </span></span>` 
+                                    : "")}
+                                `;
+                            }
+                            else {
+                                return `
+                                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ?
+                                    `<span class="notes-detail-wrap">
+                                        <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
+                                        ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
+                                    </span></span>` 
+                                    : "")}
+                                `;
+                            }
+                        }
+
                         function generateChartLevDetailHtml(data, prefix, chart_name) {
                             let cur_lev = data[`${prefix}${chart_name}`];
                             let cur_lev_i = data[`${prefix}${chart_name}_i`] ?? '';
+
+                            var notes_detail
 
                             return `
                                 <span class="main-info-wrap">
@@ -737,15 +783,7 @@ $(document).ready(function() {
                                     )}
                                 </span>
                                 <span class="sub-info-wrap">
-                                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ?
-                                        `<span class="notes-detail-wrap">
-                                            <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
-                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
-                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
-                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
-                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
-                                            ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
-                                        </span></span>` : "")}
+                                    ${generateChartNoteDetailHtml(data, prefix, chart_name)}
                                     ${(hasPropertyAndValue(data, `${prefix}${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${prefix}${chart_name}_designer`]}</span></span>` : "")}
                                 </span>`;
                         }
@@ -766,8 +804,11 @@ $(document).ready(function() {
                             }
                             if (chart_type === 'utage' && !col.className.includes('detail-hidden') && col.className.includes('utage')) {
                                 return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                                                <span class="row-label"><span class="diff-name lv-utage">U･TA･GE</span></span>
-                                                <span class="content-col">${generateChartLevDetailHtml(data, prefix, chart_name)}</span>
+                                                <span class="row-label"><span class="diff-name lv-utage">U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
+                                                <span class="content-col">
+                                                    <span class="diff-name ${col.className}"><span>U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
+                                                    ${generateChartLevDetailHtml(data, prefix, chart_name)}
+                                                </span>
                                             </div>`;
                             } else if (chart_type !== 'utage' && !col.className.includes('detail-hidden') && col.className.includes('lv ')) {
                                 if ((chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) ||
