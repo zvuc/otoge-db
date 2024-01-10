@@ -583,8 +583,11 @@ def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
     # if source is not empty, don't overwrite
     if not (song[key] == ''):
         return
+    # skip if new data is placeholder
+    if new_data in ['？', '??', '???', '-']:
+        return
     # Only overwrite if new data is not empty and is not same
-    if not (new_data == '') and not (song[key] == new_data) and not (new_data == "??") and not (new_data == "???") and not (new_data == '-'):
+    if not (new_data == '') and not (song[key] == new_data):
         diff_count[0] += 1
         song[key] = new_data
 
