@@ -12,7 +12,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 wiki_base_url = 'https://gamerch.com/maimai/'
-
+errors_log = LOCAL_ERROR_LOG_PATH
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
@@ -163,7 +163,7 @@ def _update_song_wiki_data(song, args):
     # use existing URL if already present
     if 'wiki_url' in song and song['wiki_url']:
         url = song['wiki_url']
-        wiki = requests.get(url, timeout=1, headers=request_headers, allow_redirects=True)
+        wiki = requests.get(url, timeout=3, headers=request_headers, allow_redirects=True)
 
         return _parse_wikiwiki(song, wiki, url, args)
 
@@ -173,13 +173,13 @@ def _update_song_wiki_data(song, args):
     # If not, guess URL from title
     else:
         # guess_url = wiki_base_url + title
-
-        guess_url = f'https://www.google.com/search?hl=en&q={title}%20maimai%E3%80%80%E6%94%BB%E7%95%A5wiki&btnI=I'
+        search_title = title.replace('-',' ')
+        guess_url = f'https://www.google.com/search?hl=en&q={search_title}%20maimai%E3%80%80%E6%94%BB%E7%95%A5wiki&btnI=I'
         search_results = requests.get(guess_url, timeout=1)
 
         if not search_results.ok:
             # give up
-            print_message("failed to guess wiki page", bcolors.FAIL, args)
+            print_message("failed to guess wiki page", bcolors.FAIL, args, errors_log)
             return song
 
         else:
@@ -196,11 +196,11 @@ def _update_song_wiki_data(song, args):
             first_matched_url = filtered_urls[0] if filtered_urls else None
 
             if first_matched_url:
-                wiki = requests.get(first_matched_url, timeout=1, headers=request_headers, allow_redirects=True)
+                wiki = requests.get(first_matched_url, timeout=3, headers=request_headers, allow_redirects=True)
                 print_message("Found URL by guess!", bcolors.OKBLUE, args)
                 return _parse_wikiwiki(song, wiki, first_matched_url, args)
             else:
-                print_message("failed to guess wiki page", bcolors.FAIL, args)
+                print_message("failed to guess wiki page", bcolors.FAIL, args, errors_log)
                 return song
 
 
@@ -216,10 +216,9 @@ def _parse_wikiwiki(song, wiki, url, args):
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print_message("Parse failed! Skipping song", bcolors.FAIL, args)
+        print_message("Page is invalid", bcolors.FAIL, args, errors_log)
         return song
 
-    # ipdb.set_trace()
 
     has_std_chart = 'lev_bas' in song
     has_dx_chart = 'dx_lev_bas' in song
@@ -272,10 +271,10 @@ def _parse_wikiwiki(song, wiki, url, args):
                     print_message("Added date and version", bcolors.OKGREEN, args)
             else:
                 # fail
-                print_message("Warning - date not found", bcolors.WARNING, args)
+                print_message("Warning - date not found", bcolors.WARNING, args, errors_log)
         else:
             # Skip for Utage
-            print_message("Skipped date (Utage)", bcolors.WARNING, args)
+            print_message("Skipped date (Utage)", bcolors.WARNING, args, errors_log)
 
         # Update BPM
         if overview_dict['BPM']:
@@ -286,7 +285,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 print_message("Added BPM", bcolors.OKGREEN, args)
     else:
         # fail
-        print_message("Warning - overview table not found", bcolors.FAIL, args)
+        print_message("Warning - overview table not found", bcolors.FAIL, args, errors_log)
 
     # find the charts table
     charts_table = None
@@ -308,24 +307,24 @@ def _parse_wikiwiki(song, wiki, url, args):
                     charts_table = table
     
     if has_std_chart and charts_table is None:
-        print_message("Warning - No Std chart table found", bcolors.FAIL, args)
+        print_message("Warning - No Std chart table found", bcolors.FAIL, args, errors_log)
     if has_dx_chart and charts_table_dx is None:
-        print_message("Warning - No DX chart table found", bcolors.FAIL, args)
+        print_message("Warning - No DX chart table found", bcolors.FAIL, args, errors_log)
     if (has_dual_chart or has_utage_chart) and charts_table is None and charts_table_dx is None:
-        print_message("Warning - No chart table found", bcolors.FAIL, args)
+        print_message("Warning - No chart table found", bcolors.FAIL, args, errors_log)
 
 
     # Find constant and chart designer
     chart_designers_text = None
     chart_designers_spans = soup.find_all('span', style='font-size:11px')
     chart_designers_dict = {}
+    chart_designers_dict_dx = {}
 
     # count total numbers of designer dicts needed
     if has_std_chart and has_dx_chart:
         req_dict_count = 2
     elif has_single_chart or has_utage_chart:
         req_dict_count = 1
-
     
     for chart_designers_span in chart_designers_spans:
         chart_designers_span_text = chart_designers_span.get_text(strip=True)
@@ -380,9 +379,11 @@ def _parse_wikiwiki(song, wiki, url, args):
             #         chart_constants_dict = _construct_designers_dict(song, chart_constants_text, 'i')
             #         break
         else:
-            print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, args)
+            print_message(f"Warning - No designer info found ({chart.upper()})", bcolors.WARNING, args, errors_log)
             
-
+    if ((has_dual_chart and req_dict_count == 2) 
+        or ((has_single_chart or has_utage_chart) and req_dict_count == 1)):
+        print_message(f"Warning - No designer info found", bcolors.WARNING, args, errors_log)
 
 
     # Update chart details
@@ -447,12 +448,12 @@ def _process_chart(song, chart_type, chart_color, charts_table, charts_table_hea
 
 
 def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, args):
-    # ipdb.set_trace()
     diff_count = [0]
     if '定数' in chart_dict:
         _update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
     else:
-        print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
+        if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
+            print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log)
 
     _update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
     _update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)
@@ -478,19 +479,19 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
                     designer_key = [key for key in chart_designers_dict if song['kanji'] in key][0]
                     _update_song_key(song, f"{chart}_designer", chart_designers_dict[designer_key], diff_count=diff_count)
                 except:
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
+                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log)
         # Convert REMAS to RE:M
         elif chart == 'lev_remas':
             try:
-                _update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_re:m_designer"], diff_count=diff_count)
+                _update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=diff_count)
             except KeyError:
-                print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
+                print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log)
         else:
             try:
                 _update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=diff_count)
             except:
                 if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
+                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log)
     
     # if not chart == 'lev_utage' and chart_designers_dict:
     #     try:
@@ -500,7 +501,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
     #             raise Exception(f"Constant for {chart.upper()} is invalid")
     #     except:
     #         if chart not in ('bas', 'adv'):
-    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
+    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log)
 
     if diff_count[0] > 0:
         print_message(f"Added chart details for {chart.upper()}", bcolors.OKGREEN, args)
