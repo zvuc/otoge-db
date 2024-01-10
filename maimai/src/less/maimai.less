@@ -11,37 +11,37 @@
 @import '../../../shared/src/less/footer.less';
 
 .maimai-variables-common() {
-	--logo-size-mobile: 120px;
-	--logo-size: 140px;
+	--logo-size-mobile: 140px;
+	--logo-size: 160px;
 
 	--header-gradient-stop-01: var(--color-accent-03);
 	--header-gradient-stop-02: var(--color-accent-02);
 	--header-gradient-stop-03: var(--color-accent-01);
 	--header-gradient-stop-04: var(--color-accent-02);
 
-	--toolbar-gradient-stop-01: var(--color-accent-03);
-    --toolbar-gradient-stop-02: var(--color-accent-04);
-    --toolbar-gradient-stop-03: var(--color-accent-02);
+	--toolbar-gradient-stop-01: var(--color-accent-02);
+    --toolbar-gradient-stop-02: var(--color-accent-03);
+    --toolbar-gradient-stop-03: var(--color-accent-04);
 
-	--color-accent-primary: 245,80,159; /* #f5509f */
-    --color-accent-01: 178,251,205; /* #b2fbcd */
-    --color-accent-02: 178,145,242; /* #B291F2 */
-    --color-accent-03: 165,234,255; /* #a5eaff */
-    --color-accent-04: 254,203,243; /* #FECBF3 */
+	--color-accent-primary: 253,74,129; /* rgb(253,74,129) */
+    --color-accent-01: 255,69,70; /* rgb(255,69,70) */
+    --color-accent-02: 247,158,0; /* rgb(247,158,0) */
+    --color-accent-03: 255,220,0; /* rgb(255,220,0) */
+    --color-accent-04: 153,200,72; /* rgb(153,200,72) */
     --chartlink-img-aspect-ratio: ~'82/100';
 
-    --footer-icon: url('./img/chunithm-db-icon.png');
+    --footer-icon: url('./img/maimai-db-icon.png');
 }
 
 .maimai-variables-light() {
 	--logo-url: url('./img/maimai-db-logo.svg');
 
-	--ui-color-form-background: 216,220,240; /* #d8dcf0 */ 
-    --ui-color-form-border: 189,193,217; /* #bdc1d9 */ 
+	--ui-color-form-background: 247,229,196; /* rgb(247,229,196) */ 
+    --ui-color-form-border: 247,194,99; /* rgb(247,194,99) */ 
     --ui-color-form-border-accent: var(--color-accent-02);
-    --ui-color-form-border-active: 146,154,194; /* #929ac2 */
-    --ui-color-btn: 216,220,240; /* #d8dcf0 */ 
-    --ui-color-btn-active: 146,154,194; /* #929ac2 */
+    --ui-color-form-border-active: 247,158,0; /* rgb(247,158,0) */
+    --ui-color-btn: 247,209,140; /* rgb(247,209,140) */ 
+    --ui-color-btn-active: 247,194,99; /* rgb(247,194,99) */ 
 
 	--lv-color-bsc: 111,212,61; /* #6fd43d */ 
     --lv-color-adv: 255,165,0; /* #ffa500 */ 
@@ -51,6 +51,9 @@
     --lv-color-utage: 252,111,243; /* #fc6ff3 */ 
 
     --toolbar-btn-color: 227,218,232; /* #e3dae8 */
+    --toolbar-bg-opacity: 0.1;
+
+    --charttype-badge-opacity: 1;
 
     --select-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23B6BDFD' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
     --select-active-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 16'%3E%3Cpath fill='%23b099c7' d='M7.1 10L5 12.3 2.9 10H.5L5 15l4.5-5zM2.9 6L5 3.7 7.1 6h2.4L5 1 .5 6z'/%3E%3C/svg%3E");
@@ -62,12 +65,12 @@
 .maimai-variables-dark() {
 	--logo-url: url('./img/maimai-db-logo.svg');
 
-	--ui-color-form-background: 53,59,91; /* rgb(53,59,91) */
-    --ui-color-form-border: 80,88,130; /* rgb(80,88,130) */
-    --ui-color-form-border-accent: var(--color-accent-02); /* #B6BDFD */ 
-    --ui-color-form-border-active: 80,88,130; /* rgb(80,88,130) */
-    --ui-color-btn: 53,59,91; /* rgb(53,59,91) */
-    --ui-color-btn-active: 63,75,111; /* rgb(63,75,111) */
+	--ui-color-form-background: 98,63,0; /* rgb(98,63,0)*/
+    --ui-color-form-border: 176,113,0; /* rgb(176,113,0)*/
+    --ui-color-form-border-accent: 220,141,0; /* rgb(220,141,0)*/ 
+    --ui-color-form-border-active: 203,129,0; /* rgb(203,129,0)*/
+    --ui-color-btn: 98,63,0; /* rgb(98,63,0)*/
+    --ui-color-btn-active: 176,113,0; /* rgb(176,113,0)*/
 
     --lv-color-bsc: 111,212,61; /* #6fd43d */ 
     --lv-color-adv: 255,165,0; /* #f8b709 */ 
@@ -77,6 +80,9 @@
     --lv-color-utage: 252,111,243; /* #fc6ff3 */ 
 
     --toolbar-btn-color: 53,49,81; /* #353151 */
+    --toolbar-bg-opacity: 0.1;
+
+    --charttype-badge-opacity: 0.9;
 }
 
 // Variables
@@ -125,6 +131,7 @@
 	position: relative;
 	display: inline-block;
 	background-size: 100%;
+	opacity: var(--charttype-badge-opacity);
 
 	&.std {
 		width: 69px;
