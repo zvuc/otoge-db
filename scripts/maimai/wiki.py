@@ -71,7 +71,7 @@ CHART_COLORS = {
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
     print_message(f"Fetching latest wiki data.", bcolors.ENDC, args)
-    
+
     date_from = args.date_from
     date_until = args.date_until
     song_id = args.id
@@ -87,7 +87,7 @@ def update_songs_extra_data(args):
             target_song_list = _filter_songs_by_id_range(local_music_ex_data, id_from, id_to)
         else:
             target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
-    else:
+    elif date_from and date_until:
         latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
         if date_from == 0:
@@ -97,16 +97,19 @@ def update_songs_extra_data(args):
             date_until = latest_date
 
         target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+    else:
+        # get id list from diffs.txt
+        target_song_list = _filter_songs_from_diffs(local_music_ex_data)
 
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
-    f = open("diffs.txt", 'w')
-
     for song in target_song_list:
         _update_song_wiki_data(song, args)
+
+        # time.sleep(random.randint(1,2))
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
@@ -130,6 +133,25 @@ def _filter_songs_by_id_range(song_list, id_from, id_to):
         song_id_int = int(song.get("sort"))
 
         if int(id_from) <= song_id_int <= int(id_to):
+            target_song_list.append(song)
+
+    return target_song_list
+
+def _filter_songs_from_diffs(song_list):
+    with open(LOCAL_DIFFS_LOG_PATH, 'r') as f:
+        diff_lines = f.readlines()
+
+    # Create a set of identifiers from the lines in diffs.txt
+    prefixes_to_remove = ['NEW ', 'UPDATED ']
+    for prefix in prefixes_to_remove:
+        diff_lines = [line.replace(prefix, '') for line in diff_lines]
+
+    unique_id = {line.strip() for line in diff_lines}
+
+    target_song_list = []
+    # Filter songs based on the identifiers
+    for song in song_list:
+        if f"{generate_hash(song['title'] + song['image_url'])}" in unique_id:
             target_song_list.append(song)
 
     return target_song_list
