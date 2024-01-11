@@ -874,7 +874,12 @@ $(document).ready(function() {
             "rowGroup": {
                 dataSrc: 'date',
                 startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-                    return '<div>' + formatDate(group, 'JP') +' 追加<\/div>';
+                    if (group === '') {
+                        date_display = 'NEW'
+                    } else {
+                        date_display = `${formatDate(group, 'JP')} 追加`
+                    }
+                    return `<div>${date_display}</div>`;
                     // enable rows count again when I find a way to show all rows in other pages
                     // return group +'更新 ('+rows.count()+'曲)';
                 }) : null
