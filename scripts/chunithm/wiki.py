@@ -1,4 +1,4 @@
-# import ipdb
+import ipdb
 import requests
 import json
 import re
@@ -111,14 +111,22 @@ def _filter_songs_by_id_range(song_list, id_from, id_to):
     return target_song_list
 
 def _filter_songs_from_diffs(song_list):
+    
     with open(LOCAL_DIFFS_LOG_PATH, 'r') as f:
         diff_lines = f.readlines()
 
     # Create a set of identifiers from the lines in diffs.txt
+    prefixes_to_remove = ['NEW ', 'UPDATED ']
+    for prefix in prefixes_to_remove:
+        diff_lines = [line.replace(prefix, '') for line in diff_lines]
+
     unique_id = {line.strip() for line in diff_lines}
 
+    target_song_list = []
     # Filter songs based on the identifiers
-    target_song_list = [song for song in song_list if f"{song['id']}{song['image']}" in unique_id]
+    for song in song_list:
+        if f"{song['id']}{song['image']}" in unique_id:
+            target_song_list.append(song)
 
     return target_song_list
 
