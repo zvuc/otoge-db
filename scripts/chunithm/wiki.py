@@ -111,7 +111,6 @@ def _filter_songs_by_id_range(song_list, id_from, id_to):
     return target_song_list
 
 def _filter_songs_from_diffs(song_list):
-    
     with open(LOCAL_DIFFS_LOG_PATH, 'r') as f:
         diff_lines = f.readlines()
 
