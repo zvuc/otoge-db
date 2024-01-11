@@ -50,7 +50,8 @@ jobs:
       - name: Get existing branch if already exists
         id: get_existing_branch
         run: |
-          existing_branch=$(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/chunithm-update-\* | head -n 1 | sed 's/^origin\///')
+          # existing_branch=$(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/chunithm-update-\* | head -n 1 | sed 's/^origin\///')
+          existing_branch=$(git branch -r --format='%(refname:short)' | grep origin/staging | head -n 1 | sed 's/^origin\///')
           echo "${existing_branch}"
           if [ ! -z "${existing_branch}" ]; then
             echo "Existing branch found. Checking out branch"
@@ -81,10 +82,10 @@ jobs:
                 --track $(git branch -r --format='%(refname:short)' --sort='-committerdate' | grep origin/chunithm-update-\* | head -n 1)
             else
               echo "Creating new branch"
-              git checkout -b chunithm-update-${{ steps.extract_date.outputs.DATESTAMP }}
+              git checkout -b staging
             fi
             git commit -m "[Automated] Apply updated data from wiki ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin chunithm-update-${{ steps.extract_date.outputs.DATESTAMP }}
+            git push origin staging
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
@@ -109,7 +110,7 @@ jobs:
             echo "No previous PR found. Create new PR"
             gh pr create \
               -B ${{ github.ref_name }} \
-              -H "chunithm-update-${{ steps.extract_date.outputs.DATESTAMP }}" \
+              -H "staging" \
               --title "[Automation] Chunithm: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           fi
