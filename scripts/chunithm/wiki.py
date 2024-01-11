@@ -155,13 +155,18 @@ def _update_song_wiki_data(song, args):
     
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
-        url = song['wikiwiki_url']
-        wiki = requests.get(url)
+        if args.noskip:
+            url = song['wikiwiki_url']
+            try:
+                wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
+                return _parse_wikiwiki(song, wiki, url, args)
+            except requests.RequestException as e:
+                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
+                return song
 
-        return _parse_wikiwiki(song, wiki, url, args)
-
-        # Skip if URL present
-        # print_message("(Skipping)", bcolors.ENDC, args)
+        else:
+            # Skip if URL present
+            print_message("(Skipping)", bcolors.ENDC, args)
 
     # If not, guess URL from title
     else:
