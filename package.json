@@ -1,14 +1,16 @@
 {
-  "name": "ongeki-db",
-  "id": "ongeki-db",
+  "name": "otoge-db",
+  "id": "otoge-db",
   "version": "1.0.0",
   "description": "Song information viewer for Ongeki",
   "keywords": [
-    "ongeki"
+    "ongeki",
+    "chunithm",
+    "maimai"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zvuc/ongeki-db"
+    "url": "https://github.com/zvuc/otoge-db"
   },
   "homepage": "https//ongeki.info",
   "license": "MIT",

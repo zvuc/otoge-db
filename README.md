@@ -1,12 +1,16 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/zvuc/ongeki-db/blob/master/img/ongeki-db-logo-2022-wob.svg?raw=true">
-  <img alt="Ongeki DB Logo" src="https://github.com/zvuc/ongeki-db/blob/master/img/ongeki-db-logo-2022-bow.svg?raw=true" width="400">
-</picture>
+<p>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/zvuc/otoge-db/blob/master/ongeki/img/ongeki-db-logo-2022-wob.svg?raw=true">
+      <img alt="Ongeki DB Logo" src="https://github.com/zvuc/otoge-db/blob/master/ongeki/img/ongeki-db-logo-2022-bow.svg?raw=true" width="200">
+    </picture>
+    &nbsp; &nbsp;<img alt="Chunithm DB Logo" src="https://github.com/zvuc/otoge-db/blob/master/chunithm/img/chunithm-db-logo.png" style="margin-bottom:10px" width="240">
+    &nbsp; &nbsp;<img alt="maimai DB Logo" src="https://github.com/zvuc/otoge-db/blob/master/maimai/img/maimai-db-logo.svg?raw=true" width="200">
+</p>
 
-# Ongeki DB (https://ongeki.info)
-This is a tool for viewing song information in SEGA's arcade music game 'Ongeki'. Based on the public data provided from the official homepage (https://ongeki.sega.jp/music/), this tool enables user to view information easier by using custom sort and filter options.
+# Otoge DB (音ゲーDB)
+This is an unofficial database for viewing song information served in SEGA's arcade music games 'Ongeki', 'Chunithm', 'maimai DX'. Based on the public data provided from the official SEGA websites, Otoge DB enables users to view and filter info more easily by using custom sort and filter options.
 
-このツールは、SEGAの音ゲー「オンゲキ」の収録曲データをより便利に閲覧できるように制作されたビュアーです。
+Otoge DBはSEGAの音ゲー「オンゲキ」「CHUNITHM」「maimaiでらっくす」の非公式収録曲データベースサイトです。公式サイトで公開されているデータを基にして、Wikiなどウェブで入手できる情報を集めて一箇所で楽に見れるようにする目標で作られました。
 
 ## How to fetch and apply new data
 - You'll need Python 3.x to run scripts on command line.
