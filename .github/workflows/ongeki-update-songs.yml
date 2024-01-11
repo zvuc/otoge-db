@@ -28,6 +28,24 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Configure Git user
+        run: |
+          git config --global user.email "noreply@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Checkout existing branch or create new
+        run : |
+          git fetch origin
+          if git show-ref --quiet refs/heads/ongeki-staging; then
+            git checkout \
+                ongeki-staging \
+                --track origin/ongeki-staging
+          else
+            git checkout \
+                -b ongeki-staging \
+                --track origin/ongeki-staging
+          fi
+
       - name: Run main script and capture output
         id: run_script
         run: |
@@ -52,35 +70,29 @@ jobs:
             echo "CREATE_PR=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Configure Git user
-        if: steps.check_script.outputs.CREATE_PR == 'true'
-        run: |
-          git config --global user.email "noreply@github.com"
-          git config --global user.name "GitHub Actions"
-
-      - name: Create new branch and commit changes
+      - name: Commit changes
         if: steps.check_script.outputs.CREATE_PR == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
-          if git show-ref --quiet refs/heads/staging; then
-            git checkout staging
-          else
-            git checkout -b staging
-          fi
           git add .
           git commit -m "[Automated] Ongeki: Add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
-          git push origin staging
+          git push origin ongeki-staging
 
-      - name: Create Pull Request
+      - name: Checkout existing PR or create new
         if: steps.check_script.outputs.CREATE_PR == 'true'
         run: |
-          gh pr comment "staging" \
-          --body "${{ steps.run_script.outputs.OUTPUT_LOG }}" || \
-          gh pr create \
-          --base ${{ github.ref_name }} \
-          --head "staging" \
-          --title "[Automation] Update website with new song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
-          --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          if [[ $(gh pr list --state open --head ongeki-staging | grep ongeki-staging) ]]; then
+            echo "PR currently open. Add comment to existing open PR"
+            gh pr comment ongeki-staging \
+              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          else
+            echo "No currently open PR for ongeki-staging. Create new PR"
+            gh pr create \
+              -B ${{ github.ref_name }} \
+              -H "ongeki-staging" \
+              --title "[Automation] Ongeki: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
