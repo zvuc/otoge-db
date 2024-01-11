@@ -222,7 +222,7 @@ var columns_params = [
         name: "lev_utage",
         data: "lev_utage",
         defaultContent: "",
-        className: "lv lv-utage detail-hidden",
+        className: "lv lv-utage",
         render: maimaiRenderLvNum('lev_utage'),
         customDropdownSortSource: sortByLeadingZeros('lev_utage'),
         reverseSortOrder: true,
@@ -802,7 +802,7 @@ $(document).ready(function() {
                             } else if (chart_type === 'utage') {
                                 var prefix = ''
                             }
-                            if (chart_type === 'utage' && !col.className.includes('detail-hidden') && col.className.includes('utage')) {
+                            if (chart_type === 'utage' && col.className.includes('utage')) {
                                 return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
                                                 <span class="row-label"><span class="diff-name lv-utage">U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
                                                 <span class="content-col">
