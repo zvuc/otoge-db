@@ -42,11 +42,11 @@
     "update": "yarn fetch && yarn imageoptim",
     "imageoptim": "cat diffs.txt | xargs imageoptim",
 
-    "build": "yarn shared-build & yarn ongeki-build & yarn chuni-build",
-    "less": "yarn ongeki-less & yarn chuni-less",
-    "postcss": "yarn ongeki-postcss & yarn chuni-postcss",
-    "minify": "yarn shared-minify & yarn ongeki-minify & yarn chuni-minify",
-    "watch": "concurrently \"yarn shared-watch\" \"yarn ongeki-watch\" \"yarn chuni-watch\"",
+    "build": "yarn shared-build & yarn ongeki-build & yarn chuni-build & yarn maimai-build",
+    "less": "yarn ongeki-less & yarn chuni-less & yarn maimai-less",
+    "postcss": "yarn ongeki-postcss & yarn chuni-postcss & yarn maimai-postcss",
+    "minify": "yarn shared-minify & yarn ongeki-minify & yarn chuni-minify & yarn maimai-minify",
+    "watch": "concurrently \"yarn shared-watch\" \"yarn ongeki-watch\" \"yarn chuni-watch\" \"yarn maimai-watch\"",
 
     "datatables-minify": "minify shared/src/datatables/datatables.custom.js > shared/datatables.custom.min.js",
 
@@ -64,7 +64,13 @@
     "chuni-less": "lessc ./chunithm/src/less/chunithm.less ./chunithm/style.css",
     "chuni-postcss": "postcss ./chunithm/style.css -o ./chunithm/style.css --verbose",
     "chuni-minify": "minify chunithm/src/js/*.js > chunithm/chunithm-functions.js",
-    "chuni-watch": "watch 'yarn chuni-build' ./shared/src/less ./chunithm/src -d"
+    "chuni-watch": "watch 'yarn chuni-build' ./shared/src/less ./chunithm/src -d",
+
+    "maimai-build": "yarn maimai-minify & (yarn maimai-less && yarn maimai-postcss)",
+    "maimai-less": "lessc ./maimai/src/less/maimai.less ./maimai/style.css",
+    "maimai-postcss": "postcss ./maimai/style.css -o ./maimai/style.css --verbose",
+    "maimai-minify": "minify maimai/src/js/*.js > maimai/maimai-functions.js",
+    "maimai-watch": "watch 'yarn maimai-build' ./shared/src/less ./maimai/src -d"
   },
   "dependencies": {}
 }
