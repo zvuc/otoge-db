@@ -29,7 +29,7 @@ def renew_music_ex_data(new_song_list, args):
         print_message("Nothing updated", '', args)
         return
 
-    f = open("diffs.txt", 'w')
+    f = open(LOCAL_DIFFS_LOG_PATH, 'w')
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
@@ -53,7 +53,7 @@ def _download_song_jacket(song):
 
 def _record_new_song_jacket_id(song):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
-        f.write('chunithm/jacket/' + song['image'] + '\n')
+        f.write(song['id'] + song['image'] + '\n')
 
 
 def _add_song_data_to_ex_data(song, ex_data):
