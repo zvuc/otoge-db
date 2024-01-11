@@ -47549,7 +47549,7 @@
     "image_url": "55245f44e4c71c11.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "133",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -47575,7 +47575,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ステラ"
   },
   {
     "new": "NEW",
@@ -47627,7 +47627,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/パラソルサイダー"
   },
   {
     "new": "NEW",
@@ -47653,7 +47653,7 @@
     "image_url": "db14394b4bc4a583.png",
     "enemy_lv": "",
     "enemy_type": "LEAF",
-    "bpm": "",
+    "bpm": "220",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -47679,6 +47679,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/星界ちゃんと可不ちゃんのおつかい合騒曲"
   }
 ]
