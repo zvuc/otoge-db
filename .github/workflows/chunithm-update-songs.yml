@@ -53,13 +53,13 @@ jobs:
           fi
 
       - name: Configure Git user
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        if: steps.extract_date.outputs.DATESTAMP != '' && steps.check_script.outputs.CREATE_PR == 'true'
         run: |
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
       - name: Create new branch and commit changes
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        if: steps.extract_date.outputs.DATESTAMP != '' && steps.check_script.outputs.CREATE_PR == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
@@ -73,7 +73,7 @@ jobs:
           git push origin chunithm-update-${{ steps.extract_date.outputs.DATESTAMP }}
 
       - name: Create Pull Request
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        if: steps.extract_date.outputs.DATESTAMP != '' && steps.check_script.outputs.CREATE_PR == 'true'
         run: |
           gh pr comment "chunithm-update-${{ steps.extract_date.outputs.DATESTAMP }}" \
           --body "${{ steps.run_script.outputs.OUTPUT_LOG }}" || \
