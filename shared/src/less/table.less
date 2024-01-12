@@ -53,10 +53,13 @@ table#table {
 
 	@media screen and (min-width: 1440px) {
 		display: grid;
-		grid-template-columns: calc(100% - 240px) 240px;
+		grid-gap: 0 15px;
+		grid-template-columns: auto min-content;
 		grid-auto-flow: row;
 		max-width: 1680px;
 		margin: 0 auto;
+		padding-left: var(--padding-size);
+		padding-right: var(--padding-size);
 	}
 }
 
@@ -66,6 +69,7 @@ table#table {
 	position: relative;
 
 	@media screen and (min-width: 1440px) {
+		min-width: 0;
 		grid-column: 1;
 		grid-row: span 3;
 	}
