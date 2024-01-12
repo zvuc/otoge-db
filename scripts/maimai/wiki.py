@@ -151,7 +151,12 @@ def _filter_songs_from_diffs(song_list):
     target_song_list = []
     # Filter songs based on the identifiers
     for song in song_list:
-        if f"{generate_hash(song['title'] + song['image_url'])}" in unique_id:
+        if 'lev_utage' in song:
+            song_hash = generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+        else:
+            song_hash = generate_hash(song['title'] + song['image_url'])
+
+        if song_hash in unique_id:
             target_song_list.append(song)
 
     return target_song_list

@@ -2,7 +2,6 @@ import ipdb
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-import hashlib
 import requests
 import urllib.request
 import json
@@ -55,7 +54,11 @@ def load_new_song_data():
 
 
 def _json_to_id_value_map(json):
-    return {generate_hash(song['title'] + song['image_url']):song for song in json}
+    if 'lev_utage' in song:
+        song_hash = generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+    else:
+        song_hash = generate_hash(song['title'] + song['image_url'])
+    return {song_hash:song for song in json}
 
 
 def renew_music_ex_data(new_song_list, args):
@@ -70,7 +73,11 @@ def renew_music_ex_data(new_song_list, args):
 
     # added_songs
     for song in new_song_list[0]:
-        song_hash = generate_hash(song['title'] + song['image_url'])
+        if 'lev_utage' in song:
+            song_hash = generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+        else:
+            song_hash = generate_hash(song['title'] + song['image_url'])
+            
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
         print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
@@ -79,9 +86,16 @@ def renew_music_ex_data(new_song_list, args):
 
     # updated_songs
     for song in new_song_list[1]:
-        song_hash = generate_hash(song['title'] + song['image_url'])
+        if 'lev_utage' in song:
+            song_hash = generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+        else:
+            song_hash = generate_hash(song['title'] + song['image_url'])
+
         # Find the existing song in local_music_ex_data by ID
-        existing_song = next((s for s in local_music_ex_data if generate_hash(s['title'] + s['image_url']) == song_hash), None)
+        if 'lev_utage' in existing_song:
+            existing_song_hash = generate_hash(existing_song['title'] + existing_song['lev_utage'] + existing_song['comment'])
+        else:
+            existing_song_hash = generate_hash(existing_song['title'] + existing_song['image_url'])
 
         if existing_song:
             # Update only the keys that have changed
@@ -95,9 +109,19 @@ def renew_music_ex_data(new_song_list, args):
 
     # unchanged_songs
     for song in new_song_list[2]:
-        song_hash = generate_hash(song['title'] + song['image_url'])
+        if 'lev_utage' in song:
+            song_hash = generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+        else:
+            song_hash = generate_hash(song['title'] + song['image_url'])
+
         # Find the existing song in local_music_ex_data by ID
-        existing_song = next((s for s in local_music_ex_data if generate_hash(s['title'] + s['image_url']) == song_hash), None)
+        if 'lev_utage' in existing_song:
+            existing_song_hash = generate_hash(existing_song['title'] + existing_song['lev_utage'] + existing_song['comment'])
+        else:
+            existing_song_hash = generate_hash(existing_song['title'] + existing_song['image_url'])
+
+        existing_song = next((s for s in local_music_ex_data if existing_song_hash == song_hash), None)
+
 
         if existing_song:
             # Update only the keys that have changed
