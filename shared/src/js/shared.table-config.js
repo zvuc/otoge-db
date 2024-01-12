@@ -98,7 +98,14 @@ function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, preci
     return function ( data, type, row ) {
         if ( type === 'display' ) {
             var chart_diff_display = convertDifficultyNames(row[chart_diff],false,chart_link);
-            var precise_lv = (row[chart_diff] === 'we_kanji') ? `☆${row[precise_lv_display]}` : row[precise_lv_display];
+
+            if (row[chart_diff] === 'we_kanji') {
+                var precise_lv = `☆${row[precise_lv_display]}`;
+            } else if (row[chart_diff] === 'lev_utage') {
+                var precise_lv = ``;
+            } else {
+                var precise_lv = row[precise_lv_display];
+            }
 
             return `
                 <div class="inner-wrap">

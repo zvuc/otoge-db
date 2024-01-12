@@ -232,12 +232,11 @@ var columns_params = [
     { 
         //  UTAGE (Kanji)
         displayTitle: "UTAGE(漢字)",
-        name: "lev_utage",
+        name: "lev_utage_kanji",
         data: "kanji",
         defaultContent: "",
         className: "lv lv-utage kanji",
         render: renderUtage('kanji', 'lev_utage'),
-        // customDropdownSortSource: ( function(data) { data ? sortByLeadingZeros('lev_utage') : null }),
         reverseSortOrder: true,
         width: "3rem",
         filterable: flat_view ? false : true,
@@ -609,7 +608,7 @@ function maimaiProcessChartData(obj, chart_diff) {
                 chart_diff,
                 chart_lev: obj[chart_diff],
                 chart_lev_i: obj[`lev_utage`],
-                chart_lev_i_display: obj[`lev_utage`],
+                chart_lev_i_display: `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.5')).toFixed(1)}</span>`,
                 chart_notes: obj[`lev_utage_notes`],
                 chart_notes_tap: obj[`lev_utage_notes_tap`],
                 chart_notes_hold: obj[`lev_utage_notes_hold`],
@@ -778,7 +777,7 @@ $(document).ready(function() {
                             return `
                                 <span class="main-info-wrap">
                                     ${(utage ? 
-                                        `<span class="lv-num-simple">${data['kanji']}</span><span class="lv-num-precise">${maimaiLvNumHtmlTemplate('',`${cur_lev}`,'')}</span>` : 
+                                        `<span class="lv-num-simple">${data['kanji']}</span>${maimaiLvNumHtmlTemplate('',`${cur_lev}`,'')}` : 
                                         maimaiLvNumHtmlTemplate('', `${cur_lev}`, `${cur_lev_i}`)
                                     )}
                                 </span>
@@ -802,7 +801,7 @@ $(document).ready(function() {
                             } else if (chart_type === 'utage') {
                                 var prefix = ''
                             }
-                            if (chart_type === 'utage' && col.className.includes('utage')) {
+                            if (chart_type === 'utage' && chart_name === 'lev_utage' && hasPropertyAndValue(data, 'kanji')) {
                                 return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
                                                 <span class="row-label"><span class="diff-name lv-utage">U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
                                                 <span class="content-col">
