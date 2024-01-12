@@ -811,7 +811,7 @@ $(document).ready(function() {
                                             </div>`;
                             } else if (chart_type !== 'utage' && !col.className.includes('detail-hidden') && col.className.includes('lv ')) {
                                 if ((chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) ||
-                                    (chart_name === 'lev_utage' && !hasPropertyAndValue(data, 'lev_utage'))) {
+                                    (chart_name === 'lev_utage_kanji') || (chart_name === 'lev_utage') ) {
                                     return;
                                 } else {
                                     return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
