@@ -75,6 +75,8 @@ def renew_music_ex_data(new_song_list, args):
 
     # Add new songs
     for song in new_song_list[0]:
+        song_hash = generate_hash(song['id'] + song['title'])
+        
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
         print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
@@ -82,10 +84,12 @@ def renew_music_ex_data(new_song_list, args):
         if not args.skipwiki:
             _update_song_wiki_data(song, args)
             
-        _record_diffs(song, 'new')
+        _record_diffs(song, song_hash, 'new')
 
     # Update existing songs
     for song in new_song_list[1]:
+        song_hash = generate_hash(song['id'] + song['title'])
+
         # Find the existing song in local_music_ex_data by ID
         existing_song = next((s for s in local_music_ex_data if s['id'] == song['id']), None)
 
@@ -100,7 +104,7 @@ def renew_music_ex_data(new_song_list, args):
             if not args.skipwiki:
                 _update_song_wiki_data(song, args)
             
-            _record_diffs(song, 'updated')
+            _record_diffs(song, song_hash, 'updated')
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
@@ -109,9 +113,9 @@ def renew_music_ex_data(new_song_list, args):
 def _download_song_jacket(song):
     urllib.request.urlretrieve(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], 'ongeki/jacket/' + song['image_url'])
 
-def _record_diffs(song, diff_type):
+def _record_diffs(song, song_hash, diff_type):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
-        f.write(diff_type.upper() + ' ' + song['id'] + song['image_url'] + '\n')
+        f.write(diff_type.upper() + ' ' + song_hash + '\n')
 
 
 def _add_song_data_to_ex_data(song, ex_data):
