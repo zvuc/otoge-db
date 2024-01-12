@@ -122,19 +122,19 @@ function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, preci
     }
 }
 
-function renderChartLinkBtn(chart_link) {
+function renderChartLinkBtn(chart_link, game) {
     return function ( data, type, row ) {
         if ( type === 'display' ) {
-            return chartLinkBtn(row['chart_link'])
+            return chartLinkBtn(row['chart_link'], game)
         } else {
             return data
         }
     }
 }
 
-function chartLinkBtn(chart_link) {
+function chartLinkBtn(chart_link, game) {
     if ( chart_link !== '' ) {
-        return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/chunithm/${chart_link}.htm">
+        return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/${game}/${chart_link}.htm">
                     <span class="img"></span><span>譜面確認</span>
                 </a><span class="chart-provider">sdvx.in 提供</span>`;
     } else {
