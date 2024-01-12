@@ -567,7 +567,7 @@ $(document).ready(function() {
                                             </div>`;
                             } else if (chart_type !== 'worldsend') {
                                 if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
-                                    (chart_name === 'lev_we' && !hasPropertyAndValue(data, 'we_kanji'))) {
+                                    (chart_name === 'lev_we') || (chart_name === 'we_star')) {
                                     return;
                                 } else {
                                     return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
