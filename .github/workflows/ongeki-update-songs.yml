@@ -76,7 +76,7 @@ jobs:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           git add .
-          git commit -m "[Automated] Ongeki: Add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
+          git commit -m "data(ongeki): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
           git push origin ongeki-staging
 
       - name: Checkout existing PR or create new

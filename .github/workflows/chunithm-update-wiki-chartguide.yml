@@ -73,7 +73,7 @@ jobs:
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
-            git commit -m "[Automated] Apply updated data from wiki ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git commit -m "data(chunithm): [bot] add song extra data ${{ steps.extract_date.outputs.DATESTAMP }}"
             git push origin chunithm-staging
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
