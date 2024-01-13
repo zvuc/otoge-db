@@ -40,10 +40,11 @@ jobs:
             git checkout \
                 ongeki-staging \
                 --track origin/ongeki-staging
-            git pull --rebase origin master
           else
             git checkout -b ongeki-staging
           fi
+          git pull --rebase origin master
+          git push --force
 
       - name: Run wiki script and capture output
         id: run_script
