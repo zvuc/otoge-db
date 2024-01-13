@@ -41,9 +41,7 @@ jobs:
                 chunithm-staging \
                 --track origin/chunithm-staging
           else
-            git checkout \
-                -b chunithm-staging \
-                --track origin/chunithm-staging
+            git checkout -b chunithm-staging
           fi
 
       - name: Run main script and capture output

@@ -41,9 +41,7 @@ jobs:
                 ongeki-staging \
                 --track origin/ongeki-staging
           else
-            git checkout \
-                -b ongeki-staging \
-                --track origin/ongeki-staging
+            git checkout -b ongeki-staging
           fi
 
       - name: Run main script and capture output
