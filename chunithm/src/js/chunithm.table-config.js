@@ -263,7 +263,8 @@ var columns_params = [
         data: ( flat_view ? "chart_notes" : null ),
         className: "details notecount detail-hidden nowrap",
         width: "8em",
-        searchable: false
+        searchable: false,
+        visible: false
     },
     { 
         displayTitle: "TAP",
