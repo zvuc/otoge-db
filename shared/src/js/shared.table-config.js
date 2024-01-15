@@ -133,7 +133,7 @@ function renderChartLinkBtn(chart_link, game) {
 }
 
 function chartLinkBtn(chart_link, game) {
-    if ( chart_link !== '' ) {
+    if ( chart_link && chart_link !== '' ) {
         return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/${game}/${chart_link}.htm">
                     <span class="img"></span><span>譜面確認</span>
                 </a><span class="chart-provider">sdvx.in 提供</span>`;

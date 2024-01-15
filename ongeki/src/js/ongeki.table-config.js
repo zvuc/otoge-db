@@ -360,6 +360,7 @@ var columns_params = [
         displayTitle: "譜面作者",
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
+        defaultContent: "",
         width: "15em",
         className: "details detail-hidden designer",
         filterable: flat_view,
@@ -430,7 +431,7 @@ function processOngekiChartData(obj, chart_diff) {
             chart_notes: obj[`${chart_diff}_notes`],
             chart_bells: obj[`${chart_diff}_bells`],
             chart_designer: obj[`${chart_diff}_designer`],
-            chart_link: obj[`${chart_diff}_link`]
+            chart_link: obj[`${chart_diff}_chart_link`]
         };
     }
     return null;
