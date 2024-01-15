@@ -49,6 +49,7 @@
 	--lv-color-exp: 229,2,79; /* #e5024f */ 
 	--lv-color-mas: 174,12,210; /* #ae0cd2 */ 
 	--lv-color-ult: 255,23,61; /* #ff173d */ 
+	--lv-color-ult-bg: var(--ui-color-background-050);
 
 	--toolbar-btn-color: 227,218,232; /* #e3dae8 */
 
@@ -74,6 +75,7 @@
 	--lv-color-exp: 229,2,79; /* #e5024f */ 
 	--lv-color-mas: 174,12,210; /* #ae0cd2 */ 
 	--lv-color-ult: 255,23,61; /* #ff173d */ 
+	--lv-color-ult-bg: 255,255,255;
 
 	--toolbar-btn-color: 53,49,81; /* #353151 */
 }
@@ -99,16 +101,16 @@
 
 // Table
 table.dataTable {
-	.lv-ult .inner-wrap > div, 
+	.lv-ult .inner-wrap,
 	.lev_ult .inner-wrap {
-		// background: rgba(var(--lv-color-ult),0.1);
-		background: rgba(255,255,255,0.05);
+		background: rgba(var(--lv-color-ult-bg),0.1);
+		box-shadow: 0 0 0 1px rgba(var(--lv-color-ult),0.3) inset;
 
 		.diff-name {
 			color: rgb(var(--lv-color-ult));
 		}
 	}
-	.lv-we .inner-wrap > div:not(:empty),
+	.lv-we .inner-wrap:not(:empty),
 	.we_kanji .inner-wrap:not(:empty) {
 		background-image: 
 			repeating-linear-gradient(135deg,

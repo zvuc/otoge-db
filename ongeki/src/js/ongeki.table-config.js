@@ -577,10 +577,7 @@ $(document).ready(function() {
 
                             return `
                                 <span class="main-info-wrap">
-                                    ${(lunatic ? 
-                                        `<div class="inner-wrap"><span class="lv-num-simple">${data['lev_lnt']}</span><span class="lv-num-precise">${data['lev_lnt_i']}</span></div>` : 
-                                        lvNumHtmlTemplate(data, chart_name)
-                                    )}
+                                    ${(lvNumHtmlTemplate(data, chart_name))}
                                 </span>
                                 <span class="sub-info-wrap">
                                     ${(hasPropertyAndValue(data, `${chart_name}_notes`) ?

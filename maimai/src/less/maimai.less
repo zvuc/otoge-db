@@ -252,6 +252,7 @@ table.dataTable {
 	.lev_remas .inner-wrap,
 	.dx_lev_remas .inner-wrap {
 		background: rgba(var(--lv-color-remas),0.1);
+		box-shadow: 0 0 0 1px rgba(var(--lv-color-mas),0.3) inset;
 
 		.diff-name {
 			color: rgb(var(--lv-color-mas));
@@ -334,6 +335,10 @@ div.dtr-modal-content {
 
 				.main-info-wrap {
 					width: auto;
+
+					@media screen and (min-width: 824px) {
+						flex-flow: row;
+					}
 				}
 
 				.sub-info-wrap {

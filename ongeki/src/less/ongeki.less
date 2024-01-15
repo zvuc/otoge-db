@@ -41,6 +41,7 @@
 	--lv-color-exp: 234,56,134; /* #ea3886 */
 	--lv-color-mas: 165,71,213; /* #a547d5 */
 	--lv-color-lnt: 217,54,44; /* #d9362c */
+	--lv-color-lnt-bg: var(--ui-color-background-050);
 }
 
 .ongeki-variables-dark() {
@@ -51,6 +52,7 @@
 	--lv-color-exp: 234,56,134; /* #ea3886 */
 	--lv-color-mas: 165,71,213; /* #a547d5 */
 	--lv-color-lnt: 217,54,44; /* #d9362c */
+	--lv-color-lnt-bg: 255,255,255;
 }
 
 // Variables
@@ -85,8 +87,8 @@ table.dataTable {
 	.lv-lnt .inner-wrap,
 	.lev_lnt .inner-wrap,
 	.dx_lev_lnt .inner-wrap {
-		// background: rgba(var(--lv-color-lnt),0.1);
-		background: rgba(255,255,255,0.05);
+		background: rgba(var(--lv-color-lnt-bg),0.1);
+		box-shadow: 0 0 0 1px rgba(var(--lv-color-lnt),0.3) inset;
 
 		.diff-name {
 			color: rgb(var(--lv-color-lnt));
