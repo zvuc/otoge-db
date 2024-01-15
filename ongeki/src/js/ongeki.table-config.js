@@ -339,13 +339,6 @@ var columns_params = [
         visible: flat_view
     },
     { 
-        displayTitle: "NEW",
-        name: "new",
-        data: "new",
-        searchable: false,
-        visible: false
-    },
-    { 
         displayTitle: "ノート数",
         name: "chart_notes",
         data: ( flat_view ? "chart_notes" : null ),
@@ -368,10 +361,18 @@ var columns_params = [
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
         width: "15em",
-        className: "details detail-hidden",
+        className: "details detail-hidden designer",
         filterable: flat_view,
         searchable: flat_view,
-        visible: false
+    },
+    { 
+        displayTitle: "譜面",
+        name: "chart_link",
+        data: ( flat_view ? "chart_link" : null ),
+        defaultContent: "",
+        render: ( flat_view ? renderChartLinkBtn('chart_link', 'ongeki') : null ),
+        width: "5em",
+        className: "details detail-hidden chart-link",
     },
     { 
         displayTitle: "追加日",
@@ -401,6 +402,13 @@ var columns_params = [
         className: "details detail-hidden",
         width: "10px",
         searchable: false
+    },
+    { 
+        displayTitle: "NEW",
+        name: "new",
+        data: "new",
+        searchable: false,
+        visible: false
     }
 ];
 
@@ -421,7 +429,8 @@ function processOngekiChartData(obj, chart_diff) {
             chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.7')).toFixed(1)}</span>`,
             chart_notes: obj[`${chart_diff}_notes`],
             chart_bells: obj[`${chart_diff}_bells`],
-            chart_designer: obj[`${chart_diff}_designer`]
+            chart_designer: obj[`${chart_diff}_designer`],
+            chart_link: obj[`${chart_diff}_link`]
         };
     }
     return null;

@@ -1,0 +1,34 @@
+footer#site-footer
+  .container
+    //-
+      <div class="notice-bar">
+      ⚠️ マークされた譜面定数はまだSUMMER PLUS ver.時点でのものであり、最新の情報と異なる場合があります。
+      </div>
+    //-
+      .commit-bar
+        span.commit-label
+          svg(aria-hidden='true' viewbox='0 0 16 16' version='1.1' width='16' height='16')
+            path(fill='currentColor' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z')
+          span 最新の更新内容
+          span#latest-commit-date
+        a#latest-commit
+          span#latest-commit-content Loading...
+    .disclaimer
+      .content
+        p
+          b
+            | OtogeDBは非公式ファンメイドプロジェクトです。株式会社セガもしくは他の関連会社との関係はありません。
+            br
+            | OtogeDB is a fanmade project. It is not in any way affiliated with or endorsed by SEGA. 
+            br
+            | The original #{game_name_display} Logo is a trademark of SEGA CORPORATION. All copyrighted materials are owned by their respective owners.
+        p
+          | 更新情報＆お問い合わせ：
+          a(href='https://x.com/otoge_db' target='_blank' rel='noopener') @otoge_db
+        p
+          | Since 2019
+          | / Made by 
+          a(href='https://x.com/zvuc_' target='_blank' rel='noopener') @zvuc_
+          |  / Contributions &amp; feedback on 
+          a(href='https://github.com/zvuc/otoge-db' target='_blank' rel='noopener') GitHub
+      .footer-logo

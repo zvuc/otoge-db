@@ -1,0 +1,41 @@
+block variables
+
+doctype html
+html.page-loading.table-loading
+  head
+    if flat_view
+      base(href='../')
+
+    include _meta
+
+    script(type='text/javascript' src='../shared/jquery-3.6.0.min.js')
+
+    link(rel='stylesheet' href='./style.css?20231226')
+    link(rel='shortcut icon' href=`./img/favicon.ico`)
+    link(rel='apple-touch-icon' sizes='32x32' href=`./img/favicon.ico`)
+    link(rel='apple-touch-icon' sizes='512x512' href=`./img/${game_name}-db-icon-512.png`)
+    link(rel='apple-touch-icon-precomposed' href=`./img/${game_name}-db-icon-512.png`)
+
+    title OtogeDB :: #{game_name_display} #{flat_view ? ':: 譜面別' : ''}
+
+  body
+    #app-wrapper
+      include _header
+      include _loader
+      
+      table#table.display(style='width:100%')
+        thead
+          tr
+            block table_rows
+      
+      include _footer
+
+  script.
+    var flat_view = #{flat_view};
+    
+  script(src='../shared/early-functions.js?20231223')
+  script(defer='' src='../shared/datatables.custom.min.js?20231226')
+  script(defer='' src='../shared/shared-functions.js?20231223')
+
+  script(defer='' src=`./${game_name}-functions.js?20231223`)
+  script(defer='' src='https://www.googletagmanager.com/gtag/js?id=UA-141271073-1')
