@@ -314,15 +314,17 @@ var columns_params = [
         displayTitle: "譜面作者",
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
+        defaultContent: "",
         width: "15em",
         className: "details detail-hidden designer",
         filterable: flat_view,
         searchable: flat_view
     },
     { 
-        displayTitle: "譜面作者",
+        displayTitle: "譜面",
         name: "chart_link",
         data: ( flat_view ? "chart_link" : null ),
+        defaultContent: "",
         render: ( flat_view ? renderChartLinkBtn('chart_link', 'chunithm') : null ),
         width: "5em",
         className: "details detail-hidden chart-link",

@@ -18,6 +18,8 @@
     "name": "Hansol Kim <zvuc@usagi.moe>",
     "url": "https://xenosium.com"
   },
+  "dependencies": {
+  },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
     "concurrently": "^8.2.2",
@@ -28,6 +30,8 @@
     "postcss-cli": "^7.1.1",
     "postcss-load-config": "^2.1.0",
     "postcss-plugin": "^1.0.0",
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6",
     "watch": "^1.0.2"
   },
   "postcss": {
@@ -43,36 +47,36 @@
   "scripts": {
     "update": "yarn fetch && yarn imageoptim",
     "imageoptim": "cat diffs.txt | xargs imageoptim",
-
-    "build": "yarn shared-build & yarn ongeki-build & yarn chuni-build & yarn maimai-build",
-    "less": "yarn ongeki-less & yarn chuni-less & yarn maimai-less",
-    "postcss": "yarn ongeki-postcss & yarn chuni-postcss & yarn maimai-postcss",
-    "minify": "yarn shared-minify & yarn ongeki-minify & yarn chuni-minify & yarn maimai-minify",
-    "watch": "concurrently \"yarn shared-watch\" \"yarn ongeki-watch\" \"yarn chuni-watch\" \"yarn maimai-watch\"",
-
+    "build": "yarn shared-build & yarn ongeki-build & yarn chunithm-build & yarn maimai-build",
+    "less": "yarn ongeki-less & yarn chunithm-less & yarn maimai-less",
+    "postcss": "yarn ongeki-postcss & yarn chunithm-postcss & yarn maimai-postcss",
+    "minify": "yarn shared-minify & yarn ongeki-minify & yarn chunithm-minify & yarn maimai-minify",
+    "watch": "concurrently \"yarn shared-watch\" \"yarn ongeki-watch\" \"yarn chunithm-watch\" \"yarn maimai-watch\"",
     "datatables-minify": "minify shared/src/datatables/datatables.custom.js > shared/datatables.custom.min.js",
 
     "shared-build": "yarn shared-minify",
     "shared-minify": "minify shared/src/js/shared.*.js > shared/shared-functions.js & minify shared/src/js/early-functions.js > shared/early-functions.js",
     "shared-watch": "watch 'yarn shared-build' ./shared/src/js -d",
 
-    "ongeki-build": "yarn ongeki-minify & (yarn ongeki-less && yarn ongeki-postcss)",
+    "ongeki-build": "yarn ongeki-pug & yarn ongeki-minify & (yarn ongeki-less && yarn ongeki-postcss)",
     "ongeki-less": "lessc ./ongeki/src/less/ongeki.less ./ongeki/style.css",
     "ongeki-postcss": "postcss ./ongeki/style.css -o ./ongeki/style.css --verbose",
     "ongeki-minify": "minify ongeki/src/js/*.js > ongeki/ongeki-functions.js",
-    "ongeki-watch": "watch 'yarn ongeki-build' ./shared/src/less ./ongeki/src -d",
+    "ongeki-pug": "yarn pug ongeki/src/pug/index.pug -o ongeki & yarn pug ongeki/src/pug/lv/index.pug -o ongeki/lv",
+    "ongeki-watch": "watch 'yarn ongeki-build' ./shared/src/less ./shared/src/pug ./ongeki/src -d",
 
-    "chuni-build": "yarn chuni-minify & (yarn chuni-less && yarn chuni-postcss)",
-    "chuni-less": "lessc ./chunithm/src/less/chunithm.less ./chunithm/style.css",
-    "chuni-postcss": "postcss ./chunithm/style.css -o ./chunithm/style.css --verbose",
-    "chuni-minify": "minify chunithm/src/js/*.js > chunithm/chunithm-functions.js",
-    "chuni-watch": "watch 'yarn chuni-build' ./shared/src/less ./chunithm/src -d",
+    "chunithm-build": "yarn chunithm-pug & yarn chunithm-minify & (yarn chunithm-less && yarn chunithm-postcss)",
+    "chunithm-less": "lessc ./chunithm/src/less/chunithm.less ./chunithm/style.css",
+    "chunithm-postcss": "postcss ./chunithm/style.css -o ./chunithm/style.css --verbose",
+    "chunithm-minify": "minify chunithm/src/js/*.js > chunithm/chunithm-functions.js",
+    "chunithm-pug": "yarn pug chunithm/src/pug/index.pug -o chunithm & yarn pug chunithm/src/pug/lv/index.pug -o chunithm/lv",
+    "chunithm-watch": "watch 'yarn chunithm-build' ./shared/src/less ./shared/src/pug ./chunithm/src -d",
 
-    "maimai-build": "yarn maimai-minify & (yarn maimai-less && yarn maimai-postcss)",
+    "maimai-build": "yarn maimai-pug & yarn maimai-minify & (yarn maimai-less && yarn maimai-postcss)",
     "maimai-less": "lessc ./maimai/src/less/maimai.less ./maimai/style.css",
     "maimai-postcss": "postcss ./maimai/style.css -o ./maimai/style.css --verbose",
     "maimai-minify": "minify maimai/src/js/*.js > maimai/maimai-functions.js",
-    "maimai-watch": "watch 'yarn maimai-build' ./shared/src/less ./maimai/src -d"
-  },
-  "dependencies": {}
+    "maimai-pug": "yarn pug maimai/src/pug/index.pug -o maimai & yarn pug maimai/src/pug/lv/index.pug -o maimai/lv",
+    "maimai-watch": "watch 'yarn maimai-build' ./shared/src/less ./shared/src/pug ./maimai/src -d"
+  }
 }

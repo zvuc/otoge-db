@@ -1,0 +1,50 @@
+//-
+  <div class="notice-wrap">
+  <div class="notice-bar">
+  <span class="new-badge">NEW</span><span class="msg-text">#{game_db_name}サイトのアドレスが新しくなりました→ <b>otoge-db.net</b><br>ブックマークなどの更新はお忘れずに！</span>
+  <button id="hide-notice-btn" class="close-btn"></button>
+  </div>
+  </div>
+nav.otogedb-nav
+  span.label OtogeDB
+  a.nav-link(href=(flat_view ? '/ongeki/lv' : '/ongeki'))
+    span ONGEKI
+  a.nav-link(href=(flat_view ? '/chunithm/lv' : '/chunithm'))
+    span CHUNITHM
+  a.nav-link(href=(flat_view ? '/maimai/lv' : '/maimai'))
+    span maimai
+header
+  .container
+    h1
+      a.reset-search(href='#')
+        span.logo
+        span.hidden(aria-hidden='true') #{game_db_name} : #{game_name_display} 非公式楽曲リスト
+    .aside
+      .lastupdated
+        span DATA: 20240111
+      .theme-switcher
+        span.label
+        label.switch(for='themeToggleCheckbox')
+          input#themeToggleCheckbox(type='checkbox' checked='')
+          .slider.round
+nav.site-navigation
+  .container
+    .view-switcher
+      if !flat_view
+        button.btn.active.reset-search
+          span SONGS
+          | 曲
+        a.btn(href='./lv')
+          span CHARTS
+          | 譜面
+      else 
+        a.btn(href='./')
+          span SONGS
+          | 曲
+        button.btn.active.reset-search
+          span CHARTS
+          | 譜面
+    select#chart_lev.lv-switcher(name='lv-switcher' data-type='href')
+      option(value='' selected='' data-default='') LEVEL ALL
+      each level in levels
+          option(value=level) LEVEL #{level}
