@@ -3,6 +3,18 @@ footer {
 	padding: 15px 0;
 	background-color: rgb(var(--ui-color-background-095));
 
+	a {
+		display: inline-block;
+		color: rgb(var(--ui-color-foreground-100));
+		text-decoration: none;
+		font-weight: bold;
+		margin: 0 2px;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
 	.archives-link {
 		padding: 5px 0;
 		font-size: 0.9rem;
@@ -10,13 +22,44 @@ footer {
 		margin-bottom: 10px;
 	}
 
+	.social-icon {
+		display: inline-block;
+		vertical-align: middle;
+		width: 18px;
+		height: 18px;
+		background-size: 16px 16px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-color: #000;
+		border-radius: 3px;
+		margin-right: 2px;
+
+		&.twitter-icon {
+			background-image: url('/shared/img/twitter-icon.svg');
+		}
+
+		&.github-icon {
+			background-image: url('/shared/img/github-icon.svg');
+			border-radius: 18px;
+		}
+	}
+
 	.disclaimer {
 		display: flex;
 		margin-top: 10px;
 		width: 100%;
 
+		@media screen and (max-width: 640px) {
+			flex-flow: column;
+			gap: 10px;
+		}
+
 		.content {
 			margin-right: auto;
+
+			@media screen and (max-width: 640px) {
+				order: 2;
+			}
 
 			p {
 				margin-top: 0;
@@ -27,13 +70,25 @@ footer {
 		
 		.footer-logo {
 			flex: 0 0 auto;
-			display: inline-block;
-			width: 48px;
-			height: 48px;
-			background-image: var(--footer-icon);
-			background-repeat: no-repeat;
-			background-size: 100%;
-			margin-left: 10px;
+			display: flex;
+			flex-flow: column;
+
+			@media screen and (min-width: 640px) {
+				margin-left: 10px;
+			}
+
+			svg {
+				height: 24px;
+
+				@media screen and (min-width: 640px) {
+					height: 32px;
+				}
+			}
+
+			a {
+				margin-top: 10px;
+				text-align: center;
+			}
 		}	
 	}
 

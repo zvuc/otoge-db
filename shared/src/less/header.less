@@ -2,21 +2,35 @@
 @header-height: 60px;
 
 .otogedb-nav {
-	height: 20px;
+	height: 30px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 0.85em;
+	font-size: 13px;
 	gap: 10px;
-	background-color: rgba(var(--ui-color-background-090),0.5);
+	color: rgba(var(--ui-color-foreground-050),0.5);
+	background-color: rgba(var(--ui-color-background-090),0.2);
+	box-shadow:
+		0 -1px 0 0 rgb(var(--ui-color-border),0.1) inset,
+		0 1px 0 0 rgb(var(--ui-color-border),0.1) inset;
 
 	.label {
 		color: rgb(var(--ui-color-foreground-080));
 		font-weight: bold;
+
+		.text {
+			display: none;
+		}
+
+		svg {
+			height: 12.5px;
+
+		}
 	}
 
 	.nav-link {
 		color: rgb(var(--ui-color-foreground-080));
+		margin-top: -0.2em;
 		text-decoration: none;
 
 		&:hover {
