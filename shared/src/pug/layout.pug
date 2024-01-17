@@ -8,13 +8,14 @@ html.page-loading.table-loading
 
     include _meta
 
-    script(type='text/javascript' src='../shared/jquery-3.6.0.min.js')
-
-    link(rel='stylesheet' href='./style.css?20231226')
     link(rel='shortcut icon' href=`./img/favicon.ico`)
     link(rel='apple-touch-icon' sizes='32x32' href=`./img/favicon.ico`)
     link(rel='apple-touch-icon' sizes='512x512' href=`./img/${game_name}-db-icon-512.png`)
     link(rel='apple-touch-icon-precomposed' href=`./img/${game_name}-db-icon-512.png`)
+
+    script(type='text/javascript' src='../shared/jquery-3.6.0.min.js')
+
+    link(rel='stylesheet' href='./style.css?20231226')
 
     title OTOGE DB :: #{game_name_display} #{flat_view ? ':: 譜面別' : ''}
 
