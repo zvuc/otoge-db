@@ -491,7 +491,7 @@ function renderModalFooter(game_name) {
             <div class="modal-footer">
                 <div class="report">
                     <a class="report-btn" 
-                        href="https://twitter.com/intent/tweet?text=@zvuc_%0A%E3%80%90%23${game_name}_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A${encodeURIComponent(data.title)}%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A" 
+                        href="https://twitter.com/intent/tweet?text=@otoge_db%0A%E3%80%90%23${game_name}_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A${encodeURIComponent(data.title)}%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A"
                         target="_blank" rel="noopener noreferrer nofollow">💬 足りない情報・間違いを報告する （Twitter）</a>
                 </div>
             </div>`;
