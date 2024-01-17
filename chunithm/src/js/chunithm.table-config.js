@@ -203,7 +203,8 @@ var columns_params = [
         className: "lv lv-we we-star",
         reverseSortOrder: true,
         width: "3rem",
-        searchable: false
+        searchable: false,
+        visible: false
     },
     {
         //  chart_diff
