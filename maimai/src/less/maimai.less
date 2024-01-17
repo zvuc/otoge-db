@@ -47,7 +47,8 @@
 	--lv-color-adv: 255,165,0; /* #ffa500 */
 	--lv-color-exp: 255,129,141; /* #ff818d */
 	--lv-color-mas: 159,81,220; /* #9f51dc */
-	--lv-color-remas: 204,142,216; /* #CC8ED8 */
+	--lv-color-remas: 159,81,220; /* #9f51dc */
+	--lv-color-remas-bg: 204,142,216; /* #CC8ED8 */
 	--lv-color-utage: 252,111,243; /* #fc6ff3 */
 
 	--toolbar-btn-color: 227,218,232; /* #e3dae8 */
@@ -77,6 +78,7 @@
 	--lv-color-exp: 255,129,141; /* #ff818d */
 	--lv-color-mas: 159,81,220; /* #9f51dc */
 	--lv-color-remas: 204,142,216; /* #CC8ED8 */
+	--lv-color-remas-bg: 204,142,216; /* #CC8ED8 */
 	--lv-color-utage: 252,111,243; /* #fc6ff3 */
 
 	--toolbar-btn-color: 53,49,81; /* #353151 */
@@ -251,11 +253,11 @@ table.dataTable {
 	.lv-remas .inner-wrap > div, 
 	.lev_remas .inner-wrap,
 	.dx_lev_remas .inner-wrap {
-		background: rgba(var(--lv-color-remas),0.1);
+		background: rgba(var(--lv-color-remas-bg),0.1);
 		box-shadow: 0 0 0 1px rgba(var(--lv-color-mas),0.3) inset;
 
 		.diff-name {
-			color: rgb(var(--lv-color-mas));
+			color: rgb(var(--lv-color-remas));
 		}
 	}
 	.lv-utage .inner-wrap > div, 
