@@ -1,0 +1,29 @@
+.dropdown-wrapper {
+	position: relative;
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	background-color: rgb(var(--ui-color-background-100));
+	min-height: 40px;
+	min-width: var(--dropdown-min-width, 150px);
+	width: var(--dropdown-width);
+	max-width: var(--dropdown-max-width);
+	z-index: 903;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.2),
+		0 10px 20px -10px rgba(0,0,0,0.2),
+		0 0 0 1px rgba(100,100,100,0.2);
+	border-radius: 5px;
+	top: 100%;
+	right: 0;
+
+	@supports (backdrop-filter: blur(20px)) {
+		background-color: rgba(var(--ui-color-background-100),0.5);
+		backdrop-filter: blur(20px);
+	}
+}
+
+.dropdown-wrapper.open .dropdown-menu {
+	display: block;
+}

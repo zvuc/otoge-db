@@ -1,0 +1,26 @@
+#site-menu-wrap
+  #site-menu-backdrop
+  #site-menu
+    button#site-menu-close-btn
+      <svg width="20" height="20">
+        <line x1="0" y1="0" x2="20" y2="20" stroke-width="2"></line>
+        <line x1="20" y1="0" x2="0" y2="20" stroke-width="2"></line>
+      </svg>
+    .site-menu-header
+      include ../../img/otoge-db-logo.svg
+      div サイト設定
+    div.menu-list-item
+      span.menu-list-item-label テーマ
+      .theme-switcher
+        input#colorSchemeAuto(type='radio' name='colorScheme' value='auto' checked='')
+        label.switch(for='colorSchemeAuto') 自動
+        input#colorSchemeLight(type='radio' name='colorScheme' value='light')
+        label.switch(for='colorSchemeLight') ライト
+        input#colorSchemeDark(type='radio' name='colorScheme' value='dark')
+        label.switch(for='colorSchemeDark') ダーク
+    div.menu-list-item
+      span.menu-list-item-label 言語
+      .lang-switcher
+        | 日本語
+    p サイト設定は現在のデバイス（ブラウザ）のみに適用・保存されます。
+    block game_menu
