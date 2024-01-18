@@ -61,6 +61,7 @@ table#table {
 		margin: 0 auto;
 		padding-left: var(--padding-size);
 		padding-right: var(--padding-size);
+		grid-template-rows: min-content;
 	}
 }
 
@@ -85,9 +86,9 @@ table#table {
 		top: 0;
 		z-index: 3;
 		background-color: rgb(var(--ui-color-table-row-bg));
-		backdrop-filter: blur(20px);
 
 		@supports (backdrop-filter: blur(20px)) {
+			backdrop-filter: blur(20px);
 			background-color: rgba(var(--ui-color-table-row-bg),0.8);
 		}
 
@@ -118,7 +119,13 @@ table#table {
 
 		}
 	}
+}
 
+#app-wrapper.modal-open .dataTables_scroll .dataTables_scrollHead {
+	@supports (backdrop-filter: blur(20px)) {
+		backdrop-filter: none;
+		background-color: rgb(var(--ui-color-table-row-bg));
+	}
 }
 
 .dataTables_wrapper.no-footer .dataTables_scrollBody {
