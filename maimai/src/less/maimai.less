@@ -406,6 +406,7 @@ div.dtr-modal-content {
 				grid-auto-columns: min-content;
 				grid-auto-flow: row;
 				grid-template-columns: auto;
+				align-content: start;
 
 
 				&.available {
@@ -441,17 +442,24 @@ div.dtr-modal-content {
 				}
 
 				.lock-status {
-					grid-column: 2;
-					grid-row: 1 / span 2;
+					grid-row: 3;
 					display: flex;
-					flex-flow: column;
+					gap: 5px;
 					justify-content: center;
 					align-items: center;
-					padding: 8px;
-					margin: -8px;
-					width: 100px;
+					padding: 5px;
+					margin: 5px -8px -8px -8px;
 					border-radius: 2px;
 					background-color: rgba(var(--lv-color-adv),0.2);
+
+					@media screen and (min-width: 640px) {
+						flex-flow: column;
+						grid-column: 2;
+						grid-row: 1 / span 2;
+						width: 100px;
+						padding: 8px;
+						margin: -8px;
+					}
 
 					.lock-status-text {
 						font-size: 0.8em;
