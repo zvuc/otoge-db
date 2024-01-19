@@ -50,7 +50,7 @@ PAGES = {
 }
 
 SDVXIN_BASE_URL = 'https://sdvx.in/ongeki'
-LOCAL_CACHE_DIR = 'sdvxin_cache'
+LOCAL_CACHE_DIR = 'ongeki/sdvxin_cache'
 
 # Update on top of existing music-ex
 def update_chartguide_data(args):

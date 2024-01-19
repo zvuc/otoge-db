@@ -59,7 +59,7 @@ PAGES = {
 }
 
 SDVXIN_BASE_URL = 'https://sdvx.in/chunithm'
-LOCAL_CACHE_DIR = 'sdvxin_cache'
+LOCAL_CACHE_DIR = 'chunithm/sdvxin_cache'
 
 # Update on top of existing music-ex
 def update_chartguide_data(args):
