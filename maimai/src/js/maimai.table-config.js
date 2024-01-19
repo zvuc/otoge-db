@@ -789,12 +789,12 @@ $(document).ready(function() {
               <div class="region-availability-chart">
                 <div class="region jp available">
                   <span class="region-label">日本版</span>
-                  <span class="date">${formatDate(data['date'])} 追加</span>
+                  <span class="date"><span class="green-check-icon"></span>${formatDate(data['date'])} 追加</span>
                   ${ (data['key'] && data['key'] === '○') ? lock_status_html : ''}
                 </div>
                 <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
                   <span class="region-label">International Ver.</span>
-                  <span class="date">${ (data['intl'] ? intl_date_display : '未収録')}</span>
+                  <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : '未収録')}</span>
                   ${ (data['key_intl'] && data['key_intl'] === '○') ? lock_status_html : ''}
                 </div>
               </div>

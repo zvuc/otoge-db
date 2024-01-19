@@ -723,4 +723,87 @@ div.dtr-modal-content .details-table {
 			}
 		}
 	}
+
+	.region-availability-chart {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 5px;
+		padding: 0 var(--padding-size);
+
+		.region {
+			display: grid;
+			padding: 10px;
+			gap: 5px;
+			background-color: rgba(var(--ui-color-background-080),0.4);
+			border-radius: 5px;
+			grid-auto-columns: min-content;
+			grid-auto-flow: row;
+			grid-template-columns: auto;
+			align-content: start;
+
+
+			&.available {
+				// box-shadow: 0 0 0 1px rgba(var(--lv-color-bsc),0.4) inset;
+			}
+
+			&.unavailable {
+				.date {
+					color: rgba(var(--ui-color-foreground-040));
+				}
+			}
+
+			.region-label {
+				display: block;
+				font-weight: bold;
+			}
+			&.jp {
+				.region-label {
+					&:before {
+						content: "🇯🇵 ";
+					}
+				}
+			}
+			&.intl {
+				.region-label {
+					&:before {
+						content: "🌏 ";
+					}
+				}
+			}
+
+			.date {
+				display: flex;
+				align-items: center;
+			}
+
+			.green-check-icon {
+				margin-right: 3px;
+			}
+
+			.lock-status {
+				grid-row: 3;
+				display: flex;
+				gap: 5px;
+				justify-content: center;
+				align-items: center;
+				padding: 5px;
+				margin: 5px -8px -8px -8px;
+				border-radius: 2px;
+				background-color: rgba(var(--lv-color-adv),0.2);
+
+				@media screen and (min-width: 640px) {
+					flex-flow: column;
+					grid-column: 2;
+					grid-row: 1 / span 2;
+					width: 100px;
+					padding: 8px;
+					margin: -8px;
+				}
+
+				.lock-status-text {
+					font-size: 0.8em;
+				}
+			}
+		}
+	}
 }
