@@ -1,6 +1,8 @@
 SERVER_MUSIC_DATA_URL = "https://chunithm.sega.jp/storage/json/music.json"
 SERVER_MUSIC_JACKET_BASE_URL = "https://new.chunithm-net.com/chuni-mobile/html/mobile/img/"
+SERVER_INTL_MUSIC_DATA_URL = "https://chunithm.sega.com/assets/data/music.json"
 LOCAL_MUSIC_JSON_PATH = "chunithm/data/music.json"
+LOCAL_INTL_MUSIC_JSON_PATH = "chunithm/data/music-intl.json"
 LOCAL_MUSIC_EX_JSON_PATH = "chunithm/data/music-ex.json"
 LOCAL_DIFFS_LOG_PATH = "chunithm/diffs.txt"
 LOCAL_ERROR_LOG_PATH = "chunithm/errors.txt"
