@@ -119,6 +119,22 @@ var columns_params = [
     visible: false
   },
   {
+    displayTitle: "解禁",
+    name: "key",
+    data: "key",
+    defaultContent: "",
+    className: "key detail-hidden",
+    render: function ( data, type, row ) {
+      if ( type === 'display' && data ) {
+        return `<span class="key-icon" title="解禁必要"></span>`;
+      }
+      else {
+        return data;
+      }
+    },
+    searchable: false
+  },
+  {
     displayTitle: "バージョン",
     name: "version",
     data: maimaiRenderVersionName(),
@@ -374,22 +390,6 @@ var columns_params = [
   //     width: "5em",
   //     className: "details detail-hidden chart-link",
   // },
-  {
-    displayTitle: "解禁",
-    name: "key",
-    data: "key",
-    defaultContent: "",
-    className: "key detail-hidden",
-    render: function ( data, type, row ) {
-      if ( type === 'display' && data ) {
-        return `<span class="key-icon" title="解禁必要"></span>`;
-      }
-      else {
-        return data;
-      }
-    },
-    searchable: false
-  },
   {
     displayTitle: "追加日（Int'l Ver.）",
     name: "intl",
