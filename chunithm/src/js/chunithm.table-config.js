@@ -336,11 +336,10 @@ var columns_params = [
     name: "intl",
     data: "intl",
     defaultContent: "",
-    className: "intl detail-hidden",
+    className: "detail-hidden",
     width: "4em",
-    filterable: false,
-    searchable: false,
-    visible: false
+    visible: false,
+    defaultSearch: "1"
   },
   {
     displayTitle: "追加日",
@@ -378,6 +377,8 @@ var default_order =
     [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']] :
     // date , ID
     [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
+
+var default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
 
 function convertWEStars(we_star) {
   const conversionTable = {
@@ -515,10 +516,14 @@ $(document).ready(function() {
         },
       ],
       "columns": columns_params,
+      "searchCols": default_search,
       "createdRow": function( row, data, dataIndex ) {
         if ( data.intl == "1" ) {
           $(row).addClass( 'international' );
         }
+      },
+      "drawCallback": function(settings) {
+        toggleDateRowGroup(this, default_search);
       },
       "deferRender": true,
       "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',

@@ -391,8 +391,17 @@ var columns_params = [
   //     className: "details detail-hidden chart-link",
   // },
   {
-    displayTitle: "追加日（Int'l Ver.）",
+    displayTitle: "Intl",
     name: "intl",
+    data: "intl",
+    defaultContent: "",
+    className: "detail-hidden",
+    visible: false,
+    defaultSearch: "1"
+  },
+  {
+    displayTitle: "追加日（Int'l Ver.）",
+    name: "release_intl",
     data: function( row, type, set, meta ) {
       if (row.release_intl && row.release_intl !== '000000') {
         return formatDate(row.release_intl);
@@ -449,6 +458,7 @@ var default_order =
     // date , ID
     [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
 
+var default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
 
 function maimaiGetChartTypes() {
   return function(row, data) {
@@ -736,10 +746,14 @@ $(document).ready(function() {
         },
       ],
       "columns": columns_params,
+      "searchCols": default_search,
       "createdRow": function( row, data, dataIndex ) {
         if ( data.intl == "1" ) {
         $(row).addClass( 'international' );
         }
+      },
+      "drawCallback": function(settings) {
+        toggleDateRowGroup(this, default_search);
       },
       "deferRender": true,
       "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
@@ -973,3 +987,5 @@ $(document).ready(function() {
     });
   });
 });
+
+

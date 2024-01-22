@@ -247,9 +247,9 @@ function tableInitCompleteFunctions(table) {
     applyFilterFromURLSearchParams(table, searchParams);
 
     // rowgroup handling on reorder
-    table.on('order.dt', function() {
-        toggleDateRowGroup(table);
-    });
+    // table.on('order.dt', function() {
+    //     toggleDateRowGroup(table);
+    // });
 
     $('#table').addClass('loading-done');
     $('html').removeClass('table-loading');
@@ -287,15 +287,70 @@ function tableInitCompleteFunctions(table) {
     $('button.reset-search').on('click', function(){
         table.api()
             .order(default_order) //FIXME: why doesn't work with just calling var?
-            .search('')
-            .columns().search('')
-            .draw();
+            .columns().search('');
+
+        const columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
+
+        if (columnIndexWithDefaultSearch !== -1) {
+            const defaultSearchValue = columns_params[columnIndexWithDefaultSearch].defaultSearch;
+            table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue);
+        }
+
+        table.api().draw();
 
         clearQueryStringParameter();
-        toggleDateRowGroup(table);
 
         $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
     });
+
+
+    function switchGameRegion(event) {
+      if (event.target.id === 'gameRegionQuickSwitch') {
+        var currentRegion = event.target.checked ? 'intl' : 'jp';
+      } else {
+        var currentRegion = document.querySelector('input[name="gameRegion"]:checked').value;
+      }
+
+      // Save the selected region in localStorage
+      localStorage.setItem('userGameRegion', currentRegion);
+      root.setAttribute('data-game-region', currentRegion);
+
+      // Update default_search based on the checkbox status
+      var default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
+
+      var columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
+
+      if (columnIndexWithDefaultSearch !== -1) {
+          var defaultSearchValue = (currentRegion === 'intl' ? columns_params[columnIndexWithDefaultSearch].defaultSearch : '');
+          table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue).draw();
+      }
+
+      // Toggle date columns
+      // var jp_date_column = table.api().column(getColumnIndexByName('date'));
+      // var intl_date_column = table.api().column(getColumnIndexByName('release_intl'));
+
+      // if (currentRegion === 'intl') {
+      //   jp_date_column.visible(false);
+      //   intl_date_column.visible(true);
+      // } else {
+      //   jp_date_column.visible(true);
+      //   intl_date_column.visible(false);
+      // }
+
+      // update checkbox value
+      if (event.target.id === 'gameRegionQuickSwitch') {
+        document.getElementById('gameRegionIntl').checked = event.target.checked;
+        document.getElementById('gameRegionJP').checked = !event.target.checked;
+      } else {
+        document.getElementById('gameRegionQuickSwitch').checked = (currentRegion === 'intl' ? true : false);
+      }
+    }
+
+    gameRegionChecks.forEach(input => {
+      input.addEventListener('change', switchGameRegion);
+    });
+
+    gameRegionQuickSwitch.addEventListener('change', switchGameRegion);
 }
 
 function generateFilterDropdowns(table) {
@@ -389,9 +444,10 @@ function generateFilterDropdowns(table) {
                     appendSelectboxStateClass(select, value);
                 }
             }
-
         }
     });
+
+    $('<button class="btn reset-search">Clear Search</button>').appendTo($('.toolbar.filters'));
 }
 
 function applyFilterFromURLSearchParams(table, searchParams) {
@@ -416,36 +472,46 @@ function applyFilterFromURLSearchParams(table, searchParams) {
     }
 }
 
-function toggleDateRowGroup(table) {
+function toggleDateRowGroup(table, default_search) {
     var order = table.api().order();
     var search = table.api().columns().search();
-    var searchActive = false;
+    var searchActive = isSearchActive(search, default_search);
 
-    for (let k = 0; k < search.length; k = k + 1) {
-        if (k in search && search[k] !== "") {
-            searchActive = true;
-            break;
-        }
+    if (searchActive) {
+        return;
     }
 
     // Disable rowgroup unless sorting by date
     if (order[0][0] !== getColumnIndexByName('date')) {
         table.api().rowGroup().disable();
-        // console.log('group disabled (sorting by non-date column)');
-        return;
     }
-    // enable rowgroup if sorting by date AND search is inactive
-    else if ((order[0][0] === getColumnIndexByName('date')) && !searchActive) {
-        table.api().rowGroup().enable();
-        // console.log('group enabled (sorting by date + search inactive)');
-        return;
-    }
-    // do nothing
+    // enable rowgroup if sorting by date
     else {
-        // console.log('do nothing');
-        return;
+        table.api().rowGroup().enable();
     }
-    table.api().draw();
+}
+
+function isSearchActive(search, default_search) {
+    for (let k = 0; k < search.length; k = k + 1) {
+        if (search[k] !== '') {
+            // pass if search value matches default search
+            if (search[k] === default_search[k].search) {
+                continue;
+            } else {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function getDefaultSearchValues(columnsParams, isIntl = false) {
+    if (isIntl) {
+        return columnsParams.map(column =>
+            (column.defaultSearch !== undefined) ? {"search": column.defaultSearch} : null
+        );
+    }
+    return Array(columnsParams.length).fill(null);
 }
 
 function renderModalHeader(game_name, image_col, wiki_url_col, wiki_url_base, youtube_search_term='譜面確認') {

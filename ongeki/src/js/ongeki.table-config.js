@@ -420,6 +420,8 @@ var default_order =
         // date , ID
         [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
 
+var default_search = getDefaultSearchValues(columns_params);
+
 function processOngekiChartData(obj, chart_diff) {
     if (obj[chart_diff]) {
         return {
@@ -534,6 +536,10 @@ $(document).ready(function() {
                 },
             ],
             "columns": columns_params,
+            "searchCols": default_search,
+            "drawCallback": function(settings) {
+              toggleDateRowGroup(this, default_search);
+            },
             "deferRender": true,
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
             "language": localize_strings,

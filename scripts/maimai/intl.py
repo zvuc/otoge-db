@@ -39,6 +39,6 @@ def fetch_intl_json_from_server():
 
 def maimai_generate_hash(song):
     if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+        return generate_hash(song['title'] + song['lev_utage'])
     else:
         return generate_hash(song['title'] + song['image_url'])

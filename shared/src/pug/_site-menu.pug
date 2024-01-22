@@ -8,19 +8,29 @@
       </svg>
     .site-menu-header
       include ../../img/otoge-db-logo.svg
-      div サイト設定
+      div SETTINGS
+      p サイト設定は現在のデバイス（ブラウザ）のみに適用・保存されます。
     div.menu-list-item
       span.menu-list-item-label テーマ
-      .theme-switcher
+      .segmented-btn-group.theme-switcher
         input#colorSchemeAuto(type='radio' name='colorScheme' value='auto' checked='')
         label.switch(for='colorSchemeAuto') 自動
         input#colorSchemeLight(type='radio' name='colorScheme' value='light')
         label.switch(for='colorSchemeLight') ライト
         input#colorSchemeDark(type='radio' name='colorScheme' value='dark')
         label.switch(for='colorSchemeDark') ダーク
+    div.menu-list-item.game-region-settings
+      span.menu-list-item-label ゲーム地域
+      .segmented-btn-group.intl-switcher
+        input#gameRegionJP(type='radio' name='gameRegion' value='jp' checked='')
+        label.switch(for='gameRegionJP') 🇯🇵 日本
+        input#gameRegionIntl(type='radio' name='gameRegion' value='intl')
+        label.switch(for='gameRegionIntl') 🌏 International
+      p.option-caption
+        | Choosing International ver. will only show songs currently playable in the International version.
     div.menu-list-item
-      span.menu-list-item-label 言語
+      span.menu-list-item-label UI言語
       .lang-switcher
         | 日本語
-    p サイト設定は現在のデバイス（ブラウザ）のみに適用・保存されます。
+
     block game_menu

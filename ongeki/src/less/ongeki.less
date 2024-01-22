@@ -1,8 +1,8 @@
 @import '../../../shared/src/less/common-imports.less';
 
 .ongeki-variables-common() {
-	--logo-size-mobile: 160px;
-	--logo-size: 240px;
+	--logo-size: ~'520/155';
+	--logo-max-width: 200px;
 
 	--header-gradient-stop-01: var(--color-accent-03);
 	--header-gradient-stop-02: var(--color-accent-04);
@@ -70,6 +70,16 @@ header {
 		a {
 			margin-left: -5px;
 		}
+	}
+
+	.region-quick-switch {
+		display: none;
+	}
+}
+
+#site-menu {
+	.game-region-settings {
+		display: none;
 	}
 }
 

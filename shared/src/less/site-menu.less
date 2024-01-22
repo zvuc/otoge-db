@@ -161,13 +161,6 @@
 				border-bottom: 1px solid rgb(var(--ui-color-foreground-050),0.3);
 			}
 		}
-
-		p {
-			margin: 2px 0;
-			padding: 5px 20px;
-			font-size: 0.9em;
-			color: rgb(var(--ui-color-foreground-060));
-		}
 	}
 
 	.site-menu-header {
@@ -181,9 +174,15 @@
 			font-size: 1.4em;
 			font-weight: bold;
 		}
+		p {
+			margin: 2px 0;
+			padding: 5px 0;
+			font-size: 0.9em;
+			color: rgb(var(--ui-color-foreground-060));
+		}
 	}
 
-	.theme-switcher {
+	.segmented-btn-group {
 		position: relative;
 		display: grid;
 		grid-auto-flow: column;
@@ -244,6 +243,11 @@
 			color: #fff;
 		}
 
+		input:disabled + label {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+
 		// .switch {
 		// 	@slider-size: 16px;
 		// 	height: @slider-size * 1.75;
@@ -292,6 +296,13 @@
 
 	.lang-switcher {
 		padding: 5px 0;
+	}
+
+	p.option-caption {
+		color: rgb(var(--ui-color-foreground-060));
+		font-size: 0.9em;
+		padding: 5px 0;
+		margin: 0;
 	}
 
 }

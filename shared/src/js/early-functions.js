@@ -1,3 +1,20 @@
+const colorSchemeInput = document.querySelectorAll('input[name="colorScheme"]');
+const gameRegionChecks = document.querySelectorAll('input[name="gameRegion"]');
+const gameRegionQuickSwitch = document.getElementById('gameRegionQuickSwitch');
+
+// Check if the userGameRegion value is nonexistent, create one with the default value 'jp'
+var currentRegion = localStorage.getItem('userGameRegion');
+if (!currentRegion) {
+    localStorage.setItem('userGameRegion', 'jp');
+}
+// Check the initial game region
+const initialGameRegion = currentRegion || 'jp';
+document.querySelector(`input[value="${initialGameRegion}"]`).checked = true;
+gameRegionQuickSwitch.checked = (initialGameRegion === 'jp' ? false : true);
+document.documentElement.setAttribute('data-game-region', currentRegion);
+// switchGameRegion(); // Apply initial region
+
+
 document.addEventListener("DOMContentLoaded", function() {
     var searchParams = new URLSearchParams(window.location.search);
     updateChartLevelSelectboxValue(searchParams);
@@ -27,3 +44,5 @@ function unescapeSlashes(str) {
         return str;
     }
 }
+
+
