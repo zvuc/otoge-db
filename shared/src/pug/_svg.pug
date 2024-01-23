@@ -1,0 +1,3 @@
+mixin symbol(icon)
+  svg(class=`symbol ${icon}` aria-hidden="true" focusable="false")
+    use(href=`/shared/img/symbols.svg#${icon}`)

@@ -3,6 +3,11 @@
 .chunithm-variables-common() {
 	--logo-size: ~'1690/250';
 	--logo-max-width: 240px;
+	--logo-max-height: 30px;
+
+	@media screen and (min-width: 480px) {
+		--logo-max-height: 45px;
+	}
 
 	--header-gradient-stop-01: var(--color-accent-03);
 	--header-gradient-stop-02: var(--color-accent-02);

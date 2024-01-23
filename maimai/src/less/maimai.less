@@ -3,6 +3,11 @@
 .maimai-variables-common() {
 	--logo-size: ~'356/100';
 	--logo-max-width: 170px;
+	--logo-max-height: 40px;
+
+	@media screen and (min-width: 480px) {
+		--logo-max-height: 45px;
+	}
 
 	--header-gradient-stop-01: var(--color-accent-03);
 	--header-gradient-stop-02: var(--color-accent-02);

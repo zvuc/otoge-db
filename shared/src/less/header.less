@@ -30,7 +30,7 @@
 
 		svg {
 			height: 13px;
-
+			aspect-ratio: ~'710/125';
 		}
 	}
 
@@ -82,6 +82,8 @@ header {
 		left: 0;
 		right: 0;
 		background-image: url('./img/tri-pattern.svg');
+		background-size: 71px;
+		background-position: bottom;
 		opacity: 0.05;
 		filter: var(--bg-pattern-filter);
 	}
@@ -126,9 +128,8 @@ header {
 			span.logo {
 				width: 100vw;
 				height: auto;
-				// width: calc(100vw - 180px);
 				max-width: ~'min(calc(100vw - 200px),var(--logo-max-width,170px))';
-				// max-height: 50px;
+				max-height: var(--logo-max-height, 50px);
 				aspect-ratio: var(--logo-size);
 				background-image: var(--logo-url);
 				background-size: contain;
@@ -136,9 +137,6 @@ header {
 				background-position: left center;
 
 				@media screen and (min-width: 480px) {
-					// width: var(--logo-size,200px);
-					// max-width: none;
-					// max-height: var(--header-height);
 					background-position: left center;
 				}
 			}
@@ -155,7 +153,7 @@ header {
 		display: inline-flex;
 		height: var(--header-height);
 		align-items: stretch;
-		padding: 0 30px 0 10px;
+		padding: 0 var(--padding-size);
 		margin-left: auto;
 		margin-right: -30px;
 		color: rgb(var(--ui-color-foreground-100));
@@ -197,13 +195,13 @@ header {
 
 	.site-menu-btn-wrapper {
 		position: relative;
-		margin-left: 20px;
-		padding: 5px 0 5px 30px;
+		margin-left: var(--padding-size);
+		padding: 5px var(--padding-size);
 		display: inline-flex;
 		align-items: center;
 
 		@media screen and (max-width: 480px) {
-			padding-left: 15px;
+			// margin-left: 10px;
 		}
 
 		&:before {
@@ -294,8 +292,7 @@ header {
 		padding: 5px 0 5px 0;
 
 		@media screen and (min-width: 480px) {
-			// padding-right: 10px;
-			width: 100px;
+			width: 6em;
 		}
 	}
 
@@ -349,7 +346,7 @@ header {
 		align-items: center;
 		justify-content: center;
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 640px) {
 			display: none;
 			// padding-left: 15px;
 		}
@@ -514,9 +511,13 @@ header {
 		grid-template-columns: 1fr 1fr;
 		flex: 1 1 auto;
 		max-width: 180px;
+		font-size: 1.1rem;
 
+		@media screen and (max-width: 480px) {
+			font-size: 1.2rem;
+		}
 
-		@media screen and (min-width: 480px) {
+		@media screen and (min-width: 375px) {
 			flex: 0 0 auto;
 			display: flex;
 			gap: 2px;
@@ -530,7 +531,7 @@ header {
 			justify-content: center;
 			flex-flow: column;
 
-			@media screen and (min-width: 480px) {
+			@media screen and (min-width: 375px) {
 				flex-flow: row;
 			}
 
@@ -538,7 +539,7 @@ header {
 				display: block;
 				font-size: 0.9em;
 
-				@media screen and (min-width: 480px) {
+				@media screen and (min-width: 375px) {
 					&:after {
 						content: "·";
 						margin: 0 1px;
