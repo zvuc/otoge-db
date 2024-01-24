@@ -11,7 +11,7 @@ var localize_strings = {
       "loadingRecords": "読み込み中...",
       "processing":     "処理中...",
       "search":         "検索",
-      "searchPlaceholder": "曲名・アーティスト",
+      "searchPlaceholder": "曲名・アーティスト検索",
       "zeroRecords":    "一致するレコードがありません",
       "paginate": {
           "sFirst":    "先頭",
@@ -35,7 +35,7 @@ var localize_strings = {
       "loadingRecords": "Loading...",
       "processing":     "Processing...",
       "search":         "Search",
-      "searchPlaceholder": "Song name/Artist",
+      "searchPlaceholder": "Search Title/Artist",
       "zeroRecords":    "No matching records",
       "paginate": {
           "sFirst":    "First",
@@ -59,7 +59,7 @@ var localize_strings = {
       "loadingRecords": "불러 오는 중...",
       "processing":     "처리중...",
       "search":         "검색",
-      "searchPlaceholder": "곡명・아티스트",
+      "searchPlaceholder": "곡명・아티스트 검색",
       "zeroRecords":    "필터나 검색에 해당하는 항목이 없습니다",
       "paginate": {
           "sFirst":    "첫 페이지",
@@ -413,11 +413,12 @@ function generateFilterDropdowns(table) {
         var column_param = columns_params[column.index()];
 
         if (("filterable" in column_param) && (column_param.filterable == true)) {
-            var selectWrap = $('<div class="select-wrap ' + column_param.className + '"><span class="label">' + column_param.displayTitle + '</span></div>')
+            var selectWrap = $(`<div class="select-wrap ${column_param.className}"></div>`)
                 .appendTo($('.toolbar.filters'));
-            var select = $('<select id="' + column_param.name + '"><option value="" data-default>——</option></select>');
-
-            select.appendTo(selectWrap);
+            var select = $('<select id="' + column_param.name + '"><option value="" data-default>——</option></select>')
+                .appendTo(selectWrap);
+            var selectLabel = $(`<span class="label">${column_param.displayTitle}</span>`)
+                .appendTo(selectWrap);
 
             select.on('change', function () {
                 var val = $(this).val();
@@ -497,7 +498,10 @@ function generateFilterDropdowns(table) {
         }
     });
 
-    $(`<button class="btn reset-search">${getTranslation(userLanguage, 'clear_filters')}</button>`).appendTo($('.toolbar.filters'));
+    $(`<button class="btn reset-search">
+        <svg class="symbol icon-cross" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#icon-cross"></use></svg>
+        ${getTranslation(userLanguage, 'clear_filters')}
+      </button>`).appendTo($('.toolbar.filters'));
 }
 
 function applyFilterFromURLSearchParams(table, searchParams) {

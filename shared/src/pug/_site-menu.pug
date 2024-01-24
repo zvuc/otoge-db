@@ -25,14 +25,14 @@
         input#gameRegionJP(type='radio' name='gameRegion' value='jp' checked='')
         label.switch(for='gameRegionJP')
           span.icon 🇯🇵
-          span(data-i18n="version_jp") 日本
+          span(data-i18n="version_jp") 日本版
         input#gameRegionIntl(type='radio' name='gameRegion' value='intl')
         label.switch(for='gameRegionIntl')
           span.icon 🌏
-          span(data-i18n="version_intl") International
+          span(data-i18n="version_intl") 海外版
       p.option-caption(data-i18n='option_region_desc')
-        | Choosing International ver. will only show songs currently playable in the International version.
-    div.menu-list-item
+        | 「海外版」を選ぶと、海外版で選曲可能な曲のみ見せます。
+    div.menu-list-item.lang-settings
       span.menu-list-item-label(data-i18n="option_label_language") UI言語
       .segmented-btn-group.lang-switcher
         input#siteLanguageJa(type='radio' name='siteLanguage' value='ja' checked='')
@@ -42,6 +42,8 @@
         input#siteLanguageEn(type='radio' name='siteLanguage' value='en')
         label.switch(for='siteLanguageEn') English
       p.option-caption(data-i18n='option_language_desc')
-        | Refresh the page to fully apply translation
+        | 選択した言語に完全に切り替えるにはリロードが必要です
+      div.refresh-wrap
+        button.btn.refresh-btn(onclick="location.reload();" data-i18n="refresh") 今リロード
 
     block game_menu

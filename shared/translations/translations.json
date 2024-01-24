@@ -44,6 +44,7 @@
     "option_desc": "サイト設定は現在のデバイス（ブラウザ）のみに適用・保存されます。",
     "option_region_desc": "「海外版」を選ぶと、海外版で選曲可能な曲のみ見せます。",
     "option_language_desc": "選択した言語に完全に切り替えるにはリロードが必要です",
+    "refresh": "今リロード",
     "report_twitter": "💬 足りない情報・間違いを報告する （Twitter）"
   },
   "en": {
@@ -91,6 +92,7 @@
     "option_desc": "All site settings will be saved in this device (browser) only.",
     "option_region_desc": "Choosing International ver. will only show songs currently playable in the International version.",
     "option_language_desc": "Refresh the page to fully apply translation",
+    "refresh": "Refresh Now",
     "report_twitter": "💬 Report missing or incorrect data (Twitter)"
   },
   "ko": {
@@ -138,6 +140,7 @@
     "option_desc": "모든 사이트 설정은 현태 디바이스 (브라우저)에만 저장됩니다.",
     "option_region_desc": "인터내셔널 버전을 선택하면 해당 버전에서 현재 플레이 가능한 곡만 보여집니다.",
     "option_language_desc": "변경한 언어를 완전히 적용하려면 페이지 새로고침이 필요합니다.",
+    "refresh": "지금 새로고침",
     "report_twitter": "💬 누락/잘못된 정보 보고하기 (Twitter)"
   }
 }

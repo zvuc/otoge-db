@@ -156,9 +156,14 @@ function replaceUnitText(text) {
 //     $(this).parent(".dropdown-wrapper").toggleClass('open');
 // });
 
-function setLanguage() {
+function setLanguage(e) {
   const cachedTranslations = localStorage.getItem('translations');
   const languageCode = document.querySelector('input[name="siteLanguage"]:checked').value;
+  const languageSettingsWrapper = document.querySelector('#site-menu .menu-list-item.lang-settings');
+
+  if (e) {
+    languageSettingsWrapper.classList.add('setting-changed');
+  }
 
   // Save the selected color scheme in localStorage
   localStorage.setItem('userLanguage', languageCode);
