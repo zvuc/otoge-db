@@ -163,9 +163,12 @@ svg.otogedb-logo {
 select {
 	@corner-size: 4px;
 	--border-thickness: 1px;
-	@border-color: rgb(var(--ui-color-form-border));
-	@border-color-accent: rgb(var(--ui-color-form-border-accent));
-	@border-color-focus: rgb(var(--ui-color-form-border-active));
+	--select-bg-color: rgba(var(--ui-color-form-background),0.2);
+	--border-color: rgb(var(--ui-color-form-border));
+	--border-color-hl: rgb(var(--ui-color-form-border));
+
+	--border-color-accent: rgb(var(--ui-color-form-border-accent));
+	--border-color-focus: rgb(var(--ui-color-form-border-active));
 
 	text-overflow: ellipsis;
 	height: 32px;
@@ -173,11 +176,11 @@ select {
 	font-size: 16px;
 	background-color: rgba(var(--ui-color-background-100),0.5);
 	background-image: 
-		linear-gradient(to right, rgba(var(--ui-color-form-background),0.2) 0%, rgba(var(--ui-color-form-background),0.2) 100%),
-		linear-gradient(to right, @border-color 0%, @border-color 50%, @border-color 100%),
-		linear-gradient(to left, @border-color 0%, @border-color 50%, @border-color 100%),
-		linear-gradient(45deg, transparent (@corner-size - 0.5px), @border-color @corner-size, @border-color calc(@corner-size + var(--border-thickness) * 0.8), transparent calc(@corner-size + var(--border-thickness) * 0.8)),
-		linear-gradient(225deg, transparent (@corner-size - 0.5px), @border-color @corner-size, @border-color calc(@corner-size + var(--border-thickness) * 0.8), transparent calc(@corner-size + var(--border-thickness) * 0.8)),
+		linear-gradient(to right, var(--select-bg-color) 0%, var(--select-bg-color) 100%),
+		linear-gradient(to right, var(--border-color) 0%, var(--border-color-hl) 50%, var(--border-color) 100%),
+		linear-gradient(to left, var(--border-color) 0%, var(--border-color-hl) 50%, var(--border-color) 100%),
+		linear-gradient(45deg, transparent (@corner-size - 0.5px), var(--border-color) @corner-size, var(--border-color) calc(@corner-size + var(--border-thickness) * 0.8), transparent calc(@corner-size + var(--border-thickness) * 0.8)),
+		linear-gradient(225deg, transparent (@corner-size - 0.5px), var(--border-color) @corner-size, var(--border-color) calc(@corner-size + var(--border-thickness) * 0.8), transparent calc(@corner-size + var(--border-thickness) * 0.8)),
 		var(--select-icon-svg);
 	background-position:
 		center center,
@@ -214,21 +217,16 @@ select {
 	cursor: pointer;
 
 	&:hover {
-		background-color: rgba(var(--ui-color-btn),0.7);
+		background-color: rgba(var(--ui-color-btn),0.3);
 		transition-duration: 0s;
 	}
 
 	&:focus {
+		--border-color: rgb(var(--ui-color-form-border-active));
+		--border-color-hl: rgb(var(--ui-color-form-border-accent));
 		font-size: 16px;
 		outline: none;
-		background-color: rgba(var(--ui-color-btn),0.7);
-		background-image: 
-			linear-gradient(to right, rgba(var(--ui-color-btn),0.2) 0%, rgba(var(--ui-color-btn),0.2) 100%),
-			linear-gradient(to right, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
-			linear-gradient(to left, @border-color-focus 0%, @border-color-accent 50%, @border-color-focus 100%),
-			linear-gradient(45deg, transparent (@corner-size - 0.5px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 0.8px), transparent (@corner-size + 0.8px)),
-			linear-gradient(225deg, transparent (@corner-size - 0.5px), @border-color-focus @corner-size, @border-color-focus (@corner-size + 0.8px), transparent (@corner-size + 0.8px)),
-			var(--select-active-icon-svg);
+		background-color: rgba(var(--ui-color-btn),0.5);
 		transition-duration: 0s;
 	}
 }

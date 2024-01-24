@@ -246,13 +246,17 @@
 
 				&.changed {
 					--border-thickness: 2px;
+					--select-bg-color: rgba(var(--ui-color-form-background),0.5);
+					--border-color: rgb(var(--ui-color-form-border-active));
+					--border-color-hl: rgb(var(--ui-color-form-border-accent));
 				}
 			}
 
 			.label {
 				position: absolute;
 				display: block;
-				font-size: 0.9rem;
+				font-size: 1rem;
+				letter-spacing: -0.02em;
 				font-weight: bold;
 				left: 10px;
 				// margin-bottom: 3px;
@@ -261,11 +265,15 @@
 				pointer-events: none;
 				transition: transform 0.2s;
 				transform-origin: left top;
+
+				@media screen and (min-width: 480px) {
+					font-size: 0.85rem;
+				}
 			}
 
 			select.changed + .label {
 				color: rgb(var(--ui-color-foreground-100));
-				transform: translateY(-0.6em) scale(0.8);
+				transform: translateY(-0.6em) scale(0.9);
 			}
 		}
 
@@ -515,6 +523,7 @@
 						background-color: rgba(var(--ui-color-btn),0.7);
 						background-position: 100% 100%,0 0,0 100%,100% 0,50%;
 						cursor: pointer;
+						color: transparent;
 
 						&:hover {
 							background-color: rgba(var(--ui-color-btn),0.8);

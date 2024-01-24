@@ -92,7 +92,7 @@ header {
 	    position: absolute;
 	    height: var(--header-height);
 	    bottom: 0;
-	    left: ~'min(100%,calc((100vw - 1680px) / 2 + 1680px - 10px))';
+	    left: ~'min(calc(100% - 20px),calc((100vw - 1680px) / 2 + 1680px - 20px))';
 	    right: 0;
 	    background-color: rgb(var(--ui-color-background-100));
 	}
@@ -154,9 +154,13 @@ header {
 		align-items: stretch;
 		padding: 0 var(--padding-size);
 		margin-left: auto;
-		margin-right: -30px;
+		margin-right: -20px;
 		color: rgb(var(--ui-color-foreground-100));
 		z-index: 1;
+
+		@media screen and (min-width: 480px) {
+			margin-right: -30px;
+		}
 
 		&:before {
 			content: "";
