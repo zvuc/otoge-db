@@ -1,27 +1,77 @@
 var searchParams = new URLSearchParams(window.location.search);
 var localize_strings = {
-    "emptyTable":     "テーブルにデータがありません",
-    "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
-    "infoEmpty":      replaceUnitText(" 0 unit"),
-    "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
-    "infoPostFix":    "",
-    "infoThousands":  ",",
-    "lengthMenu":     "1ページ表示 _MENU_",
-    "loadingRecords": "読み込み中...",
-    "processing":     "処理中...",
-    "search":         "検索",
-    "searchPlaceholder": "曲名・アーティスト",
-    "zeroRecords":    "一致するレコードがありません",
-    "paginate": {
-        "sFirst":    "先頭",
-        "sLast":     "最終",
-        "sNext":     "NEXT",
-        "sPrevious": "PREV"
-    },
-    "aria": {
-        "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
-        "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
-    }
+  "ja": {
+      "emptyTable":     "テーブルにデータがありません",
+      "info":           replaceUnitText(" _TOTAL_unit (_START_〜_END_ 表示中)"),
+      "infoEmpty":      replaceUnitText(" 0 unit"),
+      "infoFiltered":   replaceUnitText("（全 _MAX_ unit）"),
+      "infoPostFix":    "",
+      "infoThousands":  ",",
+      "lengthMenu":     "1ページ表示 _MENU_",
+      "loadingRecords": "読み込み中...",
+      "processing":     "処理中...",
+      "search":         "検索",
+      "searchPlaceholder": "曲名・アーティスト",
+      "zeroRecords":    "一致するレコードがありません",
+      "paginate": {
+          "sFirst":    "先頭",
+          "sLast":     "最終",
+          "sNext":     "NEXT",
+          "sPrevious": "PREV"
+      },
+      "aria": {
+          "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
+          "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
+      }
+  },
+  "en": {
+      "emptyTable":     "No data in table",
+      "info":           replaceUnitText(" _TOTAL_unit (Showing _START_-_END_)"),
+      "infoEmpty":      replaceUnitText(" 0 unit"),
+      "infoFiltered":   replaceUnitText("（Total _MAX_ unit）"),
+      "infoPostFix":    "",
+      "infoThousands":  ",",
+      "lengthMenu":     "Items per page _MENU_",
+      "loadingRecords": "Loading...",
+      "processing":     "Processing...",
+      "search":         "Search",
+      "searchPlaceholder": "Song name/Artist",
+      "zeroRecords":    "No matching records",
+      "paginate": {
+          "sFirst":    "First",
+          "sLast":     "Last",
+          "sNext":     "NEXT",
+          "sPrevious": "PREV"
+      },
+      "aria": {
+          "sSortAscending":  ": Activate to sort in ascending order",
+          "sSortDescending": ": Activate to sort in descending order"
+      }
+  },
+  "ko": {
+      "emptyTable":     "테이블에 데이터가 없습니다",
+      "info":           replaceUnitText(" _TOTAL_unit (_START_~_END_ 표시중)"),
+      "infoEmpty":      replaceUnitText(" 0 unit"),
+      "infoFiltered":   replaceUnitText("（총 _MAX_ unit）"),
+      "infoPostFix":    "",
+      "infoThousands":  ",",
+      "lengthMenu":     "한 페이지 당 _MENU_",
+      "loadingRecords": "불러 오는 중...",
+      "processing":     "처리중...",
+      "search":         "검색",
+      "searchPlaceholder": "곡명・아티스트",
+      "zeroRecords":    "필터나 검색에 해당하는 항목이 없습니다",
+      "paginate": {
+          "sFirst":    "첫 페이지",
+          "sLast":     "마지막 페이지",
+          "sNext":     "NEXT",
+          "sPrevious": "PREV"
+      },
+      "aria": {
+          "sSortAscending":  ": 오름차순 정렬하려면 활성화",
+          "sSortDescending": ": 내림차순 정렬하려면 활성화"
+      }
+  }
 }
 
 function hasPropertyAndValue(json, property) {
@@ -135,8 +185,8 @@ function renderChartLinkBtn(chart_link, game) {
 function chartLinkBtn(chart_link, game) {
     if ( chart_link && chart_link !== '' ) {
         return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/${game}/${chart_link}.htm">
-                    <span class="img"></span><span>譜面確認</span>
-                </a><span class="chart-provider">sdvx.in 提供</span>`;
+                    <span class="img"></span><span>${getTranslation(userLanguage, 'check_chart_guide')}</span>
+                </a><span class="chart-provider">${getTranslation(userLanguage, 'chart_guide_provide_credit')}</span>`;
     } else {
         return '';
     }
@@ -219,8 +269,8 @@ function formatDate(inputDate, dateFormat) {
     var ISOdate = `${year}-${month}-${day}`
 
     // Format the date as "YYYY-MM-DD"
-    if (dateFormat == 'JP') {
-        var days_of_week = ["日", "月", "火", "水", "木", "金", "土"];
+    if (dateFormat == 'weekday') {
+        var days_of_week = getTranslation(userLanguage, 'days_of_week');
         var current_year = new Date().getFullYear();
         var day_of_week = days_of_week[new Date(ISOdate).getDay()];
         var year_print = (current_year == year) ? '' : `${year}/`;
@@ -447,7 +497,7 @@ function generateFilterDropdowns(table) {
         }
     });
 
-    $('<button class="btn reset-search">Clear Search</button>').appendTo($('.toolbar.filters'));
+    $(`<button class="btn reset-search">${getTranslation(userLanguage, 'clear_filters')}</button>`).appendTo($('.toolbar.filters'));
 }
 
 function applyFilterFromURLSearchParams(table, searchParams) {
@@ -558,7 +608,7 @@ function renderModalFooter(game_name) {
                 <div class="report">
                     <a class="report-btn" 
                         href="https://twitter.com/intent/tweet?text=@otoge_db%0A%E3%80%90%23${game_name}_DB%20%E6%83%85%E5%A0%B1%E6%8F%90%E4%BE%9B%E3%80%91%0A%E6%9B%B2%E5%90%8D%EF%BC%9A${encodeURIComponent(data.title)}%0A%E8%AD%9C%E9%9D%A2%EF%BC%9A"
-                        target="_blank" rel="noopener noreferrer nofollow">💬 足りない情報・間違いを報告する （Twitter）</a>
+                        target="_blank" rel="noopener noreferrer nofollow">${getTranslation(userLanguage,'report_twitter')}</a>
                 </div>
             </div>`;
     }

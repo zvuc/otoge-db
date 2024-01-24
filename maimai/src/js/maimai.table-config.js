@@ -84,7 +84,8 @@ var columns_params = [
   },
   {
     // Artist column (only on mobile - acts as title column on header)
-    displayTitle: "アーティスト",
+    // displayTitle: "アーティスト",
+    displayTitle: getTranslation(userLanguage,'col_artist'),
     name: "title_merged",
     data: "title",
     defaultContent: "",
@@ -102,7 +103,8 @@ var columns_params = [
   },
   {
     // hidden real artist column (for search)
-    displayTitle: "アーティスト",
+    // displayTitle: "アーティスト",
+    displayTitle: getTranslation(userLanguage,'col_artist'),
     name: "artist",
     data: "artist",
     defaultContent: "",
@@ -119,7 +121,8 @@ var columns_params = [
     visible: false
   },
   {
-    displayTitle: "解禁",
+    // displayTitle: "解禁",
+    displayTitle: getTranslation(userLanguage,'col_unlock'),
     name: "key",
     data: "key",
     defaultContent: "",
@@ -135,7 +138,8 @@ var columns_params = [
     searchable: false
   },
   {
-    displayTitle: "バージョン",
+    // displayTitle: "バージョン",
+    displayTitle: getTranslation(userLanguage,'col_version'),
     name: "version",
     data: maimaiRenderVersionName(),
     defaultContent: "",
@@ -145,7 +149,8 @@ var columns_params = [
     width: "12em",
   },
   {
-    displayTitle: "ジャンル",
+    // displayTitle: "ジャンル",
+    displayTitle: getTranslation(userLanguage,'col_genre'),
     name: "category",
     data: "catcode",
     defaultContent: "",
@@ -259,7 +264,8 @@ var columns_params = [
   },
   {
     //  chart_diff
-    displayTitle: "譜面",
+    // displayTitle: "譜面",
+    displayTitle: getTranslation(userLanguage,'col_chart'),
     name: "chart_diff",
     data:
       function( row, type, set, meta ) {
@@ -299,7 +305,8 @@ var columns_params = [
   },
   {
     //  chart_lev_i
-    displayTitle: "譜面レベル",
+    // displayTitle: "譜面レベル",
+    displayTitle: getTranslation(userLanguage,'col_difficulty_level'),
     name: "chart_lev_i",
     data: ( flat_view ? 'chart_lev_i' : null ),
     defaultContent: "",
@@ -313,7 +320,8 @@ var columns_params = [
     visible: flat_view
   },
   {
-    displayTitle: "ノート数",
+    // displayTitle: "ノート数",
+    displayTitle: getTranslation(userLanguage,'col_notes'),
     name: "chart_notes",
     data: ( flat_view ? "chart_notes" : null ),
     defaultContent: "",
@@ -372,7 +380,8 @@ var columns_params = [
     visible: false
   },
   {
-    displayTitle: "譜面作者",
+    // displayTitle: "譜面作者",
+    displayTitle: getTranslation(userLanguage,'col_designer'),
     name: "chart_designer",
     data: ( flat_view ? "chart_designer" : null ),
     defaultContent: "",
@@ -400,7 +409,8 @@ var columns_params = [
     defaultSearch: "1"
   },
   {
-    displayTitle: "追加日（Int'l Ver.）",
+    // displayTitle: "追加日（Int'l Ver.）",
+    displayTitle: getTranslation(userLanguage,'col_added_date_intl'),
     name: "release_intl",
     data: function( row, type, set, meta ) {
       if (row.release_intl && row.release_intl !== '000000') {
@@ -421,7 +431,8 @@ var columns_params = [
     visible: false
   },
   {
-    displayTitle: "追加日",
+    // displayTitle: "追加日",
+    displayTitle: getTranslation(userLanguage,'col_added_date'),
     name: "date",
     defaultContent: "",
     data: function( row, type, set, meta ) {
@@ -739,8 +750,8 @@ $(document).ready(function() {
           extend: 'colvis',
           className: 'config-btn',
           columns: '.toggle',
-          text: 'カラムON/OFF',
-          collectionTitle: "表示するカラムを選択",
+          text: getTranslation(userLanguage, 'colvis_btn_label'),
+          collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
           collectionLayout: "fixed",
           fade: 150
         },
@@ -757,7 +768,7 @@ $(document).ready(function() {
       },
       "deferRender": true,
       "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-      "language": localize_strings,
+      "language": localize_strings[userLanguage],
       "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
       "order": default_order,
       "responsive": {
@@ -786,29 +797,29 @@ $(document).ready(function() {
             function generatePlayableInfoHtml(col, data, prefix = '') {
               if (data['release_intl']) {
                 if (data['release_intl'] === '000000') {
-                  var intl_date_display = '収録';
+                  var intl_date_display = getTranslation(userLanguage,'song_playable');
                 } else {
-                  var intl_date_display = `${formatDate(data['release_intl'])} 追加`;
+                  var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['release_intl']));
                 }
               }
 
               var lock_status_html = `
                 <span class="lock-status">
                   <span class="key-icon"></span>
-                  <span class="lock-status-text">解禁必要</span>
+                  <span class="lock-status-text">${getTranslation(userLanguage,'unlock_needed')}</span>
                 <span>
               `;
 
               var html_output = `
               <div class="region-availability-chart">
                 <div class="region jp available">
-                  <span class="region-label">日本版</span>
-                  <span class="date"><span class="green-check-icon"></span>${formatDate(data['date'])} 追加</span>
+                  <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
+                  <span class="date"><span class="green-check-icon"></span>${getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']))}</span>
                   ${ (data['key'] && data['key'] === '○') ? lock_status_html : ''}
                 </div>
                 <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
-                  <span class="region-label">International Ver.</span>
-                  <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : '未収録')}</span>
+                  <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
+                  <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable')) }</span>
                   ${ (data['key_intl'] && data['key_intl'] === '○') ? lock_status_html : ''}
                 </div>
               </div>
@@ -972,7 +983,7 @@ $(document).ready(function() {
           if (group === '') {
             date_display = 'NEW'
           } else {
-            date_display = `${formatDate(group, 'JP')} 追加`
+            date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
           }
           return `<div>${date_display}</div>`;
           // enable rows count again when I find a way to show all rows in other pages

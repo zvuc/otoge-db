@@ -47,18 +47,18 @@ nav.site-navigation
     .view-switcher
       if !flat_view
         button.btn.active.reset-search
-          span SONGS
-          | 曲
+          +symbol('icon-song')
+          span(data-i18n='nav_songs') 楽曲
         a.btn(href='./lv')
-          span CHARTS
-          | 譜面
-      else 
+          +symbol('icon-charts')
+          span(data-i18n='nav_charts') 譜面
+      else
         a.btn(href='./')
-          span SONGS
-          | 曲
+          +symbol('icon-song')
+          span(data-i18n='nav_songs') 楽曲
         button.btn.active.reset-search
-          span CHARTS
-          | 譜面
+          +symbol('icon-charts')
+          span(data-i18n='nav_charts') 譜面
     select#chart_lev.lv-switcher(name='lv-switcher' data-type='href')
       option(value='' selected='' data-default='') LEVEL ALL
       each level in levels

@@ -1,4 +1,5 @@
 const colorSchemeInput = document.querySelectorAll('input[name="colorScheme"]');
+const langOptionInput = document.querySelectorAll('input[name="siteLanguage"]');
 const gameRegionChecks = document.querySelectorAll('input[name="gameRegion"]');
 const gameRegionQuickSwitch = document.getElementById('gameRegionQuickSwitch');
 
@@ -14,6 +15,10 @@ gameRegionQuickSwitch.checked = (initialGameRegion === 'jp' ? false : true);
 document.documentElement.setAttribute('data-game-region', currentRegion);
 // switchGameRegion(); // Apply initial region
 
+var userLanguage = localStorage.getItem('userLanguage');
+if (!userLanguage) {
+  localStorage.setItem('userLanguage', 'ja');
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     var searchParams = new URLSearchParams(window.location.search);

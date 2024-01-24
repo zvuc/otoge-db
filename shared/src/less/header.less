@@ -454,8 +454,6 @@ header {
 
 }
 
-
-
 .site-navigation {
 	position: relative;
 	padding-top: 4px;
@@ -528,23 +526,30 @@ header {
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			flex-flow: column;
 
-			@media screen and (min-width: 375px) {
-				flex-flow: row;
+			svg {
+				color: rgb(var(--ui-color-foreground-080));
+				margin-right: 5px;
+			}
+			// flex-flow: column;
+
+			@media screen and (min-width: 480px) {
+				min-width: 110px;
+				min-height: 40px;
 			}
 
-			span {
-				display: block;
-				font-size: 0.9em;
+			// span {
+			// 	display: block;
+			// 	font-size: 0.9em;
 
-				@media screen and (min-width: 375px) {
-					&:after {
-						content: "·";
-						margin: 0 1px;
-					}
-				}
-			}
+			// 	@media screen and (min-width: 375px) {
+			// 		&:after {
+			// 			content: "·";
+			// 			margin: 0 1px;
+			// 		}
+			// 	}
+			// }
 		}
 	}
 }
+

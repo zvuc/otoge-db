@@ -74,7 +74,8 @@ var columns_params = [
     },
     { 
         // Artist column (only on mobile - acts as title column on header)
-        displayTitle: "アーティスト",
+        // displayTitle: "アーティスト",
+        displayTitle: getTranslation(userLanguage,'col_artist'),
         name: "title_merged",
         data: "title",
         className: "artist detail-hidden",
@@ -90,7 +91,8 @@ var columns_params = [
     },
     { 
         // hidden real artist column (for search)
-        displayTitle: "アーティスト",
+        // displayTitle: "アーティスト",
+        displayTitle: getTranslation(userLanguage,'col_artist'),
         name: "artist",
         data: "artist",
         className: "artist detail-hidden",
@@ -105,7 +107,8 @@ var columns_params = [
         visible: false
     },
     { 
-        displayTitle: "バージョン",
+        // displayTitle: "バージョン",
+        displayTitle: getTranslation(userLanguage,'col_version'),
         name: "version",
         data: "version",
         className: "details version",
@@ -115,7 +118,8 @@ var columns_params = [
         width: "12em"
     },
     { 
-        displayTitle: "ジャンル",
+        // displayTitle: "ジャンル",
+        displayTitle: getTranslation(userLanguage,'col_genre'),
         name: "category",
         data: "category",
         className: "details category",
@@ -141,7 +145,8 @@ var columns_params = [
     },
     {
         // combine chap_id + chapter
-        displayTitle: "チャプター",
+        // displayTitle: "チャプター",
+        displayTitle: getTranslation(userLanguage,'col_chapter'),
         name: "chap",
         data: function( row, type, set, meta ) {
             if ( type === 'sort' || type === 'meta') {
@@ -166,7 +171,8 @@ var columns_params = [
         visible: false
     },
     { 
-        displayTitle: "属性",
+        // displayTitle: "属性",
+        displayTitle: getTranslation(userLanguage,'col_enemy_type'),
         name: "enemy_type",
         data: "enemy_type",
         className: "chara type",
@@ -190,7 +196,8 @@ var columns_params = [
         searchable: false
     },
     { 
-        displayTitle: "相手キャラ",
+        // displayTitle: "相手キャラ",
+        displayTitle: getTranslation(userLanguage,'col_chara'),
         name: "character",
         data: "character",
         className: "chara character",
@@ -208,7 +215,8 @@ var columns_params = [
         filterable: true
     },
     { 
-        displayTitle: "相手レベル",
+        // displayTitle: "相手レベル",
+        displayTitle: getTranslation(userLanguage,'col_enemy_lv'),
         name: "enemy_lv",
         data: "enemy_lv",
         className: "chara enemy-lv",
@@ -287,7 +295,8 @@ var columns_params = [
     },
     {
         //  chart_diff
-        displayTitle: "譜面",
+        // displayTitle: "譜面",
+        displayTitle: getTranslation(userLanguage,'col_chart'),
         name: "chart_diff",
         data: 
             function( row, type, set, meta ) {
@@ -325,7 +334,8 @@ var columns_params = [
     },
     {
         //  chart_lev_i
-        displayTitle: "譜面レベル",
+        // displayTitle: "譜面レベル",
+        displayTitle: getTranslation(userLanguage,'col_difficulty_level'),
         name: "chart_lev_i",
         data: ( flat_view ? 'chart_lev_i' : null ),
         className: "lv lv-name detail-hidden",
@@ -339,7 +349,8 @@ var columns_params = [
         visible: flat_view
     },
     { 
-        displayTitle: "ノート数",
+        // displayTitle: "ノート数",
+        displayTitle: getTranslation(userLanguage,'col_notes'),
         name: "chart_notes",
         data: ( flat_view ? "chart_notes" : null ),
         className: "details notecount detail-hidden",
@@ -348,7 +359,8 @@ var columns_params = [
         visible: false
     },
     { 
-        displayTitle: "ベル",
+        // displayTitle: "ベル",
+        displayTitle: getTranslation(userLanguage,'col_bells'),
         name: "chart_bells",
         data: ( flat_view ? "chart_bells" : null ),
         className: "details notecount detail-hidden",
@@ -376,7 +388,8 @@ var columns_params = [
         className: "details detail-hidden chart-link",
     },
     { 
-        displayTitle: "追加日",
+        // displayTitle: "追加日",
+        displayTitle: getTranslation(userLanguage,'col_added_date'),
         name: "date",
         // data: "date",
         data: function( row, type, set, meta ) {
@@ -529,8 +542,8 @@ $(document).ready(function() {
                     extend: 'colvis',
                     className: 'config-btn',
                     columns: '.toggle',
-                    text: 'カラムON/OFF',
-                    collectionTitle: "表示するカラムを選択",
+                    text: getTranslation(userLanguage, 'colvis_btn_label'),
+                    collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
                     collectionLayout: "fixed",
                     fade: 150
                 },
@@ -542,7 +555,7 @@ $(document).ready(function() {
             },
             "deferRender": true,
             "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-            "language": localize_strings,
+            "language": localize_strings[userLanguage],
             "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
             "order": default_order, 
             "responsive": {
@@ -682,9 +695,14 @@ $(document).ready(function() {
             "rowGroup": {
                 dataSrc: 'date',
                 startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-                    return '<div>' + formatDate(group, 'JP') +' 追加<\/div>';
-                    // enable rows count again when I find a way to show all rows in other pages
-                    // return group +'更新 ('+rows.count()+'曲)';
+                  if (group === '') {
+                    date_display = 'NEW'
+                  } else {
+                    date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+                  }
+                  return `<div>${date_display}</div>`;
+                  // enable rows count again when I find a way to show all rows in other pages
+                  // return group +'更新 ('+rows.count()+'曲)';
                 }) : null
             },
             "scrollX": true,

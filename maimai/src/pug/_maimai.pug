@@ -11,17 +11,17 @@ block table_rows
   th(class='never') <span>ID (system)</span>
   th(class='all') <span>#</span>
   th(class='all') <span>A</span>
-  th(class='all') <span>曲名・アーティスト</span>
+  th(class='all') <span data-i18n="col_title_artist">曲名・アーティスト</span>
   th(class='never') <span>曲名 (読み)</span>
-  th(class='all') <span>曲名・アーティスト</span>
-  th(class='never') <span>アーティスト</span>
+  th(class='all') <span data-i18n="col_title_artist">曲名・アーティスト</span>
+  th(class='never') <span data-i18n="col_artist">アーティスト</span>
 
   th(class='toggle') <span>BPM</span>
-  th(class='all toggle nowrap') <span>解禁</span>
+  th(class='all toggle nowrap') <span data-i18n="col_unlock">解禁</span>
 
-  th(class='all') <span>バージョン</span>
-  th(class='all toggle nowrap') <span>ジャンル</span>
-  
+  th(class='all') <span data-i18n="col_version">バージョン</span>
+  th(class='all toggle nowrap') <span data-i18n="col_genre">ジャンル</span>
+
   th(class='all toggle') <span>DX/Std</span>
 
   th(class=( flat_view ? 'none' : 'all toggle')) <span>BSC</span>
@@ -32,20 +32,20 @@ block table_rows
   th(class=( flat_view ? 'none' : 'all toggle')) <span>UTAGE</span>
   th(class='never') <span>UTAGE</span>
 
-  th(class=( flat_view ? 'all' : 'never')) <span>難易度名</span>
-  th(class=( flat_view ? 'all' : 'never')) <span>レベル</span>
-  th(class=( flat_view ? 'all' : 'never')) <span>難易度</span>
+  th(class=( flat_view ? 'all' : 'never')) <span data-i18n="col_difficulty_name">難易度名</span>
+  th(class=( flat_view ? 'all' : 'never')) <span data-i18n="col_difficulty_level">レベル</span>
+  th(class=( flat_view ? 'all' : 'never')) <span data-i18n="col_difficulty">難易度</span>
 
-  th(class=( flat_view ? 'toggle' : 'never')) <span>ノート数</span>
+  th(class=( flat_view ? 'toggle' : 'never')) <span data-i18n="col_notes">ノート数</span>
   th(class=( flat_view ? 'toggle' : 'never')) <span>TAP</span>
   th(class=( flat_view ? 'toggle' : 'never')) <span>HOLD</span>
   th(class=( flat_view ? 'toggle' : 'never')) <span>SLIDE</span>
   th(class=( flat_view ? 'toggle' : 'never')) <span>TOUCH</span>
   th(class=( flat_view ? 'toggle' : 'never')) <span>BREAK</span>
-  th(class=( flat_view ? 'toggle' : 'never')) <span>譜面作者</span>
-  
-  th(class='none detail-hidden') <span>Intl</span>
+  th(class=( flat_view ? 'toggle' : 'never')) <span data-i18n="col_designer">譜面作者</span>
 
-  th(class='all toggle') <span>追加日(Int'l)</span>
-  th(class='all toggle') <span>追加日</span>
+  th(class='none detail-hidden') <span data-i18n="col_intl">Intl</span>
+
+  th(class='all toggle') <span data-i18n="col_added_date_intl">追加日(Intl)</span>
+  th(class='all toggle') <span data-i18n="col_added_date">追加日</span>
   th(class='none detail-hidden') <span>NEW</span>

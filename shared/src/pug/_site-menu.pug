@@ -9,28 +9,39 @@
     .site-menu-header
       include ../../img/otoge-db-logo.svg
       div SETTINGS
-      p サイト設定は現在のデバイス（ブラウザ）のみに適用・保存されます。
+      p(data-i18n="option_desc") サイト設定は現在のデバイス（ブラウザ）のみに適用・保存されます。
     div.menu-list-item
-      span.menu-list-item-label テーマ
+      span.menu-list-item-label(data-i18n="option_label_colorscheme") テーマ
       .segmented-btn-group.theme-switcher
         input#colorSchemeAuto(type='radio' name='colorScheme' value='auto' checked='')
-        label.switch(for='colorSchemeAuto') 自動
+        label.switch(for='colorSchemeAuto' data-i18n="colorscheme_auto") 自動
         input#colorSchemeLight(type='radio' name='colorScheme' value='light')
-        label.switch(for='colorSchemeLight') ライト
+        label.switch(for='colorSchemeLight' data-i18n="colorscheme_light") ライト
         input#colorSchemeDark(type='radio' name='colorScheme' value='dark')
-        label.switch(for='colorSchemeDark') ダーク
+        label.switch(for='colorSchemeDark' data-i18n="colorscheme_dark") ダーク
     div.menu-list-item.game-region-settings
-      span.menu-list-item-label ゲーム地域
+      span.menu-list-item-label(data-i18n="option_label_region") ゲーム地域
       .segmented-btn-group.intl-switcher
         input#gameRegionJP(type='radio' name='gameRegion' value='jp' checked='')
-        label.switch(for='gameRegionJP') 🇯🇵 日本
+        label.switch(for='gameRegionJP')
+          span.icon 🇯🇵
+          span(data-i18n="version_jp") 日本
         input#gameRegionIntl(type='radio' name='gameRegion' value='intl')
-        label.switch(for='gameRegionIntl') 🌏 International
-      p.option-caption
+        label.switch(for='gameRegionIntl')
+          span.icon 🌏
+          span(data-i18n="version_intl") International
+      p.option-caption(data-i18n='option_region_desc')
         | Choosing International ver. will only show songs currently playable in the International version.
     div.menu-list-item
-      span.menu-list-item-label UI言語
-      .lang-switcher
-        | 日本語
+      span.menu-list-item-label(data-i18n="option_label_language") UI言語
+      .segmented-btn-group.lang-switcher
+        input#siteLanguageJa(type='radio' name='siteLanguage' value='ja' checked='')
+        label.switch(for='siteLanguageJa') 日本語
+        input#siteLanguageKo(type='radio' name='siteLanguage' value='ko')
+        label.switch(for='siteLanguageKo') 한국어
+        input#siteLanguageEn(type='radio' name='siteLanguage' value='en')
+        label.switch(for='siteLanguageEn') English
+      p.option-caption(data-i18n='option_language_desc')
+        | Refresh the page to fully apply translation
 
     block game_menu
