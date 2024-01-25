@@ -61,7 +61,7 @@ nav.site-navigation
         button.btn.active.reset-search
           +symbol('icon-charts')
           span(data-i18n='nav_charts') 譜面
-    select#chart_lev.lv-switcher(name='lv-switcher' data-type='href')
+    select#chart_lev.lv-switcher(name='lv-switcher' data-type=(flat_view ? 'filter' : 'href'))
       option(value='' selected='' data-default='') LEVEL ALL
       each level in levels
           option(value=level) LEVEL #{level}
