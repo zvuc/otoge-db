@@ -107,7 +107,7 @@ def update_songs_extra_data(args):
         return
 
     for song in target_song_list:
-        _update_song_wiki_data(song, args)
+        update_song_wiki_data(song, args)
 
         # time.sleep(random.randint(1,2))
 
@@ -172,7 +172,7 @@ def _filter_songs_by_id(song_list, song_id):
     return target_song_list
 
 
-def _update_song_wiki_data(song, args):
+def update_song_wiki_data(song, args):
     print_message(f"{song['sort']} {song['title']}", bcolors.ENDC, args, errors_log)
 
     title = (

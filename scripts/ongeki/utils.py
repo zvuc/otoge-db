@@ -2,8 +2,9 @@
 import requests
 import urllib.request
 import json
-from shared.common_func import *
 from ongeki.paths import *
+from ongeki import wiki
+from shared.common_func import *
 
 CHARACTER_TABLE = {
     "星咲あかり": "FIRE",
@@ -82,7 +83,7 @@ def renew_music_ex_data(new_song_list, args):
         print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
 
         if not args.skipwiki:
-            _update_song_wiki_data(song, args)
+            update_song_wiki_data(song, args)
             
         _record_diffs(song, song_hash, 'new')
 
@@ -102,7 +103,7 @@ def renew_music_ex_data(new_song_list, args):
             print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
             
             if not args.skipwiki:
-                _update_song_wiki_data(song, args)
+                update_song_wiki_data(song, args)
             
             _record_diffs(song, song_hash, 'updated')
 

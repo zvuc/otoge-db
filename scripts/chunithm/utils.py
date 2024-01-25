@@ -3,6 +3,7 @@ import requests
 import urllib.request
 import json
 from chunithm.paths import *
+from chunithm import wiki
 from shared.common_func import *
 
 def load_new_song_data():
@@ -60,7 +61,7 @@ def renew_music_ex_data(new_song_list, args):
         print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
 
         if not args.skipwiki:
-            _update_song_wiki_data(song, args)
+            update_song_wiki_data(song, args)
             
         _record_diffs(song, 'new')
 
@@ -78,7 +79,7 @@ def renew_music_ex_data(new_song_list, args):
             print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
             
             if not args.skipwiki:
-                _update_song_wiki_data(song, args)
+                update_song_wiki_data(song, args)
             
             _record_diffs(song, 'updated')
 

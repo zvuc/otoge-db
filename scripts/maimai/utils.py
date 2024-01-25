@@ -110,9 +110,9 @@ def renew_music_ex_data(new_song_list, args):
 
     if not args.skipwiki:
         for song in new_song_list[0]:
-            wiki._update_song_wiki_data(song, args)
+            wiki.update_song_wiki_data(song, args)
         for song in new_song_list[1]:
-            wiki._update_song_wiki_data(song, args)
+            wiki.update_song_wiki_data(song, args)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
