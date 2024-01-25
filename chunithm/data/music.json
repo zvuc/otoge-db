@@ -1,5 +1,53 @@
 [
   {
+    "id": "2497",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "アイデン貞貞メルトダウン",
+    "reading": "アイテンテイテイメルトタウン",
+    "artist": "えなこ feat. P丸様。「お兄ちゃんはおしまい！」",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "12",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9db02942734bd7a7.jpg"
+  },
+  {
+    "id": "2498",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "ひめごと＊クライシスターズ",
+    "reading": "ヒメコトクライシスタウス",
+    "artist": "ONIMAI SISTERS（高野麻里佳・石原夏織・金元寿子・津田美波）「お兄ちゃんはおしまい！」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "95cceb2d69e05cd0.jpg"
+  },
+  {
+    "id": "2499",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "Stellar Stellar",
+    "reading": "STELLARSTELLAR",
+    "artist": "星街すいせい（ホロライブ）",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b1b2a6153daf67e7.jpg"
+  },
+  {
     "id": "2496",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -2194,7 +2242,7 @@
   {
     "id": "2513",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "てらてら",
     "reading": "テラテラ",
     "artist": "和田たけあき / 初音ミク / Leo/need「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
@@ -2210,7 +2258,7 @@
   {
     "id": "2514",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "天使のクローバー",
     "reading": "テンシノクロウハウ",
     "artist": "DIVELA / 鏡音リン / MORE MORE JUMP！「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
@@ -2226,7 +2274,7 @@
   {
     "id": "2510",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Beat Eater",
     "reading": "BEATEATER",
     "artist": "ポリスピカデリー / 鏡音レン / Vivid BAD SQUAD「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
@@ -2242,7 +2290,7 @@
   {
     "id": "2511",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Glory Steady Go!",
     "reading": "GLORYSTEADYGO",
     "artist": "キノシタ / 巡音ルカ / ワンダーランズ×ショウタイム「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
@@ -2258,7 +2306,7 @@
   {
     "id": "2512",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ロウワー",
     "reading": "ロウワウ",
     "artist": "ぬゆり / MEIKO / 25時、ナイトコードで。「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
@@ -11342,6 +11390,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "9f060e856cb7ad10.jpg"
+  },
+  {
+    "id": "2534",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "ENERGY SYNERGY MATRIX",
+    "reading": "ENERGYSYNERGYMATRIX",
+    "artist": "Tanchiky",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "8bad62668f599caa.jpg"
   },
   {
     "id": "6",
