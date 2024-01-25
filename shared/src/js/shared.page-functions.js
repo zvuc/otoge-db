@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // Check the initial color scheme preference
   const initialLanguage = userLanguage || 'ja';
   document.querySelector(`input[value="${initialLanguage}"]`).checked = true;
-  setLanguage(); // Apply initial color scheme
 });
 
 
@@ -132,20 +131,37 @@ function appendSelectboxStateClass(select, val) {
   }
 }
 
-function replaceUnitText(text) {
+function replaceUnitText(obj) {
+  let item_unit;
   switch (userLanguage) {
     case 'ja':
-      var item_unit = flat_view ? '譜面' : '曲';
+      item_unit = flat_view ? '譜面' : '曲';
       break;
     case 'ko':
-      var item_unit = flat_view ? ' 보면' : ' 곡';
+      item_unit = flat_view ? ' 보면' : ' 곡';
       break;
     case 'en':
-      var item_unit = flat_view ? ' charts' : ' songs';
+      item_unit = flat_view ? ' charts' : ' songs';
       break;
   }
-  return text.replace("unit", item_unit);
+  // Check if the input is an object
+  if (obj !== null && typeof obj === 'object') {
+    // Iterate over each key-value pair in the object
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        // Recursively call replaceUnitText for nested objects or arrays
+        obj[key] = replaceUnitText(obj[key]);
+
+        // Check if the value is a string and replace 'unit' if found
+        if (typeof obj[key] === 'string') {
+          obj[key] = obj[key].replace("{unit}", item_unit);
+        }
+      }
+    }
+  }
+  return obj;
 }
+
 
 // $("#hide-notice-btn").on("click", function(){    
 //     $('.notice-wrap').removeClass('visible');
@@ -156,67 +172,6 @@ function replaceUnitText(text) {
 //     $(this).parent(".dropdown-wrapper").toggleClass('open');
 // });
 
-function setLanguage(e) {
-  const cachedTranslations = localStorage.getItem('translations');
-  const languageCode = document.querySelector('input[name="siteLanguage"]:checked').value;
-  const languageSettingsWrapper = document.querySelector('#site-menu .menu-list-item.lang-settings');
-
-  if (e) {
-    languageSettingsWrapper.classList.add('setting-changed');
-  }
-
-  // Save the selected color scheme in localStorage
-  localStorage.setItem('userLanguage', languageCode);
-
-  // Apply the selected color scheme with a transition effect
-  // root.style.transition = 'background-color 0.5s';
-  root.setAttribute('data-lang', languageCode);
-
-  if (cachedTranslations) {
-    // If available, set language from the cached data
-    applyTranslations(JSON.parse(cachedTranslations), languageCode);
-  } else {
-    // Load translations from JSON
-    fetch('../shared/translations/translations.json')
-      .then(response => response.json())
-      .then(translations => {
-        // Cache
-        sessionStorage.setItem('translations', JSON.stringify(translations));
-
-        applyTranslations(translations, languageCode);
-      })
-      .catch(error => console.error('Error loading translations:', error));
-  }
-}
-
-function applyTranslations(translations, languageCode) {
-  // Set the language
-  const currentLanguage = translations[languageCode];
-
-  // Find all elements with data-translation attribute
-  const elements = document.querySelectorAll('[data-i18n]');
-
-  // Update content for each element based on the language
-  elements.forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    if (currentLanguage[key]) {
-      element.innerText = currentLanguage[key];
-    }
-  });
-}
-
-function getTranslation(languageCode, keyName) {
-  const cachedTranslations = sessionStorage.getItem('translations');
-
-  if (cachedTranslations) {
-    // If available, get translation from the cached data
-    const translations = JSON.parse(cachedTranslations);
-
-    if (translations[languageCode] && translations[languageCode][keyName]) {
-      return translations[languageCode][keyName];
-    }
-  }
-}
 
 $(document).ready(function() {
   if ('URLSearchParams' in window) {

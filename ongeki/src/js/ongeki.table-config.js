@@ -497,174 +497,176 @@ function parseChapId(row, includeTrailingSpace) {
 }
 
 $(document).ready(function() {
-  $.getJSON("data/music-ex.json", (data) => {
-    var table = $('#table').DataTable( {
-      data: flattenMusicData(data, flat_view, ongeki_chart_list, processOngekiChartData),
-      "buttons": [
-        {
-          extend: 'colvis',
-          className: 'config-btn',
-          columns: '.toggle',
-          text: getTranslation(userLanguage, 'colvis_btn_label'),
-          collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
-          collectionLayout: "fixed",
-          fade: 150
+  initTranslations().then(() => {
+    $.getJSON("data/music-ex.json", (data) => {
+      var table = $('#table').DataTable( {
+        data: flattenMusicData(data, flat_view, ongeki_chart_list, processOngekiChartData),
+        "buttons": [
+          {
+            extend: 'colvis',
+            className: 'config-btn',
+            columns: '.toggle',
+            text: getTranslation(userLanguage, 'colvis_btn_label'),
+            collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
+            collectionLayout: "fixed",
+            fade: 150
+          },
+        ],
+        "columns": columns_params,
+        "searchCols": default_search,
+        "drawCallback": function(settings) {
+          toggleDateRowGroup(this, default_search);
         },
-      ],
-      "columns": columns_params,
-      "searchCols": default_search,
-      "drawCallback": function(settings) {
-        toggleDateRowGroup(this, default_search);
-      },
-      "deferRender": true,
-      "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-      "language": localize_strings[userLanguage],
-      "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-      "order": default_order,
-      "responsive": {
-        details: {
-          type: 'column',
-          target: 'tr',
-          display: $.fn.dataTable.Responsive.display.modal( {
-            header: renderModalHeader('オンゲキ', 'image_url', 'wikiwiki_url', 'https:\/\/wikiwiki.jp\/gameongeki\/', '譜面確認'),
-            footer: renderModalFooter('オンゲキ'),
-          } ),
-          // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-          renderer: function(api, rowIdx, columns) {
-            function generateRowHtml(col, data) {
-              var column_param = columns_params[col.columnIndex];
-              if (!col.className.includes('detail-hidden') && !col.className.includes('lv ') && !col.className.includes('chara ')) {
-                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                      <span class="row-label">${col.title}</span>
-                      <span>${col.data}</span>
-                    </div>`;
-              }
-            }
-
-            function generateCharaDetailHtml(col, data) {
-              if (!col.className.includes('chara ') || col.className.includes('detail-hidden')) {
-                return;
-              }
-              var column_param = columns_params[col.columnIndex];
-
-              return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                    <span class="row-label">${column_param.displayTitle}</span>
-                    <span>${col.data}</span>
-                  </div>`;
-
-            }
-
-            function generateChartLevDetailHtml(data, chart_name) {
-              let cur_lev = data[`${chart_name}`];
-              let cur_lev_i = data[`${chart_name}_i`];
-
-              return `
-                <span class="main-info-wrap">
-                  ${(lvNumHtmlTemplate(data, chart_name))}
-                </span>
-                <span class="sub-info-wrap">
-                  ${(hasPropertyAndValue(data, `${chart_name}_notes`) ?
-                    `<span class="notes-detail-wrap">
-                      <span class="notes"><span class="label">Notes</span><span>${data[`${chart_name}_notes`]}</span></span>
-                      ${(hasPropertyAndValue(data, `${chart_name}_bells`) ? `<span class="bells"><span class="label">Bells</span><span>${data[`${chart_name}_bells`]}</span></span>` : "")}
-                    </span>` : "")}
-                  ${(hasPropertyAndValue(data, `${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${chart_name}_designer`]}</span></span>` : "")}
-                </span>
-                ${(hasPropertyAndValue(data, `${chart_name}_chart_link`) ? `<span class="chart-link">${chartLinkBtn(data[`${chart_name}_chart_link`],'ongeki')}</span>` : "")}`;
-            }
-
-            function generateChartDetailHtml(col, data, chart_type) {
-              if (!col.className.includes('lv ') || col.className.includes('detail-hidden')) {
-                return;
-              }
-              var chart_name = columns_params[col.columnIndex]['name'];
-
-              if (chart_type === 'lunatic' && chart_name === 'lev_lnt' && hasPropertyAndValue(data, 'lev_lnt')) {
-                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                        <span class="row-label"><span class="diff-name lv-lnt">LUNATIC</span></span>
-                        <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
-                          <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
-                          ${generateChartLevDetailHtml(data, chart_name)}</span>
+        "deferRender": true,
+        "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
+        "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+        "order": default_order,
+        "responsive": {
+          details: {
+            type: 'column',
+            target: 'tr',
+            display: $.fn.dataTable.Responsive.display.modal( {
+              header: renderModalHeader('オンゲキ', 'image_url', 'wikiwiki_url', 'https:\/\/wikiwiki.jp\/gameongeki\/', '譜面確認'),
+              footer: renderModalFooter('オンゲキ'),
+            } ),
+            // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+            renderer: function(api, rowIdx, columns) {
+              function generateRowHtml(col, data) {
+                var column_param = columns_params[col.columnIndex];
+                if (!col.className.includes('detail-hidden') && !col.className.includes('lv ') && !col.className.includes('chara ')) {
+                  return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                        <span class="row-label">${col.title}</span>
+                        <span>${col.data}</span>
                       </div>`;
-              } else if (chart_type !== 'lunatic') {
-                if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
-                  (chart_name === 'lev_lnt' && !hasPropertyAndValue(data, 'lev_lnt'))) {
-                  return;
-                } else {
-                  return `
-                    <div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                      <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
-                      <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
-                        <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
-                        ${generateChartLevDetailHtml(data, chart_name)}
-                      </span>
-                    </div>`;
                 }
               }
+
+              function generateCharaDetailHtml(col, data) {
+                if (!col.className.includes('chara ') || col.className.includes('detail-hidden')) {
+                  return;
+                }
+                var column_param = columns_params[col.columnIndex];
+
+                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                      <span class="row-label">${column_param.displayTitle}</span>
+                      <span>${col.data}</span>
+                    </div>`;
+
+              }
+
+              function generateChartLevDetailHtml(data, chart_name) {
+                let cur_lev = data[`${chart_name}`];
+                let cur_lev_i = data[`${chart_name}_i`];
+
+                return `
+                  <span class="main-info-wrap">
+                    ${(lvNumHtmlTemplate(data, chart_name))}
+                  </span>
+                  <span class="sub-info-wrap">
+                    ${(hasPropertyAndValue(data, `${chart_name}_notes`) ?
+                      `<span class="notes-detail-wrap">
+                        <span class="notes"><span class="label">Notes</span><span>${data[`${chart_name}_notes`]}</span></span>
+                        ${(hasPropertyAndValue(data, `${chart_name}_bells`) ? `<span class="bells"><span class="label">Bells</span><span>${data[`${chart_name}_bells`]}</span></span>` : "")}
+                      </span>` : "")}
+                    ${(hasPropertyAndValue(data, `${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${chart_name}_designer`]}</span></span>` : "")}
+                  </span>
+                  ${(hasPropertyAndValue(data, `${chart_name}_chart_link`) ? `<span class="chart-link">${chartLinkBtn(data[`${chart_name}_chart_link`],'ongeki')}</span>` : "")}`;
+              }
+
+              function generateChartDetailHtml(col, data, chart_type) {
+                if (!col.className.includes('lv ') || col.className.includes('detail-hidden')) {
+                  return;
+                }
+                var chart_name = columns_params[col.columnIndex]['name'];
+
+                if (chart_type === 'lunatic' && chart_name === 'lev_lnt' && hasPropertyAndValue(data, 'lev_lnt')) {
+                  return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                          <span class="row-label"><span class="diff-name lv-lnt">LUNATIC</span></span>
+                          <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
+                            <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                            ${generateChartLevDetailHtml(data, chart_name)}</span>
+                        </div>`;
+                } else if (chart_type !== 'lunatic') {
+                  if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
+                    (chart_name === 'lev_lnt' && !hasPropertyAndValue(data, 'lev_lnt'))) {
+                    return;
+                  } else {
+                    return `
+                      <div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                        <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
+                        <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
+                          <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                          ${generateChartLevDetailHtml(data, chart_name)}
+                        </span>
+                      </div>`;
+                  }
+                }
+              }
+
+              function generateCombinedRows(data, lunatic, columns, columns_params) {
+                var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
+                var charaRows = columns.map(col => generateCharaDetailHtml(col, data)).join('');
+                var chart_detail = columns.map(col => generateChartDetailHtml(col, data)).join('');
+                var chart_detail_lunatic = columns.map(col => generateChartDetailHtml(col, data, 'lunatic')).join('');
+
+                var combinedRows =
+                  `<div class="table-wrapper">
+                    <div class="details-table misc-details">
+                      <div class="table-header"><span class="th-label">CHARACTER</span></div>
+                      ${charaRows}
+                      ${chara_id.substr(0,1) == "1" ? `<span class="chara-img ${enemy_type.toLowerCase()}" style="--chara-img: url('./img/chara/${chara_id}.png');"></span>`: ""}
+                    </div>
+                    <div class="details-table-wrap">
+                      ${(lunatic ?
+                      `<div class="details-table chart-details lunatic">
+                        <div class="table-header"><span class="th-label">CHART</span></div>
+                        ${chart_detail_lunatic}
+                      </div>` :
+                      `<div class="details-table chart-details std">
+                        <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">CHART</span></div>
+                        ${chart_detail}
+                      </div>`
+                      )}
+                    </div>
+                    <div class="details-table misc-details">
+                      <div class="table-header"><span class="th-label">SONG METADATA</span></div>
+                      ${normalRows}
+                    </div>
+                  </div>`;
+
+                return combinedRows ? combinedRows : false;
+              }
+
+              var row = api.row(rowIdx);
+              var data = row.data();
+              var chara_id = data['chara_id'];
+              var enemy_type = data['enemy_type'];
+              var lunatic = data['lunatic'] ? "lunatic" : "";
+
+              return generateCombinedRows(data, lunatic, columns, columns_params);
             }
-
-            function generateCombinedRows(data, lunatic, columns, columns_params) {
-              var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
-              var charaRows = columns.map(col => generateCharaDetailHtml(col, data)).join('');
-              var chart_detail = columns.map(col => generateChartDetailHtml(col, data)).join('');
-              var chart_detail_lunatic = columns.map(col => generateChartDetailHtml(col, data, 'lunatic')).join('');
-
-              var combinedRows =
-                `<div class="table-wrapper">
-                  <div class="details-table misc-details">
-                    <div class="table-header"><span class="th-label">CHARACTER</span></div>
-                    ${charaRows}
-                    ${chara_id.substr(0,1) == "1" ? `<span class="chara-img ${enemy_type.toLowerCase()}" style="--chara-img: url('./img/chara/${chara_id}.png');"></span>`: ""}
-                  </div>
-                  <div class="details-table-wrap">
-                    ${(lunatic ?
-                    `<div class="details-table chart-details lunatic">
-                      <div class="table-header"><span class="th-label">CHART</span></div>
-                      ${chart_detail_lunatic}
-                    </div>` :
-                    `<div class="details-table chart-details std">
-                      <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">CHART</span></div>
-                      ${chart_detail}
-                    </div>`
-                    )}
-                  </div>
-                  <div class="details-table misc-details">
-                    <div class="table-header"><span class="th-label">SONG METADATA</span></div>
-                    ${normalRows}
-                  </div>
-                </div>`;
-
-              return combinedRows ? combinedRows : false;
-            }
-
-            var row = api.row(rowIdx);
-            var data = row.data();
-            var chara_id = data['chara_id'];
-            var enemy_type = data['enemy_type'];
-            var lunatic = data['lunatic'] ? "lunatic" : "";
-
-            return generateCombinedRows(data, lunatic, columns, columns_params);
           }
+        },
+        "rowGroup": {
+          dataSrc: 'date',
+          startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
+            if (group === '') {
+              date_display = 'NEW'
+            } else {
+              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+            }
+            return `<div>${date_display}</div>`;
+            // enable rows count again when I find a way to show all rows in other pages
+            // return group +'更新 ('+rows.count()+'曲)';
+          }) : null
+        },
+        "scrollX": true,
+        initComplete: function() {
+          var table = this;
+          tableInitCompleteFunctions(table);
         }
-      },
-      "rowGroup": {
-        dataSrc: 'date',
-        startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-          if (group === '') {
-            date_display = 'NEW'
-          } else {
-            date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
-          }
-          return `<div>${date_display}</div>`;
-          // enable rows count again when I find a way to show all rows in other pages
-          // return group +'更新 ('+rows.count()+'曲)';
-        }) : null
-      },
-      "scrollX": true,
-      initComplete: function() {
-        var table = this;
-        tableInitCompleteFunctions(table);
-      }
+      });
     });
   });
 });

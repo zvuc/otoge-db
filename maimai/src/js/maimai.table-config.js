@@ -742,259 +742,261 @@ function maimaiRenderVersionName() {
 }
 
 $(document).ready(function() {
-  $.getJSON("data/music-ex.json", (data) => {
-    var table = $('#table').DataTable( {
-      data: flattenMusicData(data, flat_view, maimai_chart_list, maimaiProcessChartData),
-      "buttons": [
-        {
-          extend: 'colvis',
-          className: 'config-btn',
-          columns: '.toggle',
-          text: getTranslation(userLanguage, 'colvis_btn_label'),
-          collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
-          collectionLayout: "fixed",
-          fade: 150
+  initTranslations().then(() => {
+    $.getJSON("data/music-ex.json", (data) => {
+      var table = $('#table').DataTable( {
+        data: flattenMusicData(data, flat_view, maimai_chart_list, maimaiProcessChartData),
+        "buttons": [
+          {
+            extend: 'colvis',
+            className: 'config-btn',
+            columns: '.toggle',
+            text: getTranslation(userLanguage, 'colvis_btn_label'),
+            collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
+            collectionLayout: "fixed",
+            fade: 150
+          },
+        ],
+        "columns": columns_params,
+        "searchCols": default_search,
+        "createdRow": function( row, data, dataIndex ) {
+          if ( data.intl == "1" ) {
+          $(row).addClass( 'international' );
+          }
         },
-      ],
-      "columns": columns_params,
-      "searchCols": default_search,
-      "createdRow": function( row, data, dataIndex ) {
-        if ( data.intl == "1" ) {
-        $(row).addClass( 'international' );
-        }
-      },
-      "drawCallback": function(settings) {
-        toggleDateRowGroup(this, default_search);
-      },
-      "deferRender": true,
-      "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-      "language": localize_strings[userLanguage],
-      "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-      "order": default_order,
-      "responsive": {
-        details: {
-          type: 'column',
-          target: 'tr',
-          display: $.fn.dataTable.Responsive.display.modal( {
-            header: renderModalHeader('maimai', 'image_url', 'wiki_url', 'https:\/\/gamerch.com\/maimai\/search?q=', '譜面確認用 外部出力'),
-            footer: renderModalFooter('maimai'),
-          } ),
+        "drawCallback": function(settings) {
+          toggleDateRowGroup(this, default_search);
+        },
+        "deferRender": true,
+        "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
+        "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+        "order": default_order,
+        "responsive": {
+          details: {
+            type: 'column',
+            target: 'tr',
+            display: $.fn.dataTable.Responsive.display.modal( {
+              header: renderModalHeader('maimai', 'image_url', 'wiki_url', 'https:\/\/gamerch.com\/maimai\/search?q=', '譜面確認用 外部出力'),
+              footer: renderModalFooter('maimai'),
+            } ),
 
-          renderer: function(api, rowIdx, columns) {
+            renderer: function(api, rowIdx, columns) {
 
-            function generateRowHtml(col, data, prefix = '') {
-              var column_param = columns_params[col.columnIndex];
-              var column = columns_params[col.columnIndex]
+              function generateRowHtml(col, data, prefix = '') {
+                var column_param = columns_params[col.columnIndex];
+                var column = columns_params[col.columnIndex]
 
-              if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
-                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                      <span class="row-label">${column.displayTitle}</span>
-                      <span>${col.data}</span>
-                    </div>`;
-              }
-            }
-
-            function generatePlayableInfoHtml(col, data, prefix = '') {
-              if (data['release_intl']) {
-                if (data['release_intl'] === '000000') {
-                  var intl_date_display = getTranslation(userLanguage,'song_playable');
-                } else {
-                  var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['release_intl']));
-                }
-              }
-
-              var lock_status_html = `
-                <span class="lock-status">
-                  <span class="key-icon"></span>
-                  <span class="lock-status-text">${getTranslation(userLanguage,'unlock_needed')}</span>
-                <span>
-              `;
-
-              var html_output = `
-              <div class="region-availability-chart">
-                <div class="region jp available">
-                  <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
-                  <span class="date"><span class="green-check-icon"></span>${getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']))}</span>
-                  ${ (data['key'] && data['key'] === '○') ? lock_status_html : ''}
-                </div>
-                <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
-                  <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
-                  <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable')) }</span>
-                  ${ (data['key_intl'] && data['key_intl'] === '○') ? lock_status_html : ''}
-                </div>
-              </div>
-              `;
-
-              return html_output;
-            }
-
-            function generateChartNoteDetailHtml(data, prefix, chart_name) {
-              if (utage && data['buddy']) {
-                return `
-                  ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes`) ?
-                  `<span class="notes-detail-wrap buddy">
-                    <span class="side">L</span>
-                    <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_left_notes`]}</span></span><span class="notes-sub-detail-wrap">
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_left_notes_tap`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_left_notes_hold`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_left_notes_slide`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_left_notes_touch`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_left_notes_break`]}</span></span>` : "")}
-                  </span></span>`
-                  : "")}
-                  ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes`) ?
-                  `<span class="notes-detail-wrap buddy">
-                    <span class="side">R</span>
-                    <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_right_notes`]}</span></span><span class="notes-sub-detail-wrap">
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_right_notes_tap`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_right_notes_hold`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_right_notes_slide`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_right_notes_touch`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_right_notes_break`]}</span></span>` : "")}
-                  </span></span>`
-                  : "")}
-                `;
-              }
-              else {
-                return `
-                  ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ?
-                  `<span class="notes-detail-wrap">
-                    <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
-                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
-                  </span></span>`
-                  : "")}
-                `;
-              }
-            }
-
-            function generateChartLevDetailHtml(data, prefix, chart_name) {
-              let cur_lev = data[`${prefix}${chart_name}`];
-              let cur_lev_i = data[`${prefix}${chart_name}_i`] ?? '';
-
-              var notes_detail
-
-              return `
-                <span class="main-info-wrap">
-                  ${(utage ?
-                    `<span class="lv-num-simple">${data['kanji']}</span>${maimaiLvNumHtmlTemplate('',`${cur_lev}`,'')}` :
-                    maimaiLvNumHtmlTemplate('', `${cur_lev}`, `${cur_lev_i}`)
-                  )}
-                </span>
-                <span class="sub-info-wrap">
-                  ${generateChartNoteDetailHtml(data, prefix, chart_name)}
-                  ${(hasPropertyAndValue(data, `${prefix}${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${prefix}${chart_name}_designer`]}</span></span>` : "")}
-                </span>`;
-            }
-
-            function generateChartDetailHtml(col, data, chart_type) {
-              if (!col.className.includes('lv ')) {
-                return;
-              }
-
-              var chart_name = columns_params[col.columnIndex]['name'];
-
-              if (chart_type === 'std') {
-                var prefix = ''
-              } else if (chart_type === 'dx') {
-                var prefix = 'dx_'
-              } else if (chart_type === 'utage') {
-                var prefix = ''
-              }
-              if (chart_type === 'utage' && chart_name === 'lev_utage' && hasPropertyAndValue(data, 'kanji')) {
-                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                        <span class="row-label"><span class="diff-name lv-utage">U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
-                        <span class="content-col">
-                          <span class="diff-name ${col.className}"><span>U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
-                          ${generateChartLevDetailHtml(data, prefix, chart_name)}
-                        </span>
-                      </div>`;
-              } else if (chart_type !== 'utage' && !col.className.includes('detail-hidden') && col.className.includes('lv ')) {
-                if ((chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) ||
-                  (chart_name === 'lev_utage_kanji') || (chart_name === 'lev_utage') ) {
-                  return;
-                } else {
+                if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
                   return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                        <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
-                        <span class="content-col">
-                          <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
-                          ${generateChartLevDetailHtml(data, prefix, chart_name)}
-                        </span>
+                        <span class="row-label">${column.displayTitle}</span>
+                        <span>${col.data}</span>
                       </div>`;
                 }
               }
-            }
 
-            function generateCombinedRows(data, utage, columns, columns_params) {
-              let lev = `lev_bas`;
-              let dx_lev = `dx_lev_bas`;
+              function generatePlayableInfoHtml(col, data, prefix = '') {
+                if (data['release_intl']) {
+                  if (data['release_intl'] === '000000') {
+                    var intl_date_display = getTranslation(userLanguage,'song_playable');
+                  } else {
+                    var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['release_intl']));
+                  }
+                }
 
-              var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
-              var playable_info = generatePlayableInfoHtml(columns, data);
-              var chart_detail = columns.map(col => generateChartDetailHtml(col, data, 'std')).join('');
-              var chart_detail_dx = columns.map(col => generateChartDetailHtml(col, data, 'dx')).join('');
-              var chart_detail_utage = columns.map(col => generateChartDetailHtml(col, data, 'utage')).join('');
+                var lock_status_html = `
+                  <span class="lock-status">
+                    <span class="key-icon"></span>
+                    <span class="lock-status-text">${getTranslation(userLanguage,'unlock_needed')}</span>
+                  <span>
+                `;
 
-              var combinedRows =
-                `<div class="table-wrapper">
-                  <div class="details-table-wrap ${(data[dx_lev] && data[lev] ? 'dual' : '')}">
-                    ${(data[dx_lev] ?
-                    `<div class="details-table chart-details dx">
-                      <div class="table-header"><span class="chart-type-badge dx"></span><span class="th-label">DX CHART</span></div>
-                      ${(chart_detail_dx)}
-                    </div>` : '')}
-                    ${(data[lev] ?
-                    `<div class="details-table chart-details std">
-                      <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">STD CHART</span></div>
-                      ${chart_detail}
-                    </div>` : '')}
+                var html_output = `
+                <div class="region-availability-chart">
+                  <div class="region jp available">
+                    <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
+                    <span class="date"><span class="green-check-icon"></span>${getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']))}</span>
+                    ${ (data['key'] && data['key'] === '○') ? lock_status_html : ''}
+                  </div>
+                  <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
+                    <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
+                    <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable')) }</span>
+                    ${ (data['key_intl'] && data['key_intl'] === '○') ? lock_status_html : ''}
+                  </div>
+                </div>
+                `;
+
+                return html_output;
+              }
+
+              function generateChartNoteDetailHtml(data, prefix, chart_name) {
+                if (utage && data['buddy']) {
+                  return `
+                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes`) ?
+                    `<span class="notes-detail-wrap buddy">
+                      <span class="side">L</span>
+                      <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_left_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_left_notes_tap`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_left_notes_hold`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_left_notes_slide`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_left_notes_touch`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_left_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_left_notes_break`]}</span></span>` : "")}
+                    </span></span>`
+                    : "")}
+                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes`) ?
+                    `<span class="notes-detail-wrap buddy">
+                      <span class="side">R</span>
+                      <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_right_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_right_notes_tap`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_right_notes_hold`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_right_notes_slide`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_right_notes_touch`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_right_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_right_notes_break`]}</span></span>` : "")}
+                    </span></span>`
+                    : "")}
+                  `;
+                }
+                else {
+                  return `
+                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes`) ?
+                    `<span class="notes-detail-wrap">
+                      <span class="notes"><span class="label">Notes</span><span>${data[`${prefix}${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${prefix}${chart_name}_notes_tap`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${prefix}${chart_name}_notes_hold`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${prefix}${chart_name}_notes_slide`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_touch`) ? `<span class="notes_touch"><span class="label">touch</span><span>${data[`${prefix}${chart_name}_notes_touch`]}</span></span>` : "")}
+                      ${(hasPropertyAndValue(data, `${prefix}${chart_name}_notes_break`) ? `<span class="notes_break"><span class="label">break</span><span>${data[`${prefix}${chart_name}_notes_break`]}</span></span>` : "")}
+                    </span></span>`
+                    : "")}
+                  `;
+                }
+              }
+
+              function generateChartLevDetailHtml(data, prefix, chart_name) {
+                let cur_lev = data[`${prefix}${chart_name}`];
+                let cur_lev_i = data[`${prefix}${chart_name}_i`] ?? '';
+
+                var notes_detail
+
+                return `
+                  <span class="main-info-wrap">
                     ${(utage ?
-                    `<div class="details-table chart-details utage">
-                      <div class="table-header"><span class="th-label">U･TA･GE CHART</span></div>
-                      ${chart_detail_utage}
-                    </div>` : '')}
-                  </div>
-                  <div class="details-table misc-details">
-                    <div class="table-header"><span class="th-label">SONG METADATA</span></div>
-                    ${normalRows}
-                  </div>
-                  <div class="details-table playable-info">
-                    ${playable_info}
-                  </div>
-                </div>`;
+                      `<span class="lv-num-simple">${data['kanji']}</span>${maimaiLvNumHtmlTemplate('',`${cur_lev}`,'')}` :
+                      maimaiLvNumHtmlTemplate('', `${cur_lev}`, `${cur_lev_i}`)
+                    )}
+                  </span>
+                  <span class="sub-info-wrap">
+                    ${generateChartNoteDetailHtml(data, prefix, chart_name)}
+                    ${(hasPropertyAndValue(data, `${prefix}${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${prefix}${chart_name}_designer`]}</span></span>` : "")}
+                  </span>`;
+              }
 
-              return combinedRows ? combinedRows : false;
+              function generateChartDetailHtml(col, data, chart_type) {
+                if (!col.className.includes('lv ')) {
+                  return;
+                }
+
+                var chart_name = columns_params[col.columnIndex]['name'];
+
+                if (chart_type === 'std') {
+                  var prefix = ''
+                } else if (chart_type === 'dx') {
+                  var prefix = 'dx_'
+                } else if (chart_type === 'utage') {
+                  var prefix = ''
+                }
+                if (chart_type === 'utage' && chart_name === 'lev_utage' && hasPropertyAndValue(data, 'kanji')) {
+                  return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                          <span class="row-label"><span class="diff-name lv-utage">U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
+                          <span class="content-col">
+                            <span class="diff-name ${col.className}"><span>U･TA･GE${(data['buddy'] ? ' (バディ)' : '')}</span></span>
+                            ${generateChartLevDetailHtml(data, prefix, chart_name)}
+                          </span>
+                        </div>`;
+                } else if (chart_type !== 'utage' && !col.className.includes('detail-hidden') && col.className.includes('lv ')) {
+                  if ((chart_name === 'lev_remas' && !hasPropertyAndValue(data, `${prefix}${chart_name}`)) ||
+                    (chart_name === 'lev_utage_kanji') || (chart_name === 'lev_utage') ) {
+                    return;
+                  } else {
+                    return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                          <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
+                          <span class="content-col">
+                            <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                            ${generateChartLevDetailHtml(data, prefix, chart_name)}
+                          </span>
+                        </div>`;
+                  }
+                }
+              }
+
+              function generateCombinedRows(data, utage, columns, columns_params) {
+                let lev = `lev_bas`;
+                let dx_lev = `dx_lev_bas`;
+
+                var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
+                var playable_info = generatePlayableInfoHtml(columns, data);
+                var chart_detail = columns.map(col => generateChartDetailHtml(col, data, 'std')).join('');
+                var chart_detail_dx = columns.map(col => generateChartDetailHtml(col, data, 'dx')).join('');
+                var chart_detail_utage = columns.map(col => generateChartDetailHtml(col, data, 'utage')).join('');
+
+                var combinedRows =
+                  `<div class="table-wrapper">
+                    <div class="details-table-wrap ${(data[dx_lev] && data[lev] ? 'dual' : '')}">
+                      ${(data[dx_lev] ?
+                      `<div class="details-table chart-details dx">
+                        <div class="table-header"><span class="chart-type-badge dx"></span><span class="th-label">DX CHART</span></div>
+                        ${(chart_detail_dx)}
+                      </div>` : '')}
+                      ${(data[lev] ?
+                      `<div class="details-table chart-details std">
+                        <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">STD CHART</span></div>
+                        ${chart_detail}
+                      </div>` : '')}
+                      ${(utage ?
+                      `<div class="details-table chart-details utage">
+                        <div class="table-header"><span class="th-label">U･TA･GE CHART</span></div>
+                        ${chart_detail_utage}
+                      </div>` : '')}
+                    </div>
+                    <div class="details-table misc-details">
+                      <div class="table-header"><span class="th-label">SONG METADATA</span></div>
+                      ${normalRows}
+                    </div>
+                    <div class="details-table playable-info">
+                      ${playable_info}
+                    </div>
+                  </div>`;
+
+                return combinedRows ? combinedRows : false;
+              }
+
+              var row = api.row(rowIdx);
+              var data = row.data();
+              var utage = data['kanji'] ? "utage" : "";
+
+              return generateCombinedRows(data, utage, columns, columns_params);
             }
-
-            var row = api.row(rowIdx);
-            var data = row.data();
-            var utage = data['kanji'] ? "utage" : "";
-
-            return generateCombinedRows(data, utage, columns, columns_params);
           }
+        },
+        "rowGroup": {
+          dataSrc: 'date',
+          startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
+            if (group === '') {
+              date_display = 'NEW'
+            } else {
+              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+            }
+            return `<div>${date_display}</div>`;
+            // enable rows count again when I find a way to show all rows in other pages
+            // return group +'更新 ('+rows.count()+'曲)';
+          }) : null
+        },
+        "scrollX": true,
+        initComplete: function() {
+          var table = this;
+          tableInitCompleteFunctions(table);
         }
-      },
-      "rowGroup": {
-        dataSrc: 'date',
-        startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-          if (group === '') {
-            date_display = 'NEW'
-          } else {
-            date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
-          }
-          return `<div>${date_display}</div>`;
-          // enable rows count again when I find a way to show all rows in other pages
-          // return group +'更新 ('+rows.count()+'曲)';
-        }) : null
-      },
-      "scrollX": true,
-      initComplete: function() {
-        var table = this;
-        tableInitCompleteFunctions(table);
-      }
+      });
     });
   });
 });

@@ -1,5 +1,29 @@
 {
   "ja": {
+    "datatable_ui": {
+      "emptyTable":     "テーブルにデータがありません",
+      "info":           " _TOTAL_{unit} (_START_〜_END_ 表示中)",
+      "infoEmpty":      " 0 unit",
+      "infoFiltered":   "（全 _MAX_ {unit}）",
+      "infoPostFix":    "",
+      "infoThousands":  ",",
+      "lengthMenu":     "1ページ表示 _MENU_",
+      "loadingRecords": "読み込み中...",
+      "processing":     "処理中...",
+      "search":         "検索",
+      "searchPlaceholder": "曲名・アーティスト検索",
+      "zeroRecords":    "一致するレコードがありません",
+      "paginate": {
+        "sFirst":    "先頭",
+        "sLast":     "最終",
+        "sNext":     "NEXT",
+        "sPrevious": "PREV"
+      },
+      "aria": {
+        "sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
+        "sSortDescending": ": 列を降順に並べ替えるにはアクティブにする"
+      }
+    },
     "days_of_week": ["日", "月", "火", "水", "木", "金", "土"],
     "nav_songs": "楽曲",
     "nav_charts": "譜面",
@@ -48,6 +72,30 @@
     "report_twitter": "💬 足りない情報・間違いを報告する （Twitter）"
   },
   "en": {
+    "datatable_ui": {
+      "emptyTable":     "No data in table",
+      "info":           " _TOTAL_{unit} (Showing _START_-_END_)",
+      "infoEmpty":      " 0 {unit}",
+      "infoFiltered":   "（Total _MAX_ {unit}）",
+      "infoPostFix":    "",
+      "infoThousands":  ",",
+      "lengthMenu":     "Items per page _MENU_",
+      "loadingRecords": "Loading...",
+      "processing":     "Processing...",
+      "search":         "Search",
+      "searchPlaceholder": "Search Title/Artist",
+      "zeroRecords":    "No matching records",
+      "paginate": {
+        "sFirst":    "First",
+        "sLast":     "Last",
+        "sNext":     "NEXT",
+        "sPrevious": "PREV"
+      },
+      "aria": {
+        "sSortAscending":  ": Activate to sort in ascending order",
+        "sSortDescending": ": Activate to sort in descending order"
+      }
+    },
     "days_of_week": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     "nav_songs": "Songs",
     "nav_charts": "Charts",
@@ -96,6 +144,30 @@
     "report_twitter": "💬 Report missing or incorrect data (Twitter)"
   },
   "ko": {
+    "datatable_ui": {
+      "emptyTable":     "테이블에 데이터가 없습니다",
+      "info":           " _TOTAL_{unit} (_START_~_END_ 표시중)",
+      "infoEmpty":      " 0 {unit}",
+      "infoFiltered":   "（총 _MAX_ {unit}）",
+      "infoPostFix":    "",
+      "infoThousands":  ",",
+      "lengthMenu":     "한 페이지 당 _MENU_",
+      "loadingRecords": "불러 오는 중...",
+      "processing":     "처리중...",
+      "search":         "검색",
+      "searchPlaceholder": "곡명・아티스트 검색",
+      "zeroRecords":    "필터나 검색에 해당하는 항목이 없습니다",
+      "paginate": {
+        "sFirst":    "첫 페이지",
+        "sLast":     "마지막 페이지",
+        "sNext":     "NEXT",
+        "sPrevious": "PREV"
+      },
+      "aria": {
+        "sSortAscending":  ": 오름차순 정렬하려면 활성화",
+        "sSortDescending": ": 내림차순 정렬하려면 활성화"
+      }
+    },
     "days_of_week": ["일", "월", "화", "수", "목", "금", "토"],
     "nav_songs": "곡 목록",
     "nav_charts": "보면 목록",

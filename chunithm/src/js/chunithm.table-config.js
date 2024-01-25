@@ -474,238 +474,240 @@ function processChunithmChartData(obj, chart_diff) {
 }
 
 $(document).ready(function() {
-  $.getJSON("data/music-ex.json", (data) => {
-    var table = $('#table').DataTable( {
-      // "ajax": {
-      //     url: "data/music-ex.json",
-      //     dataSrc: ""
-      // },
-      data: flattenMusicData(data, flat_view, chunithm_chart_list, processChunithmChartData),
-      "buttons": [
-        // {
-        //     extend: 'colvisRestore',
-        //     text: '全カラムON',
+  initTranslations().then(() => {
+    $.getJSON("data/music-ex.json", (data) => {
+      var table = $('#table').DataTable( {
+        // "ajax": {
+        //     url: "data/music-ex.json",
+        //     dataSrc: ""
         // },
-        // {
-        //     extend: 'colvisGroup',
-        //     text: '全レベル ON',
-        //     show: [ 14, 15, 16, 17, 18 ]
-        // },
-        // {
-        //     extend: 'colvisGroup',
-        //     text: '譜面レベルのみ',
-        //     hide: [ 6, 8, 9, 10, 12, 13, 24 ],
-        //     show: [ 14, 15, 16, 17, 18 ],
-        // },
-        // {
-        //     extend: 'colvisGroup',
-        //     text: 'EXPERT以上のみ',
-        //     hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 24 ],
-        //     show: [ 16, 17, 18 ]
-        // },
-        // {
-        //     extend: 'colvisGroup',
-        //     className: 'asdf',
-        //     text: 'ジャンル・チャプタ OFF',
-        //     hide: [ 6, 9 ]
-        // },
-        // {
-        //     extend: 'colvisGroup',
-        //     className: 'asdf',
-        //     text: '属性・Lv ON',
-        //     show: [ 10, 13 ]
-        // },
-        {
-          extend: 'colvis',
-          className: 'config-btn',
-          columns: '.toggle',
-          text: getTranslation(userLanguage, 'colvis_btn_label'),
-          collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
-          collectionLayout: "fixed",
-          fade: 150
+        data: flattenMusicData(data, flat_view, chunithm_chart_list, processChunithmChartData),
+        "buttons": [
+          // {
+          //     extend: 'colvisRestore',
+          //     text: '全カラムON',
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     text: '全レベル ON',
+          //     show: [ 14, 15, 16, 17, 18 ]
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     text: '譜面レベルのみ',
+          //     hide: [ 6, 8, 9, 10, 12, 13, 24 ],
+          //     show: [ 14, 15, 16, 17, 18 ],
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     text: 'EXPERT以上のみ',
+          //     hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 24 ],
+          //     show: [ 16, 17, 18 ]
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     className: 'asdf',
+          //     text: 'ジャンル・チャプタ OFF',
+          //     hide: [ 6, 9 ]
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     className: 'asdf',
+          //     text: '属性・Lv ON',
+          //     show: [ 10, 13 ]
+          // },
+          {
+            extend: 'colvis',
+            className: 'config-btn',
+            columns: '.toggle',
+            text: getTranslation(userLanguage, 'colvis_btn_label'),
+            collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
+            collectionLayout: "fixed",
+            fade: 150
+          },
+        ],
+        "columns": columns_params,
+        "searchCols": default_search,
+        "createdRow": function( row, data, dataIndex ) {
+          if ( data.intl == "1" ) {
+            $(row).addClass( 'international' );
+          }
         },
-      ],
-      "columns": columns_params,
-      "searchCols": default_search,
-      "createdRow": function( row, data, dataIndex ) {
-        if ( data.intl == "1" ) {
-          $(row).addClass( 'international' );
-        }
-      },
-      "drawCallback": function(settings) {
-        toggleDateRowGroup(this, default_search);
-      },
-      "deferRender": true,
-      "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
-      "language": localize_strings[userLanguage],
-      "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-      "order": default_order,
-      "responsive": {
-        details: {
-          type: 'column',
-          target: 'tr',
-          display: $.fn.dataTable.Responsive.display.modal( {
-            header: renderModalHeader('CHUNITHM', 'image', 'wikiwiki_url', 'https:\/\/wikiwiki.jp\/chunithmwiki\/', '譜面確認'),
-            footer: renderModalFooter('CHUNITHM'),
-          } ),
-          // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-          renderer: function(api, rowIdx, columns) {
-            function generateRowHtml(col, data) {
-              var column_param = columns_params[col.columnIndex];
-              if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
-                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                      <span class="row-label">${col.title}</span>
-                      <span>${col.data}</span>
-                    </div>`;
-              }
-            }
-
-            function generatePlayableInfoHtml(col, data, prefix = '') {
-              if (data['date_intl']) {
-                if (data['date_intl'] === '000000') {
-                  var intl_date_display = getTranslation(userLanguage,'song_playable');
-                } else {
-                  var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date_intl']));
-                }
-              }
-
-              var lock_status_html = `
-                <span class="lock-status">
-                  <span class="key-icon"></span>
-                  <span class="lock-status-text">${getTranslation(userLanguage,'unlock_needed')}</span>
-                <span>
-              `;
-
-              var html_output = `
-              <div class="region-availability-chart">
-                <div class="region jp available">
-                  <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
-                  <span class="date"><span class="green-check-icon"></span>${getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']))}</span>
-                </div>
-                <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
-                  <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
-                  <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${getTranslation(userLanguage,'song_playable')}` : getTranslation(userLanguage,'song_unavailable')) }</span>
-                </div>
-              </div>
-              `;
-
-              return html_output;
-            }
-
-            function generateChartLevDetailHtml(data, chart_name) {
-              let cur_lev = data[`${chart_name}`];
-              let cur_lev_i = data[`${chart_name}_i`];
-
-              return `
-                <span class="main-info-wrap">
-                  ${(worldsend ?
-                    `<div class="inner-wrap"><span class="lv-num-simple">${data['we_kanji']}</span><span class="lv-num-precise">${displayWEStars(data['we_star'])}</span></div>` :
-                    lvNumHtmlTemplate(data, chart_name)
-                  )}
-                </span>
-                <span class="sub-info-wrap">
-                  ${(hasPropertyAndValue(data, `${chart_name}_notes`) ?
-                    `<span class="notes-detail-wrap">
-                      <span class="notes"><span class="label">Notes</span><span>${data[`${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
-                      ${(hasPropertyAndValue(data, `${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${chart_name}_notes_tap`]}</span></span>` : "")}
-                      ${(hasPropertyAndValue(data, `${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${chart_name}_notes_hold`]}</span></span>` : "")}
-                      ${(hasPropertyAndValue(data, `${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${chart_name}_notes_slide`]}</span></span>` : "")}
-                      ${(hasPropertyAndValue(data, `${chart_name}_notes_air`) ? `<span class="notes_air"><span class="label">air</span><span>${data[`${chart_name}_notes_air`]}</span></span>` : "")}
-                      ${(hasPropertyAndValue(data, `${chart_name}_notes_flick`) ? `<span class="notes_flick"><span class="label">flick</span><span>${data[`${chart_name}_notes_flick`]}</span></span>` : "")}
-                    </span></span>` : "")}
-                  ${(hasPropertyAndValue(data, `${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${chart_name}_designer`]}</span></span>` : "")}
-                </span>
-                ${(hasPropertyAndValue(data, `${chart_name}_chart_link`) ? `<span class="chart-link">${chartLinkBtn(data[`${chart_name}_chart_link`], 'chunithm')}</span>` : "")}`;
-            }
-
-            function generateChartDetailHtml(col, data, chart_type) {
-              if (!col.className.includes('lv ') || col.className.includes('detail-hidden')) {
-                return;
-              }
-              var chart_name = columns_params[col.columnIndex]['name'];
-
-              if (chart_type === 'worldsend' && chart_name === 'lev_we' && hasPropertyAndValue(data, 'we_kanji')) {
-                return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                        <span class="row-label"><span class="diff-name lv-we">WORLD'S END</span></span>
-                        <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
-                          <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
-                          ${generateChartLevDetailHtml(data, chart_name)}
-                        </span>
-                      </div>`;
-              } else if (chart_type !== 'worldsend') {
-                if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
-                  (chart_name === 'lev_we') || (chart_name === 'we_star')) {
-                  return;
-                } else {
+        "drawCallback": function(settings) {
+          toggleDateRowGroup(this, default_search);
+        },
+        "deferRender": true,
+        "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
+        "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+        "order": default_order,
+        "responsive": {
+          details: {
+            type: 'column',
+            target: 'tr',
+            display: $.fn.dataTable.Responsive.display.modal( {
+              header: renderModalHeader('CHUNITHM', 'image', 'wikiwiki_url', 'https:\/\/wikiwiki.jp\/chunithmwiki\/', '譜面確認'),
+              footer: renderModalFooter('CHUNITHM'),
+            } ),
+            // renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+            renderer: function(api, rowIdx, columns) {
+              function generateRowHtml(col, data) {
+                var column_param = columns_params[col.columnIndex];
+                if (!col.className.includes('detail-hidden') && !col.className.includes('lv ')) {
                   return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
-                        <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
-                        <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
-                          <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
-                          ${generateChartLevDetailHtml(data, chart_name)}
-                        </span>
+                        <span class="row-label">${col.title}</span>
+                        <span>${col.data}</span>
                       </div>`;
                 }
               }
-            }
 
-            function generateCombinedRows(data, worldsend, columns, columns_params) {
-              var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
-              var playable_info = generatePlayableInfoHtml(columns, data);
-              var chart_detail = columns.map(col => generateChartDetailHtml(col, data)).join('');
-              var chart_detail_worldsend = columns.map(col => generateChartDetailHtml(col, data, 'worldsend')).join('');
+              function generatePlayableInfoHtml(col, data, prefix = '') {
+                if (data['date_intl']) {
+                  if (data['date_intl'] === '000000') {
+                    var intl_date_display = getTranslation(userLanguage,'song_playable');
+                  } else {
+                    var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date_intl']));
+                  }
+                }
 
-              var combinedRows =
-                `<div class="table-wrapper">
-                  <div class="details-table-wrap">
+                var lock_status_html = `
+                  <span class="lock-status">
+                    <span class="key-icon"></span>
+                    <span class="lock-status-text">${getTranslation(userLanguage,'unlock_needed')}</span>
+                  <span>
+                `;
+
+                var html_output = `
+                <div class="region-availability-chart">
+                  <div class="region jp available">
+                    <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
+                    <span class="date"><span class="green-check-icon"></span>${getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']))}</span>
+                  </div>
+                  <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
+                    <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
+                    <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${getTranslation(userLanguage,'song_playable')}` : getTranslation(userLanguage,'song_unavailable')) }</span>
+                  </div>
+                </div>
+                `;
+
+                return html_output;
+              }
+
+              function generateChartLevDetailHtml(data, chart_name) {
+                let cur_lev = data[`${chart_name}`];
+                let cur_lev_i = data[`${chart_name}_i`];
+
+                return `
+                  <span class="main-info-wrap">
                     ${(worldsend ?
-                    `<div class="details-table chart-details worldsend">
-                      <div class="table-header"><span class="th-label">CHART</span></div>
-                      ${chart_detail_worldsend}
-                    </div>` :
-                    `<div class="details-table chart-details std">
-                      <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">CHART</span></div>
-                      ${chart_detail}
-                    </div>`
+                      `<div class="inner-wrap"><span class="lv-num-simple">${data['we_kanji']}</span><span class="lv-num-precise">${displayWEStars(data['we_star'])}</span></div>` :
+                      lvNumHtmlTemplate(data, chart_name)
                     )}
-                  </div>
-                  <div class="details-table misc-details">
-                    <div class="table-header"><span class="th-label">SONG METADATA</span></div>
-                    ${normalRows}
-                  </div>
-                  <div class="details-table playable-info">
-                    ${playable_info}
-                  </div>
-                </div>`;
+                  </span>
+                  <span class="sub-info-wrap">
+                    ${(hasPropertyAndValue(data, `${chart_name}_notes`) ?
+                      `<span class="notes-detail-wrap">
+                        <span class="notes"><span class="label">Notes</span><span>${data[`${chart_name}_notes`]}</span></span><span class="notes-sub-detail-wrap">
+                        ${(hasPropertyAndValue(data, `${chart_name}_notes_tap`) ? `<span class="notes_tap"><span class="label">tap</span><span>${data[`${chart_name}_notes_tap`]}</span></span>` : "")}
+                        ${(hasPropertyAndValue(data, `${chart_name}_notes_hold`) ? `<span class="notes_hold"><span class="label">hold</span><span>${data[`${chart_name}_notes_hold`]}</span></span>` : "")}
+                        ${(hasPropertyAndValue(data, `${chart_name}_notes_slide`) ? `<span class="notes_slide"><span class="label">slide</span><span>${data[`${chart_name}_notes_slide`]}</span></span>` : "")}
+                        ${(hasPropertyAndValue(data, `${chart_name}_notes_air`) ? `<span class="notes_air"><span class="label">air</span><span>${data[`${chart_name}_notes_air`]}</span></span>` : "")}
+                        ${(hasPropertyAndValue(data, `${chart_name}_notes_flick`) ? `<span class="notes_flick"><span class="label">flick</span><span>${data[`${chart_name}_notes_flick`]}</span></span>` : "")}
+                      </span></span>` : "")}
+                    ${(hasPropertyAndValue(data, `${chart_name}_designer`) ? `<span class="designer"><span class="label">Designer</span><span>${data[`${chart_name}_designer`]}</span></span>` : "")}
+                  </span>
+                  ${(hasPropertyAndValue(data, `${chart_name}_chart_link`) ? `<span class="chart-link">${chartLinkBtn(data[`${chart_name}_chart_link`], 'chunithm')}</span>` : "")}`;
+              }
 
-              return combinedRows ? combinedRows : false;
+              function generateChartDetailHtml(col, data, chart_type) {
+                if (!col.className.includes('lv ') || col.className.includes('detail-hidden')) {
+                  return;
+                }
+                var chart_name = columns_params[col.columnIndex]['name'];
+
+                if (chart_type === 'worldsend' && chart_name === 'lev_we' && hasPropertyAndValue(data, 'we_kanji')) {
+                  return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                          <span class="row-label"><span class="diff-name lv-we">WORLD'S END</span></span>
+                          <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
+                            <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                            ${generateChartLevDetailHtml(data, chart_name)}
+                          </span>
+                        </div>`;
+                } else if (chart_type !== 'worldsend') {
+                  if ((chart_name === 'lev_ult' && !hasPropertyAndValue(data, chart_name)) ||
+                    (chart_name === 'lev_we') || (chart_name === 'we_star')) {
+                    return;
+                  } else {
+                    return `<div class="row ${col.className}" data-dt-row="${col.rowIndex}" data-dt-column="${col.columnIndex}">
+                          <span class="row-label"><span class="diff-name ${col.className}">${columns_params[col.columnIndex].displayTitle}</span></span>
+                          <span class="content-col ${hasPropertyAndValue(data, `${chart_name}_chart_link`) && 'has-chart-link'}">
+                            <span class="diff-name ${col.className}"><span>${columns_params[col.columnIndex].displayTitle}</span></span>
+                            ${generateChartLevDetailHtml(data, chart_name)}
+                          </span>
+                        </div>`;
+                  }
+                }
+              }
+
+              function generateCombinedRows(data, worldsend, columns, columns_params) {
+                var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
+                var playable_info = generatePlayableInfoHtml(columns, data);
+                var chart_detail = columns.map(col => generateChartDetailHtml(col, data)).join('');
+                var chart_detail_worldsend = columns.map(col => generateChartDetailHtml(col, data, 'worldsend')).join('');
+
+                var combinedRows =
+                  `<div class="table-wrapper">
+                    <div class="details-table-wrap">
+                      ${(worldsend ?
+                      `<div class="details-table chart-details worldsend">
+                        <div class="table-header"><span class="th-label">CHART</span></div>
+                        ${chart_detail_worldsend}
+                      </div>` :
+                      `<div class="details-table chart-details std">
+                        <div class="table-header"><span class="chart-type-badge std"></span><span class="th-label">CHART</span></div>
+                        ${chart_detail}
+                      </div>`
+                      )}
+                    </div>
+                    <div class="details-table misc-details">
+                      <div class="table-header"><span class="th-label">SONG METADATA</span></div>
+                      ${normalRows}
+                    </div>
+                    <div class="details-table playable-info">
+                      ${playable_info}
+                    </div>
+                  </div>`;
+
+                return combinedRows ? combinedRows : false;
+              }
+
+              var row = api.row(rowIdx);
+              var data = row.data();
+              var worldsend = data['we_kanji'] ? "worldsend" : "";
+
+              return generateCombinedRows(data, worldsend, columns, columns_params);
             }
-
-            var row = api.row(rowIdx);
-            var data = row.data();
-            var worldsend = data['we_kanji'] ? "worldsend" : "";
-
-            return generateCombinedRows(data, worldsend, columns, columns_params);
           }
+        },
+        "rowGroup": {
+          dataSrc: 'date',
+          startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
+            if (group === '') {
+              date_display = 'NEW'
+            } else {
+              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+            }
+            return `<div>${date_display}</div>`;
+            // enable rows count again when I find a way to show all rows in other pages
+            // return group +'更新 ('+rows.count()+'曲)';
+          }) : null
+        },
+        "scrollX": true,
+        initComplete: function() {
+          var table = this;
+          tableInitCompleteFunctions(table);
         }
-      },
-      "rowGroup": {
-        dataSrc: 'date',
-        startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-          if (group === '') {
-            date_display = 'NEW'
-          } else {
-            date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
-          }
-          return `<div>${date_display}</div>`;
-          // enable rows count again when I find a way to show all rows in other pages
-          // return group +'更新 ('+rows.count()+'曲)';
-        }) : null
-      },
-      "scrollX": true,
-      initComplete: function() {
-        var table = this;
-        tableInitCompleteFunctions(table);
-      }
+      });
     });
   });
 });
