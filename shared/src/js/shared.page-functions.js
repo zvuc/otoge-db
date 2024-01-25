@@ -114,12 +114,30 @@ function updateQueryStringParameter(param, val) {
   }
 }
 
-function clearQueryStringParameter() {
+function clearQueryStringParameter(excludeChartLevel) {
   var searchParams = new URLSearchParams(window.location.search);
 
+  // Check if 'URLSearchParams' is supported by the browser
   if ('URLSearchParams' in window) {
+    // Get the current path without the query string
     var newRelativePathQuery = window.location.pathname;
-    history.pushState(null, '', newRelativePathQuery);
+
+    // If excludeChartLevel is true, remove all parameters except 'chart_lev'
+    if (excludeChartLevel) {
+      var chartLevValue = searchParams.get('chart_lev');
+      searchParams = new URLSearchParams(); // Clear all parameters
+
+      // Add back 'chart_lev' parameter if it exists
+      if (chartLevValue !== null) {
+        searchParams.set('chart_lev', chartLevValue);
+      }
+    } else {
+      // Clear all parameters
+      searchParams = new URLSearchParams();
+    }
+
+    // Update the URL with the new path and modified query string
+    history.pushState(null, '', newRelativePathQuery + (searchParams.toString() ? '?' + searchParams.toString() : ''));
   }
 }
 

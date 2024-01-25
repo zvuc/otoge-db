@@ -18,7 +18,7 @@ header
       span maimai
   .container
     h1
-      a.reset-search(href='#')
+      a.reset-all(href='#')
         span.logo
         span.hidden(aria-hidden='true') #{game_db_name} : #{game_name_display} 非公式楽曲リスト
     .aside
@@ -48,7 +48,7 @@ nav.site-navigation
   .container
     .view-switcher
       if !flat_view
-        button.btn.active.reset-search
+        button.btn.active.reset-all
           +symbol('icon-song')
           span(data-i18n='nav_songs') 楽曲
         a.btn(href='./lv')
@@ -58,7 +58,7 @@ nav.site-navigation
         a.btn(href='./')
           +symbol('icon-song')
           span(data-i18n='nav_songs') 楽曲
-        button.btn.active.reset-search
+        button.btn.active.reset-all
           +symbol('icon-charts')
           span(data-i18n='nav_charts') 譜面
     select#chart_lev.lv-switcher(name='lv-switcher' data-type=(flat_view ? 'filter' : 'href'))

@@ -260,31 +260,77 @@ function tableInitCompleteFunctions(table) {
   });
 
   // Reset Search
-  $('button.reset-search').on('click', function(){
-    table.api()
-      .order(default_order) //FIXME: why doesn't work with just calling var?
-      .columns().search('');
+  $('button.reset-all').on('click', function(){
+    let default_order = setDefaultOrder();
 
+    // Clear searches
+    table.api().columns().search('');
+    table.api().search('');
+
+    // Keep default search presets for Intl mode
     const columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
 
-    if (columnIndexWithDefaultSearch !== -1) {
+    if (currentRegion === 'intl' && columnIndexWithDefaultSearch !== -1) {
       const defaultSearchValue = columns_params[columnIndexWithDefaultSearch].defaultSearch;
       table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue);
     }
 
-    table.api().draw();
+    table.api().order(default_order).draw();
 
     clearQueryStringParameter();
 
+    // reset filter selectboxes
     $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
+
+    // reset level selectbox
+    if (flat_view) {
+      $('select#chart_lev').prop('selectedIndex',0).removeClass('changed');
+    }
+  });
+
+  // Reset Filters only (excluding Level filter in flat_view)
+  $('button.reset-filters').on('click', function(){
+    const currentLevelFilterVal = table.api().column('chart_lev:name').search();
+
+    // Clear searches
+    table.api()
+      .columns().search('');
+    table.api().search('');
+
+    // Keep default search presets for Intl mode
+    const columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
+
+    if (currentRegion === 'intl' && columnIndexWithDefaultSearch !== -1) {
+      const defaultSearchValue = columns_params[columnIndexWithDefaultSearch].defaultSearch;
+      table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue);
+    }
+
+    // Restore current level filter
+    if (currentLevelFilterVal) {
+      table.api().column('chart_lev:name').search(currentLevelFilterVal);
+    }
+
+    table.api().draw();
+
+
+    // reset filter selectboxes
+    $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
+
+    // reset level selectbox
+    if (flat_view && !currentLevelFilterVal) {
+      $('select#chart_lev').prop('selectedIndex',0).removeClass('changed');
+      clearQueryStringParameter();
+    } else {
+      clearQueryStringParameter(excludeChartLevel=true);
+    }
   });
 
 
   function switchGameRegion(event) {
     if (event.target.id === 'gameRegionQuickSwitch') {
-    var currentRegion = event.target.checked ? 'intl' : 'jp';
+      currentRegion = event.target.checked ? 'intl' : 'jp';
     } else {
-    var currentRegion = document.querySelector('input[name="gameRegion"]:checked').value;
+      currentRegion = document.querySelector('input[name="gameRegion"]:checked').value;
     }
 
     // Save the selected region in localStorage
@@ -315,10 +361,10 @@ function tableInitCompleteFunctions(table) {
 
     // update checkbox value
     if (event.target.id === 'gameRegionQuickSwitch') {
-    document.getElementById('gameRegionIntl').checked = event.target.checked;
-    document.getElementById('gameRegionJP').checked = !event.target.checked;
+      document.getElementById('gameRegionIntl').checked = event.target.checked;
+      document.getElementById('gameRegionJP').checked = !event.target.checked;
     } else {
-    document.getElementById('gameRegionQuickSwitch').checked = (currentRegion === 'intl' ? true : false);
+      document.getElementById('gameRegionQuickSwitch').checked = (currentRegion === 'intl' ? true : false);
     }
   }
 
@@ -424,7 +470,7 @@ function generateFilterDropdowns(table) {
     }
   });
 
-  $(`<button class="btn reset-search">
+  $(`<button class="btn reset-filters">
     <svg class="symbol icon-cross" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#icon-cross"></use></svg>
     ${getTranslation(userLanguage, 'clear_filters')}
     </button>`).appendTo($('.toolbar.filters'));

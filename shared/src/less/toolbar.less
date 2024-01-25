@@ -204,7 +204,7 @@
 			flex: 0 0 auto;
 			display: grid;
 			grid-auto-flow: row;
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: ~'repeat(2, calc((100% - 10px)/2))';
 			padding: 0;
 			overflow: hidden;
 			overflow-y: auto;
@@ -313,6 +313,13 @@
 				@media screen and (min-width: 1440px) {
 					max-width: 100%;
 				}
+			}
+		}
+
+		.btn.reset-filters {
+			@media screen and (min-width: 1440px) {
+				grid-column: span 2;
+				height: 45px;
 			}
 		}
 

@@ -6,7 +6,7 @@ let userLanguage = localStorage.getItem('userLanguage');
 let cachedTranslations = localStorage.getItem('translations');
 
 // Check if the userGameRegion value is nonexistent, create one with the default value 'jp'
-var currentRegion = localStorage.getItem('userGameRegion');
+let currentRegion = localStorage.getItem('userGameRegion');
 if (!currentRegion) {
   localStorage.setItem('userGameRegion', 'jp');
 }
