@@ -1,0 +1,6 @@
+src
+scripts
+node_modules
+*.txt
+package.json
+*.md
