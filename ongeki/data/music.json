@@ -20562,7 +20562,7 @@
     "image_url": "8df17ed3fddca2b3.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240111",
     "title": "ステラ",
     "title_sort": "ステラ",
@@ -20585,7 +20585,7 @@
     "image_url": "55245f44e4c71c11.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240111",
     "title": "パラソルサイダー",
     "title_sort": "ハラソルサイタ",
@@ -20608,7 +20608,7 @@
     "image_url": "0a25ca7beaeee968.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240111",
     "title": "星界ちゃんと可不ちゃんのおつかい合騒曲",
     "title_sort": "セカイチヤントカフチヤンノオツカイカツソウキヨク",
@@ -20629,5 +20629,51 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "db14394b4bc4a583.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240125",
+    "title": "つっぱれ！にゃんきー魂",
+    "title_sort": "ツツハレニヤンキタマシイ",
+    "artist": "Neko Hacker feat.うごくちゃん",
+    "id": "500550",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "柏木 美亜",
+    "chara_id": "1150",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "8",
+    "lev_exc": "11+",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "bffb7d0bbe2b6f02.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240125",
+    "title": "Elemental Ethnic",
+    "title_sort": "ELEMENTALETHNIC",
+    "artist": "Yooh",
+    "id": "500540",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "早乙女 彩華",
+    "chara_id": "1080",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exc": "12+",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "69ea10b781dfb5c8.png"
   }
 ]
