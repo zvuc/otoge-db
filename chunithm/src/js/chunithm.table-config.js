@@ -47,11 +47,12 @@ var columns_params = [
     render: function ( data, type, row ) {
       // If display or filter data is requested, return title
       if ( type === 'display' ) {
-        return '<div class="inner-wrap">' +
-            '<span class="title">' + data + '<\/span>' +
-            '<span class="dash hidden"> - <\/span>' +
-            '<span class="artist-display hidden">' + row.artist + '<\/span>'+
-          '<\/div>';
+        return `
+          <div class="inner-wrap">
+            <span class="title">${data}</span>
+            <span class="dash hidden"> - </span>
+            <span class="artist-display hidden">${row.artist}</span>
+          </div>`;
       }
       else if ( type === 'filter' ) {
         return data;
@@ -80,7 +81,7 @@ var columns_params = [
     render: function ( data, type, row ) {
       // If display or filter data is requested, return title
       if ( type === 'display' ) {
-        return '<div class="inner-wrap"><span class="artist-display hidden">' + row.artist + '<\/span><\/div>';
+        return `<div class="inner-wrap"><span class="artist-display hidden">${row.artist}</span></div>`;
       }
       else {
         return row.reading;

@@ -998,5 +998,3 @@ $(document).ready(function() {
     });
   });
 });
-
-
