@@ -340,17 +340,18 @@ select {
 }
 
 .green-check-icon {
-	@check-icon-color: #fff;
+	@check-icon-color: #34BC00;
 	@check-icon-svg-data: escape(
 		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="@{check-icon-color}" stroke-width="2px" d="M4.5 8.5l2.5 2.5 4.5-5" stroke-linejoin="round" stroke-linecap="round"  vector-effect="non-scaling-stroke"/></svg>'
 	);
 	display: inline-flex;
-	width: 20px;
-	height: 20px;
+	width: 18px;
+	height: 18px;
 	background-image: url('data:image/svg+xml,@{check-icon-svg-data}');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-color: #34BC00;
-	border-radius: 20px;
+	background-size: 16px 16px;
+	background-color: rgba(var(--ui-color-background-100));
+	box-shadow: 0 0 0 1px rgba(@check-icon-color,0.5) inset;
+	border-radius: 18px;
 }
