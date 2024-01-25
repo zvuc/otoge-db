@@ -4,3 +4,13 @@ node_modules
 errors.txt
 sdvxin_cache
 *.log
+
+# build files
+chunithm/*.*
+chunithm/lv/*.*
+ongeki/*.*
+ongeki/lv/*.*
+maimai/*.*
+maimai/lv/*.*
+shared/*.js
+!shared/*.min.js
