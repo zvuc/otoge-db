@@ -70,6 +70,48 @@
 	}
 }
 
+// Elements
+.element-type-icon {
+	display: inline-flex;
+	align-items: center;
+
+	.icon {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+
+	.label-text {
+		margin-left: 4px;
+	}
+
+	&.leaf .icon {
+		background-image: url('img/type-icon-leaf.svg');
+	}
+	&.fire .icon {
+		background-image: url('img/type-icon-fire.svg');
+	}
+	&.aqua .icon {
+		background-image: url('img/type-icon-aqua.svg');
+	}
+	&.multi .icon {
+		background-image:
+			url('img/type-icon-fire.svg'),
+			url('img/type-icon-aqua.svg'),
+			url('img/type-icon-leaf.svg');
+		background-size: 50%;
+		background-position: center top, left bottom, right bottom;
+	}
+}
+
+.diff-name {
+	&.lv-lnt, &.lev_lnt {
+		color: rgb(var(--lv-color-lnt));
+	}
+}
+
 // Header
 header {
 	h1 {
@@ -98,6 +140,20 @@ table.dataTable {
 
 		.diff-name {
 			color: rgb(var(--lv-color-lnt));
+		}
+	}
+
+	// Character type icon (ONGEKI)
+	.element-type-icon {
+		@media screen and (min-width: 1440px) {
+			.icon {
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		.label-text {
+			display: none;
 		}
 	}
 }
