@@ -11,7 +11,7 @@ const maimai_chart_list = {
   'dx_lev_remas': 'Re:MASTER',
   'lev_utage': 'U·TA·GE',
 };
-var columns_params = [
+const columns_params = [
   {
     displayTitle: "ID (system)",
     name: "id",
@@ -462,12 +462,15 @@ var columns_params = [
   }
 ];
 
-var default_order =
-  flat_view ?
+function setDefaultOrder() {
+  if (flat_view) {
     // 難易度 , Lv , Date
-    [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']] :
+    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']];
+  } else {
     // date , ID
-    [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
+    return [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
+  }
+}
 
 var default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
 
@@ -771,7 +774,7 @@ $(document).ready(function() {
         "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
         "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
         "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
-        "order": default_order,
+        "order": setDefaultOrder(),
         "responsive": {
           details: {
             type: 'column',
