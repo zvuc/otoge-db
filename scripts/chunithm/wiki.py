@@ -53,14 +53,14 @@ def update_songs_extra_data(args):
         local_music_ex_data = json.load(f)
 
     # prioritize id search if provided
-    if not song_id == 0:
+    if song_id != 0:
         if '-' in song_id:
             id_from = song_id.split('-')[0]
             id_to = song_id.split('-')[-1]
             target_song_list = _filter_songs_by_id_range(local_music_ex_data, id_from, id_to)
         else:
             target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
-    elif date_from and date_until:
+    elif date_from != 0 or date_until != 0:
         latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
         if date_from == 0:
