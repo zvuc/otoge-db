@@ -1,5 +1,6 @@
 import argparse
 import shared
+from shared.common_func import *
 
 parser = argparse.ArgumentParser(description='Description of your script')
 parser.add_argument('--ongeki', action="store_true", help='Perform scripts for ongeki')
@@ -18,7 +19,7 @@ elif args.chunithm:
 elif args.maimai:
 	import maimai as game_module
 elif not args.ongeki and not args.chunithm and not args.maimai:
-	print('Please specify which game: --ongeki, --chunithm, --maimai')
+	print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, args)
 	exit()
 
 game_module.intl.add_intl_info(args)
