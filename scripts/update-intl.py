@@ -13,7 +13,8 @@ parser.add_argument('--skipwiki', action="store_true", help='Skip wiki fetch')
 args = parser.parse_args()
 
 if args.ongeki:
-	import ongeki as game_module
+	print_message('Ongeki doesn\'t have an international release yet!', bcolors.FAIL, args)
+    exit()
 elif args.chunithm:
 	import chunithm as game_module
 elif args.maimai:

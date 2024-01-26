@@ -57,6 +57,7 @@
     "fetch-songs": "python3 scripts/update-songs.py --skipwiki",
     "fetch-wiki": "python3 scripts/update-wiki-data.py",
     "fetch-chartguide": "python3 scripts/update-chartguide-data.py",
+    "fetch-intl": "python3 scripts/update-intl.py",
 
     "shared-build": "yarn shared-minify",
     "shared-minify": "minify shared/src/js/shared.*.js > shared/shared-functions.js & minify shared/src/js/early-functions.js > shared/early-functions.js",
