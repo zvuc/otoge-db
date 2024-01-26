@@ -151,16 +151,18 @@ def _filter_songs_from_diffs(song_list):
     target_song_list = []
     # Filter songs based on the identifiers
     for song in song_list:
-        if 'lev_utage' in song:
-            song_hash = generate_hash(song['title'] + song['lev_utage'] + song['comment'])
-        else:
-            song_hash = generate_hash(song['title'] + song['image_url'])
+        _maimai_generate_hash(song)
 
         if song_hash in unique_id:
             target_song_list.append(song)
 
     return target_song_list
 
+def _maimai_generate_hash(song):
+    if 'lev_utage' in song:
+        return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
+    else:
+        return generate_hash(song['title'] + song['image_url'])
 
 def _filter_songs_by_id(song_list, song_id):
     target_song_list = []

@@ -1,4 +1,4 @@
-import ipdb
+# import ipdb
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -10,11 +10,14 @@ import shutil
 from maimai.paths import *
 from maimai import wiki
 from shared.common_func import *
+from datetime import datetime
 
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
         local_music_map = _json_to_id_value_map(local_music_data)
+
+    old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
     server_music_map = _json_to_id_value_map(server_music_data)
@@ -50,7 +53,7 @@ def load_new_song_data():
                 # Maimai always updates the "sort" value so let's keep it updated...
                 unchanged_songs.append(server_song)
     
-    return added_songs, updated_songs, unchanged_songs, removed_songs
+    return added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data
 
 
 def _json_to_id_value_map(json):
@@ -58,22 +61,28 @@ def _json_to_id_value_map(json):
 
 def _maimai_generate_hash(song):
     if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'] + song['comment'])
+        return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
     else:
         return generate_hash(song['title'] + song['image_url'])
 
-def renew_music_ex_data(new_song_list, args):
-    if len(new_song_list[0]) == 0 and len(new_song_list[1]) == 0:
+def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args):
+    if len(added_songs) == 0 and len(updated_songs) == 0:
         print_message("Nothing updated", '', args)
         return
 
     f = open(LOCAL_DIFFS_LOG_PATH, 'w')
 
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
-        local_music_ex_data = json.load(f)
+    try:
+        with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
+            local_music_ex_data = json.load(f)
+    except FileNotFoundError:
+        # If the file doesn't exist, create it
+        local_music_ex_data = []
+        with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
+            json.dump(local_music_ex_data, f)
 
     # added_songs
-    for song in new_song_list[0]:
+    for song in added_songs:
         song_hash = _maimai_generate_hash(song)
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
@@ -81,37 +90,93 @@ def renew_music_ex_data(new_song_list, args):
 
         _record_diffs(song, song_hash, 'new')
 
-    # updated_songs
-    for song in new_song_list[1]:
+    # Iterate through updated songs
+    for song in updated_songs:
         song_hash = _maimai_generate_hash(song)
-        existing_song = next((s for s in local_music_ex_data if _maimai_generate_hash(song) == song_hash), None)
+        old_song = next((s for s in old_local_music_data if _maimai_generate_hash(s) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if _maimai_generate_hash(s) == song_hash), None)
 
-        if existing_song:
-            # Update only the keys that have changed
+        if old_song == song:
+            continue
+
+        if old_song and dest_ex_song:
+            # Check for changes, additions, or removals
             for key, value in song.items():
-                if existing_song.get(key) != value:
-                    existing_song[key] = value
+                # maimai uses 'date' key for recording NEW markers... ignore them
+                if key == 'date':
+                    continue
+                if key not in old_song or old_song[key] != value:
+                    dest_ex_song[key] = value
+
+            # Check for removed keys
+            for key in old_song.copy():
+                # maimai uses 'date' key for recording NEW markers... ignore them
+                if key == 'date':
+                    continue
+                if key not in song:
+                    del dest_ex_song[key]
 
             print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
-            
             _record_diffs(song, song_hash, 'updated')
+        else:
+            print_message(f"Couldn't find destination song: {song['title']}", bcolors.FAIL, args)
 
-    # unchanged_songs
-    for song in new_song_list[2]:
+
+    # Iterate through unchanged songs
+    for song in unchanged_songs:
         song_hash = _maimai_generate_hash(song)
-        existing_song = next((s for s in local_music_ex_data if _maimai_generate_hash(song) == song_hash), None)
+        old_song = next((s for s in old_local_music_data if _maimai_generate_hash(s) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if _maimai_generate_hash(s) == song_hash), None)
 
-        if existing_song:
-            # Update only the keys that have changed
+        if old_song and dest_ex_song:
+            # Check for changes, additions, or removals
             for key, value in song.items():
-                if existing_song.get(key) != value:
-                    existing_song[key] = value
-            
+                # maimai uses 'date' key for recording NEW markers... ignore them
+                if key == 'date':
+                    continue
+                if key not in old_song or old_song[key] != value:
+                    dest_ex_song[key] = value
+
+            # Check for removed keys
+            for key in old_song.copy():
+                # maimai uses 'date' key for recording NEW markers... ignore them
+                if key == 'date':
+                    continue
+                if key not in song:
+                    del dest_ex_song[key]
+        else:
+            print_message(f"Couldn't find destination song: {song['title']}", bcolors.FAIL, args)
+
+
+    if len(removed_songs) != 0:
+        try:
+            with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'r', encoding='utf-8') as f:
+                local_music_ex_deleted_data = json.load(f)
+        except FileNotFoundError:
+            # If the file doesn't exist, create it
+            local_music_ex_deleted_data = []
+            with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
+                json.dump(local_music_ex_deleted_data, f)
+
+        # removed_songs
+        for song in removed_songs:
+            song_hash = _maimai_generate_hash(song)
+            existing_song = next((s for s in local_music_ex_data if _maimai_generate_hash(song) == song_hash), None)
+
+            if existing_song:
+                # delete matched item
+                local_music_ex_data.remove(existing_song)
+                _archive_deleted_song(song, local_music_ex_deleted_data)
+
+                print_message(f"Removed song: {existing_song['title']}", bcolors.OKGREEN, args)
+
+        with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
+            json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
 
     if not args.skipwiki:
-        for song in new_song_list[0]:
+        for song in added_songs:
             wiki.update_song_wiki_data(song, args)
-        for song in new_song_list[1]:
+        for song in updated_songs:
             wiki.update_song_wiki_data(song, args)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
@@ -119,7 +184,6 @@ def renew_music_ex_data(new_song_list, args):
 
 
 def _download_song_jacket(song):
-    # ipdb.set_trace();
     try:
         response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], verify=False, stream=True)
 
@@ -206,3 +270,9 @@ def _add_ex_data_template(song):
     song['date'] = ""
 
     return song
+
+
+def _archive_deleted_song(song, deleted_data):
+    deleted_date = datetime.now().strftime('%Y%m%d')
+    song['deleted_date'] = f"{deleted_date}"
+    deleted_data.append(song)
