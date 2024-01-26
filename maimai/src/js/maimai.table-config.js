@@ -436,7 +436,11 @@ const columns_params = [
     name: "date",
     defaultContent: "",
     data: function( row, type, set, meta ) {
-      return formatDate(row.date)
+      if (row.date) {
+        return formatDate(row.date)
+      } else {
+        return formatDate(row.release)
+      }
     },
     className: "date detail-hidden",
     // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
