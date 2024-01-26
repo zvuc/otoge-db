@@ -151,7 +151,7 @@ def _filter_songs_from_diffs(song_list):
     target_song_list = []
     # Filter songs based on the identifiers
     for song in song_list:
-        _maimai_generate_hash(song)
+        song_hash = _maimai_generate_hash(song)
 
         if song_hash in unique_id:
             target_song_list.append(song)
