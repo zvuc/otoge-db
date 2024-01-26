@@ -6,380 +6,7 @@ const chunithm_chart_list = {
   'lev_ult': 'ULTIMA',
   'we_kanji': 'WORLD\'S END'
 };
-const columns_params = [
-  {
-    displayTitle: "ID (system)",
-    name: "id",
-    data: "id",
-    className: "id detail-hidden",
-    visible: false
-  },
-  {
-    displayTitle: "#",
-    name: "index",
-    data: "id",
-    className: "id detail-hidden",
-    data: function(row) {
-      return row.id;
-    },
-    render: renderInWrapper(),
-    width: "20px",
-    searchable: false,
-    visible: false
-  },
-  {
-    displayTitle: "アルバムアート",
-    name: "jacket",
-    data: "image",
-    className: "jacket detail-hidden",
-    render: function(data) {
-      return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
-    },
-    width: "50px",
-    orderable: false,
-    searchable: false
-  },
-  {
-    displayTitle: "曲名",
-    name: "title",
-    data: "title",
-    className: "title-artist detail-hidden",
-    render: function ( data, type, row ) {
-      // If display or filter data is requested, return title
-      if ( type === 'display' ) {
-        return `
-          <div class="inner-wrap">
-            <span class="title">${data}</span>
-            <span class="dash hidden"> - </span>
-            <span class="artist-display hidden">${row.artist}</span>
-          </div>`;
-      }
-      else if ( type === 'filter' ) {
-        return data;
-      }
-      // Else type detection or sorting data, return reading
-      else {
-        return row.reading;
-      }
-    },
-    width: "80vw"
-  },
-  {
-    displayTitle: "曲名 (読み)",
-    name: "reading",
-    data: "reading",
-    className: "reading",
-    visible: false,
-    searchable: false
-  },
-  {
-    // Artist column (only on mobile - acts as title column on header)
-    displayTitle: getTranslation(userLanguage,'col_artist'),
-    name: "title_merged",
-    data: "title",
-    className: "artist detail-hidden",
-    render: function ( data, type, row ) {
-      // If display or filter data is requested, return title
-      if ( type === 'display' ) {
-        return `<div class="inner-wrap"><span class="artist-display hidden">${row.artist}</span></div>`;
-      }
-      else {
-        return row.reading;
-      }
-    },
-    searchable: false
-  },
-  {
-    // hidden real artist column (for search)
-    // アーティスト
-    displayTitle: getTranslation(userLanguage,'col_artist'),
-    name: "artist",
-    data: "artist",
-    className: "artist detail-hidden",
-    visible: false
-  },
-  {
-    displayTitle: "BPM",
-    name: "bpm",
-    data: "bpm",
-    className: "details bpm",
-    searchable: false,
-    visible: false
-  },
-  {
-    // バージョン
-    displayTitle: getTranslation(userLanguage,'col_version'),
-    name: "version",
-    data: "version",
-    className: "details version",
-    filterable: true,
-    render: renderInWrapper(),
-    customDropdownSortSource: "date",
-    width: "12em",
-  },
-  {
-    // displayTitle: "ジャンル",
-    displayTitle: getTranslation(userLanguage,'col_genre'),
-    name: "category",
-    data: "catname",
-    className: "details category",
-    render: renderInWrapper(),
-    width: "12em",
-    filterable: true,
-  },
-  {
-    //  BASIC
-    displayTitle: "BASIC",
-    name: "lev_bas",
-    data: sortLevels('lev_bas'),
-    className: "lv lv-bsc",
-    render: renderLvNum('lev_bas'),
-    customDropdownSortSource: sortByLeadingZeros('lev_bas'),
-    reverseSortOrder: true,
-    width: "3rem",
-    filterable: flat_view ? false : true,
-  },
-  {
-    //  ADVANCED
-    displayTitle: "ADVANCED",
-    name: "lev_adv",
-    data: sortLevels('lev_adv'),
-    className: "lv lv-adv",
-    render: renderLvNum('lev_adv'),
-    customDropdownSortSource: sortByLeadingZeros('lev_adv'),
-    reverseSortOrder: true,
-    width: "3rem",
-    filterable: flat_view ? false : true,
-  },
-  {
-    //  EXPERT
-    displayTitle: "EXPERT",
-    name: "lev_exp",
-    data: sortLevels('lev_exp'),
-    className: "lv lv-exp",
-    render: renderLvNum('lev_exp'),
-    customDropdownSortSource: sortByLeadingZeros('lev_exp'),
-    reverseSortOrder: true,
-    width: "3rem",
-    filterable: flat_view ? false : true,
-  },
-  {
-    //  MASTER
-    displayTitle: "MASTER",
-    name: "lev_mas",
-    data: sortLevels('lev_mas'),
-    className: "lv lv-mas",
-    render: renderLvNum('lev_mas'),
-    customDropdownSortSource: sortByLeadingZeros('lev_mas'),
-    reverseSortOrder: true,
-    width: "3rem",
-    filterable: flat_view ? false : true,
-  },
-  {
-    //  ULTIMA
-    displayTitle: "ULTIMA",
-    name: "lev_ult",
-    data: sortLevels('lev_ult'),
-    className: "lv lv-ult",
-    render: renderLvNum('lev_ult'),
-    customDropdownSortSource: sortByLeadingZeros('lev_ult'),
-    reverseSortOrder: true,
-    width: "3rem",
-    filterable: flat_view ? false : true,
-  },
-  {
-    //  WORLD'S END (Kanji)
-    displayTitle: "WORLD'S END",
-    name: "lev_we",
-    data: "we_kanji",
-    className: "lv lv-we",
-    render: renderWorldsEnd('we_kanji', 'we_star'),
-    customDropdownSortSource: sortByLeadingZeros('we_star'),
-    reverseSortOrder: true,
-    width: "3rem",
-    filterable: flat_view ? false : true,
-  },
-  {
-    //  WORLD'S END
-    displayTitle: "WORLD'S END☆",
-    name: "we_star",
-    data: convertWEStars('we_star'),
-    className: "lv lv-we we-star",
-    reverseSortOrder: true,
-    width: "3rem",
-    searchable: false,
-    visible: false
-  },
-  {
-    //  chart_diff
-    // displayTitle: "譜面",
-    displayTitle: getTranslation(userLanguage,'col_chart'),
-    name: "chart_diff",
-    data:
-      function( row, type, set, meta ) {
-        if ( flat_view == true ) {
-          if ( type === 'sort' || type === 'meta') {
-            return row.chart_diff;
-          }
-          else {
-            return convertDifficultyNames(row.chart_diff, false, chunithm_chart_list);
-          }
-        } else {
-          return null;
-        }
-      },
-    className: "lv-name detail-hidden",
-    width: "3rem",
-    createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
-      $(td).addClass( rowData.chart_diff );
-    }) : null,
-    render: flat_view ? renderChartDifficultyName('chart_diff',false,chunithm_chart_list) : null,
-    customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff', chunithm_chart_list) : null,
-    filterable: flat_view,
-    visible: false
-  },
-  {
-    //  chart_lev (for sort)
-    displayTitle: "難易度グループ",
-    name: "chart_lev",
-    data: ( flat_view ? 'chart_lev' : null ),
-    className: "lv detail-hidden",
-    width: "4rem",
-    customDropdownSortSource: sortByLeadingZeros('chart_lev'),
-    reverseSortOrder: true,
-    visible: false
-  },
-  {
-    //  chart_lev_i
-    // displayTitle: "譜面レベル",
-    displayTitle: getTranslation(userLanguage,'col_difficulty_level'),
-    name: "chart_lev_i",
-    data: ( flat_view ? 'chart_lev_i' : null ),
-    className: "lv lv-name detail-hidden",
-    render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', chunithm_chart_list) : null),
-    width: "4rem",
-    createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
-      $(td).addClass( rowData.chart_diff );
-    }) : null,
-    searchable: false,
-    visible: flat_view
-  },
-  {
-    // displayTitle: "ノート数",
-    displayTitle: getTranslation(userLanguage,'col_notes'),
-    name: "chart_notes",
-    data: ( flat_view ? "chart_notes" : null ),
-    className: "details notecount detail-hidden nowrap",
-    width: "8em",
-    searchable: false,
-    visible: false
-  },
-  {
-    displayTitle: "TAP",
-    name: "chart_notes_tap",
-    data: ( flat_view ? "chart_notes_tap" : null ),
-    className: "details notecount detail-hidden",
-    width: "5em",
-    searchable: false,
-    visible: false
-  },
-  {
-    displayTitle: "HOLD",
-    name: "chart_notes_hold",
-    data: ( flat_view ? "chart_notes_hold" : null ),
-    className: "details notecount detail-hidden",
-    width: "5em",
-    searchable: false,
-    visible: false
-  },
-  {
-    displayTitle: "SLIDE",
-    name: "chart_notes_slide",
-    data: ( flat_view ? "chart_notes_slide" : null ),
-    className: "details notecount detail-hidden",
-    width: "5em",
-    searchable: false,
-    visible: false
-  },
-  {
-    displayTitle: "AIR",
-    name: "chart_notes_air",
-    data: ( flat_view ? "chart_notes_air" : null ),
-    className: "details notecount detail-hidden",
-    width: "5em",
-    searchable: false,
-    visible: false
-  },
-  {
-    displayTitle: "FLICK",
-    name: "chart_notes_flick",
-    data: ( flat_view ? "chart_notes_flick" : null ),
-    className: "details notecount detail-hidden",
-    width: "5em",
-    searchable: false,
-    visible: false
-  },
-  {
-    // displayTitle: "譜面作者",
-    displayTitle: getTranslation(userLanguage,'col_designer'),
-    name: "chart_designer",
-    data: ( flat_view ? "chart_designer" : null ),
-    defaultContent: "",
-    width: "15em",
-    className: "details detail-hidden designer",
-    filterable: flat_view,
-    searchable: flat_view
-  },
-  {
-    // displayTitle: "譜面",
-    displayTitle: getTranslation(userLanguage,'col_chart'),
-    name: "chart_link",
-    data: ( flat_view ? "chart_link" : null ),
-    defaultContent: "",
-    render: ( flat_view ? renderChartLinkBtn('chart_link', 'chunithm') : null ),
-    width: "5em",
-    className: "details detail-hidden chart-link",
-  },
-  {
-    displayTitle: "Int'l",
-    name: "intl",
-    data: "intl",
-    defaultContent: "",
-    className: "detail-hidden",
-    width: "4em",
-    visible: false,
-    defaultSearch: "1"
-  },
-  {
-    // displayTitle: "追加日",
-    displayTitle: getTranslation(userLanguage,'col_added_date'),
-    name: "date",
-    // data: "date",
-    data: function( row, type, set, meta ) {
-      return formatDate(row.date)
-    },
-    className: "date detail-hidden",
-    // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
-    render: function ( data, type, row ) {
-      if ( type === 'display' ) {
-        return '<div class="inner-wrap">'+ data +'<\/div>';
-      }
-      else {
-        return data;
-      }
-    },
-    reverseSortOrder: true,
-    width: "4em",
-    filterable: true
-  },
-  {
-    displayTitle: "NEW",
-    name: "new",
-    data: "newflag",
-    className: "detail-hidden", // this column is required to ensure modal displays
-    searchable: false
-  }
-];
+let columns_params = [];
 
 function setDefaultOrder() {
   if (flat_view) {
@@ -478,6 +105,380 @@ function processChunithmChartData(obj, chart_diff) {
 
 $(document).ready(function() {
   initTranslations().then(() => {
+    columns_params = [
+      {
+        displayTitle: "ID (system)",
+        name: "id",
+        data: "id",
+        className: "id detail-hidden",
+        visible: false
+      },
+      {
+        displayTitle: "#",
+        name: "index",
+        data: "id",
+        className: "id detail-hidden",
+        data: function(row) {
+          return row.id;
+        },
+        render: renderInWrapper(),
+        width: "20px",
+        searchable: false,
+        visible: false
+      },
+      {
+        displayTitle: "アルバムアート",
+        name: "jacket",
+        data: "image",
+        className: "jacket detail-hidden",
+        render: function(data) {
+          return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
+        },
+        width: "50px",
+        orderable: false,
+        searchable: false
+      },
+      {
+        displayTitle: "曲名",
+        name: "title",
+        data: "title",
+        className: "title-artist detail-hidden",
+        render: function ( data, type, row ) {
+          // If display or filter data is requested, return title
+          if ( type === 'display' ) {
+            return `
+              <div class="inner-wrap">
+                <span class="title">${data}</span>
+                <span class="dash hidden"> - </span>
+                <span class="artist-display hidden">${row.artist}</span>
+              </div>`;
+          }
+          else if ( type === 'filter' ) {
+            return data;
+          }
+          // Else type detection or sorting data, return reading
+          else {
+            return row.reading;
+          }
+        },
+        width: "80vw"
+      },
+      {
+        displayTitle: "曲名 (読み)",
+        name: "reading",
+        data: "reading",
+        className: "reading",
+        visible: false,
+        searchable: false
+      },
+      {
+        // Artist column (only on mobile - acts as title column on header)
+        displayTitle: getTranslation(userLanguage,'col_artist'),
+        name: "title_merged",
+        data: "title",
+        className: "artist detail-hidden",
+        render: function ( data, type, row ) {
+          // If display or filter data is requested, return title
+          if ( type === 'display' ) {
+            return `<div class="inner-wrap"><span class="artist-display hidden">${row.artist}</span></div>`;
+          }
+          else {
+            return row.reading;
+          }
+        },
+        searchable: false
+      },
+      {
+        // hidden real artist column (for search)
+        // アーティスト
+        displayTitle: getTranslation(userLanguage,'col_artist'),
+        name: "artist",
+        data: "artist",
+        className: "artist detail-hidden",
+        visible: false
+      },
+      {
+        displayTitle: "BPM",
+        name: "bpm",
+        data: "bpm",
+        className: "details bpm",
+        searchable: false,
+        visible: false
+      },
+      {
+        // バージョン
+        displayTitle: getTranslation(userLanguage,'col_version'),
+        name: "version",
+        data: "version",
+        className: "details version",
+        filterable: true,
+        render: renderInWrapper(),
+        customDropdownSortSource: "date",
+        width: "12em",
+      },
+      {
+        // displayTitle: "ジャンル",
+        displayTitle: getTranslation(userLanguage,'col_genre'),
+        name: "category",
+        data: "catname",
+        className: "details category",
+        render: renderInWrapper(),
+        width: "12em",
+        filterable: true,
+      },
+      {
+        //  BASIC
+        displayTitle: "BASIC",
+        name: "lev_bas",
+        data: sortLevels('lev_bas'),
+        className: "lv lv-bsc",
+        render: renderLvNum('lev_bas'),
+        customDropdownSortSource: sortByLeadingZeros('lev_bas'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+      },
+      {
+        //  ADVANCED
+        displayTitle: "ADVANCED",
+        name: "lev_adv",
+        data: sortLevels('lev_adv'),
+        className: "lv lv-adv",
+        render: renderLvNum('lev_adv'),
+        customDropdownSortSource: sortByLeadingZeros('lev_adv'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+      },
+      {
+        //  EXPERT
+        displayTitle: "EXPERT",
+        name: "lev_exp",
+        data: sortLevels('lev_exp'),
+        className: "lv lv-exp",
+        render: renderLvNum('lev_exp'),
+        customDropdownSortSource: sortByLeadingZeros('lev_exp'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+      },
+      {
+        //  MASTER
+        displayTitle: "MASTER",
+        name: "lev_mas",
+        data: sortLevels('lev_mas'),
+        className: "lv lv-mas",
+        render: renderLvNum('lev_mas'),
+        customDropdownSortSource: sortByLeadingZeros('lev_mas'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+      },
+      {
+        //  ULTIMA
+        displayTitle: "ULTIMA",
+        name: "lev_ult",
+        data: sortLevels('lev_ult'),
+        className: "lv lv-ult",
+        render: renderLvNum('lev_ult'),
+        customDropdownSortSource: sortByLeadingZeros('lev_ult'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+      },
+      {
+        //  WORLD'S END (Kanji)
+        displayTitle: "WORLD'S END",
+        name: "lev_we",
+        data: "we_kanji",
+        className: "lv lv-we",
+        render: renderWorldsEnd('we_kanji', 'we_star'),
+        customDropdownSortSource: sortByLeadingZeros('we_star'),
+        reverseSortOrder: true,
+        width: "3rem",
+        filterable: flat_view ? false : true,
+      },
+      {
+        //  WORLD'S END
+        displayTitle: "WORLD'S END☆",
+        name: "we_star",
+        data: convertWEStars('we_star'),
+        className: "lv lv-we we-star",
+        reverseSortOrder: true,
+        width: "3rem",
+        searchable: false,
+        visible: false
+      },
+      {
+        //  chart_diff
+        // displayTitle: "譜面",
+        displayTitle: getTranslation(userLanguage,'col_chart'),
+        name: "chart_diff",
+        data:
+          function( row, type, set, meta ) {
+            if ( flat_view == true ) {
+              if ( type === 'sort' || type === 'meta') {
+                return row.chart_diff;
+              }
+              else {
+                return convertDifficultyNames(row.chart_diff, false, chunithm_chart_list);
+              }
+            } else {
+              return null;
+            }
+          },
+        className: "lv-name detail-hidden",
+        width: "3rem",
+        createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
+          $(td).addClass( rowData.chart_diff );
+        }) : null,
+        render: flat_view ? renderChartDifficultyName('chart_diff',false,chunithm_chart_list) : null,
+        customDropdownSortSource: flat_view ? sortByDifficultyCategory('chart_diff', chunithm_chart_list) : null,
+        filterable: flat_view,
+        visible: false
+      },
+      {
+        //  chart_lev (for sort)
+        displayTitle: "難易度グループ",
+        name: "chart_lev",
+        data: ( flat_view ? 'chart_lev' : null ),
+        className: "lv detail-hidden",
+        width: "4rem",
+        customDropdownSortSource: sortByLeadingZeros('chart_lev'),
+        reverseSortOrder: true,
+        visible: false
+      },
+      {
+        //  chart_lev_i
+        // displayTitle: "譜面レベル",
+        displayTitle: getTranslation(userLanguage,'col_difficulty_level'),
+        name: "chart_lev_i",
+        data: ( flat_view ? 'chart_lev_i' : null ),
+        className: "lv lv-name detail-hidden",
+        render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', chunithm_chart_list) : null),
+        width: "4rem",
+        createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
+          $(td).addClass( rowData.chart_diff );
+        }) : null,
+        searchable: false,
+        visible: flat_view
+      },
+      {
+        // displayTitle: "ノート数",
+        displayTitle: getTranslation(userLanguage,'col_notes'),
+        name: "chart_notes",
+        data: ( flat_view ? "chart_notes" : null ),
+        className: "details notecount detail-hidden nowrap",
+        width: "8em",
+        searchable: false,
+        visible: false
+      },
+      {
+        displayTitle: "TAP",
+        name: "chart_notes_tap",
+        data: ( flat_view ? "chart_notes_tap" : null ),
+        className: "details notecount detail-hidden",
+        width: "5em",
+        searchable: false,
+        visible: false
+      },
+      {
+        displayTitle: "HOLD",
+        name: "chart_notes_hold",
+        data: ( flat_view ? "chart_notes_hold" : null ),
+        className: "details notecount detail-hidden",
+        width: "5em",
+        searchable: false,
+        visible: false
+      },
+      {
+        displayTitle: "SLIDE",
+        name: "chart_notes_slide",
+        data: ( flat_view ? "chart_notes_slide" : null ),
+        className: "details notecount detail-hidden",
+        width: "5em",
+        searchable: false,
+        visible: false
+      },
+      {
+        displayTitle: "AIR",
+        name: "chart_notes_air",
+        data: ( flat_view ? "chart_notes_air" : null ),
+        className: "details notecount detail-hidden",
+        width: "5em",
+        searchable: false,
+        visible: false
+      },
+      {
+        displayTitle: "FLICK",
+        name: "chart_notes_flick",
+        data: ( flat_view ? "chart_notes_flick" : null ),
+        className: "details notecount detail-hidden",
+        width: "5em",
+        searchable: false,
+        visible: false
+      },
+      {
+        // displayTitle: "譜面作者",
+        displayTitle: getTranslation(userLanguage,'col_designer'),
+        name: "chart_designer",
+        data: ( flat_view ? "chart_designer" : null ),
+        defaultContent: "",
+        width: "15em",
+        className: "details detail-hidden designer",
+        filterable: flat_view,
+        searchable: flat_view
+      },
+      {
+        // displayTitle: "譜面",
+        displayTitle: getTranslation(userLanguage,'col_chart'),
+        name: "chart_link",
+        data: ( flat_view ? "chart_link" : null ),
+        defaultContent: "",
+        render: ( flat_view ? renderChartLinkBtn('chart_link', 'chunithm') : null ),
+        width: "5em",
+        className: "details detail-hidden chart-link",
+      },
+      {
+        displayTitle: "Int'l",
+        name: "intl",
+        data: "intl",
+        defaultContent: "",
+        className: "detail-hidden",
+        width: "4em",
+        visible: false,
+        defaultSearch: "1"
+      },
+      {
+        // displayTitle: "追加日",
+        displayTitle: getTranslation(userLanguage,'col_added_date'),
+        name: "date",
+        // data: "date",
+        data: function( row, type, set, meta ) {
+          return formatDate(row.date)
+        },
+        className: "date detail-hidden",
+        // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
+        render: function ( data, type, row ) {
+          if ( type === 'display' ) {
+            return '<div class="inner-wrap">'+ data +'<\/div>';
+          }
+          else {
+            return data;
+          }
+        },
+        reverseSortOrder: true,
+        width: "4em",
+        filterable: true
+      },
+      {
+        displayTitle: "NEW",
+        name: "new",
+        data: "newflag",
+        className: "detail-hidden", // this column is required to ensure modal displays
+        searchable: false
+      }
+    ];
     $.getJSON("data/music-ex.json", (data) => {
       var table = $('#table').DataTable( {
         // "ajax": {

@@ -118,7 +118,7 @@ function initTranslations() {
   if (!userLanguage) {
     localStorage.setItem('userLanguage', 'ja');
     userLanguage = 'ja';
-    console.log('initialized userLanguage to ja');
+    // console.log('initialized userLanguage to ja');
   }
 
   if (!cachedTranslations) {
