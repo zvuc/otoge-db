@@ -209,7 +209,7 @@
     "colorscheme_auto": "자동",
     "colorscheme_light": "라이트",
     "colorscheme_dark": "다크",
-    "option_desc": "모든 사이트 설정은 현태 디바이스 (브라우저)에만 저장됩니다.",
+    "option_desc": "모든 사이트 설정은 현재 디바이스 (브라우저)에만 저장됩니다.",
     "option_region_desc": "인터내셔널 버전을 선택하면 해당 버전에서 현재 플레이 가능한 곡만 보여집니다.",
     "option_language_desc": "변경한 언어를 완전히 적용하려면 페이지 새로고침이 필요합니다.",
     "refresh": "지금 새로고침",
