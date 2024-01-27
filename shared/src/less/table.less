@@ -209,18 +209,11 @@ table.dataTable {
 			position: sticky;
 			left: 0;
 			height: 50px;
-			min-width: 60px;
-			max-width: 60px;
-			width: 60px !important;
+			min-width: calc(50px + var(--padding-size));
+			max-width: calc(50px + var(--padding-size));
+			width: calc(50px + var(--padding-size)) !important;
 			padding: 0 !important;
 			z-index: 2;
-			/*background-color: inherit;*/
-
-			@media screen and (min-width: 480px) {
-				min-width: 65px;
-				max-width: 65px;
-				width: 65px !important;
-			}
 		}
 
 		&.title-artist {
