@@ -22619,7 +22619,8 @@ Responsive.display = {
 				var close = function () {
 					modal
 						.addClass('anim-leave')
-						.on('animationend webkitAnimationEnd oAnimationEnd', function () {
+						.on('animationend webkitAnimationEnd oAnimationEnd', function (e) {
+              e.stopPropagation();
 							modal
 								.removeClass('anim-leave')
 								.remove(); // will tidy events for us
@@ -22634,16 +22635,15 @@ Responsive.display = {
 
 				var modal = $('<div class="dtr-modal"/>')
 					.addClass('anim-enter')
-					.on('animationend webkitAnimationEnd oAnimationEnd', function () {
-						modal.removeClass('anim-enter')
-					})
 					.append( $('<div class="dtr-modal-background"/>')
 						.click( function () {
 							close();
 						} )
 					)
 					.append( $('<div class="dtr-modal-content"/>')
-						.append( render() )
+            .append( $('<div class="dtr-modal-content-inner"/>') //Modded by zvuc: add data-modal-content-inner
+  						.append( render() )
+            )
 						.append( $('<div class="dtr-modal-close inner"></div>' )
 							.click(function () {
 								close();
@@ -22656,6 +22656,11 @@ Responsive.display = {
 						} )
 					)
 					.appendTo('body');
+
+        modal.on('animationend webkitAnimationEnd oAnimationEnd', function (e) {
+            e.stopPropagation();
+            modal.removeClass('anim-enter')
+          })
 
 				$(row.node()).addClass('parent');
 
@@ -22682,13 +22687,13 @@ Responsive.display = {
 			if (options && options.header) {
 				// Modded by zvuc: 
 				// $('div.dtr-modal-content').prepend('<h2>' + options.header(row) + '</h2>');
-				$('div.dtr-modal-content').prepend(
+				$('div.dtr-modal-content-inner').prepend( //Modded by zvuc: modal-content -> modal-content-inner
 					options.header( row )
 				);
 			}
 
 			if ( options && options.footer ) {
-				$('div.dtr-modal-content').append(
+				$('div.dtr-modal-content-inner').append( //Modded by zvuc: modal-content -> modal-content-inner
 					options.footer( row )
 				);
 			}

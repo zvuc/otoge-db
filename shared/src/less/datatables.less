@@ -977,7 +977,6 @@ div.dtr-modal div.dtr-modal-content {
 	border-radius: 0.5em;
 	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 	overflow: hidden;
-	will-change: transform, opacity;
 }
 div.dtr-modal-close {
 	position: absolute;
@@ -988,35 +987,36 @@ div.dtr-modal-close {
 	width: 40px;
 	height: 40px;
 	text-align: center;
-	border-radius: 30px;
+	border-radius: 5px;
 	cursor: pointer;
 	z-index: 12;
 	display: none;
 
 	div.dtr-modal-content & {
-	display: flex;
+		display: flex;
 	}
 
 	@media screen and (max-width: 479px) {
-	display: flex;
-	position: fixed;
+		display: flex;
+		position: fixed;
 
-	div.dtr-modal-content & {
-		display: none;
-	}
+		div.dtr-modal-content & {
+			display: none;
+		}
 	}
 
 	&:before {
-	content: "";
-	@color: #000;
-	@svg-data: escape('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="@{color}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l8 8M12 4l-8 8"/></svg>');
-	background-image: url('data:image/svg+xml,@{svg-data}');
-	background-position: center;
-	background-size: 18px 18px;
-	background-repeat: no-repeat;
-	width: 18px;
-	height: 18px;
-	filter: var(--copyright-filter) drop-shadow(0 0 1px rgb(var(--ui-color-background-100)));
+		content: "";
+		@color: #000;
+		@color2: #fff;
+		@svg-data: escape('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><g stroke="@{color2}" stroke-width="4" stroke-linecap="round"><line x1="2" y1="2" x2="18" y2="18"></line><line x1="18" y1="2" x2="2" y2="18"></line></g><g stroke="@{color}" stroke-width="3" stroke-linecap="round"><line x1="2" y1="2" x2="18" y2="18"></line><line x1="18" y1="2" x2="2" y2="18"></line></g></svg>');
+		background-image: url('data:image/svg+xml,@{svg-data}');
+		background-position: center;
+		background-size: 20px 20px;
+		background-repeat: no-repeat;
+		width: 20px;
+		height: 20px;
+		filter: var(--copyright-filter);
 	}
 }
 div.dtr-modal-close:hover {
@@ -1031,20 +1031,20 @@ div.dtr-modal div.dtr-modal-background {
 	background: rgba(0, 0, 0, 0.6);
 
 	@media screen and (max-width: 479px) {
-	&:after {
-		content: "";
-		position: fixed;
-		top: -200px;
-		left: 50px;
-		right: 0;
-		bottom: -200px;
-		background-color: rgb(var(--ui-color-background-095));
-		background-image: linear-gradient(
-			to bottom,
-			rgba(var(--ui-color-background-080),0.5) 40%,
-			rgb(var(--ui-color-background-095)) 60%
-		);
-	}
+		&:after {
+			content: "";
+			position: fixed;
+			top: -200px;
+			left: 50px;
+			right: 0;
+			bottom: -200px;
+			background-color: rgb(var(--ui-color-background-095));
+			background-image: linear-gradient(
+				to bottom,
+				rgba(var(--ui-color-background-080),0.5) 40%,
+				rgb(var(--ui-color-background-095)) 60%
+			);
+		}
 	}
 }
 

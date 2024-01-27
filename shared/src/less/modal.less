@@ -1,11 +1,64 @@
+@corner-size: 8px;
+@border-thickness-y: 3px;
+@border-thickness-x: 1px;
+@border-color: rgb(var(--ui-color-foreground-070));
+@border-color-accent: rgb(var(--ui-color-foreground-070));
 
 /* Details */
 div.dtr-modal {
+	--padding-size: 15px;
+
+	@media screen and (min-width: 480px) {
+		--padding-size: 15px;
+	}
+
+	@media screen and (min-width: 1280px) {
+		--padding-size: 20px;
+	}
+
+	@keyframes modalBorderEnter {
+		0% {
+			background-size:
+				0% @border-thickness-y,
+				(@corner-size + 6px) (@corner-size + 6px),
+				0% @border-thickness-x,
+				(@corner-size + 6px) (@corner-size + 6px),
+				@border-thickness-x 0%,
+				@border-thickness-x 0%;
+		}
+		100% {
+			background-size:
+				120% @border-thickness-y,
+				(@corner-size + 6px) (@corner-size + 6px),
+				120% @border-thickness-x,
+				(@corner-size + 6px) (@corner-size + 6px),
+				@border-thickness-x 120%,
+				@border-thickness-x 120%;
+		}
+	}
+
+	div.dtr-modal-background {
+		position: fixed;
+		backdrop-filter: blur(10px);
+		background-color: transparent !important;
+
+		&:before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-color: rgba(0,0,0,0.2);
+		}
+	}
+
 	&.anim-enter {
-		animation: dummy-anim 0.3s;
+		animation: dummy-anim 0.7s;
 
 		div.dtr-modal-background {
-			animation: fade-in 0.3s both;
+			animation: blur-in 0.5s both;
+
+			&:before {
+				animation: fade-in 0.5s both;
+			}
 
 			@media screen and (max-width: 479px) {
 				&:after {
@@ -15,12 +68,21 @@ div.dtr-modal {
 		}
 
 		div.dtr-modal-content {
-			animation: modalFadeInUp 0.3s cubic-bezier(0.22, 0.61, 0.1, 1) both;
-			transform-origin: center;
-
-			@media screen and (max-width: 479px) {
-				animation-name: menuSlideInLeft;
+			@media screen and (min-width: 480px) {
+				&:after {
+					animation: modalBorderEnter 0.7s cubic-bezier(0.22, 0.61, 0.1, 1) both;
+				}
 			}
+
+			div.dtr-modal-content-inner {
+				animation: fade-in 0.4s 0.1s cubic-bezier(0.22, 0.61, 0.1, 1) both;
+				transform-origin: center;
+
+				@media screen and (max-width: 479px) {
+					animation: menuSlideInLeft 0.3s cubic-bezier(0.22, 0.61, 0.1, 1) both;
+				}
+			}
+
 		}
 	}
 
@@ -28,7 +90,17 @@ div.dtr-modal {
 		animation: dummy-anim 0.2s;
 
 		div.dtr-modal-background {
-			animation: fade-out 0.2s;
+			animation: blur-out 0.2s;
+
+			&:before {
+				animation: fade-out 0.2s both;
+			}
+
+			@media screen and (max-width: 479px) {
+				&:after {
+					animation: menuSlideOutRight 0.2s cubic-bezier(0.5, 0, 0.75, 0) both;
+				}
+			}
 		}
 
 		div.dtr-modal-content {
@@ -46,55 +118,106 @@ div.dtr-modal div.dtr-modal-content {
 	padding: 0;
 	border-radius: 0;
 	font-size: 14px;
+	box-shadow: none;
+	background-color: transparent;
 
 	@media screen and (min-width: 640px) {
 		font-size: 16px;
 	}
 
-	@corner-size: 8px;
-	@border-thickness: 3px;
-	@border-color: rgb(var(--ui-color-foreground-070));
-	@border-color-accent: rgb(var(--ui-color-foreground-070));
+	// mask-image:
+	// 	linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+	// 	linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
+	// 	linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+	// 	linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+	// mask-position: bottom left, top left, top right, bottom right;
+	// mask-size: 50.1% 50.1%;
+	// mask-repeat: no-repeat;
 
 	@media screen and (min-width: 480px) {
-		background-image: 
-			linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-04)) 100%),
-			linear-gradient(225deg, rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
-		background-position:
-			top left,
-			top right;
-		background-size: 
-			calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
-			(@corner-size + 6px) (@corner-size + 6px);
-		background-repeat: no-repeat;
-		border: none;
-		border-radius: 0;
-		mask-image: 
-			linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
-			linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%),
-			linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
-			linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
-		mask-position: bottom left, top left, top right, bottom right;
-		mask-size: 50.1% 50.1%;
-		mask-repeat: no-repeat;
+		// border
+		&:after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-image:
+				linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 40%, rgba(var(--color-accent-04),0.5) 80%, rgba(var(--color-accent-04),0) 100%),
+				linear-gradient(225deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px)),
+				linear-gradient(to right, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 40%, rgba(var(--color-accent-04),0.5) 80%, rgba(var(--color-accent-04),0) 100%),
+				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 1px), transparent (@corner-size + 1px)),
+				linear-gradient(to top, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 40%, rgba(var(--color-accent-04),0.5) 80%, rgba(var(--color-accent-04),0) 100%),
+				linear-gradient(to bottom, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 40%, rgba(var(--color-accent-04),0.5) 80%, rgba(var(--color-accent-04),0) 100%);
+			background-position:
+				top right (@corner-size + 2px),
+				top right,
+				bottom left (@corner-size + 2px),
+				bottom left,
+				bottom (@corner-size + 2px) left,
+				top (@corner-size + 2px) right;
+			background-size:
+				120% @border-thickness-y,
+				(@corner-size + 6px) (@corner-size + 6px),
+				120% @border-thickness-x,
+				(@corner-size + 6px) (@corner-size + 6px),
+				@border-thickness-x 120%,
+				@border-thickness-x 120%;
+			background-repeat: no-repeat;
+			border: none;
+			border-radius: 0;
+			pointer-events: none;
+			// mask-image:
+			// 	linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+			// 	linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+			// 	linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+			// mask-position:
+			// 	bottom left,
+			// 	top right,
+			// 	center center;
+			// mask-size: 100%;
+			// mask-repeat: no-repeat;
+			// mask-composite: intersect;
+		}
+	}
+
+
+	.dtr-modal-content-inner {
+		& > * {
+			background-color: rgb(var(--ui-color-modal-background));
+		}
 	}
 
 	.modal-header { 
 		position: relative;
-		padding: 15px;
-		background-color: rgba(var(--ui-color-background-080),0.2);
-		background-image: linear-gradient(45deg, 
-			rgba(var(--color-accent-02),0.2) 0%, 
-			rgba(var(--color-accent-03),0.1) 20%, 
-			rgba(var(--color-accent-03),0.05) 70%, 
-			rgba(var(--color-accent-04),0.2) 110%
-		);
-		margin-bottom: 10px;
+		padding: 15px var(--padding-size);
+		background-image:
+			linear-gradient(to right, rgba(var(--ui-color-modal-background),0.2), rgba(var(--ui-color-modal-background),0.2)),
+			linear-gradient(45deg,
+				rgba(var(--color-accent-02),0.2) 0%,
+				rgba(var(--color-accent-03),0.1) 20%,
+				rgba(var(--color-accent-03),0.05) 70%,
+				rgba(var(--color-accent-04),0.2) 110%
+			);
+		mask-image:
+			// linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+			linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+			linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+		mask-position:
+			top right,
+			center center;
+		mask-size: 100%;
+		mask-repeat: no-repeat;
+		mask-composite: intersect;
+
+		@media screen and (max-width: 480px) {
+			mask-image:
+				linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+			mask-position:
+				center center;
+		}
 
 		@media screen and (min-width: 640px) {
 			display: flex;
 			align-items: center;
-			margin-bottom: 0;
 		}
 
 		.header-img {
@@ -149,18 +272,18 @@ div.dtr-modal div.dtr-modal-content {
 			inset: 0;
 			z-index: -1;
 
-			@media screen and (min-width: 480px) {
-				background-image: 
-					linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-04)) 100%),
-					linear-gradient(225deg, rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
-				background-position:
-					top left,
-					top right;
-				background-size: 
-					calc(100% - (@corner-size + @border-thickness - 1px)) @border-thickness,
-					(@corner-size + 6px) (@corner-size + 6px);
-				background-repeat: no-repeat;
-			}
+			// @media screen and (min-width: 480px) {
+			// 	background-image:
+			// 		linear-gradient(to left, rgb(var(--color-accent-02)) 0%, rgb(var(--color-accent-03)) 50%, rgb(var(--color-accent-04)) 100%),
+			// 		linear-gradient(225deg, rgb(var(--color-accent-02)) @corner-size, rgb(var(--color-accent-02)) (@corner-size + 2px), transparent (@corner-size + 2px));
+			// 	background-position:
+			// 		top left,
+			// 		top right;
+			// 	background-size:
+			// 		calc(100% - (@corner-size + @border-thickness-y - 1px)) @border-thickness-y,
+			// 		(@corner-size + 6px) (@corner-size + 6px);
+			// 	background-repeat: no-repeat;
+			// }
 		}
 
 		.img-wrap {
@@ -308,6 +431,19 @@ div.dtr-modal div.dtr-modal-content {
 	}
 
 	.modal-footer {
+		@media screen and (min-width: 480px) {
+			mask-image:
+				linear-gradient(45deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+				// linear-gradient(225deg, transparent (@corner-size - 1px), rgb(0,0,0) @corner-size),
+				linear-gradient(rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+			mask-position:
+				bottom left,
+				center center;
+			mask-size: 100%;
+			mask-repeat: no-repeat;
+			mask-composite: intersect;
+		}
+
 		.report {
 			font-size: 0.9em;
 			text-align: center;
@@ -333,13 +469,13 @@ div.dtr-modal div.dtr-modal-content {
 div.dtr-modal-content .details-table {
 	position: relative;
 	width: 100%;
-	margin: 15px 0 5px 0;
+	padding: 15px 0 5px 0;
 
 	// commons
 	.table-header {
 		display: flex;
 		align-items: center;
-		padding: 5px 0 5px 15px;
+		padding: 5px 0 5px var(--padding-size);
 		font-weight: bold;
 		font-size: 1.1em;
 		letter-spacing: 0.04em;
@@ -358,8 +494,8 @@ div.dtr-modal-content .details-table {
 		display: grid;
 		grid-column-gap: 5px;
 		min-height: 28px;
-		padding: 7px 15px 7px 0;
-		margin-left: 15px;
+		padding: 7px var(--padding-size) 7px 0;
+		margin-left: var(--padding-size);
 		border-bottom: 1px solid rgba(var(--ui-color-background-080),0.5);
 
 		@media screen and (min-width: 480px) {

@@ -262,6 +262,7 @@ $(document).ready(function() {
       .addClass('anim-enter')
       .one('animationend webkitAnimationEnd oAnimationEnd', function () {
 
+      event.stopPropagation();
       siteMenuWrap.removeClass('anim-enter');
       isMenuOpen = true;
     });
