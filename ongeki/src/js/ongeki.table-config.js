@@ -519,6 +519,19 @@ $(document).ready(function() {
         ],
         "columns": columns_params,
         "searchCols": default_search,
+        "createdRow": function( row, data, dataIndex, cells ) {
+          $(cells).wrapInner('<div class="td-inner"/>');
+        },
+        "rowCallback": function ( row, data, displayNum ) {
+          $(row)
+            .css('--row-index',`${displayNum}`)
+            .addClass('anim-enter')
+            .on('animationend webkitAnimationEnd oAnimationEnd', function (e) {
+              e.stopPropagation();
+              $(row).removeClass('anim-enter')
+            });
+
+        },
         "drawCallback": function(settings) {
           toggleDateRowGroup(this, default_search);
         },
