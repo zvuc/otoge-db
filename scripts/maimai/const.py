@@ -9,9 +9,8 @@ import sys
 from shared.common_func import *
 from maimai.paths import *
 from datetime import datetime
-from bs4 import BeautifulSoup, Comment
-from urllib.request import urlopen
 
+errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1vSqx2ghJKjWwCLrDEyZTUMSy5wkq_gY4i0GrJgSreQc'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/gviz/tq?tqx=out:csv&sheet='
 LOCAL_CACHE_DIR = 'maimai/google_sheets_cache'
@@ -148,7 +147,7 @@ def _get_and_save_page_to_local(url, output_path, args):
             file.write(response.text)
         print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
     else:
-        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args)
+        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
 
 
 def _update_song_const_data(song, args):
@@ -156,7 +155,7 @@ def _update_song_const_data(song, args):
     title = _normalize(song['title'])
     version = song['version']
 
-    print_message(f"{sort}, {title}, {version}", bcolors.ENDC, args)
+    print_message(f"{sort}, {title}, {version}", bcolors.ENDC, args, errors_log)
 
     charts = [
         ['lev_bas', 'STD', 'BAS'],
@@ -179,6 +178,11 @@ def _update_song_const_data(song, args):
         #     print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, args)
         #     continue
 
+        # Skip if utage
+        if 'lev_utage' in song:
+            print_message(f"Skipping song (Utage)", bcolors.ENDC, args, errors_log)
+            return
+
         # Check if chart type exists in current song
         song_lv = song[chart] if chart in song else None
         if not song_lv:
@@ -198,7 +202,7 @@ def _update_song_const_data(song, args):
         elif song_lv == '12':
             sheet_name = '12'
         else:
-            print_message(f"Not in sheet ({version}, {chart}, {song_lv})", bcolors.ENDC, args)
+            # print_message(f"Chart not in sheet ({version}, {chart}, {song_lv})", bcolors.ENDC, args)
             continue
 
         lv_sheet_url = SHEETS_BASE_URL + sheet_name
@@ -213,7 +217,7 @@ def _update_song_const_data(song, args):
             _get_and_save_page_to_local(lv_sheet_url, file_full_path, args)
 
             if not os.path.exists(file_full_path):
-                print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, args)
+                print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, args, errors_log)
                 sys.exit(1)
 
 
@@ -248,9 +252,11 @@ def _update_song_const_data(song, args):
 
         if value_chart_i is not None and value_chart_i != '' and value_chart_i != '-':
             song[key_chart_i] = value_chart_i
-            print_message(f"Updated chart const ({key_chart_i}: {value_chart_i})", bcolors.OKGREEN, args)
+            print_message(f"Updated chart constant ({key_chart_i}: {value_chart_i})", bcolors.OKGREEN, args, errors_log)
+        elif value_chart_i is not None and (value_chart_i == '' or value_chart_i != '-'):
+            print_message(f"Constant is empty ({chart}, {song_lv})", bcolors.WARNING, args, errors_log)
         else:
-            print_message(f"No matching chart const found ({chart}, {song_lv})", bcolors.FAIL, args)
+            print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.WARNING, args, errors_log)
 
     return song
 
@@ -266,4 +272,6 @@ def _normalize(string: str):
         .replace('！', '!')
         .replace('？', '?')
         .replace('　', ' ')
+        .replace('～', '〜')
+        .replace('~', '〜')
     )
