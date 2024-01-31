@@ -16,7 +16,7 @@ html(class=`page-loading table-loading ${game_name}`)
 
     script(type='text/javascript' src='../shared/jquery-3.6.0.min.js')
 
-    link(rel='stylesheet' href='./style.css?20231226')
+    link(rel='stylesheet' href='./style.css?20240131')
 
     title OTOGE DB :: #{game_name_display} #{flat_view ? ':: 譜面別' : ''}
 
@@ -36,9 +36,9 @@ html(class=`page-loading table-loading ${game_name}`)
   script.
     var flat_view = #{flat_view};
     
-  script(src='../shared/early-functions.js?20231223')
-  script(defer='' src='../shared/datatables.custom.min.js?20231226')
-  script(defer='' src='../shared/shared-functions.js?20231223')
+  script(src='../shared/early-functions.js?20240131')
+  script(defer='' src='../shared/datatables.custom.min.js?20240131')
+  script(defer='' src='../shared/shared-functions.js?20240131')
 
-  script(defer='' src=`./${game_name}-functions.js?20231223`)
+  script(defer='' src=`./${game_name}-functions.js?20240131`)
   script(defer='' src='https://www.googletagmanager.com/gtag/js?id=UA-141271073-1')
