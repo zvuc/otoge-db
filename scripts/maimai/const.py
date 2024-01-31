@@ -269,6 +269,7 @@ def _normalize(string: str):
         .replace('］', ']')
         .replace('＃', '#')
         .replace('”', '"')
+        .replace('“', '"')
         .replace('！', '!')
         .replace('？', '?')
         .replace('　', ' ')
