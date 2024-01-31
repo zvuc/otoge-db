@@ -190,11 +190,11 @@ def _update_song_const_data(song, args):
         elif song_lv in ['14', '14+', '15']:
             sheet_name = '14以上'
         elif song_lv == '13+':
-            sheet_name = '13+'
+            sheet_name = '13%2B'
         elif song_lv == '13':
             sheet_name = '13'
         elif song_lv == '12+':
-            sheet_name = '12+'
+            sheet_name = '12%2B'
         elif song_lv == '12':
             sheet_name = '12'
         else:
