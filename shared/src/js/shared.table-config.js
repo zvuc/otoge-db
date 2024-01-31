@@ -499,20 +499,24 @@ function applyFilterFromURLSearchParams(table, searchParams) {
 }
 
 function toggleDateRowGroup(table, default_search) {
-  var order = table.api().order();
-  var search = table.api().columns().search();
-  var searchActive = isSearchActive(search, default_search);
+  let order = table.api().order();
+  // console.log(order);
+  let search = table.api().columns().search();
+  let searchActive = isSearchActive(search, default_search);
 
+  // console.log(searchActive);
   if (searchActive) {
     return;
   }
 
   // Disable rowgroup unless sorting by date
   if (order[0][0] !== getColumnIndexByName('date')) {
+    // console.log('rowgroup disabled');
     table.api().rowGroup().disable();
   }
   // enable rowgroup if sorting by date
-  else {
+  if (order[0][0] === getColumnIndexByName('date')) {
+    // console.log('rowgroup enabled');
     table.api().rowGroup().enable();
   }
 }
@@ -520,12 +524,14 @@ function toggleDateRowGroup(table, default_search) {
 function isSearchActive(search, default_search) {
   for (let k = 0; k < search.length; k = k + 1) {
     if (search[k] !== '') {
+      // console.log(`search[${k}]: ${search[k]}`);
+
       // pass if search value matches default search
-      if (search[k] === default_search[k].search) {
+      if (search[k] === default_search[k].sSearch) {
+        // console.log('current active search is default search');
         continue;
-      } else {
-        return true;
       }
+      return true;
     }
   }
   return false;
