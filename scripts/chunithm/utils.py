@@ -75,11 +75,17 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         _record_diffs(song, song_hash, 'new')
 
     # Iterate through updated songs
+    # For the list of updated songs, go through each of them in older song list
+    # Find the same song in ex_data list then update any changed keys
     for song in updated_songs:
         song_hash = song['id']
         old_song = next((s for s in old_local_music_data if s['id'] == song_hash), None)
         dest_ex_song = next((s for s in local_music_ex_data if s['id'] == song_hash), None)
 
+        # Song can't be found in music-ex.json
+        if not dest_ex_song:
+            print_message(f"Couldn't find destination song: {song['title']}", bcolors.WARNING, args)
+            continue
 
         if old_song == song:
             continue
@@ -112,6 +118,11 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         old_song = next((s for s in old_local_music_data if s['id'] == song_hash), None)
         dest_ex_song = next((s for s in local_music_ex_data if s['id'] == song_hash), None)
 
+        # Song can't be found in music-ex.json
+        if not dest_ex_song:
+            print_message(f"Couldn't find destination song: {song['title']}", bcolors.WARNING, args)
+            continue
+
         if old_song and dest_ex_song:
             # Check for changes, additions, or removals
             for key, value in song.items():
@@ -128,8 +139,6 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 #     continue
                 if key not in song:
                     del dest_ex_song[key]
-        else:
-            print_message(f"Couldn't find destination song: {song['title']}", bcolors.FAIL, args)
 
     if len(removed_songs) != 0:
         try:
