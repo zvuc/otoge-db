@@ -16,14 +16,14 @@ parser.add_argument('--noskip', action="store_true", help='Don\'t skip items tha
 args = parser.parse_args()
 
 if args.ongeki:
-	import ongeki as game_module
+    import ongeki as game_module
 elif args.chunithm:
-	import chunithm as game_module
+    import chunithm as game_module
 elif args.maimai:
-	import maimai as game_module
+    import maimai as game_module
 elif not args.ongeki and not args.chunithm and not args.maimai:
-	print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, args)
-	exit()
+    print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, args)
+    exit()
 
 if args.id != 0 and (args.date_from != 0 or args.date_until != 0):
     print_message('--id and --date_from / --date_until arguments cannot be used together.', bcolors.FAIL, args)

@@ -13,14 +13,14 @@ parser.add_argument('--skipwiki', action="store_true", help='Skip wiki fetch')
 args = parser.parse_args()
 
 if args.ongeki:
-	import ongeki as game_module
+    import ongeki as game_module
 elif args.chunithm:
-	import chunithm as game_module
+    import chunithm as game_module
 elif args.maimai:
-	import maimai as game_module
+    import maimai as game_module
 elif not args.ongeki and not args.chunithm and not args.maimai:
-	print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, args)
-	exit()
+    print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, args)
+    exit()
 
 added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data = game_module.utils.load_new_song_data()
 game_module.utils.renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args)
