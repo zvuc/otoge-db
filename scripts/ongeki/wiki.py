@@ -93,7 +93,7 @@ def _filter_songs_from_diffs(song_list):
     target_song_list = []
     # Filter songs based on the identifiers
     for song in song_list:
-        song_hash = generate_hash(song['id'] + song['title'])
+        song_hash = song['id']
         if song_hash in unique_id:
             target_song_list.append(song)
 
