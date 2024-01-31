@@ -295,4 +295,8 @@ $(document).ready(function() {
   //   }
   // });
 
+  $('#table').on( 'page.dt', function () {
+    $('html').scrollTop(0);
+  });
+
 });
