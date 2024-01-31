@@ -3,6 +3,7 @@ node_modules
 .DS_Store
 errors.txt
 sdvxin_cache
+google_sheets_cache
 *.log
 
 # build files
