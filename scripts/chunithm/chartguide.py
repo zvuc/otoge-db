@@ -87,9 +87,14 @@ def update_chartguide_data(args):
     f = open("errors.txt", 'w')
 
     # prioritize id search if provided
-    if not song_id == 0:
-        target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
-    else:
+    if song_id != 0:
+        if '-' in song_id:
+            id_from = song_id.split('-')[0]
+            id_to = song_id.split('-')[-1]
+            target_song_list = filter_songs_by_id_range(local_music_ex_data, 'id', id_from, id_to)
+        else:
+            target_song_list = filter_songs_by_id(local_music_ex_data, 'id', song_id)
+    elif date_from != 0 or date_until != 0:
         latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
         if date_from == 0:
@@ -98,7 +103,10 @@ def update_chartguide_data(args):
         if date_until == 0:
             date_until = latest_date
 
-        target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+        target_song_list = filter_songs_by_date(local_music_ex_data, 'date', date_from, date_until)
+    else:
+        # get id list from diffs.txt
+        target_song_list = filter_songs_from_diffs(local_music_ex_data, song['id'])
 
 
     if len(target_song_list) == 0:

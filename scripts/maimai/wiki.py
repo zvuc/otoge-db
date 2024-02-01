@@ -84,9 +84,9 @@ def update_songs_extra_data(args):
         if '-' in song_id:
             id_from = song_id.split('-')[0]
             id_to = song_id.split('-')[-1]
-            target_song_list = _filter_songs_by_id_range(local_music_ex_data, id_from, id_to)
+            target_song_list = filter_songs_by_id_range(local_music_ex_data, 'sort', id_from, id_to)
         else:
-            target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
+            target_song_list = filter_songs_by_id(local_music_ex_data, 'sort', song_id)
     elif date_from != 0 or date_until != 0:
         latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
@@ -96,10 +96,10 @@ def update_songs_extra_data(args):
         if date_until == 0:
             date_until = latest_date
 
-        target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+        target_song_list = filter_songs_by_date(local_music_ex_data, 'date', date_from, date_until)
     else:
         # get id list from diffs.txt
-        target_song_list = _filter_songs_from_diffs(local_music_ex_data)
+        target_song_list = filter_songs_from_diffs(local_music_ex_data, maimai_generate_hash(song))
 
 
     if len(target_song_list) == 0:
@@ -113,65 +113,6 @@ def update_songs_extra_data(args):
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
-
-
-def _filter_songs_by_date(song_list, date_from, date_until):
-    target_song_list = []
-
-    for song in song_list:
-        song_date_int = int(song.get("date"))
-
-        if date_from <= song_date_int <= date_until:
-            target_song_list.append(song)
-
-    return target_song_list
-
-def _filter_songs_by_id_range(song_list, id_from, id_to):
-    target_song_list = []
-
-    for song in song_list:
-        song_id_int = int(song.get("sort"))
-
-        if int(id_from) <= song_id_int <= int(id_to):
-            target_song_list.append(song)
-
-    return target_song_list
-
-def _filter_songs_from_diffs(song_list):
-    with open(LOCAL_DIFFS_LOG_PATH, 'r') as f:
-        diff_lines = f.readlines()
-
-    # Create a set of identifiers from the lines in diffs.txt
-    prefixes_to_remove = ['NEW ', 'UPDATED ']
-    for prefix in prefixes_to_remove:
-        diff_lines = [line.replace(prefix, '') for line in diff_lines]
-
-    unique_id = {line.strip() for line in diff_lines}
-
-    target_song_list = []
-    # Filter songs based on the identifiers
-    for song in song_list:
-        song_hash = _maimai_generate_hash(song)
-
-        if song_hash in unique_id:
-            target_song_list.append(song)
-
-    return target_song_list
-
-def _maimai_generate_hash(song):
-    if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
-    else:
-        return generate_hash(song['title'] + song['image_url'])
-
-def _filter_songs_by_id(song_list, song_id):
-    target_song_list = []
-
-    for song in song_list:
-        if int(song_id) == int(song.get("sort")):
-            target_song_list.append(song)
-
-    return target_song_list
 
 
 def update_song_wiki_data(song, args):
@@ -317,8 +258,8 @@ def _parse_wikiwiki(song, wiki, url, args):
 
             if not formatted_date == '':
                 diff_count = [0]
-                _update_song_key(song, 'date', formatted_date, diff_count=diff_count)
-                _update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
+                update_song_key(song, 'date', formatted_date, diff_count=diff_count)
+                update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
                 
                 if diff_count[0] > 0:
                     print_message("Added date and version", bcolors.OKGREEN, args)
@@ -332,7 +273,7 @@ def _parse_wikiwiki(song, wiki, url, args):
         # Update BPM
         if overview_dict['BPM']:
             diff_count = [0]
-            _update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
+            update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
             if diff_count[0] > 0:
                 print_message("Added BPM", bcolors.OKGREEN, args)
@@ -528,20 +469,20 @@ def _process_utage_chart(song, charts_table, charts_table_head, chart_designers_
 def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, args, this_utage_chart_number=''):
     diff_count = [0]
     if '定数' in chart_dict:
-        _update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
+        update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
     else:
         if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log)
 
-    _update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
-    _update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)
-    _update_song_key(song, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=diff_count)
-    _update_song_key(song, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=diff_count)
 
     if 'Touch' in chart_dict:
-        _update_song_key(song, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=diff_count)
+        update_song_key(song, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=diff_count)
 
-    _update_song_key(song, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=diff_count)
 
     if chart_designers_dict:
         # in some cases 宴 may be labled as 宴2 or 宴[即]..
@@ -553,12 +494,12 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
         # Convert REMAS to RE:M
         # elif chart == 'lev_remas':
         #     try:
-        #         _update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=diff_count)
+        #         update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=diff_count)
         #     except KeyError:
         #         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log)
         else:
             try:
-                _update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=diff_count)
+                update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=diff_count)
             except:
                 if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log)
@@ -566,7 +507,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
     # if not chart == 'lev_utage' and chart_designers_dict:
     #     try:
     #         if re.search(r'(\d{2}\.\d)',chart_designers_dict[f"{chart}_i"]):
-    #             _update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=diff_count)
+    #             update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=diff_count)
     #         else:
     #             raise Exception(f"Constant for {chart.upper()} is invalid")
     #     except:
@@ -584,7 +525,7 @@ def _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart
     if count_of_宴 == 1:
         try:
             designer_key = chart_designers_dict[[key for key in chart_designers_dict if '宴' in key][0]]
-            _update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+            update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
             return
         except KeyError:
             pass
@@ -593,7 +534,7 @@ def _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart
     if this_utage_chart_number != '':
         try:
             designer_key = chart_designers_dict[f"lev_{this_utage_chart_number}_designer"]
-            _update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)    
+            update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
             return
         except KeyError:
             pass
@@ -601,30 +542,11 @@ def _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart
     # Case 3 : 宴[協]
     try:
         designer_key = chart_designers_dict[f"lev_宴[{song['kanji']}]_designer"]
-        _update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+        update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
         return
     except KeyError:
         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log)
 
-def _update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
-    # if source key doesn't exist, exit
-    if key not in song:
-        return
-    # if source is not empty, don't overwrite
-    if not (song[key] == ''):
-        return
-    # skip if new data is placeholder
-    if new_data in ['？', '??', '???', '-']:
-        return
-    # Only overwrite if new data is not empty and is not same
-    if not (new_data == '') and not (song[key] == new_data):
-        diff_count[0] += 1
-        song[key] = new_data
-
-        if remove_comma:
-            song[key] = song[key].replace(',', '')
-        
-        return
 
 def _construct_designers_dict(song, text, key_name, prefix=''):
     # Use regular expression to find content within brackets
