@@ -150,3 +150,76 @@ def normalize_fullwidth_to_halfwidth(input_string):
         input_string = input_string.replace(fullwidth, halfwidth)
 
     return input_string
+
+def remove_diacritics(input_string):
+    # Define a mapping of characters with diacritics to their plain equivalents
+    diacritics_mapping = {
+        'À': 'A',
+        'Á': 'A',
+        'Â': 'A',
+        'Ã': 'A',
+        'Ä': 'A',
+        'Å': 'A',
+        'Æ': 'AE',
+        'Ç': 'C',
+        'È': 'E',
+        'É': 'E',
+        'Ê': 'E',
+        'Ë': 'E',
+        'Ì': 'I',
+        'Í': 'I',
+        'Î': 'I',
+        'Ï': 'I',
+        'Ñ': 'N',
+        'Ò': 'O',
+        'Ó': 'O',
+        'Ô': 'O',
+        'Õ': 'O',
+        'Ö': 'O',
+        'Ø': 'O',
+        'Ù': 'U',
+        'Ú': 'U',
+        'Û': 'U',
+        'Ü': 'U',
+        'Ý': 'Y',
+        'Þ': 'TH',
+        'ß': 'ss',
+    }
+
+    # Replace characters with diacritics using the mapping
+    for char, replacement in diacritics_mapping.items():
+        input_string = input_string.replace(char, replacement)
+
+    return input_string
+
+def normalize_title(string: str):
+    string = normalize_fullwidth_to_halfwidth(string)
+    string = remove_diacritics(string.upper())
+    string = (
+        string
+        .replace('＠', '@')
+        .replace('＆', '&')
+        .replace('＆', '&')
+        .replace('：', ':')
+        .replace('［', '[')
+        .replace('］', ']')
+        .replace('＃', '#')
+        .replace('”', '"')
+        .replace('“', '"')
+        .replace('’', '\'')
+        .replace('！', '!')
+        .replace('？', '?')
+        .replace('（', '(')
+        .replace('）', ')')
+        .replace('／', '/')
+        .replace('　', '')
+        .replace(' ', '')
+        .replace('～', '〜')
+        .replace('~', '〜')
+        .replace('ー', '-')
+        .replace('－', '-')
+        .replace('×', 'X')
+        .replace('゛', '"')
+    )
+
+    return string
