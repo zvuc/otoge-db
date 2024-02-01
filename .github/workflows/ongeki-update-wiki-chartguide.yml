@@ -2,7 +2,7 @@ name: "[Ongeki] Fetch from wiki & sdvx.in"
 
 on:
   schedule:
-    - cron: '0 2 * * THU'
+    - cron: '0 4 * * THU'
   workflow_dispatch:
 
 jobs:
@@ -51,8 +51,8 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --ongeki --nocolors --escape --noskip
-            python scripts/update-chartguide-data.py --ongeki --nocolors --escape
+            python scripts/update-wiki-data.py --ongeki --nocolors --escape --noskip --no_timestamp
+            python scripts/update-chartguide-data.py --ongeki --nocolors --escape --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 

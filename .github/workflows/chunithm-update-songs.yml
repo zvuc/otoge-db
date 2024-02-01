@@ -2,12 +2,12 @@ name: "[Chunithm] Fetch new songs"
 
 on:
   schedule:
-    - cron: '0 0 * * THU'
+    - cron: '0 2 * * THU'
   workflow_dispatch:
 
 jobs:
-  run_script_and_create_pr:
-    name: Run script and create PR
+  fetch_songs:
+    name: Fetch latest song list from SEGA
     runs-on: ubuntu-latest
 
     steps:
@@ -51,7 +51,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-songs.py --chunithm --nocolors --escape --skipwiki
+            python scripts/update-songs.py --chunithm --nocolors --escape --skipwiki --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 

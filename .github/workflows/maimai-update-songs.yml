@@ -1,4 +1,4 @@
-name: "[Ongeki] Fetch new songs"
+name: "[maimai] Fetch new songs"
 
 on:
   schedule:
@@ -36,28 +36,31 @@ jobs:
       - name: Checkout existing branch or create new
         run : |
           git fetch origin
-          if git show-ref --quiet refs/heads/ongeki-staging; then
+          if git show-ref --quiet refs/heads/maimai-staging; then
             git checkout \
-                ongeki-staging \
-                --track origin/ongeki-staging
+                maimai-staging \
+                --track origin/maimai-staging
           else
-            git checkout -b ongeki-staging
+            git checkout -b maimai-staging
           fi
           git pull --rebase origin master
-          git push --force --set-upstream origin ongeki-staging
+          git push --force --set-upstream origin maimai-staging
 
       - name: Run main script and capture output
         id: run_script
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-songs.py --ongeki --nocolors --escape --skipwiki --no_timestamp
+            python scripts/update-songs.py --maimai --nocolors --escape --skipwiki --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
       - name: Extract datestamp from script output
         id: extract_date
-        run: echo "datestamp=$(cat ongeki/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
+        run: |
+          # echo "datestamp=$(cat maimai/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
+          # Use today's date instead because maimai default json doesn't have date data...
+          echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
 
       - name: Check script output
         id: check_script
@@ -76,22 +79,22 @@ jobs:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           git add .
-          git commit -m "data(ongeki): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
-          git push origin ongeki-staging
+          git commit -m "data(maimai): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
+          git push origin maimai-staging
 
       - name: Checkout existing PR or create new
         if: steps.check_script.outputs.CREATE_PR == 'true'
         run: |
-          if [[ $(gh pr list --state open --head ongeki-staging | grep ongeki-staging) ]]; then
+          if [[ $(gh pr list --state open --head maimai-staging | grep maimai-staging) ]]; then
             echo "PR currently open. Add comment to existing open PR"
-            gh pr comment ongeki-staging \
+            gh pr comment maimai-staging \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           else
-            echo "No currently open PR for ongeki-staging. Create new PR"
+            echo "No currently open PR for maimai-staging. Create new PR"
             gh pr create \
               -B ${{ github.ref_name }} \
-              -H "ongeki-staging" \
-              --title "[Automation] Ongeki: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+              -H "maimai-staging" \
+              --title "[Automation] maimai: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           fi
         env:

@@ -1,13 +1,13 @@
-name: "[Chunithm] Fetch from wiki & sdvx.in"
+name: "[Chunithm] Update International Ver. Availability"
 
 on:
   schedule:
-    - cron: '0 4 * * THU'
+    - cron: '0 8 * * THU'
   workflow_dispatch:
 
 jobs:
-  fetch_from_wiki:
-    name: Fetch from wiki & sdvx.in
+  fetch_intl:
+    name: Fetch latest song list from SEGA
     runs-on: ubuntu-latest
 
     steps:
@@ -51,8 +51,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --chunithm --nocolors --escape --noskip --no_timestamp
-            python scripts/update-chartguide-data.py --chunithm --nocolors --escape --no_timestamp
+            python scripts/update-intl.py --chunithm --nocolors --escape --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
@@ -73,7 +72,7 @@ jobs:
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
-            git commit -m "data(chunithm): [bot] add song extra data ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git commit -m "data(chunithm): [bot] add international ver. availability data ${{ steps.extract_date.outputs.DATESTAMP }}"
             git push origin chunithm-staging
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"

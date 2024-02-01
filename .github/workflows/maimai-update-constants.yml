@@ -1,13 +1,14 @@
-name: "[Chunithm] Fetch from wiki & sdvx.in"
+name: "[maimai] Update constants from Google Sheet"
 
 on:
   schedule:
-    - cron: '0 4 * * THU'
+    - cron: '0 4 * * MON'
+    - cron: '0 8 * * THU'
   workflow_dispatch:
 
 jobs:
-  fetch_from_wiki:
-    name: Fetch from wiki & sdvx.in
+  fetch_constants:
+    name: Fetch latest chart constants from Google Sheet
     runs-on: ubuntu-latest
 
     steps:
@@ -36,30 +37,29 @@ jobs:
       - name: Checkout existing branch or create new
         run : |
           git fetch origin
-          if git show-ref --quiet refs/heads/chunithm-staging; then
+          if git show-ref --quiet refs/heads/maimai-staging; then
             git checkout \
-                chunithm-staging \
-                --track origin/chunithm-staging
+                maimai-staging \
+                --track origin/maimai-staging
           else
-            git checkout -b chunithm-staging
+            git checkout -b maimai-staging
           fi
           git pull --rebase origin master
-          git push --force --set-upstream origin chunithm-staging
+          git push --force --set-upstream origin maimai-staging
 
       - name: Run wiki script and capture output
         id: run_script
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --chunithm --nocolors --escape --noskip --no_timestamp
-            python scripts/update-chartguide-data.py --chunithm --nocolors --escape --no_timestamp
+            python scripts/update-const.py --maimai --nocolors --escape --all --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
       - name: Extract datestamp from script output
         id: extract_date
         run: |
-          # echo "datestamp=$(cat chunithm/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
+          # echo "datestamp=$(cat maimai/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
           echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
 
       - name: Commit changes
@@ -73,8 +73,8 @@ jobs:
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
-            git commit -m "data(chunithm): [bot] add song extra data ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin chunithm-staging
+            git commit -m "data(maimai): [bot] update song constants ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git push origin maimai-staging
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
@@ -82,16 +82,16 @@ jobs:
       - name: Checkout existing PR or create new
         if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
         run: |
-          if [[ $(gh pr list --state open --head chunithm-staging | grep chunithm-staging) ]]; then
+          if [[ $(gh pr list --state open --head maimai-staging | grep maimai-staging) ]]; then
             echo "PR currently open. Add comment to existing open PR"
-            gh pr comment chunithm-staging \
+            gh pr comment maimai-staging \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           else
-            echo "No currently open PR for chunithm-staging. Create new PR"
+            echo "No currently open PR for maimai-staging. Create new PR"
             gh pr create \
               -B ${{ github.ref_name }} \
-              -H "chunithm-staging" \
-              --title "[Automation] Chunithm: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+              -H "maimai-staging" \
+              --title "[Automation] maimai: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           fi
         env:
