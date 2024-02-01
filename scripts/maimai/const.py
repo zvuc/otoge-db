@@ -14,6 +14,30 @@ errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1vSqx2ghJKjWwCLrDEyZTUMSy5wkq_gY4i0GrJgSreQc'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/gviz/tq?tqx=out:csv&sheet='
 LOCAL_CACHE_DIR = 'maimai/google_sheets_cache'
+CHARTS = [
+    ['lev_bas', 'STD', 'BAS'],
+    ['lev_adv', 'STD', 'ADV'],
+    ['lev_exp', 'STD', 'EXP'],
+    ['lev_mas', 'STD', 'MAS'],
+    ['lev_remas', 'STD', 'REMAS'],
+    ['dx_lev_bas', 'DX', 'BAS'],
+    ['dx_lev_adv', 'DX', 'ADV'],
+    ['dx_lev_exp', 'DX', 'EXP'],
+    ['dx_lev_mas', 'DX', 'MAS'],
+    ['dx_lev_remas', 'DX', 'REMAS'],
+]
+CUR_VERSION_SHEET = 'BUDDiES新曲'
+SHEETS_MAP = {
+    '14%2B,15',
+    '14',
+    '13.8～13.9',
+    '13.5～13.7',
+    '13',
+    '12%2B',
+    '12',
+    '11%2B',
+    '11以下',
+}
 
 # Update on top of existing music-ex
 def update_const_data(args):
@@ -60,7 +84,7 @@ def update_const_data(args):
         target_song_list = filter_songs_by_date(local_music_ex_data, 'date', date_from, date_until)
     else:
         # get id list from diffs.txt
-        target_song_list = filter_songs_from_diffs(local_music_ex_data, _maimai_generate_hash(song))
+        target_song_list = filter_songs_from_diffs(local_music_ex_data, maimai_generate_hash(song), LOCAL_DIFFS_LOG_PATH)
 
 
     if len(target_song_list) == 0:
@@ -74,53 +98,15 @@ def update_const_data(args):
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
-def _maimai_generate_hash(song):
-    if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
-    else:
-        return generate_hash(song['title'] + song['image_url'])
-
-
-
-def _get_and_save_page_to_local(url, output_path, args):
-    # ipdb.set_trace()
-    response = requests.get(url)
-    response.encoding = 'ansi'
-
-    if not os.path.exists(LOCAL_CACHE_DIR):
-        os.makedirs(LOCAL_CACHE_DIR)
-
-    if response.status_code == 200:
-        # Save the content to a local file
-        with open(output_path, 'w', encoding='utf-8') as file:
-            file.write(response.text)
-        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
-    else:
-        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
-
-
 def _update_song_const_data(song, args):
-    sort = song['sort']
+    song_id = song['sort']
     title = song['title']
     normalized_title = normalize_title(song['title'])
     version = song['version']
 
-    print_message(f"{sort}, {title}, {version}", bcolors.ENDC, args, errors_log)
+    print_message(f"{song_id}, {title}, {version}", bcolors.ENDC, args, errors_log)
 
-    charts = [
-        ['lev_bas', 'STD', 'BAS'],
-        ['lev_adv', 'STD', 'ADV'],
-        ['lev_exp', 'STD', 'EXP'],
-        ['lev_mas', 'STD', 'MAS'],
-        ['lev_remas', 'STD', 'REMAS'],
-        ['dx_lev_bas', 'DX', 'BAS'],
-        ['dx_lev_adv', 'DX', 'ADV'],
-        ['dx_lev_exp', 'DX', 'EXP'],
-        ['dx_lev_mas', 'DX', 'MAS'],
-        ['dx_lev_remas', 'DX', 'REMAS'],
-    ]
-
-    for [chart, chart_type, chart_diff] in charts:
+    for [chart, chart_type, chart_diff] in CHARTS:
         key_chart_i = f'{chart}_i'
 
         # # Skip if constant value is already filled
@@ -139,7 +125,7 @@ def _update_song_const_data(song, args):
             continue
 
         # First lookup latest version sheet
-        value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, 'BUDDiES新曲')
+        value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, CUR_VERSION_SHEET, args)
 
         # If const is not found in latest ver sheet, lookup old version sheets next
         if value_chart_i is None:
@@ -157,7 +143,7 @@ def _update_song_const_data(song, args):
                 # print_message(f"Chart not in sheet ({version}, {chart}, {song_lv})", bcolors.ENDC, args)
                 continue
 
-            value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name)
+            value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name, args)
 
         # If value is not empty, write to song
         if value_chart_i is not None:
@@ -178,7 +164,7 @@ def _update_song_const_data(song, args):
 
     return song
 
-def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name):
+def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name, args):
     lv_sheet_url = SHEETS_BASE_URL + sheet_name
     lv_sheet_file_path = f'{sheet_name}.csv'
 
@@ -187,7 +173,7 @@ def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, shee
     # Read local file first, request and cache if it doesn't exist
     file_full_path = os.path.join(LOCAL_CACHE_DIR, lv_sheet_file_path)
     if not os.path.exists(file_full_path):
-        _get_and_save_page_to_local(lv_sheet_url, file_full_path, args)
+        get_and_save_page_to_local(lv_sheet_url, file_full_path, args, LOCAL_CACHE_DIR)
 
         if not os.path.exists(file_full_path):
             print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, args, errors_log)

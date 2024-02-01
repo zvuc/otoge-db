@@ -1,6 +1,9 @@
 import json
+import os
 import re
+import requests
 import hashlib
+import unicodedata
 from functools import reduce
 from .terminal import bcolors
 from datetime import datetime
@@ -233,3 +236,19 @@ def normalize_title(string: str):
     )
 
     return string
+
+
+def get_and_save_page_to_local(url, output_path, args, local_cache_dir):
+    response = requests.get(url)
+    response.encoding = 'ansi'
+
+    if not os.path.exists(local_cache_dir):
+        os.makedirs(local_cache_dir)
+
+    if response.status_code == 200:
+        # Save the content to a local file
+        with open(output_path, 'w', encoding='utf-8') as file:
+            file.write(response.text)
+        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
+    else:
+        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
