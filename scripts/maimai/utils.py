@@ -164,10 +164,10 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
             if existing_song:
                 # delete matched item
-                local_music_ex_data.remove(existing_song)
-                _archive_deleted_song(song, local_music_ex_deleted_data)
+                local_music_ex_data.remove(song)
+                archive_deleted_song(song, local_music_ex_deleted_data)
 
-                print_message(f"Removed song: {existing_song['title']}", bcolors.OKGREEN, args)
+                print_message(f"Removed song: {song['title']}", bcolors.OKBLUE, args)
 
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
@@ -269,9 +269,3 @@ def _add_ex_data_template(song):
     song['date'] = ""
 
     return song
-
-
-def _archive_deleted_song(song, deleted_data):
-    deleted_date = datetime.now().strftime('%Y%m%d')
-    song['deleted_date'] = f"{deleted_date}"
-    deleted_data.append(song)

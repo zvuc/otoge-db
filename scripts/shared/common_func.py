@@ -212,6 +212,12 @@ def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
 
         return
 
+def archive_deleted_song(song, deleted_data):
+    deleted_date = datetime.now().strftime('%Y%m%d')
+    song['deleted_date'] = f"{deleted_date}"
+    deleted_data.append(song)
+
+
 def normalize_unicode(input_string):
     return ''.join([unicodedata.normalize('NFKC', char) for char in input_string])
 
@@ -336,3 +342,4 @@ def evaluate_lv_num(lv, expression):
 
     # Compare the stripped number with the threshold using the specified operator
     return operators_dict[operator](int(lv), threshold)
+
