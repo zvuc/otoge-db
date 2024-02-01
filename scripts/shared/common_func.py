@@ -103,8 +103,19 @@ def filter_songs_by_id_range(song_list, id_key, id_from, id_to):
 
     return target_song_list
 
-def filter_songs_from_diffs(song_list, song_id):
-    with open(LOCAL_DIFFS_LOG_PATH, 'r') as f:
+def filter_songs_by_id_list(song_list, id_key, id_list):
+    target_song_list = []
+
+    for song in song_list:
+        song_id_int = int(song.get(id_key))
+
+        if song_id_int in id_list:
+            target_song_list.append(song)
+
+    return target_song_list
+
+def filter_songs_from_diffs(song_list, song_id, diffs_log):
+    with open(diffs_log, 'r') as f:
         diff_lines = f.readlines()
 
     # Create a set of identifiers from the lines in diffs.txt
