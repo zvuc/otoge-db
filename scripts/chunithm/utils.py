@@ -10,12 +10,12 @@ from datetime import datetime
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
-        local_music_map = json_to_id_value_map(local_music_data, int(song['id']))
+        local_music_map = json_to_id_value_map(local_music_data, 'id')
 
     old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
-    server_music_map = json_to_id_value_map(server_music_data, int(song['id']))
+    server_music_map = json_to_id_value_map(server_music_data, 'id')
 
     added_songs = []
     removed_songs = []

@@ -29,12 +29,12 @@ CHARACTER_TABLE = {
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
-        local_music_map = _json_to_id_value_map(local_music_data)
+        local_music_map = json_to_id_value_map(local_music_data, 'id')
 
     old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
-    server_music_map = _json_to_id_value_map(server_music_data)
+    server_music_map = json_to_id_value_map(server_music_data, 'id')
 
     added_songs = []
     removed_songs = []
@@ -63,10 +63,6 @@ def load_new_song_data():
                 unchanged_songs.append(server_song)
     
     return added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data
-
-
-def _json_to_id_value_map(json):
-    return {int(song['id']):song for song in json}
 
 
 def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args):

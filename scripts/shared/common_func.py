@@ -58,8 +58,11 @@ def renew_lastupdated(local_json_path, dest_html_path, args):
     with open(dest_html_path, 'w', encoding='utf-8') as f:
         f.write(local_html_data)
 
-def json_to_id_value_map(json, song_id):
-    return {song_id:song for song in json}
+def json_to_id_value_map(json, id_key):
+    return {int(song['id']):song for song in json}
+
+def json_to_hash_value_map(json, generate_hash_func):
+    return {generate_hash_func(song):song for song in json}
 
 def generate_hash(text_input):
     # Create a new SHA-256 hash object
