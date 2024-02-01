@@ -213,6 +213,12 @@ def normalize_title(string: str):
         .replace('ー', '-')
         .replace('×', 'X')
         .replace('゛', '"')
+        .replace('☆', '')
+        .replace('★', '')
+        .replace('♥', '')
+        .replace('❤', '')
+        .replace('♡', '')
+        .replace('◆', '')
     )
 
     return string
