@@ -1,3 +1,4 @@
+import ipdb
 import json
 import os
 import re
@@ -237,7 +238,6 @@ def normalize_title(string: str):
 
     return string
 
-
 def get_and_save_page_to_local(url, output_path, args, local_cache_dir):
     response = requests.get(url)
     response.encoding = 'ansi'
@@ -252,3 +252,32 @@ def get_and_save_page_to_local(url, output_path, args, local_cache_dir):
         print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
     else:
         print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
+
+def evaluate_lv_num(lv, expression):
+    # Strip '+' from the input number
+    lv = lv.rstrip('+')
+
+    # Define a list of operators in the order of preference
+    operators = ['>=', '<=', '>', '<', '==']
+
+    # Define a dictionary to map comparison operators to functions
+    operators_dict = {'>': lambda x, y: x > y,
+                      '>=': lambda x, y: x >= y,
+                      '<': lambda x, y: x < y,
+                      '<=': lambda x, y: x <= y,
+                      '==': lambda x, y: x == y}
+
+    # Extract the operator and threshold from the expression
+    for operator in operators:
+        if expression.startswith(operator):
+            threshold = expression[len(operator):]
+            break
+    else:
+        # If no operator is found, assume '='
+        operator, threshold = '=', expression
+
+    # Convert threshold to integer for comparison
+    threshold = int(threshold)
+
+    # Compare the stripped number with the threshold using the specified operator
+    return operators_dict[operator](int(lv), threshold)

@@ -15,12 +15,12 @@ SHEETS_ID = '1vSqx2ghJKjWwCLrDEyZTUMSy5wkq_gY4i0GrJgSreQc'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/gviz/tq?tqx=out:csv&sheet='
 LOCAL_CACHE_DIR = 'maimai/google_sheets_cache'
 CHARTS = [
-    ['lev_bas', 'STD', 'BAS'],
+    # ['lev_bas', 'STD', 'BAS'],
     ['lev_adv', 'STD', 'ADV'],
     ['lev_exp', 'STD', 'EXP'],
     ['lev_mas', 'STD', 'MAS'],
     ['lev_remas', 'STD', 'REMAS'],
-    ['dx_lev_bas', 'DX', 'BAS'],
+    # ['dx_lev_bas', 'DX', 'BAS'],
     ['dx_lev_adv', 'DX', 'ADV'],
     ['dx_lev_exp', 'DX', 'EXP'],
     ['dx_lev_mas', 'DX', 'MAS'],
@@ -28,16 +28,13 @@ CHARTS = [
 ]
 CUR_VERSION_SHEET = 'BUDDiES新曲'
 SHEETS_MAP = {
-    '14%2B,15',
-    '14',
-    '13.8～13.9',
-    '13.5～13.7',
-    '13',
-    '12%2B',
-    '12',
-    '11%2B',
-    '11以下',
+    '14以上': ['14', '14+', '15'],
+    '13%2B': ['13+'],
+    '13': ['13'],
+    '12%2B': ['12+'],
+    '12': ['12'],
 }
+MIN_LV = '10'
 
 # Update on top of existing music-ex
 def update_const_data(args):
@@ -108,6 +105,7 @@ def _update_song_const_data(song, args):
 
     for [chart, chart_type, chart_diff] in CHARTS:
         key_chart_i = f'{chart}_i'
+        found_sheet = None
 
         # # Skip if constant value is already filled
         # if key_chart_i in song and song[key_chart_i] != '':
@@ -119,31 +117,45 @@ def _update_song_const_data(song, args):
             print_message(f"Skipping song (Utage)", bcolors.ENDC, args, errors_log)
             return
 
+
         # Check if chart type exists in current song
         song_lv = song[chart] if chart in song else None
         if not song_lv:
             continue
 
+        # Skip chart if lv is under minimum threshold
+        if evaluate_lv_num(song_lv, f'>={MIN_LV}') is False:
+            continue;
+
         # First lookup latest version sheet
         value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, CUR_VERSION_SHEET, args)
 
+        # If value was found
+        if value_chart_i is not None:
+            found_sheet = CUR_VERSION_SHEET
         # If const is not found in latest ver sheet, lookup old version sheets next
-        if value_chart_i is None:
-            if song_lv in ['14', '14+', '15']:
-                sheet_name = '14以上'
-            elif song_lv == '13+':
-                sheet_name = '13%2B'
-            elif song_lv == '13':
-                sheet_name = '13'
-            elif song_lv == '12+':
-                sheet_name = '12%2B'
-            elif song_lv == '12':
-                sheet_name = '12'
-            else:
-                # print_message(f"Chart not in sheet ({version}, {chart}, {song_lv})", bcolors.ENDC, args)
-                continue
+        else:
+            respective_sheets = []
+            for key, value in SHEETS_MAP.items():
+                if song_lv in value:
+                    respective_sheets.append(key)
 
-            value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name, args)
+            for sheet in respective_sheets:
+                value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet, args)
+
+                if value_chart_i is not None:
+                    found_sheet = sheet
+                    break;
+
+        # Last try: look in ALL sheets instead of just correct sheets
+        if value_chart_i is None:
+            for key, value in SHEETS_MAP.items():
+                sheet = key
+                value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet, args)
+
+                if value_chart_i is not None:
+                    found_sheet = sheet
+                    break;
 
         # If value is not empty, write to song
         if value_chart_i is not None:

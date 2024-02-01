@@ -33,6 +33,7 @@ SHEETS_MAP = {
     '11%2B': ['11+'],
     '11以下': ['10','10+','11'],
 }
+MIN_LV = '10'
 
 # Update on top of existing music-ex
 def update_const_data(args):
@@ -124,6 +125,10 @@ def _update_song_const_data(song, args):
         if not song_lv:
             continue
 
+        # Skip chart if lv is under minimum threshold
+        if evaluate_lv_num(song_lv, f'>={MIN_LV}') is False:
+            continue;
+
         # First lookup latest version sheet
         value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, CUR_VERSION_SHEET, args)
 
@@ -166,9 +171,9 @@ def _update_song_const_data(song, args):
         else:
             # Print message in red if value should have been found
             # If this message prints, high chance that title was not matched properly
-            if song_lv in ['11', '11+', '12', '12+', '13', '13+', '14', '14+', '15']:
+            if evaluate_lv_num(song_lv, '>=11'):
                 print_message(f"Chart not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, args, errors_log)
-            elif song_lv in ['10', '10+'] and chart == 'lev_mas':
+            elif evaluate_lv_num(song_lv, '>=10') and chart == 'lev_mas':
                 print_message(f"Chart not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, args, errors_log)
             else:
                 print_message(f"Chart not found in sheet ({chart_diff}, {song_lv})", bcolors.ENDC, args, errors_log)
@@ -178,8 +183,6 @@ def _update_song_const_data(song, args):
 def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name, args):
     lv_sheet_url = SHEETS_BASE_URL + sheet_name
     lv_sheet_file_path = f'{sheet_name}.csv'
-
-    # ipdb.set_trace()
 
     # Read local file first, request and cache if it doesn't exist
     file_full_path = os.path.join(LOCAL_CACHE_DIR, lv_sheet_file_path)
