@@ -138,8 +138,11 @@ def _update_song_const_data(song, args):
         # If value is not empty, write to song
         if value_chart_i is not None:
             if value_chart_i != '' and value_chart_i != '-':
-                song[key_chart_i] = value_chart_i
-                print_message(f"Updated chart constant ({key_chart_i}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, args, errors_log)
+                if song[key_chart_i] == value_chart_i:
+                    print_message(f"No change ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, args, errors_log)
+                else:
+                    song[key_chart_i] = value_chart_i
+                    print_message(f"Updated chart constant ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, args, errors_log)
             # If value is placeholder, don't write
             elif value_chart_i == '' or value_chart_i == '-':
                 print_message(f"Constant is empty ({chart_diff}, {song_lv})", bcolors.WARNING, args, errors_log)
