@@ -21,10 +21,13 @@ def add_intl_info(args):
     for song in jp_song_list:
         jp_song_hash = maimai_generate_hash(song)
         if jp_song_hash in intl_song_hashes:
-            song["intl"] = "1"
-            song["release_intl"] = intl_song_hashes[jp_song_hash]["release"]
-            if "key" in intl_song_hashes[jp_song_hash]:
-                song["key_intl"] = intl_song_hashes[jp_song_hash]["key"]
+            if "intl" not in song or song["intl"] == '':
+                song["intl"] = "1"
+                song["release_intl"] = intl_song_hashes[jp_song_hash]["release"]
+                print_message(f"Song added to International ver.: {song['title']}", bcolors.OKGREEN, args)
+
+                if "key" in intl_song_hashes[jp_song_hash]:
+                    song["key_intl"] = intl_song_hashes[jp_song_hash]["key"]
 
     # Save updated A.json
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:

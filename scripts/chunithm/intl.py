@@ -21,7 +21,9 @@ def add_intl_info(args):
     for song in jp_song_list:
         jp_song_hash = song['id']
         if jp_song_hash in intl_song_hashes:
-            song["intl"] = "1"
+            if "intl" not in song or song["intl"] == '':
+                song["intl"] = "1"
+                print_message(f"Song added to International ver.: {song['title']}", bcolors.OKGREEN, args)
             # song["release_intl"] = intl_song_hashes[jp_song_hash]["release"]
             # if "key" in intl_song_hashes[jp_song_hash]:
             #     song["key_intl"] = intl_song_hashes[jp_song_hash]["key"]
