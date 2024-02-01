@@ -9,9 +9,9 @@ parser.add_argument('--maimai', action="store_true", help='Perform scripts for m
 parser.add_argument('--date_from', type=int, default=0, help='Date range from in YYYYMMDD')
 parser.add_argument('--date_until', type=int, default=0, help='Date range until in YYYYMMDD')
 parser.add_argument('--id', default=0, help='Song ID, single (2064) or range (802-2310)')
+parser.add_argument('--all', action="store_true", help='Run for all items')
 parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
 parser.add_argument('--escape', action="store_true", help='Escape unsafe characters for git message output')
-parser.add_argument('--noskip', action="store_true", help='Don\'t skip items that already have URL')
 parser.add_argument('--clear_cache', action="store_true", help='Clears local cache on run')
 
 args = parser.parse_args()

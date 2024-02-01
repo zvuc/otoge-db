@@ -61,8 +61,10 @@ def update_const_data(args):
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
+    if args.all:
+        target_song_list = [song for song in local_music_ex_data]
     # prioritize id search if provided
-    if song_id != 0:
+    elif song_id != 0:
         if '-' in song_id:
             id_from = song_id.split('-')[0]
             id_to = song_id.split('-')[-1]
