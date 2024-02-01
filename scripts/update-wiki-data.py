@@ -11,6 +11,7 @@ parser.add_argument('--date_until', type=int, default=0, help='Date range until 
 parser.add_argument('--id', default=0, help='Song ID, single (2064) or range (802-2310)')
 parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
 parser.add_argument('--escape', action="store_true", help='Escape unsafe characters for git message output')
+parser.add_argument('--no_timestamp', action="store_true", help='Don\'t print timestamps on message output')
 parser.add_argument('--noskip', action="store_true", help='Don\'t skip items that already have URL')
 
 args = parser.parse_args()

@@ -10,8 +10,11 @@ from .terminal import bcolors
 from datetime import datetime
 
 def print_message(message, color_name, args, log=''):
-    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    timestamp = ''
     reset_color = bcolors.ENDC
+
+    if not args.no_timestamp:
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' '
 
     if args.escape:
         message = message.replace("'", r"\'")
@@ -25,7 +28,7 @@ def print_message(message, color_name, args, log=''):
         with open(log, 'a', encoding='utf-8') as f:
             f.write(timestamp + ' ' + message + '\n')
 
-    print(timestamp + ' ' + color_name + message + reset_color)
+    print(timestamp + color_name + message + reset_color)
 
 def get_last_date(local_json_path):
     with open(local_json_path, 'r', encoding='utf-8') as f:

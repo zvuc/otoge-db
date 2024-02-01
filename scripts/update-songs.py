@@ -8,6 +8,7 @@ parser.add_argument('--chunithm', action="store_true", help='Perform scripts for
 parser.add_argument('--maimai', action="store_true", help='Perform scripts for maimai')
 parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
 parser.add_argument('--escape', action="store_true", help='Escape unsafe characters for git message output')
+parser.add_argument('--no_timestamp', action="store_true", help='Don\'t print timestamps on message output')
 parser.add_argument('--skipwiki', action="store_true", help='Skip wiki fetch')
 
 args = parser.parse_args()
