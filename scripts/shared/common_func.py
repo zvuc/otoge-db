@@ -141,3 +141,12 @@ def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
             song[key] = song[key].replace(',', '')
 
         return
+
+def normalize_fullwidth_to_halfwidth(input_string):
+    fullwidth_numbers = "０１２３４５６７８９"
+    halfwidth_numbers = "0123456789"
+
+    for fullwidth, halfwidth in zip(fullwidth_numbers, halfwidth_numbers):
+        input_string = input_string.replace(fullwidth, halfwidth)
+
+    return input_string

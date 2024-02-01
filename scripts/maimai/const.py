@@ -112,12 +112,12 @@ def _update_song_const_data(song, args):
         ['lev_adv', 'STD', 'ADV'],
         ['lev_exp', 'STD', 'EXP'],
         ['lev_mas', 'STD', 'MAS'],
-        ['lev_remas', 'STD', 'ReMAS'],
+        ['lev_remas', 'STD', 'REMAS'],
         ['dx_lev_bas', 'DX', 'BAS'],
         ['dx_lev_adv', 'DX', 'ADV'],
         ['dx_lev_exp', 'DX', 'EXP'],
         ['dx_lev_mas', 'DX', 'MAS'],
-        ['dx_lev_remas', 'DX', 'ReMAS'],
+        ['dx_lev_remas', 'DX', 'REMAS'],
     ]
 
     for [chart, type1, type2] in charts:
@@ -214,8 +214,10 @@ def _update_song_const_data(song, args):
     return song
 
 def _normalize(string: str):
+    string = normalize_fullwidth_to_halfwidth(string)
     return (
         string
+        .replace('＆', '&')
         .replace('＆', '&')
         .replace('：', ':')
         .replace('［', '[')
@@ -223,6 +225,7 @@ def _normalize(string: str):
         .replace('＃', '#')
         .replace('”', '"')
         .replace('“', '"')
+        .replace('’', '\'')
         .replace('！', '!')
         .replace('？', '?')
         .replace('（', '(')
