@@ -468,11 +468,12 @@ def _process_utage_chart(song, charts_table, charts_table_head, chart_designers_
 
 def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, args, this_utage_chart_number=''):
     diff_count = [0]
-    if '定数' in chart_dict:
-        update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
-    else:
-        if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
-            print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log)
+    # Now fetching constants from google sheet (const.py) so we don't need this
+    # if '定数' in chart_dict:
+    #     update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
+    # else:
+    #     if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
+    #         print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log)
 
     update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
     update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)

@@ -240,7 +240,7 @@ def _update_song_chart_details(song, chart_dict, chart, args):
     diff_count = [0]
     update_song_key(song, f"lev_{chart}_notes", chart_dict["総ノート数"], remove_comma=True, diff_count=diff_count)
     update_song_key(song, f"lev_{chart}_bells", chart_dict["BELL"], remove_comma=True, diff_count=diff_count)
-    update_song_key(song, f"lev_{chart}_i", chart_dict["譜面定数"], diff_count=diff_count)
+    # update_song_key(song, f"lev_{chart}_i", chart_dict["譜面定数"], diff_count=diff_count)
     update_song_key(song, f"lev_{chart}_designer", chart_dict["譜面製作者"], diff_count=diff_count)
 
     if diff_count[0] > 0:

@@ -429,15 +429,16 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
                 if chart not in ('bas', 'adv'):
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
     
-    if not chart == 'we' and chart_constant_designer_dict:
-        try:
-            if re.search(r'(\d{2}\.\d)',chart_constant_designer_dict[f"lev_{chart}_i"]):
-                update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
-            else:
-                raise Exception(f"Constant for {chart.upper()} is invalid")
-        except:
-            if chart not in ('bas', 'adv'):
-                print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
+    # Now fetching constants from google sheet (const.py) so we don't need this
+    # if not chart == 'we' and chart_constant_designer_dict:
+    #     try:
+    #         if re.search(r'(\d{2}\.\d)',chart_constant_designer_dict[f"lev_{chart}_i"]):
+    #             update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+    #         else:
+    #             raise Exception(f"Constant for {chart.upper()} is invalid")
+    #     except:
+    #         if chart not in ('bas', 'adv'):
+    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
 
     if diff_count[0] > 0:
         print_message(f"Added chart details for {chart.upper()}", bcolors.OKGREEN, args)
