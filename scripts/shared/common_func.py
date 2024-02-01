@@ -142,14 +142,8 @@ def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
 
         return
 
-def normalize_fullwidth_to_halfwidth(input_string):
-    fullwidth_numbers = "０１２３４５６７８９"
-    halfwidth_numbers = "0123456789"
-
-    for fullwidth, halfwidth in zip(fullwidth_numbers, halfwidth_numbers):
-        input_string = input_string.replace(fullwidth, halfwidth)
-
-    return input_string
+def normalize_unicode(input_string):
+    return ''.join([unicodedata.normalize('NFKC', char) for char in input_string])
 
 def remove_diacritics(input_string):
     # Define a mapping of characters with diacritics to their plain equivalents
@@ -193,31 +187,30 @@ def remove_diacritics(input_string):
     return input_string
 
 def normalize_title(string: str):
-    string = normalize_fullwidth_to_halfwidth(string)
+    string = normalize_unicode(string)
     string = remove_diacritics(string.upper())
     string = (
         string
-        .replace('＠', '@')
-        .replace('＆', '&')
-        .replace('＆', '&')
-        .replace('：', ':')
-        .replace('［', '[')
-        .replace('］', ']')
+        # .replace('＠', '@')
+        # .replace('＆', '&')
+        # .replace('＆', '&')
+        # .replace('：', ':')
+        # .replace('［', '[')
+        # .replace('］', ']')
         .replace('＃', '#')
         .replace('”', '"')
         .replace('“', '"')
         .replace('’', '\'')
-        .replace('！', '!')
-        .replace('？', '?')
-        .replace('（', '(')
-        .replace('）', ')')
-        .replace('／', '/')
+        # .replace('！', '!')
+        # .replace('？', '?')
+        # .replace('（', '(')
+        # .replace('）', ')')
+        # .replace('／', '/')
         .replace('　', '')
         .replace(' ', '')
-        .replace('～', '〜')
-        .replace('~', '〜')
+        .replace('～', '~')
+        .replace('〜', '~')
         .replace('ー', '-')
-        .replace('－', '-')
         .replace('×', 'X')
         .replace('゛', '"')
     )
