@@ -15,12 +15,12 @@ from datetime import datetime
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
-        local_music_map = _json_to_id_value_map(local_music_data)
+        local_music_map = json_to_id_value_map(local_music_data, _maimai_generate_hash(song))
 
     old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
-    server_music_map = _json_to_id_value_map(server_music_data)
+    server_music_map = json_to_id_value_map(server_music_data, _maimai_generate_hash(song))
 
     added_songs = []
     removed_songs = []
@@ -55,15 +55,6 @@ def load_new_song_data():
     
     return added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data
 
-
-def _json_to_id_value_map(json):
-    return {_maimai_generate_hash(song):song for song in json}
-
-def _maimai_generate_hash(song):
-    if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
-    else:
-        return generate_hash(song['title'] + song['image_url'])
 
 def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args):
     if len(added_songs) == 0 and len(updated_songs) == 0:

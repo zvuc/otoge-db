@@ -45,9 +45,9 @@ def update_const_data(args):
         if '-' in song_id:
             id_from = song_id.split('-')[0]
             id_to = song_id.split('-')[-1]
-            target_song_list = _filter_songs_by_id_range(local_music_ex_data, id_from, id_to)
+            target_song_list = filter_songs_by_id_range(local_music_ex_data, 'sort', id_from, id_to)
         else:
-            target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
+            target_song_list = filter_songs_by_id(local_music_ex_data, 'sort', song_id)
     elif date_from != 0 or date_until != 0:
         latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
@@ -57,10 +57,10 @@ def update_const_data(args):
         if date_until == 0:
             date_until = latest_date
 
-        target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+        target_song_list = filter_songs_by_date(local_music_ex_data, 'date', date_from, date_until)
     else:
         # get id list from diffs.txt
-        target_song_list = _filter_songs_from_diffs(local_music_ex_data)
+        target_song_list = filter_songs_from_diffs(local_music_ex_data, _maimai_generate_hash(song))
 
 
     if len(target_song_list) == 0:
@@ -74,63 +74,12 @@ def update_const_data(args):
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
-def _filter_songs_by_date(song_list, date_from, date_until):
-    target_song_list = []
-
-    for song in song_list:
-        song_date_int = int(song.get("date"))
-
-        if date_from <= song_date_int <= date_until:
-            target_song_list.append(song)
-
-    return target_song_list
-
-def _filter_songs_by_id_range(song_list, id_from, id_to):
-    target_song_list = []
-
-    for song in song_list:
-        song_id_int = int(song.get("sort"))
-
-        if int(id_from) <= song_id_int <= int(id_to):
-            target_song_list.append(song)
-
-    return target_song_list
-
-def _filter_songs_from_diffs(song_list):
-    with open(LOCAL_DIFFS_LOG_PATH, 'r') as f:
-        diff_lines = f.readlines()
-
-    # Create a set of identifiers from the lines in diffs.txt
-    prefixes_to_remove = ['NEW ', 'UPDATED ']
-    for prefix in prefixes_to_remove:
-        diff_lines = [line.replace(prefix, '') for line in diff_lines]
-
-    unique_id = {line.strip() for line in diff_lines}
-
-    target_song_list = []
-    # Filter songs based on the identifiers
-    for song in song_list:
-        song_hash = _maimai_generate_hash(song)
-
-        if song_hash in unique_id:
-            target_song_list.append(song)
-
-    return target_song_list
-
 def _maimai_generate_hash(song):
     if 'lev_utage' in song:
         return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
     else:
         return generate_hash(song['title'] + song['image_url'])
 
-def _filter_songs_by_id(song_list, song_id):
-    target_song_list = []
-
-    for song in song_list:
-        if int(song_id) == int(song.get("sort")):
-            target_song_list.append(song)
-
-    return target_song_list
 
 
 def _get_and_save_page_to_local(url, output_path, args):
@@ -152,7 +101,8 @@ def _get_and_save_page_to_local(url, output_path, args):
 
 def _update_song_const_data(song, args):
     sort = song['sort']
-    title = _normalize(song['title'])
+    title = song['title']
+    normalized_title = _normalize(song['title'])
     version = song['version']
 
     print_message(f"{sort}, {title}, {version}", bcolors.ENDC, args, errors_log)
@@ -237,11 +187,11 @@ def _update_song_const_data(song, args):
                     ]
 
                     # For 12+, 12: (title) 譜面1 譜面2 旧定数 新定数
-                    if columns[0] == title and columns[1] == type1 and columns[2] == type2:
+                    if columns[0] == normalized_title and columns[1] == type1 and columns[2] == type2:
                         value_chart_i = columns[4]
 
                     # For 13, 13+, 14以上: (title) ジャンル 譜面1 譜面2 旧定数 新定数
-                    if columns[0] == title and columns[2] == type1 and columns[3] == type2:
+                    if columns[0] == normalized_title and columns[2] == type1 and columns[3] == type2:
                         value_chart_i = columns[5]
 
                     if value_chart_i is not None:
@@ -253,10 +203,13 @@ def _update_song_const_data(song, args):
         if value_chart_i is not None and value_chart_i != '' and value_chart_i != '-':
             song[key_chart_i] = value_chart_i
             print_message(f"Updated chart constant ({key_chart_i}: {value_chart_i})", bcolors.OKGREEN, args, errors_log)
-        elif value_chart_i is not None and (value_chart_i == '' or value_chart_i != '-'):
+        elif value_chart_i is not None and (value_chart_i == '' or value_chart_i == '-'):
             print_message(f"Constant is empty ({chart}, {song_lv})", bcolors.WARNING, args, errors_log)
         else:
-            print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.WARNING, args, errors_log)
+            if song_lv in ['12', '12+', '13', '13+', '14', '14+', '15']:
+                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.FAIL, args, errors_log)
+            else:
+                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.ENDC, args, errors_log)
 
     return song
 
@@ -272,7 +225,11 @@ def _normalize(string: str):
         .replace('“', '"')
         .replace('！', '!')
         .replace('？', '?')
-        .replace('　', ' ')
+        .replace('（', '(')
+        .replace('）', ')')
+        .replace('　', '')
+        .replace(' ', '')
         .replace('～', '〜')
         .replace('~', '〜')
+        .upper()
     )

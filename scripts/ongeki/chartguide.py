@@ -78,9 +78,14 @@ def update_chartguide_data(args):
     f = open("errors.txt", 'w')
 
     # prioritize id search if provided
-    if not song_id == 0:
-        target_song_list = _filter_songs_by_id(local_music_ex_data, song_id)
-    else:
+    if song_id != 0:
+        if '-' in song_id:
+            id_from = song_id.split('-')[0]
+            id_to = song_id.split('-')[-1]
+            target_song_list = filter_songs_by_id_range(local_music_ex_data, 'id', id_from, id_to)
+        else:
+            target_song_list = filter_songs_by_id(local_music_ex_data, 'id', song_id)
+    elif date_from != 0 or date_until != 0:
         latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
 
         if date_from == 0:
@@ -89,7 +94,10 @@ def update_chartguide_data(args):
         if date_until == 0:
             date_until = latest_date
 
-        target_song_list = _filter_songs_by_date(local_music_ex_data, date_from, date_until)
+        target_song_list = filter_songs_by_date(local_music_ex_data, 'date', date_from, date_until)
+    else:
+        # get id list from diffs.txt
+        target_song_list = filter_songs_from_diffs(local_music_ex_data, song['id'])
 
 
     if len(target_song_list) == 0:
@@ -102,27 +110,6 @@ def update_chartguide_data(args):
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
-
-def _filter_songs_by_date(song_list, date_from, date_until):
-    target_song_list = []
-
-    for song in song_list:
-        song_date_int = int(song.get("date"))
-
-        if date_from <= song_date_int <= date_until:
-            target_song_list.append(song)
-
-    return target_song_list
-
-
-def _filter_songs_by_id(song_list, song_id):
-    target_song_list = []
-
-    for song in song_list:
-        if song_id == int(song.get("id")):
-            target_song_list.append(song)
-
-    return target_song_list
 
 def _get_and_save_page_to_local(url, args):
     # ipdb.set_trace()
@@ -160,8 +147,6 @@ def _update_song_chartguide_data(song, args):
     )
 
     version_num = VERSION_MAPPING.get(song['version'])
-
-    
 
     if song['lunatic']:
         charts = ['luna']
