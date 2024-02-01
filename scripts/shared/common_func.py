@@ -100,6 +100,36 @@ def maimai_generate_hash(song):
     else:
         return generate_hash(song['title'] + song['image_url'])
 
+def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash_key, args):
+    if args.all:
+        return [song for song in song_list]
+    # prioritize id search if provided
+    elif args.id != 0:
+        if '-' in args.id:
+            id_from = args.id.split('-')[0]
+            id_to = args.id.split('-')[-1]
+            return filter_songs_by_id_range(song_list, id_key, id_from, id_to)
+        elif ',' in args.id:
+            numbers = args.id.split(',')
+            id_list = [int(num) for num in numbers]
+            return filter_songs_by_id_list(song_list, id_key, id_list)
+        else:
+            return filter_songs_by_id(song_list, id_key, args.id)
+    elif args.date_from != 0 or args.date_until != 0:
+        latest_date = int(get_last_date(song_list))
+
+        if args.date_from == 0:
+            args.date_from = latest_date
+
+        if args.date_until == 0:
+            args.date_until = latest_date
+
+        return filter_songs_by_date(song_list, date_key, args.date_from, args.date_until)
+    else:
+        # get id list from diffs.txt
+        return get_songs_from_diffs(song_list, hash_key, local_diffs_log_path)
+
+
 def filter_songs_by_date(song_list, date_key, date_from, date_until):
     target_song_list = []
 
@@ -142,7 +172,7 @@ def filter_songs_by_id_list(song_list, id_key, id_list):
 
     return target_song_list
 
-def filter_songs_from_diffs(song_list, song_id, diffs_log):
+def get_songs_from_diffs(song_list, identifier, diffs_log):
     with open(diffs_log, 'r') as f:
         diff_lines = f.readlines()
 
@@ -156,7 +186,8 @@ def filter_songs_from_diffs(song_list, song_id, diffs_log):
     target_song_list = []
     # Filter songs based on the identifiers
     for song in song_list:
-        if song_id in unique_id:
+        if (isinstance(identifier, str) and song[identifier] in unique_id) or \
+           (callable(identifier) and identifier(song) in unique_id):
             target_song_list.append(song)
 
     return target_song_list

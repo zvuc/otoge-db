@@ -79,28 +79,7 @@ def update_songs_extra_data(args):
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    # prioritize id search if provided
-    if song_id != 0:
-        if '-' in song_id:
-            id_from = song_id.split('-')[0]
-            id_to = song_id.split('-')[-1]
-            target_song_list = filter_songs_by_id_range(local_music_ex_data, 'sort', id_from, id_to)
-        else:
-            target_song_list = filter_songs_by_id(local_music_ex_data, 'sort', song_id)
-    elif date_from != 0 or date_until != 0:
-        latest_date = int(get_last_date(LOCAL_MUSIC_EX_JSON_PATH))
-
-        if date_from == 0:
-            date_from = latest_date
-
-        if date_until == 0:
-            date_until = latest_date
-
-        target_song_list = filter_songs_by_date(local_music_ex_data, 'date', date_from, date_until)
-    else:
-        # get id list from diffs.txt
-        target_song_list = filter_songs_from_diffs(local_music_ex_data, maimai_generate_hash(song))
-
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', maimai_generate_hash, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
