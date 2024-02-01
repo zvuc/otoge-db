@@ -31,3 +31,4 @@ if args.id != 0 and (args.date_from != 0 or args.date_until != 0):
     exit()
 
 game_module.wiki.update_songs_extra_data(args)
+renew_lastupdated(game_module.paths.LOCAL_MUSIC_EX_JSON_PATH, game_module.paths.LOCAL_INDEX_HTML_PATH, args)

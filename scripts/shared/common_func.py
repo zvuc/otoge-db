@@ -30,30 +30,48 @@ def print_message(message, color_name, args, log=''):
 
     print(timestamp + color_name + message + reset_color)
 
-def get_last_date(local_json_path):
-    with open(local_json_path, 'r', encoding='utf-8') as f:
+def parse_date(date_str, release_str):
+    try:
+        if date_str:
+            return datetime.strptime(date_str, '%Y%m%d').date()
+
+        # If 'date' is empty and 'release' exists, parse 'release' with YYMMDD format
+        if date_str == '' and release_str:
+            return datetime.strptime(release_str, '%y%m%d').date()
+
+        # If both 'date' and 'release' are missing or invalid, return None or handle as needed
+        return None
+    except ValueError:
+        # If parsing fails, return None or handle as needed
+        return None
+
+def get_last_date(local_music_data):
+    all_dates = [parse_date(x.get('date', ''), x.get('release', '')) for x in local_music_data if x.get('date') or x.get('release')]
+
+    # Exclude None values when finding the latest date
+    valid_dates = [date for date in all_dates if date is not None]
+
+    if valid_dates:
+        latest_date = reduce(lambda x, y: x if x > y else y, valid_dates).strftime('%Y%m%d')
+        return latest_date
+    else:
+        # Handle the case where all dates are None
+        return None
+
+def renew_lastupdated(local_json_ex_path, dest_html_path, args):
+    with open(local_json_ex_path, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
 
-    all_dates = [datetime.strptime(x['date'], '%Y%m%d').date() for x in local_music_data]
-    lastupdated = reduce(lambda x, y: x if x > y else y, all_dates).strftime('%Y%m%d')
-    
-    return lastupdated
-
-def renew_lastupdated(local_json_path, dest_html_path, args):
-    with open(local_json_path, 'r', encoding='utf-8') as f:
-        local_music_data = json.load(f)
-
-    all_dates = [datetime.strptime(x['date'], '%Y%m%d').date() for x in local_music_data]
-    lastupdated = f"DATA: {reduce(lambda x, y: x if x > y else y, all_dates).strftime('%Y%m%d')}"
-    print_message(f"Updated datestamp on {dest_html_path} to {lastupdated}", '', args)
+    latest_date = get_last_date(local_music_data)
+    print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '', args)
 
     with open(dest_html_path, 'r', encoding='utf-8') as f:
         local_html_data = f.read()
 
-    local_html_data = re.sub(r'(<[^>]+ class="lastupdated"[^>]*>).*(</[^>]+>)',
-                             rf'\1<span>{lastupdated}</span>\2',
-                             local_html_data,
-                             flags=re.IGNORECASE)
+    local_html_data = re.sub(r'block lastupdated\n\s*\|\s*(\d{8})',
+                         rf'block lastupdated\n  | {latest_date}',
+                         local_html_data,
+                         flags=re.IGNORECASE)
 
     with open(dest_html_path, 'w', encoding='utf-8') as f:
         f.write(local_html_data)
