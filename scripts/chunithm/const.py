@@ -12,7 +12,7 @@ from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1Nhr-lC1u11WPkUPVTatnNrKWCmVLglaA6hZHgh56N6w'
-SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/gviz/tq?tqx=out:csv&sheet='
+SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&sheet='
 LOCAL_CACHE_DIR = 'chunithm/google_sheets_cache'
 CHARTS = [
     # ['lev_bas', 'BAS'],

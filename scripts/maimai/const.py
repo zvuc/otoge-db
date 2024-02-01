@@ -12,7 +12,7 @@ from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1vSqx2ghJKjWwCLrDEyZTUMSy5wkq_gY4i0GrJgSreQc'
-SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/gviz/tq?tqx=out:csv&sheet='
+SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&sheet='
 LOCAL_CACHE_DIR = 'maimai/google_sheets_cache'
 CHARTS = [
     # ['lev_bas', 'STD', 'BAS'],
