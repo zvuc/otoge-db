@@ -4352,7 +4352,8 @@
 	
 		var jqFilter = $('input', filter)
 			.val( previousSearch.sSearch )
-			.attr( 'placeholder', language.sSearchPlaceholder )
+      .attr( 'placeholder', language.sSearchPlaceholder )
+			.attr( 'spellcheck', 'false' )
 			.on(
 				'keyup.DT search.DT input.DT paste.DT cut.DT',
 				searchDelay ?
