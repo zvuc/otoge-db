@@ -51,7 +51,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-const.py --chunithm --nocolors --escape --all --no_timestamp
+            python scripts/update-const.py --chunithm --nocolors --escape --no_timestamp --no_verbose
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
