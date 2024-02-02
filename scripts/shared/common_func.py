@@ -19,6 +19,9 @@ def print_message(message, color_name, args, log='', no_verbose=False):
     if args.escape:
         message = message.replace("\"", "\\").replace("'", r"\'").replace("\\", "\"")
 
+    if color_name == 'HEADER':
+        color_name = bcolors.BOLD + bcolors.HEADER
+
     # if --nocolors is set
     if args.nocolors:
         color_name = ''

@@ -81,7 +81,7 @@ def _update_song_const_data(song, args):
     normalized_title = normalize_title(song['title'])
     version = song['version']
 
-    print_message(f"{song_id}, {title}, {version}", bcolors.ENDC, args, errors_log, args.no_verbose)
+    print_message(f"{song_id}, {title}, {version}", 'HEADER', args, errors_log, args.no_verbose)
 
     for [chart, chart_type, chart_diff] in CHARTS:
         key_chart_i = f'{chart}_i'
@@ -144,12 +144,7 @@ def _update_song_const_data(song, args):
                     print_message(f"No change ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, args, errors_log, args.no_verbose)
                 else:
                     song[key_chart_i] = value_chart_i
-
-                    if args.no_verbose and diff_count[0] == 0:
-                        # Lazy-print song name
-                        print_message(f"{song_id}, {title}, {version}", bcolors.ENDC, args, errors_log)
-                        diff_count[0] += 1
-
+                    lazy_print_song_header(f"{song_id}, {title}, {version}", song_diffs, args, errors_log)
                     print_message(f"Updated chart constant ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, args, errors_log)
             # If value is placeholder, don't write
             elif value_chart_i == '' or value_chart_i == '-':
