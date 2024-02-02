@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"> 
+	<meta charset="UTF-8"> 
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<meta name="description" content="セガの音ゲー「オンゲキ」「CHUNITHM」「maimai」の楽曲一覧、譜面データなどを閲覧できるデータベースです。">
 	<meta name="keywords" content="楽曲リスト,楽曲リスト,楽曲一覧,楽曲DB,収録曲,曲リスト,曲検索,譜面,譜面定数">
 
-    <link rel="shortcut icon" href="./shared/img/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="32x32" href="./shared/img/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="512x512" href="./shared/img/otoge-db-icon-512.png" />
-    <link rel="apple-touch-icon-precomposed" href="./shared/img/otoge-db-icon-512.png" />
+	<link rel="shortcut icon" href="./shared/img/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="32x32" href="./shared/img/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="512x512" href="./shared/img/otoge-db-icon-512.png" />
+	<link rel="apple-touch-icon-precomposed" href="./shared/img/otoge-db-icon-512.png" />
 
-    <meta property="og:type" content="website">
+	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="OTOGE DB">
 	<meta property="og:title" content="OTOGE DB">
 	<meta property="og:description" content="セガの音ゲー「オンゲキ」「CHUNITHM」「maimai」の楽曲一覧、譜面データなどを閲覧できるデータベースです。">
@@ -27,144 +27,144 @@
 	<meta name="twitter:image" content="https://otoge-db.net/shared/img/otoge-db-og.png">
 	<meta name="twitter:url" content="https://otoge-db.net/">
 
-    <title>OTOGE DB :: 音ゲー楽曲データベース</title>
+	<title>OTOGE DB :: 音ゲー楽曲データベース</title>
 
-    <style>
-    	* {
-    		box-sizing: border-box;
-    	}
-    	html {
-    		height: 100%;
-    		margin: 0;
-    		padding: 0;
-    	}
-        body {
-        	--link-hover-bg: rgba(0,0,0,0.05);
-        	--text-color: #000;
-            --background-color: #fff;
-            display: flex;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            flex-flow: column;
-            height: 100%;
-            text-align: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3","Hiragino Sans GB", "Meiryo", "Segoe UI", sans-serif;
-        }
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			--link-hover-bg: rgba(0,0,0,0.05);
+			--text-color: #000;
+			--background-color: #fff;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			color: var(--text-color);
+			background-color: var(--background-color);
+			flex-flow: column;
+			height: 100%;
+			text-align: center;
+			justify-content: center;
+			font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3","Hiragino Sans GB", "Meiryo", "Segoe UI", sans-serif;
+		}
 
-        @media (prefers-color-scheme: dark) {
-            body {
-            	--link-hover-bg: rgba(255,255,255,0.1);
-            	--text-color: #fff;
-                --background-color: #000;
-            }
-        }
+		@media (prefers-color-scheme: dark) {
+			body {
+				--link-hover-bg: rgba(255,255,255,0.1);
+				--text-color: #fff;
+				--background-color: #000;
+			}
+		}
 
-        p {
-            font-size: 0.85em;
-            letter-spacing: 0.03em;
-            color: #aaa;
-        }
+		p {
+			font-size: 0.85em;
+			letter-spacing: 0.03em;
+			color: #aaa;
+		}
 
-        a {
-            color: #5d76fe;
-        }
+		a {
+			color: #5d76fe;
+		}
 
-        .otogedb-logo svg {
-        	max-width: 60vw;
-        	height: 70px;
-        }
+		.otogedb-logo svg {
+			max-width: 60vw;
+			height: 70px;
+		}
 
-        h1 {
-        	padding: 15px;
-        	border-bottom: 1px solid var(--link-hover-bg);
-        }
+		h1 {
+			padding: 15px;
+			border-bottom: 1px solid var(--link-hover-bg);
+		}
 
-        h1 .text {
-        	display: none;
-        }
+		h1 .text {
+			display: none;
+		}
 
-        .db-list {
-        	display: flex;
-        	flex-flow: column;
-        	align-items: center;
-        	justify-content: center;
-        	gap: 2px;
-        	padding: 15px;
-        	width: 100%;
-        	max-width: 400px;
-        	margin: 0 auto;
-        }
+		.db-list {
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			justify-content: center;
+			gap: 2px;
+			padding: 15px;
+			width: 100%;
+			max-width: 400px;
+			margin: 0 auto;
+		}
 
-        @media screen and (min-width: 980px) {
-        	.db-list {
-        		max-width: 1280px;
-        		flex-flow: row;
-        	}
-        }
+		@media screen and (min-width: 980px) {
+			.db-list {
+				max-width: 1280px;
+				flex-flow: row;
+			}
+		}
 
-        .db-list a {
-        	display: flex;
-        	align-items: center;
-        	justify-content: center;
-        	height: 100%;
-        	width: 100%;
-        	padding: 15px 20px;
-        	text-decoration: none;
-        	border-radius: 7px;
-        	transition: background-color 0.3s;
-        }
+		.db-list a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			width: 100%;
+			padding: 15px 20px;
+			text-decoration: none;
+			border-radius: 7px;
+			transition: background-color 0.3s;
+		}
 
-        .db-list a:hover {
-        	background-color: var(--link-hover-bg);
-        	box-shadow: 0 0 0 1px var(--link-hover-bg) inset;
-        	transition-duration: 0s;
-        }
+		.db-list a:hover {
+			background-color: var(--link-hover-bg);
+			box-shadow: 0 0 0 1px var(--link-hover-bg) inset;
+			transition-duration: 0s;
+		}
 
-        .db-list a:hover .logo {
-        	transform: scale(1.05);
-        }
+		.db-list a:hover .logo {
+			transform: scale(1.05);
+		}
 
-        .db-list a .logo {
-        	display: block;
-        	width: 100%;
+		.db-list a .logo {
+			display: block;
+			width: 100%;
 			height: var(--logo-height);
 			background-image: var(--logo-url);
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center;
 			transition: transform 0.3s;
-        }
+		}
 
-        .db-list a .text {
-        	display: none;
-        }
+		.db-list a .text {
+			display: none;
+		}
 
-        .ongeki {
+		.ongeki {
 			--logo-height: 80px;
-        	--logo-url: url('./ongeki/img/ongeki-db-logo-2022-bow.svg');
-        }
+			--logo-url: url('./ongeki/img/ongeki-db-logo-2022-bow.svg');
+		}
 
-        @media (prefers-color-scheme: dark) {
-    		.ongeki {
+		@media (prefers-color-scheme: dark) {
+			.ongeki {
 				--logo-url: url('./ongeki/img/ongeki-db-logo-2022-wob.svg');
-	    	}
-    	}
+			}
+		}
 
-        .chunithm {
+		.chunithm {
 			--logo-height: 60px;
 			--logo-url: url('./chunithm/img/chunithm-db-logo.svg');
-        }
+		}
 
-        .maimai {
-        	--logo-height-mobile: 140px;
+		.maimai {
+			--logo-height-mobile: 140px;
 			--logo-height: 80px;
 			--logo-url: url('./maimai/img/maimai-db-logo.svg');
-        }
+		}
 
-    </style>
+	</style>
 </head>
 <body>
 	<h1>
@@ -183,15 +183,15 @@
 	</div>
 
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141271073-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-      gtag('config', 'UA-141271073-1');
-      gtag('config', 'G-YZ8GJR7QFL');
-    </script>
+	  gtag('config', 'UA-141271073-1');
+	  gtag('config', 'G-YZ8GJR7QFL');
+	</script>
 </body>
 
 </html>
