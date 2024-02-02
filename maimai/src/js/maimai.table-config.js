@@ -1009,7 +1009,6 @@ $(document).ready(function() {
             }
           },
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
-            console.log(group);
             if (group === '') {
               date_display = 'NEW'
             } else {
