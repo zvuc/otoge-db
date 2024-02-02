@@ -37,7 +37,7 @@ jobs:
       - name: Checkout existing branch or create new
         run : |
           git fetch origin
-          if git show-ref --quiet refs/heads/ongeki-staging; then
+          if git show-ref --quiet refs/remotes/origin/ongeki-staging; then
             git switch ongeki-staging
           else
             git checkout -b ongeki-staging

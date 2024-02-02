@@ -37,7 +37,7 @@ jobs:
       - name: Checkout existing branch or create new
         run : |
           git fetch origin
-          if git show-ref --quiet refs/heads/maimai-staging; then
+          if git show-ref --quiet refs/remotes/origin/maimai-staging; then
             git switch maimai-staging
           else
             git checkout -b maimai-staging
