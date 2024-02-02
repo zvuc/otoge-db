@@ -1,0 +1,7 @@
+{
+  "name": "OTOGE DB",
+  "short_name": "OTOGE DB",
+  "start_url": "./",
+  "scope": "./chunithm/",
+  "display": "standalone",
+}

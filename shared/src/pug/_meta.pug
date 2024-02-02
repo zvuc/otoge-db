@@ -1,8 +1,15 @@
 meta(charset='UTF-8')
 meta(name='HandheldFriendly' content='True')
-meta(name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0')
+meta(name='viewport' content='viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0')
 meta(name='description' content=`セガの音ゲー「${game_name_display}」の楽曲一覧、譜面データなどを閲覧できるデータベースです。`)
 meta(name='keywords' content=`${game_name_display},${game_db_name},${game_name_display}楽曲リスト,楽曲リスト,楽曲一覧,楽曲DB,収録曲,曲リスト,曲検索,譜面,譜面定数,敵レベル,属性,バージョン別,相手キャラ`)
+
+meta(name="apple-mobile-web-app-title" content=`${game_name_display} DB`)
+meta(name="apple-mobile-web-app-capable" content="yes")
+meta(name="apple-touch-fullscreen" content="yes")
+meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+meta(name="theme-color" content="rgb(255,255,255)" media="(prefers-color-scheme: light)")
+meta(name="theme-color" content="rgb(0,0,0)" media="(prefers-color-scheme: dark)")
 
 meta(property='og:type' content='website')
 meta(property='og:site_name' content=`${game_db_name}`)

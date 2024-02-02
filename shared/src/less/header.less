@@ -8,12 +8,13 @@
 
 .otogedb-nav {
 	position: relative;
-	height: 30px;
+	height: calc(30px + env(safe-area-inset-top));
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 13px;
 	gap: 10px;
+	padding-top: env(safe-area-inset-top);
 	color: rgba(var(--ui-color-foreground-050),0.5);
 	background-color: rgba(var(--ui-color-background-100),0.8);
 	box-shadow:
@@ -462,8 +463,7 @@ header {
 	position: relative;
 	padding-top: 4px;
 	padding-bottom: 4px;
-	box-shadow: 
-		0 -1px 0 0 rgb(var(--ui-color-border),0.1) inset,
+	box-shadow:
 		0 1px 0 0 rgb(var(--ui-color-border),0.1) inset;
 
 	&:before {

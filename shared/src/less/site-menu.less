@@ -98,7 +98,7 @@
 
 	button#site-menu-close-btn {
 		position: absolute;
-		top: 10px;
+		top: calc(10px + env(safe-area-inset-top));
 		right: 10px;
 		display: flex;
 		align-items: center;
@@ -193,6 +193,7 @@
 
 	.site-menu-header {
 		padding: 10px 20px;
+		padding-top: calc(env(safe-area-inset-top) + 10px);
 
 		svg {
 			height: 25px;
