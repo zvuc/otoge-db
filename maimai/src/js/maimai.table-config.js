@@ -1001,12 +1001,19 @@ $(document).ready(function() {
           }
         },
         "rowGroup": {
-          dataSrc: 'date',
+          dataSrc: function(row) {
+            if (row.date != '') {
+              return `${formatDate(row.date, 'weekday')}`;
+            } else {
+              return `${formatDate(row.release, 'weekday')}`;
+            }
+          },
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
+            console.log(group);
             if (group === '') {
               date_display = 'NEW'
             } else {
-              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', group)
             }
             return `<div>${date_display}</div>`;
             // enable rows count again when I find a way to show all rows in other pages
