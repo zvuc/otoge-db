@@ -37,14 +37,12 @@ jobs:
         run : |
           git fetch origin
           if git show-ref --quiet refs/heads/maimai-staging; then
-            git checkout \
-                maimai-staging \
-                --track origin/maimai-staging
+            git switch maimai-staging
           else
             git checkout -b maimai-staging
           fi
 
-          git pull origin maimai-staging
+          # git pull origin maimai-staging
           # git push --force --set-upstream origin maimai-staging
 
       - name: Run wiki script and capture output

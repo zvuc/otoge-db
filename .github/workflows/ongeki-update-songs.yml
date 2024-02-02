@@ -37,14 +37,12 @@ jobs:
         run : |
           git fetch origin
           if git show-ref --quiet refs/heads/ongeki-staging; then
-            git checkout \
-                ongeki-staging \
-                --track origin/ongeki-staging
+            git switch ongeki-staging
           else
             git checkout -b ongeki-staging
           fi
 
-          git pull origin ongeki-staging
+          # git pull origin ongeki-staging
           # git push --force --set-upstream origin ongeki-staging
 
       - name: Run main script and capture output

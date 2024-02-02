@@ -37,14 +37,12 @@ jobs:
         run : |
           git fetch origin
           if git show-ref --quiet refs/heads/chunithm-staging; then
-            git checkout \
-                chunithm-staging \
-                --track origin/chunithm-staging
+            git switch chunithm-staging
           else
             git checkout -b chunithm-staging
           fi
 
-          git pull origin chunithm-staging
+          # git pull origin chunithm-staging
           # git push --force --set-upstream origin chunithm-staging
 
       - name: Run wiki script and capture output
