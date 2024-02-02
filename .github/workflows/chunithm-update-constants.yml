@@ -44,8 +44,9 @@ jobs:
           else
             git checkout -b chunithm-staging
           fi
-          git pull --rebase origin master
-          git push --force --set-upstream origin chunithm-staging
+
+          git pull origin chunithm-staging
+          # git push --force --set-upstream origin chunithm-staging
 
       - name: Run wiki script and capture output
         id: run_script

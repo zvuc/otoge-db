@@ -44,8 +44,9 @@ jobs:
           else
             git checkout -b maimai-staging
           fi
-          git pull --rebase origin master
-          git push --force --set-upstream origin maimai-staging
+
+          git pull origin maimai-staging
+          # git push --force --set-upstream origin maimai-staging
 
       - name: Run wiki script and capture output
         id: run_script

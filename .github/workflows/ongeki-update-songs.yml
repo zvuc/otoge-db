@@ -43,8 +43,9 @@ jobs:
           else
             git checkout -b ongeki-staging
           fi
-          git pull --rebase origin master
-          git push --force --set-upstream origin ongeki-staging
+
+          git pull origin ongeki-staging
+          # git push --force --set-upstream origin ongeki-staging
 
       - name: Run main script and capture output
         id: run_script

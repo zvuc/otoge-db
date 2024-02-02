@@ -2,7 +2,7 @@ name: "[Chunithm] Update International Ver. Availability"
 
 on:
   schedule:
-    - cron: '0 8 * * THU'
+    - cron: '0 9 * * THU'
   workflow_dispatch:
 
 jobs:
@@ -43,8 +43,9 @@ jobs:
           else
             git checkout -b chunithm-staging
           fi
-          git pull --rebase origin master
-          git push --force --set-upstream origin chunithm-staging
+
+          git pull origin chunithm-staging
+          # git push --force --set-upstream origin chunithm-staging
 
       - name: Run wiki script and capture output
         id: run_script
