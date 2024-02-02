@@ -200,7 +200,9 @@ function formatDate(inputDate, dateFormat) {
     var current_year = new Date().getFullYear();
     var day_of_week = days_of_week[new Date(ISOdate).getDay()];
     var year_print = (current_year == year) ? '' : `${year}/`;
-    var formatted_date = year_print + `${month}/${day}(${day_of_week})`;
+    var month_print = (current_year == year && month[0] == 0) ? `${month[1]}/` : `${month}/`;
+    var day_print = (current_year == year && day[0] == 0) ? `${day[1]}` : `${day}`;
+    var formatted_date = `${year_print}${month_print}${day_print}(${day_of_week})`;
   }
   else {
     var formatted_date = ISOdate;
