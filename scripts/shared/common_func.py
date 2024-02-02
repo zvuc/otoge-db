@@ -9,7 +9,7 @@ from functools import reduce
 from .terminal import bcolors
 from datetime import datetime
 
-def print_message(message, color_name, args, log=''):
+def print_message(message, color_name, args, log='', no_verbose=False):
     timestamp = ''
     reset_color = bcolors.ENDC
 
@@ -17,7 +17,7 @@ def print_message(message, color_name, args, log=''):
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' '
 
     if args.escape:
-        message = message.replace("'", r"\'")
+        message = message.replace("\"", "\\").replace("'", r"\'").replace("\\", "\"")
 
     # if --nocolors is set
     if args.nocolors:
@@ -28,7 +28,8 @@ def print_message(message, color_name, args, log=''):
         with open(log, 'a', encoding='utf-8') as f:
             f.write(timestamp + ' ' + message + '\n')
 
-    print(timestamp + color_name + message + reset_color)
+    if no_verbose is False:
+        print(timestamp + color_name + message + reset_color)
 
 def parse_date(date_str, release_str):
     try:

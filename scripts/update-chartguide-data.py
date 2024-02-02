@@ -13,6 +13,7 @@ parser.add_argument('--all', action="store_true", help='Run for all items')
 parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
 parser.add_argument('--escape', action="store_true", help='Escape unsafe characters for git message output')
 parser.add_argument('--no_timestamp', action="store_true", help='Don\'t print timestamps on message output')
+parser.add_argument('--no_verbose', action="store_true", help='Only print significant changes and errors')
 parser.add_argument('--clear_cache', action="store_true", help='Clears local cache on run')
 
 args = parser.parse_args()

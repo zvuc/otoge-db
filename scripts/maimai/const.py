@@ -75,12 +75,13 @@ def update_const_data(args):
 
 
 def _update_song_const_data(song, args):
+    diff_count = [0]
     song_id = song['sort']
     title = song['title']
     normalized_title = normalize_title(song['title'])
     version = song['version']
 
-    print_message(f"{song_id}, {title}, {version}", bcolors.ENDC, args, errors_log)
+    print_message(f"{song_id}, {title}, {version}", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     for [chart, chart_type, chart_diff] in CHARTS:
         key_chart_i = f'{chart}_i'
@@ -93,7 +94,7 @@ def _update_song_const_data(song, args):
 
         # Skip if utage
         if 'lev_utage' in song:
-            print_message(f"Skipping song (Utage)", bcolors.ENDC, args, errors_log)
+            print_message(f"Skipping song (Utage)", bcolors.ENDC, args, errors_log, args.no_verbose)
             return
 
 
@@ -140,21 +141,27 @@ def _update_song_const_data(song, args):
         if value_chart_i is not None:
             if value_chart_i != '' and value_chart_i != '-':
                 if song[key_chart_i] == value_chart_i:
-                    print_message(f"No change ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, args, errors_log)
+                    print_message(f"No change ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, args, errors_log, args.no_verbose)
                 else:
                     song[key_chart_i] = value_chart_i
+
+                    if args.no_verbose and diff_count[0] == 0:
+                        # Lazy-print song name
+                        print_message(f"{song_id}, {title}, {version}", bcolors.ENDC, args, errors_log)
+                        diff_count[0] += 1
+
                     print_message(f"Updated chart constant ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, args, errors_log)
             # If value is placeholder, don't write
             elif value_chart_i == '' or value_chart_i == '-':
-                print_message(f"Constant is empty ({chart}, {song_lv})", bcolors.WARNING, args, errors_log)
+                print_message(f"Constant is empty ({chart}, {song_lv})", bcolors.WARNING, args, errors_log, args.no_verbose)
         # If value is not found
         else:
             # Print message in red if value should have been found
             # If this message prints, high chance that title was not matched properly
             if song_lv in ['12', '12+', '13', '13+', '14', '14+', '15']:
-                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.FAIL, args, errors_log)
+                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.FAIL, args, errors_log, args.no_verbose)
             else:
-                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.ENDC, args, errors_log)
+                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     return song
 
@@ -170,7 +177,7 @@ def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, shee
         get_and_save_page_to_local(lv_sheet_url, file_full_path, args, LOCAL_CACHE_DIR)
 
         if not os.path.exists(file_full_path):
-            print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, args, errors_log)
+            print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, args, errors_log, args.no_verbose)
             sys.exit(1)
 
 
