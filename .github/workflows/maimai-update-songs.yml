@@ -2,7 +2,7 @@ name: "[maimai] Fetch new songs"
 
 on:
   schedule:
-    - cron: '0 2 * * THU'
+    - cron: '0 2 * * FRI'
   workflow_dispatch:
 
 jobs:

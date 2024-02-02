@@ -2,7 +2,7 @@ name: "[maimai] Update International Ver. Availability"
 
 on:
   schedule:
-    - cron: '0 8 * * THU'
+    - cron: '0 8 * * FRI'
   workflow_dispatch:
 
 jobs:
