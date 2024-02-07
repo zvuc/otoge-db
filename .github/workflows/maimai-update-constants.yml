@@ -39,6 +39,7 @@ jobs:
           git fetch origin
           if git show-ref --quiet refs/remotes/origin/maimai-staging; then
             git switch maimai-staging
+            git rebase --onto origin/master
           else
             git checkout -b maimai-staging
           fi
