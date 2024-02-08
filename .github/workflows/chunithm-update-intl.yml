@@ -53,7 +53,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-intl.py --chunithm --nocolors --escape --no_timestamp
+            python scripts/update-intl.py --chunithm --nocolors --escape --markdown --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 

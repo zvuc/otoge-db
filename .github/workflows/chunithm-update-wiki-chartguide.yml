@@ -53,8 +53,8 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --chunithm --nocolors --escape --noskip --no_timestamp
-            python scripts/update-chartguide-data.py --chunithm --nocolors --escape --no_timestamp
+            python scripts/update-wiki-data.py --chunithm --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
+            python scripts/update-chartguide-data.py --chunithm --nocolors --escape --markdown --no_timestamp
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
