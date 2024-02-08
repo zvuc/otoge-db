@@ -18,6 +18,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -38,8 +40,7 @@ jobs:
           git fetch origin
           if git show-ref --quiet refs/remotes/origin/maimai-staging; then
             git switch maimai-staging
-            git rebase --onto origin/master
-            git push --force-with-lease
+            git rebase origin/master
           else
             git checkout -b maimai-staging
           fi
@@ -86,7 +87,7 @@ jobs:
             echo "No changes. Skipping PR request"
           else
             git commit -m "data(ongeki): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin ongeki-staging
+            git push origin ongeki-staging --force-with-lease
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
