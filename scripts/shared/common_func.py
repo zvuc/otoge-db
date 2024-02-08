@@ -11,7 +11,7 @@ from datetime import datetime
 
 def print_message(message, color_name, args, log='', no_verbose=False):
     timestamp = ''
-    print_color_name = ''
+    print_color_name = color_name
     reset_color = bcolors.ENDC
 
     if not args.no_timestamp:
