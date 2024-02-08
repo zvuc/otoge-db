@@ -75,7 +75,7 @@ def update_const_data(args):
 
 
 def _update_song_const_data(song, args):
-    diff_count = [0]
+    song_diffs = [0]
     song_id = song['id']
     title = song['title']
     normalized_title = normalize_title(song['title'])
