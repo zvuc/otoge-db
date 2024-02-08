@@ -20631,7 +20631,7 @@
     "image_url": "db14394b4bc4a583.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240125",
     "title": "つっぱれ！にゃんきー魂",
     "title_sort": "ツツハレニヤンキタマシイ",
@@ -20654,7 +20654,7 @@
     "image_url": "bffb7d0bbe2b6f02.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240125",
     "title": "Elemental Ethnic",
     "title_sort": "ELEMENTALETHNIC",
@@ -20675,5 +20675,51 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "69ea10b781dfb5c8.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240208",
+    "title": "Zitronectar",
+    "title_sort": "ZITRONECTAR",
+    "artist": "Reku Mochizuki",
+    "id": "600840",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "柏木 咲姫",
+    "chara_id": "1100",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "5",
+    "lev_adv": "8+",
+    "lev_exc": "12+",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "48bdd3e1bc3eaf71.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240208",
+    "title": "GAME：CHANGER",
+    "title_sort": "GAMECHANGER",
+    "artist": "uma vs. ガリガリさむし",
+    "id": "600830",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "井之原 小星",
+    "chara_id": "1090",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "7+",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "381d4804f9696d2b.png"
   }
 ]
