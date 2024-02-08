@@ -62,28 +62,36 @@ jobs:
           # Use today's date instead because Chunithm default json doesn't have date data...
           echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
 
-      - name: Check script output
-        id: check_script
-        run: |
-          if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"New song added"* ]]; then
-            echo "New song data downloaded. Creating a pull request."
-            echo "CREATE_PR=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Nothing updated. Skipping pull request creation."
-            echo "CREATE_PR=false" >> "$GITHUB_OUTPUT"
-          fi
+      # - name: Check script output
+      #   id: check_script
+      #   run: |
+      #     if [[ "${{ steps.run_script.outputs.OUTPUT_LOG }}" == *"New song added"* ]]; then
+      #       echo "New song data downloaded. Creating a pull request."
+      #       echo "CREATE_PR=true" >> "$GITHUB_OUTPUT"
+      #     else
+      #       echo "Nothing updated. Skipping pull request creation."
+      #       echo "CREATE_PR=false" >> "$GITHUB_OUTPUT"
+      #     fi
 
       - name: Commit changes
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        # if: steps.check_script.outputs.CREATE_PR == 'true'
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           git add .
-          git commit -m "data(chunithm): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
-          git push origin chunithm-staging
+
+          if output=$(git status --porcelain) && [ -z "$output" ]; then
+            echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
+            echo "No changes. Skipping PR request"
+          else
+            git commit -m "data(chunithm): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git push origin chunithm-staging
+            echo "Commited changes."
+            echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Checkout existing PR or create new
-        if: steps.check_script.outputs.CREATE_PR == 'true'
+        if: steps.check_script.outputs.HAS_DIFFS == 'true'
         run: |
           if [[ $(gh pr list --state open --head chunithm-staging | grep chunithm-staging) ]]; then
             echo "PR currently open. Add comment to existing open PR"
