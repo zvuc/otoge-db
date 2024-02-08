@@ -178,9 +178,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 def _download_song_jacket(song):
     urllib.request.urlretrieve(SERVER_MUSIC_JACKET_BASE_URL + song['image'], 'chunithm/jacket/' + song['image'])
 
-def _record_diffs(song, diff_type):
+def _record_diffs(song, song_hash, diff_type):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
-        f.write(diff_type.upper() + ' ' + song['id'] + song['image'] + '\n')
+        f.write(diff_type.upper() + ' ' + song_hash + '\n')
 
 
 def _add_song_data_to_ex_data(song, ex_data):
