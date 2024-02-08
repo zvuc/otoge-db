@@ -72,7 +72,7 @@ jobs:
       #     fi
 
       - name: Commit changes
-        # if: steps.check_script.outputs.CREATE_PR == 'true'
+        id: commit_changes
         env:
           UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
@@ -89,7 +89,7 @@ jobs:
           fi
 
       - name: Checkout existing PR or create new
-        if: steps.check_script.outputs.HAS_DIFFS == 'true'
+        if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
         run: |
           if [[ $(gh pr list --state open --head ongeki-staging | grep ongeki-staging) ]]; then
             echo "PR currently open. Add comment to existing open PR"
