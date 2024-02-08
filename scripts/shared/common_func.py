@@ -18,7 +18,7 @@ def print_message(message, color_name, args, log='', no_verbose=False):
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' '
 
     if args.escape:
-        message = message.replace("\"", "\\").replace("'", r"\'").replace("\\", "\"")
+        message = message.replace("\\", "\\\\").replace("\"", "\\\"").replace("'", r"\'")
 
     # is header
     if color_name == 'HEADER':
