@@ -11,6 +11,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 wiki_base_url = 'https://wikiwiki.jp/chunithmwiki/'
+errors_log = LOCAL_ERROR_LOG_PATH
 
 VERSION_DATES = {
     "無印": "20150716",
@@ -43,7 +44,7 @@ CHART_COLORS = {
 
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
-    print_message(f"Fetching latest wiki data.", bcolors.ENDC, args)
+    print_message(f"Fetching latest wiki data.", bcolors.ENDC, args, errors_log, args.no_verbose)
     
     date_from = args.date_from
     date_until = args.date_until
@@ -68,7 +69,7 @@ def update_songs_extra_data(args):
 
 
 def update_song_wiki_data(song, args):
-    print_message(f"{song['id']} {song['title']}", bcolors.ENDC, args)
+    print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
 
     title = (
         song['title']
@@ -88,7 +89,7 @@ def update_song_wiki_data(song, args):
                 wiki = requests.get(url, timeout=5)
                 return _parse_wikiwiki(song, wiki, url, args)
             except requests.RequestException as e:
-                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
+                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log, args.no_verbose)
                 return song
 
         else:
@@ -123,6 +124,7 @@ def update_song_wiki_data(song, args):
 
 
 def _parse_wikiwiki(song, wiki, url, args):
+    song_diffs = [0]
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
     old_song = copy.copy(song)
@@ -133,7 +135,7 @@ def _parse_wikiwiki(song, wiki, url, args):
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print_message("Parse failed! Skipping song", bcolors.FAIL, args)
+        print_message("Parse failed! Skipping song", bcolors.FAIL, args, errors_log, args.no_verbose)
         return song
 
 
@@ -179,13 +181,14 @@ def _parse_wikiwiki(song, wiki, url, args):
                 update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
                 
                 if diff_count[0] > 0:
-                    print_message("Added date and version", bcolors.OKGREEN, args)
+                    lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+                    print_message("Added date and version", bcolors.OKGREEN, args, errors_log)
             else:
                 # fail
-                print_message("Warning - date not found", bcolors.WARNING, args)
+                print_message("Warning - date not found", bcolors.WARNING, args, errors_log, args.no_verbose)
         else:
             # Skip for WE
-            print_message("Skipped date (WE)", bcolors.WARNING, args)
+            print_message("Skipped date (WE)", bcolors.WARNING, args, errors_log, args.no_verbose)
 
         # Update BPM
         if overview_dict['BPM']:
@@ -193,10 +196,11 @@ def _parse_wikiwiki(song, wiki, url, args):
             update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
             if diff_count[0] > 0:
-                print_message("Added BPM", bcolors.OKGREEN, args)
+                lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+                print_message("Added BPM", bcolors.OKGREEN, args, errors_log)
     else:
         # fail
-        print_message("Warning - overview table not found", bcolors.FAIL, args)
+        print_message("Warning - overview table not found", bcolors.FAIL, args, errors_log, args.no_verbose)
 
 
     # Find constant and chart designer
@@ -284,7 +288,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
                     break
         else:
-            print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, args)
+            print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
             
     
     chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
@@ -302,7 +306,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 # Found the charts table
                 break
             else:
-                print_message("Warning - No chart table found", bcolors.FAIL, args)
+                print_message("Warning - No chart table found", bcolors.FAIL, args, errors_log, args.no_verbose)
     
     # Update chart details
     if charts_table:
@@ -313,7 +317,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 bas_row = bas_row.find_parent()
                 bas_data = [cell.text for cell in bas_row]
                 bas_data_dict = dict(zip(charts_table_head, bas_data))
-                _update_song_chart_details(song, bas_data_dict, chart_constant_designer_dict, 'bas', args)
+                _update_song_chart_details(song, bas_data_dict, chart_constant_designer_dict, 'bas', args, song_diffs)
         if song['lev_adv']:
             adv_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["adv"]}' in tag.get('style', ''))
             # adv_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["adv"]}.*')})
@@ -321,7 +325,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 adv_row = adv_row.find_parent()
                 adv_data = [cell.text for cell in adv_row]
                 adv_data_dict = dict(zip(charts_table_head, adv_data))
-                _update_song_chart_details(song, adv_data_dict, chart_constant_designer_dict, 'adv', args)
+                _update_song_chart_details(song, adv_data_dict, chart_constant_designer_dict, 'adv', args, song_diffs)
         if song['lev_exp']:
             exp_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["exp"]}' in tag.get('style', ''))
             # exp_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["exp"]}.*')})
@@ -329,7 +333,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 exp_row = exp_row.find_parent()
                 exp_data = [cell.text for cell in exp_row]
                 exp_data_dict = dict(zip(charts_table_head, exp_data))
-                _update_song_chart_details(song, exp_data_dict, chart_constant_designer_dict, 'exp', args)
+                _update_song_chart_details(song, exp_data_dict, chart_constant_designer_dict, 'exp', args, song_diffs)
         if song['lev_mas']:
             mas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["mas"]}' in tag.get('style', ''))
             # mas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["mas"]}.*')})
@@ -337,7 +341,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 mas_row = mas_row.find_parent()
                 mas_data = [cell.text for cell in mas_row]
                 mas_data_dict = dict(zip(charts_table_head, mas_data))
-                _update_song_chart_details(song, mas_data_dict, chart_constant_designer_dict, 'mas', args)
+                _update_song_chart_details(song, mas_data_dict, chart_constant_designer_dict, 'mas', args, song_diffs)
         if song['lev_ult']:
             ult_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["ult"]}' in tag.get('style', ''))
             # ult_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["ult"]}.*')})
@@ -345,7 +349,7 @@ def _parse_wikiwiki(song, wiki, url, args):
                 ult_row = ult_row.find_parent()
                 ult_data = [cell.text for cell in ult_row]
                 ult_data_dict = dict(zip(charts_table_head, ult_data))
-                _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', args)
+                _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', args, song_diffs)
         if song['we_kanji']:
             # ipdb.set_trace()
             # Find with color
@@ -359,24 +363,24 @@ def _parse_wikiwiki(song, wiki, url, args):
                     br_tag.decompose()
                 we_data = [cell.text for cell in we_row_parent]
                 we_data_dict = dict(zip(charts_table_head, we_data))
-                _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', args)
+                _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', args, song_diffs)
 
     else:
-        print_message("Warning - No chart table found", bcolors.FAIL, args)
+        print_message("Warning - No chart table found", bcolors.FAIL, args, errors_log, args.no_verbose)
 
 
     song['wikiwiki_url'] = url
 
     if old_song == song:
-        print_message("Done (Nothing updated)", bcolors.ENDC, args)
+        print_message("Done (Nothing updated)", bcolors.ENDC, args, errors_log, args.no_verbose)
     # else:
-    #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args)
+    #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
     return song
 
 
 
-def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, chart, args):
+def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, chart, args, song_diffs):
     
     diff_count = [0]
     update_song_key(song, f"lev_{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
@@ -400,13 +404,13 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
                     designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
                     update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=diff_count)
                 except:
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
+                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
         else:
             try:
                 update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=diff_count)
             except:
                 if chart not in ('bas', 'adv'):
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args)
+                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
     
     # Now fetching constants from google sheet (const.py) so we don't need this
     # if not chart == 'we' and chart_constant_designer_dict:
@@ -417,10 +421,11 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
     #             raise Exception(f"Constant for {chart.upper()} is invalid")
     #     except:
     #         if chart not in ('bas', 'adv'):
-    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args)
+    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
 
     if diff_count[0] > 0:
-        print_message(f"Added chart details for {chart.upper()}", bcolors.OKGREEN, args)
+        lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+        print_message(f"Added chart details for {chart.upper()}", bcolors.OKGREEN, args, errors_log)
 
 
 def _construct_constant_designer_dict(song, text, key_name):

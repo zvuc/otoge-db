@@ -8,6 +8,8 @@ from functools import reduce
 from bs4 import BeautifulSoup
 
 wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
+errors_log = LOCAL_ERROR_LOG_PATH
+ENEMY_TYPES = ['FIRE', 'AQUA', 'LEAF']
 
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
@@ -38,7 +40,7 @@ def update_songs_extra_data(args):
 
 
 def update_song_wiki_data(song, args):
-    print_message(f"{song['id']} {song['title']}", bcolors.ENDC, args)
+    print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
 
     title = (
         song['title']
@@ -83,28 +85,29 @@ def update_song_wiki_data(song, args):
 
             if not wiki.ok:
                 # give up
-                print_message("Failed to guess wiki page", bcolors.FAIL, args)
+                print_message("Failed to guess wiki page", bcolors.FAIL, args, errors_log, args.no_verbose)
                 return song
 
             else:
                 url = guess_url
-                print_message("Found URL by guess!", bcolors.OKBLUE, args)
+                print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
                 return _parse_wikiwiki(song, wiki, url, args)
                 
         else:
             url = guess_url
-            print_message("Found URL by guess!", bcolors.OKBLUE, args)
+            print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
             return _parse_wikiwiki(song, wiki, url, args)
 
 
 def _parse_wikiwiki(song, wiki, url, args):
+    song_diffs = [0]
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
     old_song = song
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print_message("Parse failed! Skipping song", bcolors.FAIL, args)
+        print_message("Parse failed! Skipping song", bcolors.FAIL, args, errors_log, args.no_verbose)
         return song
 
     # find the overview table
@@ -143,27 +146,29 @@ def _parse_wikiwiki(song, wiki, url, args):
                 update_song_key(song, 'enemy_lv', enemy_lv, diff_count=diff_count)
 
                 if diff_count[0] > 0:
-                    print_message("Added Enemy Lv", bcolors.OKGREEN, args)
+                    lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+                    print_message("Added Enemy Lv", bcolors.OKGREEN, args, errors_log)
 
 
             # If character name includes type info, use it
-            if 'FIRE' in enemy_name:
-                song['enemy_type'] = 'FIRE'
-                print_message("Updated enemy type", bcolors.OKGREEN, args)
-            elif 'AQUA' in enemy_name:
-                song['enemy_type'] = 'AQUA'
-                print_message("Updated enemy type", bcolors.OKGREEN, args)
-            elif 'LEAF' in enemy_name:
-                song['enemy_type'] = 'LEAF'
-                print_message("Updated enemy type", bcolors.OKGREEN, args)
+            for enemy_type in ENEMY_TYPES:
+                diff_count = [0]
+
+                if enemy_type in enemy_name:
+                    update_song_key(song, 'enemy_type', enemy_type, diff_count=diff_count)
+
+                    if diff_count[0] > 0:
+                        lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+                        print_message("Updated enemy type", bcolors.OKGREEN, args, errors_log)
+                        break
 
         else:
             # fail
-            print_message("Warning - enemy lv not found", bcolors.WARNING, args)
+            print_message("Warning - enemy lv not found", bcolors.WARNING, args, errors_log, args.no_verbose)
             
     else:
         # fail
-        print_message("Warning - overview table not found", bcolors.WARNING, args)
+        print_message("Warning - overview table not found", bcolors.WARNING, args, errors_log, args.no_verbose)
 
 
     # find the charts table
@@ -184,19 +189,19 @@ def _parse_wikiwiki(song, wiki, url, args):
                 chart_dict = dict(zip(charts_table_head, chart_details))
 
                 if song['lunatic'] == '' and chart_dict['難易度'] == 'BASIC':
-                    _update_song_chart_details(song, chart_dict, 'bas', args)
+                    _update_song_chart_details(song, chart_dict, 'bas', args, song_diffs)
                 elif song['lunatic'] == '' and chart_dict['難易度'] == 'ADVANCED':
-                    _update_song_chart_details(song, chart_dict, 'adv', args)
+                    _update_song_chart_details(song, chart_dict, 'adv', args, song_diffs)
                 elif song['lunatic'] == '' and chart_dict['難易度'] == 'EXPERT':
-                    _update_song_chart_details(song, chart_dict, 'exc', args)
+                    _update_song_chart_details(song, chart_dict, 'exc', args, song_diffs)
                 elif song['lunatic'] == '' and chart_dict['難易度'] == 'MASTER':
-                    _update_song_chart_details(song, chart_dict, 'mas', args)
+                    _update_song_chart_details(song, chart_dict, 'mas', args, song_diffs)
                 elif song['lunatic'] == '1' and chart_dict['難易度'] == 'LUNATIC':
-                    _update_song_chart_details(song, chart_dict, 'lnt', args)
+                    _update_song_chart_details(song, chart_dict, 'lnt', args, song_diffs)
         else:
-            print_message("Warning - No chart table found", bcolors.WARNING, args)
+            print_message("Warning - No chart table found", bcolors.WARNING, args, errors_log, args.no_verbose)
     else:
-        print_message("Warning - No chart table found", bcolors.WARNING, args)
+        print_message("Warning - No chart table found", bcolors.WARNING, args, errors_log, args.no_verbose)
     
     # Update BPM
     if overview_dict['BPM']:
@@ -204,19 +209,20 @@ def _parse_wikiwiki(song, wiki, url, args):
         update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
         if diff_count[0] > 0:
-            print_message("Added BPM", bcolors.OKGREEN, args)
+            lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+            print_message("Added BPM", bcolors.OKGREEN, args, errors_log)
 
     song['wikiwiki_url'] = url
 
     if old_song == song:
-        print_message("Done (Nothing updated)", bcolors.ENDC, args)
+        print_message("Done (Nothing updated)", bcolors.ENDC, args, errors_log, args.no_verbose)
     # else:
     #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args)
 
     return song
 
 
-def _update_song_chart_details(song, chart_dict, chart, args):
+def _update_song_chart_details(song, chart_dict, chart, args, song_diffs):
     diff_count = [0]
     update_song_key(song, f"lev_{chart}_notes", chart_dict["総ノート数"], remove_comma=True, diff_count=diff_count)
     update_song_key(song, f"lev_{chart}_bells", chart_dict["BELL"], remove_comma=True, diff_count=diff_count)
@@ -224,5 +230,6 @@ def _update_song_chart_details(song, chart_dict, chart, args):
     update_song_key(song, f"lev_{chart}_designer", chart_dict["譜面製作者"], diff_count=diff_count)
 
     if diff_count[0] > 0:
+        lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
         print_message(f"Updated chart details for {chart.upper()}", bcolors.OKGREEN, args)
 

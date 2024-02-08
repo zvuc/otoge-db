@@ -32,7 +32,13 @@ def print_message(message, color_name, args, log='', no_verbose=False):
             f.write(timestamp + ' ' + message + '\n')
 
     if no_verbose is False:
-        print(timestamp + color_name + message + reset_color)
+        print(timestamp + print_color_name + message + reset_color)
+
+def lazy_print_song_header(msg, diff_count, args, errors_log):
+    if args.no_verbose and diff_count[0] == 0:
+        # Lazy-print song name
+        print_message(msg, 'HEADER', args, errors_log)
+        diff_count[0] += 1
 
 def parse_date(date_str, release_str):
     try:
