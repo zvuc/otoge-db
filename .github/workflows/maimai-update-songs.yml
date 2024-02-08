@@ -39,6 +39,7 @@ jobs:
           if git show-ref --quiet refs/remotes/origin/maimai-staging; then
             git switch maimai-staging
             git rebase --onto origin/master
+            git push --force-with-lease
           else
             git checkout -b maimai-staging
           fi
