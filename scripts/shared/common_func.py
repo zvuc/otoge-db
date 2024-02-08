@@ -11,6 +11,7 @@ from datetime import datetime
 
 def print_message(message, color_name, args, log='', no_verbose=False):
     timestamp = ''
+    print_color_name = ''
     reset_color = bcolors.ENDC
 
     if not args.no_timestamp:
@@ -19,13 +20,30 @@ def print_message(message, color_name, args, log='', no_verbose=False):
     if args.escape:
         message = message.replace("\"", "\\").replace("'", r"\'").replace("\\", "\"")
 
+    # is header
     if color_name == 'HEADER':
-        color_name = bcolors.BOLD + bcolors.HEADER
+        print_color_name = bcolors.BOLD + bcolors.HEADER
 
-    # if --nocolors is set
     if args.nocolors:
-        color_name = ''
+        print_color_name = ''
         reset_color = ''
+
+    if args.markdown:
+        if color_name == 'HEADER':
+            print_color_name = '**'
+            reset_color = '**'
+        if color_name == bcolors.OKGREEN:
+            print_color_name = '✅ '
+            reset_color = ''
+        if color_name == bcolors.WARNING:
+            print_color_name = '⚠️ '
+            reset_color = ''
+        if color_name == bcolors.FAIL:
+            print_color_name = '❗️ '
+            reset_color = ''
+        if color_name == bcolors.OKBLUE:
+            print_color_name = 'ℹ️ '
+            reset_color = ''
 
     if log:
         with open(log, 'a', encoding='utf-8') as f:
