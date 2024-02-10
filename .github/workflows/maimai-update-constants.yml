@@ -2,8 +2,7 @@ name: "[maimai] Update constants from Google Sheet"
 
 on:
   schedule:
-    - cron: '0 4 * * MON'
-    - cron: '0 8 * * FRI'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 
 jobs:

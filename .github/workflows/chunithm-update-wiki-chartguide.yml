@@ -2,7 +2,7 @@ name: "[Chunithm] Fetch from wiki & sdvx.in"
 
 on:
   schedule:
-    - cron: '0 4 * * THU'
+    - cron: '5 */4 * * *'
   workflow_dispatch:
 
 jobs:

@@ -2,7 +2,7 @@ name: "[maimai] Fetch from wiki"
 
 on:
   schedule:
-    - cron: '0 4 * * FRI'
+    - cron: '5 */4 * * *'
   workflow_dispatch:
 
 jobs:
