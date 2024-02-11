@@ -55,7 +55,7 @@ function displayWEStars(we_star) {
 function renderWorldsEnd(we_kanji, we_star) {
   return function ( data, type, row ) {
     if ( type === 'display' ) {
-      return row[we_kanji] !== '' ? '<div class="inner-wrap"><span class="lv-num-simple">' + row[we_kanji] + '<\/span><span class="lv-num-precise">☆' + convertWEStars(row[we_star]) + '<\/span><\/div>' : '';
+      return row[we_kanji] !== '' ? '<div class="inner-wrap"><span class="lv-num-simple"><span>' + row[we_kanji] + '<\/span><\/span><span class="lv-num-precise">☆' + convertWEStars(row[we_star]) + '<\/span><\/div>' : '';
     }
     else {
       return data;
