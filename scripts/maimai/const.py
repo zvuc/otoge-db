@@ -12,7 +12,7 @@ from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1vSqx2ghJKjWwCLrDEyZTUMSy5wkq_gY4i0GrJgSreQc'
-SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&sheet='
+SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_CACHE_DIR = 'maimai/google_sheets_cache'
 CHARTS = [
     # ['lev_bas', 'STD', 'BAS'],
@@ -26,13 +26,13 @@ CHARTS = [
     ['dx_lev_mas', 'DX', 'MAS'],
     ['dx_lev_remas', 'DX', 'REMAS'],
 ]
-CUR_VERSION_SHEET = 'BUDDiES新曲'
+CUR_VERSION_SHEET = '372132020'
 SHEETS_MAP = {
-    '14以上': ['14', '14+', '15'],
-    '13%2B': ['13+'],
-    '13': ['13'],
-    '12%2B': ['12+'],
-    '12': ['12'],
+    '452697015': ['14', '14+', '15'],
+    '1315253155': ['13+'],
+    '613457244': ['13'],
+    '1957063489': ['12+'],
+    '1280860425': ['12'],
 }
 MIN_LV = '10'
 

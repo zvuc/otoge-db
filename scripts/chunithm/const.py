@@ -12,7 +12,7 @@ from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1Nhr-lC1u11WPkUPVTatnNrKWCmVLglaA6hZHgh56N6w'
-SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&sheet='
+SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_CACHE_DIR = 'chunithm/google_sheets_cache'
 CHARTS = [
     # ['lev_bas', 'BAS'],
@@ -21,17 +21,17 @@ CHARTS = [
     ['lev_mas', '', 'MAS'],
     ['lev_ult', '', 'ULT']
 ]
-CUR_VERSION_SHEET = '新曲のみ'
+CUR_VERSION_SHEET = '1971412612'
 SHEETS_MAP = {
-    '14%2B,15': ['14', '14+', '15'],
-    '14': ['14'],
-    '13.8～13.9': ['13+'],
-    '13.5～13.7': ['13+'],
-    '13': ['13'],
-    '12%2B': ['12+'],
-    '12': ['12'],
-    '11%2B': ['11+'],
-    '11以下': ['10','10+','11'],
+    '262760047': ['14', '14+', '15'],
+    '2099154164': ['14'],
+    '1700582700': ['13+'],
+    '487918628': ['13+'],
+    '252479953': ['13'],
+    '2103723114': ['12+'],
+    '1659819067': ['12'],
+    '847410292': ['11+'],
+    '872334439': ['10','10+','11'],
 }
 MIN_LV = '10'
 

@@ -12,7 +12,7 @@ from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1iG6CYz-pHSfLKz0m2bXipsoC_YicJWSMxNt2QJVI2ZE'
-SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&sheet='
+SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_CACHE_DIR = 'ongeki/google_sheets_cache'
 CHARTS = [
     # ['lev_bas', 'BAS'],
@@ -21,18 +21,18 @@ CHARTS = [
     ['lev_mas', '', 'MASTER'],
     ['lev_lnt', '', 'LUNATIC']
 ]
-CUR_VERSION_SHEET = '新曲枠'
+CUR_VERSION_SHEET = '1885837597'
 SHEETS_MAP = {
-    '14%2B〜15%2B': ['14+', '15'],
-    '14': ['14'],
-    '13%2B': ['13+'],
-    '13': ['13'],
-    '12%2B': ['12+'],
-    '12': ['12'],
-    '11,11%2B (MASTER)': ['11', '11+'],
-    '11,11%2B(MASTER以外)': ['11', '11+'],
-    '10%2B': ['10+'],
-    '10': ['10']
+    '607247191': ['14+', '15'],
+    '1614592040': ['14'],
+    '995212684': ['13+'],
+    '1830291633': ['13'],
+    '664628079': ['12+'],
+    '967700523': ['12'],
+    '407270408': ['11', '11+'],
+    '1837200947': ['11', '11+'],
+    '1086958346': ['10+'],
+    '1121689670': ['10']
 }
 MIN_LV = '10'
 
