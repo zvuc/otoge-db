@@ -30958,7 +30958,9 @@
     "lev_mas_notes_hold": "71",
     "lev_mas_notes_slide": "159",
     "lev_mas_notes_break": "21",
-    "lev_mas_designer": "Luxizhel"
+    "lev_mas_designer": "Luxizhel",
+    "lev_exp_i": "12.7",
+    "lev_mas_i": "14.3"
   },
   {
     "artist": "MARETU",
@@ -55461,7 +55463,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "12.7",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
@@ -55547,7 +55549,7 @@
     "dx_lev_adv_notes_slide": "",
     "dx_lev_adv_notes_touch": "",
     "dx_lev_adv_notes_break": "",
-    "dx_lev_exp_i": "",
+    "dx_lev_exp_i": "12.5",
     "dx_lev_exp_notes": "",
     "dx_lev_exp_notes_tap": "",
     "dx_lev_exp_notes_hold": "",
@@ -55602,7 +55604,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "13.3",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
