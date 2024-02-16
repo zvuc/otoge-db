@@ -138,7 +138,7 @@ def _update_song_const_data(song, args):
         # If value is not empty, write to song
         if value_chart_i is not None:
             if value_chart_i != '' and value_chart_i != '-':
-                if song[key_chart_i] == value_chart_i:
+                if key_chart_i in song and song[key_chart_i] == value_chart_i:
                     print_message(f"No change ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, args, errors_log, args.no_verbose)
                 else:
                     song[key_chart_i] = value_chart_i
