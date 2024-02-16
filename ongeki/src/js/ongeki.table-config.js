@@ -6,6 +6,7 @@ const ongeki_chart_list = {
   'lev_lnt': 'LUNATIC'
 };
 let columns_params = [];
+let default_search = [];
 
 function setDefaultOrder() {
   if (flat_view) {
@@ -17,7 +18,6 @@ function setDefaultOrder() {
   }
 }
 
-var default_search = getDefaultSearchValues(columns_params);
 
 function processOngekiChartData(obj, chart_diff) {
   if (obj[chart_diff]) {
@@ -502,6 +502,8 @@ $(document).ready(function() {
         visible: false
       }
     ];
+
+    default_search = getDefaultSearchValues(columns_params);
 
     $.getJSON("data/music-ex.json", (data) => {
       var table = $('#table').DataTable( {

@@ -15,12 +15,14 @@ let columns_params = [];
 let default_search = [];
 
 function setDefaultOrder() {
+  var regional_date_column_index = (currentRegion === 'intl' ? getColumnIndexByName('release_intl') : getColumnIndexByName('date'))
+
   if (flat_view) {
     // 難易度 , Lv , Date
-    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']];
+    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[regional_date_column_index, 'desc']];
   } else {
     // date , ID
-    return [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
+    return [[regional_date_column_index, 'desc'],[getColumnIndexByName('id'), 'asc']];
   }
 }
 
@@ -713,8 +715,9 @@ $(document).ready(function() {
             return data;
           }
         },
-        searchable: false,
-        visible: false
+        reverseSortOrder: true,
+        filterable: true,
+        visible: (currentRegion === 'intl' ? true : false)
       },
       {
         // displayTitle: "追加日",
@@ -740,7 +743,8 @@ $(document).ready(function() {
         },
         reverseSortOrder: true,
         width: "4em",
-        filterable: true
+        filterable: true,
+        visible: (currentRegion === 'intl' ? false : true)
       },
       {
         displayTitle: "NEW",
@@ -1001,18 +1005,12 @@ $(document).ready(function() {
           }
         },
         "rowGroup": {
-          dataSrc: function(row) {
-            if (row.date != '') {
-              return `${formatDate(row.date, 'weekday')}`;
-            } else {
-              return `${formatDate(row.release, 'weekday')}`;
-            }
-          },
+          dataSrc: 'date',
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
             if (group === '') {
               date_display = 'NEW'
             } else {
-              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', group)
+              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
             }
             return `<div>${date_display}</div>`;
             // enable rows count again when I find a way to show all rows in other pages

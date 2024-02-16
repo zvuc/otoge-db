@@ -346,20 +346,25 @@ function tableInitCompleteFunctions(table) {
 
     if (columnIndexWithDefaultSearch !== -1) {
       var defaultSearchValue = (currentRegion === 'intl' ? columns_params[columnIndexWithDefaultSearch].defaultSearch : '');
-      table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue).draw();
+      table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue)
     }
 
-    // Toggle date columns
-    // var jp_date_column = table.api().column(getColumnIndexByName('date'));
-    // var intl_date_column = table.api().column(getColumnIndexByName('release_intl'));
+    // Reset default order
+    table.api().order(setDefaultOrder())
 
-    // if (currentRegion === 'intl') {
-    //   jp_date_column.visible(false);
-    //   intl_date_column.visible(true);
-    // } else {
-    //   jp_date_column.visible(true);
-    //   intl_date_column.visible(false);
-    // }
+    // Toggle date columns
+    var jp_date_column = table.api().column(getColumnIndexByName('date'));
+    var intl_date_column = table.api().column(getColumnIndexByName('release_intl'));
+
+    if (currentRegion === 'intl') {
+      jp_date_column.visible(false, false);
+      intl_date_column.visible(true, false);
+    } else {
+      jp_date_column.visible(true, false);
+      intl_date_column.visible(false, false);
+    }
+
+    table.api().draw();
 
     // update checkbox value
     if (event.target.id === 'gameRegionQuickSwitch') {
@@ -512,14 +517,17 @@ function toggleDateRowGroup(table, default_search) {
   }
 
   // Disable rowgroup unless sorting by date
-  if (order[0][0] !== getColumnIndexByName('date')) {
+  if (order[0][0] !== getColumnIndexByName('date') || order[0][0] !== getColumnIndexByName('release_intl')) {
     // console.log('rowgroup disabled');
     table.api().rowGroup().disable();
   }
   // enable rowgroup if sorting by date
   if (order[0][0] === getColumnIndexByName('date')) {
     // console.log('rowgroup enabled');
-    table.api().rowGroup().enable();
+    table.api().rowGroup().dataSrc('date').enable();
+  }
+  else if (order[0][0] === getColumnIndexByName('release_intl')) {
+    table.api().rowGroup().dataSrc('release_intl').enable();
   }
 }
 

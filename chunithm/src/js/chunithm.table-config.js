@@ -7,18 +7,19 @@ const chunithm_chart_list = {
   'we_kanji': 'WORLD\'S END'
 };
 let columns_params = [];
+let default_search = [];
 
 function setDefaultOrder() {
+  var regional_date_column_index = (currentRegion === 'intl' ? getColumnIndexByName('release_intl') : getColumnIndexByName('date'))
+
   if (flat_view) {
     // 難易度 , Lv , Date
-    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']];
+    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[regional_date_column_index, 'desc']];
   } else {
     // date , ID
-    return [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
+    return [[regional_date_column_index, 'desc'],[getColumnIndexByName('id'), 'asc']];
   }
 }
-
-const default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
 
 function convertWEStars(we_star) {
   const conversionTable = {
@@ -450,6 +451,29 @@ $(document).ready(function() {
         defaultSearch: "1"
       },
       {
+        // displayTitle: "追加日（Int'l Ver.）",
+        displayTitle: getTranslation(userLanguage,'col_added_date_intl'),
+        name: "release_intl",
+        data: function( row, type, set, meta ) {
+          if (row.release_intl && row.release_intl !== '') {
+            return formatDate(row.release_intl);
+          }
+        },
+        defaultContent: "",
+        className: "intl detail-hidden nowrap",
+        render: function ( data, type, row ) {
+          if ( type === 'display' && data) {
+            return '<div class="inner-wrap">'+ data +'<\/div>';
+          }
+          else {
+            return data;
+          }
+        },
+        reverseSortOrder: true,
+        filterable: true,
+        visible: (currentRegion === 'intl' ? true : false)
+      },
+      {
         // displayTitle: "追加日",
         displayTitle: getTranslation(userLanguage,'col_added_date'),
         name: "date",
@@ -469,7 +493,8 @@ $(document).ready(function() {
         },
         reverseSortOrder: true,
         width: "4em",
-        filterable: true
+        filterable: true,
+        visible: (currentRegion === 'intl' ? false : true)
       },
       {
         displayTitle: "NEW",
@@ -479,6 +504,9 @@ $(document).ready(function() {
         searchable: false
       }
     ];
+
+    default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
+
     $.getJSON("data/music-ex.json", (data) => {
       var table = $('#table').DataTable( {
         // "ajax": {
