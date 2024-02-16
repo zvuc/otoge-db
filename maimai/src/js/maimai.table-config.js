@@ -706,7 +706,7 @@ $(document).ready(function() {
           }
         },
         defaultContent: "",
-        className: "intl detail-hidden nowrap",
+        className: "intl date detail-hidden nowrap",
         render: function ( data, type, row ) {
           if ( type === 'display' && data) {
             return '<div class="inner-wrap">'+ data +'<\/div>';
