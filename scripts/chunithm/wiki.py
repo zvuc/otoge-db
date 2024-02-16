@@ -89,7 +89,7 @@ def update_song_wiki_data(song, args):
                 wiki = requests.get(url, timeout=5)
                 return _parse_wikiwiki(song, wiki, url, args)
             except requests.RequestException as e:
-                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log, args.no_verbose)
+                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
                 return song
 
         else:

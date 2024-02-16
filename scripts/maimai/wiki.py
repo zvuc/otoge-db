@@ -115,7 +115,7 @@ def update_song_wiki_data(song, args):
                 wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
                 return _parse_wikiwiki(song, wiki, url, args)
             except requests.RequestException as e:
-                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log, args.no_verbose)
+                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
                 return song
 
         else:
@@ -130,12 +130,12 @@ def update_song_wiki_data(song, args):
         try:
             search_results = requests.get(guess_url, timeout=5)
         except requests.RequestException as e:
-            print_message(f"Error while loading Google Search results: {e}", bcolors.FAIL, args, errors_log, args.no_verbose)
+            print_message(f"Error while loading Google Search results: {e}", bcolors.FAIL, args, errors_log)
             return song
 
         if not search_results.ok:
             # give up
-            print_message("failed to guess wiki page", bcolors.FAIL, args, errors_log, args.no_verbose)
+            print_message("failed to guess wiki page", bcolors.FAIL, args, errors_log)
             return song
 
         else:

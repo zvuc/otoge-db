@@ -85,7 +85,7 @@ def update_song_wiki_data(song, args):
 
             if not wiki.ok:
                 # give up
-                print_message("Failed to guess wiki page", bcolors.FAIL, args, errors_log, args.no_verbose)
+                print_message("Failed to guess wiki page", bcolors.FAIL, args, errors_log)
                 return song
 
             else:
