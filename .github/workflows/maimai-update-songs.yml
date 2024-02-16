@@ -87,8 +87,8 @@ jobs:
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
-            git commit -m "data(ongeki): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin ongeki-staging --force-with-lease
+            git commit -m "data(maimai): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git push origin maimai-staging --force-with-lease
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
