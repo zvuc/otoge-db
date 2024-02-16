@@ -126,7 +126,7 @@ def update_song_wiki_data(song, args):
     else:
         # guess_url = wiki_base_url + title
         search_title = title.replace('-',' ')
-        guess_url = f'https://www.google.com/search?hl=en&q={search_title}%20maimai%E3%80%80%E6%94%BB%E7%95%A5wiki&btnI=I'
+        guess_url = f'https://www.google.com/search?hl=en&q="{search_title}"+site%3Agamerch.com%2Fmaimai&btnI=I'
         try:
             search_results = requests.get(guess_url, timeout=5)
         except requests.RequestException as e:
@@ -184,6 +184,11 @@ def _parse_wikiwiki(song, wiki, url, args):
         print_message("Page is invalid", bcolors.FAIL, args, errors_log, args.no_verbose)
         return song
 
+
+    if soup.find('h1', 'content-head').text != song['title']:
+        ipdb.set_trace()
+        print_message("Page does not match song title", bcolors.FAIL, args, errors_log, args.no_verbose)
+        return song
 
     has_std_chart = 'lev_bas' in song
     has_dx_chart = 'dx_lev_bas' in song
