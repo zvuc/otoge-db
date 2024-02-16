@@ -164,8 +164,6 @@ def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, shee
     lv_sheet_url = SHEETS_BASE_URL + sheet_name
     lv_sheet_file_path = f'{sheet_name}.csv'
 
-    # ipdb.set_trace()
-
     # Read local file first, request and cache if it doesn't exist
     file_full_path = os.path.join(LOCAL_CACHE_DIR, lv_sheet_file_path)
     if not os.path.exists(file_full_path):

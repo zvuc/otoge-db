@@ -342,7 +342,9 @@ def get_and_save_page_to_local(url, output_path, args, local_cache_dir):
         # Save the content to a local file
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(response.text)
-        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
+
+        if args.no_verbose is False:
+            print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
     else:
         print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
 
