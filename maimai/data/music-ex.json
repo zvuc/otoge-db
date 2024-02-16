@@ -30951,7 +30951,14 @@
     "lev_bas": "5",
     "lev_adv": "9",
     "lev_exp": "12+",
-    "lev_mas": "14"
+    "lev_mas": "14",
+    "lev_exp_designer": "はっぴー",
+    "lev_mas_notes": "931",
+    "lev_mas_notes_tap": "680",
+    "lev_mas_notes_hold": "71",
+    "lev_mas_notes_slide": "159",
+    "lev_mas_notes_break": "21",
+    "lev_mas_designer": "Luxizhel"
   },
   {
     "artist": "MARETU",
