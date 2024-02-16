@@ -2,12 +2,12 @@ name: "[maimai] Fetch from wiki"
 
 on:
   schedule:
-    - cron: '5 */4 * * *'
+    - cron: '7 */13 * * *'
   workflow_dispatch:
 
 jobs:
   fetch_from_wiki:
-    name: Fetch from wiki & sdvx.in
+    name: Fetch from wiki
     runs-on: ubuntu-latest
 
     steps:
