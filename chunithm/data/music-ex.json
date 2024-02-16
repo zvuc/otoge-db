@@ -1092,7 +1092,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Night Spider",
-    "date": "20230817"
+    "date": "20230817",
+    "intl": "1",
+    "release_intl": "20240110"
   },
   {
     "id": "2446",
@@ -1165,7 +1167,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/＃あくあ色ぱれっと",
-    "date": "20230817"
+    "date": "20230817",
+    "intl": "1",
+    "release_intl": "20240111"
   },
   {
     "id": "2420",
@@ -9990,7 +9994,8 @@
     "version": "無印",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ジングルベル",
     "date": "20151217",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20231214"
   },
   {
     "id": "2505",
@@ -10282,7 +10287,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/あなたは世界の終わりにずんだを食べるのだ",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2453",
@@ -10355,7 +10362,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ちょっとあざとい",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2454",
@@ -10428,7 +10437,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/snooze",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2447",
@@ -10501,7 +10512,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/いつかオトナになれるといいね。",
-    "date": "20230817"
+    "date": "20230817",
+    "intl": "1",
+    "release_intl": "20240111"
   },
   {
     "id": "2433",
@@ -10574,7 +10587,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/花となれ",
-    "date": "20230720"
+    "date": "20230720",
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "2434",
@@ -10647,7 +10662,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/カノン",
-    "date": "20230720"
+    "date": "20230720",
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "2435",
@@ -10720,7 +10737,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/異星にいこうね",
-    "date": "20230720"
+    "date": "20230720",
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "2436",
@@ -10793,7 +10812,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/悪魔の踊り方",
-    "date": "20230720"
+    "date": "20230720",
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "2437",
@@ -10866,7 +10887,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ド屑",
-    "date": "20230720"
+    "date": "20230720",
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "2418",
@@ -27573,7 +27596,8 @@
     "version": "無印",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/イカサマライフゲイム",
     "date": "20151008",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "94",
@@ -52717,7 +52741,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ばかみたい【Taxi Driver Edition】",
-    "date": "20230831"
+    "date": "20230831",
+    "intl": "1",
+    "release_intl": "20240111"
   },
   {
     "id": "901",
@@ -53012,7 +53038,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/セガサターン起動音［H.］［Remix］",
-    "date": "20230831"
+    "date": "20230831",
+    "intl": "1",
+    "release_intl": "20240111"
   },
   {
     "id": "145",
@@ -58189,7 +58217,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/リハーサルタイム",
-    "date": "20230803"
+    "date": "20230803",
+    "intl": "1",
+    "release_intl": "20231214"
   },
   {
     "id": "2455",
@@ -58262,7 +58292,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ONE SAME GOAL",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2466",
@@ -64180,7 +64212,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Aiolos",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20231116"
   },
   {
     "id": "2467",
@@ -64399,7 +64433,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ワンダーシャッフェンの法則",
-    "date": "20231122"
+    "date": "20231122",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2487",
@@ -64472,7 +64508,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Paradisoda",
-    "date": "20231122"
+    "date": "20231122",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2488",
@@ -64545,7 +64583,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Yorugao",
-    "date": "20231122"
+    "date": "20231122",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "2555",
@@ -65429,7 +65469,9 @@
     "lev_we_chart_link": "",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/夏色花火",
-    "date": "20231214"
+    "date": "20231214",
+    "intl": "1",
+    "release_intl": "20231130"
   },
   {
     "id": "2451",
@@ -65502,7 +65544,9 @@
     "lev_we_chart_link": "",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/スン(マイル)フラワー～Sun(Mile)Flower",
-    "date": "20231214"
+    "date": "20231214",
+    "intl": "1",
+    "release_intl": "20240111"
   },
   {
     "id": "2463",
@@ -65575,7 +65619,9 @@
     "lev_we_chart_link": "",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/反撃! 突撃! Back To Back!",
-    "date": "20231214"
+    "date": "20231214",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2476",
@@ -69788,7 +69834,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Cult future",
-    "date": "20231012"
+    "date": "20231012",
+    "intl": "1",
+    "release_intl": "20240111"
   },
   {
     "id": "2456",
@@ -69861,7 +69909,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Vibes 2k20",
-    "date": "20231109"
+    "date": "20231109",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2480",
@@ -69934,7 +69984,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/GEOMETRIC DANCE",
-    "date": "20231109"
+    "date": "20231109",
+    "intl": "1",
+    "release_intl": "20231214"
   },
   {
     "id": "2485",
@@ -93754,7 +93806,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/うたかたのせかいで",
-    "date": "20230706"
+    "date": "20230706",
+    "intl": "1",
+    "release_intl": "20231116"
   },
   {
     "id": "2428",
@@ -93827,7 +93881,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/とあちゃんのおもちゃ箱",
-    "date": "20230706"
+    "date": "20230706",
+    "intl": "1",
+    "release_intl": "20231116"
   },
   {
     "id": "2429",
@@ -93900,7 +93956,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/白庭",
-    "date": "20230706"
+    "date": "20230706",
+    "intl": "1",
+    "release_intl": "20231116"
   },
   {
     "id": "2430",
@@ -93973,7 +94031,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/REL0VE REL1VE",
-    "date": "20230706"
+    "date": "20230706",
+    "intl": "1",
+    "release_intl": "20231116"
   },
   {
     "id": "2431",
@@ -94046,7 +94106,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/deadeye",
-    "date": "20230706"
+    "date": "20230706",
+    "intl": "1",
+    "release_intl": "20231116"
   },
   {
     "id": "2439",
@@ -94119,7 +94181,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/夢と幻想の終点にて",
-    "date": "20230803"
+    "date": "20230803",
+    "intl": "1",
+    "release_intl": "20231221"
   },
   {
     "id": "2440",
@@ -94192,7 +94256,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Superbia",
-    "date": "20230803"
+    "date": "20230803",
+    "intl": "1",
+    "release_intl": "20231221"
   },
   {
     "id": "2441",
@@ -94265,7 +94331,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/空間創造理論",
-    "date": "20230803"
+    "date": "20230803",
+    "intl": "1",
+    "release_intl": "20231221"
   },
   {
     "id": "2442",
@@ -94338,7 +94406,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/βlαnoir",
-    "date": "20230803"
+    "date": "20230803",
+    "intl": "1",
+    "release_intl": "20231221"
   },
   {
     "id": "2457",
@@ -94411,7 +94481,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/《真紅》 ～ Pavane Pour La Flamme",
-    "date": "20231026"
+    "date": "20231026",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2458",
@@ -94484,7 +94556,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/《楽土》 ～ One and Only One",
-    "date": "20231026"
+    "date": "20231026",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2459",
@@ -94557,7 +94631,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/《散華》 ～ EMBARK",
-    "date": "20231026"
+    "date": "20231026",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2460",
@@ -94630,7 +94706,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/《慈雨》 ～ La Symphonie de Salacia： Agony Movement",
-    "date": "20231026"
+    "date": "20231026",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2461",
@@ -94703,7 +94781,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/《創造》 ～ Cries, beyond The End",
-    "date": "20231026"
+    "date": "20231026",
+    "intl": "1",
+    "release_intl": "20240207"
   },
   {
     "id": "2475",
@@ -95652,7 +95732,9 @@
     "lev_we_chart_link": "end/03079end",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ETERNAL DRAIN",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "8268",
@@ -95725,7 +95807,9 @@
     "lev_we_chart_link": "end/01028end",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/M.S.S.Planet",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "8269",
@@ -95798,7 +95882,9 @@
     "lev_we_chart_link": "end/08104end",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/月の光",
-    "date": "20230914"
+    "date": "20230914",
+    "intl": "1",
+    "release_intl": "20240125"
   },
   {
     "id": "8264",
