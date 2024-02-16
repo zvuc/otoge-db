@@ -2,8 +2,10 @@ const colorSchemeInput = document.querySelectorAll('input[name="colorScheme"]');
 const langOptionInput = document.querySelectorAll('input[name="siteLanguage"]');
 const gameRegionChecks = document.querySelectorAll('input[name="gameRegion"]');
 const gameRegionQuickSwitch = document.getElementById('gameRegionQuickSwitch');
+let translations_latest = 'translations240217';
 let userLanguage = localStorage.getItem('userLanguage');
-let cachedTranslations = localStorage.getItem('translations');
+let cachedTranslations = localStorage.getItem(translations_latest);
+
 
 // Check if the userGameRegion value is nonexistent, create one with the default value 'jp'
 let currentRegion = localStorage.getItem('userGameRegion');
@@ -55,7 +57,7 @@ function loadTranslations() {
       .then(response => response.json())
       .then(translations => {
         // Cache
-        sessionStorage.setItem('translations', JSON.stringify(translations));
+        sessionStorage.setItem(translations_latest, JSON.stringify(translations));
         resolve();  // Resolve the promise after successfully loading translations
       })
       .catch(error => {
@@ -66,7 +68,7 @@ function loadTranslations() {
 }
 
 function getTranslation(languageCode, keyName) {
-  const cachedTranslations = sessionStorage.getItem('translations');
+  const cachedTranslations = sessionStorage.getItem(translations_latest);
   // console.log(`${languageCode} / ${keyName}`);
   // console.log(`cachedTranslations: ${cachedTranslations ? 'true' : 'false'}`);
 
@@ -121,16 +123,23 @@ function initTranslations() {
     // console.log('initialized userLanguage to ja');
   }
 
+  // Clear any old translation keys
+  for (let i = 0; i < sessionStorage.length; i++) {
+      const key = sessionStorage.key(i);
+      if (key !== translations_latest) {
+          sessionStorage.removeItem(key);
+      }
+  }
+
   if (!cachedTranslations) {
   // Load translations from JSON
   return loadTranslations()
     .then(() => {
       // Update cachedTranslations after loading translations
-      cachedTranslations = sessionStorage.getItem('translations');
+      cachedTranslations = sessionStorage.getItem(translations_latest);
       applyTranslations(JSON.parse(cachedTranslations), userLanguage);
     })
     .catch(error => console.error('Error setting language:', error));
   }
-
 }
 
