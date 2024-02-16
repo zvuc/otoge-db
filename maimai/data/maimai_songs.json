@@ -8500,6 +8500,25 @@
     "version": "22501"
   },
   {
+    "artist": "山本真央樹",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "14",
+    "image_url": "a9be993d5f552289.png",
+    "release": "240216",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exp": "12+",
+    "lev_mas": "14",
+    "sort": "1002",
+    "title": "渦状銀河のシンフォニエッタ",
+    "title_kana": "カシヨウキンカノシンフオニエツタ",
+    "version": "24013"
+  },
+  {
     "artist": "Lime",
     "catcode": "maimai",
     "dx_lev_bas": "6",
@@ -9519,20 +9538,6 @@
     "sort": "1012",
     "title": "封焔の135秒",
     "title_kana": "フウエンノ135ヒヨウ",
-    "version": "20512"
-  },
-  {
-    "artist": "山本真央樹",
-    "catcode": "maimai",
-    "dx_lev_bas": "3",
-    "dx_lev_adv": "8",
-    "dx_lev_exp": "11+",
-    "dx_lev_mas": "14",
-    "image_url": "a9be993d5f552289.png",
-    "release": "000000",
-    "sort": "1003",
-    "title": "渦状銀河のシンフォニエッタ",
-    "title_kana": "カシヨウキンカノシンフオニエツタ",
     "version": "20512"
   },
   {
@@ -14950,7 +14955,6 @@
   {
     "artist": "Iris",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11",
@@ -14966,7 +14970,6 @@
   {
     "artist": "XinG、10lulu",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -14982,7 +14985,6 @@
   {
     "artist": "Akira Complex",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -14998,7 +15000,6 @@
   {
     "artist": "Cosmograph",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
@@ -16555,6 +16556,66 @@
     "title": "ULTRA POWER",
     "title_kana": "ULTRAPOWER",
     "version": "24012"
+  },
+  {
+    "artist": "wotaku",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "13",
+    "image_url": "0d250f5077500a46.png",
+    "release": "240216",
+    "sort": "111",
+    "title": "ジェヘナ",
+    "title_kana": "シエヘナ",
+    "version": "24014"
+  },
+  {
+    "artist": "とあ",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "1",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9",
+    "dx_lev_mas": "12+",
+    "image_url": "387ff1be544f7efc.png",
+    "release": "240216",
+    "sort": "112",
+    "title": "ツギハギスタッカート",
+    "title_kana": "ツキハキスタツカアト",
+    "version": "24014"
+  },
+  {
+    "artist": "暁Records",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "13",
+    "image_url": "0e72ea01a7940ebc.png",
+    "release": "240216",
+    "sort": "415",
+    "title": "HANIPAGANDA",
+    "title_kana": "HANIPAGANDA",
+    "version": "24014"
+  },
+  {
+    "artist": "litmus*",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "8+",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "13+",
+    "image_url": "72add6e11afd6c5a.png",
+    "release": "240216",
+    "sort": "557",
+    "title": "Rush-Hour",
+    "title_kana": "RUSHHOUR",
+    "version": "24014"
   },
   {
     "artist": "TJ.hangneil",
