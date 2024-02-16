@@ -221,23 +221,27 @@ def get_songs_from_diffs(song_list, identifier, diffs_log):
     return target_song_list
 
 def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
-    # if source key doesn't exist, exit
-    if key not in song:
-        return
-    # if source is not empty, don't overwrite
-    if not (song[key] == ''):
-        return
     # skip if new data is placeholder
-    if new_data in ['？', '??', '???', '-']:
+    if new_data in ['？', '?', '??', '???', '-']:
         return
-    # Only overwrite if new data is not empty and is not same
-    if not (new_data == '') and not (song[key] == new_data):
-        diff_count[0] += 1
+
+    if key in song:
+        # skip if source is not empty (or practically is empty)
+        if song[key] != '' or song[key] in ['？', '?']:
+            return
+        # Only overwrite if new data is not empty and is not same
+        if (new_data != '') and (song[key] != new_data):
+            diff_count[0] += 1
+            song[key] = new_data
+
+            if remove_comma:
+                song[key] = song[key].replace(',', '')
+
+            return
+    # if source key doesn't exist, create & fill
+    elif (new_data != ''):
         song[key] = new_data
-
-        if remove_comma:
-            song[key] = song[key].replace(',', '')
-
+        diff_count[0] += 1
         return
 
 def archive_deleted_song(song, deleted_data):

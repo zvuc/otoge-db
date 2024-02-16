@@ -223,13 +223,19 @@ def _parse_wikiwiki(song, wiki, url, args):
 
 
 def _update_song_chart_details(song, chart_dict, chart, args, song_diffs):
-    diff_count = [0]
-    update_song_key(song, f"lev_{chart}_notes", chart_dict["総ノート数"], remove_comma=True, diff_count=diff_count)
-    update_song_key(song, f"lev_{chart}_bells", chart_dict["BELL"], remove_comma=True, diff_count=diff_count)
-    # update_song_key(song, f"lev_{chart}_i", chart_dict["譜面定数"], diff_count=diff_count)
-    update_song_key(song, f"lev_{chart}_designer", chart_dict["譜面製作者"], diff_count=diff_count)
+    details_diff_count = [0]
+    designer_diff_count = [0]
+    update_song_key(song, f"lev_{chart}_notes", chart_dict["総ノート数"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_bells", chart_dict["BELL"], remove_comma=True, diff_count=details_diff_count)
+    # update_song_key(song, f"lev_{chart}_i", chart_dict["譜面定数"], diff_count=details_diff_count)
 
-    if diff_count[0] > 0:
+    if details_diff_count[0] > 0:
         lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
-        print_message(f"Updated chart details for {chart.upper()}", bcolors.OKGREEN, args)
+        print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN, args)
 
+    update_song_key(song, f"lev_{chart}_designer", chart_dict["譜面製作者"], diff_count=designer_diff_count)
+
+    if designer_diff_count[0] > 0:
+        if details_diff_count[0] == 0:
+            lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
+        print_message(f"Added chart designer for {chart.upper()}", bcolors.OKGREEN, args)

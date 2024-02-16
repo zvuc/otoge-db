@@ -79,7 +79,7 @@ def update_songs_extra_data(args):
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', maimai_generate_hash, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'sort', 'date', maimai_generate_hash, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -367,7 +367,6 @@ def _parse_wikiwiki(song, wiki, url, args):
             or ((has_single_chart or has_utage_chart) and req_dict_count == 1)):
             print_message(f"Warning - No designer info found", bcolors.WARNING, args, errors_log, args.no_verbose)
 
-
         # Update chart details
         if charts_table:
             if 'kanji' in song:
@@ -449,40 +448,45 @@ def _process_utage_chart(song, charts_table, charts_table_head, chart_designers_
 
 
 def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, args, song_diffs, this_utage_chart_number=''):
-    diff_count = [0]
+    details_diff_count = [0]
+    designer_diff_count = [0]
     # Now fetching constants from google sheet (const.py) so we don't need this
     # if '定数' in chart_dict:
-    #     update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=diff_count)
+    #     update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=details_diff_count)
     # else:
     #     if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
     #         print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
 
-    update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=diff_count)
-    update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=diff_count)
-    update_song_key(song, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=diff_count)
-    update_song_key(song, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
 
     if 'Touch' in chart_dict:
-        update_song_key(song, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=diff_count)
+        update_song_key(song, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=details_diff_count)
 
-    update_song_key(song, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=diff_count)
+    update_song_key(song, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=details_diff_count)
+
+    if details_diff_count[0] > 0:
+        lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
+        print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN, args)
 
     if chart_designers_dict:
         # in some cases 宴 may be labled as 宴2 or 宴[即]..
         # 宴2 : Garakuta Doll Play https://gamerch.com/maimai/entry/533459
         # 宴[即] : ジングルベル https://gamerch.com/maimai/entry/533569
         if chart == 'lev_utage':
-            _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart_number, diff_count=diff_count)
+            _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart_number, diff_count=designer_diff_count)
 
         # Convert REMAS to RE:M
         # elif chart == 'lev_remas':
         #     try:
-        #         update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=diff_count)
+        #         update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=designer_diff_count)
         #     except KeyError:
         #         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
         else:
             try:
-                update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=diff_count)
+                update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=designer_diff_count)
             except:
                 if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
@@ -490,16 +494,17 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
     # if not chart == 'lev_utage' and chart_designers_dict:
     #     try:
     #         if re.search(r'(\d{2}\.\d)',chart_designers_dict[f"{chart}_i"]):
-    #             update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=diff_count)
+    #             update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=designer_diff_count)
     #         else:
     #             raise Exception(f"Constant for {chart.upper()} is invalid")
     #     except:
     #         if chart not in ('bas', 'adv'):
     #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
 
-    if diff_count[0] > 0:
-        lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
-        print_message(f"Added chart details for {chart.upper()}", bcolors.OKGREEN, args)
+    if designer_diff_count[0] > 0:
+        if details_diff_count[0] == 0:
+            lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
+        print_message(f"Added chart designer for {chart.upper()}", bcolors.OKGREEN, args)
 
 
 def _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart_number, diff_count):
