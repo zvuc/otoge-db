@@ -1,8 +1,8 @@
 name: "[maimai] Update International Ver. Availability"
 
 on:
-  schedule:
-    - cron: '10 */4 * * *'
+  # schedule:
+  #   - cron: '10 */4 * * *'
   workflow_dispatch:
 
 jobs:
