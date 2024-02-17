@@ -1015,6 +1015,8 @@ $(document).ready(function() {
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
             if (group === '') {
               date_display = 'NEW'
+            } else if (group === 'No group') {
+              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', '???')
             } else {
               date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
             }
