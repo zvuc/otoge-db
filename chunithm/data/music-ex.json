@@ -873,7 +873,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Sad Creature",
-    "date": "20231012"
+    "date": "20231012",
+    "intl": "1",
+    "release_intl": "20231012"
   },
   {
     "id": "2465",
@@ -946,7 +948,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Goodbye Innocence",
-    "date": "20231012"
+    "date": "20231012",
+    "intl": "1",
+    "release_intl": "20231012"
   },
   {
     "id": "2448",
@@ -1462,7 +1466,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Pris-Magic!",
     "date": "20230608",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2415",
@@ -1756,7 +1761,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/INTERNET OVERDOSE",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2389",
@@ -1830,7 +1836,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/新時代（ウタfrom ONE PIECE FILM RED）",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2390",
@@ -1904,7 +1911,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/祝福",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2391",
@@ -1978,7 +1986,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/刃渡り2億センチ(TV edit)",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2392",
@@ -2052,7 +2061,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/おとせサンダー",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2359",
@@ -10962,7 +10972,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/独りんぼエンヴィー",
-    "date": "20230608"
+    "date": "20230608",
+    "intl": "1",
+    "release_intl": "20231026"
   },
   {
     "id": "2393",
@@ -11036,7 +11048,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/カレシのジュード",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2394",
@@ -11110,7 +11123,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/サラマンダー",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2395",
@@ -11184,7 +11198,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/酔いどれ知らず",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2360",
@@ -28703,7 +28718,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/幻想症候群",
-    "date": "20230525"
+    "date": "20230525",
+    "intl": "1",
+    "release_intl": "20231012"
   },
   {
     "id": "2413",
@@ -28776,7 +28793,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/夜のサーカス",
-    "date": "20230525"
+    "date": "20230525",
+    "intl": "1",
+    "release_intl": "20231012"
   },
   {
     "id": "2322",
@@ -39431,7 +39450,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/neu",
     "date": "20231214",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2041",
@@ -40836,7 +40856,9 @@
     "lev_we_chart_link": "",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Big Bang",
-    "date": "20231214"
+    "date": "20231214",
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "33",
@@ -42389,7 +42411,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Hydra",
-    "date": "20230622"
+    "date": "20230622",
+    "intl": "1",
+    "release_intl": "20231026"
   },
   {
     "id": "2425",
@@ -42462,7 +42486,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Survive",
-    "date": "20230622"
+    "date": "20230622",
+    "intl": "1",
+    "release_intl": "20231026"
   },
   {
     "id": "2529",
@@ -43939,7 +43965,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/HiGHER",
     "date": "20231026",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2298",
@@ -44013,7 +44040,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/めっちゃ煽ってくるタイプの音ゲーボス曲ちゃんなんかに負けないが？？？？？",
     "date": "20231026",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2299",
@@ -44087,7 +44115,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Breaking Dawn (feat. 棗いつき)",
     "date": "20231026",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2300",
@@ -44161,7 +44190,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Odin",
     "date": "20231026",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2301",
@@ -44235,7 +44265,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Wildfire",
     "date": "20231026",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "1096",
@@ -46824,7 +46855,8 @@
     "version": "AIR",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Dreadnought",
     "date": "20161102",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "324",
@@ -51411,7 +51443,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/もぺもぺ",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "6",
@@ -53336,7 +53369,8 @@
     "version": "AIR",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ドキドキDREAM!!!",
     "date": "20160825",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "340",
@@ -54149,7 +54183,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Snow Colored Score",
-    "date": "20230608"
+    "date": "20230608",
+    "intl": "1",
+    "release_intl": "20231102"
   },
   {
     "id": "774",
@@ -54889,7 +54925,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/プライマリー進化論",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "968",
@@ -64358,9 +64395,11 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/sølips",
-    "date": "20231214"
+    "date": "20231102",
+    "intl": "1",
+    "release_intl": "20231102"
   },
   {
     "id": "2486",
@@ -65098,10 +65137,11 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/STARRED HEART",
-    "date": "20231214",
-    "intl": "1"
+    "date": "20230511",
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2246",
@@ -65320,9 +65360,9 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Girl's Party Planet!",
-    "date": "20231214",
+    "date": "20221013",
     "intl": "1"
   },
   {
@@ -65394,9 +65434,11 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/シンデレラディスコ",
-    "date": "20231214"
+    "date": "20230722",
+    "intl": "1",
+    "release_intl": "20231026"
   },
   {
     "id": "2438",
@@ -65617,9 +65659,9 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/反撃! 突撃! Back To Back!",
-    "date": "20231214",
+    "date": "20230928",
     "intl": "1",
     "release_intl": "20240207"
   },
@@ -69688,7 +69730,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/オンソクデイズ!!",
     "date": "20230706",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2417",
@@ -69761,7 +69804,9 @@
     "lev_we_chart_link": "",
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/LiftOff",
-    "date": "20230803"
+    "date": "20230803",
+    "intl": "1",
+    "release_intl": "20231026"
   },
   {
     "id": "2444",
@@ -72130,7 +72175,8 @@
     "version": "PLUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/昵懇レファレンス",
     "date": "20160204",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "53",
@@ -93437,7 +93483,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/やめらんないな!",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2405",
@@ -93511,7 +93558,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Dive a Wave",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2406",
@@ -93585,7 +93633,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ASH",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2403",
@@ -93659,7 +93708,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ウルガレオン(楽曲名)",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2407",
@@ -93733,7 +93783,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Makear",
     "date": "20230511",
-    "intl": "1"
+    "intl": "1",
+    "release_intl": "20230928"
   },
   {
     "id": "2427",
