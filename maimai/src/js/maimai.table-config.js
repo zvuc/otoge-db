@@ -328,8 +328,13 @@ $(document).ready(function() {
         data: "image_url",
         defaultContent: "",
         className: "jacket detail-hidden",
-        render: function(data) {
-          return '<span class="img-wrap"><img src=\"jacket/' + data + '\"\/><\/span>';
+        render: function( data, type, row ) {
+          return `
+              <span class="img-wrap">
+                <img src="jacket/${data}"/>
+                ${ row.key == '○' ? `<span class="key-icon" title="解禁必要"></span>` : ''}
+              </span>
+            `;
         },
         width: "50px",
         orderable: false,
@@ -423,7 +428,8 @@ $(document).ready(function() {
             return data;
           }
         },
-        searchable: false
+        searchable: false,
+        visible: false
       },
       {
         // displayTitle: "バージョン",
