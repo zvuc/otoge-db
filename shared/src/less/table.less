@@ -218,7 +218,12 @@ table.dataTable {
 			.key-icon {
 				position: absolute;
 				bottom: 4px;
-				right: 0;
+				right: calc(var(--padding-size) - 8px);
+
+				@media screen and (max-width: 480px) {
+					width: 20px;
+					height: 20px;
+				}
 			}
 		}
 
@@ -432,24 +437,15 @@ table.dataTable {
 			}
 
 			.img-wrap {
+				--thumb-size: 50px;
 				position: absolute;
 				display: block;
-				width: 65px;
-				padding: 12px 8px 12px 8px;
+				width: calc( var(--thumb-size) + var(--padding-size) * 2);
+				padding: 12px var(--padding-size);
+				padding-right: calc(var(--padding-size) + 5px);
 				background-color: var(--row-bg);
 				mask-image: 
 					linear-gradient(to right, rgb(0,0,0) calc(100% - var(--padding-size) + 5px), rgba(0,0,0,0));
-				-webkit-mask-image: 
-					linear-gradient(to right, rgb(0,0,0) calc(100% - var(--padding-size) + 5px), rgba(0,0,0,0));
-
-				@media screen and (max-width: 480px) {
-				}
-
-				@media screen and (min-width: 480px) {
-					width: calc( 65px + var(--padding-size));
-					padding-left: var(--padding-size);
-					padding-right: var(--padding-size);
-				}
 			}
 		}
 
@@ -495,7 +491,7 @@ table.dataTable {
 					/*right: calc(-1 * (100vw - 60px));*/
 					width: calc(100vw - 60px);
 					padding: 8px 10px;
-					background-color: rgb(var(--ui-color-table-row-bg));
+					background-color: var(--row-bg);
 					border-bottom: 1px solid rgba(var(--ui-color-table-row-border),0.5);
 					display: flex;
 					flex-flow: row nowrap;
