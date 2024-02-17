@@ -626,7 +626,7 @@ $(document).ready(function() {
                   </div>
                   <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
                     <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
-                    <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${getTranslation(userLanguage,'song_playable')}` : getTranslation(userLanguage,'song_unavailable')) }</span>
+                    <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable')) }</span>
                   </div>
                 </div>
                 `;
