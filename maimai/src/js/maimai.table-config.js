@@ -15,7 +15,7 @@ let columns_params = [];
 let default_search = [];
 
 function setDefaultOrder() {
-  var regional_date_column_index = (currentRegion === 'intl' ? getColumnIndexByName('release_intl') : getColumnIndexByName('date'))
+  var regional_date_column_index = (currentRegion === 'intl' ? getColumnIndexByName('date_intl_1') : getColumnIndexByName('date'))
 
   if (flat_view) {
     // 難易度 , Lv , Date
@@ -705,10 +705,10 @@ $(document).ready(function() {
       {
         // displayTitle: "追加日（Int'l Ver.）",
         displayTitle: getTranslation(userLanguage,'col_added_date_intl'),
-        name: "release_intl",
+        name: "date_intl_1",
         data: function( row, type, set, meta ) {
-          if (row.release_intl && row.release_intl !== '000000') {
-            return formatDate(row.release_intl);
+          if (row.date_intl_1 && row.date_intl_1 !== '000000') {
+            return formatDate(row.date_intl_1);
           }
         },
         defaultContent: "",
@@ -828,12 +828,10 @@ $(document).ready(function() {
               }
 
               function generatePlayableInfoHtml(col, data, prefix = '') {
-                if (data['release_intl']) {
-                  if (data['release_intl'] === '000000') {
-                    var intl_date_display = getTranslation(userLanguage,'song_playable');
-                  } else {
-                    var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['release_intl']));
-                  }
+                if (data['date_intl_1']) {
+                  var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date_intl_1']));
+                } else {
+                  var intl_date_display = getTranslation(userLanguage,'song_playable');
                 }
 
                 var lock_status_html = `

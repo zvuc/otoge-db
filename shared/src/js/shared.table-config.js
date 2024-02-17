@@ -354,7 +354,7 @@ function tableInitCompleteFunctions(table) {
 
     // Toggle date columns
     var jp_date_column = table.api().column(getColumnIndexByName('date'));
-    var intl_date_column = table.api().column(getColumnIndexByName('release_intl'));
+    var intl_date_column = table.api().column(getColumnIndexByName('date_intl_1'));
 
     if (currentRegion === 'intl') {
       jp_date_column.visible(false, false);
@@ -517,7 +517,7 @@ function toggleDateRowGroup(table, default_search) {
   }
 
   // Disable rowgroup unless sorting by date
-  if (order[0][0] !== getColumnIndexByName('date') || order[0][0] !== getColumnIndexByName('release_intl')) {
+  if (order[0][0] !== getColumnIndexByName('date') || order[0][0] !== getColumnIndexByName('date_intl_1')) {
     // console.log('rowgroup disabled');
     table.api().rowGroup().disable();
   }
@@ -526,8 +526,8 @@ function toggleDateRowGroup(table, default_search) {
     // console.log('rowgroup enabled');
     table.api().rowGroup().dataSrc('date').enable();
   }
-  else if (order[0][0] === getColumnIndexByName('release_intl')) {
-    table.api().rowGroup().dataSrc('release_intl').enable();
+  else if (order[0][0] === getColumnIndexByName('date_intl_1')) {
+    table.api().rowGroup().dataSrc('date_intl_1').enable();
   }
 }
 
