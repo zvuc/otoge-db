@@ -218,7 +218,7 @@ table.dataTable {
 			.key-icon {
 				position: absolute;
 				bottom: 4px;
-				right: calc(var(--padding-size) - 8px);
+				right: calc(var(--padding-size) - 3px);
 
 				@media screen and (max-width: 480px) {
 					width: 20px;
@@ -439,18 +439,31 @@ table.dataTable {
 			.img-wrap {
 				--thumb-size: 50px;
 				position: absolute;
-				display: block;
-				width: calc( var(--thumb-size) + var(--padding-size) * 2);
+				display: flex;
+				width: calc( var(--thumb-size) + 5px + var(--padding-size) * 2);
+				height: 100%;
+				align-items: center;
 				padding: 12px var(--padding-size);
-				padding-right: calc(var(--padding-size) + 5px);
-				background-color: var(--row-bg);
-				mask-image: 
-					linear-gradient(to right, rgb(0,0,0) calc(100% - var(--padding-size) + 5px), rgba(0,0,0,0));
+				padding-right: calc(var(--padding-size));
+
+				&:before {
+					content: "";
+					position: absolute;
+					inset: 0 3px 0 0;
+					background-color: var(--row-bg);
+					mask-image:
+						linear-gradient(to right, rgb(0,0,0) calc(100% - var(--padding-size)), rgba(0,0,0,0));
+				}
+
+				& > img {
+					position: relative;
+				}
 			}
 		}
 
 		// title and artist display
 		&.title-artist {
+			padding-left: var(--padding-size);
 			background-color: transparent;
 			
 			@media screen and (max-width: 480px) {
@@ -491,6 +504,7 @@ table.dataTable {
 					/*right: calc(-1 * (100vw - 60px));*/
 					width: calc(100vw - 60px);
 					padding: 8px 10px;
+					padding-left: 15px;
 					background-color: var(--row-bg);
 					border-bottom: 1px solid rgba(var(--ui-color-table-row-border),0.5);
 					display: flex;
@@ -515,6 +529,10 @@ table.dataTable {
 
 		&.artist {
 			z-index: 0;
+
+			@media screen and (max-width: 480px) {
+				padding-left: 15px;
+			}
 
 			.td-inner {
 				background-color: transparent !important;
