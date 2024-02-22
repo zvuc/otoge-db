@@ -266,6 +266,10 @@ def _add_ex_data_template(song):
 
     # song['version_name'] = ""
     song['wiki_url'] = ""
-    song['date'] = ""
+
+    if 'release' in song:
+        song['date'] = f"{song['release']}"
+    else:
+        song['date'] = ""
 
     return song

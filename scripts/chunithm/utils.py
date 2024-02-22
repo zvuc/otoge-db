@@ -243,6 +243,6 @@ def _add_ex_data_template(song):
     song['lev_we_chart_link'] = ""
     song['version'] = ""
     song['wikiwiki_url'] = ""
-    song['date'] = ""
+    song['date'] = f"{datetime.now().strftime('%Y%m%d')}"
 
     return song
