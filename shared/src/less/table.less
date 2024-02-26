@@ -120,6 +120,7 @@ table#table {
 
 
 table.dataTable {
+	--thumb-size: 56px;
 	table-layout: fixed;
 
 	thead {
@@ -208,10 +209,10 @@ table.dataTable {
 			position: -webkit-sticky;
 			position: sticky;
 			left: 0;
-			height: 50px;
-			min-width: calc(50px + var(--padding-size));
-			max-width: calc(50px + var(--padding-size));
-			width: calc(50px + var(--padding-size)) !important;
+			height: var(--thumb-size);
+			min-width: calc(var(--thumb-size) + var(--padding-size));
+			max-width: calc(var(--thumb-size) + var(--padding-size));
+			width: calc(var(--thumb-size) + var(--padding-size)) !important;
 			padding: 0 !important;
 			z-index: 2;
 
@@ -415,8 +416,8 @@ table.dataTable {
 			img {
 				display: block;
 				line-height: 0;
-				width: 50px;
-				height: 50px;
+				width: var(--thumb-size);
+				height: var(--thumb-size);
 				border-radius: 2px;
 				box-shadow: 0 2px 4px -2px rgba(0,0,0,0.2), 0 0 0 1px rgba(var(--ui-color-foreground-100),0.1);
 			}
@@ -431,13 +432,12 @@ table.dataTable {
 
 				@media screen and (max-width: 480px) {
 					display: block;
-					width: 50px;
+					width: var(--thumb-size);
 					opacity: 0.6;
 				}
 			}
 
 			.img-wrap {
-				--thumb-size: 50px;
 				position: absolute;
 				display: flex;
 				width: calc( var(--thumb-size) + 5px + var(--padding-size) * 2);
@@ -469,7 +469,7 @@ table.dataTable {
 			@media screen and (max-width: 480px) {
 				position: sticky;
 				position: -webkit-sticky;
-				left: 60px;
+				left: calc(var(--thumb-size) + 10px);
 				min-width: 0;
 				z-index: 1;
 				padding: 0;
@@ -503,7 +503,7 @@ table.dataTable {
 					top: 0;
 					left: 0;
 					/*right: calc(-1 * (100vw - 60px));*/
-					width: calc(100vw - 60px);
+					width: calc(100vw - var(--thumb-size) + 10px);
 					padding: 8px 10px;
 					padding-left: 15px;
 					background-color: var(--row-bg);
