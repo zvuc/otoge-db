@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Check the initial color scheme preference
-  const initialColorScheme = userColorScheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const initialColorScheme = userColorScheme || 'auto';
+  console.log(initialColorScheme);
   document.querySelector(`input[value="${initialColorScheme}"]`).checked = true;
   applyColorScheme(); // Apply initial color scheme
 
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     input.addEventListener('change', setLanguage);
   });
 
-  // Check the initial color scheme preference
+  // Check the initial language
   const initialLanguage = userLanguage || 'ja';
   document.querySelector(`input[value="${initialLanguage}"]`).checked = true;
 });
