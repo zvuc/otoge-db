@@ -1,4 +1,11 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-jp-dynamic-subset.min.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
 :root {
+	--font-stack: -apple-system, BlinkMacSystemFont,
+		"Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Sans GB", "Pretendard Variable JP", "Yu Gothic", "Meiryo",
+		"Pretendard Variable",
+		sans-serif;
 	--padding-size: 10px;
 
 	@media screen and (min-width: 480px) {
@@ -16,6 +23,7 @@
 
 html {
 	font-size: 15px;
+	line-height: 1.25;
 	width: 100%;
 	height: 100%;
 	padding: 0;
@@ -65,7 +73,7 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow-y: scroll;
-	font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3","Hiragino Sans GB", "Meiryo", "Segoe UI", sans-serif;
+	font-family: var(--font-stack);
 	font-size: 1rem;
 	font-feature-settings: "palt";
 	padding: 0;
