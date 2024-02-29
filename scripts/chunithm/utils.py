@@ -244,5 +244,6 @@ def _add_ex_data_template(song):
     song['version'] = ""
     song['wikiwiki_url'] = ""
     song['date'] = f"{datetime.now().strftime('%Y%m%d')}"
+    song['intl'] = "0"
 
     return song

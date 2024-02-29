@@ -272,4 +272,6 @@ def _add_ex_data_template(song):
     else:
         song['date'] = ""
 
+    song['intl'] = "0"
+
     return song
