@@ -299,12 +299,15 @@ function tableInitCompleteFunctions(table) {
       .columns().search('');
     table.api().search('');
 
-    // Keep default search presets for Intl mode
+    // Restore default search presets
     const columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
 
-    if (currentRegion === 'intl' && columnIndexWithDefaultSearch !== -1) {
-      const defaultSearchValue = columns_params[columnIndexWithDefaultSearch].defaultSearch;
-      table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue);
+    if (columnIndexWithDefaultSearch !== -1) {
+      if (currentRegion === 'intl') {
+        table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.intl, true, false)
+      } else {
+        table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.jpn, true, false)
+      }
     }
 
     // Restore current level filter
@@ -340,13 +343,14 @@ function tableInitCompleteFunctions(table) {
     root.setAttribute('data-game-region', currentRegion);
 
     // Update default_search based on the checkbox status
-    var default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
-
     var columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
 
     if (columnIndexWithDefaultSearch !== -1) {
-      var defaultSearchValue = (currentRegion === 'intl' ? columns_params[columnIndexWithDefaultSearch].defaultSearch : '');
-      table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue)
+      if (currentRegion === 'intl') {
+        table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.intl, true, false)
+      } else {
+        table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.jpn, true, false)
+      }
     }
 
     // Reset default order
@@ -550,10 +554,13 @@ function isSearchActive(search, default_search) {
 function getDefaultSearchValues(columnsParams, isIntl = false) {
   if (isIntl) {
     return columnsParams.map(column =>
-      (column.defaultSearch !== undefined) ? {"search": column.defaultSearch} : null
+      (column.defaultSearch !== undefined) ? {"search": column.defaultSearch.intl, "regex": true, "smart": false} : null
     );
   }
-  return Array(columnsParams.length).fill(null);
+  // return Array(columnsParams.length).fill(null);
+  return columnsParams.map(column =>
+      (column.defaultSearch !== undefined) ? {"search": column.defaultSearch.jpn, "regex": true, "smart": false} : null
+    );
 }
 
 function renderModalHeader(game_name, image_col, wiki_url_col, wiki_url_base, youtube_search_term='譜面確認') {

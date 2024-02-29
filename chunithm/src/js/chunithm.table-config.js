@@ -448,7 +448,10 @@ $(document).ready(function() {
         className: "detail-hidden",
         width: "4em",
         visible: false,
-        defaultSearch: "1"
+        defaultSearch: {
+          intl: "^(1|2)",
+          jpn: "^(0|1)"
+        }
       },
       {
         // displayTitle: "追加日（Int'l Ver.）",
@@ -605,6 +608,12 @@ $(document).ready(function() {
               }
 
               function generatePlayableInfoHtml(col, data, prefix = '') {
+                if (data['date']) {
+                  var date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']));
+                } else {
+                  var date_display = getTranslation(userLanguage,'song_playable');
+                }
+
                 if (data['date_intl_1']) {
                   var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date_intl_1']));
                 } else {
@@ -620,13 +629,13 @@ $(document).ready(function() {
 
                 var html_output = `
                 <div class="region-availability-chart">
-                  <div class="region jp available">
+                  <div class="region jp ${ (data['intl'] !== "2") ? 'available' : 'unavailable'}">
                     <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
-                    <span class="date"><span class="green-check-icon"></span>${getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']))}</span>
+                    <span class="date">${ (data['intl'] !== "2") ? `<span class="green-check-icon"></span>${date_display}` : getTranslation(userLanguage,'song_unavailable') }</span>
                   </div>
-                  <div class="region intl ${ data['intl'] ? 'available' : 'unavailable'}">
+                  <div class="region intl ${ (data['intl'] !== "0") ? 'available' : 'unavailable'}">
                     <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
-                    <span class="date">${ (data['intl'] ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable')) }</span>
+                    <span class="date">${ (data['intl'] !== "0") ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable') }</span>
                   </div>
                 </div>
                 `;
