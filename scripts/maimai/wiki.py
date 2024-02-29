@@ -170,6 +170,7 @@ def update_song_wiki_data(song, args):
 def _parse_wikiwiki(song, wiki, url, args):
     critical_errors = 0
     song_diffs = [0]
+    song_title = normalize_title(song['title'])
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("body .main table")
     old_song = copy.copy(song)
@@ -185,7 +186,7 @@ def _parse_wikiwiki(song, wiki, url, args):
         return song
 
 
-    if soup.find('h1', 'content-head').text != song['title']:
+    if normalize_title(soup.find('h1', 'content-head').text) != song_title:
         ipdb.set_trace()
         print_message("Page does not match song title", bcolors.FAIL, args, errors_log, args.no_verbose)
         return song
