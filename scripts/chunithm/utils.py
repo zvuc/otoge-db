@@ -241,7 +241,7 @@ def _add_ex_data_template(song):
     song['lev_we_notes_flick'] = ""
     song['lev_we_designer'] = ""
     song['lev_we_chart_link'] = ""
-    song['version'] = ""
+    song['version'] = "LUMINOUS"
     song['wikiwiki_url'] = ""
     song['date'] = f"{datetime.now().strftime('%Y%m%d')}"
     song['intl'] = "0"
