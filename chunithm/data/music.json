@@ -14336,6 +14336,22 @@
     "image": "1efa961aecb0dc77.jpg"
   },
   {
+    "id": "2556",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "Mutation",
+    "reading": "MUTATION",
+    "artist": "Laur",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exp": "12+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "6539e0d5d93f4e83.jpg"
+  },
+  {
     "id": "802",
     "catname": "ゲキマイ",
     "newflag": "0",
@@ -15726,6 +15742,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "6e46224559e92381.jpg"
+  },
+  {
+    "id": "2579",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "ラストピースに祝福と栄光を",
+    "reading": "ラストヒウスニシユクフクトエイコウヲ",
+    "artist": "cosMo＠暴走P",
+    "lev_bas": "5",
+    "lev_adv": "10",
+    "lev_exp": "14",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2ad19c9da7f807e4.jpg"
   },
   {
     "id": "59",
@@ -20994,7 +21026,7 @@
   {
     "id": "2574",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "lucky omen",
     "reading": "LUCKYOMEN",
     "artist": "TEMPLIME feat.星宮とと",
@@ -21010,7 +21042,7 @@
   {
     "id": "2575",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Sunlight Starlight",
     "reading": "SUNLIGHTSTARLIGHT",
     "artist": "Palme",
@@ -21026,7 +21058,7 @@
   {
     "id": "2576",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ワーカーホリック",
     "reading": "ワウカウホリツク",
     "artist": "ミディ feat.小鈴",
@@ -21042,7 +21074,7 @@
   {
     "id": "2577",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Overturn",
     "reading": "OVERTURN",
     "artist": "Mameyudoufu feat.Kanata.N",
@@ -21058,7 +21090,7 @@
   {
     "id": "2578",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "First Light",
     "reading": "FIRSTLIGHT",
     "artist": "Carpainter",
