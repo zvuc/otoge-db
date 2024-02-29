@@ -55785,7 +55785,7 @@
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_notes_break": "",
     "dx_lev_mas_designer": "",
-    "wiki_url": "",
+    "wiki_url": "https://gamerch.com/maimai/entry/830758",
     "intl": "0"
   },
   {
@@ -55833,7 +55833,7 @@
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_notes_break": "",
     "dx_lev_mas_designer": "",
-    "wiki_url": "",
+    "wiki_url": "https://gamerch.com/maimai/entry/830755",
     "intl": "0"
   },
   {
@@ -55930,7 +55930,7 @@
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_notes_break": "",
     "dx_lev_mas_designer": "",
-    "wiki_url": "",
+    "wiki_url": "https://gamerch.com/maimai/entry/830760",
     "intl": "0"
   },
   {
@@ -55997,7 +55997,7 @@
     "title": "系ぎて",
     "title_kana": "ツナキテ",
     "version": "24015",
-    "bpm": "",
+    "bpm": "088",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "",
     "dx_lev_bas_notes_tap": "",
@@ -56019,7 +56019,7 @@
     "dx_lev_exp_notes_slide": "",
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
-    "dx_lev_exp_designer": "",
+    "dx_lev_exp_designer": "Luxizhel",
     "dx_lev_mas_i": "",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
@@ -56027,15 +56027,15 @@
     "dx_lev_mas_notes_slide": "",
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_notes_break": "",
-    "dx_lev_mas_designer": "",
+    "dx_lev_mas_designer": "maimai TEAM DX",
     "dx_lev_remas_i": "",
-    "dx_lev_remas_notes": "",
-    "dx_lev_remas_notes_tap": "",
-    "dx_lev_remas_notes_hold": "",
-    "dx_lev_remas_notes_slide": "",
-    "dx_lev_remas_notes_touch": "",
-    "dx_lev_remas_notes_break": "",
-    "dx_lev_remas_designer": "",
-    "wiki_url": ""
+    "dx_lev_remas_notes": "1400",
+    "dx_lev_remas_notes_tap": "1100",
+    "dx_lev_remas_notes_hold": "40",
+    "dx_lev_remas_notes_slide": "70",
+    "dx_lev_remas_notes_touch": "90",
+    "dx_lev_remas_notes_break": "100",
+    "dx_lev_remas_designer": "BEYOND THE MEMORIES",
+    "wiki_url": "https://gamerch.com/maimai/entry/828534"
   }
 ]
