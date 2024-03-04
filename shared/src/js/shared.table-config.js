@@ -354,7 +354,7 @@ function tableInitCompleteFunctions(table) {
     }
 
     // Reset default order
-    table.api().order(setDefaultOrder())
+    table.api().order(setDefaultOrder()).draw()
 
     // Toggle date columns
     var jp_date_column = table.api().column(getColumnIndexByName('date'));
