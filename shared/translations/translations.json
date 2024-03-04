@@ -3,7 +3,7 @@
     "datatable_ui": {
       "emptyTable":     "テーブルにデータがありません",
       "info":           " _TOTAL_{unit} (_START_〜_END_ 表示中)",
-      "infoEmpty":      " 0 unit",
+      "infoEmpty":      " 0 {unit}",
       "infoFiltered":   "（全 _MAX_ {unit}）",
       "infoPostFix":    "",
       "infoThousands":  ",",
