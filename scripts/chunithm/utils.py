@@ -85,7 +85,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            print_message(f"Couldn't find destination song: {song['title']}", bcolors.WARNING, args)
+            print_message(f"Couldn't find matching song in music-ex.json: {song['title']}", bcolors.WARNING, args)
             continue
 
         if old_song == song:
