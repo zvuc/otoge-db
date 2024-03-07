@@ -10,6 +10,11 @@ from bs4 import BeautifulSoup
 wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
 errors_log = LOCAL_ERROR_LOG_PATH
 ENEMY_TYPES = ['FIRE', 'AQUA', 'LEAF']
+HASH_KEYS = ['title', 'artist', 'date', 'lunatic']
+request_headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+}
 
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
@@ -19,12 +24,10 @@ def update_songs_extra_data(args):
     date_until = args.date_until
     song_id = args.id
 
-    # ipdb.set_trace()
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', 'id', args)
-
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', HASH_KEYS, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -50,20 +53,15 @@ def update_song_wiki_data(song, args):
         .replace(']', '］')
         .replace('#', '＃')
         .replace('"', '”')
+        .replace('?', '？')
     )
-
-    # use existing URL if already present
-    if 'wikiwiki_url' in song and song['wikiwiki_url']:
-        url = song['wikiwiki_url']
-        wiki = requests.get(url)
-        return _parse_wikiwiki(song, wiki, url, args)
 
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         if args.noskip:
             url = song['wikiwiki_url']
             try:
-                wiki = requests.get(url, timeout=5)
+                wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
                 return _parse_wikiwiki(song, wiki, url, args)
             except requests.RequestException as e:
                 print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
@@ -75,13 +73,13 @@ def update_song_wiki_data(song, args):
     # If not, guess URL from title
     else:
         guess_url = wiki_base_url + title
-        wiki = requests.get(guess_url)
+        wiki = requests.get(guess_url, timeout=5, headers=request_headers, allow_redirects=True)
 
         if not wiki.ok:
             # try replacing special character as fallback
             title = title.replace('\'', '’')
             guess_url = wiki_base_url + title
-            wiki = requests.get(guess_url)
+            wiki = requests.get(guess_url, timeout=5, headers=request_headers, allow_redirects=True)
 
             if not wiki.ok:
                 # give up

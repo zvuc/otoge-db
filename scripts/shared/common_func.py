@@ -159,7 +159,7 @@ def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash
         return filter_songs_by_date(song_list, date_key, args.date_from, args.date_until)
     else:
         # get id list from diffs.txt
-        return get_songs_from_diffs(song_list, hash_key, local_diffs_log_path)
+        return get_songs_from_diffs(song_list, local_diffs_log_path, *hash_key)
 
 
 def filter_songs_by_date(song_list, date_key, date_from, date_until):
@@ -204,7 +204,8 @@ def filter_songs_by_id_list(song_list, id_key, id_list):
 
     return target_song_list
 
-def get_songs_from_diffs(song_list, identifier, diffs_log):
+def get_songs_from_diffs(song_list, diffs_log, *identifier):
+    # ipdb.set_trace()
     with open(diffs_log, 'r') as f:
         diff_lines = f.readlines()
 
@@ -216,10 +217,22 @@ def get_songs_from_diffs(song_list, identifier, diffs_log):
     unique_id = {line.strip() for line in diff_lines}
 
     target_song_list = []
+    # Check if identifier is a tuple containing multiple identifiers
+    if isinstance(identifier, tuple):
+        generate_hash_func = generate_hash_from_keys
+        identifier_keys = identifier
+    else:
+        generate_hash_func = maimai_generate_hash  # Assuming a default function
+        identifier_keys = identifier
+
     # Filter songs based on the identifiers
     for song in song_list:
-        if (isinstance(identifier, str) and song[identifier] in unique_id) or \
-           (callable(identifier) and identifier(song) in unique_id):
+        if callable(identifier_keys):
+            song_identifier = identifier_keys(song)
+        else:
+            song_identifier = generate_hash_func(song, *identifier_keys)
+
+        if song_identifier in unique_id:
             target_song_list.append(song)
 
     return target_song_list

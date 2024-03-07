@@ -105,6 +105,7 @@ def update_song_wiki_data(song, args):
         .replace(']', '］')
         .replace('#', '＃')
         .replace('"', '”')
+        .replace('?', '？')
     )
     
     # use existing URL if already present
