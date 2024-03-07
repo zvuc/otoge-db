@@ -5,6 +5,7 @@ errors.txt
 sdvxin_cache
 google_sheets_cache
 *.log
+.venv
 
 # build files
 chunithm/*.*
