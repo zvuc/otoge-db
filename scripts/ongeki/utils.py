@@ -6,6 +6,8 @@ from ongeki.paths import *
 from ongeki import wiki
 from shared.common_func import *
 
+HASH_KEYS = ['title', 'artist', 'date', 'lunatic']
+
 CHARACTER_TABLE = {
     "星咲あかり": "FIRE",
     "藤沢柚子": "LEAF",
@@ -29,12 +31,12 @@ CHARACTER_TABLE = {
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
-        local_music_map = json_to_id_value_map(local_music_data, 'id')
+        local_music_map = json_to_hash_value_map(local_music_data, generate_hash_from_keys, *HASH_KEYS)
 
     old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
-    server_music_map = json_to_id_value_map(server_music_data, 'id')
+    server_music_map = json_to_hash_value_map(server_music_data, generate_hash_from_keys, *HASH_KEYS)
 
     added_songs = []
     removed_songs = []
@@ -56,10 +58,15 @@ def load_new_song_data():
     for id, server_song in server_music_map.items():
         if id in local_music_map:
             local_song = local_music_map[id]
-            if server_song != local_song:
-                # Song has been updated, include it in the updated_songs list
+            # Remove the "sort" key from both server_song and local_song
+            server_song_without_sort = {k: v for k, v in server_song.items() if k != "sort"}
+            local_song_without_sort = {k: v for k, v in local_song.items() if k != "sort"}
+
+            if server_song_without_sort != local_song_without_sort:
+                # Song has been updated (excluding the "sort" key), include it in the updated_songs list
                 updated_songs.append(server_song)
             else:
+                # Maimai always updates the "sort" value so let's keep it updated...
                 unchanged_songs.append(server_song)
     
     return added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data
@@ -83,7 +90,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
     # added_songs
     for song in added_songs:
-        song_hash = song['id']
+        song_hash = generate_hash_from_keys(song, *HASH_KEYS)
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
         print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
@@ -94,9 +101,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     # For the list of updated songs, go through each of them in older song list
     # Find the same song in ex_data list then update any changed keys
     for song in updated_songs:
-        song_hash = song['id']
-        old_song = next((s for s in old_local_music_data if s['id'] == song_hash), None)
-        dest_ex_song = next((s for s in local_music_ex_data if s['id'] == song_hash), None)
+        song_hash = generate_hash_from_keys(song, *HASH_KEYS)
+        old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
@@ -129,9 +136,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
     # Iterate through unchanged songs
     for song in unchanged_songs:
-        song_hash = song['id']
-        old_song = next((s for s in old_local_music_data if s['id'] == song_hash), None)
-        dest_ex_song = next((s for s in local_music_ex_data if s['id'] == song_hash), None)
+        song_hash = generate_hash_from_keys(song, *HASH_KEYS)
+        old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
@@ -168,13 +175,14 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # removed_songs
         for song in removed_songs:
-            song_hash = song['id']
-            existing_song = next((s for s in local_music_ex_data if song['id'] == song_hash), None)
+            # ipdb.set_trace()
+            song_hash = generate_hash_from_keys(song, *HASH_KEYS)
+            existing_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
 
             if existing_song:
                 # delete matched item
-                local_music_ex_data.remove(song)
-                archive_deleted_song(song, local_music_ex_deleted_data)
+                local_music_ex_data.remove(existing_song)
+                archive_deleted_song(existing_song, local_music_ex_deleted_data)
 
                 print_message(f"Removed song: {song['title']}", bcolors.OKBLUE, args)
 

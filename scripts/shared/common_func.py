@@ -107,8 +107,8 @@ def renew_lastupdated(local_json_ex_path, dest_html_path, args):
 def json_to_id_value_map(json, id_key):
     return {int(song['id']):song for song in json}
 
-def json_to_hash_value_map(json, generate_hash_func):
-    return {generate_hash_func(song):song for song in json}
+def json_to_hash_value_map(json, generate_hash_func, *keys):
+    return {generate_hash_func(song, *keys):song for song in json}
 
 def generate_hash(text_input):
     # Create a new SHA-256 hash object
@@ -121,6 +121,10 @@ def generate_hash(text_input):
     hash_result = sha256_hash.hexdigest()
 
     return hash_result
+
+def generate_hash_from_keys(song, *keys):
+    hash_string = ''.join(str(song[key]) for key in keys)
+    return generate_hash(hash_string)
 
 def maimai_generate_hash(song):
     if 'lev_utage' in song:
