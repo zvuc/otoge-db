@@ -25,7 +25,10 @@ CHARACTER_TABLE = {
     "日向千夏": "LEAF",
     "柏木美亜": "FIRE",
     "東雲つむぎ": "AQUA",
-    "皇城セツナ": "FIRE"
+    "皇城セツナ": "FIRE",
+    "あかニャン": "FIRE",
+    "みどニャン": "LEAF",
+    "あおニャン": "AQUA"
 }
 
 def load_new_song_data():
