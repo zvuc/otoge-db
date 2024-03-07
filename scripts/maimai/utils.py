@@ -164,8 +164,8 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
             if existing_song:
                 # delete matched item
-                local_music_ex_data.remove(song)
-                archive_deleted_song(song, local_music_ex_deleted_data)
+                local_music_ex_data.remove(existing_song)
+                archive_deleted_song(existing_song, local_music_ex_deleted_data)
 
                 print_message(f"Removed song: {song['title']}", bcolors.OKBLUE, args)
 
