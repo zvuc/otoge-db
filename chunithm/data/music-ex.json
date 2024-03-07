@@ -1556,7 +1556,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/放課後マーメイド",
     "date": "20230608",
-    "intl": "1"
+    "intl": "1",
+    "date_intl_1": "20230928"
   },
   {
     "id": "2386",
@@ -28660,7 +28661,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/カリスマ煉獄天神",
     "date": "20231012",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_1": "20240307"
   },
   {
     "id": "2469",
@@ -58502,7 +58504,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Λlteration",
     "date": "20231012",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_1": "20240307"
   },
   {
     "id": "245",
@@ -70210,7 +70213,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Singularity",
     "date": "20231122",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_1": "20240307"
   },
   {
     "id": "2554",
