@@ -53,7 +53,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-const.py --maimai --nocolors --escape --markdown --no_timestamp --no_verbose
+            python scripts/update-const.py --maimai --all --nocolors --escape --markdown --no_timestamp --no_verbose
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
