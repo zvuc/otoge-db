@@ -94,9 +94,9 @@ def _update_song_const_data(song, args):
         #     continue
 
         # Skip if utage
-        if song['lev_lnt'] != '':
-            print_message(f"Skipping song (LUNATIC)", bcolors.ENDC, args, errors_log, args.no_verbose)
-            return
+        # if song['lev_lnt'] != '':
+        #     print_message(f"Skipping song (LUNATIC)", bcolors.ENDC, args, errors_log, args.no_verbose)
+        #     return
 
         # Check if chart type exists in current song
         song_lv = song[chart] if chart in song else None
