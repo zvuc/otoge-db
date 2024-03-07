@@ -14,6 +14,7 @@ errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1Nhr-lC1u11WPkUPVTatnNrKWCmVLglaA6hZHgh56N6w'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_CACHE_DIR = 'chunithm/google_sheets_cache'
+HASH_KEYS = ['title', 'artist', 'we_kanji']
 CHARTS = [
     # ['lev_bas', 'BAS'],
     ['lev_adv', '', 'ADV'],
@@ -60,7 +61,7 @@ def update_const_data(args):
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', 'id', args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', HASH_KEYS, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
