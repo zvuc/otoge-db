@@ -3045,6 +3045,7 @@
     "lev_adv": "7",
     "lev_exp": "10+",
     "lev_mas": "13",
+    "lev_remas": "13",
     "sort": "799",
     "title": "言ノ葉カルマ",
     "title_kana": "コトノハカルマ",
@@ -16217,7 +16218,6 @@
   {
     "artist": "R Sound Design feat.向日葵",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "2",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
@@ -16232,7 +16232,6 @@
   {
     "artist": "ツミキ feat.月乃",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -16247,7 +16246,6 @@
   {
     "artist": "Zekk",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
@@ -16659,6 +16657,51 @@
     "version": "24014"
   },
   {
+    "artist": "Kanaria",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "12+",
+    "image_url": "4c8911dff643e5cb.png",
+    "release": "240308",
+    "sort": "111",
+    "title": "QUEEN",
+    "title_kana": "QUEEN",
+    "version": "24016"
+  },
+  {
+    "artist": "A4。",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "12+",
+    "image_url": "0412717b893fe247.png",
+    "release": "240308",
+    "sort": "113",
+    "title": "天使の翼。",
+    "title_kana": "テンシノツハサ",
+    "version": "24016"
+  },
+  {
+    "artist": "Kai",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
+    "image_url": "a98a61705b5d5c24.png",
+    "release": "240308",
+    "sort": "112",
+    "title": "さよならプリンセス",
+    "title_kana": "サヨナラフリンセス",
+    "version": "24016"
+  },
+  {
     "artist": "TJ.hangneil",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "7",
@@ -16691,7 +16734,6 @@
   {
     "artist": "rintaro soma",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "7",
     "dx_lev_adv": "10",
     "dx_lev_exp": "13+",
