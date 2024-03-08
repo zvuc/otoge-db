@@ -10045,7 +10045,8 @@
     "date": "20140515",
     "intl": "1",
     "date_intl_1": "000000",
-    "lev_remas": "13"
+    "lev_remas": "13",
+    "lev_remas_i": "13.3"
   },
   {
     "artist": "角田信朗「ヒーローバンク」",
@@ -56129,7 +56130,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "13.0",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
@@ -56177,7 +56178,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "12.9",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
@@ -56225,7 +56226,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "12.8",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
