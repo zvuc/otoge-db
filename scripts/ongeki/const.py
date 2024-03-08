@@ -18,7 +18,7 @@ HASH_KEYS = ['title', 'artist', 'date', 'lunatic']
 CHARTS = [
     # ['lev_bas', 'BAS'],
     ['lev_adv', '', 'ADVANCED'],
-    ['lev_exp', '', 'EXPERT'],
+    ['lev_exc', '', 'EXPERT'],
     ['lev_mas', '', 'MASTER'],
     ['lev_lnt', '', 'LUNATIC']
 ]
