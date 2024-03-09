@@ -2,8 +2,7 @@ name: "[Ongeki] Fetch new songs"
 
 on:
   schedule:
-    - cron: '0 2 * * THU'
-    - cron: '0 4 * * THU'
+    - cron: '0 0-5 * * 3-5'
   workflow_dispatch:
 
 jobs:
