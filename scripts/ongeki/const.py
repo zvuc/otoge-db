@@ -154,8 +154,10 @@ def _update_song_const_data(song, args):
             # Print message in red if value should have been found
             # If this message prints, high chance that title was not matched properly
             if evaluate_lv_num(song_lv, '>=11'):
+                lazy_print_song_header(f"{song_id}, {title}", song_diffs, args, errors_log)
                 print_message(f"Chart not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, args, errors_log)
             elif evaluate_lv_num(song_lv, '>=10') and chart == 'lev_mas':
+                lazy_print_song_header(f"{song_id}, {title}", song_diffs, args, errors_log)
                 print_message(f"Chart not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, args, errors_log)
             else:
                 print_message(f"Chart not found in sheet ({chart_diff}, {song_lv})", bcolors.ENDC, args, errors_log, args.no_verbose)
