@@ -98,8 +98,8 @@ def add_intl_info(args):
             if we_star is not None:
                 # Add song to dictionary with date
                 wiki_song = {
-                    'title': title,
-                    'artist': artist,
+                    'title': normalize_title(title),
+                    'artist': normalize_title(artist),
                     'date': date,
                     'we_kanji': we_kanji,
                     'we_star': we_star
@@ -108,8 +108,8 @@ def add_intl_info(args):
                 # Match WORLDS END songs with JSON data using we_kanji and we_star
                 for song in local_music_ex_data:
                     # Match found, compare WORLDS END chart levels
-                    if (song['title'] == wiki_song['title'] and
-                        song['artist'] == wiki_song['artist'] and
+                    if (normalize_title(song['title']) == wiki_song['title'] and
+                        normalize_title(song['artist']) == wiki_song['artist'] and
                         song['we_kanji'] == wiki_song['we_kanji'] and
                         song['we_star'] == wiki_song['we_star']):
 
@@ -132,12 +132,12 @@ def add_intl_info(args):
                 lev_adv = song_details[3].text.strip()
                 lev_exp = song_details[4].text.strip()
                 lev_mas = song_details[5].text.strip()
-                lev_ult = song_details[6].text.strip() if len(song_details) > 6 else ""
+                # lev_ult = song_details[6].text.strip() if len(song_details) > 6 else ""
 
                 # Add song to dictionary with date
                 wiki_song = {
-                    'title': title,
-                    'artist': artist,
+                    'title': normalize_title(title),
+                    'artist': normalize_title(artist),
                     'date': date,
                     'lev_bas': lev_bas,
                     'lev_adv': lev_adv,
@@ -148,8 +148,8 @@ def add_intl_info(args):
                 # Match non-WORLDS END songs with JSON data
                 for song in local_music_ex_data:
                     # Match found, compare level numbers
-                    if (song['title'] == wiki_song['title'] and
-                        song['artist'] == wiki_song['artist'] and
+                    if (normalize_title(song['title']) == wiki_song['title'] and
+                        normalize_title(song['artist']) == wiki_song['artist'] and
                         song['lev_bas'] == wiki_song['lev_bas'] and
                         song['lev_adv'] == wiki_song['lev_adv'] and
                         song['lev_exp'] == wiki_song['lev_exp'] and

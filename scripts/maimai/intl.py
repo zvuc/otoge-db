@@ -80,8 +80,8 @@ def add_intl_info(args):
 
             # Add song to dictionary with date
             wiki_song = {
-                'title': title,
-                'artist': artist,
+                'title': normalize_title(title),
+                'artist': normalize_title(artist),
                 'date': date,
                 'kanji': kanji,
                 'lev_utage': lev_utage
@@ -91,8 +91,8 @@ def add_intl_info(args):
             for song in local_music_ex_data:
                 # Match found, compare UTAGE chart levels
                 if ('kanji' in song and
-                    song['title'] == wiki_song['title'] and
-                    song['artist'] == wiki_song['artist'] and
+                    normalize_title(song['title']) == wiki_song['title'] and
+                    normalize_title(song['artist']) == wiki_song['artist'] and
                     song['kanji'] == wiki_song['kanji'] and
                     song['dx_lev_utage'] == wiki_song['lev_utage']):
 
@@ -118,8 +118,8 @@ def add_intl_info(args):
 
                 # Add song to dictionary with date
                 wiki_song = {
-                    'title': title,
-                    'artist': artist,
+                    'title': normalize_title(title),
+                    'artist': normalize_title(artist),
                     'date': date,
                     'lev_bas': lev_bas,
                     'lev_adv': lev_adv,
@@ -135,8 +135,8 @@ def add_intl_info(args):
                     # ipdb.set_trace()
 
                     # Match found, compare level numbers
-                    if (song['title'] == wiki_song['title'] and
-                        song['artist'] == wiki_song['artist'] and
+                    if (normalize_title(song['title']) == wiki_song['title'] and
+                        normalize_title(song['artist']) == wiki_song['artist'] and
                         song['dx_lev_bas'] == wiki_song['lev_bas'] and
                         song['dx_lev_adv'] == wiki_song['lev_adv'] and
                         song['dx_lev_exp'] == wiki_song['lev_exp'] and
