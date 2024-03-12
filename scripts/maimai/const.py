@@ -87,10 +87,11 @@ def _update_song_const_data(song, args):
         key_chart_i = f'{chart}_i'
         found_sheet = None
 
-        # # Skip if constant value is already filled
-        # if key_chart_i in song and song[key_chart_i] != '':
-        #     print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, args)
-        #     continue
+        # If --overwrite is not set, skip charts with existing values
+        if not args.overwrite:
+            if key_chart_i in song and song[key_chart_i] != '':
+                print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, args, errors_log, args.no_verbose)
+                continue
 
         # Skip if utage
         if 'lev_utage' in song:

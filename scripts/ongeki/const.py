@@ -88,10 +88,14 @@ def _update_song_const_data(song, args):
         key_chart_i = f'{chart}_i'
         found_sheet = None
 
-        # # Skip if constant value is already filled
-        # if key_chart_i in song and song[key_chart_i] != '':
-        #     print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, args)
-        #     continue
+        # If --overwrite is not set, skip charts with existing values
+        if not args.overwrite:
+            if key_chart_i in song and song[key_chart_i] != '':
+                print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, args, errors_log, args.no_verbose)
+                continue
+
+        if 'ソロver' in title:
+            normalized_title = normalize_title(re.sub(r'\s*-\s*.*ソロver\.-$', '', title))
 
         # Skip if utage
         # if song['lev_lnt'] != '':
