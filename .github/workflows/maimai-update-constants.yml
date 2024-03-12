@@ -74,7 +74,7 @@ jobs:
             echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
             echo "No changes. Skipping PR request"
           else
-            git commit -m "data(maimai): [bot] update song constants ${{ steps.extract_date.outputs.DATESTAMP }}"
+            git commit -m "data(maimai): [bot] update song constants"
             git push origin maimai-staging --force-with-lease
             echo "Commited changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
