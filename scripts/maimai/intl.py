@@ -115,6 +115,7 @@ def add_intl_info(args):
                 lev_adv = song_details[3].text.strip()
                 lev_exp = song_details[4].text.strip()
                 lev_mas = song_details[5].text.strip()
+                lev_remas = song_details[6].text.strip()
 
                 # Add song to dictionary with date
                 wiki_song = {
@@ -124,7 +125,8 @@ def add_intl_info(args):
                     'lev_bas': lev_bas,
                     'lev_adv': lev_adv,
                     'lev_exp': lev_exp,
-                    'lev_mas': lev_mas
+                    'lev_mas': lev_mas,
+                    'lev_remas': lev_remas
                 }
 
                 # Match non-UTAGE songs with JSON data
@@ -136,23 +138,23 @@ def add_intl_info(args):
 
                     # Match found, compare level numbers
                     if (normalize_title(song['title']) == wiki_song['title'] and
-                        normalize_title(song['artist']) == wiki_song['artist'] and
-                        song['dx_lev_bas'] == wiki_song['lev_bas'] and
-                        song['dx_lev_adv'] == wiki_song['lev_adv'] and
-                        song['dx_lev_exp'] == wiki_song['lev_exp'] and
-                        song['dx_lev_mas'] == wiki_song['lev_mas']):
+                        normalize_title(song['artist']) == wiki_song['artist']):
 
+                        if ('dx_lev_bas' in song and
+                            song['dx_lev_bas'] == wiki_song['lev_bas'] and
+                            song['dx_lev_adv'] == wiki_song['lev_adv'] and
+                            song['dx_lev_exp'] == wiki_song['lev_exp'] and
+                            song['dx_lev_mas'] == wiki_song['lev_mas']) or 'dx_lev_remas' in song and song['dx_lev_remas'] == wiki_song['lev_remas']:
 
+                            print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
+                            # Update JSON data
+                            song['intl'] = "1"
+                            print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                        print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
-                        # Update JSON data
-                        song['intl'] = "1"
-                        print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            song['date_intl_1'] = wiki_song['date']
+                            print_message(f"Added Intl. ver. release date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                        song['date_intl_1'] = wiki_song['date']
-                        print_message(f"Added Intl. ver. release date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
-
-                        break
+                            break
 
     # Write updated JSON data to file
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
