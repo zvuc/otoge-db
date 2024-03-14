@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector(`input[value="${initialColorScheme}"]`).checked = true;
   applyColorScheme(); // Apply initial color scheme
 
+
+  // Language
   langOptionInput.forEach(input => {
     input.addEventListener('change', setLanguage);
   });
@@ -56,6 +58,29 @@ document.addEventListener('DOMContentLoaded', function () {
   // Check the initial language
   const initialLanguage = userLanguage || 'ja';
   document.querySelector(`input[value="${initialLanguage}"]`).checked = true;
+
+  function setTranslationOptions(e) {
+    const currentOption = e.target;
+    const currentOptionId = e.target.id;
+    const currentOptionValue = e.target.checked;
+    const translationOptionsWrapper = document.querySelector('#site-menu .menu-list-item.translation-options');
+
+    if (e) {
+      translationOptionsWrapper.classList.add('setting-changed');
+    }
+
+    // Save the selected language in localStorage
+    localStorage.setItem(`userOption_${currentOptionId}`, currentOptionValue);
+  }
+
+  // Translate Character Names
+  translationOptions.forEach(input => {
+    input.addEventListener('change', setTranslationOptions);
+  });
+
+  // Check the initial language
+  // const initialTranslationOption = userLanguage || 'ja';
+  // document.querySelector(`input[value="${initialLanguage}"]`).checked = true;
 });
 
 

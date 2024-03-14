@@ -5,6 +5,25 @@ const ongeki_chart_list = {
   'lev_mas': 'MASTER',
   'lev_lnt': 'LUNATIC'
 };
+const ongeki_chara_list = {
+  "星咲 あかり": "ch_hoshizaki_akari",
+  "藤沢 柚子": "ch_fujisawa_yuzu",
+  "三角 葵": "ch_misumi_aoi",
+  "高瀬 梨緒": "ch_takase_rio",
+  "結城 莉玖": "ch_yuuki_riku",
+  "藍原 椿": "ch_aihara_tsubaki",
+  "桜井 春菜": "ch_sakurai_haruna",
+  "早乙女 彩華": "ch_saotome_ayaka",
+  "井之原 小星": "ch_inohara_koboshi",
+  "柏木 咲姫": "ch_kashiwagi_saki",
+  "九條 楓": "ch_kujou_kaede",
+  "逢坂 茜": "ch_ousaka_akane",
+  "珠洲島 有栖": "ch_suzushima_arisu",
+  "日向 千夏": "ch_hinata_chinatsu",
+  "柏木 美亜": "ch_kashiwagi_ami",
+  "東雲 つむぎ": "ch_shinonome_tsumugi",
+  "皇城 セツナ": "ch_sumeragi_setsuna"
+};
 let columns_params = [];
 let default_search = [];
 
@@ -77,6 +96,19 @@ function parseChapId(row, includeTrailingSpace) {
   // Others?
   else {
     return chap_id + (includeTrailingSpace ? ' ' : '');
+  }
+}
+
+function translateCharaNames() {
+  return function( row, type, set, meta ) {
+    if ( type === 'sort' || type === 'meta' || userLanguage === 'ja' || userTranslateCharaNamePref == "false") {
+      return row.character;
+    } else {
+      if (row['character'] in ongeki_chara_list) {
+        return getTranslation(userLanguage, ongeki_chara_list[`${row['character']}`]);
+      }
+      return row.character;
+    }
   }
 }
 
@@ -276,7 +308,7 @@ $(document).ready(function() {
         // displayTitle: "相手キャラ",
         displayTitle: getTranslation(userLanguage,'col_chara'),
         name: "character",
-        data: "character",
+        data: translateCharaNames(),
         className: "chara character",
         render: function ( data, type, row ) {
           if ( type === 'display' ) {
@@ -288,7 +320,7 @@ $(document).ready(function() {
           }
         },
         customDropdownSortSource: 'chara_id',
-        width: "10em",
+        width: "150px",
         filterable: true
       },
       {

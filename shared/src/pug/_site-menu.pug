@@ -41,9 +41,11 @@
         label.switch(for='siteLanguageKo') 한국어
         input#siteLanguageEn(type='radio' name='siteLanguage' value='en')
         label.switch(for='siteLanguageEn') English
-      p.option-caption(data-i18n='option_language_desc')
-        | 選択した言語に完全に切り替えるにはリロードが必要です
-      div.refresh-wrap
-        button.btn.refresh-btn(onclick="location.reload();" data-i18n="refresh") 今リロード
 
     block game_menu
+
+    div.menu-list-item.refresh-wrap
+      p.option-caption(data-i18n='option_language_desc')
+        | 選択した言語に完全に切り替えるにはリロードが必要です
+      div.refresh-btn-wrap
+        button.btn.refresh-btn(onclick="location.reload();" data-i18n="refresh") 今リロード

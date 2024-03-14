@@ -2,8 +2,10 @@ const colorSchemeInput = document.querySelectorAll('input[name="colorScheme"]');
 const langOptionInput = document.querySelectorAll('input[name="siteLanguage"]');
 const gameRegionChecks = document.querySelectorAll('input[name="gameRegion"]');
 const gameRegionQuickSwitch = document.getElementById('gameRegionQuickSwitch');
-let translations_latest = 'translations240314';
+const translationOptions = document.querySelectorAll('input[name="translationOptions"]');
+let translations_latest = 'translations240314b';
 let userLanguage = localStorage.getItem('userLanguage');
+let userTranslateCharaNamePref = localStorage.getItem('userOption_translateCharaNames');
 let cachedTranslations = localStorage.getItem(translations_latest);
 
 
@@ -16,9 +18,11 @@ if (!currentRegion) {
 const initialGameRegion = currentRegion || 'jp';
 document.querySelector(`input[value="${initialGameRegion}"]`).checked = true;
 gameRegionQuickSwitch.checked = (initialGameRegion === 'jp' ? false : true);
-document.documentElement.setAttribute('data-game-region', currentRegion);
+document.documentElement.setAttribute('data-game-region', currentRegion || 'jp');
 // switchGameRegion(); // Apply initial region
 
+// Set default data-lang
+document.documentElement.setAttribute('data-lang', userLanguage || 'ja');
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -115,6 +119,8 @@ function setLanguage(e) {
   applyTranslations(JSON.parse(cachedTranslations), languageCode);
   return Promise.resolve(); // Return a resolved Promise for consistency
 }
+
+
 
 function initTranslations() {
   if (!userLanguage) {

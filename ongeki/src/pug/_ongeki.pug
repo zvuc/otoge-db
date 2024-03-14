@@ -50,5 +50,12 @@ block table_rows
 
   th(class='never detail-hidden') <span>NEW</span>
 
+block game_menu
+  div.menu-list-item.translation-options
+      span.menu-list-item-label(data-i18n='option_translation') 翻訳設定
+      .chara-name-translate-switcher
+        input#translateCharaNames(type='checkbox' name='translationOptions' checked='')
+        label.switch(for='translateCharaNames' data-i18n='option_translation_chara_name') メインキャラクターの名前を音訳
+
 block lastupdated
   | 20240307

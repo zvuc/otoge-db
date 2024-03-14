@@ -329,29 +329,35 @@
 		// }
 	}
 
-	.lang-settings {
-		min-height: 150px;
+	.refresh-wrap {
+		min-height: 80px;
 
-		.refresh-wrap {
+		.refresh-btn-wrap {
 			display: none;
 		}
-		.lang-switcher {
-			padding: 5px 0;
-		}
-
 		p.option-caption {
 			display: none;
 			color: rgb(var(--ui-color-warning));
 		}
+	}
 
-		&.setting-changed {
-			.option-caption,
-			.refresh-wrap {
-				display: block;
-			}
+	.lang-settings,
+	.translation-options {
+		.segmented-btn-group {
+			padding: 5px 0;
 		}
 	}
 
+	.setting-changed ~ .refresh-wrap {
+		.option-caption,
+		.refresh-btn-wrap {
+			display: block;
+		}
+	}
+}
 
+html[data-lang="ja"] .translation-options {
+	opacity: 0.3;
+	pointer-events: none;
 }
 
