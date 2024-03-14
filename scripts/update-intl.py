@@ -12,6 +12,7 @@ parser.add_argument('--escape', action="store_true", help='Escape unsafe charact
 parser.add_argument('--no_timestamp', action="store_true", help='Don\'t print timestamps on message output')
 parser.add_argument('--no_verbose', action="store_true", help='Only print significant changes and errors')
 parser.add_argument('--skipwiki', action="store_true", help='Skip wiki fetch')
+parser.add_argument('--strict', action="store_true", help='Strict match songs by checking levels for all charts')
 
 args = parser.parse_args()
 
