@@ -31241,7 +31241,8 @@
     "lev_mas_designer": "Luxizhel",
     "lev_exp_i": "12.7",
     "lev_mas_i": "14.3",
-    "date_added": "20240216"
+    "date_added": "20200807",
+    "date_updated": "20240216"
   },
   {
     "artist": "MARETU",
@@ -56236,7 +56237,7 @@
     "title": "系ぎて",
     "title_kana": "ツナキテ",
     "version": "24015",
-    "bpm": "088",
+    "bpm": "88",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "344",
     "dx_lev_bas_notes_tap": "282",
@@ -56278,7 +56279,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/828534",
     "intl": "1",
     "date_intl_added": "20240229",
-    "key_intl": "○",
+    "key_intl": "",
     "date_added": "20240229"
   },
   {
