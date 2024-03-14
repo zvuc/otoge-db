@@ -2,7 +2,7 @@ const colorSchemeInput = document.querySelectorAll('input[name="colorScheme"]');
 const langOptionInput = document.querySelectorAll('input[name="siteLanguage"]');
 const gameRegionChecks = document.querySelectorAll('input[name="gameRegion"]');
 const gameRegionQuickSwitch = document.getElementById('gameRegionQuickSwitch');
-let translations_latest = 'translations240217';
+let translations_latest = 'translations240314';
 let userLanguage = localStorage.getItem('userLanguage');
 let cachedTranslations = localStorage.getItem(translations_latest);
 

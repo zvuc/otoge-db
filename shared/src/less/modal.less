@@ -886,6 +886,32 @@ div.dtr-modal-content .details-table {
 				.date {
 					color: rgba(var(--ui-color-foreground-040));
 				}
+
+				.icon-wrap {
+					filter: saturate(0%) contrast(50%) brightness(150%);
+
+					.green-check-icon {
+						display: none;
+					}
+				}
+			}
+
+			.icon-wrap {
+				width: 32px;
+				height: 32px;
+				position: relative;
+
+				svg {
+					filter: drop-shadow(0 1px 0 rgba(0,0,0,0.2));
+				}
+
+				.green-check-icon {
+					--icon-size: 14px;
+					position: absolute;
+					bottom: 0;
+					right: -7px;
+					margin: 0;
+				}
 			}
 
 			.region-label {
@@ -894,30 +920,64 @@ div.dtr-modal-content .details-table {
 			}
 			&.jp {
 				.region-label {
-					&:before {
-						content: "🇯🇵 ";
-					}
 				}
 			}
 			&.intl {
 				.region-label {
-					&:before {
-						content: "🌏 ";
-					}
 				}
 			}
 
 			.date {
-				display: flex;
-				align-items: center;
+				.line {
+					display: flex;
+					align-items: center;
+				}
 			}
 
-			.green-check-icon {
+			.green-check-icon,
+			.plus-icon,
+			.cross-icon {
 				margin-right: 3px;
 			}
 
+			.plus-icon {
+				@icon-color: #34BC00;
+				@icon-svg-data: escape(
+					'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><g fill="none" fill-rule="evenodd"><path stroke="@{icon-color}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h8M8 12V4"/></g></svg>'
+				);
+				--icon-size: 16px;
+				display: inline-flex;
+				width: var(--icon-size);
+				height: var(--icon-size);
+				background-image: url('data:image/svg+xml,@{icon-svg-data}');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: var(--icon-size) var(--icon-size);
+				background-color: rgba(var(--ui-color-background-100),0.5);
+				// box-shadow: 0 0 0 1px rgba(@check-icon-color,0.5) inset;
+				border-radius: var(--icon-size);
+			}
+
+			.cross-icon {
+				@icon-color: #aaa;
+				@icon-svg-data: escape(
+					'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><g fill="none" fill-rule="evenodd"><path stroke="@{icon-color}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5.172 5.172 5.656 5.656M5.172 10.828l5.656-5.656"/></g></svg>'
+				);
+				--icon-size: 16px;
+				display: inline-flex;
+				width: var(--icon-size);
+				height: var(--icon-size);
+				background-image: url('data:image/svg+xml,@{icon-svg-data}');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: var(--icon-size) var(--icon-size);
+				background-color: rgba(var(--ui-color-background-100),0.5);
+				// box-shadow: 0 0 0 1px rgba(@check-icon-color,0.5) inset;
+				border-radius: var(--icon-size);
+			}
+
 			.lock-status {
-				grid-row: 3;
+				// grid-row: 3;
 				display: flex;
 				gap: 5px;
 				justify-content: center;
@@ -926,11 +986,12 @@ div.dtr-modal-content .details-table {
 				margin: 5px -8px -8px -8px;
 				border-radius: 2px;
 				background-color: rgba(var(--lv-color-adv),0.2);
+				text-align: center;
 
 				@media screen and (min-width: 640px) {
 					flex-flow: column;
 					grid-column: 2;
-					grid-row: 1 / span 2;
+					grid-row: 1 / span 3;
 					width: 100px;
 					padding: 8px;
 					margin: -8px;

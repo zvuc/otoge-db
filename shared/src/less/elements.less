@@ -10,6 +10,11 @@ a {
 svg.symbol {
 	width: 16px;
 	height: 16px;
+
+	&-32 {
+		width: 32px;
+		height: 32px;
+	}
 }
 
 svg.otogedb-logo {
@@ -301,18 +306,19 @@ select {
 }
 
 .green-check-icon {
-	@check-icon-color: #34BC00;
+	@check-icon-color: #fff;
 	@check-icon-svg-data: escape(
 		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="@{check-icon-color}" stroke-width="2px" d="M4.5 8.5l2.5 2.5 4.5-5" stroke-linejoin="round" stroke-linecap="round"  vector-effect="non-scaling-stroke"/></svg>'
 	);
+	--icon-size: 18px;
 	display: inline-flex;
-	width: 18px;
-	height: 18px;
+	width: var(--icon-size);
+	height: var(--icon-size);
 	background-image: url('data:image/svg+xml,@{check-icon-svg-data}');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 16px 16px;
-	background-color: rgba(var(--ui-color-background-100));
-	box-shadow: 0 0 0 1px rgba(@check-icon-color,0.5) inset;
-	border-radius: 18px;
+	background-size: calc(var(--icon-size) - 2px) calc(var(--icon-size) - 2px);
+	background-color: #34BC00;
+	// box-shadow: 0 0 0 1px rgba(@check-icon-color,0.5) inset;
+	border-radius: var(--icon-size);
 }

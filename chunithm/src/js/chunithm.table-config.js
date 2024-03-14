@@ -10,7 +10,7 @@ let columns_params = [];
 let default_search = [];
 
 function setDefaultOrder() {
-  var regional_date_column_index = (currentRegion === 'intl' ? getColumnIndexByName('date_intl_1') : getColumnIndexByName('date'))
+  var regional_date_column_index = (currentRegion === 'intl' ? getColumnIndexByName('date_intl_added') : getColumnIndexByName('date_added'))
 
   if (flat_view) {
     // 難易度 , Lv , Date
@@ -214,7 +214,7 @@ $(document).ready(function() {
         className: "details version",
         filterable: true,
         render: renderInWrapper(),
-        customDropdownSortSource: "date",
+        customDropdownSortSource: "date_added",
         width: "12em",
       },
       {
@@ -456,10 +456,12 @@ $(document).ready(function() {
       {
         // displayTitle: "追加日（Int'l Ver.）",
         displayTitle: getTranslation(userLanguage,'col_added_date_intl'),
-        name: "date_intl_1",
+        name: "date_intl_added",
         data: function( row, type, set, meta ) {
-          if (row.date_intl_1 && row.date_intl_1 !== '') {
-            return formatDate(row.date_intl_1);
+          if (row.date_intl_updated && row.date_intl_updated !== '') {
+            return formatDate(row.date_intl_updated);
+          } else if (row.date_intl_added && row.date_intl_added !== '') {
+            return formatDate(row.date_intl_added);
           }
         },
         defaultContent: "",
@@ -479,10 +481,14 @@ $(document).ready(function() {
       {
         // displayTitle: "追加日",
         displayTitle: getTranslation(userLanguage,'col_added_date'),
-        name: "date",
+        name: "date_added",
         // data: "date",
         data: function( row, type, set, meta ) {
-          return formatDate(row.date)
+          if (row.date_updated) {
+            return formatDate(row.date_updated)
+          } else {
+            return formatDate(row.date_added)
+          }
         },
         className: "date detail-hidden",
         // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
@@ -608,36 +614,63 @@ $(document).ready(function() {
               }
 
               function generatePlayableInfoHtml(col, data, prefix = '') {
-                if (data['date']) {
-                  var date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date']));
-                } else {
-                  var date_display = getTranslation(userLanguage,'song_playable');
-                }
+                const displayDates = (region) => {
+                  const dateAddedValue = data[region === 'jpn' ? 'date_added' : 'date_intl_added'];
+                  const dateUpdatedValue = data[region === 'jpn' ? 'date_updated' : 'date_intl_updated'];
+                  const dateUpdatedLabelTextKey = 'date_updated_with_date';
 
-                if (data['date_intl_1']) {
-                  var intl_date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(data['date_intl_1']));
-                } else {
-                  var intl_date_display = getTranslation(userLanguage,'song_playable');
-                }
+                  if (data['we_kanji'] != '') {
+                    dateUpdatedLabelTextKey = 'date_updated_revived_with_date'
+                  } else if (data['lev_ult'] != '') {
+                    dateUpdatedLabelTextKey = 'date_updated_new_chart_with_date'
+                  }
 
-                var lock_status_html = `
+                  if (dateAddedValue) {
+                    return `
+                      <span class="line"><span class="plus-icon"></span>${getTranslation(userLanguage, 'date_added_with_date').replace('__date__', formatDate(dateAddedValue))}</span>
+                      ${dateUpdatedValue ? `<span class="line"><span class="plus-icon"></span>${getTranslation(userLanguage, dateUpdatedLabelTextKey).replace('__date__', formatDate(dateUpdatedValue))}</span>` : ''}
+                    `;
+                  } else {
+                    return `
+                      <span class="line"><span class="green-check-icon"></span>${getTranslation(userLanguage, 'song_playable')}</span>
+                    `;
+                  }
+                };
+
+                const displayUnavailable = () => {
+                  return `
+                      <span class="line"><span class="cross-icon"></span>${getTranslation(userLanguage, 'song_unavailable')}</span>
+                    `;
+                };
+
+                const lock_status_html = `
                   <span class="lock-status">
                     <span class="key-icon"></span>
-                    <span class="lock-status-text">${getTranslation(userLanguage,'unlock_needed')}</span>
+                    <span class="lock-status-text">${getTranslation(userLanguage, 'unlock_needed')}</span>
                   <span>
                 `;
 
-                var html_output = `
-                <div class="region-availability-chart">
-                  <div class="region jp ${ (data['intl'] !== "2") ? 'available' : 'unavailable'}">
-                    <span class="region-label">${getTranslation(userLanguage,'version_jp')}</span>
-                    <span class="date">${ (data['intl'] !== "2") ? `<span class="green-check-icon"></span>${date_display}` : getTranslation(userLanguage,'song_unavailable') }</span>
+                const html_output = `
+                  <div class="region-availability-chart">
+                    <div class="region jp ${data['intl'] !== "2" ? 'available' : 'unavailable'}">
+                      <span class="icon-wrap">
+                        <svg class="symbol-32 flag-jp" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#flag-jp"></use></svg>
+                        <span class="green-check-icon"></span>
+                      </span>
+                      <span class="region-label">${getTranslation(userLanguage, 'version_jp')}</span>
+                      <span class="date">${data['intl'] !== "2" ? displayDates('jpn') : displayUnavailable()}</span>
+                      ${data['key'] && data['key'] === '○' ? lock_status_html : ''}
+                    </div>
+                    <div class="region intl ${data['intl'] !== "0" ? 'available' : 'unavailable'}">
+                      <span class="icon-wrap">
+                        <svg class="symbol-32 globe-asia" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#globe-asia"></use></svg>
+                        <span class="green-check-icon"></span>
+                      </span>
+                      <span class="region-label">${getTranslation(userLanguage, 'version_intl')}</span>
+                      <span class="date">${data['intl'] !== "0" ? displayDates('intl') : displayUnavailable()}</span>
+                      ${data['key_intl'] && data['key_intl'] === '○' ? lock_status_html : ''}
+                    </div>
                   </div>
-                  <div class="region intl ${ (data['intl'] !== "0") ? 'available' : 'unavailable'}">
-                    <span class="region-label">${getTranslation(userLanguage,'version_intl')}</span>
-                    <span class="date">${ (data['intl'] !== "0") ? `<span class="green-check-icon"></span>${intl_date_display}` : getTranslation(userLanguage,'song_unavailable') }</span>
-                  </div>
-                </div>
                 `;
 
                 return html_output;
@@ -740,14 +773,20 @@ $(document).ready(function() {
           }
         },
         "rowGroup": {
-          dataSrc: 'date',
+          dataSrc: function(row) {
+            if (row.date_updated) {
+              return row.date_updated;
+            } else {
+              return row.date_added;
+            }
+          },
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
             if (group === '') {
               date_display = 'NEW'
             } else if (group === 'No group') {
-              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', '???')
+              date_display = getTranslation(userLanguage,'date_updated_with_date').replace('__date__', '???')
             } else {
-              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+              date_display = getTranslation(userLanguage,'date_updated_with_date').replace('__date__', formatDate(group, 'weekday'))
             }
             return `<div>${date_display}</div>`;
             // enable rows count again when I find a way to show all rows in other pages

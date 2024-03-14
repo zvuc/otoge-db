@@ -357,8 +357,8 @@ function tableInitCompleteFunctions(table) {
     table.api().order(setDefaultOrder()).draw()
 
     // Toggle date columns
-    var jp_date_column = table.api().column(getColumnIndexByName('date'));
-    var intl_date_column = table.api().column(getColumnIndexByName('date_intl_1'));
+    var jp_date_column = table.api().column(getColumnIndexByName('date_added'));
+    var intl_date_column = table.api().column(getColumnIndexByName('date_intl_added'));
 
     if (currentRegion === 'intl') {
       jp_date_column.visible(false, false);
@@ -414,7 +414,7 @@ function generateFilterDropdowns(table) {
         // var val = $(this).val();
 
         // when applying filter, control rowgroup visibility
-        if (column.index() === getColumnIndexByName('date') || (val_e === "" && order[0][0] === getColumnIndexByName('date'))) {
+        if (column.index() === getColumnIndexByName('date_added') || (val_e === "" && order[0][0] === getColumnIndexByName('date_added'))) {
           column.rowGroup().enable();
           // console.log('group enabled (filter)');
         } else {
@@ -521,17 +521,29 @@ function toggleDateRowGroup(table, default_search) {
   }
 
   // Disable rowgroup unless sorting by date
-  if (order[0][0] !== getColumnIndexByName('date') || order[0][0] !== getColumnIndexByName('date_intl_1')) {
+  if (order[0][0] !== getColumnIndexByName('date_added') || order[0][0] !== getColumnIndexByName('date_intl_added')) {
     // console.log('rowgroup disabled');
     table.api().rowGroup().disable();
   }
   // enable rowgroup if sorting by date
-  if (order[0][0] === getColumnIndexByName('date')) {
+  if (order[0][0] === getColumnIndexByName('date_added')) {
     // console.log('rowgroup enabled');
-    table.api().rowGroup().dataSrc('date').enable();
+    table.api().rowGroup().dataSrc(function(row) {
+      if (row.date_updated) {
+        return row.date_updated;
+      } else {
+        return row.date_added;
+      }
+    }).enable();
   }
-  else if (order[0][0] === getColumnIndexByName('date_intl_1')) {
-    table.api().rowGroup().dataSrc('date_intl_1').enable();
+  else if (order[0][0] === getColumnIndexByName('date_intl_added')) {
+    table.api().rowGroup().dataSrc(function(row) {
+      if (row.date_intl_updated) {
+        return row.date_intl_updated;
+      } else {
+        return row.date_intl_added;
+      }
+    }).enable();
   }
 }
 

@@ -11,10 +11,10 @@ let default_search = [];
 function setDefaultOrder() {
   if (flat_view) {
     // 難易度 , Lv , Date
-    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date'), 'desc']];
+    return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[getColumnIndexByName('date_added'), 'desc']];
   } else {
     // date , ID
-    return [[getColumnIndexByName('date'), 'desc'],[getColumnIndexByName('id'), 'asc']];
+    return [[getColumnIndexByName('date_added'), 'desc'],[getColumnIndexByName('id'), 'asc']];
   }
 }
 
@@ -191,7 +191,7 @@ $(document).ready(function() {
         className: "details version",
         filterable: true,
         render: renderInWrapper(),
-        customDropdownSortSource: "date",
+        customDropdownSortSource: "date_added",
         width: "12em"
       },
       {
@@ -467,12 +467,16 @@ $(document).ready(function() {
       {
         // displayTitle: "追加日",
         displayTitle: getTranslation(userLanguage,'col_added_date'),
-        name: "date",
-        // data: "date",
+        name: "date_added",
+        // data: "date_added",
         data: function( row, type, set, meta ) {
-          return formatDate(row.date)
+          if (row.date_updated) {
+            return formatDate(row.date_updated)
+          } else {
+            return formatDate(row.date_added)
+          }
         },
-        className: "date",
+        className: "date_added detail-hidden",
         filterable: true,
         // render: DataTable.render.date('yyyyMMDD','yyyy-MM-DD'),
         render: function ( data, type, row ) {
@@ -575,6 +579,53 @@ $(document).ready(function() {
 
               }
 
+              function generatePlayableInfoHtml(col, data, prefix = '') {
+                const displayDates = (region) => {
+                  const dateAddedValue = data[region === 'jpn' ? 'date_added' : 'date_intl_added'];
+                  const dateUpdatedValue = data[region === 'jpn' ? 'date_updated' : 'date_intl_updated'];
+
+                  if (dateAddedValue) {
+                    return `
+                      <span class="line"><span class="plus-icon"></span>${getTranslation(userLanguage, 'date_added_with_date').replace('__date__', formatDate(dateAddedValue))}</span>
+                      ${dateUpdatedValue ? `<span class="line"><span class="plus-icon"></span>${getTranslation(userLanguage, 'date_updated_with_date').replace('__date__', formatDate(dateUpdatedValue))}</span>` : ''}
+                    `;
+                  } else {
+                    return `
+                      <span class="line"><span class="green-check-icon"></span>${getTranslation(userLanguage, 'song_playable')}</span>
+                    `;
+                  }
+                };
+
+                const displayUnavailable = () => {
+                  return `
+                      <span class="line"><span class="cross-icon"></span>${getTranslation(userLanguage, 'song_unavailable')}</span>
+                    `;
+                };
+
+                const lock_status_html = `
+                  <span class="lock-status">
+                    <span class="key-icon"></span>
+                    <span class="lock-status-text">${getTranslation(userLanguage, 'unlock_needed')}</span>
+                  <span>
+                `;
+
+                const html_output = `
+                  <div class="region-availability-chart">
+                    <div class="region jp">
+                      <span class="icon-wrap">
+                        <svg class="symbol-32 flag-jp" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#flag-jp"></use></svg>
+                        <span class="green-check-icon"></span>
+                      </span>
+                      <span class="region-label">${getTranslation(userLanguage, 'version_jp')}</span>
+                      <span class="date">${displayDates('jpn')}</span>
+                      ${data['key'] && data['key'] === '○' ? lock_status_html : ''}
+                    </div>
+                  </div>
+                `;
+
+                return html_output;
+              }
+
               function generateChartLevDetailHtml(data, chart_name) {
                 let cur_lev = data[`${chart_name}`];
                 let cur_lev_i = data[`${chart_name}_i`];
@@ -627,6 +678,7 @@ $(document).ready(function() {
               function generateCombinedRows(data, lunatic, columns, columns_params) {
                 var normalRows = columns.map(col => generateRowHtml(col, data)).join('');
                 var charaRows = columns.map(col => generateCharaDetailHtml(col, data)).join('');
+                var playable_info = generatePlayableInfoHtml(columns, data);
                 var chart_detail = columns.map(col => generateChartDetailHtml(col, data)).join('');
                 var chart_detail_lunatic = columns.map(col => generateChartDetailHtml(col, data, 'lunatic')).join('');
 
@@ -653,6 +705,9 @@ $(document).ready(function() {
                       <div class="table-header"><span class="th-label">SONG METADATA</span></div>
                       ${normalRows}
                     </div>
+                    <div class="details-table playable-info">
+                      ${playable_info}
+                    </div>
                   </div>`;
 
                 return combinedRows ? combinedRows : false;
@@ -669,14 +724,20 @@ $(document).ready(function() {
           }
         },
         "rowGroup": {
-          dataSrc: 'date',
+          dataSrc: function(row) {
+            if (row.date_updated) {
+              return row.date_updated;
+            } else {
+              return row.date_added;
+            }
+          },
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
             if (group === '') {
               date_display = 'NEW'
             } else if (group === 'No group') {
-              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', '???')
+              date_display = getTranslation(userLanguage,'date_updated_with_date').replace('__date__', '???')
             } else {
-              date_display = getTranslation(userLanguage,'date_added_with_date').replace('__date__', formatDate(group, 'weekday'))
+              date_display = getTranslation(userLanguage,'date_updated_with_date').replace('__date__', formatDate(group, 'weekday'))
             }
             return `<div>${date_display}</div>`;
             // enable rows count again when I find a way to show all rows in other pages
