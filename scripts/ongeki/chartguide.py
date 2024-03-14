@@ -10,7 +10,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, Comment
 from urllib.request import urlopen
 
-HASH_KEYS = ['title', 'artist', 'date', 'lunatic']
+HASH_KEYS = ['title', 'artist', 'date_added', 'lunatic']
 
 VERSION_MAPPING = {
     'ONGEKI': '01',
@@ -79,7 +79,7 @@ def update_chartguide_data(args):
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', HASH_KEYS, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")

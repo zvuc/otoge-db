@@ -267,11 +267,12 @@ def _add_ex_data_template(song):
     # song['version_name'] = ""
     song['wiki_url'] = ""
 
-    if 'release' in song:
-        song['date'] = f"{parse_date('',song['release']).strftime('%Y%m%d')}"
+    if 'release' in song and song['release'] != '000000':
+        song['date_added'] = f"{parse_date('',song['release']).strftime('%Y%m%d')}"
     else:
-        song['date'] = ""
+        song['date_added'] = ""
 
     song['intl'] = "0"
+    song['date_intl_added'] = "000000"
 
     return song

@@ -88,7 +88,7 @@ def update_chartguide_data(args):
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', HASH_KEYS, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -105,7 +105,7 @@ def _filter_songs_by_date(song_list, date_from, date_until):
     target_song_list = []
 
     for song in song_list:
-        song_date_int = int(song.get("date"))
+        song_date_int = int(song.get("date_added"))
 
         if date_from <= song_date_int <= date_until:
             target_song_list.append(song)

@@ -47,6 +47,11 @@ def add_intl_info(args):
 
     # Iterate through each row
     for row in rows:
+        # Reset utility vars
+        song_matched = False
+        # If B/A/E/M fields are empty, it means only ULTIMA is added at this time
+        only_ultima = False
+
         song_details = row.find_all('td')
 
         # skip header rows
@@ -118,53 +123,79 @@ def add_intl_info(args):
                         song['intl'] = "1"
                         print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                        if 'date_intl_1' not in song:
-                            song['date_intl_1'] = wiki_song['date']
-                            print_message(f"Added Intl. ver. release date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        if 'date_intl_added' not in song:
+                            song['date_intl_added'] = wiki_song['date']
+                            print_message(f"✅ Intl. added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
                             break
 
+                        song_matched = True
                         break
+
+        # Not a WORLDS END song, process normally
         else:
-            # Not a WORLDS END song, process normally
-            # Find song details
-            if song_details:
-                lev_bas = song_details[2].text.strip()
-                lev_adv = song_details[3].text.strip()
-                lev_exp = song_details[4].text.strip()
-                lev_mas = song_details[5].text.strip()
-                # lev_ult = song_details[6].text.strip() if len(song_details) > 6 else ""
+            lev_bas = song_details[2].text.strip()
+            lev_adv = song_details[3].text.strip()
+            lev_exp = song_details[4].text.strip()
+            lev_mas = song_details[5].text.strip()
+            lev_ult = song_details[6].text.strip()
 
-                # Add song to dictionary with date
-                wiki_song = {
-                    'title': normalize_title(title),
-                    'artist': normalize_title(artist),
-                    'date': date,
-                    'lev_bas': lev_bas,
-                    'lev_adv': lev_adv,
-                    'lev_exp': lev_exp,
-                    'lev_mas': lev_mas
-                }
+            # Add song to dictionary with date
+            wiki_song = {
+                'title': normalize_title(title),
+                'artist': normalize_title(artist),
+                'date': date,
+                'lev_bas': lev_bas,
+                'lev_adv': lev_adv,
+                'lev_exp': lev_exp,
+                'lev_mas': lev_mas,
+                'lev_ult': lev_ult
+            }
 
-                # Match non-WORLDS END songs with JSON data
-                for song in local_music_ex_data:
-                    # Match found, compare level numbers
-                    if (normalize_title(song['title']) == wiki_song['title'] and
-                        normalize_title(song['artist']) == wiki_song['artist'] and
-                        song['lev_bas'] == wiki_song['lev_bas'] and
+            # Set only_remas and is_update
+            if (wiki_song['lev_bas'] == '-' and
+                wiki_song['lev_adv'] == '-' and
+                wiki_song['lev_exp'] == '-' and
+                wiki_song['lev_mas'] == '-' and
+                wiki_song['lev_ult'] != '-'):
+                only_ultima = True
+
+            print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
+
+            # Match non-WORLDS END songs with JSON data
+            for song in local_music_ex_data:
+                # Match found, compare level numbers
+                if (normalize_title(song['title']) == wiki_song['title'] and
+                    normalize_title(song['artist']) == wiki_song['artist']):
+
+                    if only_ultima:
+                        if song['lev_ult'] == wiki_song['lev_ult'] and ('date_intl_updated' not in song or int(song['date_intl_updated']) < int(wiki_song['date'])):
+                            song['date_intl_updated'] = wiki_song['date']
+                            print_message(f"✅ Intl. update date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+
+                            song_matched = True
+                            break
+
+                    else:
+                        if (song['lev_bas'] == wiki_song['lev_bas'] and
                         song['lev_adv'] == wiki_song['lev_adv'] and
                         song['lev_exp'] == wiki_song['lev_exp'] and
                         song['lev_mas'] == wiki_song['lev_mas']):
 
-                        print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
-                        # Update JSON data
-                        song['intl'] = "1"
-                        print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            # Update JSON data
+                            song['intl'] = "1"
+                            print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                        if 'date_intl_1' not in song:
-                            song['date_intl_1'] = wiki_song['date']
-                            print_message(f"Added Intl. ver. release date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            if 'date_intl_added' not in song:
+                                song['date_intl_added'] = wiki_song['date']
+                                print_message(f"✅ Intl. added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                        break
+                            song_matched = True
+                            break
+
+        # if song was not matched (if break was not triggered)
+        if song_matched is not True:
+            print_message(f"Song not matched", bcolors.FAIL, args, errors_log)
+
 
     # Write updated JSON data to file
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:

@@ -58,7 +58,7 @@ def update_songs_extra_data(args):
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date', HASH_KEYS, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -183,7 +183,7 @@ def _parse_wikiwiki(song, wiki, url, args):
 
             if not formatted_date == '':
                 diff_count = [0]
-                update_song_key(song, 'date', formatted_date, diff_count=diff_count)
+                update_song_key(song, 'date_added', formatted_date, diff_count=diff_count)
                 update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
                 
                 if diff_count[0] > 0:

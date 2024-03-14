@@ -74,7 +74,7 @@ def parse_date(date_str, release_str):
         return None
 
 def get_last_date(local_music_data):
-    all_dates = [parse_date(x.get('date', ''), x.get('release', '')) for x in local_music_data if x.get('date') or x.get('release')]
+    all_dates = [parse_date(x.get('date_added', ''), x.get('release', '')) for x in local_music_data if x.get('date_added') or x.get('release')]
 
     # Exclude None values when finding the latest date
     valid_dates = [date for date in all_dates if date is not None]

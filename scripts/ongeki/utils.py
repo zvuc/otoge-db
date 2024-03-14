@@ -7,6 +7,7 @@ from ongeki import wiki
 from shared.common_func import *
 
 HASH_KEYS = ['title', 'artist', 'date', 'lunatic']
+HASH_KEYS_EX = ['title', 'artist', 'date_added', 'lunatic']
 
 CHARACTER_TABLE = {
     "星咲あかり": "FIRE",
@@ -106,7 +107,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     for song in updated_songs:
         song_hash = generate_hash_from_keys(song, *HASH_KEYS)
         old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
-        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS_EX) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
@@ -141,7 +142,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     for song in unchanged_songs:
         song_hash = generate_hash_from_keys(song, *HASH_KEYS)
         old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
-        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS_EX) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
@@ -180,7 +181,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         for song in removed_songs:
             # ipdb.set_trace()
             song_hash = generate_hash_from_keys(song, *HASH_KEYS)
-            existing_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
+            existing_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS_EX) == song_hash), None)
 
             if existing_song:
                 # delete matched item
@@ -243,5 +244,10 @@ def _add_ex_data_template(song):
     song['lev_lnt_chart_link'] = ""
     song['version'] = "bright MEMORY Act.3"
     song['wikiwiki_url'] = ""
+
+    # Rename 'date' key to 'date_added' if it exists
+    if 'date' in song:
+        song['date_added'] = song['date']
+        del song['date']
 
     return song

@@ -126,6 +126,7 @@ def add_intl_info(args):
                                 song['date_intl_updated'] = wiki_song['date']
                                 print_message(f"✅ Intl. updated date (UTAGE)", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
+                        song_matched = True
                         break
 
         # Not a UTAGE song, process normally
