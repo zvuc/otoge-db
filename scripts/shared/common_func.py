@@ -122,7 +122,7 @@ def generate_hash(text_input):
 
     return hash_result
 
-def generate_hash_from_keys(song, keys):
+def generate_hash_from_keys(song, *keys):
     hash_string = ''.join(str(song[key]) for key in keys)
     return generate_hash(hash_string)
 
