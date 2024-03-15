@@ -10,6 +10,30 @@ from chunithm.paths import *
 from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:1st'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:AIR'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:AIR_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:STAR'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:STAR_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:AMAZON'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:AMAZON_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:CRYSTAL'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:CRYSTAL_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:PARADISE'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:PARADISE_LOST'
+
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:NEW'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:NEW_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:LUMINOUS'
+
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUPER_STAR'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUPER_STAR_PLUS'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:NEW_(Asia)'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:NEW_PLUS_(Asia)'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_(Asia)'
 wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_PLUS_(Asia)'
 errors_log = LOCAL_ERROR_LOG_PATH
 request_headers = {
@@ -38,6 +62,8 @@ def add_intl_info(args):
     soup = BeautifulSoup(wiki.text, 'html.parser')
 
     # Find all tables with class 'bluetable'
+    # song_list = soup.find('span', id="Song_List", class_="mw-headline")
+    # song_list = soup.find('span', id="New_Songs", class_="mw-headline")
     song_list = soup.find('span', id="New_Songs_/_WORLD'S_END_Charts", class_="mw-headline")
     table = song_list.find_next('table', class_='bluetable')
     rows = table.find_all('tr')
@@ -110,23 +136,45 @@ def add_intl_info(args):
                     'we_star': we_star
                 }
 
+                print_message(f"[{we_kanji}] {title}", 'HEADER', args, errors_log, args.no_verbose)
+
                 # Match WORLDS END songs with JSON data using we_kanji and we_star
                 for song in local_music_ex_data:
                     # Match found, compare WORLDS END chart levels
                     if (normalize_title(song['title']) == wiki_song['title'] and
-                        normalize_title(song['artist']) == wiki_song['artist'] and
-                        song['we_kanji'] == wiki_song['we_kanji'] and
-                        song['we_star'] == wiki_song['we_star']):
+                        song['we_kanji'] == wiki_song['we_kanji']):
 
-                        print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
+                        # if normalize_title(song['artist']) == wiki_song['artist']:
+                        #     print_message(f"Perfect match found", bcolors.ENDC, args)
+                        # else:
+                        #     print_message(f"JSON: {song['artist']}", bcolors.ENDC, args)
+                        #     print_message(f"Wiki: {artist}", bcolors.ENDC, args)
+                        #     response = input("Artist name mismatch. Proceed? (y/n): ")
+
+                        #     # Checking the user's response
+                        #     if response.lower() == 'y':
+                        #         print("Proceeding with matched song")
+                        #     else:
+                        #         print("Continue matching with other songs in JSON...")
+                        #         continue
+
+
+                        if (song['we_star'] != wiki_song['we_star']):
+                            if args.strict:
+                                print_message(f"WORLDS END level (stars) mismatch.", bcolors.FAIL, args, errors_log, args.no_verbose)
+                                continue
+                            else:
+                                print_message(f"WORLDS END level (stars) mismatch.", bcolors.WARNING, args, errors_log, args.no_verbose)
+
+
                         # Match found, update JSON data
-                        song['intl'] = "1"
-                        print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        if song['intl'] == "0":
+                            song['intl'] = "1"
+                            print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                        if 'date_intl_added' not in song:
+                        if 'date_intl_added' not in song or song['date_intl_added'] == '':
+                            print_message(f"Date added ({wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
                             song['date_intl_added'] = wiki_song['date']
-                            print_message(f"✅ Intl. added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
-                            break
 
                         song_matched = True
                         break
@@ -164,33 +212,68 @@ def add_intl_info(args):
             # Match non-WORLDS END songs with JSON data
             for song in local_music_ex_data:
                 # Match found, compare level numbers
-                if (normalize_title(song['title']) == wiki_song['title'] and
-                    normalize_title(song['artist']) == wiki_song['artist']):
+                if normalize_title(song['title']) == wiki_song['title']:
+                    # if normalize_title(song['artist']) == wiki_song['artist']:
+                    #     print_message(f"Perfect match found", bcolors.ENDC, args)
+                    # else:
+                    #     print_message(f"JSON: {song['artist']}", bcolors.ENDC, args)
+                    #     print_message(f"Wiki: {artist}", bcolors.ENDC, args)
+                    #     response = input("Artist name mismatch. Proceed? (y/n): ")
+
+                    #     # Checking the user's response
+                    #     if response.lower() == 'y':
+                    #         print("Proceeding with matched song")
+                    #     else:
+                    #         print("Continue matching with other songs in JSON...")
+                    #         continue
 
                     if only_ultima:
-                        if song['lev_ult'] == wiki_song['lev_ult'] and ('date_intl_updated' not in song or int(song['date_intl_updated']) < int(wiki_song['date'])):
-                            song['date_intl_updated'] = wiki_song['date']
-                            print_message(f"✅ Intl. update date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        # Double-check with level
+                        if song['lev_ult'] != wiki_song['lev_ult']:
+                            if args.strict:
+                                print_message(f"ULTIMA level mismatch.", bcolors.FAIL, args, errors_log, args.no_verbose)
+                                continue
+                            else:
+                                print_message(f"ULTIMA level mismatch.", bcolors.WARNING, args, errors_log, args.no_verbose)
 
-                            song_matched = True
-                            break
+                        if ('date_intl_updated' not in song or int(song['date_intl_updated']) < int(wiki_song['date'])):
+                            song['date_intl_updated'] = wiki_song['date']
+                            print_message(f"✅ Added update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+
+                        song_matched = True
+                        break
 
                     else:
-                        if (song['lev_bas'] == wiki_song['lev_bas'] and
-                        song['lev_adv'] == wiki_song['lev_adv'] and
-                        song['lev_exp'] == wiki_song['lev_exp'] and
-                        song['lev_mas'] == wiki_song['lev_mas']):
+                        # Double-check with levels
+                        if (song['lev_bas'] != wiki_song['lev_bas'] or
+                            song['lev_adv'] != wiki_song['lev_adv'] or
+                            song['lev_exp'] != wiki_song['lev_exp'] or
+                            song['lev_mas'] != wiki_song['lev_mas']):
 
-                            # Update JSON data
+                            if args.strict:
+                                print_message(f"One of the levels were not matched.", bcolors.FAIL, args, errors_log, args.no_verbose)
+                                continue
+                            else:
+                                print_message(f"One of the levels were not matched.", bcolors.WARNING, args, errors_log, args.no_verbose)
+
+                        # Update JSON data
+                        if song['intl'] == "0":
                             song['intl'] = "1"
                             print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                            if 'date_intl_added' not in song:
-                                song['date_intl_added'] = wiki_song['date']
-                                print_message(f"✅ Intl. added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        if 'date_intl_added' not in song or song['date_intl_added'] == '':
+                            song['date_intl_added'] = wiki_song['date']
+                            print_message(f"✅ Added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
-                            song_matched = True
-                            break
+                        # if song['date_added'] == '':
+                        #     print_message(f"✅ Date added ({wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        #     song['date_added'] = wiki_song['date']
+                        # elif song['date_added'] != wiki_song['date']:
+                        #     print_message(f"✅ Date updated: (json: {song['date_added']} / wiki: {wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        #     song['date_added'] = wiki_song['date']
+
+                        song_matched = True
+                        break
 
         # if song was not matched (if break was not triggered)
         if song_matched is not True:
