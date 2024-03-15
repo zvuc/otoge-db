@@ -123,6 +123,8 @@ def generate_hash(text_input):
     return hash_result
 
 def generate_hash_from_keys(song, *keys):
+    if len(keys) == 1 and isinstance(keys[0], (list, tuple)):
+        keys = keys[0]  # Unpack the single tuple or list argument
     hash_string = ''.join(str(song[key]) for key in keys)
     return generate_hash(hash_string)
 
