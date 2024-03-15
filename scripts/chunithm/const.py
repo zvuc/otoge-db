@@ -185,17 +185,17 @@ def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, shee
             length = len(row)
             for i in range(length):
                 columns = [
-                    normalize_title(row[i]).strip(),
-                    normalize_title(row[i + 1]).strip() if i + 1 < length else '',
-                    normalize_title(row[i + 2]).strip() if i + 2 < length else '',
-                    normalize_title(row[i + 3]).strip() if i + 3 < length else '',
-                    normalize_title(row[i + 4]).strip() if i + 4 < length else '',
-                    normalize_title(row[i + 5]).strip() if i + 5 < length else '',
+                    row[i].strip(),
+                    row[i + 1].strip() if i + 1 < length else '',
+                    row[i + 2].strip() if i + 2 < length else '',
+                    row[i + 3].strip() if i + 3 < length else '',
+                    row[i + 4].strip() if i + 4 < length else '',
+                    row[i + 5].strip() if i + 5 < length else '',
                 ]
 
                 # For NEW sheet: 曲名 譜面 ジャンル 表示Lv 定数
                 # For all else: 曲名 譜面 ジャンル SUN+ LMN
-                if columns[0] == normalized_title and columns[1] == chart_diff:
+                if normalize_title(columns[0]) == normalized_title and columns[1] == chart_diff:
                     value_chart_i = columns[4]
 
                 if value_chart_i is not None:
