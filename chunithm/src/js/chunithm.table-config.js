@@ -617,7 +617,7 @@ $(document).ready(function() {
                 const displayDates = (region) => {
                   const dateAddedValue = data[region === 'jpn' ? 'date_added' : 'date_intl_added'];
                   const dateUpdatedValue = data[region === 'jpn' ? 'date_updated' : 'date_intl_updated'];
-                  const dateUpdatedLabelTextKey = 'date_updated_with_date';
+                  let dateUpdatedLabelTextKey = 'date_updated_with_date';
 
                   if (data['we_kanji'] != '') {
                     dateUpdatedLabelTextKey = 'date_updated_revived_with_date'
