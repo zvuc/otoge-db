@@ -16,11 +16,11 @@ const ongeki_chara_list = {
   "早乙女 彩華": "ch_saotome_ayaka",
   "井之原 小星": "ch_inohara_koboshi",
   "柏木 咲姫": "ch_kashiwagi_saki",
-  "九條 楓": "ch_kujou_kaede",
+  "九條 楓": "ch_kujo_kaede",
   "逢坂 茜": "ch_ousaka_akane",
   "珠洲島 有栖": "ch_suzushima_arisu",
   "日向 千夏": "ch_hinata_chinatsu",
-  "柏木 美亜": "ch_kashiwagi_ami",
+  "柏木 美亜": "ch_kashiwagi_mia",
   "東雲 つむぎ": "ch_shinonome_tsumugi",
   "皇城 セツナ": "ch_sumeragi_setsuna"
 };

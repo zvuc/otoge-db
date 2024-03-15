@@ -3,7 +3,7 @@ const langOptionInput = document.querySelectorAll('input[name="siteLanguage"]');
 const gameRegionChecks = document.querySelectorAll('input[name="gameRegion"]');
 const gameRegionQuickSwitch = document.getElementById('gameRegionQuickSwitch');
 const translationOptions = document.querySelectorAll('input[name="translationOptions"]');
-let translations_latest = 'translations240314b';
+let translations_latest = 'translations240314c';
 let userLanguage = localStorage.getItem('userLanguage');
 let userTranslateCharaNamePref = localStorage.getItem('userOption_translateCharaNames');
 let cachedTranslations = localStorage.getItem(translations_latest);
