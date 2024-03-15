@@ -862,9 +862,16 @@ div.dtr-modal-content .details-table {
 
 	.region-availability-chart {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-auto-flow: row;
 		gap: 5px;
 		padding: 0 var(--padding-size);
+
+		@media screen and (min-width: 480px) {
+			grid-template-columns: 1fr 1fr;
+			grid-auto-flow: column;
+			grid-template-columns: 1fr;
+			grid-auto-columns: 1fr;
+		}
 
 		.region {
 			display: grid;
@@ -937,6 +944,7 @@ div.dtr-modal-content .details-table {
 			.green-check-icon,
 			.plus-icon,
 			.cross-icon {
+				flex: 0 0 auto;
 				margin-right: 3px;
 			}
 
