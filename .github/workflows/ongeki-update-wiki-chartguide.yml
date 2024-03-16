@@ -54,7 +54,7 @@ jobs:
           {
             echo "OUTPUT_LOG<<EOF"
             python scripts/update-wiki-data.py --ongeki --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
-            python scripts/update-chartguide-data.py --ongeki --nocolors --escape --markdown --no_timestamp
+            python scripts/update-chartguide-data.py --ongeki --nocolors --escape --markdown --no_timestamp --no_verbose
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
