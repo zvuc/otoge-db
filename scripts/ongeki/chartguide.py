@@ -10,6 +10,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, Comment
 from urllib.request import urlopen
 
+errors_log = LOCAL_ERROR_LOG_PATH
 HASH_KEYS = ['title', 'artist', 'date_added', 'lunatic']
 
 VERSION_MAPPING = {
@@ -51,8 +52,9 @@ PAGES = {
     "/sort/lunatic.htm"
 }
 
-SDVXIN_BASE_URL = 'https://sdvx.in/ongeki'
-LOCAL_CACHE_DIR = 'ongeki/sdvxin_cache'
+SDVXIN_BASE_URL = 'https://sdvx.in/'
+GAME_NAME = 'ongeki'
+LOCAL_CACHE_DIR = GAME_NAME + '/sdvxin_cache'
 
 # Update on top of existing music-ex
 def update_chartguide_data(args):
@@ -92,9 +94,34 @@ def update_chartguide_data(args):
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
+def _filter_songs_by_date(song_list, date_from, date_until):
+    target_song_list = []
+
+    for song in song_list:
+        song_date_int = int(song.get("date_added"))
+
+        if date_from <= song_date_int <= date_until:
+            target_song_list.append(song)
+
+    return target_song_list
+
+
+def _filter_songs_by_id(song_list, song_id):
+    target_song_list = []
+
+    for song in song_list:
+        if song_id == int(song.get("id")):
+            target_song_list.append(song)
+
+    return target_song_list
+
 def _get_and_save_page_to_local(url, args):
-    # ipdb.set_trace()
-    full_url = SDVXIN_BASE_URL + url
+    full_url = SDVXIN_BASE_URL + GAME_NAME + url
+
+    # Handle main page (new songs)
+    if url == '':
+        full_url = SDVXIN_BASE_URL + GAME_NAME + '.html'
+
     response = requests.get(full_url)
     response.encoding = 'ansi'
 
@@ -103,19 +130,24 @@ def _get_and_save_page_to_local(url, args):
 
     if response.status_code == 200:
         # Extract the filename from the URL
-        filename = url.lstrip('/').replace('/', '_')
+        filename = 'new.html'
+
+        if url != '':
+            filename = url.lstrip('/').replace('/', '_')
+
         output_path = os.path.join(LOCAL_CACHE_DIR, filename)
 
         # Save the content to a local file
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(response.text)
-        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
+        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args, errors_log, args.no_verbose)
     else:
         print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args)
 
 
 def _update_song_chartguide_data(song, args):
-    print_message(f"{song['id']} {song['title']}", bcolors.ENDC, args)
+    song_diffs = [0]
+    print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
 
     title = (
         song['title']
@@ -135,66 +167,48 @@ def _update_song_chartguide_data(song, args):
         charts = ['exp','mst']
 
     for chart in charts:
+        lv_page_url = ''
+        lv_page_file_path = '/new.html'
+        target_key = ''
+        url_pattern = ''
+
         if chart == 'luna':
-            lv_page_url = '/sort/lunatic.htm'
-            lv_page_file_path = '/sort_lunatic.htm'
             target_key = 'lev_lnt_chart_link'
-            url_pattern = '/ongeki/luna'
+            url_pattern = '/' + GAME_NAME + '/luna'
         elif chart == 'exp':
-            lv_page_url = '/sort/' + song['lev_exc'] + '.htm'
-            lv_page_file_path = '/sort_' + song['lev_exc'] + '.htm'
-            target_key = 'lev_exc_chart_link' 
-            url_pattern = '/ongeki/0'
+            target_key = 'lev_exc_chart_link'
+            url_pattern = '/' + GAME_NAME + '/0'
         elif chart == 'mst':
-            lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
-            lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
-            target_key = 'lev_mas_chart_link' 
-            url_pattern = '/ongeki/0'
+            target_key = 'lev_mas_chart_link'
+            url_pattern = '/' + GAME_NAME + '/0'
 
         if not song[target_key] == '':
-            print_message(f"Chart link already exists! ({chart.upper()})", bcolors.ENDC, args)
+            print_message(f"Chart link already exists! ({chart.upper()})", bcolors.ENDC, args, errors_log, args.no_verbose)
             continue
 
+        lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
+        song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, args)
 
-        # ipdb.set_trace()
+        # Search level-specific pages if not found in main page
+        if not song_id:
+            if chart == 'luna':
+                lv_page_url = '/sort/lunatic.htm'
+                lv_page_file_path = '/sort_lunatic.htm'
+                target_key = 'lev_lnt_chart_link'
+                url_pattern = '/' + GAME_NAME + '/luna'
+            elif chart == 'exp':
+                lv_page_url = '/sort/' + song['lev_exp'] + '.htm'
+                lv_page_file_path = '/sort_' + song['lev_exp'] + '.htm'
+                target_key = 'lev_exc_chart_link'
+                url_pattern = '/' + GAME_NAME + '/0'
+            elif chart == 'mst':
+                lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
+                lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
+                target_key = 'lev_mas_chart_link'
+                url_pattern = '/' + GAME_NAME + '/0'
 
-        try:
-            file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
-            with open(file_full_path, 'r', encoding='utf-8') as file:
-                content = file.read()
-        except FileNotFoundError:
-            _get_and_save_page_to_local(lv_page_url, args)
-
-            try:
-                file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
-                with open(file_full_path, 'r', encoding='utf-8') as file:
-                    content = file.read()
-            except:
-                print_message(f"Cache not found ({lv_page_file_path})", bcolors.ENDC, args)
-        except Exception as e:
-            print_message(f"Error reading file: {e}", bcolors.FAIL, args)
-            sys.exit(1)
-
-        soup = BeautifulSoup(content, 'html.parser')
-        song_dict = {}
-
-        # Find all script tags with src attribute starting with "/ongeki/"
-        script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
-
-        # Extract script tag src and song_title and add to the dictionary
-        for script_tag in script_tags:
-            script_src = script_tag['src']
-            
-            # Find the trailing HTML comment (song_title)
-            extracted_song_title = script_tag.find_next(text=lambda text:isinstance(text, Comment))
-            
-            if extracted_song_title:
-                extracted_song_title = extracted_song_title.strip()
-                song_dict[script_src] = extracted_song_title
-
-        # ipdb.set_trace()
-
-        song_id = _extract_song_id(song, song_dict, song['title'], args)
+            lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
+            song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, args)
 
         if song_id:
             # extract song_id from src
@@ -205,14 +219,62 @@ def _update_song_chartguide_data(song, args):
                 song_id = song_id.split('/')[-1].split(f'sort.js')[0]
                 song[target_key] = song_id[:2] + '/' + song_id + chart
 
-            print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
+            lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
+            print_message(f"✅ Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
         else:
+            lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
             print_message("No matching ID", bcolors.FAIL, args)
             with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
                 f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
             return
 
     return song
+
+def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, args):
+    try:
+        file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
+        with open(file_full_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+    except FileNotFoundError:
+        _get_and_save_page_to_local(lv_page_url, args)
+
+        try:
+            file_full_path = os.path.join(LOCAL_CACHE_DIR + lv_page_file_path)
+            with open(file_full_path, 'r', encoding='utf-8') as file:
+                content = file.read()
+        except:
+            print_message(f"Cache not found ({lv_page_file_path})", bcolors.ENDC, args)
+    except Exception as e:
+        print_message(f"Error reading file: {e}", bcolors.FAIL, args)
+        sys.exit(1)
+
+
+    soup = BeautifulSoup(content, 'html.parser')
+    song_dict = {}
+
+    # Find all script tags with src attribute starting with "/chunithm/"
+    script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
+
+    # Extract script tag src and song_title and add to the dictionary
+    for script_tag in script_tags:
+        script_src = script_tag['src']
+
+        if lv_page_url != '':
+            # Find the trailing HTML comment (song_title)
+            extracted_song_title = script_tag.find_next(text=lambda text:isinstance(text, Comment))
+        else:
+            response = requests.get(SDVXIN_BASE_URL + script_src)
+            response.encoding = 'ansi'
+            js_soup = BeautifulSoup(response.text, 'html.parser')
+            extracted_song_title = js_soup.find('div', class_='f1').get_text()
+
+        if extracted_song_title:
+            extracted_song_title = extracted_song_title.strip()
+            song_dict[script_src] = extracted_song_title
+
+    song_id = _extract_song_id(song, song_dict, song['title'], args)
+
+    return song_id, script_src
 
 def _extract_song_id(song, song_dict, song_title, args):
     for song_id, title in song_dict.items():
@@ -221,7 +283,7 @@ def _extract_song_id(song, song_dict, song_title, args):
 
         if title == song_title:
             return song_id
-        else: 
+        else:
             # try fallback pairs
             song_title_alt = (
                 song_title
@@ -242,7 +304,7 @@ def _extract_song_id(song, song_dict, song_title, args):
                 # try removing subtitle
                 pattern = re.compile(r'[-～].*?[-～]')
                 song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
-                
+
                 if title == song_title_wo_subtitle:
                     print_message(f"WARNING: matched without subtitle", bcolors.WARNING, args)
                     with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
@@ -262,3 +324,4 @@ def _compare_strings(str1, str2):
     union = len(set1.union(set2))
     similarity_percentage = (intersection / union) * 100
     return similarity_percentage
+
