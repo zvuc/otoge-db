@@ -711,7 +711,13 @@ $(document).ready(function() {
         name: "date_intl_added",
         data: function( row, type, set, meta ) {
           if (row.date_intl_added && row.date_intl_added !== '000000') {
-            return formatDate(row.date_intl_added);
+            if (row.date_intl_updated && row.date_intl_updated !== '') {
+              return formatDate(row.date_intl_updated)
+            } else if (row.date_intl_added && row.date_intl_added !== '') {
+              return formatDate(row.date_intl_added)
+            } else {
+              return '?'
+            }
           }
         },
         defaultContent: "",
