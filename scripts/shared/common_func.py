@@ -149,6 +149,8 @@ def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash
             return filter_songs_by_id_list(song_list, id_key, id_list)
         else:
             return filter_songs_by_id(song_list, id_key, args.id)
+    elif args.date != 0:
+        return filter_songs_by_date(song_list, date_key, args.date, args.date)
     elif args.date_from != 0 or args.date_until != 0:
         latest_date = int(get_last_date(song_list))
 

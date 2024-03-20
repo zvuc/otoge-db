@@ -50,10 +50,6 @@ CHART_COLORS = {
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
     print_message(f"Fetching latest wiki data.", bcolors.ENDC, args, errors_log, args.no_verbose)
-    
-    date_from = args.date_from
-    date_until = args.date_until
-    song_id = args.id
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)

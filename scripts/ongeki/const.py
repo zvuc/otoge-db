@@ -41,12 +41,7 @@ MIN_LV = '10'
 def update_const_data(args):
     print_message(f"Starting chart const search", bcolors.ENDC, args)
 
-    date_from = args.date_from
-    date_until = args.date_until
-    song_id = args.id
-    clear_cache = args.clear_cache
-
-    if clear_cache:
+    if args.clear_cache:
         try:
             # Delete the directory and its contents
             shutil.rmtree(LOCAL_CACHE_DIR)
