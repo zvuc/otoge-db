@@ -459,7 +459,7 @@ $(document).ready(function() {
         name: "chart_type",
         data: maimaiGetChartTypes(),
         defaultContent: "",
-        className: "chart-type detail-hidden",
+        className: "chart-type nowrap detail-hidden",
         render: maimaiRenderChartTypeBadges(),
         // customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         // reverseSortOrder: true,
