@@ -59,7 +59,7 @@ jobs:
 
       - name: Extract datestamp from script output
         id: extract_date
-        run: echo "datestamp=$(cat ongeki/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
+        run: echo "datestamp=$(cat ongeki/data/music-ex.json | jq '.[-1].date_added | tonumber')" >> "$GITHUB_OUTPUT"
 
       # - name: Check script output
       #   id: check_script
