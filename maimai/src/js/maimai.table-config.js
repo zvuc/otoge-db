@@ -281,7 +281,8 @@ function maimaiRenderVersionName() {
         "22500": "UNiVERSE PLUS",
         "23000": "FESTiVAL",
         "23500": "FESTiVAL PLUS",
-        "24000": "BUDDiES"
+        "24000": "BUDDiES",
+        "24500": "BUDDiES PLUS"
       };
 
       let closestVersion = null;
