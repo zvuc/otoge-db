@@ -671,7 +671,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Love Cheat!",
     "date_added": "20231109",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2482",
@@ -745,7 +746,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ドーナドーナのうた",
     "date_added": "20231109",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2483",
@@ -819,7 +821,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/未来への咆哮",
     "date_added": "20231109",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2464",
@@ -2386,7 +2389,8 @@
     "version": "SUN",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/irony",
     "date_added": "20230126",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2290",
@@ -3279,7 +3283,8 @@
     "version": "SUN",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/いただきバベル (Prod. ケンモチヒデフミ)",
     "date_added": "20221013",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2242",
@@ -18543,7 +18548,8 @@
     "version": "CRYSTAL",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/＊ハロー、プラネット。",
     "date_added": "20200206",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "870",
@@ -19219,7 +19225,7 @@
     "version": "CRYSTAL",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ヒバナ",
     "date_added": "20191024",
-    "intl": "0",
+    "intl": "1",
     "date_updated": "20230309"
   },
   {
@@ -19744,7 +19750,8 @@
     "version": "AMAZON+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/39",
     "date_added": "20190711",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "285",
@@ -19968,7 +19975,8 @@
     "version": "AMAZON+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/妄想感傷代償連盟",
     "date_added": "20190620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "736",
@@ -22211,7 +22219,8 @@
     "version": "STAR+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/拝啓ドッペルゲンガー",
     "date_added": "20180308",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "512",
@@ -24234,7 +24243,8 @@
     "version": "AIR+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/おこちゃま戦争",
     "date_added": "20170309",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "365",
@@ -47682,7 +47692,8 @@
     "version": "AIR",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Her Majesty",
     "date_added": "20161102",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "326",
@@ -96902,7 +96913,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/セカイはまだ始まってすらいない",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "8279",
@@ -96976,7 +96988,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/フリーフォール",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "8280",
@@ -97050,7 +97063,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/人生攻略☆Tips",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "8267",
@@ -99149,7 +99163,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Trackless wilderness",
     "date_added": "20211104",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "8228",
@@ -99223,7 +99238,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Trrricksters!!",
     "date_added": "20211104",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "8230",
