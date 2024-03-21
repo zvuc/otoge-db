@@ -249,6 +249,7 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, a
     script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
 
     # Extract script tag src and song_title and add to the dictionary
+    script_src = ''
     for script_tag in script_tags:
         script_src = script_tag['src']
 
