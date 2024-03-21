@@ -71,7 +71,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ALIVE",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2491",
@@ -145,7 +146,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/可愛くてごめん",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2492",
@@ -219,7 +221,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/トウキョウ・シャンディ・ランデヴ feat. 花譜，ツミキ",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2493",
@@ -293,7 +296,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/マツケンサンバⅡ",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2494",
@@ -367,7 +371,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/アイドル",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2495",
@@ -441,7 +446,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/STORM",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2478",
@@ -515,7 +521,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/茉子の日常",
     "date_added": "20231109",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2479",
@@ -589,7 +596,8 @@
     "version": "SUN+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/キズナヒトツ",
     "date_added": "20231109",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2481",
@@ -5286,8 +5294,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/天空カフェテリア",
     "date_added": "20220120",
-    "intl": "1",
-    "date_intl_added": "20220526"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2096",
@@ -5511,8 +5519,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Virtual to LIVE",
     "date_added": "20220120",
-    "intl": "1",
-    "date_intl_added": "20220526"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2139",
@@ -5586,8 +5594,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/圧　倒　的　存　在　感",
     "date_added": "20220120",
-    "intl": "1",
-    "date_intl_added": "20220526"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2123",
@@ -6257,8 +6265,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/猫 ～THE FIRST TAKE ver.～",
     "date_added": "20211104",
-    "intl": "1",
-    "date_intl_added": "20220303"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2008",
@@ -6332,8 +6340,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/インフェルノ",
     "date_added": "20211104",
-    "intl": "1",
-    "date_intl_added": "20220303"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2009",
@@ -6777,8 +6785,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/名前のない怪物",
     "date_added": "20211104",
-    "intl": "1",
-    "date_intl_added": "20220303"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2143",
@@ -6927,8 +6935,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/廻廻奇譚",
     "date_added": "20211104",
-    "intl": "1",
-    "date_intl_added": "20220303"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2078",
@@ -9907,9 +9915,9 @@
     "version": "AIR+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Daydream café",
     "date_added": "20170209",
-    "intl": "1",
     "date_updated": "20220120",
-    "date_intl_added": "20220526"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "37",
@@ -10210,7 +10218,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ラブカ？",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2506",
@@ -10284,7 +10293,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/強風オールバック",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2507",
@@ -10358,7 +10368,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/星界ちゃんと可不ちゃんのおつかい合騒曲",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2452",
@@ -15157,8 +15168,8 @@
     "version": "NEW",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/心予報",
     "date_added": "20211104",
-    "intl": "1",
-    "date_intl_added": "20220303"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "2021",
@@ -27598,7 +27609,8 @@
     "date_added": "20151217",
     "intl": "1",
     "date_updated": "20231214",
-    "date_intl_added": "20210107"
+    "date_intl_added": "20210107",
+    "date_intl_updated": "20240321"
   },
   {
     "id": "167",
@@ -27747,8 +27759,8 @@
     "version": "無印",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/FREELY TOMORROW",
     "date_added": "20151008",
-    "intl": "1",
-    "date_intl_added": "20201126"
+    "intl": "0",
+    "date_intl_added": "000000"
   },
   {
     "id": "157",
@@ -41807,7 +41819,8 @@
     "date_added": "20160825",
     "intl": "1",
     "date_updated": "20231214",
-    "date_intl_added": "20220303"
+    "date_intl_added": "20220303",
+    "date_intl_updated": "20240321"
   },
   {
     "id": "334",
@@ -43156,7 +43169,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Jakarta PROGRESSION",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "807",
@@ -43232,7 +43246,8 @@
     "date_added": "20190411",
     "intl": "1",
     "date_updated": "20231214",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20240321"
   },
   {
     "id": "598",
@@ -43983,7 +43998,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/本物のヒーローとの戦い",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2526",
@@ -44057,7 +44073,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/華麗なる死闘",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "668",
@@ -57644,7 +57661,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/どこにもいかない",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "683",
@@ -65593,7 +65611,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Sage",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2583",
@@ -65667,7 +65686,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/SILENT BLUE",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "802",
@@ -66791,7 +66811,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/オン×ステージ！",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2235",
@@ -71140,7 +71161,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/MarbleBlue.",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "202",
@@ -72495,7 +72517,8 @@
     "date_added": "20150716",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20231214"
+    "date_updated": "20231214",
+    "date_intl_updated": "20240321"
   },
   {
     "id": "140",
@@ -96282,7 +96305,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/少女PastQ",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2567",
@@ -96356,7 +96380,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/君と夏色っ！～わんダフルバケーション～",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2568",
@@ -96430,7 +96455,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/MyPaceInvention",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2569",
@@ -96504,7 +96530,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/colorful",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2570",
@@ -96578,7 +96605,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ZegalltA",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2572",
@@ -101888,7 +101916,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/VALLIS-NERIA",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2528",
@@ -101962,7 +101991,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Blow%20my%20mind",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2532",
@@ -102036,7 +102066,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Spasmodic",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2533",
@@ -102110,7 +102141,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ΩΩPARTS",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2535",
@@ -102184,7 +102216,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/New York Back Raise",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2510",
@@ -103812,7 +103845,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ラストピースに祝福と栄光を",
     "date_added": "20240229",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2556",
@@ -103886,7 +103920,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Mutation",
     "date_added": "20240229",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2559",
@@ -104108,7 +104143,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/パラレルサーチライト",
     "date_added": "20240307",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240321"
   },
   {
     "id": "2500",
