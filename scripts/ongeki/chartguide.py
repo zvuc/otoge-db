@@ -171,8 +171,8 @@ def _update_song_chartguide_data(song, args):
                 target_key = 'lev_lnt_chart_link'
                 url_pattern = '/' + GAME_NAME + '/luna'
             elif chart == 'exp':
-                lv_page_url = '/sort/' + song['lev_exp'] + '.htm'
-                lv_page_file_path = '/sort_' + song['lev_exp'] + '.htm'
+                lv_page_url = '/sort/' + song['lev_exc'] + '.htm'
+                lv_page_file_path = '/sort_' + song['lev_exc'] + '.htm'
                 target_key = 'lev_exc_chart_link'
                 url_pattern = '/' + GAME_NAME + '/0'
             elif chart == 'mst':
