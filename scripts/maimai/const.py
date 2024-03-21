@@ -56,7 +56,7 @@ def update_const_data(args):
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', maimai_generate_hash, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'sort', 'date_added', maimai_generate_hash, args)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -187,11 +187,11 @@ def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, shee
                 ]
 
                 # For 12+, 12: (title) 譜面1 譜面2 旧定数 新定数
-                if normalize_title(columns[0]) == normalized_title and columns[1] == chart_type and columns[2] == chart_diff:
+                if normalize_title(columns[0]) == normalized_title and columns[1] == chart_type and columns[2].upper() == chart_diff:
                     value_chart_i = columns[4]
 
                 # For 13, 13+, 14以上: (title) ジャンル 譜面1 譜面2 旧定数 新定数
-                if normalize_title(columns[0]) == normalized_title and columns[2] == chart_type and columns[3] == chart_diff:
+                if normalize_title(columns[0]) == normalized_title and columns[2] == chart_type and columns[3].upper() == chart_diff:
                     value_chart_i = columns[5]
 
                 if value_chart_i is not None:
