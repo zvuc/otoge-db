@@ -26,7 +26,7 @@ CHARTS = [
     ['dx_lev_mas', 'DX', 'MAS'],
     ['dx_lev_remas', 'DX', 'REMAS'],
 ]
-CUR_VERSION_SHEET = '372132020'
+CUR_VERSION_SHEET = '1746522571'
 SHEETS_MAP = {
     '452697015': ['14', '14+', '15'],
     '1315253155': ['13+'],
