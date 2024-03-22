@@ -29,16 +29,21 @@ def update_songs_extra_data(args):
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
+    total_diffs = 0
+
     for song in target_song_list:
-        update_song_wiki_data(song, args)
+        update_song_wiki_data(song, total_diffs, args)
 
         # time.sleep(random.randint(1,2))
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
+    if total_diffs == 0:
+        print_message("(Nothing updated)", bcolors.ENDC, args, errors_log)
 
-def update_song_wiki_data(song, args):
+
+def update_song_wiki_data(song, total_diffs, args):
     print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
 
     title = (
@@ -64,7 +69,7 @@ def update_song_wiki_data(song, args):
                 return song
         else:
             # Skip if URL present
-            print_message("(Skipping)", bcolors.ENDC, args)
+            print_message("(Skipping)", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     # If not, guess URL from title
     else:
@@ -78,7 +83,11 @@ def update_song_wiki_data(song, args):
             wiki = requests.get(guess_url, timeout=5, headers=request_headers, allow_redirects=True)
 
             if not wiki.ok:
-                # give up
+                # give up!
+                # only print song title when no_verbose is active
+                # because title is not printed yet
+                if args.no_verbose:
+                    print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log)
                 print_message("Failed to guess wiki page", bcolors.FAIL, args, errors_log)
                 return song
 
@@ -210,7 +219,8 @@ def _parse_wikiwiki(song, wiki, url, args):
 
     if old_song == song:
         print_message("Done (Nothing updated)", bcolors.ENDC, args, errors_log, args.no_verbose)
-    # else:
+    else:
+        total_diffs += 1
     #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args)
 
     return song

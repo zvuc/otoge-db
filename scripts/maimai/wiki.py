@@ -81,16 +81,21 @@ def update_songs_extra_data(args):
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
+    total_diffs = 0
+
     for song in target_song_list:
-        update_song_wiki_data(song, args)
+        update_song_wiki_data(song, total_diffs, args)
 
         # time.sleep(random.randint(1,2))
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
+    if total_diffs == 0:
+        print_message("(Nothing updated)", bcolors.ENDC, args, errors_log)
 
-def update_song_wiki_data(song, args):
+
+def update_song_wiki_data(song, total_diffs, args):
     print_message(f"{song['sort']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
 
     title = (
@@ -110,14 +115,14 @@ def update_song_wiki_data(song, args):
             url = song['wiki_url']
             try:
                 wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
-                return _parse_wikiwiki(song, wiki, url, args)
+                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
             except requests.RequestException as e:
                 print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
                 return song
 
         else:
             # Skip if URL present
-            print_message("(Skipping)", bcolors.ENDC, args)
+            print_message("(Skipping)", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     # If not, guess URL from title
     else:
@@ -154,17 +159,21 @@ def update_song_wiki_data(song, args):
                 try:
                     wiki = requests.get(first_matched_url, timeout=5, headers=request_headers, allow_redirects=True)
                 except requests.RequestException as e:
+                    # only print song title when no_verbose is active
+                    # because title is not printed yet
+                    if args.no_verbose:
+                        print_message(f"{song['sort']} {song['title']}", 'HEADER', args, errors_log)
                     print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log, args.no_verbose)
                     return song
 
-                print_message("Found URL by guess!", bcolors.OKBLUE, args, args.no_verbose)
-                return _parse_wikiwiki(song, wiki, first_matched_url, args)
+                print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                return _parse_wikiwiki(song, wiki, first_matched_url, total_diffs, args)
             else:
                 print_message("failed to guess wiki page", bcolors.FAIL, args, errors_log, args.no_verbose)
                 return song
 
 
-def _parse_wikiwiki(song, wiki, url, args):
+def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     critical_errors = 0
     song_diffs = [0]
     song_title = normalize_title(song['title'])
@@ -179,13 +188,14 @@ def _parse_wikiwiki(song, wiki, url, args):
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print_message("Page is invalid", bcolors.FAIL, args, errors_log, args.no_verbose)
+        lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
+        print_message("Page is invalid", bcolors.FAIL, args, errors_log)
         return song
 
 
     if normalize_title(soup.find('h1', 'content-head').text) != song_title:
-        ipdb.set_trace()
-        print_message("Page does not match song title", bcolors.FAIL, args, errors_log, args.no_verbose)
+        lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
+        print_message("Page does not match song title", bcolors.FAIL, args, errors_log)
         return song
 
     has_std_chart = 'lev_bas' in song
@@ -399,7 +409,8 @@ def _parse_wikiwiki(song, wiki, url, args):
 
     if old_song == song:
         print_message("Done (Nothing updated)", bcolors.ENDC, args, no_verbose=args.no_verbose)
-    # else:
+    else:
+        total_diffs += 1
     #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args)
 
     return song
