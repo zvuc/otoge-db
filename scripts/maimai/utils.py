@@ -272,7 +272,7 @@ def _add_ex_data_template(song):
     if 'release' in song and song['release'] != '000000':
         song['date_added'] = f"{parse_date('',song['release']).strftime('%Y%m%d')}"
     else:
-        song['date_added'] = ""
+        song['date_added'] = f"{datetime.now().strftime('%Y%m%d')}"
 
     song['intl'] = "0"
     song['date_intl_added'] = "000000"
