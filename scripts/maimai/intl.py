@@ -115,16 +115,16 @@ def add_intl_info(args):
 
                         if ('date_intl_added' not in song or song['date_intl_added'] == '000000'):
                             song['date_intl_added'] = wiki_song['date']
-                            print_message(f"✅ Intl. added date (UTAGE)", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            print_message(f"Intl. added date (UTAGE)", bcolors.OKGREEN, args, errors_log, args.no_verbose)
                         else:
                             if 'date_intl_updated' not in song and int(wiki_song['date']) > int(song['date_intl_added']):
                                 song['date_intl_updated'] = wiki_song['date']
-                                print_message(f"✅ Intl. updated date (UTAGE)", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                                print_message(f"Intl. updated date (UTAGE)", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
                             # If date from wiki is later than existing date, consider it as updated date
                             elif 'date_intl_updated' in song and int(wiki_song['date']) > int(song['date_intl_updated']):
                                 song['date_intl_updated'] = wiki_song['date']
-                                print_message(f"✅ Intl. updated date (UTAGE)", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                                print_message(f"Intl. updated date (UTAGE)", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
                         song_matched = True
                         break
@@ -244,20 +244,20 @@ def add_intl_info(args):
                         if only_remas or wiki_chart_type == 'std' or wiki_chart_type == 'dx':
                             if 'date_intl_updated' not in song or int(wiki_song['date']) > int(song['date_intl_updated']):
                                 song['date_intl_updated'] = wiki_song['date']
-                                print_message(f"✅ Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                                print_message(f"Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
                         else:
                             if ('date_intl_added' not in song or song['date_intl_added'] == '000000'):
                                 song['date_intl_added'] = wiki_song['date']
-                                print_message(f"✅ Intl. added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                                print_message(f"Intl. added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
                             else:
                                 if 'date_intl_updated' not in song and int(wiki_song['date']) > int(song['date_intl_added']):
                                     song['date_intl_updated'] = wiki_song['date']
-                                    print_message(f"✅ Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                                    print_message(f"Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
                                 # If date from wiki is later than existing date, consider it as updated date
                                 elif 'date_intl_updated' in song and int(wiki_song['date']) > int(song['date_intl_updated']):
                                     song['date_intl_updated'] = wiki_song['date']
-                                    print_message(f"✅ Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                                    print_message(f"Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
                     song_matched = True
                     break

@@ -239,7 +239,7 @@ def add_intl_info(args):
 
                         if ('date_intl_updated' not in song or int(song['date_intl_updated']) < int(wiki_song['date'])):
                             song['date_intl_updated'] = wiki_song['date']
-                            print_message(f"✅ Added update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                            print_message(f"Added update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
                         song_matched = True
                         break
@@ -264,13 +264,13 @@ def add_intl_info(args):
 
                         if 'date_intl_added' not in song or song['date_intl_added'] == '':
                             song['date_intl_added'] = wiki_song['date']
-                            print_message(f"✅ Added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            print_message(f"Added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
                         # if song['date_added'] == '':
-                        #     print_message(f"✅ Date added ({wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        #     print_message(f"Date added ({wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
                         #     song['date_added'] = wiki_song['date']
                         # elif song['date_added'] != wiki_song['date']:
-                        #     print_message(f"✅ Date updated: (json: {song['date_added']} / wiki: {wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        #     print_message(f"Date updated: (json: {song['date_added']} / wiki: {wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
                         #     song['date_added'] = wiki_song['date']
 
                         song_matched = True
