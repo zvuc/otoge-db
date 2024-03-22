@@ -68,7 +68,7 @@ LOCAL_CACHE_DIR = GAME_NAME + '/sdvxin_cache'
 
 # Update on top of existing music-ex
 def update_chartguide_data(args):
-    print_message(f"Starting chart link search", bcolors.ENDC, args)
+    print_message(f"Chartguide link search", 'H2', args)
 
     if args.clear_cache:
         try:
@@ -213,7 +213,7 @@ def _update_song_chartguide_data(song, args):
                 song[target_key] = song_id[:2] + '/' + song_id + chart
 
             lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
-            print_message(f"✅ Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
+            print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
         else:
             lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
             print_message("No matching ID", bcolors.FAIL, args)
@@ -251,6 +251,7 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, a
     # Extract script tag src and song_title and add to the dictionary
     script_src = ''
     for script_tag in script_tags:
+        extracted_song_title = ''
         script_src = script_tag['src']
 
         if lv_page_url != '':
@@ -260,7 +261,10 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, a
             response = requests.get(SDVXIN_BASE_URL + script_src)
             response.encoding = 'ansi'
             js_soup = BeautifulSoup(response.text, 'html.parser')
-            extracted_song_title = js_soup.find('div', class_='f1').get_text()
+            match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))[0]
+
+            if match:
+                extracted_song_title = match
 
         if extracted_song_title:
             extracted_song_title = extracted_song_title.strip()
