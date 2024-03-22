@@ -19,7 +19,7 @@ request_headers = {
 
 # Update on top of existing music-ex
 def add_intl_info(args):
-    print_message(f"Fetching International ver. song data from RemyWiki", bcolors.ENDC, args, errors_log, args.no_verbose)
+    print_message(f"Fetching International ver. song data from RemyWiki", 'H2', args, errors_log, args.no_verbose)
 
     # Load JSON data
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:

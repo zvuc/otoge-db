@@ -39,7 +39,7 @@ MIN_LV = '10'
 
 # Update on top of existing music-ex
 def update_const_data(args):
-    print_message(f"Starting chart const search", bcolors.ENDC, args)
+    print_message(f"Fetch chart constants", 'H2', args, errors_log)
 
     if args.clear_cache:
         try:
