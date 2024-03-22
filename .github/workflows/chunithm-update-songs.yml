@@ -60,9 +60,9 @@ jobs:
       - name: Extract datestamp from script output
         id: extract_date
         run: |
-          # echo "datestamp=$(cat chunithm/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
+          echo "datestamp=$(cat chunithm/data/music-ex.json | jq '.[-1].date_added | tonumber')" >> "$GITHUB_OUTPUT"
           # Use today's date instead because Chunithm default json doesn't have date data...
-          echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
+          # echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
 
       # - name: Check script output
       #   id: check_script
