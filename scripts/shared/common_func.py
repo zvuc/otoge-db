@@ -21,7 +21,7 @@ def print_message(message, color_name, args, log='', no_verbose=False):
         message = message.replace("\\", "\\\\").replace("\"", "\\\"").replace("'", r"\'")
 
     # is header
-    if color_name == 'HEADER':
+    if color_name == 'HEADER' or color_name == 'H2':
         print_color_name = bcolors.BOLD + bcolors.HEADER
 
     if args.nocolors:
@@ -29,6 +29,9 @@ def print_message(message, color_name, args, log='', no_verbose=False):
         reset_color = ''
 
     if args.markdown:
+        if color_name == 'H2':
+            print_color_name = '## '
+            reset_color = ''
         if color_name == 'HEADER':
             print_color_name = '**'
             reset_color = '**'
