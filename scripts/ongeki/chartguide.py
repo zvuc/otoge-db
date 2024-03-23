@@ -194,7 +194,7 @@ def _update_song_chartguide_data(song, args):
                 song[target_key] = song_id[:2] + '/' + song_id + chart
 
             lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
-            print_message(f"✅ Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
+            print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN, args)
         else:
             lazy_print_song_header(f"{song['id']}, {song['title']}", song_diffs, args, errors_log)
             print_message("No matching ID", bcolors.FAIL, args)
