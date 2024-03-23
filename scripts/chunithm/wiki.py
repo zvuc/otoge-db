@@ -60,7 +60,7 @@ def update_songs_extra_data(args):
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
-    total_diffs = 0
+    total_diffs = [0]
 
     for song in target_song_list:
         update_song_wiki_data(song, total_diffs, args)
@@ -70,7 +70,7 @@ def update_songs_extra_data(args):
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
-    if total_diffs == 0:
+    if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, args, errors_log)
 
 
@@ -126,12 +126,12 @@ def update_song_wiki_data(song, total_diffs, args):
             else:
                 url = guess_url
                 print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-                return _parse_wikiwiki(song, wiki, url, args)
+                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
                 
         else:
             url = guess_url
             print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-            return _parse_wikiwiki(song, wiki, url, args)
+            return _parse_wikiwiki(song, wiki, url, total_diffs, args)
 
 
 def _parse_wikiwiki(song, wiki, url, total_diffs, args):
@@ -385,7 +385,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     if old_song == song:
         print_message("Done (Nothing updated)", bcolors.ENDC, args, errors_log, args.no_verbose)
     else:
-        total_diffs += 1
+        total_diffs[0] += 1
     #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args, errors_log, args.no_verbose)
 
     return song
