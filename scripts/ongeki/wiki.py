@@ -63,7 +63,7 @@ def update_song_wiki_data(song, total_diffs, args):
             url = song['wikiwiki_url']
             try:
                 wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
-                return _parse_wikiwiki(song, wiki, url, args)
+                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
             except requests.RequestException as e:
                 print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
                 return song
@@ -94,19 +94,19 @@ def update_song_wiki_data(song, total_diffs, args):
             else:
                 url = guess_url
                 print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-                return _parse_wikiwiki(song, wiki, url, args)
+                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
                 
         else:
             url = guess_url
             print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-            return _parse_wikiwiki(song, wiki, url, args)
+            return _parse_wikiwiki(song, wiki, url, total_diffs, args)
 
 
 def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     song_diffs = [0]
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
-    old_song = song
+    old_song = copy.copy(song)
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
