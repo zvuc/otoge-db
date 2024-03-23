@@ -35,6 +35,7 @@ def print_message(message, color_name, args, log='', no_verbose=False):
         if color_name == 'HEADER':
             print_color_name = '**'
             reset_color = '**'
+            print('')
         if color_name == bcolors.OKGREEN:
             print_color_name = '✅ '
             reset_color = ''

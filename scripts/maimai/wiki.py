@@ -192,11 +192,17 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
         print_message("Page is invalid", bcolors.FAIL, args, errors_log)
         return song
 
-
+    # If title doesn't match
     if normalize_title(soup.find('h1', 'content-head').text) != song_title:
-        lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
-        print_message("Page does not match song title", bcolors.FAIL, args, errors_log)
-        return song
+        # if song has a confirmed wiki url
+        if song['wiki_url'] == url:
+            lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
+            print_message("Page does not match song title", bcolors.WARNING, args, errors_log)
+        # If it doesn't abort
+        else:
+            lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
+            print_message("Page does not match song title", bcolors.FAIL, args, errors_log)
+            return song
 
     has_std_chart = 'lev_bas' in song
     has_dx_chart = 'dx_lev_bas' in song
