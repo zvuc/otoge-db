@@ -134,7 +134,7 @@ def update_song_wiki_data(song, total_diffs, args):
             return _parse_wikiwiki(song, wiki, url, args)
 
 
-def _parse_wikiwiki(song, wiki, url, args):
+def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     song_diffs = [0]
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
