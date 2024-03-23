@@ -151,9 +151,9 @@ def _update_song_const_data(song, args):
             # If this message prints, high chance that title was not matched properly
             if song_lv in ['12', '12+', '13', '13+', '14', '14+', '15']:
                 lazy_print_song_header(f"{song_id}, {title}", song_diffs, args, errors_log)
-                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.FAIL, args, errors_log)
+                print_message(f"Chart with matching song not found in sheet ({chart}, {song_lv})", bcolors.FAIL, args, errors_log)
             else:
-                print_message(f"Chart not found in sheet ({chart}, {song_lv})", bcolors.ENDC, args, errors_log, args.no_verbose)
+                print_message(f"Chart with matching song not found in sheet ({chart}, {song_lv})", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     return song
 
