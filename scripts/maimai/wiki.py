@@ -492,11 +492,13 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
         print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN, args)
 
     if chart_designers_dict:
+        # Skip designer search for UTAGE because it's copied from comment
+
         # in some cases 宴 may be labled as 宴2 or 宴[即]..
         # 宴2 : Garakuta Doll Play https://gamerch.com/maimai/entry/533459
         # 宴[即] : ジングルベル https://gamerch.com/maimai/entry/533569
-        if chart == 'lev_utage':
-            _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart_number, diff_count=designer_diff_count)
+        # if chart == 'lev_utage':
+        #     _try_match_utage_designer(song, chart_designers_dict, chart, args, this_utage_chart_number, diff_count=designer_diff_count)
 
         # Convert REMAS to RE:M
         # elif chart == 'lev_remas':
@@ -504,12 +506,13 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
         #         update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=designer_diff_count)
         #     except KeyError:
         #         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
-        else:
-            try:
-                update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=designer_diff_count)
-            except:
-                if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
+
+        try:
+            update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=designer_diff_count)
+        except:
+            # only print not found if chart is EXP/MAS/REMAS
+            if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv', 'lev_utage', 'dx_lev_utage'):
+                print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
     
     # if not chart == 'lev_utage' and chart_designers_dict:
     #     try:
@@ -527,34 +530,34 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
         print_message(f"Added chart designer for {chart.upper()}", bcolors.OKGREEN, args)
 
 
-def _try_match_utage_designer(song, chart_designers_dict, args, this_utage_chart_number, diff_count):
+# def _try_match_utage_designer(song, chart_designers_dict, chart, args, this_utage_chart_number, diff_count):
 
-    # Case 1 : 宴
-    count_of_宴 = sum('宴' in key for key in chart_designers_dict.keys())
-    if count_of_宴 == 1:
-        try:
-            designer_key = chart_designers_dict[[key for key in chart_designers_dict if '宴' in key][0]]
-            update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
-            return
-        except KeyError:
-            pass
+#     # Case 1 : 宴
+#     count_of_宴 = sum('宴' in key for key in chart_designers_dict.keys())
+#     if count_of_宴 == 1:
+#         try:
+#             designer_key = chart_designers_dict[[key for key in chart_designers_dict if '宴' in key][0]]
+#             update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+#             return
+#         except KeyError:
+#             pass
     
-    # Case 2 : 宴2
-    if this_utage_chart_number != '':
-        try:
-            designer_key = chart_designers_dict[f"lev_{this_utage_chart_number}_designer"]
-            update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
-            return
-        except KeyError:
-            pass
+#     # Case 2 : 宴2
+#     if this_utage_chart_number != '':
+#         try:
+#             designer_key = chart_designers_dict[f"lev_{this_utage_chart_number}_designer"]
+#             update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+#             return
+#         except KeyError:
+#             pass
 
-    # Case 3 : 宴[協]
-    try:
-        designer_key = chart_designers_dict[f"lev_宴[{song['kanji']}]_designer"]
-        update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
-        return
-    except KeyError:
-        print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
+#     # Case 3 : 宴[協]
+#     try:
+#         designer_key = chart_designers_dict[f"lev_宴[{song['kanji']}]_designer"]
+#         update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+#         return
+#     except KeyError:
+#         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
 
 
 def _construct_designers_dict(song, text, key_name, prefix=''):

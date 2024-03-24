@@ -264,7 +264,7 @@ def _add_ex_data_template(song):
             song['lev_utage_notes_touch'] = ""
             song['lev_utage_notes_break'] = ""
 
-        song['lev_utage_notes_designer'] = ""
+        song['lev_utage_designer'] = song['comment']
 
     # song['version_name'] = ""
     song['wiki_url'] = ""
