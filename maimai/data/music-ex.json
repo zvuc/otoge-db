@@ -728,7 +728,8 @@
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
-    "dx_lev_mas": "12+"
+    "dx_lev_mas": "12+",
+    "dx_lev_mas_i": "12.8"
   },
   {
     "artist": "samfree",
