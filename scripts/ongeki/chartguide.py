@@ -4,6 +4,7 @@ import os
 import shutil
 import json
 import re
+import copy
 from shared.common_func import *
 from ongeki.paths import *
 from datetime import datetime
@@ -64,11 +65,11 @@ def update_chartguide_data(args):
         try:
             # Delete the directory and its contents
             shutil.rmtree(LOCAL_CACHE_DIR)
-            print(f"Cleared local cache")
+            print_message(f"Cleared local cache", bcolors.OKBLUE, args, errors_log)
         except FileNotFoundError:
-            print(f"Directory not found: {LOCAL_CACHE_DIR}")
+            print_message(f"Cache directory not found: {LOCAL_CACHE_DIR}", bcolors.WARNING, args, errors_log)
         except Exception as e:
-            print(f"Error deleting directory: {e}")
+            print_message(f"Error deleting cache directory: {e}", bcolors.WARNING, args, errors_log)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
@@ -82,45 +83,22 @@ def update_chartguide_data(args):
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
+    total_diffs = [0]
+
     for song in target_song_list:
-        _update_song_chartguide_data(song, args)
+        _update_song_chartguide_data(song, total_diffs, args)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
-
-def _get_and_save_page_to_local(url, args):
-    full_url = SDVXIN_BASE_URL + GAME_NAME + url
-
-    # Handle main page (new songs)
-    if url == '':
-        full_url = SDVXIN_BASE_URL + GAME_NAME + '.html'
-
-    response = requests.get(full_url)
-    response.encoding = 'ansi'
-
-    if not os.path.exists(LOCAL_CACHE_DIR):
-        os.makedirs(LOCAL_CACHE_DIR)
-
-    if response.status_code == 200:
-        # Extract the filename from the URL
-        filename = 'new.html'
-
-        if url != '':
-            filename = url.lstrip('/').replace('/', '_')
-
-        output_path = os.path.join(LOCAL_CACHE_DIR, filename)
-
-        # Save the content to a local file
-        with open(output_path, 'w', encoding='utf-8') as file:
-            file.write(response.text)
-        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-    else:
-        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args)
+    if total_diffs[0] == 0:
+        print_message("(Nothing updated)", bcolors.ENDC, args, errors_log)
 
 
-def _update_song_chartguide_data(song, args):
+def _update_song_chartguide_data(song, total_diffs, args):
     song_diffs = [0]
+    old_song = copy.copy(song)
+
     print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
 
     title = (
@@ -202,6 +180,11 @@ def _update_song_chartguide_data(song, args):
                 f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
             return
 
+    if old_song == song:
+        print_message("Done (Nothing updated)", bcolors.ENDC, args, no_verbose=args.no_verbose)
+    else:
+        total_diffs[0] += 1
+
     return song
 
 def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, args):
@@ -253,6 +236,36 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, a
     song_id = _extract_song_id(song, song_dict, song['title'], args)
 
     return song_id, script_src
+
+def _get_and_save_page_to_local(url, args):
+    full_url = SDVXIN_BASE_URL + GAME_NAME + url
+
+    # Handle main page (new songs)
+    if url == '':
+        full_url = SDVXIN_BASE_URL + GAME_NAME + '.html'
+
+    response = requests.get(full_url)
+    response.encoding = 'ansi'
+
+    if not os.path.exists(LOCAL_CACHE_DIR):
+        os.makedirs(LOCAL_CACHE_DIR)
+
+    if response.status_code == 200:
+        # Extract the filename from the URL
+        filename = 'new.html'
+
+        if url != '':
+            filename = url.lstrip('/').replace('/', '_')
+
+        output_path = os.path.join(LOCAL_CACHE_DIR, filename)
+
+        # Save the content to a local file
+        with open(output_path, 'w', encoding='utf-8') as file:
+            file.write(response.text)
+        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+    else:
+        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args)
+
 
 def _extract_song_id(song, song_dict, song_title, args):
     for song_id, title in song_dict.items():
