@@ -51,7 +51,7 @@ def load_new_song_data():
 
 
 def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args):
-    print_message(f"Fetch new songs", 'H2', args, errors_log)
+    print_message(f"Fetch new songs", 'H2', args)
 
     if len(added_songs) == 0 and len(updated_songs) == 0:
         print_message("Nothing updated", '', args)
