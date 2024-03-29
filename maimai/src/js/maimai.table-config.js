@@ -333,7 +333,7 @@ $(document).ready(function() {
           return `
               <span class="img-wrap">
                 <img src="jacket/${data}"/>
-                ${ row.key == '○' ? `<span class="key-icon" title="解禁必要"></span>` : ''}
+                ${ (currentRegion === 'intl' ? row.key_intl : row.key) == '○' ? `<span class="key-icon" title="解禁必要"></span>` : ''}
               </span>
             `;
         },
@@ -418,7 +418,7 @@ $(document).ready(function() {
         // displayTitle: "解禁",
         displayTitle: getTranslation(userLanguage,'col_unlock'),
         name: "key",
-        data: "key",
+        data: (currentRegion === 'intl' ? "key_intl" : "key"),
         defaultContent: "",
         className: "key detail-hidden",
         render: function ( data, type, row ) {

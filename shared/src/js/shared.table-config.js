@@ -354,6 +354,9 @@ function tableInitCompleteFunctions(table) {
     }
 
     // Reset default order
+    var temp_data = table.api().data()
+    table.api().clear();
+    table.api().rows.add(temp_data);
     table.api().order(setDefaultOrder()).draw()
 
     // Toggle date columns
