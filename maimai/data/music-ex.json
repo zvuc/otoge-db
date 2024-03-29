@@ -4381,9 +4381,10 @@
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/534342",
     "intl": "1",
-    "date_intl_added": "20131114",
     "date_added": "20131114",
-    "date_updated": "20231209"
+    "date_updated": "20231209",
+    "date_intl_added": "20131114",
+    "date_intl_updated": "20240329"
   },
   {
     "artist": "samfree",
@@ -11221,6 +11222,7 @@
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/533781",
     "intl": "1",
+    "key_intl": "○",
     "date_intl_added": "20150205",
     "date_added": "20150205",
     "date_updated": "20231006",
@@ -52746,6 +52748,7 @@
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/803789",
     "intl": "1",
+    "key_intl": "○",
     "date_intl_added": "20240202",
     "date_added": "20231020"
   },
@@ -52794,6 +52797,7 @@
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/803790",
     "intl": "1",
+    "key_intl": "○",
     "date_intl_added": "20240202",
     "date_added": "20231020"
   },
@@ -52842,6 +52846,7 @@
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/803791",
     "intl": "1",
+    "key_intl": "○",
     "date_intl_added": "20240202",
     "date_added": "20231020"
   },
@@ -52890,6 +52895,7 @@
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/803792",
     "intl": "1",
+    "key_intl": "○",
     "date_intl_added": "20240202",
     "date_added": "20231020"
   },
@@ -53172,6 +53178,7 @@
     "dx_lev_mas_designer": "Ruby",
     "wiki_url": "https://gamerch.com/maimai/entry/797003",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20230914",
     "date_intl_added": "20240315"
   },
@@ -54040,8 +54047,9 @@
     "dx_lev_mas_notes_break": "46",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/813696",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "TJ.hangneil",
@@ -54086,8 +54094,10 @@
     "dx_lev_mas_notes_break": "38",
     "dx_lev_mas_designer": "ロシェ@ペンギン",
     "wiki_url": "https://gamerch.com/maimai/entry/813773",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "key_intl": "○",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "TJ.hangneil",
@@ -54132,8 +54142,10 @@
     "dx_lev_mas_notes_break": "38",
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/813772",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "key_intl": "○",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "sasakure.UK",
@@ -54178,8 +54190,10 @@
     "dx_lev_mas_notes_break": "22",
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/entry/813945",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "key_intl": "○",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "TJ.hangneil",
@@ -54224,8 +54238,10 @@
     "dx_lev_mas_notes_break": "89",
     "dx_lev_mas_designer": "EL DiABLO",
     "wiki_url": "https://gamerch.com/maimai/entry/813944",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "key_intl": "○",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "sasakure.UK × TJ.hangneil",
@@ -54270,8 +54286,10 @@
     "dx_lev_mas_notes_break": "77",
     "dx_lev_mas_designer": "project_raputa",
     "wiki_url": "https://gamerch.com/maimai/entry/813951",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "key_intl": "○",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "Yamajet",
@@ -54363,8 +54381,9 @@
     "dx_lev_mas_notes_break": "24",
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/813697",
-    "intl": "0",
-    "date_added": "20231209"
+    "intl": "1",
+    "date_added": "20231209",
+    "date_intl_added": "20240329"
   },
   {
     "artist": "Q;indivi [cover]",
