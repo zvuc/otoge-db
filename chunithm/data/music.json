@@ -6464,6 +6464,22 @@
     "image": "181682bf5b277726.jpg"
   },
   {
+    "id": "2524",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "ユックリ feat.餅千歳",
+    "reading": "ユツクリFEATモチトセ",
+    "artist": "まろん × COOL&CREATE",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "10",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "daddc36dbb31ff58.jpg"
+  },
+  {
     "id": "2468",
     "catname": "東方Project",
     "newflag": "0",
@@ -9938,7 +9954,7 @@
   {
     "id": "2536",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "D-Birth",
     "reading": "DBIRTH",
     "artist": "削除",
@@ -9954,7 +9970,7 @@
   {
     "id": "2537",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "GIGA BLAST",
     "reading": "GIGABLAST",
     "artist": "Blacklolita",
@@ -9970,7 +9986,7 @@
   {
     "id": "2538",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Longinus",
     "reading": "LONGINUS",
     "artist": "xi",
@@ -9986,7 +10002,7 @@
   {
     "id": "2539",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Ωκεανος",
     "reading": "OKEANOS",
     "artist": "cosMo@暴走P",
@@ -10002,7 +10018,7 @@
   {
     "id": "2540",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Love's Theme of BADASS ～バッド・アス 愛のテーマ～",
     "reading": "LOVESTHEMEOFBADASSハツトアスアイノテウマ",
     "artist": "Hommarju",
@@ -21280,6 +21296,38 @@
     "image": "ab1f8aec640e9d31.jpg"
   },
   {
+    "id": "8273",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "【ゆっくり実況】ゆっくりペンギンが怒槌をやってみた！ Part1",
+    "reading": "ユツクリシツキヨウユツクリヘンキンカイカスチヲヤツテミタPART1",
+    "artist": "ゲキ！チュウマイ公式ちゃんねる",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "7",
+    "image": "bcd2cd5ff570e8bb.jpg"
+  },
+  {
+    "id": "8274",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "ラストバトル ～サシュウとの戦い～",
+    "reading": "ラストハトルサシユウトノタタカイ",
+    "artist": "「IRODORIMIDORI FANTASY VII ～悠久のマイガハラント～」より",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "2231e11bbb845c19.jpg"
+  },
+  {
     "id": "8275",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -21518,6 +21566,38 @@
     "we_kanji": "避",
     "we_star": "9",
     "image": "2883628d257bff33.jpg"
+  },
+  {
+    "id": "8260",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "4月1日でございました",
+    "reading": "4カツ1タチテコサイマシタ",
+    "artist": "Cranky",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "cb494e0e94ede82c.jpg"
+  },
+  {
+    "id": "8259",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "【3Dサウンド】小夜ちゃんが秘密裏に手に入れたヤベエ機材でヤベエ音を録る話【イヤホン推奨】（EDテーマ：A.S.S.S.M.R.）",
+    "reading": "3DサウントサヨチヤンカヒミツリニテニイレタヤヘエキサイテヤヘエオトヲトルハナシイヤホンスイシヨウEDテウマASSSMR",
+    "artist": "桔梗 小夜曲(CV:原田 彩楓)",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "7c2112df4bfbf10f.jpg"
   },
   {
     "id": "8258",
@@ -21872,6 +21952,22 @@
     "image": "a1ce1238fb07d087.jpg"
   },
   {
+    "id": "8206",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "恋はりんりん☆あーりんベル",
+    "reading": "コイハリンリンアウリンヘル",
+    "artist": "御形 アリシアナ(CV:福原 綾香)",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "fa7f503d763cbf2e.jpg"
+  },
+  {
     "id": "8204",
     "catname": "VARIETY",
     "newflag": "0",
@@ -21936,6 +22032,38 @@
     "image": "c954f41a791b9413.jpg"
   },
   {
+    "id": "8180",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "【3Dサウンド】小野ちゃんが真夏のビーチでスイカを叩き割る話【イヤホン推奨】",
+    "reading": "3Dサウントオノチヤンカマナツノヒウチテスイカヲタタキワルハナシイヤホンスイシヨウ",
+    "artist": "HaNaMiNa",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "1",
+    "image": "fa6efefb66c38dd2.jpg"
+  },
+  {
+    "id": "8181",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "conflict(斉唱)",
+    "reading": "CONFLICTセイシヨウ",
+    "artist": "イロドリミドリ",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "e69344eb5159304d.jpg"
+  },
+  {
     "id": "8176",
     "catname": "東方Project",
     "newflag": "0",
@@ -21998,6 +22126,22 @@
     "we_kanji": "！",
     "we_star": "7",
     "image": "a694a0323009a57c.jpg"
+  },
+  {
+    "id": "8146",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "なるがちゃんなぎにいよいよえれー目にあわされる話",
+    "reading": "ナルカチヤンナキニイヨイヨエレウメニアワサレルハナシ",
+    "artist": "イロドリミドリ",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "56f3a98028b88321.jpg"
   },
   {
     "id": "8141",
@@ -22144,6 +22288,22 @@
     "image": "6082e8215208f71b.jpg"
   },
   {
+    "id": "8116",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "イロドリミドリ杯花映塚全一決定戦公式テーマソング『ウソテイ』",
+    "reading": "イロトリミトリハイカエイツカセンイチケツテイセンコウシキテウマソンクウソテイ",
+    "artist": "イロドリミドリ",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "7",
+    "image": "43bd6cbc31e4c02c.jpg"
+  },
+  {
     "id": "8110",
     "catname": "ゲキマイ",
     "newflag": "0",
@@ -22190,6 +22350,22 @@
     "we_kanji": "時",
     "we_star": "1",
     "image": "82bee9dfce16e9fb.jpg"
+  },
+  {
+    "id": "8078",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "あねぺったん",
+    "reading": "アネヘツタン",
+    "artist": "月鈴姉妹(イロドリミドリ)",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "7",
+    "image": "a6889b8a729210be.jpg"
   },
   {
     "id": "8091",
@@ -22318,6 +22494,22 @@
     "we_kanji": "戻",
     "we_star": "7",
     "image": "cbf397f330e040e5.jpg"
+  },
+  {
+    "id": "8025",
+    "catname": "イロドリミドリ",
+    "newflag": "0",
+    "title": "Help me, あーりん！",
+    "reading": "HELPMEアウリン",
+    "artist": "イロドリミドリ",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exp": "",
+    "lev_mas": "",
+    "lev_ult": "",
+    "we_kanji": "嘘",
+    "we_star": "5",
+    "image": "c1ff8df1757fedf4.jpg"
   },
   {
     "id": "8024",
