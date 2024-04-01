@@ -104824,9 +104824,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "NEW+",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20210401",
+    "date_updated": "20240401",
     "intl": "0"
   },
   {
@@ -104898,9 +104899,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20230401",
+    "date_updated": "20240401",
     "intl": "0"
   },
   {
@@ -104972,9 +104974,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "SUN",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20230401",
+    "date_updated": "20240401",
     "intl": "0"
   },
   {
@@ -105194,9 +105197,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "STAR+",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20180401",
+    "date_updated": "20240401",
     "intl": "0"
   },
   {
@@ -105268,9 +105272,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "PLUS",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20160401",
+    "date_updated": "20240401",
     "intl": "0"
   },
   {
@@ -105416,9 +105421,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "AMAZON",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20190401",
+    "date_updated": "20240401",
     "intl": "0"
   },
   {
@@ -105490,8 +105496,9 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "CRYSTAL",
     "wikiwiki_url": "",
+    "date_added": "20200618",
     "date_added": "20240401",
     "intl": "0"
   },
@@ -105638,9 +105645,10 @@
     "lev_we_notes_flick": "",
     "lev_we_designer": "",
     "lev_we_chart_link": "",
-    "version": "LUMINOUS",
+    "version": "AIR+",
     "wikiwiki_url": "",
-    "date_added": "20240401",
+    "date_added": "20170331",
+    "date_updated": "20240401",
     "intl": "0"
   }
 ]
