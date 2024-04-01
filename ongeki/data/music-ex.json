@@ -46248,7 +46248,7 @@
     "image_url": "64c498779f6d3bf8.png",
     "enemy_lv": "1",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "199",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -46274,7 +46274,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/LAMIA",
     "date_added": "20240401"
   },
   {
@@ -46352,7 +46352,7 @@
     "image_url": "2aad13cae8565d48.png",
     "enemy_lv": "1",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "192",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -46378,7 +46378,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/μ3",
     "date_added": "20240401"
   }
 ]
