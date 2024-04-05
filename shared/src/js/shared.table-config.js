@@ -265,38 +265,22 @@ function tableInitCompleteFunctions(table) {
   $('button.reset-all').on('click', function(){
     let default_order = setDefaultOrder();
 
-    // Clear searches
-    table.api().columns().search('');
-    table.api().search('');
-
-    // Keep default search presets for Intl mode
-    const columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
-
-    if (currentRegion === 'intl' && columnIndexWithDefaultSearch !== -1) {
-      const defaultSearchValue = columns_params[columnIndexWithDefaultSearch].defaultSearch;
-      table.api().column(columnIndexWithDefaultSearch).search(defaultSearchValue);
-    }
-
-    table.api().order(default_order).draw();
-
-    clearQueryStringParameter();
-
-    // reset filter selectboxes
-    $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
-
-    // reset level selectbox
-    if (flat_view) {
-      $('select#chart_lev').prop('selectedIndex',0).removeClass('changed');
-    }
+    clearFilters();
+    table.api().order(default_order)
+    table.api().draw();
   });
 
   // Reset Filters only (excluding Level filter in flat_view)
   $('button.reset-filters').on('click', function(){
+    clearFilters();
+    table.api().draw();
+  });
+
+  function clearFilters() {
     const currentLevelFilterVal = table.api().column('chart_lev:name').search();
 
     // Clear searches
-    table.api()
-      .columns().search('');
+    table.api().columns().search('');
     table.api().search('');
 
     // Restore default search presets
@@ -315,9 +299,6 @@ function tableInitCompleteFunctions(table) {
       table.api().column('chart_lev:name').search(currentLevelFilterVal);
     }
 
-    table.api().draw();
-
-
     // reset filter selectboxes
     $('.toolbar.filters select').prop('selectedIndex',0).removeClass('changed');
 
@@ -328,7 +309,7 @@ function tableInitCompleteFunctions(table) {
     } else {
       clearQueryStringParameter(excludeChartLevel=true);
     }
-  });
+  }
 
 
   function switchGameRegion(event) {
