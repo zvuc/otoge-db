@@ -114,15 +114,15 @@ def add_intl_info(args):
 
             # Convert star count to integer value
             if we_star_count == 1:
-                we_star = 1
+                we_star = '1'
             elif we_star_count == 2:
-                we_star = 3
+                we_star = '3'
             elif we_star_count == 3:
-                we_star = 5
+                we_star = '5'
             elif we_star_count == 4:
-                we_star = 7
+                we_star = '7'
             elif we_star_count == 5:
-                we_star = 9
+                we_star = '9'
             else:
                 # Handle unexpected star count
                 we_star = None
@@ -159,8 +159,7 @@ def add_intl_info(args):
                         #         print("Continue matching with other songs in JSON...")
                         #         continue
 
-
-                        if (song['we_star'] != wiki_song['we_star']):
+                        if (song['we_star'] != we_star):
                             if args.strict:
                                 print_message(f"WORLDS END level (stars) mismatch.", bcolors.FAIL, args, errors_log, args.no_verbose)
                                 continue
