@@ -17,7 +17,7 @@ function setDefaultOrder() {
     return [[getColumnIndexByName('chart_lev_i'), 'desc'],[getColumnIndexByName('chart_diff'), 'desc'],[regional_date_column_index, 'desc']];
   } else {
     // date , ID
-    return [[regional_date_column_index, 'desc'],[getColumnIndexByName('id'), 'asc']];
+    return [[regional_date_column_index, 'desc'],[getColumnIndexByName('version'), 'desc'],[getColumnIndexByName('id'), 'asc']];
   }
 }
 
@@ -213,7 +213,15 @@ $(document).ready(function() {
         data: "version",
         className: "details version",
         filterable: true,
-        render: renderInWrapper(),
+        render: function ( data, type, row ) {
+          if ( type === 'sort' ) {
+            return (row.date_added || row.date_intl_added);
+          }
+          // use chara_id for sort
+          else {
+            return '<div class="inner-wrap">' + data + '<\/div>';
+          }
+        },
         customDropdownSortSource: "date_added",
         width: "12em",
       },
