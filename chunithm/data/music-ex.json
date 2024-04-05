@@ -104903,7 +104903,9 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/恋はりんりん☆あーりんベル",
     "date_added": "20210401",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20210401",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8259",
@@ -104978,7 +104980,9 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/【3Dサウンド】小夜ちゃんが秘密裏に手に入れたヤベエ機材でヤベエ音を録る話【イヤホン推奨】（EDテーマ：A.S.S.S.M.R.）",
     "date_added": "20230401",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20230401",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8260",
@@ -105053,7 +105057,9 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/4月1日でございました",
     "date_added": "20230401",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20230401",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "2524",
@@ -105199,10 +105205,13 @@
     "lev_we_notes_flick": "136",
     "lev_we_designer": "イロドリミドリ セカンドシーズン・第13.1話",
     "lev_we_chart_link": "end/05089end",
-    "version": "LUMINOUS",
+    "version": "CRYSTAL",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/【3Dサウンド】小野ちゃんが真夏のビーチでスイカを叩き割る話【イヤホン推奨】",
-    "date_added": "20240401",
-    "intl": "0"
+    "date_added": "20200618",
+    "date_updated": "20240401",
+    "intl": "1",
+    "date_intl_added": "20200618",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8116",
@@ -105277,7 +105286,9 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/イロドリミドリ杯花映塚全一決定戦公式テーマソング『ウソテイ』",
     "date_added": "20180401",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20180401",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8025",
@@ -105352,7 +105363,9 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Help me, あーりん！",
     "date_added": "20160401",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20160401",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8274",
@@ -105502,7 +105515,9 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/なるがちゃんなぎにいよいよえれー目にあわされる話",
     "date_added": "20190401",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20190401",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8181",
@@ -105575,8 +105590,11 @@
     "lev_we_chart_link": "end/05090end",
     "version": "CRYSTAL",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/conflict(斉唱)",
-    "date_added": "20240401",
-    "intl": "0"
+    "date_added": "20200618",
+    "date_updated": "20240401",
+    "intl": "1",
+    "date_intl_added": "20200618",
+    "date_intl_updated": "20240404"
   },
   {
     "id": "8273",
@@ -105726,6 +105744,8 @@
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/あねぺったん",
     "date_added": "20170331",
     "date_updated": "20240401",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240404"
   }
 ]
