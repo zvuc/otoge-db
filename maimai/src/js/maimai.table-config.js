@@ -95,26 +95,51 @@ function maimaiRenderChartTypeBadges() {
 }
 
 function maimaiProcessLvData(lev, lev_i) {
-  return function(row, data) {
+  return function(row, type, set, data) {
     let dx_lev = `dx_${lev}`;
     let dx_lev_i = `dx_${lev_i}`;
 
+    // Check if type is 'sort' and return the appropriate value with leading zero
     // only DX chart
     if (row[dx_lev] && !row[lev]) {
       // constant exists
-      return row[dx_lev];
+      if ( type === 'sort' ) {
+        if (row[dx_lev_i]) {
+          return addLeadingZero(row[dx_lev_i]);
+        } else {
+          return addLeadingZero(row[dx_lev]);
+        }
+      } else {
+        return row[dx_lev];
+      }
     }
 
     // only Std chart
     if (row[lev] && !row[dx_lev]) {
       // constant exists
-      return row[lev];
+      if ( type === 'sort' ) {
+        if (row[lev_i]) {
+          return addLeadingZero(row[lev_i]);
+        } else {
+          return addLeadingZero(row[lev]);
+        }
+      } else {
+        return row[lev];
+      }
     }
 
     // both
     if (row[dx_lev] && row[lev]) {
       // constant exists
-      return row[dx_lev];
+      if ( type === 'sort' ) {
+        if (row[dx_lev_i]) {
+          return addLeadingZero(row[dx_lev_i]);
+        } else {
+          return addLeadingZero(row[dx_lev]);
+        }
+      } else {
+        return row[dx_lev];
+      }
     }
   }
 }
