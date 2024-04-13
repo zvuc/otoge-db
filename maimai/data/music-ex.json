@@ -3113,7 +3113,8 @@
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
-    "dx_lev_mas": "13"
+    "dx_lev_mas": "13",
+    "dx_lev_mas_i": "13.0"
   },
   {
     "artist": "ELEMENTAS feat. NAGISA",
@@ -57522,7 +57523,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "14.4",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
