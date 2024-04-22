@@ -78,6 +78,10 @@ def _update_song_const_data(song, args):
 
     print_message(f"{song_id}, {title}, {version}", 'HEADER', args, errors_log, args.no_verbose)
 
+    if normalized_title == '':
+        print_message(f"Skipping song (Empty Title)", bcolors.ENDC, args, errors_log, args.no_verbose)
+        return
+
     for [chart, chart_type, chart_diff] in CHARTS:
         key_chart_i = f'{chart}_i'
         found_sheet = None
