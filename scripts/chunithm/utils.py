@@ -81,6 +81,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     # For the list of updated songs, go through each of them in older song list
     # Find the same song in ex_data list then update any changed keys
     for song in updated_songs:
+        update_count = [0]
         song_hash = generate_hash_from_keys(song, *HASH_KEYS)
         old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
         dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
@@ -102,6 +103,11 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 if key not in old_song or old_song[key] != value:
                     dest_ex_song[key] = value
 
+                    if key == 'lev_ult':
+                        update_count[0] += 1
+                        dest_ex_song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
+                        print_message(f"Added ULTIMA chart: {song['title']}", bcolors.OKGREEN, args)
+
             # Check for removed keys
             for key in old_song.copy():
                 # maimai uses 'date' key for recording NEW markers... ignore them
@@ -110,7 +116,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 if key not in song:
                     del dest_ex_song[key]
 
-            print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
+            if update_count[0] == 0:
+                print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
+
             _record_diffs(song, song_hash, 'updated')
         else:
             print_message(f"Couldn't find destination song: {song['title']}", bcolors.FAIL, args)
