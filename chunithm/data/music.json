@@ -2,7 +2,7 @@
   {
     "id": "2503",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "INTERNET YAMERO",
     "reading": "INTERNETYAMERO",
     "artist": "Aiobahn feat. KOTOKO「NEEDY GIRL OVERDOSE」",
@@ -6482,7 +6482,7 @@
   {
     "id": "2523",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "インターネットサバイバー",
     "reading": "インタウネツトサハイハウ",
     "artist": "あやぽんず＊ feat.ビートまりお × まろん",
@@ -10426,7 +10426,7 @@
     "lev_adv": "7",
     "lev_exp": "10+",
     "lev_mas": "14",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "2e95529be9118a11.jpg"
@@ -12002,7 +12002,7 @@
   {
     "id": "2542",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Burn it All",
     "reading": "BURNITALL",
     "artist": "Cosmograph「勝利の女神：NIKKE」",
@@ -12018,7 +12018,7 @@
   {
     "id": "2543",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Stronghold LandEater",
     "reading": "STRONGHOLDLANDEATER",
     "artist": "Cosmograph「勝利の女神：NIKKE」",
@@ -14594,7 +14594,7 @@
   {
     "id": "2560",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "四月の雨",
     "reading": "シカツノアメ",
     "artist": "cubesato",
@@ -21376,9 +21376,41 @@
     "image": "ab1f8aec640e9d31.jpg"
   },
   {
+    "id": "2580",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "crazy (about you)",
+    "reading": "CRAZYABOUTYOU",
+    "artist": "kamome sano",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "11+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "4b9bee0569c335cc.jpg"
+  },
+  {
+    "id": "2581",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Dèfandour",
+    "reading": "DEFANDOUR",
+    "artist": "BlackY",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "12",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3408ab7d50ad67c1.jpg"
+  },
+  {
     "id": "8270",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "セガサターン起動音[H.][Remix]",
     "reading": "セカサタウンキトウオンHREMIX",
     "artist": "Hiro",
@@ -21394,7 +21426,7 @@
   {
     "id": "8271",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "タイムカプセル",
     "reading": "タイムカフセル",
     "artist": "天月-あまつき-",
@@ -21410,7 +21442,7 @@
   {
     "id": "8272",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ガチ恋ラビリンス",
     "reading": "カチコイラヒリンス",
     "artist": "森羅万象",
