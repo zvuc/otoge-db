@@ -20219,7 +20219,7 @@
   {
     "new": "",
     "date": "20240307",
-    "title": "Prominence -式宮碧音ソロver.-",
+    "title": "Prominence -式宮 碧音ソロver.-",
     "title_sort": "フロミネンスシキミヤアオネソロVER",
     "artist": "曲：下野 隼／歌：式宮 碧音(CV：髙橋 ミナミ)",
     "id": "723200",
@@ -20470,7 +20470,7 @@
     "image_url": "36c34bb9dafaac26.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240411",
     "title": "偉大なる悪魔は実は大天使パトラちゃん様なのだ！",
     "title_sort": "イタイナルアクマハシツハタイテンシハトラチヤンサマナノタ",
@@ -20493,7 +20493,7 @@
     "image_url": "6234ebec9f316aa4.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240411",
     "title": "ハートサーモグラフィー",
     "title_sort": "ハトサモクラフイ",
@@ -20516,7 +20516,7 @@
     "image_url": "ac19e7080033716b.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240411",
     "title": "ヒストリー×ブレイカー -高瀬 梨緒ソロver.-",
     "title_sort": "ヒストリフレイカタカセリオソロVER",
@@ -20539,7 +20539,7 @@
     "image_url": "6b9a69c40ef38eab.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240411",
     "title": "ヒストリー×ブレイカー -藍原 椿ソロver.-",
     "title_sort": "ヒストリフレイカアイハラツハキソロVER",
@@ -20562,7 +20562,7 @@
     "image_url": "db5493c70baa7b8c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240411",
     "title": "ヒストリー×ブレイカー -結城 莉玖ソロver.-",
     "title_sort": "ヒストリフレイカユウキリクソロVER",
@@ -20583,5 +20583,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "139381e0c5cff295.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240425",
+    "title": "Livmetarryr",
+    "title_sort": "LIVMETARRYR",
+    "artist": "a_hisa",
+    "id": "668400",
+    "chap_id": "80036",
+    "chapter": "Primera Fes. ～Cheer Stage～",
+    "character": "柏木 咲姫",
+    "chara_id": "1100",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "8+",
+    "lev_exc": "11",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "1353fa1ef098fd1d.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240425",
+    "title": "Cogit ergo sum",
+    "title_sort": "COGITERGOSUM",
+    "artist": "佐藤 優樹",
+    "id": "668300",
+    "chap_id": "80036",
+    "chapter": "Primera Fes. ～Cheer Stage～",
+    "character": "早乙女 彩華",
+    "chara_id": "1080",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "90d9853e1a59e2cd.png"
   }
 ]
