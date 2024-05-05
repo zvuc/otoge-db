@@ -3122,7 +3122,13 @@
     "dx_lev_mas_notes_slide": "74",
     "dx_lev_mas_notes_touch": "43",
     "dx_lev_mas_notes_break": "32",
-    "dx_lev_mas_designer": "Luxizhel"
+    "dx_lev_mas_designer": "Luxizhel",
+    "dx_lev_exp_notes": "310",
+    "dx_lev_exp_notes_tap": "185",
+    "dx_lev_exp_notes_hold": "66",
+    "dx_lev_exp_notes_slide": "25",
+    "dx_lev_exp_notes_touch": "9",
+    "dx_lev_exp_notes_break": "25"
   },
   {
     "artist": "ELEMENTAS feat. NAGISA",
