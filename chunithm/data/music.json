@@ -1,5 +1,21 @@
 [
   {
+    "id": "2504",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "とまどい→レシピ",
+    "reading": "トマトイレシヒ",
+    "artist": "みかくにんぐッ！「未確認で進行形」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "8",
+    "lev_mas": "11+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "38f77941c4eb6fc7.jpg"
+  },
+  {
     "id": "2503",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -2302,6 +2318,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "d5a47266b4fe0bfe.jpg"
+  },
+  {
+    "id": "2520",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "アンダーキッズ",
+    "reading": "アンタウキツス",
+    "artist": "ツユ",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exp": "9",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "874cf61ea3abd287.jpg"
+  },
+  {
+    "id": "2522",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "ヒアソビ",
+    "reading": "ヒアソヒ",
+    "artist": "かめりあ",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "23713cd79a45b799.jpg"
+  },
+  {
+    "id": "2521",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "flos",
+    "reading": "FLOS",
+    "artist": "R Sound Design",
+    "lev_bas": "1",
+    "lev_adv": "5",
+    "lev_exp": "8+",
+    "lev_mas": "12",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f2f1015a4a7ee4ed.jpg"
   },
   {
     "id": "2518",
@@ -6218,7 +6282,7 @@
     "lev_adv": "7",
     "lev_exp": "10+",
     "lev_mas": "13+",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "24611f2e2374e6a8.jpg"
@@ -12862,6 +12926,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "2ada4abd53e380f3.jpg"
+  },
+  {
+    "id": "2552",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "ALL I WANNA DO",
+    "reading": "ALLIWANNADO",
+    "artist": "月鈴 白奈(CV:高野 麻里佳)",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "167d4a6409c6b7dd.jpg"
   },
   {
     "id": "683",
@@ -21378,7 +21458,7 @@
   {
     "id": "2580",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "crazy (about you)",
     "reading": "CRAZYABOUTYOU",
     "artist": "kamome sano",
@@ -21394,7 +21474,7 @@
   {
     "id": "2581",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Dèfandour",
     "reading": "DEFANDOUR",
     "artist": "BlackY",
@@ -21406,6 +21486,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "3408ab7d50ad67c1.jpg"
+  },
+  {
+    "id": "2582",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "Ultimate Force",
+    "reading": "ULTIMATEFORCE",
+    "artist": "削除",
+    "lev_bas": "5",
+    "lev_adv": "10",
+    "lev_exp": "14+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "40ff64380c4b4833.jpg"
   },
   {
     "id": "8270",
