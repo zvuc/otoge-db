@@ -28379,7 +28379,8 @@
     "date_added": "20150716",
     "intl": "1",
     "date_updated": "20240111",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20240509"
   },
   {
     "id": "23",
@@ -96694,7 +96695,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/驚異の魔法",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240509"
   },
   {
     "id": "2571",
@@ -96768,7 +96770,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ウニの歌",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240509"
   },
   {
     "id": "2573",
@@ -96842,7 +96845,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/liberate",
     "date_added": "20231214",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240509"
   },
   {
     "id": "8278",
