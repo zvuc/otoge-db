@@ -20631,7 +20631,7 @@
     "image_url": "90d9853e1a59e2cd.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240509",
     "title": "ロミオとシンデレラ",
     "title_sort": "ロミオトシンテレラ",
@@ -20654,7 +20654,7 @@
     "image_url": "944a654b0c714172.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240509",
     "title": "おひめさまになりたいのッ！",
     "title_sort": "オヒメサマニナリタイノツ",
@@ -20677,7 +20677,7 @@
     "image_url": "9a6458e966a0c274.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240509",
     "title": "ずんだパーリナイ",
     "title_sort": "スンタハリナイ",
@@ -20698,5 +20698,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "2db1cb4364d82920.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240523",
+    "title": "雪男",
+    "title_sort": "ユキオトコ",
+    "artist": "かねこちはる",
+    "id": "577800",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "珠洲島 有栖",
+    "chara_id": "1130",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "6",
+    "lev_adv": "10+",
+    "lev_exc": "13",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "89495378e8ccaf1a.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240523",
+    "title": "Blessed Rain",
+    "title_sort": "BLESSEDRAIN",
+    "artist": "ぺのれり",
+    "id": "577700",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "東雲 つむぎ",
+    "chara_id": "1160",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exc": "12+",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "52b5f7bda066b73a.png"
   }
 ]
