@@ -16788,7 +16788,6 @@
   {
     "artist": "Ryo Fukuda",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -16804,7 +16803,6 @@
   {
     "artist": "siqlo",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -16820,7 +16818,6 @@
   {
     "artist": "K-forest",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -16836,7 +16833,6 @@
   {
     "artist": "Hommarju",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8+",
     "dx_lev_exp": "12+",
@@ -16980,6 +16976,21 @@
     "title": "酔いどれ知らず",
     "title_kana": "ヨイトレシラス",
     "version": "24500"
+  },
+  {
+    "artist": "まらしぃ×じん×堀江晶太(kemu) feat.鏡音リン",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "3d83103605f1e63c.png",
+    "release": "240524",
+    "sort": "109",
+    "title": "新人類",
+    "title_kana": "シンシンルイ",
+    "version": "24505"
   },
   {
     "artist": "雄之助 feat. POPY & ROSE",
@@ -17137,6 +17148,21 @@
     "version": "24503"
   },
   {
+    "artist": "花畑チャイカ＆椎名唯華",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "12+",
+    "image_url": "119e1fa2c7387aa9.png",
+    "release": "240524",
+    "sort": "5",
+    "title": "バラバラ〜仮初レインボーローズ〜",
+    "title_kana": "ハラハラカリソメレインホオロオス",
+    "version": "24505"
+  },
+  {
     "artist": "ピノキオピー",
     "catcode": "niconico＆ボーカロイド",
     "dx_lev_bas": "3",
@@ -17149,6 +17175,36 @@
     "title": "匿名M",
     "title_kana": "トクメイM",
     "version": "24500"
+  },
+  {
+    "artist": "マサラダ",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "3ecd712a72f9b81a.png",
+    "release": "240524",
+    "sort": "116",
+    "title": "ライアーダンサー",
+    "title_kana": "ライアアタンサア",
+    "version": "24505"
+  },
+  {
+    "artist": "isonosuke",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "5826cc96ab759012.png",
+    "release": "240524",
+    "sort": "117",
+    "title": "バカ通信",
+    "title_kana": "ハカツウシン",
+    "version": "24505"
   },
   {
     "artist": "A-One",
@@ -17177,6 +17233,21 @@
     "title": "壱雫空",
     "title_kana": "ヒトシスク",
     "version": "24500"
+  },
+  {
+    "artist": "てにをは",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "1",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "12+",
+    "image_url": "8032e0a4e5be70bf.png",
+    "release": "240524",
+    "sort": "108",
+    "title": "ザムザ",
+    "title_kana": "サムサ",
+    "version": "24505"
   },
   {
     "artist": "Q;indivi [cover]",
@@ -17385,6 +17456,19 @@
     "title": "[協]疾走あんさんぶる",
     "title_kana": "シツソウアンサンフル",
     "version": "24000"
+  },
+  {
+    "artist": "Cranky",
+    "catcode": "宴会場",
+    "lev_utage": "14+?",
+    "kanji": "宴",
+    "comment": "ぼくらのかんがえたさいきょうのまいまい",
+    "image_url": "262844c08ce50193.png",
+    "release": "240524",
+    "sort": "1257",
+    "title": "[宴]Oshama Scramble! (Cranky Remix)",
+    "title_kana": "OSHAMASCRAMBLECRANKYREMIX",
+    "version": "24505"
   },
   {
     "artist": "佐野 信義「スペースハリアー」",
@@ -17599,6 +17683,20 @@
     "title": "[協]青春コンプレックス",
     "title_kana": "セイシユンコンフレツクス",
     "version": "24000"
+  },
+  {
+    "artist": "さくゆい",
+    "catcode": "宴会場",
+    "lev_utage": "12+?",
+    "kanji": "奏",
+    "comment": "2人合わせてさくゆいたいそう",
+    "buddy": "○",
+    "image_url": "4a865397a5170d82.png",
+    "release": "240524",
+    "sort": "1256",
+    "title": "[奏]さくゆいたいそう",
+    "title_kana": "サクユイタイソウ",
+    "version": "24505"
   },
   {
     "artist": "t+pazolite",
