@@ -2788,7 +2788,8 @@
     "dx_lev_mas_notes_slide": "74",
     "dx_lev_mas_notes_touch": "22",
     "dx_lev_mas_notes_break": "16",
-    "dx_lev_mas_designer": "Luxizhel"
+    "dx_lev_mas_designer": "Luxizhel",
+    "dx_lev_mas_i": "13.0"
   },
   {
     "artist": "RYOHEI KOHNO/森綾香",
@@ -6057,7 +6058,8 @@
     "dx_lev_bas": "5",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
-    "dx_lev_mas": "13"
+    "dx_lev_mas": "13",
+    "dx_lev_mas_i": "13.4"
   },
   {
     "artist": "t+pazolite",
