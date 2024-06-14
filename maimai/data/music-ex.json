@@ -31038,7 +31038,8 @@
     "lev_exp_notes_tap": "464",
     "lev_exp_notes_hold": "67",
     "lev_exp_notes_slide": "47",
-    "lev_exp_notes_break": "46"
+    "lev_exp_notes_break": "46",
+    "date_intl_updated": "20240614"
   },
   {
     "artist": "MARETU",
@@ -55630,8 +55631,9 @@
     "dx_lev_mas_notes_break": "7",
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/entry/827120",
-    "intl": "0",
-    "date_added": "20240216"
+    "intl": "1",
+    "date_added": "20240216",
+    "date_intl_added": "20240614"
   },
   {
     "artist": "暁Records",
@@ -55678,8 +55680,9 @@
     "dx_lev_mas_notes_break": "82",
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/827121",
-    "intl": "0",
-    "date_added": "20240216"
+    "intl": "1",
+    "date_added": "20240216",
+    "date_intl_added": "20240614"
   },
   {
     "artist": "litmus*",
@@ -55726,8 +55729,9 @@
     "dx_lev_mas_notes_break": "32",
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/827124",
-    "intl": "0",
-    "date_added": "20240216"
+    "intl": "1",
+    "date_added": "20240216",
+    "date_intl_added": "20240614"
   },
   {
     "artist": "wotaku",
@@ -55774,8 +55778,9 @@
     "dx_lev_mas_notes_break": "41",
     "dx_lev_mas_designer": "みそかつ侍",
     "wiki_url": "https://gamerch.com/maimai/entry/827119",
-    "intl": "0",
-    "date_added": "20240216"
+    "intl": "1",
+    "date_added": "20240216",
+    "date_intl_added": "20240614"
   },
   {
     "artist": "ツミキ feat.月乃",
