@@ -164,14 +164,19 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         # removed_songs
         for song in removed_songs:
             song_hash = generate_hash_from_keys(song, *HASH_KEYS)
-            existing_song = next((s for s in local_music_ex_data if generate_hash_from_keys(song, *HASH_KEYS) == song_hash), None)
+            existing_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s, *HASH_KEYS) == song_hash), None)
 
             if existing_song:
                 # delete matched item
+                # ipdb.set_trace()
                 local_music_ex_data.remove(existing_song)
                 archive_deleted_song(existing_song, local_music_ex_deleted_data)
 
-                print_message(f"Removed song: {song['title']}", bcolors.OKBLUE, args)
+                if song['we_kanji'] == "":
+                    print_message(f"Removed song: {song['title']}", bcolors.OKBLUE, args)
+                else:
+                    print_message(f"Removed song (WE): {song['title']}[{song['we_kanji']}]", bcolors.OKBLUE, args)
+
 
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
