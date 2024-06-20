@@ -11,7 +11,7 @@ from chunithm.paths import *
 from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
-SHEETS_ID = '1Nhr-lC1u11WPkUPVTatnNrKWCmVLglaA6hZHgh56N6w'
+SHEETS_ID = '1ySnda8wjXIhWzCTJ4tqDi-XnZCABpQdWik9lUOqzHuM'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_CACHE_DIR = 'chunithm/google_sheets_cache'
 HASH_KEYS = ['title', 'artist', 'we_kanji']
