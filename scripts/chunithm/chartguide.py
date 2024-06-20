@@ -31,7 +31,8 @@ VERSION_MAPPING = {
     "NEW+": "07",
     "SUN": "08",
     "SUN+": "08",
-    "LUMINOUS": "09"
+    "LUMINOUS": "09",
+    "LUMINOUS,": "10"
 }
 
 PAGES = {
