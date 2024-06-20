@@ -20746,7 +20746,7 @@
     "image_url": "52b5f7bda066b73a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240606",
     "title": "10pt8ion",
     "title_sort": "10PT8TION",
@@ -20769,7 +20769,7 @@
     "image_url": "9d9b4a86a44bd07f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240606",
     "title": "Got more raves? -xiRemix-",
     "title_sort": "GOTMORERAVESXIREMIX",
@@ -20792,7 +20792,7 @@
     "image_url": "10e4c4301d096df9.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240606",
     "title": "Lethal Dose",
     "title_sort": "LETHALDOSE",
@@ -20813,5 +20813,51 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "2cbe5a459de45ac1.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240620",
+    "title": "風仁雷仁",
+    "title_sort": "フウシンライシン",
+    "artist": "カラフル・サウンズ・ポート",
+    "id": "481100",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "桜井 春菜",
+    "chara_id": "1070",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exc": "10+",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "269e6c78776abd4f.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240620",
+    "title": "Synthesis.",
+    "title_sort": "SYNTHESIS",
+    "artist": "tn-shi",
+    "id": "481200",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "皇城 セツナ",
+    "chara_id": "1170",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "506d3d2712eb7685.png"
   }
 ]
