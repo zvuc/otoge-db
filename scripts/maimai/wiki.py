@@ -257,8 +257,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
 
             if not formatted_date == '':
                 diff_count = [0]
-                update_song_key(song, 'date_added', formatted_date, diff_count=diff_count)
-                update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
+                update_song_key(song, args, 'date_added', formatted_date, diff_count=diff_count)
+                # update_song_key(song, args, 'version', _guess_version(formatted_date), diff_count=diff_count)
                 
                 if diff_count[0] > 0:
                     lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
@@ -273,7 +273,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
         # Update BPM
         if overview_dict['BPM']:
             diff_count = [0]
-            update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
+            update_song_key(song, args, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
             if diff_count[0] > 0:
                 lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
@@ -291,7 +291,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
         th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
 
         if len(th_elements) in (2, 3) and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[-1].get_text(strip=True) == '総数':
-            charts_table_head = [th.text for th in table.select("thead th:not([colspan]), thead td:not([colspan])")]
+            charts_table_head = [th.text for th in table.select("thead th:not([colspan]), thead td:not([colspan])") if th.text != "スコア"]
             
             if any(charts_table_head) and 'Lv' in charts_table_head[0]:
                 # DX chart table
@@ -472,20 +472,20 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
     designer_diff_count = [0]
     # Now fetching constants from google sheet (const.py) so we don't need this
     # if '定数' in chart_dict:
-    #     update_song_key(song, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=details_diff_count)
+    #     update_song_key(song, args, f"{chart}_i", chart_dict["定数"], remove_comma=True, diff_count=details_diff_count)
     # else:
     #     if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv'):
     #         print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
 
-    update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
 
     if 'Touch' in chart_dict:
-        update_song_key(song, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=details_diff_count)
+        update_song_key(song, args, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=details_diff_count)
 
-    update_song_key(song, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=details_diff_count)
 
     if details_diff_count[0] > 0:
         lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
@@ -503,12 +503,12 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
         # Convert REMAS to RE:M
         # elif chart == 'lev_remas':
         #     try:
-        #         update_song_key(song, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=designer_diff_count)
+        #         update_song_key(song, args, f"{chart}_designer", chart_designers_dict["lev_remas_designer"], diff_count=designer_diff_count)
         #     except KeyError:
         #         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
 
         try:
-            update_song_key(song, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=designer_diff_count)
+            update_song_key(song, args, f"{chart}_designer", chart_designers_dict[f"{chart}_designer"], diff_count=designer_diff_count)
         except:
             # only print not found if chart is EXP/MAS/REMAS
             if chart not in ('lev_bas', 'lev_adv', 'dx_lev_bas', 'dx_lev_adv', 'lev_utage', 'dx_lev_utage'):
@@ -517,7 +517,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
     # if not chart == 'lev_utage' and chart_designers_dict:
     #     try:
     #         if re.search(r'(\d{2}\.\d)',chart_designers_dict[f"{chart}_i"]):
-    #             update_song_key(song, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=designer_diff_count)
+    #             update_song_key(song, args, f"{chart}_i", chart_designers_dict[f"{chart}_i"], diff_count=designer_diff_count)
     #         else:
     #             raise Exception(f"Constant for {chart.upper()} is invalid")
     #     except:
@@ -537,7 +537,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
 #     if count_of_宴 == 1:
 #         try:
 #             designer_key = chart_designers_dict[[key for key in chart_designers_dict if '宴' in key][0]]
-#             update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+#             update_song_key(song, args, "lev_utage_designer", designer_key, diff_count=diff_count)
 #             return
 #         except KeyError:
 #             pass
@@ -546,7 +546,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
 #     if this_utage_chart_number != '':
 #         try:
 #             designer_key = chart_designers_dict[f"lev_{this_utage_chart_number}_designer"]
-#             update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+#             update_song_key(song, args, "lev_utage_designer", designer_key, diff_count=diff_count)
 #             return
 #         except KeyError:
 #             pass
@@ -554,7 +554,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
 #     # Case 3 : 宴[協]
 #     try:
 #         designer_key = chart_designers_dict[f"lev_宴[{song['kanji']}]_designer"]
-#         update_song_key(song, "lev_utage_designer", designer_key, diff_count=diff_count)
+#         update_song_key(song, args, "lev_utage_designer", designer_key, diff_count=diff_count)
 #         return
 #     except KeyError:
 #         print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)

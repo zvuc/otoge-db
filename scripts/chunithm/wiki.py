@@ -189,8 +189,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
 
             if not formatted_date == '':
                 diff_count = [0]
-                update_song_key(song, 'date_added', formatted_date, diff_count=diff_count)
-                update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
+                update_song_key(song, args, 'date_added', formatted_date, diff_count=diff_count)
+                update_song_key(song, args, 'version', _guess_version(formatted_date), diff_count=diff_count)
                 
                 if diff_count[0] > 0:
                     lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
@@ -205,7 +205,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
         # Update BPM
         if overview_dict['BPM']:
             diff_count = [0]
-            update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
+            update_song_key(song, args, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
             if diff_count[0] > 0:
                 lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
@@ -397,12 +397,12 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
     details_diff_count = [0]
     designer_diff_count = [0]
 
-    update_song_key(song, f"lev_{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"lev_{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"lev_{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"lev_{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"lev_{chart}_notes_air", chart_dict["Air"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"lev_{chart}_notes_flick", chart_dict["Flick"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes_air", chart_dict["Air"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes_flick", chart_dict["Flick"], remove_comma=True, diff_count=details_diff_count)
 
     if details_diff_count[0] > 0:
         lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
@@ -415,17 +415,17 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
         if chart == 'we':
             try:
                 designer_key = chart_constant_designer_dict[f"lev_{chart}_designer"]
-                update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
+                update_song_key(song, args, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
             except KeyError:
                 try:
                     # try alternative syntax
                     designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
-                    update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=designer_diff_count)
+                    update_song_key(song, args, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=designer_diff_count)
                 except:
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
         else:
             try:
-                update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
+                update_song_key(song, args, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
             except:
                 if chart not in ('bas', 'adv'):
                     print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
@@ -434,7 +434,7 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
     # if not chart == 'we' and chart_constant_designer_dict:
     #     try:
     #         if re.search(r'(\d{2}\.\d)',chart_constant_designer_dict[f"lev_{chart}_i"]):
-    #             update_song_key(song, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
+    #             update_song_key(song, args, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
     #         else:
     #             raise Exception(f"Constant for {chart.upper()} is invalid")
     #     except:

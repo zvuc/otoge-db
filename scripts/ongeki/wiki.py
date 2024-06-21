@@ -147,7 +147,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
 
             if enemy_lv and not enemy_lv == '○':
                 diff_count = [0]
-                update_song_key(song, 'enemy_lv', enemy_lv, diff_count=diff_count)
+                update_song_key(song, args, 'enemy_lv', enemy_lv, diff_count=diff_count)
 
                 if diff_count[0] > 0:
                     lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
@@ -159,7 +159,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 diff_count = [0]
 
                 if enemy_type in enemy_name:
-                    update_song_key(song, 'enemy_type', enemy_type, diff_count=diff_count)
+                    update_song_key(song, args, 'enemy_type', enemy_type, diff_count=diff_count)
 
                     if diff_count[0] > 0:
                         lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
@@ -210,7 +210,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     # Update BPM
     if overview_dict['BPM']:
         diff_count = [0]
-        update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
+        update_song_key(song, args, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
         if diff_count[0] > 0:
             lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
@@ -230,15 +230,15 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
 def _update_song_chart_details(song, chart_dict, chart, args, song_diffs):
     details_diff_count = [0]
     designer_diff_count = [0]
-    update_song_key(song, f"lev_{chart}_notes", chart_dict["総ノート数"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"lev_{chart}_bells", chart_dict["BELL"], remove_comma=True, diff_count=details_diff_count)
-    # update_song_key(song, f"lev_{chart}_i", chart_dict["譜面定数"], diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_notes", chart_dict["総ノート数"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, args, f"lev_{chart}_bells", chart_dict["BELL"], remove_comma=True, diff_count=details_diff_count)
+    # update_song_key(song, args, f"lev_{chart}_i", chart_dict["譜面定数"], diff_count=details_diff_count)
 
     if details_diff_count[0] > 0:
         lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
         print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN, args)
 
-    update_song_key(song, f"lev_{chart}_designer", chart_dict["譜面製作者"], diff_count=designer_diff_count)
+    update_song_key(song, args, f"lev_{chart}_designer", chart_dict["譜面製作者"], diff_count=designer_diff_count)
 
     if designer_diff_count[0] > 0:
         if details_diff_count[0] == 0:

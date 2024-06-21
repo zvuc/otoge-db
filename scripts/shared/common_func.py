@@ -238,14 +238,14 @@ def get_songs_from_diffs(song_list, diffs_log, identifier):
 
     return target_song_list
 
-def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
+def update_song_key(song, args, key, new_data, remove_comma=False, diff_count=None):
     # skip if new data is placeholder
     if new_data in ['？', '?', '??', '???', '-']:
         return
 
     if key in song:
-        # skip if source is not empty (or practically is empty)
-        if song[key] != '' or song[key] in ['？', '?']:
+        # skip if dest has a valid value other than ?
+        if not args.overwrite and (song[key] != '' or song[key] not in ['？', '?']):
             return
         # Only overwrite if new data is not empty and is not same
         if (new_data != '') and (song[key] != new_data):

@@ -17,6 +17,7 @@ parser.add_argument('--escape', action="store_true", help='Escape unsafe charact
 parser.add_argument('--no_timestamp', action="store_true", help='Don\'t print timestamps on message output')
 parser.add_argument('--no_verbose', action="store_true", help='Only print significant changes and errors')
 parser.add_argument('--noskip', action="store_true", help='Don\'t skip items that already have URL')
+parser.add_argument('--overwrite', action="store_true", help='Overwrite existing values')
 
 args = parser.parse_args()
 
