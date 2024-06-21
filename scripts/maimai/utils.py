@@ -162,7 +162,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         # removed_songs
         for song in removed_songs:
             song_hash = maimai_generate_hash(song)
-            existing_song = next((s for s in local_music_ex_data if maimai_generate_hash(song) == song_hash), None)
+            existing_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
 
             if existing_song:
                 # delete matched item
