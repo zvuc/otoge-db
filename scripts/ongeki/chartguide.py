@@ -224,10 +224,10 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern, a
             response = requests.get(SDVXIN_BASE_URL + script_src)
             response.encoding = 'ansi'
             js_soup = BeautifulSoup(response.text, 'html.parser')
-            match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))[0]
+            match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))
 
             if match:
-                extracted_song_title = match
+                extracted_song_title = match[0]
 
         if extracted_song_title:
             extracted_song_title = extracted_song_title.strip()
