@@ -20815,7 +20815,7 @@
     "image_url": "2cbe5a459de45ac1.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240620",
     "title": "風仁雷仁",
     "title_sort": "フウシンライシン",
@@ -20838,7 +20838,7 @@
     "image_url": "269e6c78776abd4f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240620",
     "title": "Synthesis.",
     "title_sort": "SYNTHESIS",
@@ -20859,5 +20859,51 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "506d3d2712eb7685.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240704",
+    "title": "淵底のグレイ・ユークロニア",
+    "title_sort": "エンテイノクレイユクロニア",
+    "artist": "打打だいず vs. siromaru vs. Tanchiky",
+    "id": "668100",
+    "chap_id": "80037",
+    "chapter": "Primera Fes. ～Summer Stage～",
+    "character": "高瀬 梨緒",
+    "chara_id": "1040",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "6",
+    "lev_adv": "10",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "ffaa5428ab030117.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240704",
+    "title": "冥乱幻舞",
+    "title_sort": "メイランケンフ",
+    "artist": "PRASTIK DANCEFLOOR",
+    "id": "668000",
+    "chap_id": "80037",
+    "chapter": "Primera Fes. ～Summer Stage～",
+    "character": "逢坂 茜",
+    "chara_id": "1120",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "bf3c0916aa22e22f.png"
   }
 ]
