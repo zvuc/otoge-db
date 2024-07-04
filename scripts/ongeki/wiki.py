@@ -159,7 +159,11 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 diff_count = [0]
 
                 if enemy_type in enemy_name:
+                    default_overwrite = args.overwrite
+                    args.overwrite = True
                     update_song_key(song, args, 'enemy_type', enemy_type, diff_count=diff_count)
+
+                    args.overwrite = default_overwrite
 
                     if diff_count[0] > 0:
                         lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
