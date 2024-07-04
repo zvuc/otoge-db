@@ -239,28 +239,28 @@ def get_songs_from_diffs(song_list, diffs_log, identifier):
     return target_song_list
 
 def update_song_key(song, args, key, new_data, remove_comma=False, diff_count=None):
-    # skip if new data is placeholder
-    if new_data in ['？', '?', '??', '???', '-']:
+
+    # skip if new data is placeholder or empty
+    if new_data in ['？', '?', '??', '???', '-', '']:
         return
 
+    # Check if key exists in song
     if key in song:
-        # skip if dest has a valid value other than ?
-        if not args.overwrite and (song[key] != '' or song[key] not in ['？', '?']):
+        # Skip if new data is same as existing data
+        if song[key] == new_data:
             return
-        # Only overwrite if new data is not empty and is not same
-        if (new_data != '') and (song[key] != new_data):
-            diff_count[0] += 1
-            song[key] = new_data
-
-            if remove_comma:
-                song[key] = song[key].replace(',', '')
-
+        # skip if dest already has a valid value (other than ?) AND force overwrite is not set
+        if (song[key] != '' and song[key] not in ['？', '?']) and not args.overwrite:
             return
-    # if source key doesn't exist, create & fill
-    elif (new_data != ''):
-        song[key] = new_data
-        diff_count[0] += 1
-        return
+
+    # Write
+    song[key] = new_data
+    diff_count[0] += 1
+
+    if remove_comma:
+        song[key] = song[key].replace(',', '')
+
+    return
 
 def archive_deleted_song(song, deleted_data):
     deleted_date = datetime.now().strftime('%Y%m%d')
