@@ -134,7 +134,7 @@ def _update_song_chartguide_data(song, total_diffs, args):
             target_key = 'lev_mas_chart_link'
             url_pattern = '/' + GAME_NAME + '/0'
 
-        if not song[target_key] == '':
+        if not song[target_key] == '' and not args.overwrite:
             print_message(f"Chart link already exists! ({chart.upper()})", bcolors.ENDC, args, errors_log, args.no_verbose)
             continue
 
