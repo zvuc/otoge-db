@@ -170,6 +170,10 @@ def add_intl_info(args):
                 wiki_song['lev_remas'] != '-'):
                 only_remas = True
 
+            # If song needs unlock
+            if 'Unlockable' in row.find_previous('th').text.strip():
+                wiki_song['key_intl'] = True
+
             print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
 
 
@@ -258,6 +262,11 @@ def add_intl_info(args):
                                 elif 'date_intl_updated' in song and int(wiki_song['date']) > int(song['date_intl_updated']):
                                     song['date_intl_updated'] = wiki_song['date']
                                     print_message(f"Intl. update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+
+                    # Write unlockable
+                    if 'key_intl' in wiki_song and ('key_intl' not in song or song['key_intl'] == ''):
+                        song['key_intl'] = "○"
+                        print_message(f"Intl. marked as unlockable", bcolors.OKBLUE, args, errors_log, args.no_verbose)
 
                     song_matched = True
                     break
