@@ -119,7 +119,7 @@ def update_song_wiki_data(song, total_diffs, args):
     if 'wiki_url' in song and song['wiki_url']:
         if args.noskip:
             # Check if any values are empty
-            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)):
+            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)) or args.overwrite:
                 url = song['wiki_url']
                 try:
                     wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
