@@ -137,7 +137,21 @@ def update_song_wiki_data(song, total_diffs, args):
     # If not, guess URL from title
     else:
         # guess_url = wiki_base_url + title
-        search_title = title.replace('-',' ')
+        if 'lev_utage' in song and song["title"].startswith(f"[{song['kanji']}]"):
+            stripped_utage_title = song["title"][len(song['kanji']) + 2:].strip()
+            normalized_utage_title = (
+                stripped_utage_title
+                .replace('&', '＆')
+                .replace(':', '：')
+                .replace('[', '［')
+                .replace(']', '］')
+                .replace('#', '＃')
+                .replace('"', '”')
+                .replace('?', '？')
+            )
+            search_title = normalized_utage_title.replace('-',' ')
+        else:
+            search_title = title.replace('-',' ')
         guess_url = f'https://www.google.com/search?hl=en&q="{search_title}"+site%3Agamerch.com%2Fmaimai&btnI=I'
         try:
             search_results = requests.get(guess_url, timeout=5)
@@ -186,7 +200,13 @@ def update_song_wiki_data(song, total_diffs, args):
 def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     critical_errors = [0]
     song_diffs = [0]
-    song_title = normalize_title(song['title'])
+
+    if 'lev_utage' in song and song["title"].startswith(f"[{song['kanji']}]"):
+        stripped_utage_title = song["title"][len(song['kanji']) + 2:].strip()
+        song_title = normalize_title(stripped_utage_title)
+    else:
+        song_title = normalize_title(song['title'])
+
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("body .main table")
     old_song = copy.copy(song)
