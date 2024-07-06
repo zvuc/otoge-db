@@ -17,6 +17,14 @@ request_headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
+TARGET_KEYS = [
+    "bpm",
+    "enemy_lv",
+    "enemy_type",
+    "_notes",
+    "_designer"
+]
+
 # Update on top of existing music-ex
 def update_songs_extra_data(args):
     print_message(f"Fetch latest wiki data", 'H2', args, errors_log)
@@ -34,8 +42,6 @@ def update_songs_extra_data(args):
 
     for song in target_song_list:
         update_song_wiki_data(song, total_diffs, args)
-
-        # time.sleep(random.randint(1,2))
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
@@ -61,16 +67,23 @@ def update_song_wiki_data(song, total_diffs, args):
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         if args.noskip:
-            url = song['wikiwiki_url']
-            try:
-                wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
-                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
-            except requests.RequestException as e:
-                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
-                return song
+            # Check if any values are empty
+            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)):
+                url = song['wikiwiki_url']
+                try:
+                    wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
+                    _parse_wikiwiki(song, wiki, url, total_diffs, args)
+                    # Give some time before continuing
+                    time.sleep(random.randint(1,2))
+                    return
+                except requests.RequestException as e:
+                    print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
+                    return song
+            else:
+                print_message("(Skipping - all data already present)", bcolors.ENDC, args, errors_log, args.no_verbose)
         else:
             # Skip if URL present
-            print_message("(Skipping)", bcolors.ENDC, args, errors_log, args.no_verbose)
+            print_message("(Skipping - URL already exists)", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     # If not, guess URL from title
     else:

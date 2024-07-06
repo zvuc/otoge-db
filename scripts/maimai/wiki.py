@@ -18,6 +18,12 @@ request_headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
+TARGET_KEYS = [
+    "bpm",
+    "_notes",
+    "_designer"
+]
+
 VERSION_DATES = {
     "無印": "20150716",
     "PLUS": "20160204",
@@ -112,17 +118,21 @@ def update_song_wiki_data(song, total_diffs, args):
     # use existing URL if already present
     if 'wiki_url' in song and song['wiki_url']:
         if args.noskip:
-            url = song['wiki_url']
-            try:
-                wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
-                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
-            except requests.RequestException as e:
-                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
-                return song
+            # Check if any values are empty
+            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)):
+                url = song['wiki_url']
+                try:
+                    wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
+                    return _parse_wikiwiki(song, wiki, url, total_diffs, args)
+                except requests.RequestException as e:
+                    print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
+                    return song
+            else:
+                print_message("(Skipping - all data already present)", bcolors.ENDC, args, errors_log, args.no_verbose)
 
         else:
             # Skip if URL present
-            print_message("(Skipping)", bcolors.ENDC, args, errors_log, args.no_verbose)
+            print_message("(Skipping - URL already exists)", bcolors.ENDC, args, errors_log, args.no_verbose)
 
     # If not, guess URL from title
     else:
