@@ -222,7 +222,14 @@ $(document).ready(function() {
         data: "version",
         className: "details version",
         filterable: true,
-        render: renderInWrapper(),
+        render: function ( data, type, row ) {
+          if ( type === 'sort' ) {
+            return row.date_added;
+          }
+          else {
+            return '<div class="inner-wrap">' + data + '<\/div>';
+          }
+        },
         customDropdownSortSource: "date_added",
         width: "12em"
       },
