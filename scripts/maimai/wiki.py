@@ -320,6 +320,11 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     for table in tables:
         th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
 
+
+        # Handle buddy chart in song
+        if 'buddy' in song and len(th_elements) > 3 and 'バディ' in th_elements[3]:
+            th_elements = th_elements[:-2]
+
         if len(th_elements) in (2, 3) and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[-1].get_text(strip=True) == '総数':
             charts_table_head = [th.text for th in table.select("thead th:not([colspan]), thead td:not([colspan])") if th.text != "スコア"]
             
@@ -331,6 +336,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 # Standard chart table
                 else:
                     charts_table = table
+
+
     
     if has_std_chart and charts_table is None:
         print_message("Warning - No Std chart table found", bcolors.FAIL, args, errors_log, args.no_verbose)
@@ -349,94 +356,91 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
     chart_designers_dict = {}
     chart_designers_dict_dx = {}
 
-    if 'buddy' not in song:
-        # count total numbers of designer dicts needed
-        if has_std_chart and has_dx_chart:
-            req_dict_count = 2
-        elif has_single_chart or has_utage_chart:
-            req_dict_count = 1
-        
 
-        for chart_designers_span in chart_designers_spans:
-            chart_designers_span_text = chart_designers_span.get_text(strip=True)
+    # count total numbers of designer dicts needed
+    if has_std_chart and has_dx_chart:
+        req_dict_count = 2
+    elif has_single_chart or has_utage_chart:
+        req_dict_count = 1
 
-            # Count number of text in brackets
-            brackets_count = len(re.compile(r'【(.*?)】').findall(chart_designers_span_text))
 
-            if brackets_count == 0:
-                continue
+    for chart_designers_span in chart_designers_spans:
+        chart_designers_span_text = chart_designers_span.get_text(strip=True)
 
-            # Just one bracket in span
-            elif brackets_count == 1:
-                # Find if it's either designer or constants
-                # Designer
-                if '譜面作者【' in chart_designers_span_text:
-                    match = re.search(r'【(BAS|ADV|EXP|MST|Re:M)(…|[.]{3})(.*?)】',chart_designers_span_text)
+        # Count number of text in brackets
+        brackets_count = len(re.compile(r'【(.*?)】').findall(chart_designers_span_text))
 
-                    if match is not None:
-                        chart_designers_text = chart_designers_span_text
-                        # chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer')
+        if brackets_count == 0:
+            continue
 
-                        # Check if the DX chart table is directly in front
-                        if charts_table_dx is not None and charts_table_dx == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
-                            chart_designers_dict_dx = _construct_designers_dict(song, chart_designers_text, 'designer', 'dx_')
-                            req_dict_count-=1
+        # Just one bracket in span
+        elif brackets_count == 1:
+            # Find if it's either designer or constants
+            # Designer
+            if '譜面作者【' in chart_designers_span_text:
+                match = re.search(r'【(BAS|ADV|EXP|MST|Re:M)(…|[.]{3})(.*?)】',chart_designers_span_text)
 
-                        # Check if the Std chart table is directly in front
-                        if charts_table is not None and charts_table == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
-                            chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer', '')
-                            req_dict_count-=1
+                if match is not None:
+                    chart_designers_text = chart_designers_span_text
+                    # chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer')
 
-                    elif match is None and 'kanji' in song:
-                        # Song is WE only
-                        chart_designers_text = chart_designers_span_text
-                        match = re.search(r'【(.*?)】', chart_designers_text)
-                        if match:
-                            match = match.group(1)
-                            chart_designers_dict = {f"lev_{song['kanji']}_designer": match}
-                            req_dict_count-=1
+                    # Check if the DX chart table is directly in front
+                    if charts_table_dx is not None and charts_table_dx == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
+                        chart_designers_dict_dx = _construct_designers_dict(song, chart_designers_text, 'designer', 'dx_')
+                        req_dict_count-=1
 
-                if req_dict_count == 0:
-                    break
-                    
+                    # Check if the Std chart table is directly in front
+                    if charts_table is not None and charts_table == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
+                        chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer', '')
+                        req_dict_count-=1
 
-                # Constants
-                # if '譜面定数【' in chart_designers_span_text:
-                #     # match = re.search(r'【(.*?)】', chart_designers_span_text).group(1)
-                #     match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_designers_span_text)
+                elif match is None and 'kanji' in song:
+                    # Song is WE only
+                    chart_designers_text = chart_designers_span_text
+                    match = re.search(r'【(.*?)】', chart_designers_text)
+                    if match:
+                        match = match.group(1)
+                        chart_designers_dict = {f"lev_{song['kanji']}_designer": match}
+                        req_dict_count-=1
 
-                #     if re.match(r'\d{2}\.\d', match.group(3)) is not None:
-                #         chart_constants_text = chart_designers_span_text
-                #         chart_constants_dict = _construct_designers_dict(song, chart_constants_text, 'i')
-                #         break
-            else:
-                print_message(f"Warning - No designer info found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
-                
-        if ((has_dual_chart and req_dict_count == 2) 
-            or ((has_single_chart or has_utage_chart) and req_dict_count == 1)):
-            print_message(f"Warning - No designer info found", bcolors.WARNING, args, errors_log, args.no_verbose)
+            if req_dict_count == 0:
+                break
 
-        # Update chart details
-        if charts_table:
-            if 'kanji' in song:
-                _process_utage_chart(song, charts_table, charts_table_head, chart_designers_dict, args, song_diffs)
-            else:
-                for chart_type in CHART_LIST:
-                    if chart_type in song:
-                        _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table, charts_table_head, chart_designers_dict, args, song_diffs)
-            
 
-        if charts_table_dx:
-            if 'kanji' in song:
-                _process_utage_chart(song, charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args, song_diffs)
-                        
-            else:
-                for chart_type in CHART_LIST_DX:
-                    if chart_type in song:
-                        _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args, song_diffs)
-    else:
-        print_message("Warning - Skipping details because song is buddy", bcolors.WARNING, args, errors_log, args.no_verbose)
-        
+            # Constants
+            # if '譜面定数【' in chart_designers_span_text:
+            #     # match = re.search(r'【(.*?)】', chart_designers_span_text).group(1)
+            #     match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_designers_span_text)
+
+            #     if re.match(r'\d{2}\.\d', match.group(3)) is not None:
+            #         chart_constants_text = chart_designers_span_text
+            #         chart_constants_dict = _construct_designers_dict(song, chart_constants_text, 'i')
+            #         break
+        else:
+            print_message(f"Warning - No designer info found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
+
+    if ((has_dual_chart and req_dict_count == 2)
+        or ((has_single_chart or has_utage_chart) and req_dict_count == 1)):
+        print_message(f"Warning - No designer info found", bcolors.WARNING, args, errors_log, args.no_verbose)
+
+    # Update chart details
+    if charts_table:
+        if 'kanji' in song:
+            _process_utage_chart(song, charts_table, charts_table_head, chart_designers_dict, args, song_diffs)
+        else:
+            for chart_type in CHART_LIST:
+                if chart_type in song:
+                    _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table, charts_table_head, chart_designers_dict, args, song_diffs)
+
+
+    if charts_table_dx:
+        if 'kanji' in song:
+            _process_utage_chart(song, charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args, song_diffs)
+
+        else:
+            for chart_type in CHART_LIST_DX:
+                if chart_type in song:
+                    _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args, song_diffs)
 
 
     if song['wiki_url'] != url and critical_errors[0] == 0:
@@ -462,37 +466,66 @@ def _process_chart(song, chart_type, chart_color, charts_table, charts_table_hea
 
 def _process_utage_chart(song, charts_table, charts_table_head, chart_designers_dict, args, song_diffs):
     utage_rows = charts_table.find_all(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["lev_utage"]}' in tag.get('style', ''))
-            
-    for utage_row in utage_rows:
-        # Case 1 : Multiple Utage charts, label is 宴2<br/>14?
-        if len(utage_rows) > 1:
-            if song['kanji'] in utage_row.get_text(strip=True) and song['lev_utage'] in utage_row.get_text(strip=True):
-                utage_row_parent = utage_row.find_parent()
-                if utage_row_parent:
-                    # Case 1 : 宴2<br/>14?
-                    this_utage_chart_number = ''
-                    pattern = re.compile(fr'{re.escape(song["kanji"])}(\d)(?=<br/>{re.escape(song["lev_utage"])})')
-                    if pattern:
-                        match = re.search(pattern, utage_row_parent.find('th').decode_contents())
-                        if match: 
-                            this_utage_chart_number = match.group(0)
-                    
-                    for br_tag in utage_row_parent.find_all('br'):
-                        br_tag.decompose()
 
-                    utage_data = [cell.text for cell in utage_row_parent]
-                    utage_data_dict = dict(zip(charts_table_head, utage_data))
-                    _update_song_chart_details(song, utage_data_dict, chart_designers_dict, 'lev_utage', args, song_diffs, this_utage_chart_number)
-                    return
 
-        # Case 2 : Only one utage chart, label is 宴
-        elif len(utage_rows) == 1:
+
+    if 'buddy' not in song:
+        for utage_row in utage_rows:
+            # Case 1 : Multiple Utage charts, label is 宴2<br/>14?
+            if len(utage_rows) > 1:
+                if song['kanji'] in utage_row.get_text(strip=True) and song['lev_utage'] in utage_row.get_text(strip=True):
+                    utage_row_parent = utage_row.find_parent()
+                    if utage_row_parent:
+                        # Case 1 : 宴2<br/>14?
+                        this_utage_chart_number = ''
+                        pattern = re.compile(fr'{re.escape(song["kanji"])}(\d)(?=<br/>{re.escape(song["lev_utage"])})')
+                        if pattern:
+                            match = re.search(pattern, utage_row_parent.find('th').decode_contents())
+                            if match:
+                                this_utage_chart_number = match.group(0)
+
+                        for br_tag in utage_row_parent.find_all('br'):
+                            br_tag.decompose()
+
+                        utage_data = [cell.text for cell in utage_row_parent]
+                        utage_data_dict = dict(zip(charts_table_head, utage_data))
+                        _update_song_chart_details(song, utage_data_dict, chart_designers_dict, 'lev_utage', args, song_diffs, this_utage_chart_number)
+                        return
+
+            # Case 2 : Only one utage chart, label is 宴
+            elif len(utage_rows) == 1:
+                if song['kanji'] in utage_row.get_text(strip=True):
+                    utage_row_parent = utage_row.find_parent()
+                    if utage_row_parent:
+                        utage_data = [cell.text for cell in utage_row_parent]
+                        utage_data_dict = dict(zip(charts_table_head, utage_data))
+                        _update_song_chart_details(song, utage_data_dict, chart_designers_dict, 'lev_utage', args, song_diffs)
+                        return
+    else:
+        # Case 3 : Utage (Buddy)
+        for utage_row in utage_rows:
             if song['kanji'] in utage_row.get_text(strip=True):
                 utage_row_parent = utage_row.find_parent()
                 if utage_row_parent:
-                    utage_data = [cell.text for cell in utage_row_parent]
-                    utage_data_dict = dict(zip(charts_table_head, utage_data))
-                    _update_song_chart_details(song, utage_data_dict, chart_designers_dict, 'lev_utage', args, song_diffs)
+                    utage_left_data = [cell.text for cell in utage_row_parent]
+                    utage_left_data_dict = dict(zip(charts_table_head, utage_left_data))
+
+                    # Get right side data
+                    utage_row_parent_right = utage_row_parent.find_next_sibling()
+                    utage_right_data = [cell.text for cell in utage_row_parent_right]
+
+                    # Copy and insert first item from utage_left_data into utage_right_data
+                    utage_right_data.insert(0, utage_left_data[0])  # Copy utage_left_data[0] to the start of utage_right_data
+
+
+                    # Process right side data referencing left side data
+                    if [cell for cell in utage_row_parent][2].has_attr('rowspan'):
+                        utage_right_data.insert(2, utage_left_data[2])
+
+                    utage_right_data_dict = dict(zip(charts_table_head, utage_right_data))
+
+                    _update_song_chart_details(song, utage_left_data_dict, chart_designers_dict, 'lev_utage_left', args, song_diffs)
+                    _update_song_chart_details(song, utage_right_data_dict, chart_designers_dict, 'lev_utage_right', args, song_diffs)
                     return
 
 
@@ -521,7 +554,7 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, ar
         lazy_print_song_header(f"{song['sort']} {song['title']}", song_diffs, args, errors_log)
         print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN, args)
 
-    if chart_designers_dict:
+    if chart_designers_dict and 'buddy' not in song:
         # Skip designer search for UTAGE because it's copied from comment
 
         # in some cases 宴 may be labled as 宴2 or 宴[即]..
