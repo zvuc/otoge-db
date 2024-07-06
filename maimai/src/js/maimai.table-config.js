@@ -221,6 +221,22 @@ function maimaiLvNumHtmlTemplate(chart_type, cur_lev, cur_lev_i) {
       ${lev_i_html}`
 }
 
+function maimaiProcessNotesCount(key) {
+ return function(row, type, set, data) {
+    if ( flat_view ) {
+      if ( row.buddy && type === 'sort' ) {
+        return row[`${key}_sort`];
+      }
+      else {
+        return row[`${key}`];
+      }
+    }
+    else {
+      return null;
+    }
+  }
+}
+
 function renderUtage(kanji, lev_utage) {
   return function ( data, type, row ) {
     if ( type === 'display' ) {
@@ -241,19 +257,25 @@ function renderUtage(kanji, lev_utage) {
 
 function maimaiProcessChartData(obj, chart_diff) {
   if (obj[chart_diff]) {
-    if (chart_diff === 'kanji') {
+    if (obj[`buddy`] === '○') {
       return {
         ...obj,
         chart_diff,
         chart_lev: obj[chart_diff],
         chart_lev_i: obj[`lev_utage`],
-        chart_lev_i_display: `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.6')).toFixed(1)}</span>`,
-        chart_notes: obj[`lev_utage_notes`],
-        chart_notes_tap: obj[`lev_utage_notes_tap`],
-        chart_notes_hold: obj[`lev_utage_notes_hold`],
-        chart_notes_slide: obj[`lev_utage_notes_slide`],
-        chart_notes_touch: obj[`lev_utage_notes_touch`],
-        chart_notes_break: obj[`lev_utage_notes_break`],
+        chart_lev_i_display: `<span class="approx"></span>`,
+        chart_notes: obj[`lev_utage_left_notes`] ? `L:${obj[`lev_utage_left_notes`]} R:${obj[`lev_utage_right_notes`]}` : "",
+        chart_notes_tap: obj[`lev_utage_left_notes_tap`] ? `L:${obj[`lev_utage_left_notes_tap`]} R:${obj[`lev_utage_right_notes_tap`]}` : "",
+        chart_notes_hold: obj[`lev_utage_left_notes_hold`] ? `L:${obj[`lev_utage_left_notes_hold`]} R:${obj[`lev_utage_right_notes_hold`]}` : "",
+        chart_notes_slide: obj[`lev_utage_left_notes_slide`] ? `L:${obj[`lev_utage_left_notes_slide`]} R:${obj[`lev_utage_right_notes_slide`]}` : "",
+        chart_notes_touch: obj[`lev_utage_left_notes_touch`] ? `L:${obj[`lev_utage_left_notes_touch`]} R:${obj[`lev_utage_right_notes_touch`]}` : "",
+        chart_notes_break: obj[`lev_utage_left_notes_break`] ? `L:${obj[`lev_utage_left_notes_break`]} R:${obj[`lev_utage_right_notes_break`]}` : "",
+        chart_notes_sort: obj[`lev_utage_left_notes`] ? `100${obj[`lev_utage_left_notes`]}` : "",
+        chart_notes_tap_sort: obj[`lev_utage_left_notes_tap`] ? `100${obj[`lev_utage_left_notes_tap`]}` : "",
+        chart_notes_hold_sort: obj[`lev_utage_left_notes_hold`] ? `100${obj[`lev_utage_left_notes_hold`]}` : "",
+        chart_notes_slide_sort: obj[`lev_utage_left_notes_slide`] ? `100${obj[`lev_utage_left_notes_slide`]}` : "",
+        chart_notes_touch_sort: obj[`lev_utage_left_notes_touch`] ? `100${obj[`lev_utage_left_notes_touch`]}` : "",
+        chart_notes_break_sort: obj[`lev_utage_left_notes_break`] ? `100${obj[`lev_utage_left_notes_break`]}` : "",
         chart_designer: obj[`lev_utage_designer`],
         // chart_link: obj[`lev_utage_chart_link`]
       }
@@ -643,10 +665,11 @@ $(document).ready(function() {
         // displayTitle: "ノート数",
         displayTitle: getTranslation(userLanguage,'col_notes'),
         name: "chart_notes",
-        data: ( flat_view ? "chart_notes" : null ),
+        data: maimaiProcessNotesCount('chart_notes'),
         defaultContent: "",
         className: "details notecount detail-hidden nowrap",
         width: "8em",
+        type: 'html-num-fmt',
         searchable: false
       },
       {
@@ -662,6 +685,7 @@ $(document).ready(function() {
       {
         displayTitle: "HOLD",
         name: "chart_notes_hold",
+        data: maimaiProcessNotesCount('chart_notes_hold'),
         data: ( flat_view ? "chart_notes_hold" : null ),
         defaultContent: "",
         className: "details notecount detail-hidden",
@@ -672,6 +696,7 @@ $(document).ready(function() {
       {
         displayTitle: "SLIDE",
         name: "chart_notes_slide",
+        data: maimaiProcessNotesCount('chart_notes_slide'),
         data: ( flat_view ? "chart_notes_slide" : null ),
         defaultContent: "",
         className: "details notecount detail-hidden",
@@ -682,6 +707,7 @@ $(document).ready(function() {
       {
         displayTitle: "TOUCH",
         name: "chart_notes_touch",
+        data: maimaiProcessNotesCount('chart_notes_touch'),
         data: ( flat_view ? "chart_notes_touch" : null ),
         defaultContent: "",
         className: "details notecount detail-hidden",
@@ -692,6 +718,7 @@ $(document).ready(function() {
       {
         displayTitle: "BREAK",
         name: "chart_notes_break",
+        data: maimaiProcessNotesCount('chart_notes_break'),
         data: ( flat_view ? "chart_notes_break" : null ),
         defaultContent: "",
         className: "details notecount detail-hidden",
