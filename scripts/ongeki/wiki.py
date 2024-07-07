@@ -2,6 +2,8 @@
 import requests
 import json
 import copy
+import random
+import time
 from shared.common_func import *
 from ongeki.paths import *
 from datetime import datetime
