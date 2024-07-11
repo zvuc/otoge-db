@@ -20861,7 +20861,7 @@
     "image_url": "506d3d2712eb7685.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240704",
     "title": "淵底のグレイ・ユークロニア",
     "title_sort": "エンテイノクレイユクロニア",
@@ -20884,7 +20884,7 @@
     "image_url": "ffaa5428ab030117.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240704",
     "title": "冥乱幻舞",
     "title_sort": "メイランケンフ",
@@ -20905,5 +20905,51 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "bf3c0916aa22e22f.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240711",
+    "title": "ガチ恋ラビリンス",
+    "title_sort": "カチコイラヒリンス",
+    "artist": "森羅万象",
+    "id": "577600",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "日向 千夏",
+    "chara_id": "1140",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "5",
+    "lev_adv": "8",
+    "lev_exc": "11+",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "eda72f7dbb425537.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240711",
+    "title": "メランコリック",
+    "title_sort": "メランコリク",
+    "artist": "Junky",
+    "id": "274900",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "藤沢 柚子",
+    "chara_id": "1020",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©Junky",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exc": "9",
+    "lev_mas": "12",
+    "lev_lnt": "",
+    "image_url": "f8f57a110a4c3f15.png"
   }
 ]
