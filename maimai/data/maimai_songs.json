@@ -8464,6 +8464,25 @@
     "version": "23007"
   },
   {
+    "artist": "Umiai",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "13+",
+    "image_url": "b95d6cec3fbbb04c.png",
+    "release": "240719",
+    "lev_bas": "5",
+    "lev_adv": "8",
+    "lev_exp": "12",
+    "lev_mas": "13+",
+    "sort": "1062",
+    "title": "華の集落、秋のお届け",
+    "title_kana": "ハナノシユウラクアキノオトトケ",
+    "version": "24510"
+  },
+  {
     "artist": "S!N・+α/あるふぁきゅん。×ALI PROJECT",
     "catcode": "maimai",
     "dx_lev_bas": "2",
@@ -11867,20 +11886,6 @@
     "title": "U&iVERSE -銀河鸞翔-",
     "title_kana": "UNIVERSEキンカランシヨウ",
     "version": "22008"
-  },
-  {
-    "artist": "Umiai",
-    "catcode": "maimai",
-    "dx_lev_bas": "3",
-    "dx_lev_adv": "7+",
-    "dx_lev_exp": "11+",
-    "dx_lev_mas": "13+",
-    "image_url": "b95d6cec3fbbb04c.png",
-    "release": "000000",
-    "sort": "1061",
-    "title": "華の集落、秋のお届け",
-    "title_kana": "ハナノシユウラクアキノオトトケ",
-    "version": "22004"
   },
   {
     "artist": "ぺのれり",
@@ -17157,7 +17162,6 @@
   {
     "artist": "打打だいず Vs. Tanchiky Vs. からめる",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8+",
     "dx_lev_exp": "13",
@@ -17340,6 +17344,51 @@
     "title": "Trust",
     "title_kana": "TRUST",
     "version": "24508"
+  },
+  {
+    "artist": "すりぃ",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
+    "image_url": "c4e7300bbe13a1d1.png",
+    "release": "240719",
+    "sort": "105",
+    "title": "ラヴィ",
+    "title_kana": "ラウイ",
+    "version": "24510"
+  },
+  {
+    "artist": "Omoi",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13",
+    "image_url": "e78eee64612c0152.png",
+    "release": "240719",
+    "sort": "106",
+    "title": "スティールユー",
+    "title_kana": "ステイイルユウ",
+    "version": "24510"
+  },
+  {
+    "artist": "Junky",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "12+",
+    "image_url": "9397ebded3a032da.png",
+    "release": "240719",
+    "sort": "107",
+    "title": "オシオキGIMMICK!!",
+    "title_kana": "オシオキGIMMICK",
+    "version": "24510"
   },
   {
     "artist": "A-One",
