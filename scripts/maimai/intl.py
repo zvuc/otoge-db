@@ -10,7 +10,7 @@ from maimai.paths import *
 from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-wiki_url = 'https://silentblue.remywiki.com/maimai_DX:BUDDiES_(Asia)'
+wiki_url = 'https://silentblue.remywiki.com/maimai_DX:BUDDiES_PLUS_(Asia)'
 errors_log = LOCAL_ERROR_LOG_PATH
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
