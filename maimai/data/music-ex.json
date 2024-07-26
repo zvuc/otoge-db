@@ -54421,9 +54421,11 @@
     "lev_utage_notes_break": "20",
     "lev_utage_designer": "はっぴーの若干ストイック気味版",
     "wiki_url": "https://gamerch.com/maimai/entry/533459",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20170331",
-    "date_updated": "20231225"
+    "date_updated": "20231225",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240517"
   },
   {
     "artist": "Masayoshi Minoshima feat. 綾倉盟",
@@ -56594,8 +56596,9 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533459",
     "date_added": "20170331",
     "date_updated": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240725"
   },
   {
     "artist": "t+pazolite",
@@ -56619,8 +56622,9 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533459",
     "date_added": "20170331",
     "date_updated": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240725"
   },
   {
     "artist": "MyGO!!!!!",
@@ -56719,8 +56723,9 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533459",
     "date_added": "20170331",
     "date_updated": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240725"
   },
   {
     "artist": "MisoilePunch♪",
@@ -56998,7 +57003,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533811",
     "date_added": "20240321",
     "intl": "1",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240725"
   },
   {
     "artist": "t+pazolite",
@@ -57020,9 +57026,11 @@
     "lev_utage_notes_break": "341",
     "lev_utage_designer": "パリピS氏のやべーやつ版",
     "wiki_url": "https://gamerch.com/maimai/entry/533459",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20170331",
-    "date_updated": "20240321"
+    "date_updated": "20240321",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240725"
   },
   {
     "artist": "DECO*27",
