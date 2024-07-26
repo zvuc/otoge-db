@@ -723,7 +723,7 @@
     "lev_mas_notes_break": "4",
     "lev_mas_designer": "ニャイン",
     "wiki_url": "https://gamerch.com/maimai/entry/534139",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20120711",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
@@ -749,7 +749,8 @@
     "dx_lev_mas_notes_slide": "46",
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_notes_break": "25",
-    "dx_lev_mas_designer": "サファ太"
+    "dx_lev_mas_designer": "サファ太",
+    "date_intl_updated": "20240725"
   },
   {
     "artist": "samfree",
@@ -56093,8 +56094,8 @@
     "dx_lev_mas_designer": "Luxiいぬ",
     "wiki_url": "https://gamerch.com/maimai/entry/839574",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "雄之助 feat. POPY & ROSE",
@@ -56143,8 +56144,8 @@
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/839578",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "すりぃ",
@@ -56175,8 +56176,8 @@
     "lev_utage_designer": "誰か一緒に舞わないか？",
     "wiki_url": "https://gamerch.com/maimai/entry/534136",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "森羅万象",
@@ -56225,8 +56226,8 @@
     "dx_lev_mas_designer": "じゃこレモン",
     "wiki_url": "https://gamerch.com/maimai/entry/839579",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "Kanaria",
@@ -56284,8 +56285,8 @@
     "dx_lev_remas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/839576",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "ピノキオピー",
@@ -56334,8 +56335,8 @@
     "dx_lev_mas_designer": "カマボコ君",
     "wiki_url": "https://gamerch.com/maimai/entry/839577",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "和田たけあき(くらげP)",
@@ -56366,8 +56367,8 @@
     "lev_utage_designer": "生き残るのはどっちだッ？？？",
     "wiki_url": "https://gamerch.com/maimai/entry/534375",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "ゆこぴ",
@@ -56416,8 +56417,8 @@
     "dx_lev_mas_designer": "鳩ホルぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/839573",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "花譜",
@@ -56466,8 +56467,8 @@
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/entry/839570",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "saaa + kei_iwata + stuv + わかどり",
@@ -56516,8 +56517,8 @@
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/839580",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "owl＊tree feat.nie＊tree",
@@ -56567,8 +56568,9 @@
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/839586",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725",
+    "key_intl": "○"
   },
   {
     "artist": "t+pazolite",
@@ -56667,8 +56669,8 @@
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/839568",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "みきとP",
@@ -56692,8 +56694,8 @@
     "lev_utage_designer": "デタラメのロックンロール",
     "wiki_url": "https://gamerch.com/maimai/entry/533581",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "t+pazolite",
@@ -56767,8 +56769,9 @@
     "dx_lev_mas_designer": "Twinrook & Safari",
     "wiki_url": "https://gamerch.com/maimai/entry/839581",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725",
+    "key_intl": "○"
   },
   {
     "artist": "やどりぎ",
@@ -56818,8 +56821,9 @@
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/839585",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725",
+    "key_intl": "○"
   },
   {
     "artist": "Last Note.",
@@ -56909,8 +56913,8 @@
     "dx_lev_remas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/839567",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "なみぐる feat.ちょこ 桃寝ちのい",
@@ -56960,8 +56964,9 @@
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/entry/839584",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725",
+    "key_intl": "○"
   },
   {
     "artist": "ナユタン星人",
@@ -56992,8 +56997,8 @@
     "lev_utage_designer": "中央で踊るダンサー、急募。",
     "wiki_url": "https://gamerch.com/maimai/entry/533811",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "t+pazolite",
@@ -57075,8 +57080,8 @@
     "dx_lev_remas_designer": "Luxizhel & Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/839575",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "かめりあ",
@@ -57150,8 +57155,8 @@
     "lev_utage_designer": "息が詰まる息が詰まる息が詰まる息が詰まる",
     "wiki_url": "https://gamerch.com/maimai/entry/801243",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "Aiobahn feat. KOTOKO",
@@ -57209,8 +57214,8 @@
     "dx_lev_remas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/839569",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725"
   },
   {
     "artist": "カロンズベカラズ",
@@ -57260,8 +57265,9 @@
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/839583",
     "date_added": "20240321",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725",
+    "key_intl": "○"
   },
   {
     "artist": "SOUND HOLIC Vs. Eurobeat Union feat. Nana Takahashi",
@@ -57511,8 +57517,9 @@
     "dx_lev_mas_designer": "The Dove",
     "wiki_url": "https://gamerch.com/maimai/entry/843504",
     "date_added": "20240412",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240725",
+    "key_intl": "○"
   },
   {
     "artist": "黒魔",
