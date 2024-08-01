@@ -1,5 +1,37 @@
 [
   {
+    "id": "2618",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "ReCoda",
+    "reading": "RECODA",
+    "artist": "TRUE「響け！ユーフォニアム３」",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "8+",
+    "lev_mas": "12",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "5b6356563af4005e.jpg"
+  },
+  {
+    "id": "2675",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "トゥッティ！",
+    "reading": "トウツテイ",
+    "artist": "北宇治カルテット [黄前久美子 (CV.黒沢ともよ)、加藤葉月 (CV.朝井彩加)、川島緑輝 (CV.豊田萌絵)、高坂麗奈 (CV.安済知佳)]「響け！ユーフォニアム」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2d4fcdec9e2ee004.jpg"
+  },
+  {
     "id": "2584",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -1834,7 +1866,7 @@
     "lev_adv": "5",
     "lev_exp": "9+",
     "lev_mas": "13",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "3a64aab4594f0885.jpg"
@@ -4490,7 +4522,7 @@
     "lev_adv": "5",
     "lev_exp": "9",
     "lev_mas": "12",
-    "lev_ult": "",
+    "lev_ult": "14",
     "we_kanji": "",
     "we_star": "",
     "image": "70d288040e17d9b1.jpg"
@@ -12688,6 +12720,22 @@
     "image": "cb8c19677a5f89f9.jpg"
   },
   {
+    "id": "2619",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "Presence",
+    "reading": "PRESENCE",
+    "artist": "小仏 凪(CV:佐倉 薫)",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ea81333534c8b307.jpg"
+  },
+  {
     "id": "683",
     "catname": "イロドリミドリ",
     "newflag": "0",
@@ -14482,7 +14530,7 @@
   {
     "id": "2620",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "チューリングの跡",
     "reading": "チユウリンクノアト",
     "artist": "Frums",
@@ -21490,7 +21538,7 @@
   {
     "id": "2612",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "DRE4M1N9",
     "reading": "DRE4M1N9",
     "artist": "Lamanya",
@@ -21506,7 +21554,7 @@
   {
     "id": "2613",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Overhea[r]t",
     "reading": "OVERHEART",
     "artist": "打打だいず",
@@ -21522,7 +21570,7 @@
   {
     "id": "2614",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Malleus Maleficarum",
     "reading": "MALLEUSMALEFICARUM",
     "artist": "Felysrator",
@@ -21538,7 +21586,7 @@
   {
     "id": "2615",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Elusive Enforcer",
     "reading": "ELUSIVEENFORCER",
     "artist": "K-forest vs. Reku Mochizuki",
@@ -21554,7 +21602,7 @@
   {
     "id": "2616",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "黎命に殉ず",
     "reading": "レイメイニシユンス",
     "artist": "Koke",
