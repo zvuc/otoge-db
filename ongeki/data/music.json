@@ -20953,7 +20953,7 @@
     "image_url": "f8f57a110a4c3f15.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Lots of love",
     "title_sort": "LOTSOFLOVE",
@@ -20976,7 +20976,7 @@
     "image_url": "a423cbe6b5354062.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "アイシング・ドリーム",
     "title_sort": "アイシンクトリム",
@@ -20999,7 +20999,7 @@
     "image_url": "816030f141d10a8d.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Individual on parade!",
     "title_sort": "INDIVIDUALONPARADE",
@@ -21022,7 +21022,7 @@
     "image_url": "04f1578c860d839d.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "サンダーレスキュー！",
     "title_sort": "サンタレスキユ",
@@ -21045,7 +21045,7 @@
     "image_url": "5c67709adb77ab37.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "泡白昼夢",
     "title_sort": "アワハクチユウム",
@@ -21068,7 +21068,7 @@
     "image_url": "b66a7396d191732a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Tricky Treat!!! -逢坂 茜ソロver.-",
     "title_sort": "TRICKYTREATオウサカアカネソロVER",
@@ -21091,7 +21091,7 @@
     "image_url": "00b09c1484652d45.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Tricky Treat!!! -高瀬 梨緒ソロver.-",
     "title_sort": "TRICKYTREATカセリオソロVER",
@@ -21114,7 +21114,7 @@
     "image_url": "b0088252cdde22ed.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Tricky Treat!!! -柏木 咲姫ソロver.-",
     "title_sort": "TRICKYTREATカシワキサキソロVER",
@@ -21137,7 +21137,7 @@
     "image_url": "4b7ce81b327c6c37.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Individual on parade! -柏木 咲姫ソロver.-",
     "title_sort": "INDIVIDUALONPARADEカシワキサキソロVER",
@@ -21160,7 +21160,7 @@
     "image_url": "8f1b3286aee313ed.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Individual on parade! -井之原 小星ソロver.-",
     "title_sort": "INDIVIDUALONPARADEイノハラコホシソロVER",
@@ -21183,7 +21183,7 @@
     "image_url": "40c68283370ecece.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Individual on parade! -珠洲島 有栖ソロver.-",
     "title_sort": "INDIVIDUALONPARADEススシマアリスソロVER",
@@ -21206,7 +21206,7 @@
     "image_url": "cfaa9808a4358291.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Individual on parade! -日向 千夏ソロver.-",
     "title_sort": "INDIVIDUALONPARADEヒナタチナツソロVER",
@@ -21229,7 +21229,7 @@
     "image_url": "fdab6f9914060d59.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240726",
     "title": "Individual on parade! -皇城 セツナソロver.-",
     "title_sort": "INDIVIDUALONPARADEスメラキセツナソロVER",
@@ -21250,5 +21250,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "ba778283128887d8.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240808",
+    "title": "Sparking Revolver",
+    "title_sort": "SPARKINGREVOLVER",
+    "artist": "xi",
+    "id": "577400",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "九條 楓",
+    "chara_id": "1110",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "88ffaa3dd51a76e7.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240808",
+    "title": "アンバークロニクル",
+    "title_sort": "アンハクロニクル",
+    "artist": "しーけー feat.ricono",
+    "id": "577500",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "三角 葵",
+    "chara_id": "1030",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "8+",
+    "lev_exc": "10",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "80bcd0f1f6349c7d.png"
   }
 ]
