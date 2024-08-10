@@ -3138,10 +3138,6 @@
     "lev_mas_notes_slide": "32",
     "lev_mas_notes_break": "5",
     "lev_mas_designer": "mai-Star",
-    "wiki_url": "https://gamerch.com/maimai/entry/534446",
-    "intl": "1",
-    "date_intl_added": "20130117",
-    "date_added": "20130117",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -3160,7 +3156,14 @@
     "dx_lev_exp_notes_hold": "66",
     "dx_lev_exp_notes_slide": "25",
     "dx_lev_exp_notes_touch": "9",
-    "dx_lev_exp_notes_break": "25"
+    "dx_lev_exp_notes_break": "25",
+    "wiki_url": "https://gamerch.com/maimai/entry/534446",
+    "intl": "1",
+    "date_added": "20130117",
+    "date_updated": "20240412",
+    "date_intl_added": "20130117",
+    "date_intl_updated": "20240808",
+    "key_intl": "○"
   },
   {
     "artist": "ELEMENTAS feat. NAGISA",
@@ -57597,8 +57600,8 @@
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/846384",
     "date_added": "20240426",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240808"
   },
   {
     "artist": "EZFG",
@@ -57647,8 +57650,8 @@
     "dx_lev_mas_designer": "みぞれヤナギ&サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/846383",
     "date_added": "20240426",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240808"
   },
   {
     "artist": "かいりきベア",
@@ -59023,8 +59026,8 @@
     "dx_lev_mas_designer": "サファ太 Vs. Safari Vs. さふぁた",
     "wiki_url": "https://gamerch.com/maimai/entry/860725",
     "date_added": "20240711",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240808"
   },
   {
     "artist": "Omoi",
