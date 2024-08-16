@@ -16849,7 +16849,6 @@
   {
     "artist": "Osanzi feat.藍月なくる",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
@@ -16865,7 +16864,6 @@
   {
     "artist": "清風明月（Drop×葉月ゆら）",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "11",
@@ -16881,7 +16879,6 @@
   {
     "artist": "Morrigan feat.Lily and 結城碧",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
@@ -16897,7 +16894,6 @@
   {
     "artist": "Kai",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "9",
     "dx_lev_exp": "12+",
@@ -17314,7 +17310,6 @@
     "dx_lev_exp": "12",
     "dx_lev_mas": "14+",
     "image_url": "0847c38d2a623e99.png",
-    "key": "○",
     "release": "240607",
     "sort": "435",
     "title": "Re:Unknown X",
@@ -17449,6 +17444,36 @@
     "title": "オシオキGIMMICK!!",
     "title_kana": "オシオキGIMMICK",
     "version": "24510"
+  },
+  {
+    "artist": "周防パトラ",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "1a0ffd5bf37e729f.png",
+    "release": "240816",
+    "sort": "6",
+    "title": "偉大なる悪魔は実は大天使パトラちゃん様なのだ！",
+    "title_kana": "イタイナルアクマハシツハタイテンシハトラチヤンサマナノタ",
+    "version": "24512"
+  },
+  {
+    "artist": "周防パトラ",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "324d40da6e652209.png",
+    "release": "240816",
+    "sort": "7",
+    "title": "シュガーホリック",
+    "title_kana": "シユカアホリツク",
+    "version": "24512"
   },
   {
     "artist": "A-One",
@@ -17875,6 +17900,20 @@
     "version": "24000"
   },
   {
+    "artist": "HIMEHINA",
+    "catcode": "宴会場",
+    "lev_utage": "13?",
+    "kanji": "奏",
+    "comment": "ココロを叫べ!",
+    "buddy": "○",
+    "image_url": "a33a77ea8c117b3d.png",
+    "release": "240816",
+    "sort": "1286",
+    "title": "[奏]ヒトガタ",
+    "title_kana": "ヒトカタ",
+    "version": "24511"
+  },
+  {
     "artist": "森羅万象",
     "catcode": "宴会場",
     "lev_utage": "13?",
@@ -17926,6 +17965,19 @@
     "title": "[蔵]Aegleseeker",
     "title_kana": "AEGLESEEKER",
     "version": "24003"
+  },
+  {
+    "artist": "三枝明那",
+    "catcode": "宴会場",
+    "lev_utage": "12?",
+    "kanji": "両",
+    "comment": "もう一人じゃないから",
+    "image_url": "4d9e0c3640c966c5.png",
+    "release": "240816",
+    "sort": "1287",
+    "title": "[両]はんぶんこ",
+    "title_kana": "ハンフンコ",
+    "version": "24511"
   },
   {
     "artist": "ピノキオピー",
