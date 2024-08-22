@@ -1,5 +1,37 @@
 [
   {
+    "id": "2673",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "ハッピータイフーン",
+    "reading": "ハツヒウタイフウン",
+    "artist": "KiRaRe「Re:ステージ！プリズムステップ」",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "12",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "d7cea0551040d841.jpg"
+  },
+  {
+    "id": "2674",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "M.L.V.G",
+    "reading": "MLVG",
+    "artist": "テトラルキア「Re:ステージ！プリズムステップ」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "34b5f9c48dbd099d.jpg"
+  },
+  {
     "id": "2618",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -6192,6 +6224,38 @@
     "image": "181682bf5b277726.jpg"
   },
   {
+    "id": "2642",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "壊れた人形のマーチ",
+    "reading": "コワレタニンキヨウノマウチ",
+    "artist": "少女理論観測所",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "8+",
+    "lev_mas": "12",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3dfaedeed4b9055b.jpg"
+  },
+  {
+    "id": "2643",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "ヒトリシズカ(Arranged: Iceon)",
+    "reading": "ヒトリシスカARRANGEDICEON",
+    "artist": "幽閉サテライト(direction:嵯峨飛鳥)",
+    "lev_bas": "1",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "11+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b0a0335625f6390c.jpg"
+  },
+  {
     "id": "2592",
     "catname": "東方Project",
     "newflag": "0",
@@ -7642,7 +7706,7 @@
     "lev_adv": "6",
     "lev_exp": "11+",
     "lev_mas": "14",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "a8b5fbd39806859f.jpg"
@@ -9794,7 +9858,7 @@
   {
     "id": "2621",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "NIGHTWAVE FRAGMENTS",
     "reading": "NIGHTWAVEFRAGMENTS",
     "artist": "DJ Noriken",
@@ -9810,7 +9874,7 @@
   {
     "id": "2622",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Joe Fight",
     "reading": "JOEFIGHT",
     "artist": "DJ Myosuke",
@@ -9826,7 +9890,7 @@
   {
     "id": "2623",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Poppin' Dream",
     "reading": "POPPINDREAM",
     "artist": "P*Light",
@@ -9842,7 +9906,7 @@
   {
     "id": "2624",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Make Up Your World feat. キョンシーのCiちゃん & らっぷびと",
     "reading": "MAKEUPYOURWORLDFEATキヨンシウノCIチヤンラツフヒト",
     "artist": "t+pazolite & Srav3R",
@@ -14606,6 +14670,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "1befde04785db436.jpg"
+  },
+  {
+    "id": "2625",
+    "catname": "ゲキマイ",
+    "newflag": "0",
+    "title": "Latent Kingdom",
+    "reading": "LATENTKINGDOM",
+    "artist": "Laur vs 大国奏音",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exp": "13",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "cbd387d1c13c54aa.jpg"
   },
   {
     "id": "802",
@@ -21682,7 +21762,7 @@
   {
     "id": "8286",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "異星にいこうね",
     "reading": "イセイニイコウネ",
     "artist": "いよわ　feat.星界",
@@ -21698,7 +21778,7 @@
   {
     "id": "8287",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "《種子》 ～ Set You Free",
     "reading": "シユシSETYOUFREE",
     "artist": "Iris",
@@ -21714,7 +21794,7 @@
   {
     "id": "8288",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Elemental Creation",
     "reading": "ELEMENTALCREATION",
     "artist": "dj TAKA meets DJ YOSHITAKA",
