@@ -750,6 +750,8 @@
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_notes_break": "25",
     "dx_lev_mas_designer": "サファ太",
+    "date_updated": "20240321",
+    "date_intl_added": "20120711",
     "date_intl_updated": "20240725"
   },
   {
@@ -2776,8 +2778,9 @@
     "lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/534241",
     "intl": "1",
-    "date_intl_added": "20130423",
     "date_added": "20130423",
+    "date_updated": "20240607",
+    "date_intl_added": "20130423",
     "dx_lev_bas": "2",
     "dx_lev_adv": "5",
     "dx_lev_exp": "9+",
@@ -39228,6 +39231,7 @@
     "intl": "1",
     "date_intl_added": "20220311",
     "date_added": "20211029",
+    "date_updated": "20240719",
     "lev_bas": "5",
     "lev_adv": "8",
     "lev_exp": "12",
