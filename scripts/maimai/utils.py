@@ -91,6 +91,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         old_song = next((s for s in old_local_music_data if maimai_generate_hash(s) == song_hash), None)
         dest_ex_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
 
+        added_charts_dx = {"dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas"}
+        added_charts = {"lev_bas", "lev_adv", "lev_exp", "lev_mas"}
+
         # Song can't be found in music-ex.json
         if not dest_ex_song:
             print_message(f"Couldn't find matching song in music-ex.json: {song['title']}", bcolors.WARNING, args)
@@ -115,6 +118,15 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                     continue
                 if key not in song:
                     del dest_ex_song[key]
+
+            # Check if new charts have been added
+            diff_keys = set(dest_ex_song.keys()) - set(old_song.keys())
+
+            # Check if either of the required key sets are all present in diff_keys
+            if added_charts_dx.issubset(diff_keys) or added_charts.issubset(diff_keys):
+                # Code to run if the condition is met
+                song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
+
 
             print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
             _record_diffs(song, song_hash, 'updated')
