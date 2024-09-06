@@ -43963,7 +43963,8 @@
     "date_added": "20160218",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20240425"
+    "date_updated": "20240425",
+    "date_intl_updated": "20240905"
   },
   {
     "id": "197",
@@ -101956,7 +101957,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/crazy (about you)",
     "date_added": "20240425",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240905"
   },
   {
     "id": "2581",
@@ -102030,7 +102032,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Dèfandour",
     "date_added": "20240425",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240905"
   },
   {
     "id": "2504",
@@ -102400,7 +102403,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Ultimate Force",
     "date_added": "20240509",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240905"
   },
   {
     "id": "2548",
