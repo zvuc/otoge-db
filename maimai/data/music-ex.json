@@ -2811,7 +2811,8 @@
     "dx_lev_exp_notes_hold": "34",
     "dx_lev_exp_notes_slide": "42",
     "dx_lev_exp_notes_touch": "40",
-    "dx_lev_exp_notes_break": "15"
+    "dx_lev_exp_notes_break": "15",
+    "date_intl_updated": "20240906"
   },
   {
     "artist": "RYOHEI KOHNO/森綾香",
@@ -57811,8 +57812,9 @@
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/849838",
     "date_added": "20240510",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240913",
+    "key_intl": "○"
   },
   {
     "artist": "Hommarju",
@@ -57862,8 +57864,9 @@
     "dx_lev_mas_designer": "翠楼屋",
     "wiki_url": "https://gamerch.com/maimai/entry/849843",
     "date_added": "20240510",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240913",
+    "key_intl": "○"
   },
   {
     "artist": "K-forest",
@@ -57913,8 +57916,9 @@
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/849842",
     "date_added": "20240510",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240913",
+    "key_intl": "○"
   },
   {
     "artist": "siqlo",
@@ -57964,8 +57968,9 @@
     "dx_lev_mas_designer": "ロシェ@ペンギン",
     "wiki_url": "https://gamerch.com/maimai/entry/849841",
     "date_added": "20240510",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240913",
+    "key_intl": "○"
   },
   {
     "artist": "さくゆい",
@@ -57996,8 +58001,8 @@
     "lev_utage_designer": "2人合わせてさくゆいたいそう",
     "wiki_url": "https://gamerch.com/maimai/entry/796977",
     "date_added": "20240524",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20240906"
   },
   {
     "artist": "まらしぃ×じん×堀江晶太(kemu) feat.鏡音リン",
