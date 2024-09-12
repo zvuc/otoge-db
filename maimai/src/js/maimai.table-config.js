@@ -830,7 +830,7 @@ $(document).ready(function() {
 
     default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
 
-    $.getJSON("data/music-ex.json", (data) => {
+    $.getJSON((currentRegion === 'intl' ? "data/music-ex-intl.json" : "data/music-ex.json"), (data) => {
       var table = $('#table').DataTable( {
         data: flattenMusicData(data, flat_view, maimai_chart_list, maimaiProcessChartData),
         "buttons": [
