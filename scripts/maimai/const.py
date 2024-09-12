@@ -11,7 +11,7 @@ from maimai.paths import *
 from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
-SHEETS_ID = '1d1AjO92Hj-iay10MsqdR_5TswEaikzC988aEOtFyybo'
+SHEETS_ID = '1DKssDl2MM-jjK_GmHPEIVcOMcpVzaeiXA9P5hmhDqAo'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_CACHE_DIR = 'maimai/google_sheets_cache'
 CHARTS = [
