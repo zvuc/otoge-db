@@ -22,7 +22,7 @@ def add_intl_info(args):
     print_message(f"Fetching International ver. song data from RemyWiki", 'H2', args, errors_log, args.no_verbose)
 
     # Load JSON data
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
+    with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
     # Get Wiki page
@@ -276,6 +276,6 @@ def add_intl_info(args):
                 print_message(f"Song not matched", bcolors.FAIL, args, errors_log)
 
     # Write updated JSON data to file
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
+    with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
