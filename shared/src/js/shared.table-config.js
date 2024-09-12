@@ -323,44 +323,46 @@ function tableInitCompleteFunctions(table) {
     localStorage.setItem('userGameRegion', currentRegion);
     root.setAttribute('data-game-region', currentRegion);
 
-    // Update default_search based on the checkbox status
-    var columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
+    location.reload();
 
-    if (columnIndexWithDefaultSearch !== -1) {
-      if (currentRegion === 'intl') {
-        table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.intl, true, false)
-      } else {
-        table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.jpn, true, false)
-      }
-    }
+    // // Update default_search based on the checkbox status
+    // var columnIndexWithDefaultSearch = columns_params.findIndex(column => column.defaultSearch !== undefined);
 
-    // Reset default order
-    var temp_data = table.api().data()
-    table.api().clear();
-    table.api().rows.add(temp_data);
-    table.api().order(setDefaultOrder()).draw()
+    // if (columnIndexWithDefaultSearch !== -1) {
+    //   if (currentRegion === 'intl') {
+    //     table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.intl, true, false)
+    //   } else {
+    //     table.api().column(columnIndexWithDefaultSearch).search(columns_params[columnIndexWithDefaultSearch].defaultSearch.jpn, true, false)
+    //   }
+    // }
 
-    // Toggle date columns
-    var jp_date_column = table.api().column(getColumnIndexByName('date_added'));
-    var intl_date_column = table.api().column(getColumnIndexByName('date_intl_added'));
+    // // Reset default order
+    // var temp_data = table.api().data()
+    // table.api().clear();
+    // table.api().rows.add(temp_data);
+    // table.api().order(setDefaultOrder()).draw()
 
-    if (currentRegion === 'intl') {
-      jp_date_column.visible(false, false);
-      intl_date_column.visible(true, false);
-    } else {
-      jp_date_column.visible(true, false);
-      intl_date_column.visible(false, false);
-    }
+    // // Toggle date columns
+    // var jp_date_column = table.api().column(getColumnIndexByName('date_added'));
+    // var intl_date_column = table.api().column(getColumnIndexByName('date_intl_added'));
 
-    table.api().draw();
+    // if (currentRegion === 'intl') {
+    //   jp_date_column.visible(false, false);
+    //   intl_date_column.visible(true, false);
+    // } else {
+    //   jp_date_column.visible(true, false);
+    //   intl_date_column.visible(false, false);
+    // }
 
-    // update checkbox value
-    if (event.target.id === 'gameRegionQuickSwitch') {
-      document.getElementById('gameRegionIntl').checked = event.target.checked;
-      document.getElementById('gameRegionJP').checked = !event.target.checked;
-    } else {
-      document.getElementById('gameRegionQuickSwitch').checked = (currentRegion === 'intl' ? true : false);
-    }
+    // table.api().draw();
+
+    // // update checkbox value
+    // if (event.target.id === 'gameRegionQuickSwitch') {
+    //   document.getElementById('gameRegionIntl').checked = event.target.checked;
+    //   document.getElementById('gameRegionJP').checked = !event.target.checked;
+    // } else {
+    //   document.getElementById('gameRegionQuickSwitch').checked = (currentRegion === 'intl' ? true : false);
+    // }
   }
 
   gameRegionChecks.forEach(input => {
