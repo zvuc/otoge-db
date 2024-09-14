@@ -56,8 +56,12 @@ def print_message(message, color_name, args, log='', no_verbose=False):
     if no_verbose is False:
         print(timestamp + print_color_name + message + reset_color)
 
-def lazy_print_song_header(msg, diff_count, args, errors_log):
-    if args.no_verbose and diff_count[0] == 0:
+def lazy_print_song_header(msg, diff_count, args, errors_log, always_print=False):
+    # Do nothing if no_verbose is unset & always_print is unset
+    if not args.no_verbose and not always_print:
+        return
+
+    if diff_count[0] == 0:
         # Lazy-print song name
         print_message(msg, 'HEADER', args, errors_log)
         diff_count[0] += 1
