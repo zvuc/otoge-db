@@ -2,8 +2,10 @@
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
+import ipdb
 import requests
 import urllib.request
+import urllib3
 import json
 import os
 import shutil
@@ -11,6 +13,10 @@ from maimai.paths import *
 from maimai import wiki
 from shared.common_func import *
 from datetime import datetime
+
+errors_log = LOCAL_ERROR_LOG_PATH
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -76,10 +82,12 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
     # added_songs
     for song in added_songs:
+        song_diffs = [0]
         song_hash = maimai_generate_hash(song)
-        _download_song_jacket(song)
+        lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+        print_message(f"- New song added", bcolors.OKGREEN, args)
+        _download_song_jacket(song, args)
         _add_song_data_to_ex_data(song, local_music_ex_data)
-        print_message(f"New song added: {song['title']}", bcolors.OKGREEN, args)
 
         _record_diffs(song, song_hash, 'new')
 
@@ -87,16 +95,22 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     # For the list of updated songs, go through each of them in older song list
     # Find the same song in ex_data list then update any changed keys
     for song in updated_songs:
+        song_diffs = [0]
         song_hash = maimai_generate_hash(song)
         old_song = next((s for s in old_local_music_data if maimai_generate_hash(s) == song_hash), None)
         dest_ex_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
 
-        added_charts_dx = {"dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas"}
-        added_charts = {"lev_bas", "lev_adv", "lev_exp", "lev_mas"}
+        added_charts_sets = {
+            "added_charts_dx": {"dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas"},
+            "added_charts": {"lev_bas", "lev_adv", "lev_exp", "lev_mas"},
+            "added_charts_dx_remas": {"dx_lev_remas"},
+            "added_charts_remas": {"lev_remas"}
+        }
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            print_message(f"Couldn't find matching song in music-ex.json: {song['title']}", bcolors.WARNING, args)
+            lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+            print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING, args)
             continue
 
         if old_song == song:
@@ -120,27 +134,47 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                     del dest_ex_song[key]
 
             # Check if new charts have been added
-            diff_keys = set(dest_ex_song.keys()) - set(old_song.keys())
-
-            # Check if either of the required key sets are all present in diff_keys
-            if added_charts_dx.issubset(diff_keys) or added_charts.issubset(diff_keys):
-                # Code to run if the condition is met
-                song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
+            new_added_keys = set(song.keys()) - set(old_song.keys())
 
 
-            print_message(f"Updated existing song: {song['title']}", bcolors.OKGREEN, args)
+            # Check which set is a subset of new_added_keys
+            matching_set_name = next(
+                (name for name, chart_set in added_charts_sets.items() if chart_set.issubset(new_added_keys)),
+                None
+            )
+
+            if matching_set_name:
+                dest_ex_song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+
+                if matching_set_name == "added_charts_dx":
+                    print_message(f"- DX charts added", bcolors.OKGREEN, args)
+                elif matching_set_name == "added_charts":
+                    print_message(f"- STD charts added", bcolors.OKGREEN, args)
+                elif matching_set_name == "added_charts_dx_remas":
+                    print_message(f"- RE:MASTER (DX) chart added", bcolors.OKGREEN, args)
+                elif matching_set_name == "added_charts_remas":
+                    print_message(f"- RE:MASTER (STD) chart added", bcolors.OKGREEN, args)
+            else:
+                if not detect_key_removals_or_modifications(song, old_song, song_diffs, args):
+                    # all other cases where something changed
+                    lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+                    print_message(f"- Updated data", bcolors.OKGREEN, args)
+
             _record_diffs(song, song_hash, 'updated')
 
 
     # Iterate through unchanged songs
     for song in unchanged_songs:
+        song_diffs = [0]
         song_hash = maimai_generate_hash(song)
         old_song = next((s for s in old_local_music_data if maimai_generate_hash(s) == song_hash), None)
         dest_ex_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            print_message(f"Couldn't find destination song: {song['title']}", bcolors.WARNING, args)
+            lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+            print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING, args)
             continue
 
         if old_song and dest_ex_song:
@@ -173,6 +207,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # removed_songs
         for song in removed_songs:
+            song_diffs = [0]
             song_hash = maimai_generate_hash(song)
             existing_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
 
@@ -181,7 +216,8 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 local_music_ex_data.remove(existing_song)
                 archive_deleted_song(existing_song, local_music_ex_deleted_data)
 
-                print_message(f"Removed song: {song['title']}", bcolors.OKBLUE, args)
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+                print_message(f"- Removed song", bcolors.FAIL, args)
 
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
@@ -196,7 +232,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
-def _download_song_jacket(song):
+def _download_song_jacket(song, args):
     try:
         response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], verify=False, stream=True)
 
@@ -207,11 +243,11 @@ def _download_song_jacket(song):
                 # file.write(response.content)
                 shutil.copyfileobj(response.raw, file)
 
-            print(f"Image downloaded successfully and saved as {filename}")
+            print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, args, errors_log)
         else:
-            print(f"Failed to download image. Status code: {response.status_code}")
+            print_message(f"- Failed to download image. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
     except Exception as e:
-        print(f"Could not download: {e}")
+        print_message(f"- Could not download: {e}", bcolors.FAIL, args, errors_log)
 
 def _record_diffs(song, song_hash, diff_type):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
@@ -290,3 +326,75 @@ def _add_ex_data_template(song):
     song['date_intl_added'] = "000000"
 
     return song
+
+def print_keys_change(song, old_song, song_diffs, args):
+    # Define the possible level keys (both normal and dx versions)
+    level_keys = {"lev_bas", "lev_adv", "lev_exp", "lev_mas", "lev_remas",
+                  "dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas", "dx_lev_remas"}
+
+    other_keys = {
+        "artist",
+        "catcode",
+        "date",
+        "kanji",
+        "comment",
+        "image_url",
+        "key",
+        "release",
+        "title",
+        "title_kana",
+        "version"
+    }
+
+    any_changes = False
+
+    # Iterate over each key in level_keys
+    for key in level_keys:
+        # Check if the key exists in both song and old_song
+        if key in song and key in old_song:
+            # Compare the values of the key in both dictionaries
+            if song[key] != old_song[key]:
+                # Print the difference in the format: key: old_value -> new_value
+
+                # Lazy-print song name
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+
+                print_message(f"- Level changed! {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE, args)
+                any_changes = True
+
+    for key in other_keys:
+        # Check if the key exists in both song and old_song
+        if key in song and key in old_song:
+            # Compare the values of the key in both dictionaries
+            if song[key] != old_song[key]:
+                # Print the difference in the format: key: old_value -> new_value
+
+                # Lazy-print song name
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+
+                print_message(f"- {key}: {old_song[key]} → {song[key]}", bcolors.ENDC, args)
+                any_changes = True
+
+    return any_changes
+
+# Check for keys that are removed or modified and print the changes.
+def detect_key_removals_or_modifications(song, old_song, song_diffs, args):
+    keys_removed = False
+
+    # Check for key removal (keys in old_song but not in song)
+    for key in old_song:
+        if key == "date":
+            continue
+        if key not in song:
+            # Most likely, "key" (unlock status) is removed
+            # Lazy-print song name
+            lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+
+            print_message(f"- Song is now unlocked by default", bcolors.OKGREEN, args)
+            keys_removed = True
+
+    # Check for key modification
+    keys_changed = print_keys_change(song, old_song, song_diffs, args)
+
+    # Return True if any keys are removed or modified
+    return keys_changed or keys_removed
