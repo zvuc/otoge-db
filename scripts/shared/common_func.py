@@ -1,13 +1,70 @@
+import argparse
 import ipdb
 import json
 import os
 import re
 import requests
 import hashlib
+import importlib
 import unicodedata
+import game
 from functools import reduce
 from .terminal import bcolors
 from datetime import datetime
+
+
+def set_args_and_game_module(custom_args=None):
+    parser = argparse.ArgumentParser(description='Description of your script')
+    parser.add_argument('--game', choices=['maimai', 'ongeki', 'chunithm'], help='Choose a game to perform scripts')
+    parser.add_argument('--ongeki', action="store_true", help='Perform scripts for ongeki (shorthand for --game=\'ongeki\')')
+    parser.add_argument('--chunithm', action="store_true", help='Perform scripts for chunithm (shorthand for --game=\'chunithm\')')
+    parser.add_argument('--maimai', action="store_true", help='Perform scripts for maimai (shorthand for --game=\'maimai\')')
+    parser.add_argument('--nocolors', action="store_true", help='Print messages in color')
+    parser.add_argument('--markdown', action="store_true", help='Print in GitHub-flavored markdown format')
+    parser.add_argument('--escape', action="store_true", help='Escape unsafe characters for git message output')
+    parser.add_argument('--no_timestamp', action="store_true", help='Don\'t print timestamps on message output')
+    parser.add_argument('--no_verbose', action="store_true", help='Only print significant changes and errors')
+
+
+    # If there are custom arguments, extend the parser
+    if custom_args:
+        for custom_arg, options in custom_args.items():
+            parser.add_argument(custom_arg, **options)
+
+    args = parser.parse_args()
+
+    if not args.game:
+        if args.ongeki:
+            args.game = 'ongeki'
+        elif args.chunithm:
+            args.game = 'chunithm'
+        elif args.maimai:
+            args.game = 'maimai'
+        else:
+            print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, ARGS)
+            exit()
+
+    if (hasattr(args, 'id') and args.id != 0) and \
+       ((hasattr(args, 'date_from') and args.date_from != 0) or (hasattr(args, 'date_until') and args.date_until != 0)):
+        print_message('--id and --date_from / --date_until arguments cannot be used together.', bcolors.FAIL, args)
+        exit()
+
+    # Import the game module dynamically
+    game_module = importlib.import_module(args.game)
+
+    # Set game module and game vars in the config
+    game.GAME_MODULE = game_module
+    game.GAME = args.game
+    game.ARGS = args
+
+    # Dynamically import the variables from game.py
+    game_vars_module = importlib.import_module(f"{args.game}.game")
+
+    # Set variables as attributes of the config module
+    for var in dir(game_vars_module):
+        if not var.startswith("__"):
+            setattr(game, var, getattr(game_vars_module, var))
+
 
 def print_message(message, color_name, args, log='', no_verbose=False):
     timestamp = ''
@@ -118,6 +175,19 @@ def json_to_id_value_map(json, id_key):
 def json_to_hash_value_map(json, generate_hash_func, *keys):
     return {generate_hash_func(song, *keys):song for song in json}
 
+def generate_hash_from_keys(song, *keys):
+    if len(keys) == 1 and isinstance(keys[0], (list, tuple)):
+        keys = keys[0]  # Unpack the single tuple or list argument
+    hash_string = ''.join(str(song[key]) for key in keys)
+    return generate_hash(hash_string)
+
+def maimai_generate_hash(song):
+    if 'lev_utage' in song:
+        hash_string = ''.join(str(song[key]) for key in game.HASH_KEYS_UTAGE)
+    else:
+        hash_string = ''.join(str(song[key]) for key in game.HASH_KEYS)
+    return generate_hash(hash_string)
+
 def generate_hash(text_input):
     # Create a new SHA-256 hash object
     sha256_hash = hashlib.sha256()
@@ -129,18 +199,6 @@ def generate_hash(text_input):
     hash_result = sha256_hash.hexdigest()
 
     return hash_result
-
-def generate_hash_from_keys(song, *keys):
-    if len(keys) == 1 and isinstance(keys[0], (list, tuple)):
-        keys = keys[0]  # Unpack the single tuple or list argument
-    hash_string = ''.join(str(song[key]) for key in keys)
-    return generate_hash(hash_string)
-
-def maimai_generate_hash(song):
-    if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'] + song['kanji'])
-    else:
-        return generate_hash(song['title'] + song['image_url'])
 
 def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash_key, args):
     if args.all:
