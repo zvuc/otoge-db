@@ -35,12 +35,12 @@ CHARACTER_TABLE = {
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
-        local_music_map = json_to_hash_value_map(local_music_data, generate_hash_from_keys, *HASH_KEYS)
+        local_music_map = json_to_hash_value_map(local_music_data, *HASH_KEYS)
 
     old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
-    server_music_map = json_to_hash_value_map(server_music_data, generate_hash_from_keys, *HASH_KEYS)
+    server_music_map = json_to_hash_value_map(server_music_data, *HASH_KEYS)
 
     added_songs = []
     removed_songs = []

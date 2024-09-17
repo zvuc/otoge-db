@@ -21,12 +21,12 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
-    local_music_map = json_to_hash_value_map(local_music_data, maimai_generate_hash)
+    local_music_map = json_to_hash_value_map(local_music_data)
 
     old_local_music_data = local_music_data
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
-    server_music_map = json_to_hash_value_map(server_music_data, maimai_generate_hash)
+    server_music_map = json_to_hash_value_map(server_music_data)
 
     added_songs = []
     removed_songs = []
@@ -63,7 +63,7 @@ def load_new_song_data():
 
 
 def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args):
-    print_message(f"Fetch new songs", 'H2', args)
+    print_message(f"Fetch new songs", 'H2')
 
     if len(added_songs) == 0 and len(updated_songs) == 0:
         print_message("Nothing updated", '', args)
@@ -83,7 +83,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     # added_songs
     for song in added_songs:
         song_diffs = [0]
-        song_hash = maimai_generate_hash(song)
+        song_hash = generate_hash_from_keys(song)
         lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
         print_message(f"- New song added", bcolors.OKGREEN, args)
         _download_song_jacket(song, args)
@@ -96,9 +96,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     # Find the same song in ex_data list then update any changed keys
     for song in updated_songs:
         song_diffs = [0]
-        song_hash = maimai_generate_hash(song)
-        old_song = next((s for s in old_local_music_data if maimai_generate_hash(s) == song_hash), None)
-        dest_ex_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
+        song_hash = generate_hash_from_keys(song)
+        old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s) == song_hash), None)
 
         added_charts_sets = {
             "added_charts_dx": {"dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas"},
@@ -167,9 +167,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     # Iterate through unchanged songs
     for song in unchanged_songs:
         song_diffs = [0]
-        song_hash = maimai_generate_hash(song)
-        old_song = next((s for s in old_local_music_data if maimai_generate_hash(s) == song_hash), None)
-        dest_ex_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
+        song_hash = generate_hash_from_keys(song)
+        old_song = next((s for s in old_local_music_data if generate_hash_from_keys(s) == song_hash), None)
+        dest_ex_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
@@ -208,8 +208,8 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         # removed_songs
         for song in removed_songs:
             song_diffs = [0]
-            song_hash = maimai_generate_hash(song)
-            existing_song = next((s for s in local_music_ex_data if maimai_generate_hash(s) == song_hash), None)
+            song_hash = generate_hash_from_keys(song)
+            existing_song = next((s for s in local_music_ex_data if generate_hash_from_keys(s) == song_hash), None)
 
             if existing_song:
                 # delete matched item
