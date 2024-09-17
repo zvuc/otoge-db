@@ -24,42 +24,6 @@ TARGET_KEYS = [
     "_designer"
 ]
 
-VERSION_DATES = {
-    "無印": "20150716",
-    "PLUS": "20160204",
-    "AIR": "20160825",
-    "AIR+": "20170209",
-    "STAR": "20170824",
-    "STAR+": "20180308",
-    "AMAZON": "20181025",
-    "AMAZON+": "20190411",
-    "CRYSTAL": "20191024",
-    "CRYSTAL+": "20200716",
-    "PARADISE": "20210121",
-    "PARADISE×": "20210513",
-    "NEW": "20211104",
-    "NEW+": "20220414",
-    "SUN": "20221013",
-    "SUN+": "20230511",
-    "LUMINOUS": "20231214"
-}
-
-CHART_LIST = [
-   "lev_bas",
-   "lev_adv",
-   "lev_exp",
-   "lev_mas",
-   "lev_remas"
-]
-
-CHART_LIST_DX = [
-   "dx_lev_bas",
-   "dx_lev_adv",
-   "dx_lev_exp",
-   "dx_lev_mas",
-   "dx_lev_remas"
-]
-
 CHART_COLORS = {
    "lev_bas": "98fb98",
    "dx_lev_bas": "98fb98",
@@ -431,7 +395,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
         if 'kanji' in song:
             _process_utage_chart(song, charts_table, charts_table_head, chart_designers_dict, args, song_diffs)
         else:
-            for chart_type in CHART_LIST:
+            for chart_type in game.CHART_LIST:
                 if chart_type in song:
                     _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table, charts_table_head, chart_designers_dict, args, song_diffs)
 
@@ -441,7 +405,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
             _process_utage_chart(song, charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args, song_diffs)
 
         else:
-            for chart_type in CHART_LIST_DX:
+            for chart_type in game.CHART_LIST_DX:
                 if chart_type in song:
                     _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, args, song_diffs)
 
