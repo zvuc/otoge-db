@@ -172,20 +172,24 @@ def renew_lastupdated(local_json_ex_path, dest_html_path, args):
 def json_to_id_value_map(json, id_key):
     return {int(song['id']):song for song in json}
 
-def json_to_hash_value_map(json, generate_hash_func, *keys):
-    return {generate_hash_func(song, *keys):song for song in json}
+def json_to_hash_value_map(json, *keys):
+    return {generate_hash_from_keys(song, *keys): song for song in json}
 
 def generate_hash_from_keys(song, *keys):
-    if len(keys) == 1 and isinstance(keys[0], (list, tuple)):
-        keys = keys[0]  # Unpack the single tuple or list argument
-    hash_string = ''.join(str(song[key]) for key in keys)
-    return generate_hash(hash_string)
-
-def maimai_generate_hash(song):
-    if 'lev_utage' in song:
-        hash_string = ''.join(str(song[key]) for key in game.HASH_KEYS_UTAGE)
+    # Check for game-specific hash keys
+    if game.GAME_NAME == "maimai":
+        if 'lev_utage' in song:
+            keys = game.HASH_KEYS_UTAGE
+        else:
+            keys = game.HASH_KEYS
     else:
-        hash_string = ''.join(str(song[key]) for key in game.HASH_KEYS)
+        # Use keys provided or default to empty list if not specified
+        if len(keys) == 1 and isinstance(keys[0], (list, tuple)):
+            keys = keys[0]
+        else:
+            keys = keys
+
+    hash_string = ''.join(str(song[key]) for key in keys)
     return generate_hash(hash_string)
 
 def generate_hash(text_input):

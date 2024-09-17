@@ -15,11 +15,11 @@ def add_intl_info(args):
         intl_song_list = json.load(f)
 
     # Create a dictionary to store hashes from file B
-    intl_song_hashes = {maimai_generate_hash(song): song for song in intl_song_list}
+    intl_song_hashes = {generate_hash_from_keys(song): song for song in intl_song_list}
 
     # Check for common items and update A.json
     for song in jp_song_list:
-        jp_song_hash = maimai_generate_hash(song)
+        jp_song_hash = generate_hash_from_keys(song)
         if jp_song_hash in intl_song_hashes:
             if "intl" not in song or song["intl"] == '':
                 song["intl"] = "1"
@@ -40,8 +40,3 @@ def fetch_intl_json_from_server():
         json.dump(server_intl_music_data, f, ensure_ascii=False, indent=2)
 
 
-def maimai_generate_hash(song):
-    if 'lev_utage' in song:
-        return generate_hash(song['title'] + song['lev_utage'])
-    else:
-        return generate_hash(song['title'] + song['image_url'])
