@@ -156,7 +156,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 elif matching_set_name == "added_charts_remas":
                     print_message(f"- RE:MASTER (STD) chart added", bcolors.OKGREEN)
             else:
-                if not detect_key_removals_or_modifications(song, old_song, song_diffs, args):
+                if not detect_key_removals_or_modifications(song, old_song, song_diffs):
                     # all other cases where something changed
                     lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
                     print_message(f"- Updated data", bcolors.OKGREEN)
@@ -327,74 +327,3 @@ def _add_ex_data_template(song):
 
     return song
 
-def print_keys_change(song, old_song, song_diffs, args):
-    # Define the possible level keys (both normal and dx versions)
-    level_keys = {"lev_bas", "lev_adv", "lev_exp", "lev_mas", "lev_remas",
-                  "dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas", "dx_lev_remas"}
-
-    other_keys = {
-        "artist",
-        "catcode",
-        "date",
-        "kanji",
-        "comment",
-        "image_url",
-        "key",
-        "release",
-        "title",
-        "title_kana",
-        "version"
-    }
-
-    any_changes = False
-
-    # Iterate over each key in level_keys
-    for key in level_keys:
-        # Check if the key exists in both song and old_song
-        if key in song and key in old_song:
-            # Compare the values of the key in both dictionaries
-            if song[key] != old_song[key]:
-                # Print the difference in the format: key: old_value -> new_value
-
-                # Lazy-print song name
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
-
-                print_message(f"- Level changed! {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE)
-                any_changes = True
-
-    for key in other_keys:
-        # Check if the key exists in both song and old_song
-        if key in song and key in old_song:
-            # Compare the values of the key in both dictionaries
-            if song[key] != old_song[key]:
-                # Print the difference in the format: key: old_value -> new_value
-
-                # Lazy-print song name
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
-
-                print_message(f"- {key}: {old_song[key]} → {song[key]}", bcolors.ENDC)
-                any_changes = True
-
-    return any_changes
-
-# Check for keys that are removed or modified and print the changes.
-def detect_key_removals_or_modifications(song, old_song, song_diffs, args):
-    keys_removed = False
-
-    # Check for key removal (keys in old_song but not in song)
-    for key in old_song:
-        if key == "date":
-            continue
-        if key not in song:
-            # Most likely, "key" (unlock status) is removed
-            # Lazy-print song name
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
-
-            print_message(f"- Song is now unlocked by default", bcolors.OKGREEN)
-            keys_removed = True
-
-    # Check for key modification
-    keys_changed = print_keys_change(song, old_song, song_diffs, args)
-
-    # Return True if any keys are removed or modified
-    return keys_changed or keys_removed

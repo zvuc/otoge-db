@@ -121,7 +121,7 @@ def print_message(message, color_name='', args=None, log=False, no_verbose=False
     if no_verbose is False:
         print(timestamp + print_color_name + message + reset_color)
 
-def lazy_print_song_header(msg, diff_count, args=None, log='', always_print=False):
+def lazy_print_song_header(msg, diff_count, args=None, log=False, always_print=False):
     if args is None:
         args = game.ARGS
     # Do nothing if no_verbose is unset & always_print is unset
@@ -342,6 +342,65 @@ def archive_deleted_song(song, deleted_data):
     deleted_date = datetime.now().strftime('%Y%m%d')
     song['deleted_date'] = f"{deleted_date}"
     deleted_data.append(song)
+
+
+def print_keys_change(song, old_song, song_diffs):
+    # Define the possible level keys (both normal and dx versions)
+    any_changes = False
+
+    # Iterate over each key in level_keys
+    for key in game.LEVEL_KEYS:
+        # Check if the key exists in both song and old_song
+        if key in song and key in old_song:
+            # Compare the values of the key in both dictionaries
+            if song[key] != old_song[key]:
+                # Print the difference in the format: key: old_value -> new_value
+
+                # Lazy-print song name
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+
+                print_message(f"- Level changed! {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE)
+                any_changes = True
+
+    new_tag_key = game.NEW_TAG_KEY
+    if new_tag_key in song and new_tag_key in old_song:
+        if song[new_tag_key] != old_song[new_tag_key]:
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+
+            print_message(f"- (New marker removed)", bcolors.ENDC)
+            any_changes = True
+
+    for key in game.OTHER_KEYS:
+        if key in song and key in old_song:
+            if song[key] != old_song[key]:
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+
+                print_message(f"- {key}: {old_song[key]} → {song[key]}", bcolors.ENDC)
+                any_changes = True
+
+    return any_changes
+
+# Check for keys that are removed or modified and print the changes.
+def detect_key_removals_or_modifications(song, old_song, song_diffs):
+    keys_removed = False
+
+    # Check for key removal (keys in old_song but not in song)
+    for key in old_song:
+        if key in game.IGNORE_KEYS:
+            continue
+        if key not in song:
+            # Most likely, "key" (unlock status) is removed
+            # Lazy-print song name
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+
+            print_message(f"- Song is now unlocked by default", bcolors.OKGREEN)
+            keys_removed = True
+
+    # Check for key modification
+    keys_changed = print_keys_change(song, old_song, song_diffs)
+
+    # Return True if any keys are removed or modified
+    return keys_changed or keys_removed
 
 
 def normalize_unicode(input_string):
