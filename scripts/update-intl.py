@@ -4,7 +4,7 @@ import shared
 from shared.common_func import *
 
 def main():
-    game.GAME_MODULE.intl.add_intl_info(game.ARGS)
+    game.GAME_MODULE.intl.add_intl_info()
 
 if __name__ == "__main__":
     custom_args = {

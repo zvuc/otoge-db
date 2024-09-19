@@ -62,7 +62,7 @@ def load_new_song_data():
     return added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data
 
 
-def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data, args):
+def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data):
     print_message("Fetch new songs", 'H2')
 
     if len(added_songs) == 0 and len(updated_songs) == 0:
@@ -84,9 +84,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     for song in added_songs:
         song_diffs = [0]
         song_hash = generate_hash_from_keys(song)
-        lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
+        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
         print_message(f"- New song added", bcolors.OKGREEN)
-        _download_song_jacket(song, args)
+        _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
 
         _record_diffs(song, song_hash, 'new')
@@ -109,8 +109,8 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
-            print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING, args)
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+            print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING)
             continue
 
         if old_song == song:
@@ -145,7 +145,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
             if matching_set_name:
                 dest_ex_song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
                 if matching_set_name == "added_charts_dx":
                     print_message(f"- DX charts added", bcolors.OKGREEN)
@@ -158,7 +158,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
             else:
                 if not detect_key_removals_or_modifications(song, old_song, song_diffs):
                     # all other cases where something changed
-                    lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
+                    lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                     print_message(f"- Updated data", bcolors.OKGREEN)
 
             _record_diffs(song, song_hash, 'updated')
@@ -173,7 +173,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
             print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING)
             continue
 
@@ -216,23 +216,23 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 local_music_ex_data.remove(existing_song)
                 archive_deleted_song(existing_song, local_music_ex_deleted_data)
 
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=errors_log, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                 print_message(f"- Removed song", bcolors.FAIL)
 
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
 
-    if not args.skipwiki:
+    if not game.ARGS.skipwiki:
         for song in added_songs:
-            wiki.update_song_wiki_data(song, args)
+            wiki.update_song_wiki_data(song)
         for song in updated_songs:
-            wiki.update_song_wiki_data(song, args)
+            wiki.update_song_wiki_data(song)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
-def _download_song_jacket(song, args):
+def _download_song_jacket(song):
     try:
         response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], verify=False, stream=True)
 
@@ -243,11 +243,11 @@ def _download_song_jacket(song, args):
                 # file.write(response.content)
                 shutil.copyfileobj(response.raw, file)
 
-            print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, log=errors_log)
+            print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, log=True)
         else:
-            print_message(f"- Failed to download image. Status code: {response.status_code}", bcolors.FAIL, log=errors_log)
+            print_message(f"- Failed to download image. Status code: {response.status_code}", bcolors.FAIL, log=True)
     except Exception as e:
-        print_message(f"- Could not download: {e}", bcolors.FAIL, log=errors_log)
+        print_message(f"- Could not download: {e}", bcolors.FAIL, log=True)
 
 def _record_diffs(song, song_hash, diff_type):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:

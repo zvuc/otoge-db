@@ -36,26 +36,28 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 # wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_(Asia)'
 # wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_PLUS_(Asia)'
 wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:LUMINOUS_(Asia)'
-errors_log = LOCAL_ERROR_LOG_PATH
+
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
 # Update on top of existing music-ex
-def add_intl_info(args):
-    print_message(f"Fetching International ver. song data from RemyWiki", 'H2', args, errors_log, args.no_verbose)
+def add_intl_info():
+    total_diffs = [0]
+
+    print_message(f"Fetching International ver. song data from RemyWiki", 'H2', log=True, is_verbose=True)
 
     # Load JSON data
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
     # Get Wiki page
-    print_message(f"Request URL: {wiki_url}", bcolors.ENDC, args, errors_log, args.no_verbose)
+    print_message(f"Request URL: {wiki_url}", bcolors.ENDC, log=True, is_verbose=True)
     try:
         wiki = requests.get(wiki_url, timeout=5, headers=request_headers, allow_redirects=True)
     except requests.RequestException as e:
-        print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log, args.no_verbose)
+        print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, log=True, is_verbose=True)
         return
 
 
@@ -74,6 +76,8 @@ def add_intl_info(args):
 
     # Iterate through each row
     for row in rows:
+        header_printed = [0]
+
         # Reset utility vars
         song_matched = False
         # If B/A/E/M fields are empty, it means only ULTIMA is added at this time
@@ -137,19 +141,19 @@ def add_intl_info(args):
                     'we_star': we_star
                 }
 
-                print_message(f"[{we_kanji}] {title}", 'HEADER', args, errors_log, args.no_verbose)
-
                 # Match WORLDS END songs with JSON data using we_kanji and we_star
                 for song in local_music_ex_data:
+                    old_song = copy.copy(song)
+
                     # Match found, compare WORLDS END chart levels
                     if (normalize_title(song['title']) == wiki_song['title'] and
                         song['we_kanji'] == wiki_song['we_kanji']):
 
                         # if normalize_title(song['artist']) == wiki_song['artist']:
-                        #     print_message(f"Perfect match found", bcolors.ENDC, args)
+                        #     print_message(f"Perfect match found", bcolors.ENDC)
                         # else:
-                        #     print_message(f"JSON: {song['artist']}", bcolors.ENDC, args)
-                        #     print_message(f"Wiki: {artist}", bcolors.ENDC, args)
+                        #     print_message(f"JSON: {song['artist']}", bcolors.ENDC)
+                        #     print_message(f"Wiki: {artist}", bcolors.ENDC)
                         #     response = input("Artist name mismatch. Proceed? (y/n): ")
 
                         #     # Checking the user's response
@@ -160,23 +164,34 @@ def add_intl_info(args):
                         #         continue
 
                         if (song['we_star'] != we_star):
-                            if args.strict:
-                                print_message(f"WORLDS END level (stars) mismatch.", bcolors.FAIL, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- WORLDS END level (stars) mismatch. (JSON: {song['we_star']} vs Wiki: {we_star})", bcolors.FAIL, log=True, is_verbose=True)
                                 continue
                             else:
-                                print_message(f"WORLDS END level (stars) mismatch.", bcolors.WARNING, args, errors_log, args.no_verbose)
+                                print_message(f"- WORLDS END level (stars) mismatch. (JSON: {song['we_star']} vs Wiki: {we_star})", bcolors.WARNING, log=True, is_verbose=True)
 
 
                         # Match found, update JSON data
                         if song['intl'] == "0":
                             song['intl'] = "1"
-                            print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
+                            print_message(f"- Marked as available in Intl. ver.", bcolors.OKGREEN, log=True, is_verbose=True)
 
                         if 'date_intl_added' not in song or song['date_intl_added'] == '':
-                            print_message(f"Date added ({wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
+                            print_message(f"- Date added ({wiki_song['date']})", bcolors.OKGREEN, log=True, is_verbose=True)
                             song['date_intl_added'] = wiki_song['date']
 
                         song_matched = True
+
+                        if old_song == song:
+                            lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
+                            print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
+                        else:
+                            total_diffs[0] += 1
+
                         break
 
         # Not a WORLDS END song, process normally
@@ -207,17 +222,18 @@ def add_intl_info(args):
                 wiki_song['lev_ult'] != '-'):
                 only_ultima = True
 
-            print_message(f"{title}", 'HEADER', args, errors_log, args.no_verbose)
 
             # Match non-WORLDS END songs with JSON data
             for song in local_music_ex_data:
+                old_song = copy.copy(song)
+
                 # Match found, compare level numbers
                 if normalize_title(song['title']) == wiki_song['title']:
                     # if normalize_title(song['artist']) == wiki_song['artist']:
-                    #     print_message(f"Perfect match found", bcolors.ENDC, args)
+                    #     print_message(f"Perfect match found", bcolors.ENDC)
                     # else:
-                    #     print_message(f"JSON: {song['artist']}", bcolors.ENDC, args)
-                    #     print_message(f"Wiki: {artist}", bcolors.ENDC, args)
+                    #     print_message(f"JSON: {song['artist']}", bcolors.ENDC)
+                    #     print_message(f"Wiki: {artist}", bcolors.ENDC)
                     #     response = input("Artist name mismatch. Proceed? (y/n): ")
 
                     #     # Checking the user's response
@@ -230,17 +246,27 @@ def add_intl_info(args):
                     if only_ultima:
                         # Double-check with level
                         if song['lev_ult'] != wiki_song['lev_ult']:
-                            if args.strict:
-                                print_message(f"ULTIMA level mismatch.", bcolors.FAIL, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- ULTIMA level mismatch. (JSON: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.FAIL, log=True, is_verbose=True)
                                 continue
                             else:
-                                print_message(f"ULTIMA level mismatch.", bcolors.WARNING, args, errors_log, args.no_verbose)
+                                print_message(f"- ULTIMA level mismatch. (JSON: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.WARNING, log=True, is_verbose=True)
 
                         if ('date_intl_updated' not in song or int(song['date_intl_updated']) < int(wiki_song['date'])):
                             song['date_intl_updated'] = wiki_song['date']
-                            print_message(f"Added update date", bcolors.OKBLUE, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+                            print_message(f"- Added update date", bcolors.OKBLUE, log=True, is_verbose=True)
 
                         song_matched = True
+
+                        if old_song == song:
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+                            print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
+                        else:
+                            total_diffs[0] += 1
+
                         break
 
                     else:
@@ -250,35 +276,53 @@ def add_intl_info(args):
                             song['lev_exp'] != wiki_song['lev_exp'] or
                             song['lev_mas'] != wiki_song['lev_mas']):
 
-                            if args.strict:
-                                print_message(f"One of the levels were not matched.", bcolors.FAIL, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
                                 continue
                             else:
-                                print_message(f"One of the levels were not matched.", bcolors.WARNING, args, errors_log, args.no_verbose)
+                                print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
 
                         # Update JSON data
                         if song['intl'] == "0":
                             song['intl'] = "1"
-                            print_message(f"Marked as available in Intl. ver.", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+                            print_message(f"- Marked as available in Intl. ver.", bcolors.OKGREEN, log=True, is_verbose=True)
 
                         if 'date_intl_added' not in song or song['date_intl_added'] == '':
                             song['date_intl_added'] = wiki_song['date']
-                            print_message(f"Added date", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+                            print_message(f"- Added date", bcolors.OKGREEN, log=True, is_verbose=True)
 
                         # if song['date_added'] == '':
-                        #     print_message(f"Date added ({wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        #     print_message(f"Date added ({wiki_song['date']})", bcolors.OKGREEN, log=True, is_verbose=True)
                         #     song['date_added'] = wiki_song['date']
                         # elif song['date_added'] != wiki_song['date']:
-                        #     print_message(f"Date updated: (json: {song['date_added']} / wiki: {wiki_song['date']})", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+                        #     print_message(f"Date updated: (json: {song['date_added']} / wiki: {wiki_song['date']})", bcolors.OKGREEN, log=True, is_verbose=True)
                         #     song['date_added'] = wiki_song['date']
 
                         song_matched = True
+
+                        if old_song == song:
+                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+                            print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
+                        else:
+                            total_diffs[0] += 1
+
                         break
 
         # if song was not matched (if break was not triggered)
         if song_matched is not True:
-            print_message(f"Song not matched", bcolors.FAIL, args, errors_log)
+            if worlds_end_td:
+                lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True)
+            else:
+                lazy_print_song_header(f"{title}", header_printed, log=True)
 
+            print_message(f"- Song not found in JSON file", bcolors.FAIL, log=True)
+
+    if total_diffs[0] == 0:
+        print_message("(Nothing updated)", bcolors.ENDC, log=True)
 
     # Write updated JSON data to file
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:

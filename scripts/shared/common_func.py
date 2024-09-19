@@ -71,7 +71,7 @@ def set_args_and_game_module(custom_args=None):
             setattr(game, var, getattr(game_paths_module, var))
 
 
-def print_message(message, color_name='', args=None, log=False, no_verbose=False):
+def print_message(message, color_name='', args=None, log=False, is_verbose=False):
     if args is None:
         args = game.ARGS
 
@@ -118,20 +118,24 @@ def print_message(message, color_name='', args=None, log=False, no_verbose=False
         with open(game.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
             f.write(timestamp + ' ' + message + '\n')
 
-    if no_verbose is False:
+    # Do nothing if message is verbose and no_verbose is set
+    if is_verbose is True and args.no_verbose is True:
+        return
+    else:
         print(timestamp + print_color_name + message + reset_color)
 
-def lazy_print_song_header(msg, diff_count, args=None, log=False, always_print=False):
+def lazy_print_song_header(msg, header_printed, args=None, log=False, is_verbose=False):
     if args is None:
         args = game.ARGS
-    # Do nothing if no_verbose is unset & always_print is unset
-    if not args.no_verbose and not always_print:
+
+    # If message should only print in verbose mode
+    if is_verbose is True and args.no_verbose is True:
         return
 
-    if diff_count[0] == 0:
-        # Lazy-print song name
+    # If header was not printed yet print song name
+    if header_printed[0] == 0:
+        header_printed[0] += 1
         print_message(msg, 'HEADER', log=log)
-        diff_count[0] += 1
 
 def parse_date(date_str, release_str):
     try:
@@ -214,7 +218,9 @@ def generate_hash(text_input):
 
     return hash_result
 
-def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash_key, args):
+def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash_key):
+    args = game.ARGS
+
     if args.all:
         return [song for song in song_list]
     # prioritize id search if provided
@@ -314,7 +320,7 @@ def get_songs_from_diffs(song_list, diffs_log, identifier):
 
     return target_song_list
 
-def update_song_key(song, args, key, new_data, remove_comma=False, diff_count=None):
+def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
 
     # skip if new data is placeholder or empty
     if new_data in ['？', '?', '??', '???', '-', '']:
@@ -326,7 +332,7 @@ def update_song_key(song, args, key, new_data, remove_comma=False, diff_count=No
         if song[key] == new_data:
             return
         # skip if dest already has a valid value (other than ?) AND force overwrite is not set
-        if (song[key] != '' and song[key] not in ['？', '?']) and not args.overwrite:
+        if (song[key] != '' and song[key] not in ['？', '?']) and not game.ARGS.overwrite:
             return
 
     # Write
@@ -357,7 +363,7 @@ def print_keys_change(song, old_song, song_diffs):
                 # Print the difference in the format: key: old_value -> new_value
 
                 # Lazy-print song name
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
                 print_message(f"- Level changed! {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE)
                 any_changes = True
@@ -365,7 +371,7 @@ def print_keys_change(song, old_song, song_diffs):
     new_tag_key = game.NEW_TAG_KEY
     if new_tag_key in song and new_tag_key in old_song:
         if song[new_tag_key] != old_song[new_tag_key]:
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
             print_message(f"- (New marker removed)", bcolors.ENDC)
             any_changes = True
@@ -373,7 +379,7 @@ def print_keys_change(song, old_song, song_diffs):
     for key in game.OTHER_KEYS:
         if key in song and key in old_song:
             if song[key] != old_song[key]:
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
                 print_message(f"- {key}: {old_song[key]} → {song[key]}", bcolors.ENDC)
                 any_changes = True
@@ -391,7 +397,7 @@ def detect_key_removals_or_modifications(song, old_song, song_diffs):
         if key not in song:
             # Most likely, "key" (unlock status) is removed
             # Lazy-print song name
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, always_print=True)
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
             print_message(f"- Song is now unlocked by default", bcolors.OKGREEN)
             keys_removed = True
@@ -489,7 +495,7 @@ def normalize_title(string: str):
 
     return string
 
-def get_and_save_page_to_local(url, output_path, args, local_cache_dir):
+def get_and_save_page_to_local(url, output_path, local_cache_dir):
     response = requests.get(url)
     response.encoding = 'ansi'
 
@@ -501,10 +507,9 @@ def get_and_save_page_to_local(url, output_path, args, local_cache_dir):
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(response.text)
 
-        if args.no_verbose is False:
-            print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, args)
+        print_message(f"Saved {url} to {output_path}", bcolors.OKBLUE, is_verbose=True)
     else:
-        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, args, errors_log)
+        print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL, log=True)
 
 def evaluate_lv_num(lv, expression):
     # Strip '+' from the input number
