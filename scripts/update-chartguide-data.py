@@ -4,7 +4,7 @@ import shared
 from shared.common_func import *
 
 def main():
-    game.GAME_MODULE.chartguide.update_chartguide_data(game.ARGS)
+    game.GAME_MODULE.chartguide.update_chartguide_data()
 
 if __name__ == "__main__":
     custom_args = {

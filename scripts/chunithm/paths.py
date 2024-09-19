@@ -10,3 +10,6 @@ LOCAL_ERROR_LOG_PATH = "chunithm/errors.txt"
 LOCAL_INDEX_HTML_PATH = "chunithm/src/pug/_chunithm.pug"
 LOCAL_LEVELS_HTML_PATH = "chunithm/lv/index.html"
 LOCAL_NAMUWIKI_EXPORT_PATH = "chunithm/namuwiki-export.html"
+
+LOCAL_SDVXIN_CACHE_DIR = 'chunithm/sdvxin_cache'
+LOCAL_SHEETS_CACHE_DIR = 'chunithm/google_sheets_cache'

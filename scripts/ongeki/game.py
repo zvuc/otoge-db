@@ -56,3 +56,5 @@ CHARACTER_TABLE = {
     "みどニャン": "LEAF",
     "あおニャン": "AQUA"
 }
+
+ENEMY_TYPES = ['FIRE', 'AQUA', 'LEAF']

@@ -11,7 +11,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 wiki_base_url = 'https://wikiwiki.jp/chunithmwiki/'
-errors_log = LOCAL_ERROR_LOG_PATH
+
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
@@ -55,13 +55,13 @@ CHART_COLORS = {
 }
 
 # Update on top of existing music-ex
-def update_songs_extra_data(args):
-    print_message(f"Fetch latest wiki data", 'H2', args, errors_log)
+def update_songs_extra_data():
+    print_message(f"Fetch latest wiki data", 'H2', log=True)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
@@ -70,17 +70,17 @@ def update_songs_extra_data(args):
     total_diffs = [0]
 
     for song in target_song_list:
-        update_song_wiki_data(song, total_diffs, args)
+        update_song_wiki_data(song, total_diffs)
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
     if total_diffs[0] == 0:
-        print_message("(Nothing updated)", bcolors.ENDC, args, errors_log)
+        print_message("(Nothing updated)", bcolors.ENDC, log=True)
 
 
-def update_song_wiki_data(song, total_diffs, args):
-    print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log, args.no_verbose)
+def update_song_wiki_data(song, total_diffs):
+    header_printed = [0]
 
     title = (
         song['title']
@@ -95,25 +95,27 @@ def update_song_wiki_data(song, total_diffs, args):
     
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
-        if args.noskip:
+        if game.ARGS.noskip:
             # Check if any values are empty
-            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)) or args.overwrite:
+            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)) or game.ARGS.overwrite:
                 url = song['wikiwiki_url']
                 try:
                     wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
-                    _parse_wikiwiki(song, wiki, url, total_diffs, args)
+                    _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
                     # Give some time before continuing
                     time.sleep(random.randint(1,2))
                     return
                 except requests.RequestException as e:
-                    print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, args, errors_log)
+                    print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, log=True)
                     return song
             else:
-                print_message("(Skipping - all data already present)", bcolors.ENDC, args, errors_log, args.no_verbose)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message("(Skipping - all data already present)", bcolors.ENDC, log=True, is_verbose=True)
 
         else:
             # Skip if URL present
-            print_message("(Skipping - URL already exists)", bcolors.ENDC, args, errors_log, args.no_verbose)
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message("(Skipping - URL already exists)", bcolors.ENDC, log=True, is_verbose=True)
 
     # If not, guess URL from title
     else:
@@ -130,24 +132,25 @@ def update_song_wiki_data(song, total_diffs, args):
                 # give up!
                 # only print song title when no_verbose is active
                 # because title is not printed yet
-                if args.no_verbose:
-                    print_message(f"{song['id']} {song['title']}", 'HEADER', args, errors_log)
-                print_message("Failed to guess wiki page", bcolors.FAIL, args, errors_log)
+                if game.ARGS.no_verbose is True:
+                    print_message(f"{song['id']} {song['title']}", 'HEADER', log=True)
+                print_message("Failed to guess wiki page", bcolors.FAIL, log=True)
                 return song
 
             else:
                 url = guess_url
-                print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-                return _parse_wikiwiki(song, wiki, url, total_diffs, args)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message("Found URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
+                return _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
                 
         else:
             url = guess_url
-            print_message("Found URL by guess!", bcolors.OKBLUE, args, errors_log, args.no_verbose)
-            return _parse_wikiwiki(song, wiki, url, total_diffs, args)
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message("Found URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
+            return _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
 
 
-def _parse_wikiwiki(song, wiki, url, total_diffs, args):
-    song_diffs = [0]
+def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
     old_song = copy.copy(song)
@@ -158,7 +161,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        print_message("Parse failed! Skipping song", bcolors.FAIL, args, errors_log, args.no_verbose)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+        print_message("Parse failed! Skipping song", bcolors.FAIL, log=True, is_verbose=True)
         return song
 
 
@@ -200,30 +204,33 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
 
             if not formatted_date == '':
                 diff_count = [0]
-                update_song_key(song, args, 'date_added', formatted_date, diff_count=diff_count)
-                update_song_key(song, args, 'version', _guess_version(formatted_date), diff_count=diff_count)
+                update_song_key(song, 'date_added', formatted_date, diff_count=diff_count)
+                update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
                 
                 if diff_count[0] > 0:
-                    lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
-                    print_message("Added date and version", bcolors.OKGREEN, args, errors_log)
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+                    print_message("Added date and version", bcolors.OKGREEN, log=True)
             else:
                 # fail
-                print_message("Warning - date not found", bcolors.WARNING, args, errors_log, args.no_verbose)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message("Warning - date not found", bcolors.WARNING, log=True, is_verbose=True)
         else:
             # Skip for WE
-            print_message("Skipped date (WE)", bcolors.WARNING, args, errors_log, args.no_verbose)
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message("Skipped date (WE)", bcolors.WARNING, log=True, is_verbose=True)
 
         # Update BPM
         if overview_dict['BPM']:
             diff_count = [0]
-            update_song_key(song, args, 'bpm', overview_dict['BPM'], diff_count=diff_count)
+            update_song_key(song, 'bpm', overview_dict['BPM'], diff_count=diff_count)
 
             if diff_count[0] > 0:
-                lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
-                print_message("Added BPM", bcolors.OKGREEN, args, errors_log)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+                print_message("Added BPM", bcolors.OKGREEN, log=True)
     else:
         # fail
-        print_message("Warning - overview table not found", bcolors.FAIL, args, errors_log, args.no_verbose)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+        print_message("Warning - overview table not found", bcolors.FAIL, log=True, is_verbose=True)
 
 
     # Find constant and chart designer
@@ -311,7 +318,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
                     break
         else:
-            print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, log=True, is_verbose=True)
             
     
     chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
@@ -329,7 +337,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 # Found the charts table
                 break
             else:
-                print_message("Warning - No chart table found", bcolors.FAIL, args, errors_log, args.no_verbose)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message("Warning - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
     
     # Update chart details
     if charts_table:
@@ -340,7 +349,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 bas_row = bas_row.find_parent()
                 bas_data = [cell.text for cell in bas_row]
                 bas_data_dict = dict(zip(charts_table_head, bas_data))
-                _update_song_chart_details(song, bas_data_dict, chart_constant_designer_dict, 'bas', args, song_diffs)
+                _update_song_chart_details(song, bas_data_dict, chart_constant_designer_dict, 'bas', header_printed)
         if song['lev_adv']:
             adv_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["adv"]}' in tag.get('style', ''))
             # adv_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["adv"]}.*')})
@@ -348,7 +357,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 adv_row = adv_row.find_parent()
                 adv_data = [cell.text for cell in adv_row]
                 adv_data_dict = dict(zip(charts_table_head, adv_data))
-                _update_song_chart_details(song, adv_data_dict, chart_constant_designer_dict, 'adv', args, song_diffs)
+                _update_song_chart_details(song, adv_data_dict, chart_constant_designer_dict, 'adv', header_printed)
         if song['lev_exp']:
             exp_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["exp"]}' in tag.get('style', ''))
             # exp_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["exp"]}.*')})
@@ -356,7 +365,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 exp_row = exp_row.find_parent()
                 exp_data = [cell.text for cell in exp_row]
                 exp_data_dict = dict(zip(charts_table_head, exp_data))
-                _update_song_chart_details(song, exp_data_dict, chart_constant_designer_dict, 'exp', args, song_diffs)
+                _update_song_chart_details(song, exp_data_dict, chart_constant_designer_dict, 'exp', header_printed)
         if song['lev_mas']:
             mas_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["mas"]}' in tag.get('style', ''))
             # mas_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["mas"]}.*')})
@@ -364,7 +373,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 mas_row = mas_row.find_parent()
                 mas_data = [cell.text for cell in mas_row]
                 mas_data_dict = dict(zip(charts_table_head, mas_data))
-                _update_song_chart_details(song, mas_data_dict, chart_constant_designer_dict, 'mas', args, song_diffs)
+                _update_song_chart_details(song, mas_data_dict, chart_constant_designer_dict, 'mas', header_printed)
         if song['lev_ult']:
             ult_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["ult"]}' in tag.get('style', ''))
             # ult_row = charts_table.find_all(['td','th'], attrs={'style':re.compile(f'{CHART_COLORS["ult"]}.*')})
@@ -372,9 +381,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                 ult_row = ult_row.find_parent()
                 ult_data = [cell.text for cell in ult_row]
                 ult_data_dict = dict(zip(charts_table_head, ult_data))
-                _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', args, song_diffs)
+                _update_song_chart_details(song, ult_data_dict, chart_constant_designer_dict, 'ult', header_printed)
         if song['we_kanji']:
-            # ipdb.set_trace()
             # Find with color
             # we_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and 'white' in tag.get('style', ''))
             # Find with text
@@ -386,38 +394,40 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, args):
                     br_tag.decompose()
                 we_data = [cell.text for cell in we_row_parent]
                 we_data_dict = dict(zip(charts_table_head, we_data))
-                _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', args, song_diffs)
+                _update_song_chart_details(song, we_data_dict, chart_constant_designer_dict, 'we', header_printed)
 
     else:
-        print_message("Warning - No chart table found", bcolors.FAIL, args, errors_log, args.no_verbose)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+        print_message("Warning - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
 
 
     song['wikiwiki_url'] = url
 
     if old_song == song:
-        print_message("Done (Nothing updated)", bcolors.ENDC, args, errors_log, args.no_verbose)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+        print_message("Done (Nothing updated)", bcolors.ENDC, log=True, is_verbose=True)
     else:
         total_diffs[0] += 1
-    #     print_message("Updated song extra data from wiki", bcolors.OKGREEN, args, errors_log, args.no_verbose)
+
 
     return song
 
 
 
-def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, chart, args, song_diffs):
+def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, chart, header_printed):
     details_diff_count = [0]
     designer_diff_count = [0]
 
-    update_song_key(song, args, f"lev_{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, args, f"lev_{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, args, f"lev_{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, args, f"lev_{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, args, f"lev_{chart}_notes_air", chart_dict["Air"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, args, f"lev_{chart}_notes_flick", chart_dict["Flick"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_notes_air", chart_dict["Air"], remove_comma=True, diff_count=details_diff_count)
+    update_song_key(song, f"lev_{chart}_notes_flick", chart_dict["Flick"], remove_comma=True, diff_count=details_diff_count)
 
     if details_diff_count[0] > 0:
-        lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
-        print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN, args)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+        print_message(f"Added chart details for {chart.upper()} (+{details_diff_count[0]})", bcolors.OKGREEN)
 
     if chart_constant_designer_dict:
         # in some cases WE may be labled as WE戻 or 狂☆4...
@@ -426,36 +436,26 @@ def _update_song_chart_details(song, chart_dict, chart_constant_designer_dict, c
         if chart == 'we':
             try:
                 designer_key = chart_constant_designer_dict[f"lev_{chart}_designer"]
-                update_song_key(song, args, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
+                update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
             except KeyError:
                 try:
                     # try alternative syntax
                     designer_key = [key for key in chart_constant_designer_dict if song['we_kanji'] in key][0]
-                    update_song_key(song, args, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=designer_diff_count)
+                    update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[designer_key], diff_count=designer_diff_count)
                 except:
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, log=True, is_verbose=True)
         else:
             try:
-                update_song_key(song, args, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
+                update_song_key(song, f"lev_{chart}_designer", chart_constant_designer_dict[f"lev_{chart}_designer"], diff_count=designer_diff_count)
             except:
                 if chart not in ('bas', 'adv'):
-                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
-    
-    # Now fetching constants from google sheet (const.py) so we don't need this
-    # if not chart == 'we' and chart_constant_designer_dict:
-    #     try:
-    #         if re.search(r'(\d{2}\.\d)',chart_constant_designer_dict[f"lev_{chart}_i"]):
-    #             update_song_key(song, args, f"lev_{chart}_i", chart_constant_designer_dict[f"lev_{chart}_i"], diff_count=diff_count)
-    #         else:
-    #             raise Exception(f"Constant for {chart.upper()} is invalid")
-    #     except:
-    #         if chart not in ('bas', 'adv'):
-    #             print_message(f"Warning - No constant found ({chart.upper()})", bcolors.WARNING, args, errors_log, args.no_verbose)
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message(f"Warning - No designer found ({chart.upper()})", bcolors.WARNING, log=True, is_verbose=True)
 
     if designer_diff_count[0] > 0:
-        if details_diff_count[0] == 0:
-            lazy_print_song_header(f"{song['id']} {song['title']}", song_diffs, args, errors_log)
-        print_message(f"Added chart designer for {chart.upper()}", bcolors.OKGREEN, args)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+        print_message(f"Added chart designer for {chart.upper()}", bcolors.OKGREEN)
 
 
 def _construct_constant_designer_dict(song, text, key_name):

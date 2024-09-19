@@ -10,11 +10,9 @@ from shared.common_func import *
 from chunithm.paths import *
 from datetime import datetime
 
-errors_log = LOCAL_ERROR_LOG_PATH
 SHEETS_ID = '1ySnda8wjXIhWzCTJ4tqDi-XnZCABpQdWik9lUOqzHuM'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
-LOCAL_CACHE_DIR = 'chunithm/google_sheets_cache'
-HASH_KEYS = ['title', 'artist', 'we_kanji']
+
 CHARTS = [
     # ['lev_bas', 'BAS'],
     ['lev_adv', '', 'ADV'],
@@ -37,16 +35,16 @@ SHEETS_MAP = {
 MIN_LV = '10'
 
 # Update on top of existing music-ex
-def update_const_data(args):
-    print_message(f"Fetch chart constants", 'H2', args, errors_log)
+def update_const_data():
+    print_message(f"Fetch chart constants", 'H2', log=True)
 
-    if args.clear_cache:
+    if game.ARGS.clear_cache:
         try:
             # Delete the directory and its contents
-            shutil.rmtree(LOCAL_CACHE_DIR)
+            shutil.rmtree(LOCAL_SHEETS_CACHE_DIR)
             print(f"Cleared local cache")
         except FileNotFoundError:
-            print(f"Directory not found: {LOCAL_CACHE_DIR}")
+            print(f"Directory not found: {LOCAL_SHEETS_CACHE_DIR}")
         except Exception as e:
             print(f"Error deleting directory: {e}")
 
@@ -56,41 +54,41 @@ def update_const_data(args):
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS, args)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', game.HASH_KEYS)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
     for song in target_song_list:
-        _update_song_const_data(song, args)
+        _update_song_const_data(song)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
-def _update_song_const_data(song, args):
-    song_diffs = [0]
+def _update_song_const_data(song):
+    header_printed = [0]
     song_id = song['id']
     title = song['title']
     normalized_title = normalize_title(song['title'])
     # version = song['version']
-
-    print_message(f"{song_id}, {title}", 'HEADER', args, errors_log, args.no_verbose)
 
     for [chart, chart_type, chart_diff] in CHARTS:
         key_chart_i = f'{chart}_i'
         found_sheet = None
 
         # If --overwrite is not set, skip charts with existing values
-        if not args.overwrite:
+        if not game.ARGS.overwrite:
             if key_chart_i in song and song[key_chart_i] != '':
-                print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, args, errors_log, args.no_verbose)
+                lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, log=True, is_verbose=True)
                 continue
 
         # Skip if utage
         if song['we_kanji'] != '':
-            print_message(f"Skipping song (World's End)", bcolors.ENDC, args, errors_log, args.no_verbose)
+            lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message(f"Skipping song (World's End)", bcolors.ENDC, log=True, is_verbose=True)
             return
 
         # Check if chart type exists in current song
@@ -103,7 +101,7 @@ def _update_song_const_data(song, args):
             continue;
 
         # First lookup latest version sheet
-        value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, CUR_VERSION_SHEET, args)
+        value_chart_i = _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, CUR_VERSION_SHEET, header_printed)
 
         # If value was found
         if value_chart_i is not None:
@@ -116,7 +114,7 @@ def _update_song_const_data(song, args):
                     respective_sheets.append(key)
 
             for sheet in respective_sheets:
-                value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet, args)
+                value_chart_i = _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, sheet, header_printed)
 
                 if value_chart_i is not None:
                     found_sheet = sheet
@@ -126,7 +124,7 @@ def _update_song_const_data(song, args):
         if value_chart_i is None:
             for key, value in SHEETS_MAP.items():
                 sheet = key
-                value_chart_i = _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet, args)
+                value_chart_i = _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, sheet, header_printed)
 
                 if value_chart_i is not None:
                     found_sheet = sheet
@@ -136,40 +134,44 @@ def _update_song_const_data(song, args):
         if value_chart_i is not None:
             if value_chart_i != '' and value_chart_i != '-':
                 if key_chart_i in song and song[key_chart_i] == value_chart_i:
-                    print_message(f"No change ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, args, errors_log, args.no_verbose)
+                    lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message(f"No change ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, log=True, is_verbose=True)
                 else:
                     song[key_chart_i] = value_chart_i
-                    lazy_print_song_header(f"{song_id}, {title}", song_diffs, args, errors_log)
-                    print_message(f"Updated chart constant ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, args, errors_log)
+                    lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+                    print_message(f"Updated chart constant ({chart_diff}: {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, log=True)
             # If value is placeholder, don't write
             elif value_chart_i == '' or value_chart_i == '-':
-                print_message(f"Constant is empty ({chart_diff}, {song_lv})", bcolors.WARNING, args, errors_log, args.no_verbose)
+                lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message(f"Constant is empty ({chart_diff}, {song_lv})", bcolors.WARNING, log=True, is_verbose=True)
         # If value is not found
         else:
             # Print message in red if value should have been found
             # If this message prints, high chance that title was not matched properly
             if evaluate_lv_num(song_lv, '>=11'):
-                lazy_print_song_header(f"{song_id}, {title}", song_diffs, args, errors_log)
-                print_message(f"Chart with matching song not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, args, errors_log)
+                lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+                print_message(f"Chart with matching song not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, log=True)
             elif evaluate_lv_num(song_lv, '>=10') and chart == 'lev_mas':
-                lazy_print_song_header(f"{song_id}, {title}", song_diffs, args, errors_log)
-                print_message(f"Chart with matching song not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, args, errors_log)
+                lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+                print_message(f"Chart with matching song not found in sheet ({chart_diff}, {song_lv})", bcolors.FAIL, log=True)
             else:
-                print_message(f"Chart with matching song not found in sheet ({chart_diff}, {song_lv})", bcolors.ENDC, args, errors_log, args.no_verbose)
+                lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+                print_message(f"Chart with matching song not found in sheet ({chart_diff}, {song_lv})", bcolors.ENDC, log=True, is_verbose=True)
 
     return song
 
-def _find_chart_in_sheet(song_lv, normalized_title, chart_type, chart_diff, sheet_name, args):
+def _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, sheet_name, header_printed):
     lv_sheet_url = SHEETS_BASE_URL + sheet_name
     lv_sheet_file_path = f'{sheet_name}.csv'
 
     # Read local file first, request and cache if it doesn't exist
-    file_full_path = os.path.join(LOCAL_CACHE_DIR, lv_sheet_file_path)
+    file_full_path = os.path.join(LOCAL_SHEETS_CACHE_DIR, lv_sheet_file_path)
     if not os.path.exists(file_full_path):
-        get_and_save_page_to_local(lv_sheet_url, file_full_path, args, LOCAL_CACHE_DIR)
+        get_and_save_page_to_local(lv_sheet_url, file_full_path, LOCAL_SHEETS_CACHE_DIR)
 
         if not os.path.exists(file_full_path):
-            print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, args, errors_log)
+            lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, log=True, is_verbose=True)
             sys.exit(1)
 
 
