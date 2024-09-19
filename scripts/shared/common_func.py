@@ -41,7 +41,7 @@ def set_args_and_game_module(custom_args=None):
         elif args.maimai:
             args.game = 'maimai'
         else:
-            print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, ARGS)
+            print_message('Please specify which game: --ongeki, --chunithm, --maimai', bcolors.FAIL, args)
             exit()
 
     if (hasattr(args, 'id') and args.id != 0) and \
@@ -59,14 +59,22 @@ def set_args_and_game_module(custom_args=None):
 
     # Dynamically import the variables from game.py
     game_vars_module = importlib.import_module(f"{args.game}.game")
+    game_paths_module = importlib.import_module(f"{args.game}.paths")
 
     # Set variables as attributes of the config module
     for var in dir(game_vars_module):
         if not var.startswith("__"):
             setattr(game, var, getattr(game_vars_module, var))
 
+    for var in dir(game_paths_module):
+        if not var.startswith("__"):
+            setattr(game, var, getattr(game_paths_module, var))
 
-def print_message(message, color_name, args, log='', no_verbose=False):
+
+def print_message(message, color_name='', args=None, log=False, no_verbose=False):
+    if args is None:
+        args = game.ARGS
+
     timestamp = ''
     print_color_name = color_name
     reset_color = bcolors.ENDC
@@ -107,20 +115,22 @@ def print_message(message, color_name, args, log='', no_verbose=False):
             reset_color = ''
 
     if log:
-        with open(log, 'a', encoding='utf-8') as f:
+        with open(game.LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
             f.write(timestamp + ' ' + message + '\n')
 
     if no_verbose is False:
         print(timestamp + print_color_name + message + reset_color)
 
-def lazy_print_song_header(msg, diff_count, args, errors_log, always_print=False):
+def lazy_print_song_header(msg, diff_count, args=None, log='', always_print=False):
+    if args is None:
+        args = game.ARGS
     # Do nothing if no_verbose is unset & always_print is unset
     if not args.no_verbose and not always_print:
         return
 
     if diff_count[0] == 0:
         # Lazy-print song name
-        print_message(msg, 'HEADER', args, errors_log)
+        print_message(msg, 'HEADER', log=log)
         diff_count[0] += 1
 
 def parse_date(date_str, release_str):
