@@ -1,5 +1,37 @@
 [
   {
+    "id": "2629",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "壱雫空",
+    "reading": "ヒトシスク",
+    "artist": "MyGO!!!!!",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "10+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "74d7657d79febe1b.jpg"
+  },
+  {
+    "id": "2630",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "迷星叫",
+    "reading": "マヨイウタ",
+    "artist": "MyGO!!!!!",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "0f124624d6e0be68.jpg"
+  },
+  {
     "id": "2673",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -2046,6 +2078,38 @@
     "we_kanji": "",
     "we_star": "",
     "image": "d5a47266b4fe0bfe.jpg"
+  },
+  {
+    "id": "2631",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "スコーピオンガールの貴重な捕食シーン",
+    "reading": "スコウヒオンカウルノキチヨウナホシヨクシウン",
+    "artist": "STEAKA",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "722f63247dec6910.jpg"
+  },
+  {
+    "id": "2632",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "ずんだパーリナイ",
+    "reading": "スンタハウリナイ",
+    "artist": "なみぐる feat.ずんだもん",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "8+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "59c39429b16acbd0.jpg"
   },
   {
     "id": "2657",
@@ -12864,6 +12928,22 @@
     "image": "ea81333534c8b307.jpg"
   },
   {
+    "id": "2633",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "Rhythmic Ride",
+    "reading": "RHYTHMICRIDE",
+    "artist": "明坂 芹菜(CV:新田 恵海)",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "77371c1c87534cf9.jpg"
+  },
+  {
     "id": "683",
     "catname": "イロドリミドリ",
     "newflag": "0",
@@ -14994,7 +15074,7 @@
   {
     "id": "2634",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Dramatic…?",
     "reading": "DRAMATIC",
     "artist": "曲：Kijibato／歌：星咲 あかり(CV：赤尾 ひかる)、珠洲島 有栖(CV：長縄 まりあ)、日向 千夏(CV：岡咲 美保)、皇城 セツナ(CV：八巻 アンナ)",
@@ -21778,7 +21858,7 @@
   {
     "id": "2635",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "X.Y.Z.",
     "reading": "XYZ",
     "artist": "Len feat.SHIKI",
@@ -21794,7 +21874,7 @@
   {
     "id": "2605",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "優勝Princess♡",
     "reading": "ユウシヨウPRINCESS",
     "artist": "高瀬一矢 feat.R.I.N.A",
@@ -21810,7 +21890,7 @@
   {
     "id": "2637",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "乙女戦士☆あーし。",
     "reading": "オトメセンシアウシ",
     "artist": "A4。 feat.yamada.",
@@ -21826,7 +21906,7 @@
   {
     "id": "2638",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "おしゃまなプリンセス",
     "reading": "オシヤマナフリンセス",
     "artist": "Shu feat. 七海うらら",
@@ -21842,7 +21922,7 @@
   {
     "id": "2639",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ソーシャルワンダーランド",
     "reading": "ソウシヤルワンタウラント",
     "artist": "テヅカ x Aoi feat.すずしろ",
