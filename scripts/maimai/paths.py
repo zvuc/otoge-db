@@ -11,3 +11,6 @@ LOCAL_ERROR_LOG_PATH = "maimai/errors.txt"
 LOCAL_INDEX_HTML_PATH = "maimai/src/pug/_maimai.pug"
 LOCAL_LEVELS_HTML_PATH = "maimai/lv/index.html"
 LOCAL_NAMUWIKI_EXPORT_PATH = "maimai/namuwiki-export.html"
+
+LOCAL_SDVXIN_CACHE_DIR = 'maimai/sdvxin_cache'
+LOCAL_SHEETS_CACHE_DIR = 'maimai/google_sheets_cache'

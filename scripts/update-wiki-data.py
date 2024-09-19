@@ -4,7 +4,7 @@ import shared
 from shared.common_func import *
 
 def main():
-    game.GAME_MODULE.wiki.update_songs_extra_data(game.ARGS)
+    game.GAME_MODULE.wiki.update_songs_extra_data()
     # renew_lastupdated(game.GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_INDEX_HTML_PATH, args)
 
 
