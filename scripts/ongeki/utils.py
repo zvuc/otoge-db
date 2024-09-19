@@ -100,7 +100,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         song_hash = generate_hash_from_keys(song, *HASH_KEYS)
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
-        lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+        lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
         print_message(f"- New song added", bcolors.OKGREEN, args)
 
         _record_diffs(song, song_hash, 'new')
@@ -116,7 +116,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+            lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
             print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING, args)
             continue
 
@@ -143,7 +143,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
             if not detect_key_removals_or_modifications(song, old_song, song_diffs, args):
                 # all other cases where something changed
-                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
                 print_message(f"- Updated existing song", bcolors.OKGREEN, args)
 
             _record_diffs(song, song_hash, 'updated')
@@ -158,7 +158,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         # Song can't be found in music-ex.json
         if not dest_ex_song:
-            lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+            lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
             print_message(f"- Couldn't find destination song", bcolors.WARNING, args)
             continue
 
@@ -201,7 +201,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 local_music_ex_data.remove(existing_song)
                 archive_deleted_song(existing_song, local_music_ex_deleted_data)
 
-                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
                 print_message(f"- Removed song", bcolors.OKBLUE, args)
 
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
@@ -306,7 +306,7 @@ def print_keys_change(song, old_song, song_diffs, args):
                 # Print the difference in the format: key: old_value -> new_value
 
                 # Lazy-print song name
-                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
 
                 print_message(f"- Level changed! {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE, args)
                 any_changes = True
@@ -319,7 +319,7 @@ def print_keys_change(song, old_song, song_diffs, args):
                 # Print the difference in the format: key: old_value -> new_value
 
                 # Lazy-print song name
-                lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+                lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
 
                 print_message(f"- {key}: {old_song[key]} → {song[key]}", bcolors.ENDC, args)
                 any_changes = True
@@ -337,7 +337,7 @@ def detect_key_removals_or_modifications(song, old_song, song_diffs, args):
         if key not in song:
             # Most likely, "key" (unlock status) is removed
             # Lazy-print song name
-            lazy_print_song_header(f"{song['title']}", song_diffs, args, errors_log, always_print=True)
+            lazy_print_song_header(f"{song['title']}", song_diffs, args, log=True, always_print=True)
 
             print_message(f"- Song is now unlocked by default", bcolors.OKGREEN, args)
             keys_removed = True
