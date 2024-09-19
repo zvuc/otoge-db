@@ -171,11 +171,14 @@ def update_song_wiki_data(song, total_diffs, args):
             href_values = [a['href'] for a in search_results_soup.find_all('a') if 'href' in a.attrs]
 
             # Extract the URLs starting with the specified prefix
-            extracted_urls = [re.search(r'(?<=url\?q=)([^&]+)', href).group(1) for href in href_values if re.search(r'(?<=url\?q=)([^&]+)', href)]
+            if 'gamerch.com/maimai' in href_values[0]:
+                first_matched_url = href_values[0]
+            else:
+                extracted_urls = [re.search(r'(?<=url\?q=)([^&]+)', href).group(1) for href in href_values if re.search(r'(?<=url\?q=)([^&]+)', href)]
 
-            # Filter URLs that start with the specified prefix
-            filtered_urls = [url for url in extracted_urls if url.startswith('https://gamerch.com/maimai/entry/')]
-            first_matched_url = filtered_urls[0] if filtered_urls else None
+                # Filter URLs that start with the specified prefix
+                filtered_urls = [url for url in extracted_urls if url.startswith('https://gamerch.com/maimai/entry/')]
+                first_matched_url = filtered_urls[0] if filtered_urls else None
 
             if first_matched_url:
                 time.sleep(random.randint(1,2))
