@@ -20815,7 +20815,7 @@
     "image_url": "59ce06c6239fe049.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240905",
     "title": "Ouvertüre",
     "title_sort": "オハチユア",
@@ -20838,7 +20838,7 @@
     "image_url": "0556da72703c5594.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240905",
     "title": "eden",
     "title_sort": "エテン",
@@ -20861,7 +20861,7 @@
     "image_url": "52239c5443db17e8.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240905",
     "title": "クリムゾン帝王",
     "title_sort": "クリムソンテイオウ",
@@ -20884,7 +20884,7 @@
     "image_url": "adb13b3aa23666e4.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240905",
     "title": "進め！マイウェイ！ -日向 千夏ソロver.-",
     "title_sort": "ススメマイウエイヒナタチナツソロVER",
@@ -20907,7 +20907,7 @@
     "image_url": "f33fb91ea0458358.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240905",
     "title": "進め！マイウェイ！ -柏木 美亜ソロver.-",
     "title_sort": "ススメマイウエイカシワキミアソロVER",
@@ -20930,7 +20930,7 @@
     "image_url": "98fcbcbea1ccd9ac.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20240905",
     "title": "進め！マイウェイ！ -東雲 つむぎソロver.-",
     "title_sort": "ススメマイウエイシノノメツムキソロVER",
@@ -20951,5 +20951,51 @@
     "lev_mas": "12",
     "lev_lnt": "",
     "image_url": "52dd3e37529580b8.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240919",
+    "title": "ヒアソビ",
+    "title_sort": "ヒアソヒ",
+    "artist": "かめりあ",
+    "id": "274700",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "柏木 咲姫",
+    "chara_id": "1100",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© かめりあ\r\n© Crypton Future Media, INC. www.piapro.net ピアプロロゴ",
+    "lev_bas": "3",
+    "lev_adv": "8",
+    "lev_exc": "11+",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "2d34d5c554514ec2.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20240919",
+    "title": "さよならプリンセス",
+    "title_sort": "サヨナラフリンセス",
+    "artist": "Kai",
+    "id": "274800",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "早乙女 彩華",
+    "chara_id": "1080",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© 2022 DWANGO Co.,Ltd.",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exc": "10+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "c791127d0f6016c8.png"
   }
 ]
