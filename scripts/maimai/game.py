@@ -19,7 +19,6 @@ LEVEL_KEYS = {
 OTHER_KEYS = {
     "artist",
     "catcode",
-    "date",
     "kanji",
     "comment",
     "image_url",
@@ -29,6 +28,11 @@ OTHER_KEYS = {
     "title_kana",
     "version"
 }
+
+IGNORE_KEYS = {
+}
+
+NEW_TAG_KEY = "date"
 
 CHART_LIST = [
     "lev_bas",

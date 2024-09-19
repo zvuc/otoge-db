@@ -12,7 +12,6 @@ LEVEL_KEYS = {
 }
 
 OTHER_KEYS = {
-    "new",
     "date",
     "title",
     "title_sort",
@@ -29,6 +28,11 @@ OTHER_KEYS = {
     "copyright1",
     "image_url"
 }
+
+IGNORE_KEYS = {
+}
+
+NEW_TAG_KEY = "new"
 
 CHARACTER_TABLE = {
     "星咲あかり": "FIRE",
