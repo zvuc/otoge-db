@@ -165,12 +165,12 @@ def get_last_date(local_music_data):
         # Handle the case where all dates are None
         return None
 
-def renew_lastupdated(local_json_ex_path, dest_html_path, args):
+def renew_lastupdated(local_json_ex_path, dest_html_path):
     with open(local_json_ex_path, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
 
     latest_date = get_last_date(local_music_data)
-    print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '', args)
+    print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '')
 
     with open(dest_html_path, 'r', encoding='utf-8') as f:
         local_html_data = f.read()
