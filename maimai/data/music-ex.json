@@ -11480,7 +11480,8 @@
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
-    "dx_lev_mas": "13"
+    "dx_lev_mas": "13",
+    "dx_lev_mas_i": "13.2"
   },
   {
     "artist": "paraoka",
