@@ -82,8 +82,16 @@ def update_song_wiki_data(song, total_diffs):
     # use existing URL if already present
     if 'wiki_url' in song and song['wiki_url']:
         if game.ARGS.noskip:
-            # Check if any values are empty
-            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)) or game.ARGS.overwrite:
+            # Check if any values are empty from target keys
+            # but excluding lev_utage_notes_touch
+            if (
+                any(
+                    value == ""
+                    for key, value in song.items()
+                    if any(target in key for target in TARGET_KEYS) and key != "lev_utage_notes_touch"
+                )
+                or game.ARGS.overwrite
+            ):
                 url = song['wiki_url']
                 try:
                     wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
@@ -160,7 +168,7 @@ def update_song_wiki_data(song, total_diffs):
                     return song
 
                 lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
-                print_message("Found wiki URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
+                print_message("Found potential wiki URL from search - checking page contents", bcolors.OKBLUE, log=True, is_verbose=True)
                 return _parse_wikiwiki(song, wiki, first_matched_url, total_diffs, header_printed)
             else:
                 lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
