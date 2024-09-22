@@ -347,41 +347,71 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         # Count number of text in brackets
         brackets_count = len(re.compile(r'【(.*?)】').findall(chart_designers_span_text))
 
-        if brackets_count == 0:
-            continue
+        # Ensure there are only one pair of brackets in matched text
+        # if brackets_count == 0:
+        #     continue
 
-        # Just one bracket in span
-        elif brackets_count == 1:
-            # Find if it's either designer or constants
-            # Designer
-            if '譜面作者【' in chart_designers_span_text:
-                match = re.search(r'【(BAS|ADV|EXP|MST|Re:M)(…|[.]{3})(.*?)】',chart_designers_span_text)
+        # # Just one bracket in span
+        # elif brackets_count == 1:
 
-                if match is not None:
-                    chart_designers_text = chart_designers_span_text
-                    # chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer')
+        # Warn if multiple brackets
+        if brackets_count != 1:
+            lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
+            print_message(f"Caution - Designer info text has markup issues", bcolors.WARNING, log=True, is_verbose=True)
 
-                    # Check if the DX chart table is directly in front
-                    if charts_table_dx is not None and charts_table_dx == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
-                        chart_designers_dict_dx = _construct_designers_dict(song, chart_designers_text, 'designer', 'dx_')
-                        req_dict_count-=1
 
-                    # Check if the Std chart table is directly in front
-                    if charts_table is not None and charts_table == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
-                        chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer', '')
-                        req_dict_count-=1
 
-                elif match is None and 'kanji' in song:
-                    # Song is WE only
+        # Match Designer text
+        if '譜面作者【' in chart_designers_span_text:
+            match = re.search(r'【(BAS|ADV|EXP|MST|Re:M)(…|[.]{3})(.*?)】', chart_designers_span_text)
+
+            # Matched on first try!
+            if match is not None:
+                chart_designers_text = chart_designers_span_text
+
+            else:
+                # Song is WE only
+                if 'kanji' in song:
                     chart_designers_text = chart_designers_span_text
                     match = re.search(r'【(.*?)】', chart_designers_text)
                     if match:
                         match = match.group(1)
                         chart_designers_dict = {f"lev_{song['kanji']}_designer": match}
                         req_dict_count-=1
+                        break
+                else:
+                    # ipdb.set_trace()
 
-            if req_dict_count == 0:
-                break
+                    # Try searching without closing brackets
+                    # And get its parent to see if brackets weren't matched
+                    # due to formatting errors (e.g.: https://gamerch.com/maimai/entry/533826)
+                    chart_designers_span_parent_text = chart_designers_span.find_parent().get_text(strip=True)
+
+                    if '譜面作者【' in chart_designers_span_parent_text:
+                        match = re.search(r'【(BAS|ADV|EXP|MST|Re:M)(…|[.]{3})(.*?)】', chart_designers_span_parent_text)
+
+                        if match is not None:
+                            chart_designers_text = chart_designers_span_parent_text
+
+
+            if match is not None:
+                # Check if the DX chart table is directly in front
+                if charts_table_dx is not None and charts_table_dx == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
+                    chart_designers_dict_dx = _construct_designers_dict(song, chart_designers_text, 'designer', 'dx_')
+                    req_dict_count-=1
+                    break
+
+                # Check if the Std chart table is directly in front
+                if charts_table is not None and charts_table == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
+                    chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer', '')
+                    req_dict_count-=1
+                    break
+
+
+
+
+        if req_dict_count == 0:
+            break
 
 
             # Constants
@@ -395,7 +425,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             #         break
         else:
             lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
-            print_message(f"Warning - No designer info found ({chart.upper()})", bcolors.WARNING, log=True, is_verbose=True)
+            print_message(f"Warning - No designer info found", bcolors.WARNING, log=True, is_verbose=True)
 
     if ((has_dual_chart and req_dict_count == 2)
         or ((has_single_chart or has_utage_chart) and req_dict_count == 1)):
