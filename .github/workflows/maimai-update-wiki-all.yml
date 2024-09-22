@@ -51,7 +51,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --maimai --all --nocolors --escape --markdown --noskip --no_timestamp
+            python scripts/update-wiki-data.py --maimai --all --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
