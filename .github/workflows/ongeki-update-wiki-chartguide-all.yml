@@ -1,0 +1,96 @@
+name: "[Ongeki] Fetch from wiki & sdvx.in (all songs)"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch_from_wiki_all:
+    name: Fetch from wiki & sdvx.in (all songs)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set timezone
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: "Asia/Tokyo"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Configure Git user
+        run: |
+          git config --global user.email "noreply@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Checkout existing branch or create new
+        run : |
+          git fetch origin
+          if git show-ref --quiet refs/remotes/origin/ongeki-staging; then
+            git switch ongeki-staging
+            git rebase origin/master
+          else
+            git checkout -b ongeki-staging
+          fi
+
+          # git pull origin ongeki-staging
+          # git push --force --set-upstream origin ongeki-staging
+
+      - name: Run wiki script and capture output
+        id: run_script
+        run: |
+          {
+            echo "OUTPUT_LOG<<EOF"
+            python scripts/update-wiki-data.py --ongeki --all --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
+            python scripts/update-chartguide-data.py --ongeki --all --nocolors --escape --markdown --no_timestamp --no_verbose
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Extract datestamp from script output
+        id: extract_date
+        run: echo "datestamp=$(cat ongeki/data/music-ex.json | jq '.[-1].date_added | tonumber')" >> "$GITHUB_OUTPUT"
+
+      - name: Commit changes
+        id: commit_changes
+        env:
+          UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          git add .
+
+          if output=$(git status --porcelain) && [ -z "$output" ]; then
+            echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
+            echo "No changes. Skipping PR request"
+          else
+            git commit -m "data(ongeki): [bot] add song extra data (all songs)"
+            git push origin ongeki-staging --force-with-lease
+            echo "Commited changes."
+            echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout existing PR or create new
+        if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
+        run: |
+          if [[ $(gh pr list --state open --head ongeki-staging | grep ongeki-staging) ]]; then
+            echo "Add comment to existing open PR"
+            gh pr comment ongeki-staging \
+              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          else
+            echo "No currently open PR for ongeki-staging. Create new PR"
+            gh pr create \
+              -B ${{ github.ref_name }} \
+              -H "ongeki-staging" \
+              --title "[Automation] Ongeki: Update website with updated song data (all songs)" \
+              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
