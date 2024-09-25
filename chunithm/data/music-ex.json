@@ -25165,7 +25165,8 @@
     "date_added": "20151217",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20240509"
+    "date_updated": "20240509",
+    "date_intl_updated": "20240919"
   },
   {
     "id": "157",
@@ -102107,7 +102108,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/とまどい→レシピ",
     "date_added": "20240509",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240919"
   },
   {
     "id": "2552",
@@ -102181,7 +102183,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ALL I WANNA DO",
     "date_added": "20240509",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240919"
   },
   {
     "id": "2521",
@@ -102255,7 +102258,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/flos",
     "date_added": "20240509",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240919"
   },
   {
     "id": "2522",
@@ -102329,7 +102333,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ヒアソビ",
     "date_added": "20240509",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20240919"
   },
   {
     "id": "2582",
