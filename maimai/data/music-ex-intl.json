@@ -6111,7 +6111,8 @@
     "dx_lev_exp_notes_hold": "27",
     "dx_lev_exp_notes_slide": "27",
     "dx_lev_exp_notes_touch": "13",
-    "dx_lev_exp_notes_break": "17"
+    "dx_lev_exp_notes_break": "17",
+    "date_intl_updated": "20241004"
   },
   {
     "artist": "t+pazolite",
@@ -57742,8 +57743,8 @@
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/854844",
     "date_added": "20240607",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20241004"
   },
   {
     "artist": "森羅万象",
@@ -57767,8 +57768,8 @@
     "lev_utage_designer": "君たちが三妖精だ！！！",
     "wiki_url": "https://gamerch.com/maimai/entry/534328",
     "date_added": "20240607",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20241004"
   },
   {
     "artist": "Reku Mochizuki",
@@ -57817,8 +57818,8 @@
     "dx_lev_mas_designer": "Jack vs サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/854847",
     "date_added": "20240607",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20241004"
   },
   {
     "artist": "Masayoshi Minoshima Remixed by 小室哲哉",
@@ -57867,8 +57868,8 @@
     "dx_lev_mas_designer": "",
     "wiki_url": "",
     "date_added": "20240607",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20241004"
   },
   {
     "artist": "七条レタスグループ",
@@ -57899,8 +57900,8 @@
     "lev_utage_designer": "隣を見てなぞる順番を覚えるゲーム（初級）",
     "wiki_url": "https://gamerch.com/maimai/entry/534679",
     "date_added": "20240607",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20241004"
   },
   {
     "artist": "まらしぃ",
@@ -57949,8 +57950,9 @@
     "dx_lev_mas_designer": "アミノハバキリ",
     "wiki_url": "https://gamerch.com/maimai/entry/854846",
     "date_added": "20240607",
-    "intl": "0",
-    "date_intl_added": "000000"
+    "intl": "1",
+    "date_intl_added": "20241004",
+    "key_intl": "○"
   },
   {
     "artist": "AJURIKA feat.SAK.",
