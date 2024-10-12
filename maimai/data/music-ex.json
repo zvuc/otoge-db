@@ -13033,7 +13033,8 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
     "dx_lev_mas": "13+",
-    "date_updated": "20241011"
+    "date_updated": "20241011",
+    "dx_lev_mas_i": "13.9"
   },
   {
     "artist": "発熱巫女～ず",
@@ -40581,7 +40582,8 @@
     "date_intl_added": "20220325",
     "date_added": "20211112",
     "dx_lev_remas": "13+",
-    "date_updated": "20241011"
+    "date_updated": "20241011",
+    "dx_lev_remas_i": "13.8"
   },
   {
     "artist": "COOL&CREATE feat.ビートまりおとまろん「東方ダンマクカグラ」",
@@ -40630,7 +40632,8 @@
     "date_intl_added": "20220325",
     "date_added": "20211112",
     "dx_lev_remas": "14",
-    "date_updated": "20241011"
+    "date_updated": "20241011",
+    "dx_lev_remas_i": "14.3"
   },
   {
     "artist": "キノシタ",
@@ -60484,7 +60487,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "13.7",
     "dx_lev_mas_notes": "905",
     "dx_lev_mas_notes_tap": "682",
     "dx_lev_mas_notes_hold": "55",
@@ -60534,7 +60537,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "13.2",
     "dx_lev_mas_notes": "481",
     "dx_lev_mas_notes_tap": "342",
     "dx_lev_mas_notes_hold": "11",
