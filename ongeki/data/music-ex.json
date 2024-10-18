@@ -47652,7 +47652,7 @@
     "image_url": "0a94009957414d83.png",
     "enemy_lv": "",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "252",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -47678,7 +47678,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/L9",
     "date_added": "20241017"
   },
   {
@@ -47704,7 +47704,7 @@
     "image_url": "1c47db88f9a6a67d.png",
     "enemy_lv": "",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "192",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -47730,7 +47730,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Haunted Dance",
     "date_added": "20241017"
   }
 ]
