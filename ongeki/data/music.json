@@ -20999,7 +20999,7 @@
     "image_url": "c791127d0f6016c8.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241003",
     "title": "デアエ・エクス・マキナ！",
     "title_sort": "テアエエクスマキナ",
@@ -21022,7 +21022,7 @@
     "image_url": "349d0b298c79af61.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241003",
     "title": "Faith in Expression",
     "title_sort": "FAITHINEXPRESSION",
@@ -21045,7 +21045,7 @@
     "image_url": "990383970d6dda7e.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241003",
     "title": "I Wanna",
     "title_sort": "IWANNA",
@@ -21066,5 +21066,51 @@
     "lev_mas": "15",
     "lev_lnt": "",
     "image_url": "5a027909a6bb63ba.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20241017",
+    "title": "L9",
+    "title_sort": "L9",
+    "artist": "paraoka",
+    "id": "480950",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "三角 葵",
+    "chara_id": "1030",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "6",
+    "lev_adv": "9",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "0a94009957414d83.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20241017",
+    "title": "Haunted Dance",
+    "title_sort": "HAUNTEDANCE",
+    "artist": "Mr.Asyu",
+    "id": "481000",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "高瀬 梨緒",
+    "chara_id": "1040",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© Mr.Asyu",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exc": "12",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "1c47db88f9a6a67d.png"
   }
 ]
