@@ -92,7 +92,7 @@ def update_song_wiki_data(song, total_diffs):
         .replace('"', '”')
         .replace('?', '？')
     )
-    
+
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         if game.ARGS.noskip:
@@ -142,7 +142,7 @@ def update_song_wiki_data(song, total_diffs):
                 lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
                 print_message("Found URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
                 return _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
-                
+
         else:
             url = guess_url
             lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
@@ -187,7 +187,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         overview_data = [data[0].text if data else None for data in overview_data]
         overview_dict = dict(zip(overview_heads, overview_data))
 
-        
+
         # Write date and guess version
         if not song['we_kanji']:
             # Find release date
@@ -206,7 +206,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 diff_count = [0]
                 update_song_key(song, 'date_added', formatted_date, diff_count=diff_count)
                 update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
-                
+
                 if diff_count[0] > 0:
                     lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
                     print_message("Added date and version", bcolors.OKGREEN, log=True)
@@ -238,17 +238,17 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
     chart_constant_designer_spans = soup.find_all('span', style='font-size:11px')
     chart_designers_dict = {}
     chart_constants_dict = {}
-    
+
     for chart_constant_designer_span in chart_constant_designer_spans:
-        
+
         chart_constant_designer_span_text = chart_constant_designer_span.get_text(strip=True)
-        
+
         # Count number of text in brackets
         brackets_count = len(re.compile(r'【(.*?)】').findall(chart_constant_designer_span_text))
 
         if brackets_count == 0:
             continue
-        
+
         # 2 brackets within same <span>
         elif brackets_count == 2:
             if '譜面作者【' in chart_constant_designer_span_text and '譜面定数【' in chart_constant_designer_span_text:
@@ -262,7 +262,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                             text += child_node.text.strip()
                         else:
                             text += '\n'
-                    
+
                 chart_constant_designer = text.strip().split('\n')
                 # check if separated text includes 譜面定数 in second row
                 if '譜面定数' in chart_constant_designer[1]:
@@ -280,7 +280,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 if re.match(r'\d{2}\.\d', match.group(3)) is not None:
                     chart_constants_text = match.group()
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
-                    
+
                     # try looking for designer bracket nearby
                     # even if it doesnt have a title
                     if re.match(r'\d{2}\.\d', match_other.group(3)) is None:
@@ -289,7 +289,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                         break
                     else:
                         break
-        
+
         # Just one bracket in span
         elif brackets_count == 1:
             # Find if it's either designer or constants
@@ -320,8 +320,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         else:
             lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
             print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, log=True, is_verbose=True)
-            
-    
+
+
     chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
 
     # find the charts table
@@ -331,7 +331,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         th_elements = table.select('tr:nth-of-type(1) td[rowspan], tr:nth-of-type(1) th[rowspan]')
         if len(th_elements) == 2 and th_elements[0].get_text(strip=True) == 'Lv' and th_elements[1].get_text(strip=True) == '総数':
             charts_table_head = [th.text for th in table.select("thead th:not([colspan='5']), thead td:not([colspan='5'])")]
-            
+
             if any(charts_table_head) and 'Lv' in charts_table_head[0]:
                 charts_table = table
                 # Found the charts table
@@ -339,7 +339,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             else:
                 lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
                 print_message("Warning - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
-    
+
     # Update chart details
     if charts_table:
         if song['lev_bas']:
@@ -386,8 +386,16 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             # Find with color
             # we_row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and 'white' in tag.get('style', ''))
             # Find with text
-            we_row = charts_table.find(text=song['we_kanji']).find_parent(lambda tag: tag.name in ['th','td'])
-            
+            we_kanji = song['we_kanji']
+            we_kanji_alt = song['we_kanji']
+
+            if '？' in we_kanji:
+                we_kanji_alt = '?'
+            elif '！' in we_kanji:
+                we_kanji_alt = '!'
+
+            we_row = charts_table.find(text = lambda tag: (tag.string in [we_kanji, we_kanji_alt])).find_parent(lambda tag: tag.name in ['th', 'td'])
+
             if we_row and song['we_kanji'] in we_row.get_text(strip=True).replace('?', '？').replace('!', '！'):
                 we_row_parent = we_row.find_parent()
                 for br_tag in we_row_parent.find_all('br'):
@@ -464,7 +472,7 @@ def _construct_constant_designer_dict(song, text, key_name):
 
     if match:
         content_within_brackets = '【' + match.group(1)
-        
+
         # Split key-value pairs using '、' as the delimiter
         pairs = {}
         if song['we_kanji']:
@@ -504,4 +512,3 @@ def _guess_version(release_date):
             closest_version = version
 
     return closest_version
-
