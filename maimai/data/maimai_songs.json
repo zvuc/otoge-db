@@ -17529,6 +17529,22 @@
     "version": "25003"
   },
   {
+    "artist": "大国奏音",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "7",
+    "dx_lev_adv": "9+",
+    "dx_lev_exp": "13",
+    "dx_lev_mas": "14+",
+    "image_url": "b28c21f0d14c6e26.png",
+    "key": "○",
+    "release": "241025",
+    "sort": "856",
+    "title": "氷滅の135小節",
+    "title_kana": "ヒヨウメツノ135シヨウセツ",
+    "version": "25003"
+  },
+  {
     "artist": "Yooh",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "6",
