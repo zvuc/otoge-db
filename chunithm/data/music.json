@@ -10554,7 +10554,7 @@
     "lev_adv": "6",
     "lev_exp": "9+",
     "lev_mas": "13",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "aabf49add818546d.jpg"
@@ -16146,7 +16146,7 @@
   {
     "id": "2644",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Death Doll",
     "reading": "DEATHDOLL",
     "artist": "SHIKI",
@@ -16158,6 +16158,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "12487783a407bcf6.jpg"
+  },
+  {
+    "id": "2650",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "MeteorSnow",
+    "reading": "METEORSNOW",
+    "artist": "あず♪",
+    "lev_bas": "5",
+    "lev_adv": "8",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "add533c75dea59b9.jpg"
   },
   {
     "id": "202",
@@ -22018,7 +22034,7 @@
   {
     "id": "2645",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Lovely Lovely Lover",
     "reading": "LOVELYLOVELYLOVER",
     "artist": "EmoCosine",
@@ -22034,7 +22050,7 @@
   {
     "id": "2646",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Fire Engine73",
     "reading": "FIREENGINE73",
     "artist": "AJURIKA",
@@ -22050,7 +22066,7 @@
   {
     "id": "2647",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "LibrariA",
     "reading": "LIBRARIA",
     "artist": "ルゼ",
@@ -22066,7 +22082,7 @@
   {
     "id": "2648",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Tuatha Dé Danann",
     "reading": "TUATHADEDANANN",
     "artist": "深淵を覗きし者\"Gram\"",
@@ -22082,7 +22098,7 @@
   {
     "id": "8289",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "マツケンサンバⅡ",
     "reading": "マツケンサンハII",
     "artist": "松平健 [covered by 光吉猛修]",
@@ -22098,7 +22114,7 @@
   {
     "id": "8290",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Reverberate",
     "reading": "REVERBERATE",
     "artist": "とろまる",
@@ -22114,7 +22130,7 @@
   {
     "id": "8291",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "分からない",
     "reading": "ワカラナイ",
     "artist": "ろん×黒魔",
