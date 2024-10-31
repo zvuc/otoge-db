@@ -17483,7 +17483,6 @@
   {
     "artist": "satella feat.藍月なくる",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "10+",
@@ -17499,7 +17498,6 @@
   {
     "artist": "花徒めと（Metomate）",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11",
@@ -17515,7 +17513,6 @@
   {
     "artist": "void (Mournfinale) feat. 古泉葉月",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "12",
@@ -17531,7 +17528,6 @@
   {
     "artist": "大国奏音",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "7",
     "dx_lev_adv": "9+",
     "dx_lev_exp": "13",
@@ -17543,6 +17539,22 @@
     "title": "氷滅の135小節",
     "title_kana": "ヒヨウメツノ135シヨウセツ",
     "version": "25003"
+  },
+  {
+    "artist": "BlackY a.k.a. WAiKURO survive",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "6",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "14+",
+    "image_url": "da7d3a099d23a585.png",
+    "key": "○",
+    "release": "241031",
+    "sort": "857",
+    "title": "Divide et impera!",
+    "title_kana": "DIVIDEETIMPERA",
+    "version": "25004"
   },
   {
     "artist": "Yooh",
