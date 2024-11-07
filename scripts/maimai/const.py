@@ -1,53 +1,19 @@
 # import ipdb
 import requests
-import os
-import shutil
 import json
+import os
 import re
-import csv
-import sys
+from bs4 import BeautifulSoup
 from shared.common_func import *
 from maimai.paths import *
 from datetime import datetime
 
-SHEETS_ID = '1DKssDl2MM-jjK_GmHPEIVcOMcpVzaeiXA9P5hmhDqAo'
-SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
-
-CHARTS = [
-    # ['lev_bas', 'STD', 'BAS'],
-    ['lev_adv', 'STD', 'ADV'],
-    ['lev_exp', 'STD', 'EXP'],
-    ['lev_mas', 'STD', 'MAS'],
-    ['lev_remas', 'STD', 'REMAS'],
-    # ['dx_lev_bas', 'DX', 'BAS'],
-    ['dx_lev_adv', 'DX', 'ADV'],
-    ['dx_lev_exp', 'DX', 'EXP'],
-    ['dx_lev_mas', 'DX', 'MAS'],
-    ['dx_lev_remas', 'DX', 'REMAS'],
-]
-CUR_VERSION_SHEET = '1746522571'
-SHEETS_MAP = {
-    '452697015': ['14', '14+', '15'],
-    '1315253155': ['13+'],
-    '613457244': ['13'],
-    '1957063489': ['12+'],
-    '1280860425': ['12'],
-}
-MIN_LV = '10'
+SGIMERA_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_data_prism.js'
+SGIMERA_DICT_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_prism_.js'
 
 # Update on top of existing music-ex
 def update_const_data():
     print_message(f"Fetch chart constants", 'H2', log=True)
-
-    if game.ARGS.clear_cache:
-        try:
-            # Delete the directory and its contents
-            shutil.rmtree(LOCAL_SHEETS_CACHE_DIR)
-            print(f"Cleared local cache")
-        except FileNotFoundError:
-            print(f"Directory not found: {LOCAL_SHEETS_CACHE_DIR}")
-        except Exception as e:
-            print(f"Error deleting directory: {e}")
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
@@ -55,155 +21,162 @@ def update_const_data():
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'sort', 'date_added', generate_hash_from_keys)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', game.HASH_KEYS)
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
+    sgimera_js = fetch_js_data(SGIMERA_URL)
+    sgimera_data = parse_sgimera_data(sgimera_js)
+
+    sgimera_dict_js = fetch_js_data(SGIMERA_DICT_URL)
+    sgimera_dict = parse_sgimera_dict(sgimera_dict_js)
+
+
     for song in target_song_list:
-        _update_song_const_data(song)
+        update_song_with_sgimera_data(song, sgimera_data, sgimera_dict)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
+def fetch_js_data(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
 
-def _update_song_const_data(song):
-    header_printed = [0]
-    normalized_title = normalize_title(song['title'])
+# Function to parse data from SGIMERA_URL
+def parse_sgimera_data(js_content):
+    # Regex to match each level result constant (lvxx_rslt)
+    pattern = re.compile(r"const lv(\d+)_rslt = (\[.*?\]);", re.DOTALL)
+    matches = pattern.findall(js_content)
 
-    if normalized_title == '':
-        lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-        print_message(f"Skipping song (Empty Title)", bcolors.ENDC, log=True, is_verbose=True)
-        return
+    sgimera_data = {}
 
-    for [chart, chart_type, chart_diff] in CHARTS:
-        key_chart_i = f'{chart}_i'
-        found_sheet = None
+    # Iterate over each match (lvxx_rslt)
+    for base_level, chart_data in matches:
+        base_level = int(base_level)  # Convert base level to integer
+        chart_lists = eval(chart_data)  # Evaluate the array for lists of songs
 
-        # If --overwrite is not set, skip charts with existing values
-        if not game.ARGS.overwrite:
-            if key_chart_i in song and song[key_chart_i] != '':
-                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-                print_message(f"Chart const already exists! ({key_chart_i})", bcolors.ENDC, log=True, is_verbose=True)
-                continue
+        # Determine decimal level values based on the length of each chart_list
+        max_decimal_level = len(chart_lists) - 1
 
-        # Skip if utage
-        if 'lev_utage' in song:
-            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-            print_message(f"Skipping song (Utage)", bcolors.ENDC, log=True, is_verbose=True)
-            return
+        for idx, chart_list in enumerate(chart_lists):
+            decimal_level = max_decimal_level - idx  # Calculate the decimal level
+            level_constant = f"{base_level}.{decimal_level}"
 
+            # Parse each entry in the chart list
+            for song_html in chart_list:
+                # Extract chart type and song title
+                match = re.search(r"<span class='(wk_[a-z]+)(?:_n)?'>\s*([^<]+)\s*</span>", song_html)
+                if not match:
+                    continue
 
-        # Check if chart type exists in current song
-        song_lv = song[chart] if chart in song else None
-        if not song_lv:
-            continue
+                chart_class, song_title = match.groups()
 
-        # Skip chart if lv is under minimum threshold
-        if evaluate_lv_num(song_lv, f'>={MIN_LV}') is False:
-            continue;
-
-        # First lookup latest version sheet
-        value_chart_i = _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, CUR_VERSION_SHEET, header_printed)
-
-        # If value was found
-        if value_chart_i is not None:
-            found_sheet = CUR_VERSION_SHEET
-        # If const is not found in latest ver sheet, lookup old version sheets next
-        else:
-            respective_sheets = []
-            for key, value in SHEETS_MAP.items():
-                if song_lv in value:
-                    respective_sheets.append(key)
-
-            for sheet in respective_sheets:
-                value_chart_i = _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, sheet, header_printed)
-
-                if value_chart_i is not None:
-                    found_sheet = sheet
-                    break;
-
-        # Last try: look in ALL sheets instead of just correct sheets
-        if value_chart_i is None:
-            for key, value in SHEETS_MAP.items():
-                sheet = key
-                value_chart_i = _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, sheet, header_printed)
-
-                if value_chart_i is not None:
-                    found_sheet = sheet
-                    break;
-
-        # If value is not empty, write to song
-        if value_chart_i is not None:
-            if value_chart_i != '' and value_chart_i != '-':
-                if key_chart_i in song and song[key_chart_i] == value_chart_i:
-                    lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-                    print_message(f"No change ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.ENDC, log=True, is_verbose=True)
+                # Determine chart type suffix based on class name
+                if chart_class.startswith("wk_m"):
+                    chart_suffix = "lev_mas_i"
+                elif chart_class.startswith("wk_r"):
+                    chart_suffix = "lev_remas_i"
+                elif chart_class.startswith("wk_e"):
+                    chart_suffix = "lev_exp_i"
+                elif chart_class.startswith("wk_a"):
+                    chart_suffix = "lev_adv_i"
                 else:
-                    song[key_chart_i] = value_chart_i
+                    continue
 
-                    lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
-                    print_message(f"Updated chart constant ({chart_diff}({chart_type}): {value_chart_i}) [Sheet: {found_sheet}]", bcolors.OKGREEN, log=True)
-            # If value is placeholder, don't write
-            elif value_chart_i == '' or value_chart_i == '-':
-                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-                print_message(f"Constant is empty ({chart}, {song_lv})", bcolors.WARNING, log=True, is_verbose=True)
-        # If value is not found
-        else:
-            # Print message in red if value should have been found
-            # If this message prints, high chance that title was not matched properly
-            if song_lv in ['12', '12+', '13', '13+', '14', '14+', '15']:
-                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
-                print_message(f"Chart with matching song not found in sheet ({chart}, {song_lv})", bcolors.FAIL, log=True)
-            else:
-                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-                print_message(f"Chart with matching song not found in sheet ({chart}, {song_lv})", bcolors.ENDC, log=True, is_verbose=True)
+                # Handle [dx] suffix in song title
+                if "[dx]" in song_title:
+                    song_title = song_title.replace("[dx]", "").strip()
+                    chart_suffix = f"dx_{chart_suffix}"
 
-    return song
+                # Prepare data dictionary entry
+                if song_title not in sgimera_data:
+                    sgimera_data[song_title] = {"title": song_title}
 
-def _find_chart_in_sheet(song, song_lv, normalized_title, chart_type, chart_diff, sheet_name, header_printed):
-    lv_sheet_url = SHEETS_BASE_URL + sheet_name
-    lv_sheet_file_path = f'{sheet_name}.csv'
+                # Add level constant for the appropriate chart type
+                sgimera_data[song_title][chart_suffix] = level_constant
 
-    # Read local file first, request and cache if it doesn't exist
-    file_full_path = os.path.join(LOCAL_SHEETS_CACHE_DIR, lv_sheet_file_path)
-    if not os.path.exists(file_full_path):
-        get_and_save_page_to_local(lv_sheet_url, file_full_path, LOCAL_SHEETS_CACHE_DIR)
+    return sgimera_data
 
-        if not os.path.exists(file_full_path):
-            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
-            print_message(f"Cache not found ({lv_sheet_file_path})", bcolors.ENDC, log=True, is_verbose=True)
-            sys.exit(1)
+# Function to parse data from SGIMERA_DICT_URL
+def parse_sgimera_dict(js_content):
+    sgimera_dict = []
 
+    # Regex to find the main dictionary data within the file
+    in_lv_data = re.search(r"var in_lv = (\[.*?\]);", js_content, re.DOTALL)
+    if not in_lv_data:
+        return {}
 
-    # PARSE!
-    value_chart_i = None
-    with open(file_full_path) as f:
-        for row in csv.reader(f):
-            length = len(row)
-            for i in range(length):
-                columns = [
-                    row[i].strip(),
-                    row[i + 1].strip() if i + 1 < length else '',
-                    row[i + 2].strip() if i + 2 < length else '',
-                    row[i + 3].strip() if i + 3 < length else '',
-                    row[i + 4].strip() if i + 4 < length else '',
-                    row[i + 5].strip() if i + 5 < length else '',
-                ]
+    entries = re.finditer(
+        r"\{dx:(\d+), v:(?:\s|)(\d+), lv:\[(.*?)\], n:`(.*?)`(?:, nn:`(.*?)`|), ico:`(.*?)`(?:, olv:(.*?)|)\}",
+        in_lv_data.group(1)
+    )
 
-                # For 12+, 12: (title) 譜面1 譜面2 旧定数 新定数
-                if normalize_title(columns[0]) == normalized_title and columns[1] == chart_type and columns[2].upper() == chart_diff:
-                    value_chart_i = columns[4]
+    for entry in entries:
+        dx, version, levels, name, nn, ico, olv = entry.groups()
 
-                # For 13, 13+, 14以上: (title) ジャンル 譜面1 譜面2 旧定数 新定数
-                if normalize_title(columns[0]) == normalized_title and columns[2] == chart_type and columns[3].upper() == chart_diff:
-                    value_chart_i = columns[5]
+        # Handle missing fields by assigning them a default value
+        entry_data = {
+            "dx": int(dx),
+            "v": int(version),
+            "title": nn if nn else name,
+            "ico": ico if ico else None
+        }
 
-                if value_chart_i is not None:
-                    break
+        sgimera_dict.append(entry_data)
 
-            if value_chart_i is not None:
-                break
+    return sgimera_dict
 
-    return value_chart_i
+def update_song_with_sgimera_data(song, sgimera_data, sgimera_dict):
+    header_printed = [0]
+    # Format song image URL for comparison
+    song_icon = os.path.splitext(song['image_url'])[0]
+
+    # Find matching entry in sgimera_dict by title and icon
+    target_entry = None
+    for entry in sgimera_dict:
+        if entry['ico'] == song_icon:
+            target_entry = entry
+            break
+
+    if not target_entry:
+        return False  # No match found
+
+    # Update song with matching sgimera_data
+    title_key = target_entry['title']
+    if title_key in sgimera_data:
+        sgimera_entry = sgimera_data[title_key]
+        for key, level in sgimera_entry.items():
+            if key == "title":
+                continue  # Skip the title field in sgimera_entry
+
+            chart_base = key.split('_i')[0]  # e.g., dx_lev_adv_i -> dx_lev_adv
+            song_level_key = chart_base  # Expected level key in song
+
+            # Check if song has the chart level key
+            if song_level_key in song:
+                song_chart_level = song[song_level_key]
+
+                # Convert sgimera_level_constant to "chart level form"
+                sgimera_level_constant = float(level)
+                base_level = int(sgimera_level_constant)  # Drop the decimal
+                decimal_part = sgimera_level_constant - base_level
+
+                # Format sgimera level according to the specified chart level form
+                if decimal_part >= 0.6:
+                    sgimera_chart_level_form = f"{base_level}+"
+                else:
+                    sgimera_chart_level_form = str(base_level)
+
+                # Compare song_chart_level and formatted sgimera level as strings
+                if sgimera_chart_level_form == song_chart_level:
+                    if key not in song or not song[key]:
+                        lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+                        print_message(f"Updated chart constant ({song_level_key}: {level})", bcolors.OKGREEN, log=True)
+
+                        song[key] = level  # Update song with the sgimera level constant
+
+    return True
+
