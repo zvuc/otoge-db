@@ -3,7 +3,6 @@ import requests
 import json
 import os
 import re
-import ast
 from bs4 import BeautifulSoup
 from shared.common_func import *
 from maimai.paths import *
@@ -57,7 +56,7 @@ def parse_sgimera_data(js_content):
 
     # Parse for legacy format (no decoding needed)
     if game.ARGS.legacy:
-        entries = ast.literal_eval(js_content)
+        entries = json.loads(js_content)
 
         for entry in entries:
             if len(entry['lv']) == 5 and entry['lv'][4] == '0':
