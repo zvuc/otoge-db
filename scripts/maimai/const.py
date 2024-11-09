@@ -112,9 +112,6 @@ def update_song_with_sgimera_data(song, sgimera_data, total_diffs):
     # Format song image URL for comparison
     song_icon = os.path.splitext(song['image_url'])[0]
 
-    # if song['title'] == 'クレイジークレイジーダンサーズ':
-    #     ipdb.set_trace()
-
     # Find matching entry in sgimera_dict by title and icon
     target_entry = None
     for title, entry in sgimera_data.items():
@@ -130,8 +127,8 @@ def update_song_with_sgimera_data(song, sgimera_data, total_diffs):
     if not target_entry:
         return False  # No match found
 
-    for idx, decimal_part in enumerate(target_entry['lv']):
-        if decimal_part <= -1 or idx == 0: # Skip Basic
+    for idx, modifier_num in enumerate(target_entry['lv']):
+        if modifier_num <= -1 or idx == 0: # Skip Basic
             continue
 
         chart_key = game.CHART_LIST[idx]
@@ -144,15 +141,27 @@ def update_song_with_sgimera_data(song, sgimera_data, total_diffs):
             continue
 
         if game.ARGS.legacy:
-            chart_const = decimal_part
+            chart_const = float(modifier_num)
         else:
+            decimal_part = modifier_num
             base_level = float(song[chart_key].replace("+", ".6"))
             chart_const = (base_level * 10 + decimal_part) / 10
 
         chart_key += "_i"
 
-        if chart_const is not None:
-            if chart_key in song and song[chart_key] == str(chart_const):
+        # If existing chart const is empty
+        if song[chart_key] == "":
+            total_diffs[0] += 1
+
+            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+            print_message(f"Updated chart constant ({chart_key}: {chart_const})", bcolors.OKGREEN, log=True)
+
+            song[chart_key] = str(chart_const)  # Update song with the sgimera level constant
+
+        # If there is already a value
+        else:
+            # previous value is different
+            if song[chart_key] != str(chart_const):
                 if game.ARGS.overwrite:
                     total_diffs[0] += 1
                     lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
@@ -162,13 +171,10 @@ def update_song_with_sgimera_data(song, sgimera_data, total_diffs):
                 else:
                     lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
                     print_message(f"No change ({chart_key}: {chart_const})", bcolors.ENDC, log=True, is_verbose=True)
+            # value is same
             else:
-                total_diffs[0] += 1
-
-                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
-                print_message(f"Updated chart constant ({chart_key}: {chart_const})", bcolors.OKGREEN, log=True)
-
-                song[chart_key] = str(chart_const)  # Update song with the sgimera level constant
+                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
+                print_message(f"No change ({chart_key}: {chart_const})", bcolors.ENDC, log=True, is_verbose=True)
 
     return True
 
