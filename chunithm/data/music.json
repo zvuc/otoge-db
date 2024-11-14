@@ -1,5 +1,21 @@
 [
   {
+    "id": "2653",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "Sleep Walking Orchestra",
+    "reading": "SLEEPWALKINGORCHESTRA",
+    "artist": "BUMP OF CHICKEN",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "11+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2487a7877540f3db.jpg"
+  },
+  {
     "id": "2676",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -2126,6 +2142,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "d5a47266b4fe0bfe.jpg"
+  },
+  {
+    "id": "2670",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "自称、音楽愛好家",
+    "reading": "シシヨウオンカクアイコウカ",
+    "artist": "卯花ロク",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "654d5dc292f028fe.jpg"
+  },
+  {
+    "id": "2660",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "What's up? Pop!",
+    "reading": "WHATSUPPOP",
+    "artist": "Capchii",
+    "lev_bas": "4",
+    "lev_adv": "8",
+    "lev_exp": "14",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "a23bc8d6658faad1.jpg"
+  },
+  {
+    "id": "2661",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "まにまに",
+    "reading": "マニマニ",
+    "artist": "r-906",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "594030f40aa58abd.jpg"
   },
   {
     "id": "2641",
@@ -16162,7 +16226,7 @@
   {
     "id": "2650",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "MeteorSnow",
     "reading": "METEORSNOW",
     "artist": "あず♪",
@@ -22094,6 +22158,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "49f9b5bed3435175.jpg"
+  },
+  {
+    "id": "2651",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Acid God",
+    "reading": "ACIDGOD",
+    "artist": "Yuta Imai",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exp": "14",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "8e4490da0e564cbd.jpg"
   },
   {
     "id": "8289",
