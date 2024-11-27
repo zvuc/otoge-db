@@ -20,8 +20,60 @@ HASH_KEYS = ['title', 'artist', 'we_kanji']
 
 TARGET_KEYS = [
     "bpm",
-    "_notes",
-    "_designer"
+    "lev_bas_notes_tap",
+    "lev_bas_notes_hold",
+    "lev_bas_notes_slide",
+    "lev_bas_notes_air",
+    "lev_adv_notes_tap",
+    "lev_adv_notes_hold",
+    "lev_adv_notes_slide",
+    "lev_adv_notes_air",
+    "lev_exp_notes_tap",
+    "lev_exp_notes_hold",
+    "lev_exp_notes_slide",
+    "lev_exp_notes_air",
+    "lev_mas_notes_tap",
+    "lev_mas_notes_hold",
+    "lev_mas_notes_slide",
+    "lev_mas_notes_air",
+    "lev_mas_notes_flick",
+    "_exp_designer",
+    "_mas_designer"
+]
+
+TARGET_KEYS_ULT = [
+    "bpm",
+    "lev_bas_notes_tap",
+    "lev_bas_notes_hold",
+    "lev_bas_notes_slide",
+    "lev_bas_notes_air",
+    "lev_adv_notes_tap",
+    "lev_adv_notes_hold",
+    "lev_adv_notes_slide",
+    "lev_adv_notes_air",
+    "lev_exp_notes_tap",
+    "lev_exp_notes_hold",
+    "lev_exp_notes_slide",
+    "lev_exp_notes_air",
+    "lev_mas_notes_tap",
+    "lev_mas_notes_hold",
+    "lev_mas_notes_slide",
+    "lev_mas_notes_air",
+    "lev_mas_notes_flick",
+    "lev_ult_notes_tap",
+    "lev_ult_notes_hold",
+    "lev_ult_notes_slide",
+    "lev_ult_notes_air",
+    "lev_ult_notes_flick",
+    "_exp_designer",
+    "_mas_designer",
+    "_ult_designer"
+]
+
+TARGET_KEYS_WE = [
+    "bpm",
+    "_we_notes",
+    "_we_designer"
 ]
 
 VERSION_DATES = {
@@ -97,7 +149,22 @@ def update_song_wiki_data(song, total_diffs):
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         if game.ARGS.noskip:
             # Check if any values are empty
-            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)) or game.ARGS.overwrite:
+            if (
+                any(
+                    value == ""
+                    for key, value in song.items()
+                    if any(
+                        target in key
+                        for target in (
+                            TARGET_KEYS_WE if song.get("we_kanji", "") != ""
+                            else TARGET_KEYS if song.get("lev_ult", "") == ""
+                            else TARGET_KEYS_ULT
+                        )
+                    )
+                )
+                or game.ARGS.overwrite
+            ):
+
                 url = song['wikiwiki_url']
                 try:
                     wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
@@ -130,10 +197,7 @@ def update_song_wiki_data(song, total_diffs):
 
             if not wiki.ok:
                 # give up!
-                # only print song title when no_verbose is active
-                # because title is not printed yet
-                if game.ARGS.no_verbose is True:
-                    print_message(f"{song['id']} {song['title']}", 'HEADER', log=True)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
                 print_message("Failed to guess wiki page", bcolors.FAIL, log=True)
                 return song
 
@@ -319,7 +383,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                     break
         else:
             lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
-            print_message(f"Warning - No designer/constant info found ({chart.upper()})", bcolors.WARNING, log=True, is_verbose=True)
+            print_message(f"Warning - No designer/constant info found", bcolors.WARNING, log=True, is_verbose=True)
 
 
     chart_constant_designer_dict = {**chart_designers_dict, **chart_constants_dict}
