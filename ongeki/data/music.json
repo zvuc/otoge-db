@@ -21183,7 +21183,7 @@
     "image_url": "b47cc50b3613d3e9.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241114",
     "title": "狂恋ROMANCE",
     "title_sort": "キヨウレンROMANCE",
@@ -21206,7 +21206,7 @@
     "image_url": "6da9efddb102f65b.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241114",
     "title": "Sulfur",
     "title_sort": "SULFUR",
@@ -21229,7 +21229,7 @@
     "image_url": "b4c2bd5d9ebad0be.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241114",
     "title": "Small Cloud Sugar Candy",
     "title_sort": "SMALLCLOUDSUGARCANDY",
@@ -21252,7 +21252,7 @@
     "image_url": "e060d4f6bfeae42e.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20241114",
     "title": "最強STRONGER",
     "title_sort": "サイキヨウSTRONGER",
@@ -21273,5 +21273,51 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "7a3a3c7d654f9a97.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20241128",
+    "title": "君よ",
+    "title_sort": "キミヨ",
+    "artist": "La prière(棗いつき、藍月なくる、nayuta)",
+    "id": "168900",
+    "chap_id": "99113",
+    "chapter": "La prière",
+    "character": "La prière",
+    "chara_id": "7820",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "(C) 2019-2023 La prière All Rights Reserved.",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exc": "11",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "f85ab4da2b34d644.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20241128",
+    "title": "恋のイリュージョニスタ",
+    "title_sort": "コイノイリユシヨニスタ",
+    "artist": "La prière(棗いつき、藍月なくる、nayuta)",
+    "id": "169000",
+    "chap_id": "99113",
+    "chapter": "La prière",
+    "character": "La prière",
+    "chara_id": "7820",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "(C) 2019-2023 La prière All Rights Reserved.",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exc": "11",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "04146e73132ff7fd.png"
   }
 ]
