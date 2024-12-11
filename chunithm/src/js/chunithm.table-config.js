@@ -524,7 +524,7 @@ $(document).ready(function() {
 
     default_search = getDefaultSearchValues(columns_params, (currentRegion === 'intl' ? true : false));
 
-    $.getJSON("data/music-ex.json", (data) => {
+    $.getJSON((currentRegion === 'intl' ? "data/music-ex-intl.json" : "data/music-ex.json"), (data) => {
       var table = $('#table').DataTable( {
         // "ajax": {
         //     url: "data/music-ex.json",
