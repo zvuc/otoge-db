@@ -35,7 +35,8 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 # wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:NEW_PLUS_(Asia)'
 # wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_(Asia)'
 # wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:SUN_PLUS_(Asia)'
-wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:LUMINOUS_(Asia)'
+# wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:LUMINOUS_(Asia)'
+wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:LUMINOUS_PLUS_(Asia)'
 
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
@@ -46,10 +47,10 @@ request_headers = {
 def add_intl_info():
     total_diffs = [0]
 
-    print_message(f"Fetching International ver. song data from RemyWiki", 'H2', log=True, is_verbose=True)
+    print_message(f"Fetching International ver. song data from RemyWiki", 'H2', log=True)
 
     # Load JSON data
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
+    with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
     # Get Wiki page
@@ -177,11 +178,11 @@ def add_intl_info():
                         if song['intl'] == "0":
                             song['intl'] = "1"
                             lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
-                            print_message(f"- Marked as available in Intl. ver.", bcolors.OKGREEN, log=True, is_verbose=True)
+                            print_message(f"- Marked as available in Intl. ver.", bcolors.OKGREEN, log=True)
 
                         if 'date_intl_added' not in song or song['date_intl_added'] == '':
                             lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
-                            print_message(f"- Date added ({wiki_song['date']})", bcolors.OKGREEN, log=True, is_verbose=True)
+                            print_message(f"- Date added ({wiki_song['date']})", bcolors.OKGREEN, log=True)
                             song['date_intl_added'] = wiki_song['date']
 
                         song_matched = True
@@ -256,8 +257,8 @@ def add_intl_info():
 
                         if ('date_intl_updated' not in song or int(song['date_intl_updated']) < int(wiki_song['date'])):
                             song['date_intl_updated'] = wiki_song['date']
-                            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
-                            print_message(f"- Added update date", bcolors.OKBLUE, log=True, is_verbose=True)
+                            lazy_print_song_header(f"{title}", header_printed, log=True)
+                            print_message(f"- Added update date", bcolors.OKBLUE, log=True)
 
                         song_matched = True
 
@@ -279,10 +280,10 @@ def add_intl_info():
                             lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
 
                             if game.ARGS.strict:
-                                print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                                print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True)
                                 continue
                             else:
-                                print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+                                print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True)
 
                         # Update JSON data
                         if song['intl'] == "0":
@@ -325,7 +326,7 @@ def add_intl_info():
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
 
     # Write updated JSON data to file
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
+    with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
