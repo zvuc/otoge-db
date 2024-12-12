@@ -459,7 +459,10 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             elif '！' in we_kanji:
                 we_kanji_alt = '!'
 
-            we_row = charts_table.find(text = lambda tag: (tag.string in [we_kanji, we_kanji_alt])).find_parent(lambda tag: tag.name in ['th', 'td'])
+            we_row = charts_table.find(lambda tag: (tag.string in [we_kanji, we_kanji_alt]))
+
+            if we_row:
+                we_row = we_row.find_parent(lambda tag: tag.name in ['th', 'td'])
 
             if we_row and song['we_kanji'] in we_row.get_text(strip=True).replace('?', '？').replace('!', '！'):
                 we_row_parent = we_row.find_parent()
