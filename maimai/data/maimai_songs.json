@@ -17914,7 +17914,6 @@
   {
     "artist": "sky_delta vs KO3 vs Tanchiky",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11+",
@@ -17928,9 +17927,23 @@
     "version": "25007"
   },
   {
+    "artist": "蓮ノ空女学院スクールアイドルクラブ",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9",
+    "dx_lev_mas": "12+",
+    "image_url": "9257bd776ceabcfe.png",
+    "release": "241212",
+    "sort": "4",
+    "title": "On your mark (104期 Ver.)",
+    "title_kana": "ONYOURMARK104キVER",
+    "version": "25008"
+  },
+  {
     "artist": "OSTER project",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
@@ -17945,7 +17958,6 @@
   {
     "artist": "吉田夜世",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -17960,7 +17972,6 @@
   {
     "artist": "はるふり",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
@@ -17975,7 +17986,6 @@
   {
     "artist": "マサラダ",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "11",
@@ -17990,7 +18000,6 @@
   {
     "artist": "いよわ feat.重音テト",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10",
