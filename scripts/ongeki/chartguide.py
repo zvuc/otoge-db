@@ -122,7 +122,7 @@ def _update_song_chartguide_data(song, total_diffs):
 
         if chart == 'luna':
             target_key = 'lev_lnt_chart_link'
-            url_pattern = '/' + game.GAME_NAME + '/luna'
+            url_pattern = re.compile('/' + game.GAME_NAME + '/luna')
         elif chart == 'exp':
             target_key = 'lev_exc_chart_link'
             url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
@@ -135,6 +135,7 @@ def _update_song_chartguide_data(song, total_diffs):
             continue
 
         lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+        print_message(f"Fetching chart link for {chart.upper()} (New page)", bcolors.OKBLUE, log=True, is_verbose=True)
         song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern)
 
         # Search level-specific pages if not found in main page
@@ -143,7 +144,7 @@ def _update_song_chartguide_data(song, total_diffs):
                 lv_page_url = '/sort/lunatic.htm'
                 lv_page_file_path = '/sort_lunatic.htm'
                 target_key = 'lev_lnt_chart_link'
-                url_pattern = '/' + game.GAME_NAME + '/luna'
+                url_pattern = re.compile('/' + game.GAME_NAME + '/luna')
             elif chart == 'exp':
                 lv_page_url = '/sort/' + song['lev_exc'] + '.htm'
                 lv_page_file_path = '/sort_' + song['lev_exc'] + '.htm'
@@ -156,6 +157,7 @@ def _update_song_chartguide_data(song, total_diffs):
                 url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
 
             lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+            print_message(f"Fetching chart link for {chart.upper()} (Level page)", bcolors.OKBLUE, log=True, is_verbose=True)
             song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern)
 
         if song_id:
@@ -214,14 +216,19 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
     for script_tag in script_tags:
         script_src = script_tag['src']
 
-        if lv_page_url != '':
-            # Find the trailing HTML comment (song_title)
-            extracted_song_title = script_tag.find_next(text=lambda text:isinstance(text, Comment))
-        else:
+        # Find song title in comment
+        extracted_song_title = script_tag.find_next(text=lambda text:isinstance(text, Comment))
+
+        # If comment doesn't contain title, request URL to get title
+        if extracted_song_title == '':
+            print_message(f"- Requesting page to fetch title - {script_src}", bcolors.OKBLUE, is_verbose=True)
             response = requests.get(SDVXIN_BASE_URL + script_src)
             response.encoding = 'ansi'
             js_soup = BeautifulSoup(response.text, 'html.parser')
             match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))
+
+            # print_message(f"- {js_soup}", bcolors.OKBLUE, is_verbose=True)
+            print_message(f"- Title is: {match}", bcolors.OKBLUE, is_verbose=True)
 
             if match:
                 extracted_song_title = match[0]
@@ -231,6 +238,20 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
             song_dict[script_src] = extracted_song_title
 
     song_id = _extract_song_id(song, song_dict, song['title'])
+
+    # Last check to see if page is valid
+    if song_id != None:
+        print_message(f"- Requesting page for validation - {song_id}", bcolors.OKBLUE, is_verbose=True)
+        response = requests.get(SDVXIN_BASE_URL + song_id)
+        response.encoding = 'ansi'
+        js_soup = BeautifulSoup(response.text, 'html.parser')
+        match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))
+
+        # print_message(f"- {js_soup}", bcolors.OKBLUE, is_verbose=True)
+        print_message(f"- Title is: {match}", bcolors.OKBLUE, is_verbose=True)
+
+        if not match:
+            song_id = ''
 
     return song_id, script_src
 
@@ -266,10 +287,12 @@ def _get_and_save_page_to_local(url):
 
 def _extract_song_id(song, song_dict, song_title):
     for song_id, title in song_dict.items():
+        # print_message(f"- Attempt to extract song_id ({song_id}, {title})", bcolors.OKBLUE, log=True, is_verbose=True)
         title = title.lower()
         song_title = song_title.lower()
 
         if title == song_title:
+            print_message(f"- Match found ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
             return song_id
         else:
             # try fallback pairs
@@ -287,6 +310,7 @@ def _extract_song_id(song, song_dict, song_title):
                 .replace('"', '”')
             )
             if title == song_title_alt:
+                print_message(f"- Match found (some characters substituted) ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
                 return song_id
             else:
                 # try removing subtitle
@@ -303,6 +327,8 @@ def _extract_song_id(song, song_dict, song_title):
                     if match_similarity > 80:
                         print_message(f"Found closest match ({round(match_similarity,2)}%)", bcolors.WARNING)
                         return song_id
+
+    print_message(f"- Match not found", bcolors.FAIL, log=True, is_verbose=True)
 
 
 def _compare_strings(str1, str2):
