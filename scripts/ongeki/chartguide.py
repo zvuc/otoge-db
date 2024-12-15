@@ -125,10 +125,10 @@ def _update_song_chartguide_data(song, total_diffs):
             url_pattern = '/' + game.GAME_NAME + '/luna'
         elif chart == 'exp':
             target_key = 'lev_exc_chart_link'
-            url_pattern = '/' + game.GAME_NAME + '/0'
+            url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
         elif chart == 'mst':
             target_key = 'lev_mas_chart_link'
-            url_pattern = '/' + game.GAME_NAME + '/0'
+            url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
 
         if not song[target_key] == '' and not game.ARGS.overwrite:
             print_message(f"Chart link already exists! ({chart.upper()})", bcolors.ENDC, log=True, is_verbose=True)
@@ -148,12 +148,12 @@ def _update_song_chartguide_data(song, total_diffs):
                 lv_page_url = '/sort/' + song['lev_exc'] + '.htm'
                 lv_page_file_path = '/sort_' + song['lev_exc'] + '.htm'
                 target_key = 'lev_exc_chart_link'
-                url_pattern = '/' + game.GAME_NAME + '/0'
+                url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
             elif chart == 'mst':
                 lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
                 lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
                 target_key = 'lev_mas_chart_link'
-                url_pattern = '/' + game.GAME_NAME + '/0'
+                url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
 
             lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
             song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern)
@@ -206,7 +206,8 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
     song_dict = {}
 
     # Find all script tags with src attribute starting with "/chunithm/"
-    script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
+    # script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
+    script_tags = soup.find_all('script', src=lambda s: s and url_pattern.search(s))
 
     # Extract script tag src and song_title and add to the dictionary
     script_src = ''

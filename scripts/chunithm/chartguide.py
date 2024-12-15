@@ -58,6 +58,7 @@ PAGES = {
     "/sort/14.htm",
     "/sort/14+.htm",
     "/sort/15.htm",
+    "/sort/15+.htm",
     "/sort/ultima.htm",
     "/end.htm"
 }
@@ -138,10 +139,10 @@ def _update_song_chartguide_data(song, total_diffs):
             url_pattern = '/' + game.GAME_NAME + '/end'
         elif chart == 'exp':
             target_key = 'lev_exp_chart_link'
-            url_pattern = '/' + game.GAME_NAME + '/0'
+            url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
         elif chart == 'mst':
             target_key = 'lev_mas_chart_link'
-            url_pattern = '/' + game.GAME_NAME + '/0'
+            url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
         elif chart == 'ult':
             target_key = 'lev_ult_chart_link'
             url_pattern = '/' + game.GAME_NAME + '/ult'
@@ -164,12 +165,12 @@ def _update_song_chartguide_data(song, total_diffs):
                 lv_page_url = '/sort/' + song['lev_exp'] + '.htm'
                 lv_page_file_path = '/sort_' + song['lev_exp'] + '.htm'
                 target_key = 'lev_exp_chart_link'
-                url_pattern = '/' + game.GAME_NAME + '/0'
+                url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
             elif chart == 'mst':
                 lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
                 lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
                 target_key = 'lev_mas_chart_link'
-                url_pattern = '/' + game.GAME_NAME + '/0'
+                url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
             elif chart == 'ult':
                 lv_page_url = '/sort/ultima.htm'
                 lv_page_file_path = '/sort_ultima.htm'
@@ -227,10 +228,12 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
     song_dict = {}
 
     # Find all script tags with src attribute starting with "/chunithm/"
-    script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
+    # script_tags = soup.find_all('script', src=lambda s: s and s.startswith(url_pattern))
+    script_tags = soup.find_all('script', src=lambda s: s and url_pattern.search(s))
 
     # Extract script tag src and song_title and add to the dictionary
     script_src = ''
+
     for script_tag in script_tags:
         extracted_song_title = ''
         script_src = script_tag['src']
