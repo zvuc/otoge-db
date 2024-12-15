@@ -174,6 +174,7 @@ def update_song_wiki_data(song, total_diffs):
                     time.sleep(random.randint(1,2))
                     return
                 except requests.RequestException as e:
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
                     print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, log=True)
                     return song
             else:
@@ -198,7 +199,7 @@ def update_song_wiki_data(song, total_diffs):
 
             if not wiki.ok:
                 # give up!
-                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
                 print_message("Failed to guess wiki page", bcolors.FAIL, log=True)
                 return song
 
@@ -216,6 +217,8 @@ def update_song_wiki_data(song, total_diffs):
 
 
 def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
+    critical_errors = [0]
+
     soup = BeautifulSoup(wiki.text, 'html.parser')
     tables = soup.select("#body table")
     old_song = copy.copy(song)
@@ -226,8 +229,9 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
 
     # If there are no tables in page at all, exit
     if len(tables) == 0:
-        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Parse failed! Skipping song", bcolors.FAIL, log=True, is_verbose=True)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+        print_message("Wiki page not found - invalid page", bcolors.FAIL, log=True)
+        critical_errors[0] += 1
         return song
 
 
@@ -294,8 +298,9 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 print_message("Added BPM", bcolors.OKGREEN, log=True)
     else:
         # fail
-        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Warning - overview table not found", bcolors.FAIL, log=True, is_verbose=True)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+        print_message("Invalid wiki page - no overview table", bcolors.FAIL, log=True)
+        critical_errors[0] += 1
 
 
     # Find constant and chart designer
@@ -402,8 +407,9 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 # Found the charts table
                 break
             else:
-                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
-                print_message("Warning - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
+                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+                print_message("Invalid wiki page - No chart table found", bcolors.FAIL, log=True)
+                critical_errors[0] += 1
 
     # Update chart details
     if charts_table:
@@ -474,10 +480,13 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
 
     else:
         lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Warning - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
+        print_message("Invalid wiki page - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
+        critical_errors[0] += 1
 
-
-    song['wikiwiki_url'] = url
+    if song['wikiwiki_url'] != url and critical_errors[0] == 0:
+        song['wikiwiki_url'] = url
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+        print_message("Saved wiki URL", bcolors.OKBLUE)
 
     if old_song == song:
         lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)

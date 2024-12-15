@@ -205,11 +205,11 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         # if song has a confirmed wiki url
         if song['wiki_url'] == url:
             lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True)
-            print_message("Wiki page not found - Page title mismatch", bcolors.WARNING, log=True)
+            print_message("Invalid wiki page - Page title mismatch", bcolors.WARNING, log=True)
         # If it doesn't abort
         else:
             lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True)
-            print_message("Wiki page not found - Page title mismatch", bcolors.FAIL, log=True)
+            print_message("Invalid wiki page - Page title mismatch", bcolors.FAIL, log=True)
             return song
 
     has_std_chart = 'lev_bas' in song
@@ -291,8 +291,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 print_message("Added BPM", bcolors.OKGREEN)
     else:
         # fail
-        lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Warning - overview table not found", bcolors.FAIL, log=True, is_verbose=True)
+        lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True)
+        print_message("Invalid wiki page - no overview table", bcolors.FAIL, log=True)
         critical_errors[0] += 1
 
     # find the charts table
@@ -323,15 +323,15 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
     
     if has_std_chart and charts_table is None:
         lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Warning - No Std chart table found", bcolors.FAIL, log=True, is_verbose=True)
+        print_message("Invalid wiki page - No Std chart table found", bcolors.FAIL, log=True, is_verbose=True)
         critical_errors[0] += 1
     if has_dx_chart and charts_table_dx is None:
         lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Warning - No DX chart table found", bcolors.FAIL, log=True, is_verbose=True)
+        print_message("Invalid wiki page - No DX chart table found", bcolors.FAIL, log=True, is_verbose=True)
         critical_errors[0] += 1
     if (has_dual_chart or has_utage_chart) and charts_table is None and charts_table_dx is None:
         lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
-        print_message("Warning - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
+        print_message("Invalid wiki page - No chart table found", bcolors.FAIL, log=True, is_verbose=True)
         critical_errors[0] += 1
 
 
