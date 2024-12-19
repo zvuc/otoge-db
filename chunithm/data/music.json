@@ -2,7 +2,7 @@
   {
     "id": "2806",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Campus mode!!",
     "reading": "CAMPUSMODE",
     "artist": "歌：初星学園 作詞作曲：田淵智也 編曲：滝澤俊輔（TRYTONELABO）「学園アイドルマスター」",
@@ -18,7 +18,7 @@
   {
     "id": "2807",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Fighting My Way",
     "reading": "FIGHTINGMYWAY",
     "artist": "歌：花海咲季 (CV. 長月あおい) 作詞：HIROMI　作曲・編曲：Giga「学園アイドルマスター」",
@@ -34,7 +34,7 @@
   {
     "id": "2683",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "On your mark (104期 Ver.)",
     "reading": "ONYOURMARK104キVER",
     "artist": "蓮ノ空女学院スクールアイドルクラブ「Link！Like！ラブライブ！」",
@@ -50,7 +50,7 @@
   {
     "id": "2714",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "眩耀夜行（104期Ver.）",
     "reading": "ケンヨウヤコウ104キVER",
     "artist": "スリーズブーケ[日野下花帆(CV.楡井希実)、乙宗 梢(CV.花宮初奈)、百生吟子(CV.櫻井陽菜)]「Link！Like！ラブライブ！」",
@@ -66,7 +66,7 @@
   {
     "id": "2715",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "KNOT（104期Ver.）",
     "reading": "KNOT104キVER",
     "artist": "DOLLCHESTRA[村野さやか(CV.野中ここな)、夕霧綴理(CV.佐々木琴子)、徒町小鈴(CV.葉山風花)]「Link！Like！ラブライブ！」",
@@ -82,7 +82,7 @@
   {
     "id": "2716",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "アイデンティティ（104期NEW Ver.）",
     "reading": "アイテンテイテイ104キNEWVER",
     "artist": "みらくらぱーく！[大沢瑠璃乃(CV.菅 叶和)、藤島 慈(CV.月音こな)、安養寺姫芽(CV.来栖りん)]「Link！Like！ラブライブ！」",
@@ -98,7 +98,7 @@
   {
     "id": "2684",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "晴る",
     "reading": "ハル",
     "artist": "ヨルシカ",
@@ -114,7 +114,7 @@
   {
     "id": "2686",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ビビデバ",
     "reading": "ヒヒテハ",
     "artist": "星街すいせい（ホロライブ）",
@@ -130,7 +130,7 @@
   {
     "id": "2687",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "愛包ダンスホール",
     "reading": "アイハイタンスホウル",
     "artist": "HIMEHINA",
@@ -146,7 +146,7 @@
   {
     "id": "2688",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "VERSE",
     "reading": "VERSE",
     "artist": "KMNZ",
@@ -2194,7 +2194,7 @@
   {
     "id": "2689",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "メズマライザー",
     "reading": "メスマライサウ",
     "artist": "サツキ feat.初音ミク・重音テト",
@@ -2210,7 +2210,7 @@
   {
     "id": "2690",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "絶対敵対メチャキライヤー",
     "reading": "セツタイテキタイメチヤキライヤウ",
     "artist": "メドミア",
@@ -2226,7 +2226,7 @@
   {
     "id": "2691",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "好きな惣菜発表ドラゴン",
     "reading": "スキナソウサイハツヒヨウトラコン",
     "artist": "ンバヂ",
@@ -6514,7 +6514,7 @@
   {
     "id": "2692",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "有頂天ドリーマーズ",
     "reading": "ウチヨウテントリウマウス",
     "artist": "森羅万象",
@@ -9728,6 +9728,70 @@
     "image": "bbc2091b356dd59a.jpg"
   },
   {
+    "id": "2693",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "inkar-usi",
+    "reading": "INKARUSI",
+    "artist": "DIA「Arcaea」",
+    "lev_bas": "1",
+    "lev_adv": "5",
+    "lev_exp": "10",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ef298f7a5b7a0ce7.jpg"
+  },
+  {
+    "id": "2694",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "Tie me down gently",
+    "reading": "TIEMEDOWNGENTLY",
+    "artist": "溝口ゆうま feat. 大瀬良あい「Arcaea」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9a1ab6df95077943.jpg"
+  },
+  {
+    "id": "2695",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "Ringed Genesis",
+    "reading": "RINGEDGENESIS",
+    "artist": "Edelritter「Arcaea」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "8cdd0962d08e61bc.jpg"
+  },
+  {
+    "id": "2696",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "Tempestissimo",
+    "reading": "TEMPESTISSIMO",
+    "artist": "t+pazolite「Arcaea」",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "51028f5e0191f2ea.jpg"
+  },
+  {
     "id": "2036",
     "catname": "VARIETY",
     "newflag": "0",
@@ -9938,7 +10002,7 @@
   {
     "id": "2697",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Igallta",
     "reading": "IGALLTA",
     "artist": "Se-U-Ra「Phigros」",
@@ -10450,7 +10514,7 @@
   {
     "id": "2698",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Synthesis.",
     "reading": "SYNTHESIS",
     "artist": "tn-shi",
@@ -12322,7 +12386,7 @@
   {
     "id": "2699",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Chronomia",
     "reading": "CHRONOMIA",
     "artist": "Lime",
@@ -12754,7 +12818,7 @@
   {
     "id": "2700",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "カモンゴー！",
     "reading": "カモンコウ",
     "artist": "HaNaMiNa",
@@ -15122,7 +15186,7 @@
   {
     "id": "2704",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "≠彡\"/了→",
     "reading": "キミツアウ",
     "artist": "水野健治",
@@ -15874,7 +15938,7 @@
   {
     "id": "2702",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "イルミネーション",
     "reading": "イルミネウシヨン",
     "artist": "曲：央海加亥／歌：柏木 咲姫(CV：石見 舞菜香)",
@@ -16514,7 +16578,7 @@
   {
     "id": "2703",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Ai C",
     "reading": "AIC",
     "artist": "Feryquitous",
@@ -22482,7 +22546,7 @@
   {
     "id": "2712",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Theatore Creatore",
     "reading": "THEATORECREATORE",
     "artist": "Toby Fox & かめりあ",
@@ -22490,7 +22554,7 @@
     "lev_adv": "9+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "lev_ult": "",
+    "lev_ult": "15",
     "we_kanji": "",
     "we_star": "",
     "image": "49afe239be6b0c81.jpg"
@@ -22498,7 +22562,7 @@
   {
     "id": "2706",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ドリームケッチャー",
     "reading": "トリウムケツチヤウ",
     "artist": "OUTLOUD feat.NG。",
@@ -22514,7 +22578,7 @@
   {
     "id": "2707",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ラブリージャッジメント",
     "reading": "ラフリウシヤツシメント",
     "artist": "いるかアイス feat.ちょこ",
@@ -22530,7 +22594,7 @@
   {
     "id": "2708",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "房総★ミラクル☆てんたくる!?",
     "reading": "ホウソウミラクルテンタクル",
     "artist": "MOSAIC.WAV",
@@ -22546,7 +22610,7 @@
   {
     "id": "2709",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Crystallize",
     "reading": "CRYSTALIZE",
     "artist": "Lime",
@@ -22562,7 +22626,7 @@
   {
     "id": "2710",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Oracle",
     "reading": "ORACLE",
     "artist": "DJ Noriken",
@@ -22578,7 +22642,7 @@
   {
     "id": "2711",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "The Devil Incarnate",
     "reading": "THEDEVILINCARNATE",
     "artist": "Laur",
@@ -22594,7 +22658,7 @@
   {
     "id": "2705",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "メッちゅう殴打",
     "reading": "メツチユウオウタ",
     "artist": "STEAKA feat.山田じぇみ子",
@@ -22610,7 +22674,7 @@
   {
     "id": "8292",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ジングルベル",
     "reading": "シンクルヘル",
     "artist": "SEGA Sound Unit[H.]",
@@ -22626,7 +22690,7 @@
   {
     "id": "8293",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "花と、雪と、ドラムンベース。",
     "reading": "ハナトユキトトラムンヘウス",
     "artist": "kanone feat. せんざい",
@@ -22642,7 +22706,7 @@
   {
     "id": "8294",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Ever green Never end",
     "reading": "EVERGREENNEVEREND",
     "artist": "月鈴 白奈(CV:高野 麻里佳)",
