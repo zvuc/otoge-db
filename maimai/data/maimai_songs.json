@@ -17587,6 +17587,22 @@
     "version": "25009"
   },
   {
+    "artist": "SIINCA",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "14",
+    "image_url": "2e4769fb4445584c.png",
+    "key": "○",
+    "release": "241220",
+    "sort": "827",
+    "title": "有明/Ariake",
+    "title_kana": "アリアケARIAKE",
+    "version": "25009"
+  },
+  {
     "artist": "Yooh",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "6",
