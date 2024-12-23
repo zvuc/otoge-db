@@ -63,6 +63,11 @@ def update_const_data():
     for song in target_song_list:
         _update_song_const_data(song)
 
+        # Sort the song dictionary before saving
+        sorted_song = sort_dict_keys(song)
+        song.clear()  # Clear the original song dictionary
+        song.update(sorted_song)
+
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 

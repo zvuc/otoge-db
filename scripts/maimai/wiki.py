@@ -56,6 +56,11 @@ def update_songs_extra_data():
     for song in target_song_list:
         update_song_wiki_data(song, total_diffs)
 
+        # Sort the song dictionary before saving
+        sorted_song = sort_dict_keys(song)
+        song.clear()  # Clear the original song dictionary
+        song.update(sorted_song)
+
         # time.sleep(random.randint(1,2))
 
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
