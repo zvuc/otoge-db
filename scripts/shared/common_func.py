@@ -540,3 +540,19 @@ def evaluate_lv_num(lv, expression):
     # Compare the stripped number with the threshold using the specified operator
     return operators_dict[operator](int(lv), threshold)
 
+
+def sort_dict_keys(input_dict):
+    """
+    Sorts the keys of a dictionary according to the order specified in the KEY_ORDER global variable.
+
+    Args:
+        input_dict (dict): The dictionary to sort.
+
+    Returns:
+        dict: A new dictionary with keys sorted as per KEY_ORDER.
+    """
+
+    # Sort the keys based on their index in KEY_ORDER; keys not in KEY_ORDER are appended at the end
+    sorted_keys = sorted(input_dict.keys(), key=lambda k: game.KEY_ORDER.index(k) if k in game.KEY_ORDER else float('inf'))
+
+    return {key: input_dict[key] for key in sorted_keys}
