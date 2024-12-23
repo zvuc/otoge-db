@@ -190,6 +190,17 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
 
         chart_key += "_i"
 
+        # If lev_xxx_i doesn't exist yet, create it:
+        if chart_key not in song:
+            total_diffs[0] += 1
+
+            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+            print_message(f"Added chart constant ({chart_key}: {chart_const})", bcolors.OKGREEN, log=True)
+
+            song[chart_key] = str(chart_const)
+
+            return True
+
         # If existing chart const is empty
         if song[chart_key] == "":
             total_diffs[0] += 1
