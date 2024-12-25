@@ -17559,7 +17559,6 @@
   {
     "artist": "164 feat.ELISA・小林太郎",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
@@ -17574,7 +17573,6 @@
   {
     "artist": "せきこみごはん",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "11",
@@ -17589,7 +17587,6 @@
   {
     "artist": "SIINCA",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
@@ -17985,6 +17982,21 @@
     "title": "On your mark (104期 Ver.)",
     "title_kana": "ONYOURMARK104キVER",
     "version": "25008"
+  },
+  {
+    "artist": "aran & Kobaryo",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "13+",
+    "image_url": "daaa34a941775307.png",
+    "release": "241224",
+    "sort": "595",
+    "title": "はげしこの夜 -Psylent Crazy Night-",
+    "title_kana": "ハケシコノヨルPSYLENTCRAZYNIGHT",
+    "version": "25010"
   },
   {
     "artist": "OSTER project",
@@ -18533,6 +18545,19 @@
     "title": "[奏]アンビバレンス",
     "title_kana": "アンヒハレンス",
     "version": "25000"
+  },
+  {
+    "artist": "Hommarju",
+    "catcode": "宴会場",
+    "lev_utage": "14?",
+    "kanji": "爆",
+    "comment": "爆発は好きか！？",
+    "image_url": "fd30be82f708758f.png",
+    "release": "241224",
+    "sort": "1320",
+    "title": "[爆]Love's Theme of BADASS ～バッド・アス 愛のテーマ～",
+    "title_kana": "LOVESTHEMEOFBADASSハツトアスアイノテエマ",
+    "version": "25009"
   },
   {
     "artist": "HIMEHINA",
