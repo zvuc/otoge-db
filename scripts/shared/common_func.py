@@ -86,7 +86,7 @@ def print_message(message, color_name='', args=None, log=False, is_verbose=False
         message = message.replace("\\", "\\\\").replace("\"", "\\\"").replace("'", r"\'")
 
     # is header
-    if color_name == 'HEADER' or color_name == 'H2':
+    if color_name == 'HEADER' or color_name == 'H2' or color_name == 'H3':
         print_color_name = bcolors.BOLD + bcolors.HEADER
 
     if args.nocolors:
@@ -96,6 +96,9 @@ def print_message(message, color_name='', args=None, log=False, is_verbose=False
     if args.markdown:
         if color_name == 'H2':
             print_color_name = '## '
+            reset_color = ''
+        if color_name == 'H3':
+            print_color_name = '### '
             reset_color = ''
         if color_name == 'HEADER':
             print_color_name = '**'
@@ -170,6 +173,7 @@ def renew_lastupdated(local_json_ex_path, dest_html_path):
         local_music_data = json.load(f)
 
     latest_date = get_last_date(local_music_data)
+    print_message(f"", '')
     print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '')
 
     with open(dest_html_path, 'r', encoding='utf-8') as f:
@@ -373,7 +377,7 @@ def print_keys_change(song, old_song, song_diffs):
         if song[new_tag_key] != old_song[new_tag_key]:
             lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
-            print_message(f"- (New marker removed)", bcolors.ENDC)
+            print_message(f"- New marker removed", bcolors.OKBLUE)
             any_changes = True
 
     for key in game.OTHER_KEYS:

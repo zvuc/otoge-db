@@ -80,16 +80,29 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_data, f)
 
+    if game.ARGS.markdown:
+        print_message(f"Newly added songs", 'H3')
+        print_message(f"|Jacket|Song|")
+        print_message(f"|--|--|")
+
     # added_songs
     for song in added_songs:
         song_diffs = [0]
         song_hash = generate_hash_from_keys(song)
-        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-        print_message(f"- New song added", bcolors.OKGREEN)
         _download_song_jacket(song)
         _add_song_data_to_ex_data(song, local_music_ex_data)
 
+        if game.ARGS.markdown:
+            print_message(f"|<img src=\"../blob/master/maimai/jacket/{song['image_url']}?raw=true\" width=\"120\">|*{song['title']}*<br>{song['artist']}|")
+        else:
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+            print_message(f"- New song added", bcolors.OKGREEN)
+
         _record_diffs(song, song_hash, 'new')
+
+
+    if game.ARGS.markdown:
+        print_message(f"Updated Songs", 'H3')
 
     # Iterate through updated songs
     # For the list of updated songs, go through each of them in older song list
@@ -204,6 +217,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
             local_music_ex_deleted_data = []
             with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
                 json.dump(local_music_ex_deleted_data, f)
+
+        if game.ARGS.markdown:
+            print_message(f"Removed Songs", 'H3')
 
         # removed_songs
         for song in removed_songs:
