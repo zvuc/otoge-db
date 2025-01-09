@@ -101,7 +101,7 @@ jobs:
             gh pr create \
               -B ${{ github.ref_name }} \
               -H "ongeki-staging" \
-              --title "[Automation] Ongeki: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+              --title "[Automation] Ongeki: Add new songs (${{ steps.extract_date.outputs.DATESTAMP }})" \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           fi
         env:

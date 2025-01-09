@@ -91,7 +91,7 @@ jobs:
             gh pr create \
               -B ${{ github.ref_name }} \
               -H "chunithm-staging" \
-              --title "[Automation] Chunithm: Update website with updated song data (all songs)" \
+              --title "[Automation] CHUNITHM: Update website with updated song data (all songs)" \
               --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
           fi
         env:
