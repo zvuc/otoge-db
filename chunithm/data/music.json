@@ -2192,6 +2192,54 @@
     "image": "d5a47266b4fe0bfe.jpg"
   },
   {
+    "id": "2735",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "あいのうた",
+    "reading": "アイノウタ",
+    "artist": "大漠波新",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "04f5fbb6daf6557b.jpg"
+  },
+  {
+    "id": "2736",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "夜もすがら君想ふ (10th Anniv.)",
+    "reading": "ヨモスカラキミオモフ10THANNIV",
+    "artist": "TOKOTOKO（西沢さんP）",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f35c683e83322581.jpg"
+  },
+  {
+    "id": "2737",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "ジェヘナ",
+    "reading": "シエヘナ",
+    "artist": "wotaku",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b8f84161d82f18d6.jpg"
+  },
+  {
     "id": "2689",
     "catname": "niconico",
     "newflag": "0",
@@ -9730,7 +9778,7 @@
   {
     "id": "2693",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "inkar-usi",
     "reading": "INKARUSI",
     "artist": "DIA「Arcaea」",
@@ -9746,7 +9794,7 @@
   {
     "id": "2694",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Tie me down gently",
     "reading": "TIEMEDOWNGENTLY",
     "artist": "溝口ゆうま feat. 大瀬良あい「Arcaea」",
@@ -9762,7 +9810,7 @@
   {
     "id": "2695",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Ringed Genesis",
     "reading": "RINGEDGENESIS",
     "artist": "Edelritter「Arcaea」",
@@ -9778,7 +9826,7 @@
   {
     "id": "2696",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Tempestissimo",
     "reading": "TEMPESTISSIMO",
     "artist": "t+pazolite「Arcaea」",
@@ -10958,6 +11006,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "b5af61d989302ad5.jpg"
+  },
+  {
+    "id": "2793",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "Not On The Sidelines - Street Fighter 6 Main Theme",
+    "reading": "NOTONTHESIDELINESSTREETFIGHTER6MAINTHEME",
+    "artist": "Rocco808,Randy Marx,GRP,寺山善也「ストリートファイター6」",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "10",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9bff0f455b7b1ba1.jpg"
   },
   {
     "id": "901",
@@ -18218,7 +18282,7 @@
     "lev_adv": "7+",
     "lev_exp": "12",
     "lev_mas": "14",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "1ab2b7720caa1c34.jpg"
@@ -22670,6 +22734,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "b94fbe07d3be13b2.jpg"
+  },
+  {
+    "id": "2722",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "激烈!!!!ファミレスガールは帰しま1000!!!!",
+    "reading": "ケキレツフアミレスカウルハカエシマ1000",
+    "artist": "南ノ南 feat.9Lana",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "13",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "51eef3deb8f107e2.jpg"
   },
   {
     "id": "8292",
