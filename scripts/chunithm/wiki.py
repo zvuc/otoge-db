@@ -352,6 +352,11 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_constant_designer_span_text)
                 match_other = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(.*?)】',chart_constant_designer_span_text)
 
+                if match is None:
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message(f"Warning - No designer/constant info found", bcolors.WARNING, log=True, is_verbose=True)
+                    break
+
                 if re.match(r'\d{2}\.\d', match.group(3)) is not None:
                     chart_constants_text = match.group()
                     chart_constants_dict = _construct_constant_designer_dict(song, chart_constants_text, 'i')
@@ -372,7 +377,12 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             if '譜面作者【' in chart_constant_designer_span_text:
                 match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(.*?)】',chart_constant_designer_span_text)
 
-                if match is not None and re.match(r'\d{2}\.\d', match.group(3)) is None:
+                if match is None:
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message(f"Warning - No designer/constant info found", bcolors.WARNING, log=True, is_verbose=True)
+                    break
+
+                if re.match(r'\d{2}\.\d', match.group(3)) is None:
                     chart_designers_text = chart_constant_designer_span_text
                     chart_designers_dict = _construct_constant_designer_dict(song, chart_designers_text, 'designer')
                 elif match is None and song['we_kanji']:
@@ -387,6 +397,11 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             if '譜面定数【' in chart_constant_designer_span_text:
                 # match = re.search(r'【(.*?)】', chart_constant_designer_span_text).group(1)
                 match = re.search(r'【(ULT|BAS|ADV|EXP|MAS)(…|[.]{3})(\d{2}\.\d)(.*)】',chart_constant_designer_span_text)
+
+                if match is None:
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message(f"Warning - No designer/constant info found", bcolors.WARNING, log=True, is_verbose=True)
+                    break
 
                 if re.match(r'\d{2}\.\d', match.group(3)) is not None:
                     chart_constants_text = chart_constant_designer_span_text
