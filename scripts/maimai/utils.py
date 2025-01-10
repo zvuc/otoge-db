@@ -93,7 +93,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         _add_song_data_to_ex_data(song, local_music_ex_data)
 
         if game.ARGS.markdown:
-            print_message(f"|<img src=\"../blob/master/maimai/jacket/{song['image_url']}?raw=true\" width=\"120\">|*{song['title']}*<br>{song['artist']}|")
+            print_message(f"|<img src=\"../blob/maimai-staging/maimai/jacket/{song['image_url']}?raw=true\" width=\"120\">|**{song['title']}**<br>{song['artist']}|")
         else:
             lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
             print_message(f"- New song added", bcolors.OKGREEN)
@@ -259,11 +259,11 @@ def _download_song_jacket(song):
                 # file.write(response.content)
                 shutil.copyfileobj(response.raw, file)
 
-            print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, log=True)
+            print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, log=True, is_verbose=True)
         else:
-            print_message(f"- Failed to download image. Status code: {response.status_code}", bcolors.FAIL, log=True)
+            print_message(f"- Failed to download image. Status code: {response.status_code}", bcolors.FAIL, log=True, is_verbose=True)
     except Exception as e:
-        print_message(f"- Could not download: {e}", bcolors.FAIL, log=True)
+        print_message(f"- Could not download: {e}", bcolors.FAIL, log=True, is_verbose=True)
 
 def _record_diffs(song, song_hash, diff_type):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
