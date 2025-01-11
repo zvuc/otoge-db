@@ -11817,6 +11817,7 @@
     "lev_bas_notes_hold": "4",
     "lev_bas_notes_slide": "5",
     "lev_bas_notes_break": "4",
+    "lev_adv_i": "8.8",
     "lev_adv_notes": "321",
     "lev_adv_notes_tap": "306",
     "lev_adv_notes_hold": "6",
@@ -12601,7 +12602,8 @@
     "dx_lev_mas_notes_break": "39",
     "dx_lev_mas_designer": "はっぴー",
     "date_intl_added": "20151209",
-    "date_intl_updated": "20240118"
+    "date_intl_updated": "20240118",
+    "dx_lev_adv_i": "8.0"
   },
   {
     "sort": "418",
@@ -27489,7 +27491,8 @@
     "dx_lev_mas_notes_break": "88",
     "dx_lev_mas_designer": "-ZONE- SaFaRi",
     "date_intl_added": "20211210",
-    "date_intl_updated": "20230302"
+    "date_intl_updated": "20230302",
+    "dx_lev_adv_i": "8.5"
   },
   {
     "sort": "850",
@@ -38782,7 +38785,8 @@
     "dx_lev_mas_notes_touch": "110",
     "dx_lev_mas_notes_break": "46",
     "dx_lev_mas_designer": "ぴちネコ",
-    "date_intl_added": "20210730"
+    "date_intl_added": "20210730",
+    "dx_lev_adv_i": "8.2"
   },
   {
     "sort": "1236",
@@ -39064,7 +39068,8 @@
     "dx_lev_mas_notes_touch": "126",
     "dx_lev_mas_notes_break": "99",
     "dx_lev_mas_designer": "シチミヘルツ",
-    "date_intl_added": "20220303"
+    "date_intl_added": "20220303",
+    "dx_lev_adv_i": "9.0"
   },
   {
     "sort": "1107",
@@ -42865,7 +42870,8 @@
     "dx_lev_mas_notes_touch": "49",
     "dx_lev_mas_notes_break": "24",
     "dx_lev_mas_designer": "じゃこレモン",
-    "date_intl_added": "20221209"
+    "date_intl_added": "20221209",
+    "dx_lev_adv_i": "7.7"
   },
   {
     "sort": "1295",
@@ -44762,7 +44768,8 @@
     "dx_lev_mas_notes_touch": "21",
     "dx_lev_mas_notes_break": "69",
     "dx_lev_mas_designer": "はっぴー",
-    "date_intl_added": "20221223"
+    "date_intl_added": "20221223",
+    "dx_lev_adv_i": "7.7"
   },
   {
     "sort": "268",
@@ -46844,7 +46851,7 @@
     "dx_lev_adv_notes_slide": "6",
     "dx_lev_adv_notes_touch": "13",
     "dx_lev_adv_notes_break": "2",
-    "dx_lev_exp_i": "",
+    "dx_lev_exp_i": "9.5",
     "dx_lev_exp_notes": "335",
     "dx_lev_exp_notes_tap": "272",
     "dx_lev_exp_notes_hold": "29",
@@ -49399,7 +49406,8 @@
     "dx_lev_mas_notes_touch": "53",
     "dx_lev_mas_notes_break": "74",
     "dx_lev_mas_designer": "Luxizhel",
-    "date_intl_added": "20231222"
+    "date_intl_added": "20231222",
+    "dx_lev_adv_i": "7.7"
   },
   {
     "sort": "1227",
@@ -49446,7 +49454,8 @@
     "dx_lev_mas_notes_touch": "56",
     "dx_lev_mas_notes_break": "99",
     "dx_lev_mas_designer": "譜面ボーイズからの挑戦状",
-    "date_intl_added": "20231222"
+    "date_intl_added": "20231222",
+    "dx_lev_adv_i": "8.0"
   },
   {
     "sort": "37",
@@ -50507,7 +50516,8 @@
     "dx_lev_mas_notes_touch": "50",
     "dx_lev_mas_notes_break": "81",
     "dx_lev_mas_designer": "Jack",
-    "date_intl_added": "20230721"
+    "date_intl_added": "20230721",
+    "dx_lev_adv_i": "8.8"
   },
   {
     "sort": "28",
@@ -53083,7 +53093,8 @@
     "dx_lev_mas_notes_touch": "62",
     "dx_lev_mas_notes_break": "68",
     "dx_lev_mas_designer": "はっぴー",
-    "date_intl_added": "20240216"
+    "date_intl_added": "20240216",
+    "dx_lev_adv_i": "8.0"
   },
   {
     "sort": "22",
@@ -56659,7 +56670,7 @@
     "dx_lev_bas_notes_slide": "6",
     "dx_lev_bas_notes_touch": "20",
     "dx_lev_bas_notes_break": "6",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.8",
     "dx_lev_adv_notes": "389",
     "dx_lev_adv_notes_tap": "303",
     "dx_lev_adv_notes_hold": "42",
@@ -61420,7 +61431,7 @@
     "dx_lev_bas_notes_slide": "",
     "dx_lev_bas_notes_touch": "",
     "dx_lev_bas_notes_break": "",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.5",
     "dx_lev_adv_notes": "",
     "dx_lev_adv_notes_tap": "",
     "dx_lev_adv_notes_hold": "",
@@ -61620,7 +61631,7 @@
     "dx_lev_bas_notes_slide": "",
     "dx_lev_bas_notes_touch": "",
     "dx_lev_bas_notes_break": "",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.5",
     "dx_lev_adv_notes": "",
     "dx_lev_adv_notes_tap": "",
     "dx_lev_adv_notes_hold": "",
@@ -62004,7 +62015,7 @@
     "dx_lev_adv_notes_slide": "",
     "dx_lev_adv_notes_touch": "",
     "dx_lev_adv_notes_break": "",
-    "dx_lev_exp_i": "",
+    "dx_lev_exp_i": "12.4",
     "dx_lev_exp_notes": "",
     "dx_lev_exp_notes_tap": "",
     "dx_lev_exp_notes_hold": "",
@@ -62105,7 +62116,7 @@
     "dx_lev_adv_notes_slide": "",
     "dx_lev_adv_notes_touch": "",
     "dx_lev_adv_notes_break": "",
-    "dx_lev_exp_i": "",
+    "dx_lev_exp_i": "11.2",
     "dx_lev_exp_notes": "",
     "dx_lev_exp_notes_tap": "",
     "dx_lev_exp_notes_hold": "",
