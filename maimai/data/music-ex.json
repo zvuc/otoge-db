@@ -11485,7 +11485,8 @@
     "intl": "1",
     "date_added": "20140918",
     "date_updated": "20240912",
-    "date_intl_added": "20140918"
+    "date_intl_added": "20140918",
+    "date_intl_updated": "20250116"
   },
   {
     "sort": "753",
@@ -59293,9 +59294,9 @@
     "dx_lev_mas_notes_touch": "28",
     "dx_lev_mas_designer": "サファ太 respects for 小鳥遊さん",
     "wiki_url": "https://gamerch.com/maimai/entry/873009",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59343,9 +59344,9 @@
     "dx_lev_mas_notes_touch": "38",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/872604",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59393,9 +59394,9 @@
     "dx_lev_mas_notes_touch": "30",
     "dx_lev_mas_designer": "じゃこレモン",
     "wiki_url": "https://gamerch.com/maimai/entry/871881",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59443,10 +59444,11 @@
     "dx_lev_mas_notes_touch": "124",
     "dx_lev_mas_designer": "カマボコ君",
     "wiki_url": "https://gamerch.com/maimai/entry/873014",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59503,9 +59505,9 @@
     "dx_lev_remas_notes_touch": "8",
     "dx_lev_remas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/entry/872603",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59528,9 +59530,9 @@
     "kanji": "協",
     "comment": "一緒にデスコ",
     "wiki_url": "https://gamerch.com/maimai/entry/533812",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "lev_utage_notes_touch": "20"
   },
   {
@@ -59548,9 +59550,9 @@
     "kanji": "奏",
     "comment": "アンビバレンスな私なの",
     "wiki_url": "https://gamerch.com/maimai/entry/534147",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "buddy": "○",
     "lev_utage_left_notes": "1768",
     "lev_utage_left_notes_tap": "558",
@@ -59610,9 +59612,9 @@
     "dx_lev_mas_notes_touch": "22",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/entry/872891",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59660,9 +59662,9 @@
     "dx_lev_mas_notes_touch": "162",
     "dx_lev_mas_designer": "ぴちネコ",
     "wiki_url": "https://gamerch.com/maimai/entry/872607",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59710,9 +59712,9 @@
     "dx_lev_mas_notes_touch": "81",
     "dx_lev_mas_designer": "みそかつ侍",
     "wiki_url": "https://gamerch.com/maimai/entry/873010",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59780,9 +59782,9 @@
     "kanji": "回",
     "comment": "今から振り回しますので離れていてください",
     "wiki_url": "https://gamerch.com/maimai/entry/534410",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "buddy": "○",
     "lev_utage_left_notes": "1306",
     "lev_utage_left_notes_tap": "557",
@@ -59817,9 +59819,9 @@
     "kanji": "習",
     "comment": "ウミユリ練習譚",
     "wiki_url": "https://gamerch.com/maimai/entry/533675",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "lev_utage_notes_touch": "0"
   },
   {
@@ -59867,10 +59869,11 @@
     "dx_lev_mas_notes_touch": "72",
     "dx_lev_mas_designer": "あまくちジンジャー",
     "wiki_url": "https://gamerch.com/maimai/entry/873012",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -59927,9 +59930,9 @@
     "dx_lev_remas_notes_touch": "146",
     "dx_lev_remas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/871880",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -60036,9 +60039,9 @@
     "dx_lev_mas_notes_touch": "46",
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/entry/871315",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -60086,10 +60089,11 @@
     "dx_lev_mas_notes_touch": "73",
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/873016",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -60137,9 +60141,10 @@
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_designer": "サファ太 ＆ 鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/873017",
-    "intl": "0",
+    "intl": "1",
+    "key_intl": "○",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -60157,9 +60162,9 @@
     "kanji": "奏",
     "comment": "知ってた？元祖デュエット譜面",
     "wiki_url": "https://gamerch.com/maimai/entry/533804",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "buddy": "○",
     "lev_utage_left_notes": "1421",
     "lev_utage_left_notes_tap": "516",
@@ -60219,9 +60224,9 @@
     "dx_lev_mas_notes_touch": "168",
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/872602",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -60269,9 +60274,9 @@
     "dx_lev_mas_notes_touch": "37",
     "dx_lev_mas_designer": "ロシェ@ペンギン",
     "wiki_url": "https://gamerch.com/maimai/entry/872605",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -60319,10 +60324,10 @@
     "dx_lev_mas_notes_touch": "50",
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/871421",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
     "date_added": "20240912",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -62027,10 +62032,11 @@
     "dx_lev_mas_notes_touch": "87",
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/896879",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20250110",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -62078,9 +62084,9 @@
     "dx_lev_mas_notes_touch": "10",
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/896874",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250110",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -62128,10 +62134,11 @@
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_designer": "",
     "wiki_url": "https://gamerch.com/maimai/896875",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20250110",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   },
   {
@@ -62179,9 +62186,9 @@
     "dx_lev_mas_notes_touch": "37",
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/896873",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250110",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250116",
     "date": "NEW"
   }
 ]
