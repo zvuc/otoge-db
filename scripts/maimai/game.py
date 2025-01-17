@@ -70,7 +70,7 @@ KEY_ORDER = [
     "dx_lev_adv",
     "dx_lev_exp",
     "dx_lev_mas",
-    "dx_lev_remas"
+    "dx_lev_remas",
     "lev_bas_i",
     "lev_bas_notes",
     "lev_bas_notes_tap",
@@ -101,6 +101,7 @@ KEY_ORDER = [
     "lev_mas_notes_break",
     "lev_mas_notes_touch",
     "lev_mas_designer",
+    "lev_remas_i",
     "lev_remas_notes",
     "lev_remas_notes_tap",
     "lev_remas_notes_hold",
@@ -138,6 +139,7 @@ KEY_ORDER = [
     "dx_lev_mas_notes_break",
     "dx_lev_mas_notes_touch",
     "dx_lev_mas_designer",
+    "dx_lev_remas_i",
     "dx_lev_remas_notes",
     "dx_lev_remas_notes_tap",
     "dx_lev_remas_notes_hold",
@@ -159,6 +161,6 @@ KEY_ORDER = [
     "key_intl",
     "date_added",
     "date_updated",
-    "date_intl_added"
+    "date_intl_added",
     "date_intl_updated"
 ]
