@@ -37,7 +37,7 @@ def load_new_song_data():
         local_music_data = json.load(f)
         local_music_map = json_to_hash_value_map(local_music_data, *HASH_KEYS)
 
-    old_local_music_data = local_music_data
+    old_local_music_data = copy.deepcopy(local_music_data)
 
     server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
     server_music_map = json_to_hash_value_map(server_music_data, *HASH_KEYS)
