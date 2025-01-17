@@ -124,6 +124,7 @@
     "lev_mas_notes_slide": "33",
     "lev_mas_notes_break": "9",
     "lev_mas_designer": "譜面-100号",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "496",
     "lev_remas_notes_tap": "238",
     "lev_remas_notes_hold": "4",
@@ -134,7 +135,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20150813",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20120711",
     "date_intl_updated": "20150813"
   },
@@ -220,6 +220,7 @@
     "lev_mas_notes_slide": "17",
     "lev_mas_notes_break": "7",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.8",
     "lev_remas_notes": "880",
     "lev_remas_notes_tap": "768",
     "lev_remas_notes_hold": "0",
@@ -230,7 +231,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20171205",
-    "lev_remas_i": "14.8",
     "date_intl_added": "20120711",
     "date_intl_updated": "20171205"
   },
@@ -273,6 +273,7 @@
     "lev_mas_notes_slide": "39",
     "lev_mas_notes_break": "6",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "555",
     "lev_remas_notes_tap": "341",
     "lev_remas_notes_hold": "89",
@@ -283,7 +284,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20171205",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20120711",
     "date_intl_updated": "20171205"
   },
@@ -326,6 +326,7 @@
     "lev_mas_notes_slide": "16",
     "lev_mas_notes_break": "11",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.0",
     "lev_remas_notes": "535",
     "lev_remas_notes_tap": "381",
     "lev_remas_notes_hold": "72",
@@ -336,7 +337,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20171205",
-    "lev_remas_i": "14.0",
     "date_intl_added": "20120711",
     "date_intl_updated": "20171205"
   },
@@ -836,6 +836,7 @@
     "lev_mas_notes_slide": "50",
     "lev_mas_notes_break": "21",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.6",
     "lev_remas_notes": "722",
     "lev_remas_notes_tap": "512",
     "lev_remas_notes_hold": "16",
@@ -846,7 +847,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20220711",
-    "lev_remas_i": "14.6",
     "date_intl_added": "20120711",
     "date_intl_updated": "20220728"
   },
@@ -975,6 +975,7 @@
     "lev_mas_notes_slide": "75",
     "lev_mas_notes_break": "12",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "540",
     "lev_remas_notes_tap": "383",
     "lev_remas_notes_hold": "49",
@@ -985,7 +986,6 @@
     "intl": "1",
     "date_added": "20130509",
     "date_updated": "20190621",
-    "lev_remas_i": "13.4",
     "date_intl_added": "20130509",
     "date_intl_updated": "20190621"
   },
@@ -1028,6 +1028,7 @@
     "lev_mas_notes_slide": "12",
     "lev_mas_notes_break": "15",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.2",
     "lev_remas_notes": "777",
     "lev_remas_notes_tap": "595",
     "lev_remas_notes_hold": "42",
@@ -1038,7 +1039,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20171205",
-    "lev_remas_i": "14.2",
     "date_intl_added": "20120711",
     "date_intl_updated": "20171205"
   },
@@ -1081,6 +1081,7 @@
     "lev_mas_notes_slide": "45",
     "lev_mas_notes_break": "8",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.1",
     "lev_remas_notes": "473",
     "lev_remas_notes_tap": "329",
     "lev_remas_notes_hold": "31",
@@ -1091,7 +1092,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20160811",
-    "lev_remas_i": "13.1",
     "date_intl_added": "20120711",
     "date_intl_updated": "20160811"
   },
@@ -1220,6 +1220,7 @@
     "lev_mas_notes_slide": "33",
     "lev_mas_notes_break": "4",
     "lev_mas_designer": "maimai TEAM",
+    "lev_remas_i": "12.5",
     "lev_remas_notes": "358",
     "lev_remas_notes_tap": "208",
     "lev_remas_notes_hold": "28",
@@ -1230,7 +1231,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20170711",
-    "lev_remas_i": "12.5",
     "date_intl_added": "20120711",
     "date_intl_updated": "20170711"
   },
@@ -1273,6 +1273,7 @@
     "lev_mas_notes_slide": "20",
     "lev_mas_notes_break": "28",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "636",
     "lev_remas_notes_tap": "461",
     "lev_remas_notes_hold": "62",
@@ -1283,7 +1284,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20150813",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20120711",
     "date_intl_updated": "20150813"
   },
@@ -1459,6 +1459,7 @@
     "lev_mas_notes_slide": "37",
     "lev_mas_notes_break": "20",
     "lev_mas_designer": "チャン@DP皆伝",
+    "lev_remas_i": "14.2",
     "lev_remas_notes": "737",
     "lev_remas_notes_tap": "450",
     "lev_remas_notes_hold": "63",
@@ -1497,7 +1498,6 @@
     "intl": "1",
     "date_added": "20121125",
     "date_updated": "20221223",
-    "lev_remas_i": "14.2",
     "date_intl_added": "20121125",
     "date_intl_updated": "20231222"
   },
@@ -1540,6 +1540,7 @@
     "lev_mas_notes_slide": "17",
     "lev_mas_notes_break": "8",
     "lev_mas_designer": "譜面-100号",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "571",
     "lev_remas_notes_tap": "395",
     "lev_remas_notes_hold": "26",
@@ -1550,7 +1551,6 @@
     "intl": "1",
     "date_added": "20120711",
     "date_updated": "20150514",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20120711",
     "date_intl_updated": "20150514"
   },
@@ -1851,6 +1851,7 @@
     "lev_mas_notes_slide": "35",
     "lev_mas_notes_break": "29",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "589",
     "lev_remas_notes_tap": "428",
     "lev_remas_notes_hold": "8",
@@ -1860,7 +1861,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534301",
     "intl": "1",
     "date_added": "20121107",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20121107"
   },
   {
@@ -1902,6 +1902,7 @@
     "lev_mas_notes_slide": "21",
     "lev_mas_notes_break": "7",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "623",
     "lev_remas_notes_tap": "414",
     "lev_remas_notes_hold": "116",
@@ -1911,7 +1912,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534115",
     "intl": "1",
     "date_added": "20121107",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20121107"
   },
   {
@@ -2082,6 +2082,7 @@
     "lev_mas_notes_slide": "73",
     "lev_mas_notes_break": "12",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.0",
     "lev_remas_notes": "546",
     "lev_remas_notes_tap": "424",
     "lev_remas_notes_hold": "17",
@@ -2092,7 +2093,6 @@
     "intl": "1",
     "date_added": "20120913",
     "date_updated": "20201023",
-    "lev_remas_i": "14.0",
     "date_intl_added": "20120913",
     "date_intl_updated": "20210423"
   },
@@ -2135,6 +2135,7 @@
     "lev_mas_notes_slide": "29",
     "lev_mas_notes_break": "16",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "473",
     "lev_remas_notes_tap": "365",
     "lev_remas_notes_hold": "35",
@@ -2145,7 +2146,6 @@
     "intl": "1",
     "date_added": "20130307",
     "date_updated": "20160908",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20130307",
     "date_intl_updated": "20160908"
   },
@@ -2317,6 +2317,7 @@
     "lev_mas_notes_slide": "16",
     "lev_mas_notes_break": "9",
     "lev_mas_designer": "譜面-100号",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "624",
     "lev_remas_notes_tap": "522",
     "lev_remas_notes_hold": "29",
@@ -2327,7 +2328,6 @@
     "intl": "1",
     "date_added": "20121213",
     "date_updated": "20160908",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20121213",
     "date_intl_updated": "20160908"
   },
@@ -2499,6 +2499,7 @@
     "lev_mas_notes_slide": "36",
     "lev_mas_notes_break": "3",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "611",
     "lev_remas_notes_tap": "475",
     "lev_remas_notes_hold": "43",
@@ -2509,7 +2510,6 @@
     "intl": "1",
     "date_added": "20130220",
     "date_updated": "20201030",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20130220",
     "date_intl_updated": "20210423"
   },
@@ -2681,6 +2681,7 @@
     "lev_mas_notes_slide": "38",
     "lev_mas_notes_break": "2",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "13.8",
     "lev_remas_notes": "901",
     "lev_remas_notes_tap": "798",
     "lev_remas_notes_hold": "22",
@@ -2691,7 +2692,6 @@
     "intl": "1",
     "date_added": "20131205",
     "date_updated": "20201023",
-    "lev_remas_i": "13.8",
     "date_intl_added": "20131205",
     "date_intl_updated": "20210423"
   },
@@ -3253,6 +3253,7 @@
     "lev_mas_notes_slide": "73",
     "lev_mas_notes_break": "13",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "13.5",
     "lev_remas_notes": "475",
     "lev_remas_notes_tap": "322",
     "lev_remas_notes_hold": "29",
@@ -3263,7 +3264,6 @@
     "intl": "1",
     "date_added": "20130314",
     "date_updated": "20231124",
-    "lev_remas_i": "13.5",
     "date_intl_added": "20130314",
     "date_intl_updated": "20240412"
   },
@@ -3349,6 +3349,7 @@
     "lev_mas_notes_slide": "51",
     "lev_mas_notes_break": "16",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.9",
     "lev_remas_notes": "608",
     "lev_remas_notes_tap": "487",
     "lev_remas_notes_hold": "25",
@@ -3359,7 +3360,6 @@
     "intl": "1",
     "date_added": "20121213",
     "date_updated": "20201023",
-    "lev_remas_i": "13.9",
     "date_intl_added": "20121213",
     "date_intl_updated": "20210423"
   },
@@ -3402,6 +3402,7 @@
     "lev_mas_notes_slide": "67",
     "lev_mas_notes_break": "9",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "387",
     "lev_remas_notes_tap": "292",
     "lev_remas_notes_hold": "23",
@@ -3412,7 +3413,6 @@
     "intl": "1",
     "date_added": "20130314",
     "date_updated": "20201030",
-    "lev_remas_i": "13.4",
     "date_intl_added": "20130314",
     "date_intl_updated": "20210423"
   },
@@ -3799,6 +3799,7 @@
     "lev_mas_notes_slide": "2",
     "lev_mas_notes_break": "2",
     "lev_mas_designer": "チャン@DP皆伝",
+    "lev_remas_i": "14.6",
     "lev_remas_notes": "655",
     "lev_remas_notes_tap": "441",
     "lev_remas_notes_hold": "19",
@@ -3809,7 +3810,6 @@
     "intl": "1",
     "date_added": "20130314",
     "date_updated": "20180724",
-    "lev_remas_i": "14.6",
     "date_intl_added": "20130314",
     "date_intl_updated": "20180724"
   },
@@ -3852,6 +3852,7 @@
     "lev_mas_notes_slide": "1",
     "lev_mas_notes_break": "15",
     "lev_mas_designer": "譜面-100号",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "492",
     "lev_remas_notes_tap": "418",
     "lev_remas_notes_hold": "20",
@@ -3862,7 +3863,6 @@
     "intl": "1",
     "date_added": "20121213",
     "date_updated": "20201023",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20121213",
     "date_intl_updated": "20210423"
   },
@@ -3909,6 +3909,7 @@
     "lev_mas_notes_slide": "40",
     "lev_mas_notes_break": "1",
     "lev_mas_designer": "はっぴー",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "389",
     "lev_remas_notes_tap": "261",
     "lev_remas_notes_hold": "38",
@@ -3947,7 +3948,6 @@
     "intl": "1",
     "date_added": "20121213",
     "date_updated": "20220701",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20121213",
     "date_intl_updated": "20221209"
   },
@@ -3994,6 +3994,7 @@
     "lev_mas_notes_slide": "40",
     "lev_mas_notes_break": "43",
     "lev_mas_designer": "譜面-100号",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "575",
     "lev_remas_notes_tap": "380",
     "lev_remas_notes_hold": "66",
@@ -4032,7 +4033,6 @@
     "intl": "1",
     "date_added": "20130318",
     "date_updated": "20190711",
-    "lev_remas_i": "13.4",
     "date_intl_added": "20191125",
     "date_intl_updated": "20191125"
   },
@@ -4247,6 +4247,7 @@
     "lev_mas_notes_slide": "77",
     "lev_mas_notes_break": "10",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "12.9",
     "lev_remas_notes": "674",
     "lev_remas_notes_tap": "527",
     "lev_remas_notes_hold": "42",
@@ -4257,7 +4258,6 @@
     "intl": "1",
     "date_added": "20130509",
     "date_updated": "20201030",
-    "lev_remas_i": "12.9",
     "date_intl_added": "20130509",
     "date_intl_updated": "20210423"
   },
@@ -5028,6 +5028,7 @@
     "lev_mas_notes_slide": "30",
     "lev_mas_notes_break": "21",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.1",
     "lev_remas_notes": "876",
     "lev_remas_notes_tap": "688",
     "lev_remas_notes_hold": "8",
@@ -5038,7 +5039,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20180605",
-    "lev_remas_i": "14.1",
     "date_intl_added": "20130711",
     "date_intl_updated": "20180605"
   },
@@ -5124,6 +5124,7 @@
     "lev_mas_notes_slide": "34",
     "lev_mas_notes_break": "36",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "698",
     "lev_remas_notes_tap": "515",
     "lev_remas_notes_hold": "34",
@@ -5134,7 +5135,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20150319",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20130711",
     "date_intl_updated": "20150319"
   },
@@ -5344,6 +5344,7 @@
     "lev_mas_notes_slide": "10",
     "lev_mas_notes_break": "56",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "14.4",
     "lev_remas_notes": "1001",
     "lev_remas_notes_tap": "893",
     "lev_remas_notes_hold": "26",
@@ -5382,7 +5383,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20230608",
-    "lev_remas_i": "14.4",
     "date_intl_added": "20130711",
     "date_intl_updated": "20231006"
   },
@@ -5898,6 +5898,7 @@
     "lev_mas_notes_slide": "76",
     "lev_mas_notes_break": "87",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.3",
     "lev_remas_notes": "752",
     "lev_remas_notes_tap": "567",
     "lev_remas_notes_hold": "20",
@@ -5908,7 +5909,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20220722",
-    "lev_remas_i": "14.3",
     "date_intl_added": "20130711",
     "date_intl_updated": "20220728"
   },
@@ -6155,6 +6155,7 @@
     "lev_mas_notes_slide": "39",
     "lev_mas_notes_break": "60",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "787",
     "lev_remas_notes_tap": "593",
     "lev_remas_notes_hold": "47",
@@ -6165,7 +6166,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20160728",
-    "lev_remas_i": "13.4",
     "date_intl_added": "20130711",
     "date_intl_updated": "20160728"
   },
@@ -6208,6 +6208,7 @@
     "lev_mas_notes_slide": "134",
     "lev_mas_notes_break": "19",
     "lev_mas_designer": "チャン@DP皆伝",
+    "lev_remas_i": "14.8",
     "lev_remas_notes": "1010",
     "lev_remas_notes_tap": "792",
     "lev_remas_notes_hold": "35",
@@ -6217,7 +6218,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533459",
     "intl": "1",
     "date_added": "20131024",
-    "lev_remas_i": "14.8",
     "date_intl_added": "20131024"
   },
   {
@@ -6766,6 +6766,7 @@
     "lev_mas_notes_slide": "128",
     "lev_mas_notes_break": "6",
     "lev_mas_designer": "合作だよ",
+    "lev_remas_i": "14.0",
     "lev_remas_notes": "753",
     "lev_remas_notes_tap": "603",
     "lev_remas_notes_hold": "15",
@@ -6776,7 +6777,6 @@
     "intl": "1",
     "date_added": "20131024",
     "date_updated": "20201105",
-    "lev_remas_i": "14.0",
     "date_intl_added": "20131024",
     "date_intl_updated": "20210423"
   },
@@ -6819,6 +6819,7 @@
     "lev_mas_notes_slide": "43",
     "lev_mas_notes_break": "49",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "14.5",
     "lev_remas_notes": "857",
     "lev_remas_notes_tap": "692",
     "lev_remas_notes_hold": "58",
@@ -6829,7 +6830,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20201023",
-    "lev_remas_i": "14.5",
     "date_intl_added": "20130711",
     "date_intl_updated": "20210423"
   },
@@ -7078,6 +7078,7 @@
     "lev_mas_notes_slide": "58",
     "lev_mas_notes_break": "27",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "615",
     "lev_remas_notes_tap": "438",
     "lev_remas_notes_hold": "50",
@@ -7088,7 +7089,6 @@
     "intl": "1",
     "date_added": "20140822",
     "date_updated": "20190621",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20140822",
     "date_intl_updated": "20190621"
   },
@@ -7131,6 +7131,7 @@
     "lev_mas_notes_slide": "41",
     "lev_mas_notes_break": "26",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "559",
     "lev_remas_notes_tap": "396",
     "lev_remas_notes_hold": "42",
@@ -7141,7 +7142,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20201030",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20130711",
     "date_intl_updated": "20210423"
   },
@@ -7261,6 +7261,7 @@
     "lev_mas_notes_slide": "30",
     "lev_mas_notes_break": "98",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "750",
     "lev_remas_notes_tap": "458",
     "lev_remas_notes_hold": "28",
@@ -7271,7 +7272,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20220922",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20130711",
     "date_intl_updated": "20230119"
   },
@@ -7400,6 +7400,7 @@
     "lev_mas_notes_slide": "19",
     "lev_mas_notes_break": "26",
     "lev_mas_designer": "某S氏",
+    "lev_remas_i": "13.8",
     "lev_remas_notes": "557",
     "lev_remas_notes_tap": "372",
     "lev_remas_notes_hold": "37",
@@ -7410,7 +7411,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20171003",
-    "lev_remas_i": "13.8",
     "date_intl_added": "20130711",
     "date_intl_updated": "20171003"
   },
@@ -7457,6 +7457,7 @@
     "lev_mas_notes_slide": "33",
     "lev_mas_notes_break": "28",
     "lev_mas_designer": "ニャイン",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "662",
     "lev_remas_notes_tap": "500",
     "lev_remas_notes_hold": "13",
@@ -7495,7 +7496,6 @@
     "intl": "1",
     "date_added": "20130711",
     "date_updated": "20190711",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20191125",
     "date_intl_updated": "20191125"
   },
@@ -7624,6 +7624,7 @@
     "lev_mas_notes_slide": "77",
     "lev_mas_notes_break": "17",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "698",
     "lev_remas_notes_tap": "572",
     "lev_remas_notes_hold": "44",
@@ -7634,7 +7635,6 @@
     "intl": "1",
     "date_added": "20130919",
     "date_updated": "20201023",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20130919",
     "date_intl_updated": "20210423"
   },
@@ -7677,6 +7677,7 @@
     "lev_mas_notes_slide": "101",
     "lev_mas_notes_break": "16",
     "lev_mas_designer": "はっぴー",
+    "lev_remas_i": "14.2",
     "lev_remas_notes": "976",
     "lev_remas_notes_tap": "811",
     "lev_remas_notes_hold": "32",
@@ -7687,7 +7688,6 @@
     "intl": "1",
     "date_added": "20130919",
     "date_updated": "20201030",
-    "lev_remas_i": "14.2",
     "date_intl_added": "20130919",
     "date_intl_updated": "20210423"
   },
@@ -7859,6 +7859,7 @@
     "lev_mas_notes_slide": "89",
     "lev_mas_notes_break": "3",
     "lev_mas_designer": "はっぴー",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "596",
     "lev_remas_notes_tap": "395",
     "lev_remas_notes_hold": "34",
@@ -7869,7 +7870,6 @@
     "intl": "1",
     "date_added": "20130807",
     "date_updated": "20161103",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20130807",
     "date_intl_updated": "20161103"
   },
@@ -7912,6 +7912,7 @@
     "lev_mas_notes_slide": "37",
     "lev_mas_notes_break": "7",
     "lev_mas_designer": "某S氏",
+    "lev_remas_i": "12.6",
     "lev_remas_notes": "495",
     "lev_remas_notes_tap": "375",
     "lev_remas_notes_hold": "24",
@@ -7922,7 +7923,6 @@
     "intl": "1",
     "date_added": "20130807",
     "date_updated": "20161103",
-    "lev_remas_i": "12.6",
     "date_intl_added": "20130807",
     "date_intl_updated": "20161103"
   },
@@ -8307,6 +8307,7 @@
     "lev_mas_notes_slide": "42",
     "lev_mas_notes_break": "27",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "12.8",
     "lev_remas_notes": "567",
     "lev_remas_notes_tap": "485",
     "lev_remas_notes_hold": "10",
@@ -8317,7 +8318,6 @@
     "intl": "1",
     "date_added": "20140717",
     "date_updated": "20160908",
-    "lev_remas_i": "12.8",
     "date_intl_added": "20140717",
     "date_intl_updated": "20160908"
   },
@@ -8694,6 +8694,7 @@
     "lev_mas_notes_slide": "58",
     "lev_mas_notes_break": "12",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "484",
     "lev_remas_notes_tap": "229",
     "lev_remas_notes_hold": "0",
@@ -8704,7 +8705,6 @@
     "intl": "1",
     "date_added": "20140918",
     "date_updated": "20151112",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20140918",
     "date_intl_updated": "20151112"
   },
@@ -8747,6 +8747,7 @@
     "lev_mas_notes_slide": "76",
     "lev_mas_notes_break": "10",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "512",
     "lev_remas_notes_tap": "375",
     "lev_remas_notes_hold": "17",
@@ -8757,7 +8758,6 @@
     "intl": "1",
     "date_added": "20140918",
     "date_updated": "20160204",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20140918",
     "date_intl_updated": "20160204"
   },
@@ -8886,6 +8886,7 @@
     "lev_mas_notes_slide": "68",
     "lev_mas_notes_break": "24",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "14.2",
     "lev_remas_notes": "946",
     "lev_remas_notes_tap": "723",
     "lev_remas_notes_hold": "50",
@@ -8895,7 +8896,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533553",
     "intl": "1",
     "date_added": "20150319",
-    "lev_remas_i": "14.2",
     "date_intl_added": "20150319"
   },
   {
@@ -8983,6 +8983,7 @@
     "lev_mas_notes_slide": "110",
     "lev_mas_notes_break": "25",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "14.0",
     "lev_remas_notes": "904",
     "lev_remas_notes_tap": "712",
     "lev_remas_notes_hold": "21",
@@ -9021,7 +9022,6 @@
     "intl": "1",
     "date_added": "20140515",
     "date_updated": "20190711",
-    "lev_remas_i": "14.0",
     "date_intl_added": "20191125",
     "date_intl_updated": "20191125"
   },
@@ -9313,6 +9313,7 @@
     "lev_mas_notes_slide": "72",
     "lev_mas_notes_break": "9",
     "lev_mas_designer": "某S氏",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "444",
     "lev_remas_notes_tap": "204",
     "lev_remas_notes_hold": "130",
@@ -9323,7 +9324,6 @@
     "intl": "1",
     "date_added": "20140515",
     "date_updated": "20151112",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20140515",
     "date_intl_updated": "20151112"
   },
@@ -9409,6 +9409,7 @@
     "lev_mas_notes_slide": "146",
     "lev_mas_notes_break": "10",
     "lev_mas_designer": "rioN",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "853",
     "lev_remas_notes_tap": "654",
     "lev_remas_notes_hold": "0",
@@ -9419,7 +9420,6 @@
     "intl": "1",
     "date_added": "20150319",
     "date_updated": "20161006",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20150319",
     "date_intl_updated": "20161006"
   },
@@ -10166,6 +10166,7 @@
     "lev_mas_notes_slide": "105",
     "lev_mas_notes_break": "34",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "775",
     "lev_remas_notes_tap": "627",
     "lev_remas_notes_hold": "44",
@@ -10177,7 +10178,6 @@
     "date_added": "20140515",
     "date_updated": "20240308",
     "date_intl_added": "20140515",
-    "lev_remas_i": "13.3",
     "date_intl_updated": "20240705"
   },
   {
@@ -11197,6 +11197,7 @@
     "lev_mas_notes_slide": "143",
     "lev_mas_notes_break": "19",
     "lev_mas_designer": "Revo@LC",
+    "lev_remas_i": "13.5",
     "lev_remas_notes": "669",
     "lev_remas_notes_tap": "482",
     "lev_remas_notes_hold": "24",
@@ -11207,7 +11208,6 @@
     "intl": "1",
     "date_added": "20150625",
     "date_updated": "20201105",
-    "lev_remas_i": "13.5",
     "date_intl_added": "20150625",
     "date_intl_updated": "20210423"
   },
@@ -11250,6 +11250,7 @@
     "lev_mas_notes_slide": "75",
     "lev_mas_notes_break": "10",
     "lev_mas_designer": "チャン@DP皆伝",
+    "lev_remas_i": "14.7",
     "lev_remas_notes": "899",
     "lev_remas_notes_tap": "676",
     "lev_remas_notes_hold": "120",
@@ -11260,7 +11261,6 @@
     "intl": "1",
     "date_added": "20150625",
     "date_updated": "20181016",
-    "lev_remas_i": "14.7",
     "date_intl_added": "20150625",
     "date_intl_updated": "20181016"
   },
@@ -11380,6 +11380,7 @@
     "lev_mas_notes_slide": "86",
     "lev_mas_notes_break": "18",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "14.5",
     "lev_remas_notes": "818",
     "lev_remas_notes_tap": "594",
     "lev_remas_notes_hold": "93",
@@ -11390,7 +11391,6 @@
     "intl": "1",
     "date_added": "20150205",
     "date_updated": "20201105",
-    "lev_remas_i": "14.5",
     "date_intl_added": "20150205",
     "date_intl_updated": "20210423"
   },
@@ -11569,6 +11569,7 @@
     "lev_mas_notes_slide": "157",
     "lev_mas_notes_break": "8",
     "lev_mas_designer": "はっぴー",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "732",
     "lev_remas_notes_tap": "595",
     "lev_remas_notes_hold": "87",
@@ -11579,7 +11580,6 @@
     "intl": "1",
     "date_added": "20141218",
     "date_updated": "20201105",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20141218",
     "date_intl_updated": "20210423"
   },
@@ -12053,6 +12053,7 @@
     "lev_mas_notes_slide": "78",
     "lev_mas_notes_break": "30",
     "lev_mas_designer": "mai-Star",
+    "lev_remas_i": "14.2",
     "lev_remas_notes": "961",
     "lev_remas_notes_tap": "771",
     "lev_remas_notes_hold": "91",
@@ -12063,7 +12064,6 @@
     "intl": "1",
     "date_added": "20141029",
     "date_updated": "20220729",
-    "lev_remas_i": "14.2",
     "date_intl_added": "20141029",
     "date_intl_updated": "20220728"
   },
@@ -12730,6 +12730,7 @@
     "lev_mas_notes_slide": "116",
     "lev_mas_notes_break": "31",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "495",
     "lev_remas_notes_tap": "276",
     "lev_remas_notes_hold": "0",
@@ -12740,7 +12741,6 @@
     "intl": "1",
     "date_added": "20150604",
     "date_updated": "20160922",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20150604",
     "date_intl_updated": "20160922"
   },
@@ -14200,6 +14200,7 @@
     "lev_mas_notes_slide": "87",
     "lev_mas_notes_break": "25",
     "lev_mas_designer": "しろいろ",
+    "lev_remas_i": "13.9",
     "lev_remas_notes": "1000",
     "lev_remas_notes_tap": "740",
     "lev_remas_notes_hold": "71",
@@ -14210,7 +14211,6 @@
     "intl": "1",
     "date_added": "20160421",
     "date_updated": "20201105",
-    "lev_remas_i": "13.9",
     "date_intl_added": "20160421",
     "date_intl_updated": "20210423"
   },
@@ -14253,6 +14253,7 @@
     "lev_mas_notes_slide": "43",
     "lev_mas_notes_break": "70",
     "lev_mas_designer": "Techno Kitchen",
+    "lev_remas_i": "14.4",
     "lev_remas_notes": "912",
     "lev_remas_notes_tap": "646",
     "lev_remas_notes_hold": "105",
@@ -14263,7 +14264,6 @@
     "intl": "1",
     "date_added": "20160121",
     "date_updated": "20220805",
-    "lev_remas_i": "14.4",
     "date_intl_added": "20160121",
     "date_intl_updated": "20220826"
   },
@@ -14521,6 +14521,7 @@
     "lev_mas_notes_slide": "101",
     "lev_mas_notes_break": "4",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "14.0",
     "lev_remas_notes": "956",
     "lev_remas_notes_tap": "751",
     "lev_remas_notes_hold": "115",
@@ -14530,7 +14531,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533829",
     "intl": "1",
     "date_added": "20151209",
-    "lev_remas_i": "14.0",
     "date_intl_added": "20151209"
   },
   {
@@ -15005,6 +15005,7 @@
     "lev_mas_notes_slide": "151",
     "lev_mas_notes_break": "41",
     "lev_mas_designer": "合作だよ",
+    "lev_remas_i": "14.5",
     "lev_remas_notes": "1139",
     "lev_remas_notes_tap": "874",
     "lev_remas_notes_hold": "65",
@@ -15015,7 +15016,6 @@
     "intl": "1",
     "date_added": "20161117",
     "date_updated": "20180821",
-    "lev_remas_i": "14.5",
     "date_intl_added": "20161117",
     "date_intl_updated": "20180821"
   },
@@ -15358,6 +15358,7 @@
     "lev_mas_notes_slide": "79",
     "lev_mas_notes_break": "17",
     "lev_mas_designer": "はっぴー",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "552",
     "lev_remas_notes_tap": "406",
     "lev_remas_notes_hold": "6",
@@ -15368,7 +15369,6 @@
     "intl": "1",
     "date_added": "20170418",
     "date_updated": "20180109",
-    "lev_remas_i": "12.7",
     "date_intl_added": "20170418",
     "date_intl_updated": "20180109"
   },
@@ -15837,6 +15837,7 @@
     "lev_mas_notes_slide": "116",
     "lev_mas_notes_break": "6",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "900",
     "lev_remas_notes_tap": "763",
     "lev_remas_notes_hold": "32",
@@ -15845,8 +15846,7 @@
     "lev_remas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/entry/533417",
     "intl": "0",
-    "date_added": "20180807",
-    "lev_remas_i": "13.4"
+    "date_added": "20180807"
   },
   {
     "sort": "1257",
@@ -16145,6 +16145,7 @@
     "lev_mas_notes_slide": "72",
     "lev_mas_notes_break": "9",
     "lev_mas_designer": "Jack",
+    "lev_remas_i": "12.9",
     "lev_remas_notes": "777",
     "lev_remas_notes_tap": "653",
     "lev_remas_notes_hold": "63",
@@ -16154,7 +16155,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533804",
     "intl": "1",
     "date_added": "20160728",
-    "lev_remas_i": "12.9",
     "date_intl_added": "20160728"
   },
   {
@@ -18205,6 +18205,7 @@
     "lev_mas_notes_slide": "140",
     "lev_mas_notes_break": "58",
     "lev_mas_designer": "Techno Kitchen",
+    "lev_remas_i": "14.3",
     "lev_remas_notes": "909",
     "lev_remas_notes_tap": "708",
     "lev_remas_notes_hold": "75",
@@ -18215,7 +18216,6 @@
     "intl": "1",
     "date_added": "20170523",
     "date_updated": "20180621",
-    "lev_remas_i": "14.3",
     "date_intl_added": "20170523",
     "date_intl_updated": "20180621"
   },
@@ -19348,6 +19348,7 @@
     "lev_mas_notes_slide": "95",
     "lev_mas_notes_break": "50",
     "lev_mas_designer": "某S氏",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "825",
     "lev_remas_notes_tap": "639",
     "lev_remas_notes_hold": "46",
@@ -19358,7 +19359,6 @@
     "intl": "1",
     "date_added": "20170907",
     "date_updated": "20220812",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20170907",
     "date_intl_updated": "20220826"
   },
@@ -20505,6 +20505,7 @@
     "lev_mas_notes_slide": "79",
     "lev_mas_notes_break": "41",
     "lev_mas_designer": "某S氏",
+    "lev_remas_i": "12.9",
     "lev_remas_notes": "505",
     "lev_remas_notes_tap": "342",
     "lev_remas_notes_hold": "24",
@@ -20542,8 +20543,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533598",
     "intl": "0",
     "date_added": "20171214",
-    "date_updated": "20190711",
-    "lev_remas_i": "12.9"
+    "date_updated": "20190711"
   },
   {
     "sort": "273",
@@ -21839,6 +21839,7 @@
     "lev_mas_notes_slide": "160",
     "lev_mas_notes_break": "12",
     "lev_mas_designer": "はっぴー",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "725",
     "lev_remas_notes_tap": "548",
     "lev_remas_notes_hold": "79",
@@ -21849,7 +21850,6 @@
     "intl": "1",
     "date_added": "20180417",
     "date_updated": "20220819",
-    "lev_remas_i": "13.4",
     "date_intl_added": "20180417",
     "date_intl_updated": "20220826"
   },
@@ -22659,6 +22659,7 @@
     "lev_mas_notes_slide": "78",
     "lev_mas_notes_break": "5",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "725",
     "lev_remas_notes_tap": "593",
     "lev_remas_notes_hold": "23",
@@ -22668,7 +22669,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533440",
     "intl": "1",
     "date_added": "20180621",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20180621"
   },
   {
@@ -23132,6 +23132,7 @@
     "lev_mas_notes_slide": "156",
     "lev_mas_notes_break": "11",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "939",
     "lev_remas_notes_tap": "752",
     "lev_remas_notes_hold": "31",
@@ -23141,7 +23142,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533412",
     "intl": "1",
     "date_added": "20180807",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20180807"
   },
   {
@@ -23567,6 +23567,7 @@
     "lev_mas_notes_slide": "150",
     "lev_mas_notes_break": "4",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.8",
     "lev_remas_notes": "945",
     "lev_remas_notes_tap": "827",
     "lev_remas_notes_hold": "8",
@@ -23576,7 +23577,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533462",
     "intl": "1",
     "date_added": "20180904",
-    "lev_remas_i": "13.8",
     "date_intl_added": "20180904"
   },
   {
@@ -23704,6 +23704,7 @@
     "lev_mas_notes_slide": "130",
     "lev_mas_notes_break": "18",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "977",
     "lev_remas_notes_tap": "767",
     "lev_remas_notes_hold": "19",
@@ -23713,7 +23714,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533519",
     "intl": "1",
     "date_added": "20181002",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20181002"
   },
   {
@@ -23883,6 +23883,7 @@
     "lev_mas_notes_slide": "142",
     "lev_mas_notes_break": "9",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "758",
     "lev_remas_notes_tap": "508",
     "lev_remas_notes_hold": "64",
@@ -23892,7 +23893,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533565",
     "intl": "1",
     "date_added": "20181120",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20181120"
   },
   {
@@ -24450,6 +24450,7 @@
     "lev_mas_notes_slide": "116",
     "lev_mas_notes_break": "42",
     "lev_mas_designer": "合作だよ",
+    "lev_remas_i": "13.8",
     "lev_remas_notes": "398",
     "lev_remas_notes_tap": "250",
     "lev_remas_notes_hold": "32",
@@ -24460,7 +24461,6 @@
     "intl": "1",
     "date_added": "20181106",
     "date_updated": "20181120",
-    "lev_remas_i": "13.8",
     "date_intl_added": "20181106",
     "date_intl_updated": "20181120"
   },
@@ -24806,6 +24806,7 @@
     "lev_mas_notes_slide": "138",
     "lev_mas_notes_break": "2",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.2",
     "lev_remas_notes": "740",
     "lev_remas_notes_tap": "564",
     "lev_remas_notes_hold": "44",
@@ -24815,7 +24816,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533589",
     "intl": "1",
     "date_added": "20181213",
-    "lev_remas_i": "13.2",
     "date_intl_added": "20181213"
   },
   {
@@ -24857,6 +24857,7 @@
     "lev_mas_notes_slide": "117",
     "lev_mas_notes_break": "4",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "839",
     "lev_remas_notes_tap": "661",
     "lev_remas_notes_hold": "57",
@@ -24866,7 +24867,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533581",
     "intl": "1",
     "date_added": "20181213",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20181213"
   },
   {
@@ -25082,6 +25082,7 @@
     "lev_mas_notes_slide": "191",
     "lev_mas_notes_break": "64",
     "lev_mas_designer": "チャン＠DP皆伝",
+    "lev_remas_i": "14.9",
     "lev_remas_notes": "1181",
     "lev_remas_notes_tap": "861",
     "lev_remas_notes_hold": "19",
@@ -25092,7 +25093,6 @@
     "intl": "1",
     "date_added": "20181218",
     "date_updated": "20190510",
-    "lev_remas_i": "14.9",
     "date_intl_added": "20181218",
     "date_intl_updated": "20190510"
   },
@@ -25264,6 +25264,7 @@
     "lev_mas_notes_slide": "49",
     "lev_mas_notes_break": "2",
     "lev_mas_designer": "\"H\"ack",
+    "lev_remas_i": "14.9",
     "lev_remas_notes": "875",
     "lev_remas_notes_tap": "806",
     "lev_remas_notes_hold": "22",
@@ -25274,7 +25275,6 @@
     "intl": "1",
     "date_added": "20190111",
     "date_updated": "20190510",
-    "lev_remas_i": "14.9",
     "date_intl_added": "20190111",
     "date_intl_updated": "20190510"
   },
@@ -25401,6 +25401,7 @@
     "lev_mas_notes_slide": "162",
     "lev_mas_notes_break": "5",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "12.8",
     "lev_remas_notes": "695",
     "lev_remas_notes_tap": "468",
     "lev_remas_notes_hold": "82",
@@ -25410,7 +25411,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534466",
     "intl": "1",
     "date_added": "20190111",
-    "lev_remas_i": "12.8",
     "date_intl_added": "20190111"
   },
   {
@@ -25494,6 +25494,7 @@
     "lev_mas_notes_slide": "73",
     "lev_mas_notes_break": "2",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "697",
     "lev_remas_notes_tap": "559",
     "lev_remas_notes_hold": "16",
@@ -25503,7 +25504,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534463",
     "intl": "1",
     "date_added": "20190125",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20190125"
   },
   {
@@ -25630,6 +25630,7 @@
     "lev_mas_notes_slide": "82",
     "lev_mas_notes_break": "84",
     "lev_mas_designer": "“Carpe diem” ＊ HAN∀BI",
+    "lev_remas_i": "14.8",
     "lev_remas_notes": "1137",
     "lev_remas_notes_tap": "906",
     "lev_remas_notes_hold": "83",
@@ -25640,7 +25641,6 @@
     "intl": "1",
     "date_added": "20190207",
     "date_updated": "20190510",
-    "lev_remas_i": "14.8",
     "date_intl_added": "20190207",
     "date_intl_updated": "20190510"
   },
@@ -25726,6 +25726,7 @@
     "lev_mas_notes_slide": "105",
     "lev_mas_notes_break": "11",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.3",
     "lev_remas_notes": "794",
     "lev_remas_notes_tap": "469",
     "lev_remas_notes_hold": "27",
@@ -25735,7 +25736,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533922",
     "intl": "1",
     "date_added": "20190222",
-    "lev_remas_i": "13.3",
     "date_intl_added": "20190222"
   },
   {
@@ -25820,6 +25820,7 @@
     "lev_mas_notes_slide": "61",
     "lev_mas_notes_break": "1",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.4",
     "lev_remas_notes": "734",
     "lev_remas_notes_tap": "535",
     "lev_remas_notes_hold": "78",
@@ -25829,7 +25830,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533767",
     "intl": "1",
     "date_added": "20190222",
-    "lev_remas_i": "13.4",
     "date_intl_added": "20190222"
   },
   {
@@ -25914,6 +25914,7 @@
     "lev_mas_notes_slide": "173",
     "lev_mas_notes_break": "35",
     "lev_mas_designer": "safaTAmago",
+    "lev_remas_i": "14.5",
     "lev_remas_notes": "947",
     "lev_remas_notes_tap": "711",
     "lev_remas_notes_hold": "63",
@@ -25924,7 +25925,6 @@
     "intl": "1",
     "date_added": "20190308",
     "date_updated": "20190510",
-    "lev_remas_i": "14.5",
     "date_intl_added": "20190308",
     "date_intl_updated": "20190510"
   },
@@ -26096,6 +26096,7 @@
     "lev_mas_notes_slide": "85",
     "lev_mas_notes_break": "39",
     "lev_mas_designer": "某S氏",
+    "lev_remas_i": "14.8",
     "lev_remas_notes": "1167",
     "lev_remas_notes_tap": "1007",
     "lev_remas_notes_hold": "43",
@@ -26106,7 +26107,6 @@
     "intl": "1",
     "date_added": "20190411",
     "date_updated": "20190510",
-    "lev_remas_i": "14.8",
     "date_intl_added": "20190411",
     "date_intl_updated": "20190510"
   },
@@ -26149,6 +26149,7 @@
     "lev_mas_notes_slide": "87",
     "lev_mas_notes_break": "4",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "12.7",
     "lev_remas_notes": "603",
     "lev_remas_notes_tap": "455",
     "lev_remas_notes_hold": "34",
@@ -26157,8 +26158,7 @@
     "lev_remas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/entry/534297",
     "intl": "0",
-    "date_added": "20190411",
-    "lev_remas_i": "12.7"
+    "date_added": "20190411"
   },
   {
     "sort": "755",
@@ -26199,6 +26199,7 @@
     "lev_mas_notes_slide": "75",
     "lev_mas_notes_break": "6",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "12.5",
     "lev_remas_notes": "368",
     "lev_remas_notes_tap": "249",
     "lev_remas_notes_hold": "36",
@@ -26207,8 +26208,7 @@
     "lev_remas_designer": "某S氏",
     "wiki_url": "https://gamerch.com/maimai/entry/534296",
     "intl": "0",
-    "date_added": "20190411",
-    "lev_remas_i": "12.5"
+    "date_added": "20190411"
   },
   {
     "sort": "358",
@@ -26292,6 +26292,7 @@
     "lev_mas_notes_slide": "109",
     "lev_mas_notes_break": "10",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.8",
     "lev_remas_notes": "953",
     "lev_remas_notes_tap": "801",
     "lev_remas_notes_hold": "23",
@@ -26301,7 +26302,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533760",
     "intl": "1",
     "date_added": "20190426",
-    "lev_remas_i": "13.8",
     "date_intl_added": "20190426"
   },
   {
@@ -26387,6 +26387,7 @@
     "lev_mas_notes_slide": "62",
     "lev_mas_notes_break": "22",
     "lev_mas_designer": "小鳥遊さん",
+    "lev_remas_i": "14.9",
     "lev_remas_notes": "1057",
     "lev_remas_notes_tap": "836",
     "lev_remas_notes_hold": "104",
@@ -26397,7 +26398,6 @@
     "intl": "1",
     "date_added": "20190510",
     "date_updated": "20190510",
-    "lev_remas_i": "14.9",
     "date_intl_added": "20190510",
     "date_intl_updated": "20190510"
   },
@@ -26441,6 +26441,7 @@
     "lev_mas_notes_slide": "117",
     "lev_mas_notes_break": "77",
     "lev_mas_designer": "PANDORA BOXXX",
+    "lev_remas_i": "15.0",
     "lev_remas_notes": "1342",
     "lev_remas_notes_tap": "1165",
     "lev_remas_notes_hold": "72",
@@ -26451,7 +26452,6 @@
     "intl": "1",
     "date_added": "20190510",
     "date_updated": "20190510",
-    "lev_remas_i": "15.0",
     "date_intl_added": "20190510",
     "date_intl_updated": "20190510"
   },
@@ -26623,6 +26623,7 @@
     "lev_mas_notes_slide": "144",
     "lev_mas_notes_break": "8",
     "lev_mas_designer": "緑風 犬三郎",
+    "lev_remas_i": "13.7",
     "lev_remas_notes": "853",
     "lev_remas_notes_tap": "590",
     "lev_remas_notes_hold": "87",
@@ -26632,7 +26633,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534287",
     "intl": "1",
     "date_added": "20190524",
-    "lev_remas_i": "13.7",
     "date_intl_added": "20190524"
   },
   {
@@ -27555,6 +27555,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "12+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "111",
     "dx_lev_bas_notes_tap": "84",
     "dx_lev_bas_notes_hold": "6",
@@ -27583,6 +27584,7 @@
     "dx_lev_mas_notes_break": "10",
     "dx_lev_mas_notes_touch": "88",
     "dx_lev_mas_designer": "某S氏",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "897",
     "dx_lev_remas_notes_tap": "682",
     "dx_lev_remas_notes_hold": "68",
@@ -27594,8 +27596,6 @@
     "intl": "1",
     "date_added": "20190711",
     "date_updated": "20211203",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8",
     "date_intl_added": "20191125",
     "date_intl_updated": "20220428"
   },
@@ -27660,6 +27660,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
     "dx_lev_mas": "13+",
+    "dx_lev_remas": "14",
     "dx_lev_bas_notes": "186",
     "dx_lev_bas_notes_tap": "158",
     "dx_lev_bas_notes_hold": "8",
@@ -27688,6 +27689,7 @@
     "dx_lev_mas_notes_break": "32",
     "dx_lev_mas_notes_touch": "114",
     "dx_lev_mas_designer": "玉子豆腐",
+    "dx_lev_remas_i": "14.2",
     "dx_lev_remas_notes": "965",
     "dx_lev_remas_notes_tap": "731",
     "dx_lev_remas_notes_hold": "73",
@@ -27699,8 +27701,6 @@
     "intl": "1",
     "date_added": "20190711",
     "date_updated": "20211203",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.2",
     "date_intl_added": "20191125",
     "date_intl_updated": "20220428"
   },
@@ -27718,6 +27718,7 @@
     "dx_lev_adv": "8",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "13+",
+    "dx_lev_remas": "14",
     "dx_lev_bas_notes": "175",
     "dx_lev_bas_notes_tap": "141",
     "dx_lev_bas_notes_hold": "13",
@@ -27746,6 +27747,7 @@
     "dx_lev_mas_notes_break": "6",
     "dx_lev_mas_notes_touch": "148",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "14.4",
     "dx_lev_remas_notes": "984",
     "dx_lev_remas_notes_tap": "640",
     "dx_lev_remas_notes_hold": "71",
@@ -27757,8 +27759,6 @@
     "intl": "1",
     "date_added": "20190711",
     "date_updated": "20211203",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.4",
     "date_intl_added": "20191125",
     "date_intl_updated": "20220428"
   },
@@ -27823,6 +27823,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
     "dx_lev_mas": "12+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "151",
     "dx_lev_bas_notes_tap": "121",
     "dx_lev_bas_notes_hold": "14",
@@ -27851,6 +27852,7 @@
     "dx_lev_mas_notes_break": "18",
     "dx_lev_mas_notes_touch": "124",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "1069",
     "dx_lev_remas_notes_tap": "663",
     "dx_lev_remas_notes_hold": "121",
@@ -27862,8 +27864,6 @@
     "intl": "1",
     "date_added": "20190711",
     "date_updated": "20220826",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8",
     "date_intl_added": "20191125",
     "date_intl_updated": "20220922"
   },
@@ -27928,6 +27928,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
     "dx_lev_mas": "12",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "132",
     "dx_lev_bas_notes_tap": "106",
     "dx_lev_bas_notes_hold": "9",
@@ -27956,6 +27957,7 @@
     "dx_lev_mas_notes_break": "25",
     "dx_lev_mas_notes_touch": "83",
     "dx_lev_mas_designer": "華火職人",
+    "dx_lev_remas_i": "13.3",
     "dx_lev_remas_notes": "733",
     "dx_lev_remas_notes_tap": "529",
     "dx_lev_remas_notes_hold": "31",
@@ -27967,8 +27969,6 @@
     "intl": "1",
     "date_added": "20190711",
     "date_updated": "20231124",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.3",
     "date_intl_added": "20191125",
     "date_intl_updated": "20240412"
   },
@@ -27986,6 +27986,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "12",
     "dx_lev_bas_notes": "137",
     "dx_lev_bas_notes_tap": "112",
     "dx_lev_bas_notes_hold": "9",
@@ -28014,6 +28015,7 @@
     "dx_lev_mas_notes_break": "8",
     "dx_lev_mas_notes_touch": "92",
     "dx_lev_mas_designer": "ロシェ@ペンギン",
+    "dx_lev_remas_i": "12.3",
     "dx_lev_remas_notes": "567",
     "dx_lev_remas_notes_tap": "334",
     "dx_lev_remas_notes_hold": "33",
@@ -28025,8 +28027,6 @@
     "intl": "1",
     "date_added": "20190726",
     "date_updated": "20231124",
-    "dx_lev_remas": "12",
-    "dx_lev_remas_i": "12.3",
     "date_intl_added": "20200110",
     "date_intl_updated": "20240412"
   },
@@ -28091,6 +28091,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
     "dx_lev_mas": "12+",
+    "dx_lev_remas": "14",
     "dx_lev_bas_notes": "193",
     "dx_lev_bas_notes_tap": "153",
     "dx_lev_bas_notes_hold": "19",
@@ -28119,6 +28120,7 @@
     "dx_lev_mas_notes_break": "35",
     "dx_lev_mas_notes_touch": "56",
     "dx_lev_mas_designer": "華火職人",
+    "dx_lev_remas_i": "14.0",
     "dx_lev_remas_notes": "928",
     "dx_lev_remas_notes_tap": "538",
     "dx_lev_remas_notes_hold": "94",
@@ -28130,8 +28132,6 @@
     "intl": "1",
     "date_added": "20191018",
     "date_updated": "20231124",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.0",
     "date_intl_added": "20200124",
     "date_intl_updated": "20240412"
   },
@@ -28243,6 +28243,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
     "dx_lev_mas": "13",
+    "dx_lev_remas": "14",
     "dx_lev_bas_notes": "165",
     "dx_lev_bas_notes_tap": "134",
     "dx_lev_bas_notes_hold": "16",
@@ -28271,6 +28272,7 @@
     "dx_lev_mas_notes_break": "20",
     "dx_lev_mas_notes_touch": "90",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "14.1",
     "dx_lev_remas_notes": "1004",
     "dx_lev_remas_notes_tap": "722",
     "dx_lev_remas_notes_hold": "40",
@@ -28282,8 +28284,6 @@
     "intl": "1",
     "date_added": "20191018",
     "date_updated": "20211203",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.1",
     "date_intl_added": "20200124",
     "date_intl_updated": "20220428"
   },
@@ -28442,6 +28442,7 @@
     "dx_lev_adv": "9",
     "dx_lev_exp": "11+",
     "dx_lev_mas": "13+",
+    "dx_lev_remas": "14",
     "dx_lev_bas_notes": "204",
     "dx_lev_bas_notes_tap": "169",
     "dx_lev_bas_notes_hold": "10",
@@ -28471,6 +28472,7 @@
     "dx_lev_mas_notes_break": "22",
     "dx_lev_mas_notes_touch": "276",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "14.3",
     "dx_lev_remas_notes": "1012",
     "dx_lev_remas_notes_tap": "714",
     "dx_lev_remas_notes_hold": "80",
@@ -28482,8 +28484,6 @@
     "intl": "1",
     "date_added": "20190809",
     "date_updated": "20190920",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.3",
     "date_intl_added": "20191220"
   },
   {
@@ -30804,6 +30804,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
     "dx_lev_mas": "12+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "123",
     "dx_lev_bas_notes_tap": "70",
     "dx_lev_bas_notes_hold": "22",
@@ -30832,6 +30833,7 @@
     "dx_lev_mas_notes_break": "17",
     "dx_lev_mas_notes_touch": "27",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "13.7",
     "dx_lev_remas_notes": "423",
     "dx_lev_remas_notes_tap": "198",
     "dx_lev_remas_notes_hold": "1",
@@ -30843,8 +30845,6 @@
     "intl": "1",
     "date_added": "20200319",
     "date_updated": "20220902",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.7",
     "date_intl_added": "20200814",
     "date_intl_updated": "20220922"
   },
@@ -31399,6 +31399,7 @@
     "dx_lev_adv": "5",
     "dx_lev_exp": "8",
     "dx_lev_mas": "12",
+    "dx_lev_remas": "12+",
     "dx_lev_bas_notes": "86",
     "dx_lev_bas_notes_tap": "57",
     "dx_lev_bas_notes_hold": "13",
@@ -31427,6 +31428,7 @@
     "dx_lev_mas_notes_break": "5",
     "dx_lev_mas_notes_touch": "65",
     "dx_lev_mas_designer": "ぴちネコ",
+    "dx_lev_remas_i": "12.8",
     "dx_lev_remas_notes": "597",
     "dx_lev_remas_notes_tap": "336",
     "dx_lev_remas_notes_hold": "57",
@@ -31437,8 +31439,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534093",
     "intl": "1",
     "date_added": "20200123",
-    "dx_lev_remas": "12+",
-    "dx_lev_remas_i": "12.8",
     "date_intl_added": "20200729"
   },
   {
@@ -32911,6 +32911,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "11",
     "dx_lev_mas": "13",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "174",
     "dx_lev_bas_notes_tap": "158",
     "dx_lev_bas_notes_hold": "4",
@@ -32939,6 +32940,7 @@
     "dx_lev_mas_notes_break": "14",
     "dx_lev_mas_notes_touch": "123",
     "dx_lev_mas_designer": "ぴちネコ",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "764",
     "dx_lev_remas_notes_tap": "647",
     "dx_lev_remas_notes_hold": "15",
@@ -32950,8 +32952,6 @@
     "intl": "1",
     "date_added": "20200917",
     "date_updated": "20220909",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8",
     "date_intl_added": "20210129",
     "date_intl_updated": "20220922"
   },
@@ -34098,6 +34098,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10",
     "dx_lev_mas": "13",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "182",
     "dx_lev_bas_notes_tap": "135",
     "dx_lev_bas_notes_hold": "24",
@@ -34126,6 +34127,7 @@
     "dx_lev_mas_notes_break": "21",
     "dx_lev_mas_notes_touch": "52",
     "dx_lev_mas_designer": "シチミヘルツ",
+    "dx_lev_remas_i": "13.7",
     "dx_lev_remas_notes": "999",
     "dx_lev_remas_notes_tap": "698",
     "dx_lev_remas_notes_hold": "32",
@@ -34137,8 +34139,6 @@
     "intl": "1",
     "date_added": "20201127",
     "date_updated": "20231124",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.7",
     "date_intl_added": "20210409",
     "date_intl_updated": "20240412"
   },
@@ -34202,6 +34202,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "8+",
     "dx_lev_mas": "12",
+    "dx_lev_remas": "12+",
     "dx_lev_bas_notes": "129",
     "dx_lev_bas_notes_tap": "106",
     "dx_lev_bas_notes_hold": "7",
@@ -34230,6 +34231,7 @@
     "dx_lev_mas_notes_break": "9",
     "dx_lev_mas_notes_touch": "48",
     "dx_lev_mas_designer": "譜面-100号",
+    "dx_lev_remas_i": "12.8",
     "dx_lev_remas_notes": "667",
     "dx_lev_remas_notes_tap": "498",
     "dx_lev_remas_notes_hold": "15",
@@ -34240,8 +34242,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534068",
     "intl": "1",
     "date_added": "20201225",
-    "dx_lev_remas": "12+",
-    "dx_lev_remas_i": "12.8",
     "date_intl_added": "20210507"
   },
   {
@@ -36092,6 +36092,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "12+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "179",
     "dx_lev_bas_notes_tap": "138",
     "dx_lev_bas_notes_hold": "24",
@@ -36120,6 +36121,7 @@
     "dx_lev_mas_notes_break": "29",
     "dx_lev_mas_notes_touch": "53",
     "dx_lev_mas_designer": "隅田川華火大会",
+    "dx_lev_remas_i": "13.1",
     "dx_lev_remas_notes": "842",
     "dx_lev_remas_notes_tap": "640",
     "dx_lev_remas_notes_hold": "32",
@@ -36131,8 +36133,6 @@
     "intl": "1",
     "date_added": "20210528",
     "date_updated": "20220915",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.1",
     "date_intl_added": "20211015",
     "date_intl_updated": "20230119"
   },
@@ -36291,6 +36291,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "13+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "155",
     "dx_lev_bas_notes_tap": "131",
     "dx_lev_bas_notes_hold": "7",
@@ -36319,6 +36320,7 @@
     "dx_lev_mas_notes_break": "20",
     "dx_lev_mas_notes_touch": "57",
     "dx_lev_mas_designer": "7.3連発華火",
+    "dx_lev_remas_i": "13.7",
     "dx_lev_remas_notes": "759",
     "dx_lev_remas_notes_tap": "499",
     "dx_lev_remas_notes_hold": "84",
@@ -36330,8 +36332,6 @@
     "intl": "1",
     "date_added": "20210721",
     "date_updated": "20231124",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.7",
     "date_intl_added": "20211210",
     "date_intl_updated": "20240412"
   },
@@ -36678,6 +36678,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
     "dx_lev_mas": "13",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "171",
     "dx_lev_bas_notes_tap": "130",
     "dx_lev_bas_notes_hold": "24",
@@ -36706,6 +36707,7 @@
     "dx_lev_mas_notes_break": "59",
     "dx_lev_mas_notes_touch": "44",
     "dx_lev_mas_designer": "Redarrow",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "1080",
     "dx_lev_remas_notes_tap": "801",
     "dx_lev_remas_notes_hold": "45",
@@ -36716,8 +36718,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534189",
     "intl": "1",
     "date_added": "20210409",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8",
     "date_intl_added": "20210820"
   },
   {
@@ -39986,6 +39986,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "12+",
     "dx_lev_bas_notes": "101",
     "dx_lev_bas_notes_tap": "87",
     "dx_lev_bas_notes_hold": "6",
@@ -40014,6 +40015,7 @@
     "dx_lev_mas_notes_break": "10",
     "dx_lev_mas_notes_touch": "24",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "12.8",
     "dx_lev_remas_notes": "646",
     "dx_lev_remas_notes_tap": "486",
     "dx_lev_remas_notes_hold": "52",
@@ -40024,8 +40026,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534136",
     "intl": "1",
     "date_added": "20210916",
-    "dx_lev_remas": "12+",
-    "dx_lev_remas_i": "12.8",
     "date_intl_added": "20220127"
   },
   {
@@ -40277,6 +40277,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "13",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "177",
     "dx_lev_bas_notes_tap": "130",
     "dx_lev_bas_notes_hold": "10",
@@ -40305,6 +40306,7 @@
     "dx_lev_mas_notes_break": "37",
     "dx_lev_mas_notes_touch": "55",
     "dx_lev_mas_designer": "Jack",
+    "dx_lev_remas_i": "13.9",
     "dx_lev_remas_notes": "1194",
     "dx_lev_remas_notes_tap": "1103",
     "dx_lev_remas_notes_hold": "20",
@@ -40315,8 +40317,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533962",
     "intl": "1",
     "date_added": "20210922",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.9",
     "date_intl_added": "20220210"
   },
   {
@@ -40615,6 +40615,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "13",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "131",
     "dx_lev_bas_notes_tap": "103",
     "dx_lev_bas_notes_hold": "9",
@@ -40643,13 +40644,12 @@
     "dx_lev_mas_notes_break": "20",
     "dx_lev_mas_notes_touch": "31",
     "dx_lev_mas_designer": "アミノハバキリ",
+    "dx_lev_remas_i": "13.8",
     "wiki_url": "https://gamerch.com/maimai/entry/534181",
     "intl": "1",
     "date_added": "20211112",
     "date_updated": "20241011",
-    "date_intl_added": "20220325",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8"
+    "date_intl_added": "20220325"
   },
   {
     "sort": "470",
@@ -40665,6 +40665,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "13+",
+    "dx_lev_remas": "14",
     "dx_lev_bas_notes": "159",
     "dx_lev_bas_notes_tap": "119",
     "dx_lev_bas_notes_hold": "13",
@@ -40693,13 +40694,12 @@
     "dx_lev_mas_notes_break": "89",
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_designer": "翠楼屋",
+    "dx_lev_remas_i": "14.3",
     "wiki_url": "https://gamerch.com/maimai/entry/534090",
     "intl": "1",
     "date_added": "20211112",
     "date_updated": "20241011",
-    "date_intl_added": "20220325",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.3"
+    "date_intl_added": "20220325"
   },
   {
     "sort": "318",
@@ -41560,6 +41560,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "175",
     "dx_lev_bas_notes_tap": "150",
     "dx_lev_bas_notes_hold": "6",
@@ -41588,6 +41589,7 @@
     "dx_lev_mas_notes_break": "10",
     "dx_lev_mas_notes_touch": "11",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.5",
     "dx_lev_remas_notes": "839",
     "dx_lev_remas_notes_tap": "631",
     "dx_lev_remas_notes_hold": "21",
@@ -41598,8 +41600,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534151",
     "intl": "1",
     "date_added": "20210916",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.5",
     "date_intl_added": "20220127"
   },
   {
@@ -43169,6 +43169,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "224",
     "dx_lev_bas_notes_tap": "167",
     "dx_lev_bas_notes_hold": "14",
@@ -43197,6 +43198,7 @@
     "dx_lev_mas_notes_break": "46",
     "dx_lev_mas_notes_touch": "35",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.5",
     "dx_lev_remas_notes": "830",
     "dx_lev_remas_notes_tap": "515",
     "dx_lev_remas_notes_hold": "58",
@@ -43206,9 +43208,7 @@
     "dx_lev_remas_designer": "翠楼屋",
     "wiki_url": "https://gamerch.com/maimai/entry/534047",
     "intl": "0",
-    "date_added": "20220324",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.5"
+    "date_added": "20220324"
   },
   {
     "sort": "175",
@@ -43224,6 +43224,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "10",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "174",
     "dx_lev_bas_notes_tap": "142",
     "dx_lev_bas_notes_hold": "11",
@@ -43252,6 +43253,7 @@
     "dx_lev_mas_notes_break": "13",
     "dx_lev_mas_notes_touch": "15",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.4",
     "dx_lev_remas_notes": "749",
     "dx_lev_remas_notes_tap": "555",
     "dx_lev_remas_notes_hold": "53",
@@ -43262,8 +43264,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534043",
     "intl": "1",
     "date_added": "20220324",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.4",
     "date_intl_added": "20220728"
   },
   {
@@ -46386,6 +46386,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "8",
     "dx_lev_mas": "11",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "137",
     "dx_lev_bas_notes_tap": "91",
     "dx_lev_bas_notes_hold": "9",
@@ -46414,6 +46415,7 @@
     "dx_lev_mas_notes_break": "33",
     "dx_lev_mas_notes_touch": "70",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.2",
     "dx_lev_remas_notes": "843",
     "dx_lev_remas_notes_tap": "536",
     "dx_lev_remas_notes_hold": "42",
@@ -46424,8 +46426,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534671",
     "intl": "1",
     "date_added": "20220915",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.2",
     "date_intl_added": "20230119"
   },
   {
@@ -46489,6 +46489,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "121",
     "dx_lev_bas_notes_tap": "78",
     "dx_lev_bas_notes_hold": "16",
@@ -46517,6 +46518,7 @@
     "dx_lev_mas_notes_break": "26",
     "dx_lev_mas_notes_touch": "30",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.3",
     "dx_lev_remas_notes": "753",
     "dx_lev_remas_notes_tap": "501",
     "dx_lev_remas_notes_hold": "46",
@@ -46527,8 +46529,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534676",
     "intl": "1",
     "date_added": "20220915",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.3",
     "date_intl_added": "20230119"
   },
   {
@@ -46545,6 +46545,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "90",
     "dx_lev_bas_notes_tap": "71",
     "dx_lev_bas_notes_hold": "5",
@@ -46573,6 +46574,7 @@
     "dx_lev_mas_notes_break": "15",
     "dx_lev_mas_notes_touch": "48",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.0",
     "dx_lev_remas_notes": "679",
     "dx_lev_remas_notes_tap": "431",
     "dx_lev_remas_notes_hold": "33",
@@ -46583,8 +46585,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534677",
     "intl": "1",
     "date_added": "20220915",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.0",
     "date_intl_added": "20230119"
   },
   {
@@ -49612,6 +49612,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "8+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "95",
     "dx_lev_bas_notes_tap": "72",
     "dx_lev_bas_notes_hold": "11",
@@ -49640,6 +49641,7 @@
     "dx_lev_mas_notes_break": "12",
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.3",
     "dx_lev_remas_notes": "563",
     "dx_lev_remas_notes_tap": "442",
     "dx_lev_remas_notes_hold": "39",
@@ -49650,8 +49652,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/714984",
     "intl": "1",
     "date_added": "20230323",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.3",
     "date_intl_added": "20230721"
   },
   {
@@ -49762,6 +49762,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "149",
     "dx_lev_bas_notes_tap": "115",
     "dx_lev_bas_notes_hold": "9",
@@ -49790,6 +49791,7 @@
     "dx_lev_mas_notes_break": "42",
     "dx_lev_mas_notes_touch": "78",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.7",
     "dx_lev_remas_notes": "976",
     "dx_lev_remas_notes_tap": "754",
     "dx_lev_remas_notes_hold": "29",
@@ -49800,8 +49802,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/714182",
     "intl": "1",
     "date_added": "20230323",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.7",
     "date_intl_added": "20230721"
   },
   {
@@ -49818,6 +49818,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "8+",
     "dx_lev_mas": "11",
+    "dx_lev_remas": "13",
     "dx_lev_bas_notes": "113",
     "dx_lev_bas_notes_tap": "87",
     "dx_lev_bas_notes_hold": "10",
@@ -49846,6 +49847,7 @@
     "dx_lev_mas_notes_break": "22",
     "dx_lev_mas_notes_touch": "44",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.5",
     "dx_lev_remas_notes": "759",
     "dx_lev_remas_notes_tap": "535",
     "dx_lev_remas_notes_hold": "66",
@@ -49856,8 +49858,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/714981",
     "intl": "1",
     "date_added": "20230323",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.5",
     "date_intl_added": "20230721"
   },
   {
@@ -52660,6 +52660,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10",
     "dx_lev_mas": "12",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "186",
     "dx_lev_bas_notes_tap": "129",
     "dx_lev_bas_notes_hold": "13",
@@ -52688,6 +52689,7 @@
     "dx_lev_mas_notes_break": "23",
     "dx_lev_mas_notes_touch": "40",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.9",
     "dx_lev_remas_notes": "996",
     "dx_lev_remas_notes_tap": "693",
     "dx_lev_remas_notes_hold": "19",
@@ -52698,8 +52700,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/796981",
     "intl": "1",
     "date_added": "20230914",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.9",
     "date_intl_added": "20240118"
   },
   {
@@ -52904,6 +52904,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "182",
     "dx_lev_bas_notes_tap": "143",
     "dx_lev_bas_notes_hold": "13",
@@ -52932,6 +52933,7 @@
     "dx_lev_mas_notes_break": "98",
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "961",
     "dx_lev_remas_notes_tap": "708",
     "dx_lev_remas_notes_hold": "45",
@@ -52941,9 +52943,7 @@
     "dx_lev_remas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/entry/796970",
     "intl": "0",
-    "date_added": "20230914",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8"
+    "date_added": "20230914"
   },
   {
     "sort": "27",
@@ -53006,6 +53006,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_notes": "188",
     "dx_lev_bas_notes_tap": "145",
     "dx_lev_bas_notes_hold": "17",
@@ -53034,6 +53035,7 @@
     "dx_lev_mas_notes_break": "55",
     "dx_lev_mas_notes_touch": "28",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "989",
     "dx_lev_remas_notes_tap": "705",
     "dx_lev_remas_notes_hold": "71",
@@ -53044,8 +53046,6 @@
     "wiki_url": "https://gamerch.com/maimai/entry/796980",
     "intl": "1",
     "date_added": "20230914",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8",
     "date_intl_added": "20240118"
   },
   {
@@ -53778,9 +53778,9 @@
     "intl": "1",
     "date_added": "20171205",
     "date_updated": "20230914",
-    "lev_utage_notes_touch": "",
     "date_intl_added": "20171205",
-    "date_intl_updated": "20240118"
+    "date_intl_updated": "20240118",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1367",
@@ -53905,9 +53905,9 @@
     "intl": "1",
     "date_added": "20170331",
     "date_updated": "20231225",
-    "lev_utage_notes_touch": "",
     "date_intl_added": "20170331",
-    "date_intl_updated": "20240517"
+    "date_intl_updated": "20240517",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1355",
@@ -53957,9 +53957,9 @@
     "intl": "1",
     "date_added": "20180821",
     "date_updated": "20230914",
-    "lev_utage_notes_touch": "",
     "date_intl_added": "20180821",
-    "date_intl_updated": "20240118"
+    "date_intl_updated": "20240118",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1365",
@@ -54009,8 +54009,8 @@
     "intl": "1",
     "date_added": "20170309",
     "date_updated": "20231012",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "20240315"
+    "date_intl_added": "20240315",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1366",
@@ -54060,9 +54060,9 @@
     "intl": "1",
     "date_added": "20180206",
     "date_updated": "20230914",
-    "lev_utage_notes_touch": "",
     "date_intl_added": "20180206",
-    "date_intl_updated": "20240118"
+    "date_intl_updated": "20240118",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1356",
@@ -54112,8 +54112,8 @@
     "intl": "1",
     "date_added": "20190705",
     "date_updated": "20230914",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "20190705"
+    "date_intl_added": "20190705",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1255",
@@ -54138,9 +54138,9 @@
     "intl": "1",
     "date_added": "20171121",
     "date_updated": "20231225",
-    "lev_utage_notes_touch": "",
     "date_intl_added": "20171121",
-    "date_intl_updated": "20240517"
+    "date_intl_updated": "20240517",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1375",
@@ -54165,9 +54165,9 @@
     "intl": "1",
     "date_added": "20180401",
     "date_updated": "20230914",
-    "lev_utage_notes_touch": "",
     "date_intl_added": "20180401",
-    "date_intl_updated": "20240118"
+    "date_intl_updated": "20240118",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1372",
@@ -54191,8 +54191,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534508",
     "intl": "1",
     "date_added": "20230914",
-    "lev_utage_notes_touch": "8",
-    "date_intl_added": "20240118"
+    "date_intl_added": "20240118",
+    "lev_utage_notes_touch": "8"
   },
   {
     "sort": "1369",
@@ -54216,8 +54216,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533916",
     "intl": "1",
     "date_added": "20231012",
-    "lev_utage_notes_touch": "60",
-    "date_intl_added": "20240315"
+    "date_intl_added": "20240315",
+    "lev_utage_notes_touch": "60"
   },
   {
     "sort": "1378",
@@ -54236,6 +54236,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533989",
     "intl": "1",
     "date_added": "20230914",
+    "date_intl_added": "20240118",
     "buddy": "○",
     "lev_utage_left_notes": "1255",
     "lev_utage_left_notes_tap": "183",
@@ -54248,8 +54249,7 @@
     "lev_utage_right_notes_hold": "63",
     "lev_utage_right_notes_slide": "53",
     "lev_utage_right_notes_touch": "102",
-    "lev_utage_right_notes_break": "216",
-    "date_intl_added": "20240118"
+    "lev_utage_right_notes_break": "216"
   },
   {
     "sort": "1370",
@@ -54273,8 +54273,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/665097",
     "intl": "1",
     "date_added": "20231012",
-    "lev_utage_notes_touch": "61",
-    "date_intl_added": "20240315"
+    "date_intl_added": "20240315",
+    "lev_utage_notes_touch": "61"
   },
   {
     "sort": "1380",
@@ -55194,8 +55194,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/654351",
     "intl": "1",
     "date_added": "20240229",
-    "lev_utage_notes_touch": "221",
-    "date_intl_added": "20240705"
+    "date_intl_added": "20240705",
+    "lev_utage_notes_touch": "221"
   },
   {
     "sort": "1353",
@@ -55219,8 +55219,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534217",
     "intl": "1",
     "date_added": "20240229",
-    "lev_utage_notes_touch": "0",
-    "date_intl_added": "20240705"
+    "date_intl_added": "20240705",
+    "lev_utage_notes_touch": "0"
   },
   {
     "sort": "1285",
@@ -55293,8 +55293,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533465",
     "intl": "1",
     "date_added": "20240229",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "20240705"
+    "date_intl_added": "20240705",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1351",
@@ -55318,8 +55318,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533620",
     "intl": "1",
     "date_added": "20240229",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "20240705"
+    "date_intl_added": "20240705",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1202",
@@ -55335,6 +55335,7 @@
     "dx_lev_adv": "10",
     "dx_lev_exp": "13+",
     "dx_lev_mas": "14+",
+    "dx_lev_remas": "15",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "344",
     "dx_lev_bas_notes_tap": "282",
@@ -55365,6 +55366,7 @@
     "dx_lev_mas_notes_break": "88",
     "dx_lev_mas_notes_touch": "118",
     "dx_lev_mas_designer": "maimai TEAM DX",
+    "dx_lev_remas_i": "15.0",
     "dx_lev_remas_notes": "1400",
     "dx_lev_remas_notes_tap": "1100",
     "dx_lev_remas_notes_hold": "40",
@@ -55376,8 +55378,6 @@
     "intl": "1",
     "key_intl": "",
     "date_added": "20240229",
-    "dx_lev_remas": "15",
-    "dx_lev_remas_i": "15.0",
     "date_intl_added": "20240229"
   },
   {
@@ -55574,8 +55574,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839574",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "195",
@@ -55624,8 +55624,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839578",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1346",
@@ -55644,6 +55644,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534136",
     "intl": "1",
     "date_added": "20240321",
+    "date_intl_added": "20240725",
     "buddy": "○",
     "lev_utage_left_notes": "1268",
     "lev_utage_left_notes_tap": "474",
@@ -55656,8 +55657,7 @@
     "lev_utage_right_notes_hold": "59",
     "lev_utage_right_notes_slide": "59",
     "lev_utage_right_notes_touch": "28",
-    "lev_utage_right_notes_break": "15",
-    "date_intl_added": "20240725"
+    "lev_utage_right_notes_break": "15"
   },
   {
     "sort": "453",
@@ -55706,8 +55706,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839579",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "149",
@@ -55723,6 +55723,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "8",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "131",
     "dx_lev_bas_notes_tap": "95",
@@ -55753,6 +55754,7 @@
     "dx_lev_mas_notes_break": "9",
     "dx_lev_mas_notes_touch": "18",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.2",
     "dx_lev_remas_notes": "700",
     "dx_lev_remas_notes_tap": "497",
     "dx_lev_remas_notes_hold": "56",
@@ -55763,10 +55765,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839576",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.2",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "154",
@@ -55815,8 +55815,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839577",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1347",
@@ -55835,6 +55835,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534375",
     "intl": "1",
     "date_added": "20240321",
+    "date_intl_added": "20240725",
     "buddy": "○",
     "lev_utage_left_notes": "1563",
     "lev_utage_left_notes_tap": "514",
@@ -55847,8 +55848,7 @@
     "lev_utage_right_notes_hold": "21",
     "lev_utage_right_notes_slide": "115",
     "lev_utage_right_notes_touch": "90",
-    "lev_utage_right_notes_break": "69",
-    "date_intl_added": "20240725"
+    "lev_utage_right_notes_break": "69"
   },
   {
     "sort": "163",
@@ -55897,8 +55897,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839573",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "42",
@@ -55947,8 +55947,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839570",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "609",
@@ -55997,8 +55997,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839580",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1010",
@@ -56049,8 +56049,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1362",
@@ -56151,8 +56151,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839568",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1348",
@@ -56176,8 +56176,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533581",
     "intl": "1",
     "date_added": "20240321",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1361",
@@ -56253,8 +56253,8 @@
     "intl": "1",
     "key_intl": "○",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1017",
@@ -56305,8 +56305,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1377",
@@ -56325,6 +56325,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534132",
     "intl": "0",
     "date_added": "20230914",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "1611",
     "lev_utage_left_notes_tap": "618",
@@ -56337,8 +56338,7 @@
     "lev_utage_right_notes_hold": "65",
     "lev_utage_right_notes_slide": "51",
     "lev_utage_right_notes_touch": "70",
-    "lev_utage_right_notes_break": "13",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "13"
   },
   {
     "sort": "1",
@@ -56354,6 +56354,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11",
+    "dx_lev_remas": "13",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "175",
     "dx_lev_bas_notes_tap": "141",
@@ -56384,6 +56385,7 @@
     "dx_lev_mas_notes_break": "49",
     "dx_lev_mas_notes_touch": "11",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.1",
     "dx_lev_remas_notes": "797",
     "dx_lev_remas_notes_tap": "503",
     "dx_lev_remas_notes_hold": "39",
@@ -56394,10 +56396,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839567",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.1",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "874",
@@ -56448,8 +56448,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1345",
@@ -56468,6 +56468,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533811",
     "intl": "1",
     "date_added": "20240321",
+    "date_intl_added": "20170331",
+    "date_intl_updated": "20240725",
     "buddy": "○",
     "lev_utage_left_notes": "1457",
     "lev_utage_left_notes_tap": "378",
@@ -56480,9 +56482,7 @@
     "lev_utage_right_notes_hold": "175",
     "lev_utage_right_notes_slide": "59",
     "lev_utage_right_notes_touch": "54",
-    "lev_utage_right_notes_break": "85",
-    "date_intl_added": "20170331",
-    "date_intl_updated": "20240725"
+    "lev_utage_right_notes_break": "85"
   },
   {
     "sort": "1363",
@@ -56524,6 +56524,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "199",
     "dx_lev_bas_notes_tap": "164",
@@ -56554,6 +56555,7 @@
     "dx_lev_mas_notes_break": "21",
     "dx_lev_mas_notes_touch": "38",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.3",
     "dx_lev_remas_notes": "922",
     "dx_lev_remas_notes_tap": "662",
     "dx_lev_remas_notes_hold": "49",
@@ -56564,10 +56566,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839575",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.3",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "1280",
@@ -56616,8 +56616,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/828609",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240229"
+    "date_intl_added": "20240229",
+    "date": "NEW"
   },
   {
     "sort": "1349",
@@ -56641,8 +56641,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/801243",
     "intl": "1",
     "date_added": "20240321",
-    "lev_utage_notes_touch": "1",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "lev_utage_notes_touch": "1"
   },
   {
     "sort": "11",
@@ -56658,6 +56658,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "222",
     "dx_lev_bas_notes_tap": "171",
@@ -56688,6 +56689,7 @@
     "dx_lev_mas_notes_break": "40",
     "dx_lev_mas_notes_touch": "48",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.8",
     "dx_lev_remas_notes": "1075",
     "dx_lev_remas_notes_tap": "560",
     "dx_lev_remas_notes_hold": "55",
@@ -56698,10 +56700,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/839569",
     "intl": "1",
     "date_added": "20240321",
-    "date": "NEW",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.8",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "873",
@@ -56752,8 +56752,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240321",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "608",
@@ -56802,8 +56802,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/841454",
     "intl": "1",
     "date_added": "20240401",
-    "date": "NEW",
-    "date_intl_added": "20240906"
+    "date_intl_added": "20240906",
+    "date": "NEW"
   },
   {
     "sort": "1281",
@@ -56853,8 +56853,8 @@
     "intl": "1",
     "key_intl": "○",
     "date_added": "20240401",
-    "date": "NEW",
-    "date_intl_added": "20240906"
+    "date_intl_added": "20240906",
+    "date": "NEW"
   },
   {
     "sort": "619",
@@ -56904,8 +56904,8 @@
     "intl": "1",
     "key_intl": "○",
     "date_added": "20240412",
-    "date": "NEW",
-    "date_intl_added": "20240823"
+    "date_intl_added": "20240823",
+    "date": "NEW"
   },
   {
     "sort": "617",
@@ -56954,8 +56954,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/843875",
     "intl": "1",
     "date_added": "20240412",
-    "date": "NEW",
-    "date_intl_added": "20240823"
+    "date_intl_added": "20240823",
+    "date": "NEW"
   },
   {
     "sort": "1016",
@@ -57005,8 +57005,8 @@
     "intl": "1",
     "key_intl": "○",
     "date_added": "20240412",
-    "date": "NEW",
-    "date_intl_added": "20240725"
+    "date_intl_added": "20240725",
+    "date": "NEW"
   },
   {
     "sort": "618",
@@ -57055,8 +57055,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/843876",
     "intl": "1",
     "date_added": "20240412",
-    "date": "NEW",
-    "date_intl_added": "20240823"
+    "date_intl_added": "20240823",
+    "date": "NEW"
   },
   {
     "sort": "192",
@@ -57105,9 +57105,9 @@
     "wiki_url": "https://gamerch.com/maimai/entry/846384",
     "intl": "1",
     "date_added": "20240426",
-    "date": "NEW",
     "date_intl_added": "20240808",
-    "date_intl_updated": "20240809"
+    "date_intl_updated": "20240809",
+    "date": "NEW"
   },
   {
     "sort": "191",
@@ -57156,9 +57156,9 @@
     "wiki_url": "https://gamerch.com/maimai/entry/846383",
     "intl": "1",
     "date_added": "20240426",
-    "date": "NEW",
     "date_intl_added": "20240808",
-    "date_intl_updated": "20240809"
+    "date_intl_updated": "20240809",
+    "date": "NEW"
   },
   {
     "sort": "144",
@@ -57207,8 +57207,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/846381",
     "intl": "0",
     "date_added": "20240426",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "140",
@@ -57257,8 +57257,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/846382",
     "intl": "0",
     "date_added": "20240426",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1050",
@@ -57309,8 +57309,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240510",
-    "date": "NEW",
-    "date_intl_added": "20240913"
+    "date_intl_added": "20240913",
+    "date": "NEW"
   },
   {
     "sort": "1020",
@@ -57361,8 +57361,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240510",
-    "date": "NEW",
-    "date_intl_added": "20240913"
+    "date_intl_added": "20240913",
+    "date": "NEW"
   },
   {
     "sort": "1019",
@@ -57413,8 +57413,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240510",
-    "date": "NEW",
-    "date_intl_added": "20240913"
+    "date_intl_added": "20240913",
+    "date": "NEW"
   },
   {
     "sort": "1018",
@@ -57465,8 +57465,8 @@
     "key": "○",
     "key_intl": "○",
     "date_added": "20240510",
-    "date": "NEW",
-    "date_intl_added": "20240913"
+    "date_intl_added": "20240913",
+    "date": "NEW"
   },
   {
     "sort": "1343",
@@ -57485,6 +57485,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/796977",
     "intl": "1",
     "date_added": "20240524",
+    "date_intl_added": "20240906",
     "buddy": "○",
     "lev_utage_left_notes": "1415",
     "lev_utage_left_notes_tap": "390",
@@ -57497,8 +57498,7 @@
     "lev_utage_right_notes_hold": "129",
     "lev_utage_right_notes_slide": "63",
     "lev_utage_right_notes_touch": "50",
-    "lev_utage_right_notes_break": "61",
-    "date_intl_added": "20240906"
+    "lev_utage_right_notes_break": "61"
   },
   {
     "sort": "190",
@@ -57547,8 +57547,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/852033",
     "intl": "0",
     "date_added": "20240524",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1344",
@@ -57572,8 +57572,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533575",
     "intl": "0",
     "date_added": "20240524",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "194",
@@ -57622,8 +57622,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/852035",
     "intl": "0",
     "date_added": "20240524",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "193",
@@ -57672,8 +57672,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/852034",
     "intl": "0",
     "date_added": "20240524",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "123",
@@ -57722,8 +57722,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/852032",
     "intl": "0",
     "date_added": "20240524",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "26",
@@ -57772,8 +57772,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/852031",
     "intl": "0",
     "date_added": "20240524",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "450",
@@ -57822,8 +57822,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/854844",
     "intl": "0",
     "date_added": "20240607",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1342",
@@ -57847,8 +57847,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534328",
     "intl": "0",
     "date_added": "20240607",
-    "lev_utage_notes_touch": "25",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "25"
   },
   {
     "sort": "607",
@@ -57897,8 +57897,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/854847",
     "intl": "0",
     "date_added": "20240607",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "451",
@@ -57947,8 +57947,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/854845",
     "intl": "0",
     "date_added": "20240607",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1341",
@@ -57967,6 +57967,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534679",
     "intl": "0",
     "date_added": "20240607",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "462",
     "lev_utage_left_notes_tap": "99",
@@ -57979,8 +57980,7 @@
     "lev_utage_right_notes_hold": "4",
     "lev_utage_right_notes_slide": "34",
     "lev_utage_right_notes_touch": "90",
-    "lev_utage_right_notes_break": "17",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "17"
   },
   {
     "sort": "452",
@@ -58029,8 +58029,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/854846",
     "intl": "0",
     "date_added": "20240607",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "891",
@@ -58080,8 +58080,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240621",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "888",
@@ -58131,8 +58131,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240621",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "889",
@@ -58182,8 +58182,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240621",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "890",
@@ -58233,8 +58233,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240621",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "664",
@@ -58283,8 +58283,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/860712",
     "intl": "0",
     "date_added": "20240705",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "674",
@@ -58333,8 +58333,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/860715",
     "intl": "0",
     "date_added": "20240705",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "673",
@@ -58383,8 +58383,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/860714",
     "intl": "0",
     "date_added": "20240705",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "670",
@@ -58433,8 +58433,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/860716",
     "intl": "0",
     "date_added": "20240705",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "672",
@@ -58483,8 +58483,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/860713",
     "intl": "0",
     "date_added": "20240705",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "606",
@@ -58533,9 +58533,9 @@
     "wiki_url": "https://gamerch.com/maimai/entry/860725",
     "intl": "1",
     "date_added": "20240711",
-    "date": "NEW",
     "date_intl_added": "20240808",
-    "date_intl_updated": "20240809"
+    "date_intl_updated": "20240809",
+    "date": "NEW"
   },
   {
     "sort": "200",
@@ -58584,8 +58584,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/862503",
     "intl": "0",
     "date_added": "20240719",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "249",
@@ -58634,8 +58634,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/862504",
     "intl": "0",
     "date_added": "20240719",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "165",
@@ -58684,8 +58684,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/862501",
     "intl": "0",
     "date_added": "20240719",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1022",
@@ -58735,8 +58735,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240802",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1198",
@@ -58786,8 +58786,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240802",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "887",
@@ -58837,8 +58837,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240802",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1021",
@@ -58888,8 +58888,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240802",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1339",
@@ -58908,6 +58908,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534254",
     "intl": "0",
     "date_added": "20240816",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "1610",
     "lev_utage_left_notes_tap": "543",
@@ -58920,8 +58921,7 @@
     "lev_utage_right_notes_hold": "94",
     "lev_utage_right_notes_slide": "111",
     "lev_utage_right_notes_touch": "22",
-    "lev_utage_right_notes_break": "60",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "60"
   },
   {
     "sort": "1340",
@@ -58945,8 +58945,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/785647",
     "intl": "0",
     "date_added": "20240816",
-    "lev_utage_notes_touch": "37",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "37"
   },
   {
     "sort": "24",
@@ -58995,8 +58995,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/866680",
     "intl": "0",
     "date_added": "20240816",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "25",
@@ -59045,8 +59045,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/866681",
     "intl": "0",
     "date_added": "20240816",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1224",
@@ -59095,8 +59095,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/869093",
     "intl": "0",
     "date_added": "20240830",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1221",
@@ -59145,8 +59145,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/869091",
     "intl": "0",
     "date_added": "20240830",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1214",
@@ -59195,8 +59195,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/869092",
     "intl": "0",
     "date_added": "20240830",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1225",
@@ -59245,8 +59245,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/869094",
     "intl": "0",
     "date_added": "20240830",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "605",
@@ -59295,8 +59295,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/873009",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "104",
@@ -59345,8 +59345,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/872604",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "5",
@@ -59395,8 +59395,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/871881",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "863",
@@ -59446,8 +59446,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "118",
@@ -59463,6 +59463,7 @@
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "192",
     "dx_lev_bas_notes_tap": "162",
@@ -59493,6 +59494,7 @@
     "dx_lev_mas_notes_break": "33",
     "dx_lev_mas_notes_touch": "15",
     "dx_lev_mas_designer": "緑川 犬三郎",
+    "dx_lev_remas_i": "13.5",
     "dx_lev_remas_notes": "904",
     "dx_lev_remas_notes_tap": "670",
     "dx_lev_remas_notes_hold": "85",
@@ -59503,10 +59505,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/872603",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.5",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1338",
@@ -59530,8 +59530,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533812",
     "intl": "0",
     "date_added": "20240912",
-    "lev_utage_notes_touch": "20",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "20"
   },
   {
     "sort": "1336",
@@ -59550,6 +59550,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534147",
     "intl": "0",
     "date_added": "20240912",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "1768",
     "lev_utage_left_notes_tap": "558",
@@ -59562,8 +59563,7 @@
     "lev_utage_right_notes_hold": "51",
     "lev_utage_right_notes_slide": "198",
     "lev_utage_right_notes_touch": "51",
-    "lev_utage_right_notes_break": "18",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "18"
   },
   {
     "sort": "449",
@@ -59612,8 +59612,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/872891",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "119",
@@ -59662,8 +59662,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/872607",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "871",
@@ -59712,8 +59712,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/873010",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1204",
@@ -59762,8 +59762,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/873018",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1334",
@@ -59782,6 +59782,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/534410",
     "intl": "0",
     "date_added": "20240912",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "1306",
     "lev_utage_left_notes_tap": "557",
@@ -59794,8 +59795,7 @@
     "lev_utage_right_notes_hold": "20",
     "lev_utage_right_notes_slide": "55",
     "lev_utage_right_notes_touch": "0",
-    "lev_utage_right_notes_break": "21",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "21"
   },
   {
     "sort": "1337",
@@ -59819,8 +59819,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533675",
     "intl": "0",
     "date_added": "20240912",
-    "lev_utage_notes_touch": "0",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "0"
   },
   {
     "sort": "862",
@@ -59870,8 +59870,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "2",
@@ -59887,6 +59887,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "138",
     "dx_lev_bas_notes_tap": "104",
@@ -59917,6 +59918,7 @@
     "dx_lev_mas_notes_break": "38",
     "dx_lev_mas_notes_touch": "51",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.4",
     "dx_lev_remas_notes": "811",
     "dx_lev_remas_notes_tap": "466",
     "dx_lev_remas_notes_hold": "53",
@@ -59927,10 +59929,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/871880",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.4",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "0",
@@ -59946,6 +59946,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "94",
     "dx_lev_bas_notes_tap": "73",
@@ -59976,6 +59977,7 @@
     "dx_lev_mas_notes_break": "17",
     "dx_lev_mas_notes_touch": "8",
     "dx_lev_mas_designer": "緑風 犬三郎",
+    "dx_lev_remas_i": "13.2",
     "dx_lev_remas_notes": "517",
     "dx_lev_remas_notes_tap": "369",
     "dx_lev_remas_notes_hold": "17",
@@ -59986,10 +59988,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/871742",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "dx_lev_remas": "13",
-    "dx_lev_remas_i": "13.2",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "3",
@@ -60038,8 +60038,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/871315",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "864",
@@ -60089,8 +60089,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1203",
@@ -60139,8 +60139,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/873017",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1335",
@@ -60159,6 +60159,7 @@
     "wiki_url": "https://gamerch.com/maimai/entry/533804",
     "intl": "0",
     "date_added": "20240912",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "1421",
     "lev_utage_left_notes_tap": "516",
@@ -60171,8 +60172,7 @@
     "lev_utage_right_notes_hold": "63",
     "lev_utage_right_notes_slide": "52",
     "lev_utage_right_notes_touch": "",
-    "lev_utage_right_notes_break": "9",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "9"
   },
   {
     "sort": "117",
@@ -60221,8 +60221,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/872602",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "105",
@@ -60271,8 +60271,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/872605",
     "intl": "0",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "865",
@@ -60322,8 +60322,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20240912",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "106",
@@ -60372,8 +60372,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/874801",
     "intl": "0",
     "date_added": "20240927",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "107",
@@ -60422,8 +60422,8 @@
     "wiki_url": "https://gamerch.com/maimai/entry/874803",
     "intl": "0",
     "date_added": "20240927",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "872",
@@ -60473,8 +60473,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241011",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "8",
@@ -60523,8 +60523,8 @@
     "wiki_url": "https://gamerch.com/maimai/876988",
     "intl": "0",
     "date_added": "20241011",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "447",
@@ -60573,8 +60573,8 @@
     "wiki_url": "https://gamerch.com/maimai/876987",
     "intl": "0",
     "date_added": "20241011",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "448",
@@ -60623,8 +60623,8 @@
     "wiki_url": "https://gamerch.com/maimai/876989",
     "intl": "0",
     "date_added": "20241011",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "867",
@@ -60674,8 +60674,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241025",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "866",
@@ -60725,8 +60725,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241025",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "868",
@@ -60776,8 +60776,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241025",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "869",
@@ -60827,8 +60827,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241025",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "870",
@@ -60877,8 +60877,8 @@
     "wiki_url": "https://gamerch.com/maimai/877321",
     "intl": "1",
     "date_added": "20241031",
-    "date": "NEW",
-    "date_intl_added": "20241031"
+    "date_intl_added": "20241031",
+    "date": "NEW"
   },
   {
     "sort": "116",
@@ -60927,8 +60927,8 @@
     "wiki_url": "https://gamerch.com/maimai/882166",
     "intl": "0",
     "date_added": "20241108",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "446",
@@ -60977,8 +60977,8 @@
     "wiki_url": "https://gamerch.com/maimai/882169",
     "intl": "0",
     "date_added": "20241108",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "9",
@@ -60994,6 +60994,7 @@
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "12",
+    "dx_lev_remas": "14",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "153",
     "dx_lev_bas_notes_tap": "127",
@@ -61024,6 +61025,7 @@
     "dx_lev_mas_notes_break": "29",
     "dx_lev_mas_notes_touch": "32",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "14.0",
     "dx_lev_remas_notes": "815",
     "dx_lev_remas_notes_tap": "656",
     "dx_lev_remas_notes_hold": "10",
@@ -61034,10 +61036,8 @@
     "wiki_url": "https://gamerch.com/maimai/882133",
     "intl": "0",
     "date_added": "20241108",
-    "date": "NEW",
-    "dx_lev_remas": "14",
-    "dx_lev_remas_i": "14.0",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "10",
@@ -61053,6 +61053,7 @@
     "dx_lev_adv": "6",
     "dx_lev_exp": "10",
     "dx_lev_mas": "11+",
+    "dx_lev_remas": "13+",
     "dx_lev_bas_i": "",
     "dx_lev_bas_notes": "102",
     "dx_lev_bas_notes_tap": "75",
@@ -61083,6 +61084,7 @@
     "dx_lev_mas_notes_break": "15",
     "dx_lev_mas_notes_touch": "3",
     "dx_lev_mas_designer": "はっぴー",
+    "dx_lev_remas_i": "13.7",
     "dx_lev_remas_notes": "574",
     "dx_lev_remas_notes_tap": "425",
     "dx_lev_remas_notes_hold": "24",
@@ -61093,10 +61095,8 @@
     "wiki_url": "https://gamerch.com/maimai/882161",
     "intl": "0",
     "date_added": "20241108",
-    "date": "NEW",
-    "dx_lev_remas": "13+",
-    "dx_lev_remas_i": "13.7",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "114",
@@ -61145,8 +61145,8 @@
     "wiki_url": "https://gamerch.com/maimai/886030",
     "intl": "0",
     "date_added": "20241122",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "113",
@@ -61195,8 +61195,8 @@
     "wiki_url": "https://gamerch.com/maimai/886027",
     "intl": "0",
     "date_added": "20241122",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1333",
@@ -61215,6 +61215,7 @@
     "wiki_url": "https://gamerch.com/maimai/533985",
     "intl": "0",
     "date_added": "20241122",
+    "date_intl_added": "000000",
     "buddy": "○",
     "lev_utage_left_notes": "1490",
     "lev_utage_left_notes_tap": "505",
@@ -61227,8 +61228,7 @@
     "lev_utage_right_notes_hold": "54",
     "lev_utage_right_notes_slide": "93",
     "lev_utage_right_notes_touch": "34",
-    "lev_utage_right_notes_break": "66",
-    "date_intl_added": "000000"
+    "lev_utage_right_notes_break": "66"
   },
   {
     "sort": "1332",
@@ -61252,8 +61252,8 @@
     "wiki_url": "https://gamerch.com/maimai/714979",
     "intl": "0",
     "date_added": "20241122",
-    "lev_utage_notes_touch": "18",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "18"
   },
   {
     "sort": "115",
@@ -61302,8 +61302,8 @@
     "wiki_url": "https://gamerch.com/maimai/886033",
     "intl": "0",
     "date_added": "20241122",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "7",
@@ -61352,8 +61352,8 @@
     "wiki_url": "https://gamerch.com/maimai/885257",
     "intl": "0",
     "date_added": "20241122",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "604",
@@ -61403,8 +61403,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241206",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "111",
@@ -61453,8 +61453,8 @@
     "wiki_url": "https://gamerch.com/maimai/889150",
     "intl": "0",
     "date_added": "20241206",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1330",
@@ -61478,8 +61478,8 @@
     "wiki_url": "",
     "intl": "0",
     "date_added": "20241206",
-    "lev_utage_notes_touch": "",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": ""
   },
   {
     "sort": "1331",
@@ -61503,8 +61503,8 @@
     "wiki_url": "https://gamerch.com/maimai/852034",
     "intl": "0",
     "date_added": "20241206",
-    "lev_utage_notes_touch": "0",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "0"
   },
   {
     "sort": "109",
@@ -61553,8 +61553,8 @@
     "wiki_url": "https://gamerch.com/maimai/888996",
     "intl": "0",
     "date_added": "20241206",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "112",
@@ -61603,8 +61603,8 @@
     "wiki_url": "https://gamerch.com/maimai/889153",
     "intl": "0",
     "date_added": "20241206",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "108",
@@ -61653,8 +61653,8 @@
     "wiki_url": "https://gamerch.com/maimai/888998",
     "intl": "0",
     "date_added": "20241206",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "110",
@@ -61703,8 +61703,8 @@
     "wiki_url": "https://gamerch.com/maimai/889147",
     "intl": "0",
     "date_added": "20241206",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "4",
@@ -61753,8 +61753,8 @@
     "wiki_url": "https://gamerch.com/maimai/889220",
     "intl": "0",
     "date_added": "20241212",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "834",
@@ -61803,8 +61803,8 @@
     "wiki_url": "https://gamerch.com/maimai/893952",
     "intl": "0",
     "date_added": "20241220",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "833",
@@ -61853,8 +61853,8 @@
     "wiki_url": "https://gamerch.com/maimai/893950",
     "intl": "0",
     "date_added": "20241220",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "835",
@@ -61904,8 +61904,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20241220",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "1329",
@@ -61929,8 +61929,8 @@
     "wiki_url": "https://gamerch.com/maimai/534124",
     "intl": "0",
     "date_added": "20241224",
-    "lev_utage_notes_touch": "391",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "lev_utage_notes_touch": "391"
   },
   {
     "sort": "603",
@@ -61979,8 +61979,8 @@
     "wiki_url": "https://gamerch.com/maimai/894276",
     "intl": "0",
     "date_added": "20241224",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "602",
@@ -62030,8 +62030,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20250110",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "600",
@@ -62080,8 +62080,8 @@
     "wiki_url": "https://gamerch.com/maimai/896874",
     "intl": "0",
     "date_added": "20250110",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "601",
@@ -62131,8 +62131,8 @@
     "intl": "0",
     "key": "○",
     "date_added": "20250110",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   },
   {
     "sort": "599",
@@ -62181,7 +62181,7 @@
     "wiki_url": "https://gamerch.com/maimai/896873",
     "intl": "0",
     "date_added": "20250110",
-    "date": "NEW",
-    "date_intl_added": "000000"
+    "date_intl_added": "000000",
+    "date": "NEW"
   }
 ]
