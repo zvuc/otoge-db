@@ -16,6 +16,19 @@ LEVEL_KEYS = {
     "dx_lev_remas"
 }
 
+LEVEL_CONST_KEYS = {
+    "lev_bas_i",
+    "lev_adv_i",
+    "lev_exp_i",
+    "lev_mas_i",
+    "lev_remas_i",
+    "dx_lev_bas_i",
+    "dx_lev_adv_i",
+    "dx_lev_exp_i",
+    "dx_lev_mas_i",
+    "dx_lev_remas_i"
+}
+
 OTHER_KEYS = {
     "artist",
     "catcode",

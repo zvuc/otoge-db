@@ -12,6 +12,14 @@ LEVEL_KEYS = {
     "we_star"
 }
 
+LEVEL_CONST_KEYS = {
+    "lev_bas_i",
+    "lev_adv_i",
+    "lev_exp_i",
+    "lev_mas_i",
+    "lev_ult_i"
+}
+
 OTHER_KEYS = {
     "id",
     "catname",

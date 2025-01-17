@@ -11,6 +11,14 @@ LEVEL_KEYS = {
     "lev_lnt"
 }
 
+LEVEL_CONST_KEYS = {
+    "lev_bas_i",
+    "lev_adv_i",
+    "lev_exc_i",
+    "lev_mas_i",
+    "lev_lnt_i"
+}
+
 OTHER_KEYS = {
     "date",
     "title",

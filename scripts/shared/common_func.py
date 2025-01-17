@@ -380,12 +380,24 @@ def print_keys_change(song, old_song, song_diffs):
             print_message(f"- New marker removed", bcolors.OKBLUE)
             any_changes = True
 
+
     for key in game.OTHER_KEYS:
         if key in song and key in old_song:
             if song[key] != old_song[key]:
                 lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
                 print_message(f"- {key}: {old_song[key]} → {song[key]}", bcolors.ENDC)
+                any_changes = True
+
+    for key in game.LEVEL_CONST_KEYS:
+        if key in song and key in old_song:
+            if song[key] != old_song[key]:
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                if song[key] == "":
+                    print_message(f"- Const cleared! {key}: (was {old_song[key]})", bcolors.WARNING)
+                else:
+                    print_message(f"- Const changed! {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE)
+
                 any_changes = True
 
     return any_changes
@@ -560,3 +572,7 @@ def sort_dict_keys(input_dict):
     sorted_keys = sorted(input_dict.keys(), key=lambda k: game.KEY_ORDER.index(k) if k in game.KEY_ORDER else float('inf'))
 
     return {key: input_dict[key] for key in sorted_keys}
+
+def record_diffs(song, song_hash, diff_type):
+    with open(game.LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
+        f.write(diff_type.upper() + ' ' + song_hash + '\n')
