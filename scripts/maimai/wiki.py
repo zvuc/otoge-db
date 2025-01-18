@@ -63,8 +63,8 @@ def update_songs_extra_data():
 
         # time.sleep(random.randint(1,2))
 
-        with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
+    with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
+        json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
@@ -87,15 +87,23 @@ def update_song_wiki_data(song, total_diffs):
     # use existing URL if already present
     if 'wiki_url' in song and song['wiki_url']:
         if game.ARGS.noskip:
-            # Check if any values are empty from target keys
-            # but excluding lev_utage_notes_touch
             if (
+                # If chart exists in song, check REQUIRED_KEYS_PER_CHART
+                # and add any missing additional keys for that chart
                 any(
+                    chart_key in song
+                    and any(required_key not in song for required_key in required_keys)
+                    for chart_key, required_keys in game.REQUIRED_KEYS_PER_CHART.items()
+                )
+                # Check if any existing keys have empty values
+                # but exclude lev_utage_notes_touch
+                or any(
                     value == ""
                     for key, value in song.items()
                     if any(target in key for target in TARGET_KEYS) and key != "lev_utage_notes_touch"
                 )
                 or game.ARGS.overwrite
+
             ):
                 url = song['wiki_url']
                 try:
