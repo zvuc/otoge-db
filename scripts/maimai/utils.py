@@ -6,6 +6,7 @@ import ipdb
 import requests
 import urllib.request
 import urllib3
+import copy
 import json
 import os
 import shutil

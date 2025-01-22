@@ -2,6 +2,7 @@
 import requests
 import urllib.request
 import json
+import copy
 from chunithm.paths import *
 from chunithm import wiki
 from shared.common_func import *
