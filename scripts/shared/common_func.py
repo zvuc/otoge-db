@@ -168,7 +168,7 @@ def get_last_date(local_music_data):
         # Handle the case where all dates are None
         return None
 
-def renew_lastupdated(local_json_ex_path, dest_html_path):
+def renew_lastupdated(region, local_json_ex_path, dest_html_path):
     with open(local_json_ex_path, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
 
@@ -179,10 +179,16 @@ def renew_lastupdated(local_json_ex_path, dest_html_path):
     with open(dest_html_path, 'r', encoding='utf-8') as f:
         local_html_data = f.read()
 
-    local_html_data = re.sub(r'block lastupdated\n\s*\|\s*(\d{8})',
-                         rf'block lastupdated\n  | {latest_date}',
-                         local_html_data,
-                         flags=re.IGNORECASE)
+    if region == 'jp':
+        local_html_data = re.sub(r'block lastupdated-jp\n\s*\|\s*(\d{8})',
+                             rf'block lastupdated-jp\n  | {latest_date}',
+                             local_html_data,
+                             flags=re.IGNORECASE)
+    if region == 'intl':
+        local_html_data = re.sub(r'block lastupdated-intl\n\s*\|\s*(\d{8})',
+                             rf'block lastupdated-intl\n  | {latest_date}',
+                             local_html_data,
+                             flags=re.IGNORECASE)
 
     with open(dest_html_path, 'w', encoding='utf-8') as f:
         f.write(local_html_data)

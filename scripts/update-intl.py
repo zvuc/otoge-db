@@ -7,6 +7,9 @@ def main():
     game.GAME_MODULE.intl.sync_json_data()
     game.GAME_MODULE.intl.add_intl_info()
 
+    # Update the last updated time
+    renew_lastupdated('intl', game.GAME_MODULE.paths.LOCAL_INTL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_INDEX_HTML_PATH)
+
 if __name__ == "__main__":
     custom_args = {
         '--strict': {'action':"store_true", 'help':'Strict match songs by checking levels for all charts'}
