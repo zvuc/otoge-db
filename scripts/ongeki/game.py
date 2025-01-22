@@ -1,5 +1,8 @@
 GAME_NAME = "ongeki"
 
+CURRENT_JP_VER = "BRIGHT MEMORY ACT.3"
+CURRENT_INTL_VER = "BRIGHT MEMORY ACT.3"
+
 HASH_KEYS = ['title', 'artist', 'date', 'lunatic']
 HASH_KEYS_EX = ['title', 'artist', 'date_added', 'lunatic']
 

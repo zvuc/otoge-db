@@ -4,7 +4,9 @@ import shared
 from shared.common_func import *
 
 def main():
-    game.GAME_MODULE.intl.sync_json_data()
+    if (game.CURRENT_JP_VER == game.CURRENT_INTL_VER):
+        game.GAME_MODULE.intl.sync_json_data()
+
     game.GAME_MODULE.intl.add_intl_info()
 
     # Update the last updated time

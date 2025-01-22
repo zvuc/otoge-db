@@ -1,5 +1,8 @@
 GAME_NAME = "chunithm"
 
+CURRENT_JP_VER = "VERSE"
+CURRENT_INTL_VER = "LUMINOUS PLUS"
+
 HASH_KEYS = ['title', 'artist', 'we_kanji']
 
 LEVEL_KEYS = {
