@@ -339,6 +339,19 @@ header {
 	.date {
 		// margin-right: 10px;
 		font-size: 0.85em;
+
+		:root[data-game-region="jp"] &.intl {
+			display: none;
+		}
+
+		:root[data-game-region="intl"]:not(.ongeki) &.jp {
+			display: none;
+		}
+
+		:root.ongeki &.intl {
+			display: none;
+		}
+
 	}
 
 	.region-quick-switch {
