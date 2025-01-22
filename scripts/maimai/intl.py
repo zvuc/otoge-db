@@ -450,7 +450,7 @@ def add_intl_info():
                         'dx_lev_utage' in intl_song and intl_song['dx_lev_utage'] == wiki_song['lev_utage']):
                             matched_intl_song = intl_song
                             matched_intl_old_song = copy.copy(intl_song)
-                            jp_song_matched = True
+                            intl_song_matched = True
                             break
 
             # else
@@ -560,6 +560,7 @@ def add_intl_info():
                             'dx_lev_remas_notes_hold',
                             'dx_lev_remas_notes_slide',
                             'dx_lev_remas_notes_break',
+                            'dx_lev_remas_notes_touch',
                             'dx_lev_remas_designer'
                         ]:
                             if key in matched_jp_song:
@@ -577,6 +578,7 @@ def add_intl_info():
                             'dx_lev_bas_notes_hold',
                             'dx_lev_bas_notes_slide',
                             'dx_lev_bas_notes_break',
+                            'dx_lev_bas_notes_touch',
                             'dx_lev_bas_designer',
                             'dx_lev_adv',
                             'dx_lev_adv_i',
@@ -585,6 +587,7 @@ def add_intl_info():
                             'dx_lev_adv_notes_hold',
                             'dx_lev_adv_notes_slide',
                             'dx_lev_adv_notes_break',
+                            'dx_lev_adv_notes_touch',
                             'dx_lev_adv_designer',
                             'dx_lev_exp',
                             'dx_lev_exp_i',
@@ -593,6 +596,7 @@ def add_intl_info():
                             'dx_lev_exp_notes_hold',
                             'dx_lev_exp_notes_slide',
                             'dx_lev_exp_notes_break',
+                            'dx_lev_exp_notes_touch',
                             'dx_lev_exp_designer',
                             'dx_lev_mas',
                             'dx_lev_mas_i',
@@ -601,6 +605,7 @@ def add_intl_info():
                             'dx_lev_mas_notes_hold',
                             'dx_lev_mas_notes_slide',
                             'dx_lev_mas_notes_break',
+                            'dx_lev_mas_notes_touch',
                             'dx_lev_mas_designer',
                         ]:
                             if key in matched_jp_song:
@@ -680,7 +685,10 @@ def add_intl_info():
         #     ipdb.set_trace()
 
         if matched_intl_old_song is not None and matched_intl_old_song == matched_intl_song:
-            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+            if utage_td:
+                lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
+            else:
+                lazy_print_song_header(f"{title}", header_printed, log=True)
             print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
         else:
             total_diffs[0] += 1
