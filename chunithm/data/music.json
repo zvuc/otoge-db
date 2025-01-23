@@ -1,5 +1,21 @@
 [
   {
+    "id": "2713",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "ジョハリ",
+    "reading": "シヨハリ",
+    "artist": "Nornis",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "32272dfec7b97915.jpg"
+  },
+  {
     "id": "2806",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -2194,7 +2210,7 @@
   {
     "id": "2735",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "あいのうた",
     "reading": "アイノウタ",
     "artist": "大漠波新",
@@ -2210,7 +2226,7 @@
   {
     "id": "2736",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "夜もすがら君想ふ (10th Anniv.)",
     "reading": "ヨモスカラキミオモフ10THANNIV",
     "artist": "TOKOTOKO（西沢さんP）",
@@ -2226,7 +2242,7 @@
   {
     "id": "2737",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ジェヘナ",
     "reading": "シエヘナ",
     "artist": "wotaku",
@@ -9264,6 +9280,54 @@
     "image": "5fa1ff5f75321ca7.jpg"
   },
   {
+    "id": "2796",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "Black MInD",
+    "reading": "BLACKMIND",
+    "artist": "COSIO「グルーヴコースター」",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exp": "12+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "5deda2159afa10fd.jpg"
+  },
+  {
+    "id": "2797",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "It's a pit world",
+    "reading": "ITSAPITWORLD",
+    "artist": "Shohei Tsuchiya(ZUNTATA)「グルーヴコースター」",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "152039f970a923a5.jpg"
+  },
+  {
+    "id": "2798",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "VOLT",
+    "reading": "VOLT",
+    "artist": "aran「グルーヴコースター」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9586809bbe5c1191.jpg"
+  },
+  {
     "id": "2043",
     "catname": "VARIETY",
     "newflag": "0",
@@ -11010,7 +11074,7 @@
   {
     "id": "2793",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Not On The Sidelines - Street Fighter 6 Main Theme",
     "reading": "NOTONTHESIDELINESSTREETFIGHTER6MAINTHEME",
     "artist": "Rocco808,Randy Marx,GRP,寺山善也「ストリートファイター6」",
@@ -12462,6 +12526,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "92581b7618cb1ab0.jpg"
+  },
+  {
+    "id": "2799",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "キミとボクへの葬送歌",
+    "reading": "キミトホクヘノソウソウカ",
+    "artist": "ROKINA",
+    "lev_bas": "4",
+    "lev_adv": "8",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "59368e6c4eae14d2.jpg"
   },
   {
     "id": "145",
@@ -16654,6 +16734,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "50b5fbd450866d1d.jpg"
+  },
+  {
+    "id": "2738",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "Lostwizz",
+    "reading": "LOSTWIZZ",
+    "artist": "s-don",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "12+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "98f2f3771e53b53b.jpg"
   },
   {
     "id": "202",
@@ -22738,7 +22834,7 @@
   {
     "id": "2722",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "激烈!!!!ファミレスガールは帰しま1000!!!!",
     "reading": "ケキレツフアミレスカウルハカエシマ1000",
     "artist": "南ノ南 feat.9Lana",
