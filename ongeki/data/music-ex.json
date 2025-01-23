@@ -48879,6 +48879,7 @@
   },
   {
     "new": "NEW",
+    "date_added": "20250123",
     "title": "Rhythm of Love",
     "title_sort": "RHYTHMOFLOVE",
     "artist": "DÉ DÉ MOUSE",
@@ -48926,11 +48927,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250123"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Rhythm of Love"
   },
   {
     "new": "NEW",
+    "date_added": "20250123",
     "title": ".locusignore",
     "title_sort": "LOCUSIGNORE",
     "artist": "q/stol",
@@ -48978,7 +48979,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250123"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/.locusignore"
   }
 ]
