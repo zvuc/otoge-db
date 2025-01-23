@@ -21459,7 +21459,7 @@
     "image_url": "ab99060aed1ba94e.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "アリアの最強しもべ計画♡",
     "title_sort": "アリアノサイキヨウシモヘケイカク",
@@ -21482,7 +21482,7 @@
     "image_url": "5c1df6ad2a5d761c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "Re:StarT (2023ver.)",
     "title_sort": "RESTART2023VER",
@@ -21505,7 +21505,7 @@
     "image_url": "7f9efa359ca6f269.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "Mornin’Bell",
     "title_sort": "MORNINBELL",
@@ -21528,7 +21528,7 @@
     "image_url": "374d82ad5432e3af.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "群青シグナル",
     "title_sort": "クンシヨウシクナル",
@@ -21551,7 +21551,7 @@
     "image_url": "0cde1a004c8238ac.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "MAKING！ハイタッチ！ -星咲 あかりソロver.-",
     "title_sort": "MAKINGハイタツチホシサキアカリソロVER",
@@ -21574,7 +21574,7 @@
     "image_url": "ff5ae59d407529c7.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "MAKING！ハイタッチ！ -桜井 春菜ソロver.-",
     "title_sort": "MAKINGハイタツチサクライハルナソロVER",
@@ -21597,7 +21597,7 @@
     "image_url": "5caef792df45902f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250109",
     "title": "MAKING！ハイタッチ！ -逢坂 茜ソロver.-",
     "title_sort": "MAKINGハイタツチオウサカアカネソロVER",
@@ -21618,5 +21618,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "cd959b51d06fdcb1.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250123",
+    "title": ".locusignore",
+    "title_sort": "LOCUSIGNORE",
+    "artist": "q/stol",
+    "id": "667600",
+    "chap_id": "80041",
+    "chapter": "Primera Fes. ～Arabian Nights Stage～",
+    "character": "藍原 椿",
+    "chara_id": "1060",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "9+",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "8b542ed4e0031d46.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250123",
+    "title": "Rhythm of Love",
+    "title_sort": "RHYTHMOFLOVE",
+    "artist": "DÉ DÉ MOUSE",
+    "id": "667700",
+    "chap_id": "80041",
+    "chapter": "Primera Fes. ～Arabian Nights Stage～",
+    "character": "柏木 咲姫",
+    "chara_id": "1100",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "7+",
+    "lev_exc": "11+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "f475d1314bba48e8.png"
   }
 ]
