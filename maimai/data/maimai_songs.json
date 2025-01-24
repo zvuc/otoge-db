@@ -4503,8 +4503,13 @@
   {
     "artist": "Ino(chronoize)",
     "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "13+",
     "image_url": "f68e98cac90bcdf5.png",
-    "release": "000000",
+    "release": "250124",
     "lev_bas": "5",
     "lev_adv": "7+",
     "lev_exp": "12+",
@@ -17813,6 +17818,21 @@
     "version": "25002"
   },
   {
+    "artist": "おめがシスターズ",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13",
+    "image_url": "93893d49e89ce1f2.png",
+    "release": "250124",
+    "sort": "6",
+    "title": "モンスターカミング",
+    "title_kana": "モンスタアカミンク",
+    "version": "25012"
+  },
+  {
     "artist": "魂音泉",
     "catcode": "東方Project",
     "dx_lev_bas": "4",
@@ -17957,7 +17977,6 @@
   {
     "artist": "Street",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
@@ -17972,7 +17991,6 @@
   {
     "artist": "からとP⍺ոchii少年 feat.はるの",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -17987,7 +18005,6 @@
   {
     "artist": "BlackY feat. Risa Yuzuki",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -18003,7 +18020,6 @@
   {
     "artist": "Ashrount vs. 打打だいず",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8+",
     "dx_lev_exp": "12",
@@ -18128,6 +18144,51 @@
     "title": "バベル",
     "title_kana": "ハヘル",
     "version": "25007"
+  },
+  {
+    "artist": "TOKOTOKO（西沢さんP）",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9",
+    "dx_lev_mas": "13",
+    "image_url": "68edfc4c5724bd13.png",
+    "release": "250124",
+    "sort": "103",
+    "title": "ワールドワイドワンダー",
+    "title_kana": "ワアルトワイトワンタア",
+    "version": "25012"
+  },
+  {
+    "artist": "saaa",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "87188ddedc5496cf.png",
+    "release": "250124",
+    "sort": "597",
+    "title": "MORNINGLOOM",
+    "title_kana": "MORNINGLOOM",
+    "version": "25012"
+  },
+  {
+    "artist": "F Rabbeat feat.マスタード",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "13+",
+    "image_url": "f14e167e89e6ab22.png",
+    "release": "250124",
+    "sort": "598",
+    "title": "How To Make 音ゲ～曲！",
+    "title_kana": "HOWTOMAKEオトケエキヨク",
+    "version": "25012"
   },
   {
     "artist": "柊マグネタイト",
