@@ -44270,7 +44270,8 @@
     "date_added": "20160623",
     "intl": "1",
     "date_intl_added": "20220303",
-    "date_updated": "20241031"
+    "date_updated": "20241031",
+    "date_intl_updated": "20250123"
   },
   {
     "id": "208",
@@ -98827,7 +98828,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Beat Eater",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2511",
@@ -98901,7 +98903,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Glory Steady Go!",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2512",
@@ -98975,7 +98978,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ロウワー",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2513",
@@ -99049,7 +99053,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/てらてら",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2514",
@@ -99123,7 +99128,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/天使のクローバー",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2497",
@@ -108027,7 +108033,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/マシンガンポエムドール",
     "date_added": "20241003",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "8291",
