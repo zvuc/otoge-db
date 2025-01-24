@@ -19,7 +19,7 @@ request_headers = {
 }
 
 def sync_json_data():
-    print_message(f"Syncing song data from JP to INTL", 'H2', log=True, is_verbose=True)
+    print_message(f"Syncing song data from JP to INTL", 'H2', log=True)
 
     # Read data from the first JSON file
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -215,7 +215,7 @@ def sync_json_data():
 def add_intl_info():
     total_diffs = [0]
 
-    print_message(f"Update International ver. song data from RemyWiki", 'H2', log=True, is_verbose=True)
+    print_message(f"Update International ver. song data from RemyWiki", 'H2', log=True)
 
     # Load JSON data
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -482,7 +482,7 @@ def add_intl_info():
                 else:
                     lazy_print_song_header(f"{title}", header_printed, log=True)
 
-                print_message(f"- Song copied from JP data to INTL", bcolors.OKGREEN)
+                print_message(f"- Song copied from JP data to INTL", bcolors.OKGREEN, log=True)
                 print_message(f"- Marked as available in Intl ver.", bcolors.OKGREEN, log=True)
 
         # If song is already in INTL data (most likely partially)
@@ -686,9 +686,9 @@ def add_intl_info():
 
         if matched_intl_old_song is not None and matched_intl_old_song == matched_intl_song:
             if utage_td:
-                lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
+                lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True, is_verbose=True)
             else:
-                lazy_print_song_header(f"{title}", header_printed, log=True)
+                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
             print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
         else:
             total_diffs[0] += 1
