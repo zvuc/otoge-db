@@ -155,8 +155,11 @@ def parse_date(date_str, release_str):
         # If parsing fails, return None or handle as needed
         return None
 
-def get_last_date(local_music_data):
-    all_dates = [parse_date(x.get('date_added', ''), x.get('release', '')) for x in local_music_data if x.get('date_added') or x.get('release')]
+def get_last_date(region, local_music_data):
+    if region == 'jp':
+        all_dates = [parse_date(x.get('date_added', ''), x.get('release', '')) for x in local_music_data if x.get('date_added') or x.get('release')]
+    if region == 'intl':
+        all_dates = [parse_date(x.get('date_intl_added', ''), x.get('date_intl_updated', '')) for x in local_music_data if x.get('date_intl_added') or x.get('date_intl_updated')]
 
     # Exclude None values when finding the latest date
     valid_dates = [date for date in all_dates if date is not None]
@@ -172,7 +175,7 @@ def renew_lastupdated(region, local_json_ex_path, dest_html_path):
     with open(local_json_ex_path, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
 
-    latest_date = get_last_date(local_music_data)
+    latest_date = get_last_date(region, local_music_data)
     print_message(f"", '')
     print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '')
 
@@ -248,7 +251,7 @@ def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash
     elif args.date != 0:
         return filter_songs_by_date(song_list, date_key, args.date, args.date)
     elif args.date_from != 0 or args.date_until != 0:
-        latest_date = int(get_last_date(song_list))
+        latest_date = int(get_last_date('jp', song_list))
 
         if args.date_from == 0:
             args.date_from = latest_date
