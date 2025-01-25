@@ -111,7 +111,7 @@ CHART_COLORS = {
 def update_songs_extra_data():
     print_message(f"Fetch latest wiki data", 'H2', log=True)
 
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
+    with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
     target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', HASH_KEYS)
@@ -123,15 +123,15 @@ def update_songs_extra_data():
     total_diffs = [0]
 
     for song in target_song_list:
-        update_song_wiki_data(song, total_diffs)
+        # update_song_wiki_data(song, total_diffs)
 
         # Sort the song dictionary before saving
         sorted_song = sort_dict_keys(song)
         song.clear()  # Clear the original song dictionary
         song.update(sorted_song)
 
-        with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
+    with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
+        json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
