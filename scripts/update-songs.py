@@ -5,10 +5,10 @@ from shared.common_func import *
 
 def main():
     # Load new song data
-    added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data = game.GAME_MODULE.utils.load_new_song_data()
+    added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data = game.GAME_MODULE.songs.load_new_song_data()
 
     # Renew music ex data
-    game.GAME_MODULE.utils.renew_music_ex_data(
+    game.GAME_MODULE.songs.renew_music_ex_data(
         added_songs, updated_songs, unchanged_songs, removed_songs, old_local_music_data
     )
 
