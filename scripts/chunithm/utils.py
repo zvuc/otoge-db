@@ -234,6 +234,7 @@ def _add_song_data_to_ex_data(song, ex_data):
 
 def _add_ex_data_template(song):
     song['bpm'] = ""
+
     song['lev_bas_i'] = ""
     song['lev_bas_notes'] = ""
     song['lev_bas_notes_tap'] = ""
@@ -241,8 +242,7 @@ def _add_ex_data_template(song):
     song['lev_bas_notes_slide'] = ""
     song['lev_bas_notes_air'] = ""
     song['lev_bas_notes_flick'] = ""
-    song['lev_bas_designer'] = ""
-    song['lev_bas_chart_link'] = ""
+
     song['lev_adv_i'] = ""
     song['lev_adv_notes'] = ""
     song['lev_adv_notes_tap'] = ""
@@ -250,8 +250,7 @@ def _add_ex_data_template(song):
     song['lev_adv_notes_slide'] = ""
     song['lev_adv_notes_air'] = ""
     song['lev_adv_notes_flick'] = ""
-    song['lev_adv_designer'] = ""
-    song['lev_adv_chart_link'] = ""
+
     song['lev_exp_i'] = ""
     song['lev_exp_notes'] = ""
     song['lev_exp_notes_tap'] = ""
@@ -261,6 +260,7 @@ def _add_ex_data_template(song):
     song['lev_exp_notes_flick'] = ""
     song['lev_exp_designer'] = ""
     song['lev_exp_chart_link'] = ""
+
     song['lev_mas_i'] = ""
     song['lev_mas_notes'] = ""
     song['lev_mas_notes_tap'] = ""
@@ -270,27 +270,32 @@ def _add_ex_data_template(song):
     song['lev_mas_notes_flick'] = ""
     song['lev_mas_designer'] = ""
     song['lev_mas_chart_link'] = ""
-    song['lev_ult_i'] = ""
-    song['lev_ult_notes'] = ""
-    song['lev_ult_notes_tap'] = ""
-    song['lev_ult_notes_hold'] = ""
-    song['lev_ult_notes_slide'] = ""
-    song['lev_ult_notes_air'] = ""
-    song['lev_ult_notes_flick'] = ""
-    song['lev_ult_designer'] = ""
-    song['lev_ult_chart_link'] = ""
-    song['lev_we_notes'] = ""
-    song['lev_we_notes_tap'] = ""
-    song['lev_we_notes_hold'] = ""
-    song['lev_we_notes_slide'] = ""
-    song['lev_we_notes_air'] = ""
-    song['lev_we_notes_flick'] = ""
-    song['lev_we_designer'] = ""
-    song['lev_we_chart_link'] = ""
+
+    if song['lev_ult'] != "":
+        song['lev_ult_i'] = ""
+        song['lev_ult_notes'] = ""
+        song['lev_ult_notes_tap'] = ""
+        song['lev_ult_notes_hold'] = ""
+        song['lev_ult_notes_slide'] = ""
+        song['lev_ult_notes_air'] = ""
+        song['lev_ult_notes_flick'] = ""
+        song['lev_ult_designer'] = ""
+        song['lev_ult_chart_link'] = ""
+
+    if song['we_kanji'] != "":
+        song['lev_we_notes'] = ""
+        song['lev_we_notes_tap'] = ""
+        song['lev_we_notes_hold'] = ""
+        song['lev_we_notes_slide'] = ""
+        song['lev_we_notes_air'] = ""
+        song['lev_we_notes_flick'] = ""
+        song['lev_we_designer'] = ""
+        song['lev_we_chart_link'] = ""
+
     song['version'] = "VERSE"
     song['wikiwiki_url'] = ""
-    song['date_added'] = f"{datetime.now().strftime('%Y%m%d')}"
     song['intl'] = "0"
+    song['date_added'] = f"{datetime.now().strftime('%Y%m%d')}"
 
     return song
 
