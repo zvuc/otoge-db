@@ -54,7 +54,7 @@
     "watch": "concurrently \"yarn shared-watch\" \"yarn ongeki-watch\" \"yarn chunithm-watch\" \"yarn maimai-watch\"",
     "datatables-minify": "minify shared/src/datatables/datatables.custom.js > shared/datatables.custom.min.js",
 
-    "fetch-songs": "python3 scripts/update-songs.py --skipwiki",
+    "fetch-songs": "python3 scripts/update-songs.py",
     "fetch-wiki": "python3 scripts/update-wiki-data.py",
     "fetch-chartguide": "python3 scripts/update-chartguide-data.py",
     "fetch-const": "python3 scripts/update-const.py",

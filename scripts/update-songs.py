@@ -19,8 +19,5 @@ def main():
     # renew_lastupdated(GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, GAME_MODULE.paths.LOCAL_NAMUWIKI_EXPORT_PATH)
 
 if __name__ == "__main__":
-    custom_args = {
-        '--skipwiki': {'action':"store_true", 'help':'Skip wiki fetch'}
-    }
     set_args_and_game_module(custom_args)
     main()

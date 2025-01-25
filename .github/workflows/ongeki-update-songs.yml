@@ -53,7 +53,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-songs.py --ongeki --nocolors --escape --markdown --skipwiki --no_timestamp --no_verbose
+            python scripts/update-songs.py --ongeki --nocolors --escape --markdown --no_timestamp --no_verbose
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 

@@ -239,12 +239,6 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
 
-    if not game.ARGS.skipwiki:
-        for song in added_songs:
-            wiki.update_song_wiki_data(song)
-        for song in updated_songs:
-            wiki.update_song_wiki_data(song)
-
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
