@@ -19,5 +19,5 @@ def main():
     # renew_lastupdated(GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, GAME_MODULE.paths.LOCAL_NAMUWIKI_EXPORT_PATH)
 
 if __name__ == "__main__":
-    set_args_and_game_module(custom_args)
+    set_args_and_game_module()
     main()
