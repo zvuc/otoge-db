@@ -176,25 +176,31 @@ def renew_lastupdated(region, local_json_ex_path, dest_html_path):
         local_music_data = json.load(f)
 
     latest_date = get_last_date(region, local_music_data)
-    print_message(f"", '')
-    print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '')
 
     with open(dest_html_path, 'r', encoding='utf-8') as f:
         local_html_data = f.read()
 
-    if region == 'jp':
-        local_html_data = re.sub(r'block lastupdated-jp\n\s*\|\s*(\d{8})',
-                             rf'block lastupdated-jp\n  | {latest_date}',
-                             local_html_data,
-                             flags=re.IGNORECASE)
-    if region == 'intl':
-        local_html_data = re.sub(r'block lastupdated-intl\n\s*\|\s*(\d{8})',
-                             rf'block lastupdated-intl\n  | {latest_date}',
-                             local_html_data,
-                             flags=re.IGNORECASE)
+    pattern_map = {
+        'jp': r'block lastupdated-jp\n\s*\|\s*(\d{8})',
+        'intl': r'block lastupdated-intl\n\s*\|\s*(\d{8})'
+    }
+
+    if region not in pattern_map:
+        return  # Exit if region is not recognized
+
+    pattern = pattern_map[region]
+    match = re.search(pattern, local_html_data, re.IGNORECASE)
+
+    if match and match.group(1) == latest_date:
+        return  # Exit if the date hasn't changed
+
+    updated_html = re.sub(pattern, rf'block lastupdated-{region}\n  | {latest_date}', local_html_data, flags=re.IGNORECASE)
 
     with open(dest_html_path, 'w', encoding='utf-8') as f:
-        f.write(local_html_data)
+        f.write(updated_html)
+
+    print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '')
+
 
 def json_to_id_value_map(json, id_key):
     return {int(song['id']):song for song in json}
