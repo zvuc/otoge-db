@@ -60523,9 +60523,9 @@
     "dx_lev_mas_notes_touch": "168",
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/874801",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240927",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250131",
     "date": "NEW"
   },
   {
@@ -60573,9 +60573,9 @@
     "dx_lev_mas_notes_touch": "125",
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/874803",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20240927",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250131",
     "date": "NEW"
   },
   {
@@ -60623,10 +60623,11 @@
     "dx_lev_mas_notes_touch": "41",
     "dx_lev_mas_designer": "Safazhel",
     "wiki_url": "https://gamerch.com/maimai/876472",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20241011",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250131",
     "date": "NEW"
   },
   {
