@@ -48983,6 +48983,7 @@
   },
   {
     "new": "NEW",
+    "date_added": "20250206",
     "title": "幻想楼閣",
     "title_sort": "ケンソウロウカク",
     "artist": "橋本みゆき",
@@ -49030,11 +49031,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250206"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/幻想楼閣"
   },
   {
     "new": "NEW",
+    "date_added": "20250206",
     "title": "get the regret over",
     "title_sort": "GETTHEREGRETOVER",
     "artist": "Shade feat.片霧烈火",
@@ -49082,11 +49083,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250206"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/get the regret over"
   },
   {
     "new": "NEW",
+    "date_added": "20250206",
     "title": "レイル・ロマネスク ハチロクver.",
     "title_sort": "レイルロマネスクハチロクVER",
     "artist": "ハチロク「まいてつ」",
@@ -49108,7 +49109,7 @@
     "image_url": "9650a6877763e5dc.png",
     "enemy_lv": "",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "96",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -49134,7 +49135,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250206"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/レイル・ロマネスク ハチロクver."
   }
 ]
