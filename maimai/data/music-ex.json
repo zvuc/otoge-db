@@ -62702,11 +62702,11 @@
     "image_url": "1060b41523ca6346.png",
     "release": "250214",
     "lev_utage": "14?",
-    "lev_utage_notes": "",
-    "lev_utage_notes_tap": "",
-    "lev_utage_notes_hold": "",
-    "lev_utage_notes_slide": "",
-    "lev_utage_notes_break": "",
+    "lev_utage_notes": "1091",
+    "lev_utage_notes_tap": "955",
+    "lev_utage_notes_hold": "57",
+    "lev_utage_notes_slide": "45",
+    "lev_utage_notes_break": "33",
     "lev_utage_designer": "神々が恋したトリル郷",
     "kanji": "片",
     "comment": "神々が恋したトリル郷",
@@ -62714,7 +62714,7 @@
     "intl": "0",
     "date_added": "20250214",
     "date_intl_added": "000000",
-    "lev_utage_notes_touch": ""
+    "lev_utage_notes_touch": "1"
   },
   {
     "sort": "1336",
@@ -62727,11 +62727,11 @@
     "image_url": "3b610dccb2b32467.png",
     "release": "250214",
     "lev_utage": "14?",
-    "lev_utage_notes": "",
-    "lev_utage_notes_tap": "",
-    "lev_utage_notes_hold": "",
-    "lev_utage_notes_slide": "",
-    "lev_utage_notes_break": "",
+    "lev_utage_notes": "1222",
+    "lev_utage_notes_tap": "1127",
+    "lev_utage_notes_hold": "0",
+    "lev_utage_notes_slide": "69",
+    "lev_utage_notes_break": "26",
     "lev_utage_designer": "ほしだけスペクタクル",
     "kanji": "星",
     "comment": "ほしだけスペクタクル",
@@ -62739,7 +62739,7 @@
     "intl": "0",
     "date_added": "20250214",
     "date_intl_added": "000000",
-    "lev_utage_notes_touch": ""
+    "lev_utage_notes_touch": "0"
   },
   {
     "sort": "599",
