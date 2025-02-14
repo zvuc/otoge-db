@@ -17605,7 +17605,6 @@
   {
     "artist": "曲：ANCHOR／歌：皇城 セツナ(CV：八巻 アンナ)",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -17620,7 +17619,6 @@
   {
     "artist": "曲：ヒゲドライバー／歌：いちげきしゅーたーず！",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
@@ -17635,7 +17633,6 @@
   {
     "artist": "Nhato",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -17651,7 +17648,6 @@
   {
     "artist": "Lite Show Magic",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
@@ -18177,6 +18173,52 @@
     "version": "25007"
   },
   {
+    "artist": "ARM×狐夢想 feat. ななひら",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "a70ad05ed58abaaf.png",
+    "release": "250214",
+    "sort": "597",
+    "title": "お願い！コンコンお稲荷さま",
+    "title_kana": "オネカイコンコンオイナリサマ",
+    "version": "25014"
+  },
+  {
+    "artist": "ななひら",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
+    "image_url": "99e85a1e3f0d8213.png",
+    "release": "250214",
+    "sort": "598",
+    "title": "いっぱい食べる君が好きだよ",
+    "title_kana": "イツハイタヘルキミカスキタヨ",
+    "version": "25014"
+  },
+  {
+    "artist": "Neko Hacker",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "9de079083677da5b.png",
+    "key": "○",
+    "release": "250214",
+    "sort": "599",
+    "title": "ピポピポ -People People- feat. ななひら",
+    "title_kana": "ヒホヒホPEOPLEPEOPLEFEATナナヒラ",
+    "version": "25014"
+  },
+  {
     "artist": "TOKOTOKO（西沢さんP）",
     "catcode": "niconico＆ボーカロイド",
     "dx_lev_bas": "3",
@@ -18641,6 +18683,19 @@
     "version": "24003"
   },
   {
+    "artist": "奏音",
+    "catcode": "宴会場",
+    "lev_utage": "14?",
+    "kanji": "星",
+    "comment": "ほしだけスペクタクル",
+    "image_url": "3b610dccb2b32467.png",
+    "release": "250214",
+    "sort": "1336",
+    "title": "[星]ほしぞらスペクタクル",
+    "title_kana": "ホシソラスヘクタクル",
+    "version": "25013"
+  },
+  {
     "artist": "すりぃ",
     "catcode": "宴会場",
     "lev_utage": "12+?",
@@ -18681,6 +18736,19 @@
     "title": "[奏]アカツキアライヴァル",
     "title_kana": "アカツキアライウアル",
     "version": "24000"
+  },
+  {
+    "artist": "Unlucky Morpheus",
+    "catcode": "宴会場",
+    "lev_utage": "14?",
+    "kanji": "片",
+    "comment": "神々が恋したトリル郷",
+    "image_url": "1060b41523ca6346.png",
+    "release": "250214",
+    "sort": "1337",
+    "title": "[片]神々が恋した幻想郷",
+    "title_kana": "カミカミカコイシタケンソウキヨウ",
+    "version": "25013"
   },
   {
     "artist": "すりぃ×相沢",
