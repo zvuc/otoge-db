@@ -121,10 +121,25 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                     dest_ex_song[key] = value
 
                     if key == 'lev_ult':
+                        dest_ex_song['lev_ult_i'] = ""
+                        dest_ex_song['lev_ult_notes'] = ""
+                        dest_ex_song['lev_ult_notes_tap'] = ""
+                        dest_ex_song['lev_ult_notes_hold'] = ""
+                        dest_ex_song['lev_ult_notes_slide'] = ""
+                        dest_ex_song['lev_ult_notes_air'] = ""
+                        dest_ex_song['lev_ult_notes_flick'] = ""
+                        dest_ex_song['lev_ult_designer'] = ""
+                        dest_ex_song['lev_ult_chart_link'] = ""
+
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                         song_diffs[0] += 1
                         dest_ex_song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
                         print_message(f"- ULTIMA chart added", bcolors.OKGREEN)
+
+                        # Sort the song dictionary before saving
+                        sorted_song = sort_dict_keys(dest_ex_song)
+                        dest_ex_song.clear()  # Clear the original song dictionary
+                        dest_ex_song.update(sorted_song)
 
             # Check for removed keys
             for key in old_song.copy():
