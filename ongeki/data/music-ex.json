@@ -49139,6 +49139,7 @@
   },
   {
     "new": "NEW",
+    "date_added": "20250220",
     "title": "DIE IN",
     "title_sort": "DIEIN",
     "artist": "TAK x Sobrem",
@@ -49160,7 +49161,7 @@
     "image_url": "14b0a08cbb278918.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "230",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -49186,11 +49187,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250220"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/DIE IN"
   },
   {
     "new": "NEW",
+    "date_added": "20250220",
     "title": "DIE IN",
     "title_sort": "DIEIN",
     "artist": "TAK x Sobrem",
@@ -49212,7 +49213,7 @@
     "image_url": "b902d0b0230a4535.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "230",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -49238,11 +49239,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250220"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/DIE IN"
   },
   {
     "new": "NEW",
+    "date_added": "20250220",
     "title": "OBLIVION",
     "title_sort": "OBLIVION",
     "artist": "ESTi",
@@ -49290,11 +49291,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250220"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/OBLIVION"
   },
   {
     "new": "NEW",
+    "date_added": "20250220",
     "title": "U.A.D",
     "title_sort": "UAD",
     "artist": "HAYAKO",
@@ -49342,11 +49343,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250220"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/U.A.D"
   },
   {
     "new": "NEW",
+    "date_added": "20250220",
     "title": "I want You",
     "title_sort": "IWANTYOU",
     "artist": "Lin-G",
@@ -49394,11 +49395,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250220"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/I want You"
   },
   {
     "new": "NEW",
+    "date_added": "20250220",
     "title": "OBLIVION",
     "title_sort": "OBLIVION",
     "artist": "ESTi",
@@ -49446,7 +49447,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250220"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/OBLIVION"
   }
 ]
