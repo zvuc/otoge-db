@@ -484,6 +484,33 @@ def remove_diacritics(input_string):
 
     return input_string
 
+def normalize_brackets(string: str):
+    string = (
+        string
+        .replace('［', '[')
+        .replace('］', ']')
+        .replace('〚', '[')
+        .replace('〛', ']')
+        .replace('【', '[')
+        .replace('】', ']')
+        .replace('『', '[')
+        .replace('』', ']')
+        .replace('「', '[')
+        .replace('」', ']')
+        .replace('（', '(')
+        .replace('）', ')')
+        .replace('〈', '(')
+        .replace('〉', ')')
+        .replace('《', '(')
+        .replace('》', ')')
+        .replace('≪', '(')
+        .replace('»', ')')
+        .replace('‹', '(')
+        .replace('›', ')')
+    )
+
+    return string
+
 def normalize_title(string: str):
     string = normalize_unicode(string)
     string = remove_diacritics(string.upper())

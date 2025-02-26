@@ -109,16 +109,6 @@ def _update_song_chartguide_data(song, total_diffs):
 
     lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
 
-    title = (
-        song['title']
-        .replace('&', '＆')
-        .replace(':', '：')
-        .replace('[', '［')
-        .replace(']', '］')
-        .replace('#', '＃')
-        .replace('"', '”')
-    )
-
     version_num = VERSION_MAPPING.get(song['version'])
 
     if song['we_kanji']:
@@ -198,7 +188,7 @@ def _update_song_chartguide_data(song, total_diffs):
             print_message(f"No matching ID ({chart.upper()})", bcolors.FAIL)
             with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
                 f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
-            return
+            continue
 
     if old_song == song:
         print_message("Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
@@ -316,7 +306,7 @@ def _extract_song_id(song, song_dict, song_title):
         if title == song_title:
             print_message(f"- Match found ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
             return song_id
-        else: 
+        else:
             # try fallback pairs
             song_title_alt = (
                 song_title
@@ -334,21 +324,31 @@ def _extract_song_id(song, song_dict, song_title):
             if title == song_title_alt:
                 print_message(f"- Match found (some characters substituted) ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
                 return song_id
-            else:
-                # try removing subtitle
-                pattern = re.compile(r'[-～].*?[-～]')
-                song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
-                
-                if title == song_title_wo_subtitle:
-                    print_message(f"WARNING: matched without subtitle", bcolors.WARNING)
-                    with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
-                        f.write('WARNING - matched without subtitle : ' + song['id'] + ' ' + song['title'] + '\n')
-                    return song_id
-                else:
-                    match_similarity = _compare_strings(title, song_title)
-                    if match_similarity > 80:
-                        print_message(f"Found closest match ({round(match_similarity,2)}%)", bcolors.WARNING)
-                        return song_id
+
+            # try removing brackets
+            title = normalize_brackets(title)
+            song_title = normalize_brackets(song_title)
+            if title == song_title:
+                print_message(f"WARNING: matched by normalizing brackets", bcolors.WARNING)
+                return song_id
+
+            # try removing subtitle
+            pattern = re.compile(r'[-～].*?[-～]')
+            song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
+
+            if title == song_title_wo_subtitle:
+                print_message(f"WARNING: matched without subtitle", bcolors.WARNING)
+                with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
+                    f.write('WARNING - matched without subtitle : ' + song['id'] + ' ' + song['title'] + '\n')
+                return song_id
+
+            # try matching anyways if similarity is over 80%
+            match_similarity = _compare_strings(title, song_title)
+            if match_similarity > 80:
+                print_message(f"Found closest match ({round(match_similarity,2)}%)", bcolors.WARNING)
+                return song_id
+
+
 
     print_message(f"- Match not found", bcolors.FAIL, log=True, is_verbose=True)
 
