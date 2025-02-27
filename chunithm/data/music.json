@@ -2210,7 +2210,7 @@
   {
     "id": "2810",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ありふれたせかいせいふく",
     "reading": "アリフレタセカイセイフク",
     "artist": "ピノキオピー",
@@ -2226,7 +2226,7 @@
   {
     "id": "2811",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ノンブレス・オブリージュ",
     "reading": "ノンフレスオフリウシユ",
     "artist": "ピノキオピー",
@@ -2242,7 +2242,7 @@
   {
     "id": "2812",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ももいろの鍵",
     "reading": "モモイロノカキ",
     "artist": "いよわ",
@@ -2258,7 +2258,7 @@
   {
     "id": "2813",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "新人類",
     "reading": "シンシンルイ",
     "artist": "まらしぃ×じん×堀江晶太(kemu) feat.鏡音リン",
@@ -2274,7 +2274,7 @@
   {
     "id": "2814",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "リアライズ",
     "reading": "リアライス",
     "artist": "柊マグネタイト",
@@ -17072,6 +17072,22 @@
     "image": "2ad19c9da7f807e4.jpg"
   },
   {
+    "id": "2739",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Aether Crest: Celestial",
+    "reading": "AETHERCRESTCELESTIAL",
+    "artist": "void (Mournfinale) × 水野健治",
+    "lev_bas": "5",
+    "lev_adv": "8+",
+    "lev_exp": "14",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2d6eb4e70a8a5937.jpg"
+  },
+  {
     "id": "59",
     "catname": "ORIGINAL",
     "newflag": "0",
@@ -23010,7 +23026,7 @@
   {
     "id": "8295",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "カオスが極まる",
     "reading": "カオスカキワマル",
     "artist": "UNISON SQUARE GARDEN「ブルーロック」",
@@ -23026,7 +23042,7 @@
   {
     "id": "8296",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "What's up? Pop!",
     "reading": "WHATSUPPOP",
     "artist": "Capchii",
@@ -23042,7 +23058,7 @@
   {
     "id": "8297",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "おくすり飲んで寝よう",
     "reading": "オクスリノンテネヨウ",
     "artist": "もちうつね",
