@@ -130,6 +130,10 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
     tables = soup.select("#body table")
     old_song = copy.copy(song)
 
+    # Sanitize any unwanted footnote tooltips
+    for footnotes in soup.find_all('a', class_='tooltip'):
+        footnotes.decompose()
+
     # If there are no tables in page at all, exit
     if len(tables) == 0:
         lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
