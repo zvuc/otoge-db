@@ -21735,7 +21735,7 @@
     "image_url": "9650a6877763e5dc.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250220",
     "title": "DIE IN",
     "title_sort": "DIEIN",
@@ -21758,7 +21758,7 @@
     "image_url": "b902d0b0230a4535.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250220",
     "title": "OBLIVION",
     "title_sort": "OBLIVION",
@@ -21781,7 +21781,7 @@
     "image_url": "9fe2c8a515a47d88.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250220",
     "title": "U.A.D",
     "title_sort": "UAD",
@@ -21804,7 +21804,7 @@
     "image_url": "2c476816ece54f23.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250220",
     "title": "I want You",
     "title_sort": "IWANTYOU",
@@ -21827,7 +21827,7 @@
     "image_url": "4d95d4d6963c984f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250220",
     "title": "DIE IN",
     "title_sort": "DIEIN",
@@ -21850,7 +21850,7 @@
     "image_url": "14b0a08cbb278918.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250220",
     "title": "OBLIVION",
     "title_sort": "OBLIVION",
@@ -21871,5 +21871,28 @@
     "lev_mas": "",
     "lev_lnt": "0",
     "image_url": "6e4457eb81f1051a.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250227",
+    "title": "MY GLORY WANTED!!!",
+    "title_sort": "MYGLORYWANTED",
+    "artist": "曲：Kijibato／歌：R.B.P. [九條 楓(CV：佳村 はるか)、逢坂 茜(CV：大空 直美)、珠洲島 有栖(CV：長縄 まりあ)]",
+    "id": "667300",
+    "chap_id": "05001",
+    "chapter": "第5章",
+    "character": "逢坂 茜",
+    "chara_id": "1120",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "7",
+    "lev_adv": "11+",
+    "lev_exc": "14",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "81393b7be8c60e96.png"
   }
 ]
