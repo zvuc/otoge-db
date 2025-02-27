@@ -49451,6 +49451,7 @@
   },
   {
     "new": "NEW",
+    "date_added": "20250227",
     "title": "MY GLORY WANTED!!!",
     "title_sort": "MYGLORYWANTED",
     "artist": "曲：Kijibato／歌：R.B.P. [九條 楓(CV：佳村 はるか)、逢坂 茜(CV：大空 直美)、珠洲島 有栖(CV：長縄 まりあ)]",
@@ -49470,7 +49471,7 @@
     "lev_mas": "15",
     "lev_lnt": "",
     "image_url": "81393b7be8c60e96.png",
-    "enemy_lv": "",
+    "enemy_lv": "75",
     "enemy_type": "FIRE",
     "bpm": "",
     "lev_bas_i": "",
@@ -49488,8 +49489,8 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
+    "lev_mas_notes": "2340",
+    "lev_mas_bells": "378",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
@@ -49498,7 +49499,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250227"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/MY GLORY WANTED!!!"
   }
 ]
