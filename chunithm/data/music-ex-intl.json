@@ -5129,7 +5129,8 @@
     "intl": "1",
     "date_added": "20170921",
     "date_updated": "20241212",
-    "date_intl_added": "20220303"
+    "date_intl_added": "20220303",
+    "date_intl_updated": "20241212"
   },
   {
     "id": "421",
@@ -13081,7 +13082,8 @@
     "intl": "1",
     "date_added": "20181025",
     "date_updated": "20240801",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20241212"
   },
   {
     "id": "631",
@@ -16928,7 +16930,8 @@
     "intl": "1",
     "date_added": "20160707",
     "date_updated": "20240620",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "211",
@@ -23753,7 +23756,8 @@
     "intl": "1",
     "date_added": "20180510",
     "date_updated": "20240822",
-    "date_intl_added": "20210318"
+    "date_intl_added": "20210318",
+    "date_intl_updated": "20241226"
   },
   {
     "id": "627",
@@ -32208,7 +32212,8 @@
     "intl": "1",
     "date_added": "20160623",
     "date_updated": "20241031",
-    "date_intl_added": "20220303"
+    "date_intl_added": "20220303",
+    "date_intl_updated": "20250123"
   },
   {
     "id": "208",
@@ -42309,7 +42314,8 @@
     "intl": "1",
     "date_added": "20150716",
     "date_updated": "20240620",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "160",
@@ -44019,7 +44025,8 @@
     "intl": "1",
     "date_added": "20201001",
     "date_updated": "20241212",
-    "date_intl_added": "20210708"
+    "date_intl_added": "20210708",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "1009",
@@ -51552,7 +51559,8 @@
     "intl": "1",
     "date_added": "20150716",
     "date_updated": "20240620",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "108",
@@ -70241,8 +70249,9 @@
     "lev_mas_chart_link": "09/09037mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Beat Eater",
-    "intl": "0",
-    "date_added": "20240111"
+    "intl": "1",
+    "date_added": "20240111",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2511",
@@ -70294,8 +70303,9 @@
     "lev_mas_chart_link": "09/09038mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Glory Steady Go!",
-    "intl": "0",
-    "date_added": "20240111"
+    "intl": "1",
+    "date_added": "20240111",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2512",
@@ -70347,8 +70357,9 @@
     "lev_mas_chart_link": "09/09039mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ロウワー",
-    "intl": "0",
-    "date_added": "20240111"
+    "intl": "1",
+    "date_added": "20240111",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2513",
@@ -70400,8 +70411,9 @@
     "lev_mas_chart_link": "09/09035mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/てらてら",
-    "intl": "0",
-    "date_added": "20240111"
+    "intl": "1",
+    "date_added": "20240111",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2514",
@@ -70453,8 +70465,9 @@
     "lev_mas_chart_link": "09/09036mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/天使のクローバー",
-    "intl": "0",
-    "date_added": "20240111"
+    "intl": "1",
+    "date_added": "20240111",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2497",
@@ -73297,8 +73310,9 @@
     "lev_mas_chart_link": "09/09104mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/夏宵スターマイン",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2593",
@@ -73350,8 +73364,9 @@
     "lev_mas_chart_link": "09/09100mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Rrhar'il",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2636",
@@ -73403,8 +73418,9 @@
     "lev_mas_chart_link": "09/09110mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/コメクエスト",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2594",
@@ -73456,8 +73472,9 @@
     "lev_mas_chart_link": "09/09101mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ヒュブリスの頂に聳えるのは",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2602",
@@ -73509,8 +73526,9 @@
     "lev_mas_chart_link": "09/09107mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/幻想ロードオブキング",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2585",
@@ -73562,8 +73580,9 @@
     "lev_mas_chart_link": "09/09093mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/カオスが極まる",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2591",
@@ -73615,8 +73634,9 @@
     "lev_mas_chart_link": "09/09098mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/寝起きヤシの木",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2603",
@@ -73668,8 +73688,9 @@
     "lev_mas_chart_link": "09/09108mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/イーヴィルガール",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "8285",
@@ -73697,8 +73718,9 @@
     "lev_we_chart_link": "end/09008end3",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/強風オールバック",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "8283",
@@ -73726,8 +73748,9 @@
     "lev_we_chart_link": "end/09008end",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/強風オールバック",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2601",
@@ -73779,8 +73802,9 @@
     "lev_mas_chart_link": "09/09106mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/バッドトリッパー",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2600",
@@ -73832,8 +73856,9 @@
     "lev_mas_chart_link": "09/09105mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/其のエメラルドを見よ",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2671",
@@ -73885,8 +73910,9 @@
     "lev_mas_chart_link": "09/09097mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/デビルじゃないもん",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "8284",
@@ -73914,8 +73940,9 @@
     "lev_we_chart_link": "end/09008end2",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/強風オールバック",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2587",
@@ -73967,8 +73994,9 @@
     "lev_mas_chart_link": "09/09095mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/美少女無罪♡パイレーツ",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2584",
@@ -74020,8 +74048,9 @@
     "lev_mas_chart_link": "09/09092mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/勇者",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2586",
@@ -74073,8 +74102,9 @@
     "lev_mas_chart_link": "09/09094mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/唱",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2604",
@@ -74126,8 +74156,9 @@
     "lev_mas_chart_link": "09/09119mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/わたしはオッセルヴァトリーチェ！",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2589",
@@ -74179,8 +74210,9 @@
     "lev_mas_chart_link": "09/09096mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ÅMARA(大未来電脳)",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2592",
@@ -74232,8 +74264,9 @@
     "lev_mas_chart_link": "09/09099mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/マツヨイナイトバグ",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2596",
@@ -74285,8 +74318,9 @@
     "lev_mas_chart_link": "09/09102mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/The Greatest Night",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2539",
@@ -74392,8 +74426,9 @@
     "lev_mas_chart_link": "09/09111mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/リ・フィクション・O",
-    "intl": "0",
-    "date_added": "20240620"
+    "intl": "1",
+    "date_added": "20240620",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2610",
@@ -74445,8 +74480,9 @@
     "lev_mas_chart_link": "09/09116mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/おくすり飲んで寝よう",
-    "intl": "0",
-    "date_added": "20240704"
+    "intl": "1",
+    "date_added": "20240704",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2659",
@@ -74498,8 +74534,9 @@
     "lev_mas_chart_link": "09/09115mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/アプリコット",
-    "intl": "0",
-    "date_added": "20240704"
+    "intl": "1",
+    "date_added": "20240704",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2611",
@@ -74551,8 +74588,9 @@
     "lev_mas_chart_link": "09/09117mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/匿名M",
-    "intl": "0",
-    "date_added": "20240704"
+    "intl": "1",
+    "date_added": "20240704",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2658",
@@ -74604,8 +74642,9 @@
     "lev_mas_chart_link": "09/09114mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/熱異常",
-    "intl": "0",
-    "date_added": "20240704"
+    "intl": "1",
+    "date_added": "20240704",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2657",
@@ -74657,8 +74696,9 @@
     "lev_mas_chart_link": "09/09113mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/1000年生きてる",
-    "intl": "0",
-    "date_added": "20240704"
+    "intl": "1",
+    "date_added": "20240704",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2597",
@@ -74710,8 +74750,9 @@
     "lev_mas_chart_link": "09/09112mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Stardust：RAY",
-    "intl": "0",
-    "date_added": "20240704"
+    "intl": "1",
+    "date_added": "20240704",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2613",
@@ -74763,8 +74804,9 @@
     "lev_mas_chart_link": "09/09120mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Overhea［r］t",
-    "intl": "0",
-    "date_added": "20240718"
+    "intl": "1",
+    "date_added": "20240718",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2614",
@@ -74816,8 +74858,9 @@
     "lev_mas_chart_link": "09/09121mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Malleus Maleficarum",
-    "intl": "0",
-    "date_added": "20240718"
+    "intl": "1",
+    "date_added": "20240718",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2620",
@@ -74869,8 +74912,9 @@
     "lev_mas_chart_link": "09/09118mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/チューリングの跡",
-    "intl": "0",
-    "date_added": "20240718"
+    "intl": "1",
+    "date_added": "20240718",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2612",
@@ -74922,8 +74966,9 @@
     "lev_mas_chart_link": "09/09119mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/DRE4M1N9",
-    "intl": "0",
-    "date_added": "20240718"
+    "intl": "1",
+    "date_added": "20240718",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2615",
@@ -74975,8 +75020,9 @@
     "lev_mas_chart_link": "09/09122mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Elusive Enforcer",
-    "intl": "0",
-    "date_added": "20240718"
+    "intl": "1",
+    "date_added": "20240718",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2616",
@@ -75028,8 +75074,9 @@
     "lev_mas_chart_link": "09/09123mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/黎命に殉ず",
-    "intl": "0",
-    "date_added": "20240718"
+    "intl": "1",
+    "date_added": "20240718",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2619",
@@ -75081,8 +75128,9 @@
     "lev_mas_chart_link": "09/09126mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Presence",
-    "intl": "0",
-    "date_added": "20240801"
+    "intl": "1",
+    "date_added": "20240801",
+    "date_intl_added": "20241212"
   },
   {
     "id": "2618",
@@ -75134,8 +75182,9 @@
     "lev_mas_chart_link": "09/09124mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ReCoda",
-    "intl": "0",
-    "date_added": "20240801"
+    "intl": "1",
+    "date_added": "20240801",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2675",
@@ -75187,8 +75236,9 @@
     "lev_mas_chart_link": "09/09125mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/トゥッティ！",
-    "intl": "0",
-    "date_added": "20240801"
+    "intl": "1",
+    "date_added": "20240801",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2624",
@@ -75240,8 +75290,9 @@
     "lev_mas_chart_link": "09/09130mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Make Up Your World feat. キョンシーのCiちゃん ＆ らっぷびと",
-    "intl": "0",
-    "date_added": "20240808"
+    "intl": "1",
+    "date_added": "20240808",
+    "date_intl_added": "20241212"
   },
   {
     "id": "8287",
@@ -75322,8 +75373,9 @@
     "lev_mas_chart_link": "09/09128mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Joe Fight",
-    "intl": "0",
-    "date_added": "20240808"
+    "intl": "1",
+    "date_added": "20240808",
+    "date_intl_added": "20241212"
   },
   {
     "id": "2621",
@@ -75375,8 +75427,9 @@
     "lev_mas_chart_link": "09/09127mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/NIGHTWAVE FRAGMENTS",
-    "intl": "0",
-    "date_added": "20240808"
+    "intl": "1",
+    "date_added": "20240808",
+    "date_intl_added": "20241212"
   },
   {
     "id": "8286",
@@ -75486,8 +75539,9 @@
     "lev_mas_chart_link": "09/09129mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Poppin' Dream",
-    "intl": "0",
-    "date_added": "20240808"
+    "intl": "1",
+    "date_added": "20240808",
+    "date_intl_added": "20241212"
   },
   {
     "id": "2625",
@@ -75592,8 +75646,9 @@
     "lev_mas_chart_link": "09/09132mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ハッピータイフーン",
-    "intl": "0",
-    "date_added": "20240822"
+    "intl": "1",
+    "date_added": "20240822",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2643",
@@ -75645,8 +75700,9 @@
     "lev_mas_chart_link": "09/09135mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ヒトリシズカ(Arranged： Iceon)",
-    "intl": "0",
-    "date_added": "20240822"
+    "intl": "1",
+    "date_added": "20240822",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2642",
@@ -75698,8 +75754,9 @@
     "lev_mas_chart_link": "09/09134mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/壊れた人形のマーチ",
-    "intl": "0",
-    "date_added": "20240822"
+    "intl": "1",
+    "date_added": "20240822",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2674",
@@ -75751,8 +75808,9 @@
     "lev_mas_chart_link": "09/09133mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/M.L.V.G",
-    "intl": "0",
-    "date_added": "20240822"
+    "intl": "1",
+    "date_added": "20240822",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2637",
@@ -75804,8 +75862,9 @@
     "lev_mas_chart_link": "09/09139mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/乙女戦士☆あーし。",
-    "intl": "0",
-    "date_added": "20240905"
+    "intl": "1",
+    "date_added": "20240905",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2605",
@@ -75857,8 +75916,9 @@
     "lev_mas_chart_link": "09/09138mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/優勝Princess♡",
-    "intl": "0",
-    "date_added": "20240905"
+    "intl": "1",
+    "date_added": "20240905",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2634",
@@ -75910,8 +75970,9 @@
     "lev_mas_chart_link": "09/09136mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Dramatic%E2%80%A6%3F",
-    "intl": "0",
-    "date_added": "20240905"
+    "intl": "1",
+    "date_added": "20240905",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2638",
@@ -75963,8 +76024,9 @@
     "lev_mas_chart_link": "09/09140mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/おしゃまなプリンセス",
-    "intl": "0",
-    "date_added": "20240905"
+    "intl": "1",
+    "date_added": "20240905",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2635",
@@ -76016,8 +76078,9 @@
     "lev_mas_chart_link": "09/09137mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/X.Y.Z.",
-    "intl": "0",
-    "date_added": "20240905"
+    "intl": "1",
+    "date_added": "20240905",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2639",
@@ -76069,8 +76132,9 @@
     "lev_mas_chart_link": "09/09141mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ソーシャルワンダーランド",
-    "intl": "0",
-    "date_added": "20240905"
+    "intl": "1",
+    "date_added": "20240905",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2629",
@@ -76122,8 +76186,9 @@
     "lev_mas_chart_link": "09/09142mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/壱雫空",
-    "intl": "0",
-    "date_added": "20240919"
+    "intl": "1",
+    "date_added": "20240919",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2633",
@@ -76175,8 +76240,9 @@
     "lev_mas_chart_link": "09/09146mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Rhythmic Ride",
-    "intl": "0",
-    "date_added": "20240919"
+    "intl": "1",
+    "date_added": "20240919",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2632",
@@ -76228,8 +76294,9 @@
     "lev_mas_chart_link": "09/09145mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ずんだパーリナイ",
-    "intl": "0",
-    "date_added": "20240919"
+    "intl": "1",
+    "date_added": "20240919",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2631",
@@ -76281,8 +76348,9 @@
     "lev_mas_chart_link": "09/09144mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/スコーピオンガールの貴重な捕食シーン",
-    "intl": "0",
-    "date_added": "20240919"
+    "intl": "1",
+    "date_added": "20240919",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2630",
@@ -76334,8 +76402,9 @@
     "lev_mas_chart_link": "09/09143mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/迷星叫",
-    "intl": "0",
-    "date_added": "20240919"
+    "intl": "1",
+    "date_added": "20240919",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2676",
@@ -76387,8 +76456,9 @@
     "lev_mas_chart_link": "09/09147mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ハートサーモグラフィー",
-    "intl": "0",
-    "date_added": "20241003"
+    "intl": "1",
+    "date_added": "20241003",
+    "date_intl_added": "20250109"
   },
   {
     "id": "2679",
@@ -76440,8 +76510,9 @@
     "lev_mas_chart_link": "09/09149mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/特者生存ワンダラダー!!",
-    "intl": "0",
-    "date_added": "20241003"
+    "intl": "1",
+    "date_added": "20241003",
+    "date_intl_added": "20250109"
   },
   {
     "id": "2677",
@@ -76510,8 +76581,9 @@
     "lev_we_chart_link": "",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/モンダイナイトリッパー！",
-    "intl": "0",
-    "date_added": "20241003"
+    "intl": "1",
+    "date_added": "20241003",
+    "date_intl_added": "20250109"
   },
   {
     "id": "2641",
@@ -76563,8 +76635,9 @@
     "lev_mas_chart_link": "09/09150mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/マシンガンポエムドール",
-    "intl": "0",
-    "date_added": "20241003"
+    "intl": "1",
+    "date_added": "20241003",
+    "date_intl_added": "20250123"
   },
   {
     "id": "8291",
@@ -76968,8 +77041,9 @@
     "lev_mas_chart_link": "09/09156mst",
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/MeteorSnow",
-    "intl": "0",
-    "date_added": "20241031"
+    "intl": "1",
+    "date_added": "20241031",
+    "date_intl_added": "20241031"
   },
   {
     "id": "2660",
