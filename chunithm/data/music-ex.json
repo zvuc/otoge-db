@@ -80778,7 +80778,7 @@
     "lev_adv_notes_air": "",
     "lev_adv_notes_flick": "",
     "lev_exp_i": "",
-    "lev_exp_notes": "",
+    "lev_exp_notes": "2466",
     "lev_exp_notes_tap": "",
     "lev_exp_notes_hold": "",
     "lev_exp_notes_slide": "",
@@ -80786,8 +80786,8 @@
     "lev_exp_notes_flick": "",
     "lev_exp_designer": "",
     "lev_exp_chart_link": "",
-    "lev_mas_i": "",
-    "lev_mas_notes": "",
+    "lev_mas_i": "15.5",
+    "lev_mas_notes": "3000",
     "lev_mas_notes_tap": "",
     "lev_mas_notes_hold": "",
     "lev_mas_notes_slide": "",
@@ -80796,8 +80796,9 @@
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
     "version": "VERSE",
-    "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20250227"
+    "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Aether%20Crest%EF%BC%9A%20Celestial",
+    "intl": "1",
+    "date_added": "20250227",
+    "date_intl_added": "20250227"
   }
 ]
