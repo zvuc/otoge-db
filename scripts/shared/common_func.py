@@ -199,7 +199,8 @@ def renew_lastupdated(region, local_json_ex_path, dest_html_path):
     with open(dest_html_path, 'w', encoding='utf-8') as f:
         f.write(updated_html)
 
-    print_message(f"Updated datestamp on {dest_html_path} to {latest_date}", '')
+    print_message(f"")
+    print_message(f"Updated {region.upper()} datestamp on {dest_html_path} to {latest_date}", '')
 
 
 def json_to_id_value_map(json, id_key):
