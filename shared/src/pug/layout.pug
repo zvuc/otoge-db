@@ -9,6 +9,8 @@ html(lang='ja' class=`page-loading table-loading ${game_name}`)
 
     include _meta
 
+    block meta
+
     link(rel='shortcut icon' href=`./img/favicon.ico`)
     link(rel='apple-touch-icon' sizes='32x32' href=`./img/favicon.ico`)
     link(rel='apple-touch-icon' sizes='152x152' href=`./img/${game_name}-db-icon-152.png`)
@@ -24,6 +26,8 @@ html(lang='ja' class=`page-loading table-loading ${game_name}`)
     #app-wrapper
       include _header
       include _loader
+
+      block custom_content
       
       table#table.display(style='width:100%')
         thead
@@ -36,6 +40,9 @@ html(lang='ja' class=`page-loading table-loading ${game_name}`)
   script.
     var flat_view = #{flat_view};
     
+
+  block scripts
+
   script(src='../shared/early-functions.js?20240131')
   script(defer='' src='../shared/datatables.custom.min.js?20240202')
   script(defer='' src='../shared/shared-functions.js?20240131')

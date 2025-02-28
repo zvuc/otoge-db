@@ -1,0 +1,120 @@
+extends _ongeki
+
+block append meta
+  <meta name="robots" content="noindex, nofollow">
+
+block append variables
+  - var flat_view = false
+
+block append custom_content
+  #namuwiki-notice
+    div
+      h2 나무위키 온게키 수록곡 페이지용 테이블 생성기
+      .desc
+        | <b>사용방법:</b>
+        | UI 언어를 한국어로 변경하세요. (캐릭터 이름이 번역되어 출력됩니다) <br> "업데이트일" 필터로 곡이 추가된 날을 선택한 뒤, "나무위키 테이블 복사" 버튼을 눌러 나무마크 문법으로 포맷팅된 테이블을 복사하세요.
+
+block append scripts
+  script.
+    var namuwiki = {
+      extend: 'copyHtml5',
+      text: '나무위키 테이블 복사',
+      messageTop: '{{{#!wiki style=\"word-break: normal\"',
+      messageBottom: '}}}',
+      fieldBoundary: '',
+      fieldSeparator: '',
+      exportOptions: {
+        format: {
+          header: function (data, row, column, node) {
+            if (row === 2) {
+              const output =
+                "||<tablewidth=100%><rowbgcolor=#ddd,#000><width=1px><:>" +
+                "||<:>'''곡명 / 아티스트'''" +
+                "||<:><width=20%>'''대전상대'''" +
+                "||<:><width=5%><bgcolor=#65d346,#000> {{{#fff,#65d346 '''B'''}}}" +
+                "||<:><width=5%><bgcolor=#fbe64d,#000> {{{#fff,#fbe64d '''A'''}}}" +
+                "||<:><width=5%><bgcolor=#ea3886,#000> {{{#fff,#ea3886 '''E'''}}}" +
+                "||<:><width=5%><bgcolor=#a547d5,#000> {{{#fff,#a547d5 '''M'''}}}||";
+              return output;
+            } else {
+              return '';
+            }
+          },
+          body: function (data, row, column, node) {
+            let rowData = $('#table').DataTable().row(node).data();
+            // console.log(rowData);
+
+            function stripData (str, config) {
+              if (typeof str !== 'string') {
+                return str;
+              }
+
+              // Always remove script tags
+              str = str.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+
+              // Always remove comments
+              str = str.replace(/<!\-\-.*?\-\->/g, '');
+
+              if (!config || config.stripHtml) {
+                str = str.replace(/<[^>]*>/g, '');
+              }
+
+              if (!config || config.trim) {
+                str = str.replace(/^\s+|\s+$/g, '');
+              }
+
+              if (!config || config.stripNewlines) {
+                str = str.replace(/\n/g, ' ');
+              }
+
+              return str;
+            };
+
+            // console.log(column);
+            const categoryMap = {
+              "オンゲキ": `{{{-1 {{{#ff7dab '''O'''}}} }}}`,
+              "チュウマイ": `{{{-1 {{{#42b6ff '''C'''}}} }}}`,
+              "POPS＆ANIME": `{{{-1 {{{#f06 '''P'''}}} }}}`,
+              "東方Project": `{{{-1 {{{#cf3eff '''東'''}}} }}}`,
+              "niconico": `{{{-1 {{{#f5ac00,#ffd822 '''N'''}}} }}}`,
+              "VARIETY": `{{{-1 {{{#00c312 '''V'''}}} }}}`
+            };
+            let lvPrint;
+            if ( rowData.lev_lnt === "" ) {
+              lvPrint = "||<:>" + rowData.lev_bas +
+                        "||<:>" + rowData.lev_adv + (rowData.lev_adv_i != "" ? " {{{-2 {{{#888 (" + rowData.lev_adv_i + ")}}} }}}" : "") +
+                        "||<:>" + rowData.lev_exc + (rowData.lev_exc_i != "" ? " {{{-2 {{{#888 (" + rowData.lev_exc_i + ")}}} }}}" : "") +
+                        "||<:>" + rowData.lev_mas + (rowData.lev_mas_i != "" ? " {{{-2 {{{#888 (" + rowData.lev_mas_i + ")}}} }}}" : "");
+            } else {
+              lvPrint = "||<-4><:><bgcolor=#fff,#000> {{{#d9362c '''LUNATIC''' }}}" + rowData.lev_lnt + (rowData.lev_lnt_i != "" ? " {{{-2 {{{#888 (" + rowData.lev_lnt_i + ")}}} }}}" : "")
+            }
+
+            if (column === 2) {
+              const output =
+                "||<:>" + categoryMap[stripData(rowData.category)] +
+                "||<(>'''[[" + rowData.title + "]]''' [br] {{{-2 {{{#888 " + rowData.artist + "}}} }}}" +
+                "||[[파일:ongeki_type_" + rowData.enemy_type.toLowerCase() + ".png|width=20]][[" + rowData.character + "]] [br] Lv." + rowData.enemy_lv +
+                lvPrint + "||";
+              return output;
+            } else {
+              return '';
+            }
+          }
+        },
+        columns: ':visible'
+      },
+      title: ""
+    }
+
+block append scripts
+  style.
+    .site-navigation {
+      display: none;
+    }
+    .select-wrap, .toolbar.search {
+      display: none !important;
+    }
+    .select-wrap.date_added {
+      display: inline-flex !important;
+    }
+
