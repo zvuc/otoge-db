@@ -62896,10 +62896,11 @@
     "dx_lev_mas_notes_touch": "59",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/906745",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20250227",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250227",
     "date": "NEW"
   },
   {
@@ -62947,10 +62948,11 @@
     "dx_lev_mas_notes_touch": "30",
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/906746",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20250227",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250227",
     "date": "NEW"
   },
   {
@@ -62998,10 +63000,10 @@
     "dx_lev_mas_notes_touch": "82",
     "dx_lev_mas_designer": "BELiZHEL vs  Safari",
     "wiki_url": "https://gamerch.com/maimai/906750",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
     "date_added": "20250227",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250227",
     "date": "NEW"
   },
   {
@@ -63049,10 +63051,11 @@
     "dx_lev_mas_notes_touch": "124",
     "dx_lev_mas_designer": "",
     "wiki_url": "https://gamerch.com/maimai/906749",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20250227",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250227",
     "date": "NEW"
   }
 ]
