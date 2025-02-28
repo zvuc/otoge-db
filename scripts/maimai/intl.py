@@ -372,9 +372,9 @@ def add_intl_info():
                     if wiki_chart_type == '':
                         # Check chart type in json:
                         if 'lev_bas' in song:
-                            wiki_chart_type == 'std'
+                            wiki_chart_type = 'std'
                         elif 'dx_lev_bas' in song:
-                            wiki_chart_type == 'dx'
+                            wiki_chart_type = 'dx'
 
                     if wiki_chart_type == 'std':
                         # if song only has remas added
@@ -427,10 +427,10 @@ def add_intl_info():
                                 lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
 
                                 if game.ARGS.strict:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['dx_lev_bas']}/{wiki_song['dx_lev_adv']}/{wiki_song['dx_lev_exp']}/{wiki_song['dx_lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
                                     continue
                                 else:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['dx_lev_bas']}/{wiki_song['dx_lev_adv']}/{wiki_song['dx_lev_exp']}/{wiki_song['dx_lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
 
                     matched_jp_song = song
                     matched_jp_old_song = copy.copy(song)
@@ -461,10 +461,6 @@ def add_intl_info():
                     intl_song_matched = True
                     break
 
-        # if utage_td and wiki_song['title'] == 'アンビバレンス':
-        #     ipdb.set_trace()
-
-
 
         # If song is not yet in INTL data
         if jp_song_matched is True and intl_song_matched is False:
@@ -487,7 +483,16 @@ def add_intl_info():
 
         # If song is already in INTL data (most likely partially)
         elif jp_song_matched is True and intl_song_matched is True:
+            # if '幻想に咲いた花' in wiki_song['title']:
+            #     ipdb.set_trace()
+
             if matched_jp_song['intl'] != '0':
+                if wiki_chart_type == '':
+                    # Check chart type in json:
+                    if 'lev_bas' in song:
+                        wiki_chart_type = 'std'
+                    elif 'dx_lev_bas' in song:
+                        wiki_chart_type = 'dx'
 
                 # copy missing keys to INTL from JP
                 if wiki_chart_type == 'std':
@@ -615,7 +620,9 @@ def add_intl_info():
                             lazy_print_song_header(f"{title}", header_printed, log=True)
                             print_message(f"- Copied DX charts from JP data to INTL", bcolors.OKGREEN, log=True)
 
-                    if 'date_intl_updated' not in matched_intl_song or int(wiki_song['date']) > int(song['date_intl_updated']):
+                    if (matched_intl_old_song != matched_intl_song and
+                        ('date_intl_updated' not in matched_intl_song or int(wiki_song['date']) > int(song['date_intl_updated']))):
+
                         matched_intl_song['date_intl_updated'] = wiki_song['date']
                         matched_jp_song['date_intl_updated'] = wiki_song['date']
                         print_message(f"- Added Intl updated date ({wiki_song['date']})", bcolors.OKBLUE, log=True)
