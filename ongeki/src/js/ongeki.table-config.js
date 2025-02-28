@@ -561,6 +561,7 @@ $(document).ready(function() {
             collectionLayout: "fixed",
             fade: 150
           },
+          typeof namuwiki !== "undefined" ? namuwiki : ""
         ],
         "columns": columns_params,
         "searchCols": default_search,

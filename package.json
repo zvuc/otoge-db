@@ -68,7 +68,7 @@
     "ongeki-less": "lessc ./ongeki/src/less/ongeki.less ./ongeki/style.css",
     "ongeki-postcss": "postcss ./ongeki/style.css -o ./ongeki/style.css --verbose",
     "ongeki-minify": "minify ongeki/src/js/*.js > ongeki/ongeki-functions.js",
-    "ongeki-pug": "yarn pug ongeki/src/pug/index.pug -o ongeki & yarn pug ongeki/src/pug/lv/index.pug -o ongeki/lv",
+    "ongeki-pug": "yarn pug ongeki/src/pug/index.pug -o ongeki & yarn pug ongeki/src/pug/lv/index.pug -o ongeki/lv & yarn pug ongeki/src/pug/namuwiki.pug -o ongeki",
     "ongeki-watch": "watch 'yarn ongeki-build' ./shared/src/less ./shared/src/pug ./ongeki/src -d",
 
     "chunithm-build": "yarn chunithm-pug & yarn chunithm-minify & (yarn chunithm-less && yarn chunithm-postcss)",

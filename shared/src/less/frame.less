@@ -332,5 +332,26 @@ body {
 	}
 }
 
+#namuwiki-notice {
+	border-top: 1px solid rgba(var(--ui-color-foreground-050),0.2);
+	border-bottom: 1px solid rgba(var(--ui-color-foreground-050),0.2);
 
+	& > div {
+		padding: 10px 0;
+
+		@media screen and (min-width: 1440px) {
+			max-width: 1680px;
+			margin: 0 auto;
+			padding-left: var(--padding-size);
+			padding-right: var(--padding-size);
+		}
+	}
+
+	h2 {
+		margin: 0 0 5px 0;
+	}
+	.desc {
+		margin: 5px 0;
+	}
+}
 
