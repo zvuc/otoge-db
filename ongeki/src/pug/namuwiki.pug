@@ -12,7 +12,8 @@ block append custom_content
       h2 나무위키 온게키 수록곡 페이지용 테이블 생성기
       .desc
         | <b>사용방법:</b>
-        | UI 언어를 한국어로 변경하세요. (캐릭터 이름이 번역되어 출력됩니다) <br> "업데이트일" 필터로 곡이 추가된 날을 선택한 뒤, "나무위키 테이블 복사" 버튼을 눌러 나무마크 문법으로 포맷팅된 테이블을 복사하세요.
+        | UI 언어를 한국어로 변경하세요. (캐릭터 이름이 번역되어 출력됩니다) <br> "업데이트일" 필터로 곡이 추가된 날을 선택한 뒤, "나무위키 테이블 복사" 버튼을 눌러 나무마크 문법으로 포맷팅된 테이블을 복사하세요.<br>
+        | 같은 날 추가된 곡이 여러 챕터로 나뉜 경우 (예: 통상챕터 4곡 + 이벤트챕터 2곡 추가) 챕터 필터를 이용해 그룹을 쪼개 개별적으로 복사할 수 있습니다.
 
 block append scripts
   script.
@@ -114,7 +115,7 @@ block append scripts
     .select-wrap, .toolbar.search {
       display: none !important;
     }
-    .select-wrap.date_added {
+    .select-wrap.date_added, .select-wrap.chapter {
       display: inline-flex !important;
     }
 
