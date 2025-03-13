@@ -49503,6 +49503,7 @@
   },
   {
     "new": "NEW",
+    "date_added": "20250313",
     "title": "スローアライズ",
     "title_sort": "スロアライス",
     "artist": "Endorfin.",
@@ -49524,7 +49525,7 @@
     "image_url": "73edcf885bbc8822.png",
     "enemy_lv": "",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "185",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -49550,11 +49551,11 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250313"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/スローアライズ"
   },
   {
     "new": "NEW",
+    "date_added": "20250313",
     "title": "ROAD TO DREAM",
     "title_sort": "ROADTODREAM",
     "artist": "達見 恵 featured by 佐野宏晃",
@@ -49576,7 +49577,7 @@
     "image_url": "825d1b092de58581.png",
     "enemy_lv": "",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "175",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -49602,7 +49603,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "bright MEMORY Act.3",
-    "wikiwiki_url": "",
-    "date_added": "20250313"
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ROAD TO DREAM"
   }
 ]
