@@ -9,7 +9,7 @@ from maimai.paths import *
 from datetime import datetime
 from math import log2
 
-SGIMERA_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_prism_.js'
+SGIMERA_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_prismplus__.js'
 # SGIMERA_URL = 'https://gist.githubusercontent.com/myjian/f059331eb9daefeb0dc57ce15e6f73e9/raw/'
 
 
@@ -76,7 +76,8 @@ def _parse_sgimera_data(js_content):
             })
     else:
         # Regex to find the main dictionary data within the file
-        in_lv_data = re.search(r"var in_lv = (\[.*?\]);", js_content, re.DOTALL)
+        in_lv_data = re.search(r"var in_lv = \(.*?\)\?\[(.*?)\]:\[];", js_content, re.DOTALL)
+
         if not in_lv_data:
             return {}
 
@@ -126,8 +127,6 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
 
     # Format song image URL for comparison
     song_icon = os.path.splitext(song['image_url'])[0]
-
-
 
     # Find matching entry in sgimera_dict by title and icon
     target_entry = {}
