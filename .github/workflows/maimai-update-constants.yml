@@ -1,4 +1,4 @@
-name: "[maimai] Update constants from Google Sheet"
+name: "[maimai] Update constants"
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   fetch_constants:
-    name: Fetch latest chart constants from Google Sheet
+    name: Fetch latest chart constants
     runs-on: ubuntu-latest
 
     steps:
