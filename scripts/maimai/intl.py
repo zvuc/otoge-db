@@ -7,6 +7,7 @@ import random
 import time
 from shared.common_func import *
 from maimai.paths import *
+from maimai.game import *
 from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
@@ -121,13 +122,14 @@ def sync_json_data():
                     dest_song[key] = value
                     continue
 
+                # If INTL and JP version are different
+                # Skip copying levels because they may be different
+                if CURRENT_INTL_VER != CURRENT_JP_VER:
+                    if key in ['lev_bas','lev_adv','lev_exp','lev_mas','lev_remas','dx_lev_bas','dx_lev_adv','dx_lev_exp','dx_lev_mas','dx_lev_remas']:
+                        continue
+
                 # Don't copy keys that don't exist in INTL
                 # They might be keys for new added charts in existing songs that are not yet added to INTL
-
-                # if key not in old_song:
-                #     lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-                #     print_message(f"- Added key {key}: {song[key]}", bcolors.OKGREEN)
-                #     dest_song[key] = value
                 if key not in old_song:
                     continue
                 elif old_song[key] != value and value != "":
@@ -674,8 +676,6 @@ def add_intl_info():
                         matched_jp_song['date_intl_updated'] = wiki_song['date']
                         lazy_print_song_header(f"{title}", header_printed, log=True)
                         print_message(f"- Added Intl updated date ({wiki_song['date']})", bcolors.OKBLUE, log=True)
-
-
 
 
         # Write unlockable

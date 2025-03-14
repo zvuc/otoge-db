@@ -330,7 +330,8 @@ function maimaiRenderVersionName() {
         "23500": "FESTiVAL PLUS",
         "24000": "BUDDiES",
         "24500": "BUDDiES PLUS",
-        "25000": "PRiSM"
+        "25000": "PRiSM",
+        "25500": "PRiSM PLUS"
       };
 
       let closestVersion = null;
