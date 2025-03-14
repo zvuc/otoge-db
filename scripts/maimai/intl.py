@@ -19,21 +19,22 @@ request_headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
+# Only sync data updated in JP data to INTL
+# If the current INTL and JP ver are the same
 def sync_json_data():
     print_message(f"Syncing song data from JP to INTL", 'H2', log=True)
 
-    # Read data from the first JSON file
+    # Read JP data
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         src_music_data = json.load(f)
 
-    # Read data from the second JSON file
+    # Read INTL data
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         dest_music_data = json.load(f)
 
     src_music_map = json_to_hash_value_map(src_music_data)
-
     dest_music_map = json_to_hash_value_map(dest_music_data)
-    old_dest_music_data = copy.deepcopy(dest_music_data)
+    dest_music_data_pre_update = copy.deepcopy(dest_music_data)
 
     added_songs = []
     removed_songs = []
@@ -58,18 +59,7 @@ def sync_json_data():
                 # Maimai always updates the "sort" value so let's keep it updated...
                 unchanged_songs.append(src_song)
 
-    # if added_ids:
-    #     added_songs = [src_music_map[id] for id in added_ids]
-
-    #     for song in added_songs:
-    #         song_diffs = [0]
-    #         dest_music_data.append(song)
-    #         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-    #         print_message(f"- Song copied from JP data", bcolors.OKGREEN)
-
-    #     print_message(f"Added {len(added_songs)} new songs to {LOCAL_INTL_MUSIC_EX_JSON_PATH}.", log=True)
-
-
+    # check if any song doesn't exist in JP but is in INTL
     if removed_ids:
         removed_songs = [dest_music_map[id] for id in removed_ids]
 
@@ -79,11 +69,8 @@ def sync_json_data():
             existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
             if existing_song:
-                # dest_music_data.remove(existing_song)
                 lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                 print_message(f"- Warning: Song does not exist in JP data", bcolors.FAIL)
-
-        # print_message(f"Removed {len(removed_songs)} songs from {LOCAL_INTL_MUSIC_EX_JSON_PATH}.", log=True)
 
     # Iterate through updated songs
     # For the list of updated songs, go through each of them in older song list
@@ -91,26 +78,19 @@ def sync_json_data():
     for song in updated_songs:
         song_diffs = [0]
         song_hash = generate_hash_from_keys(song)
-        old_song = next((s for s in old_dest_music_data if generate_hash_from_keys(s) == song_hash), None)
+        song_pre_update = next((s for s in dest_music_data_pre_update if generate_hash_from_keys(s) == song_hash), None)
         dest_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
-
-        added_charts_sets = {
-            "added_charts_dx": {"dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas"},
-            "added_charts": {"lev_bas", "lev_adv", "lev_exp", "lev_mas"},
-            "added_charts_dx_remas": {"dx_lev_remas"},
-            "added_charts_remas": {"lev_remas"}
-        }
 
         # Song can't be found in music-ex.json
         if not dest_song:
             lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-            print_message(f"- Couldn't find matching song in music-ex.json", bcolors.WARNING)
+            print_message(f"- Couldn't find matching song in INTL", bcolors.WARNING)
             continue
 
-        if old_song == song:
+        if song_pre_update == song:
             continue
 
-        if old_song and dest_song:
+        if song_pre_update and dest_song:
             # Check for changes, additions, or removals
             for key, value in song.items():
                 # Don't update these keys
@@ -122,68 +102,31 @@ def sync_json_data():
                     dest_song[key] = value
                     continue
 
-                # If INTL and JP version are different
-                # Skip copying levels because they may be different
-                if CURRENT_INTL_VER != CURRENT_JP_VER:
-                    if key in ['lev_bas','lev_adv','lev_exp','lev_mas','lev_remas','dx_lev_bas','dx_lev_adv','dx_lev_exp','dx_lev_mas','dx_lev_remas']:
-                        continue
-
                 # Don't copy keys that don't exist in INTL
                 # They might be keys for new added charts in existing songs that are not yet added to INTL
-                if key not in old_song:
+
+                # if key not in song_pre_update:
+                #     lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                #     print_message(f"- Added key {key}: {song[key]}", bcolors.OKGREEN)
+                #     dest_song[key] = value
+                if key not in song_pre_update:
                     continue
-                elif old_song[key] != value and value != "":
-                    if old_song[key] == "":
+                elif song_pre_update[key] != value and value != "":
+                    if song_pre_update[key] == "":
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                         print_message(f"- Added value for {key}: {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
                     else:
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-                        print_message(f"- Overwrote {key}: {old_song[key]} → {song[key]}", bcolors.OKBLUE)
+                        print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
-
-            # # Check for removed keys
-            # for key in old_song:
-            #     # maimai uses 'date' key for recording NEW markers... ignore them
-            #     if key == 'date' or key == 'version':
-            #         continue
-            #     if key not in song:
-            #         del dest_song[key]
-
-            # # Check if new charts have been added
-            # new_added_keys = set(song.keys()) - set(old_song.keys())
-
-            # if song['title'] == "幻想に咲いた花":
-            #     ipdb.set_trace()
-
-            # # Check which set is a subset of new_added_keys
-            # matching_set_name = next(
-            #     (name for name, chart_set in added_charts_sets.items() if chart_set.issubset(new_added_keys)),
-            #     None
-            # )
-
-            # if matching_set_name:
-            #     dest_song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
-            #     lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-
-            #     if matching_set_name == "added_charts_dx":
-            #         print_message(f"- DX charts added", bcolors.OKGREEN)
-            #     elif matching_set_name == "added_charts":
-            #         print_message(f"- STD charts added", bcolors.OKGREEN)
-            #     elif matching_set_name == "added_charts_dx_remas":
-            #         print_message(f"- RE:MASTER (DX) chart added", bcolors.OKGREEN)
-            #     elif matching_set_name == "added_charts_remas":
-            #         print_message(f"- RE:MASTER (STD) chart added", bcolors.OKGREEN)
-
-
-            # record_diffs(song, song_hash, 'updated')
 
 
     # Iterate through unchanged songs
     for song in unchanged_songs:
         song_diffs = [0]
         song_hash = generate_hash_from_keys(song)
-        old_song = next((s for s in old_dest_music_data if generate_hash_from_keys(s) == song_hash), None)
+        song_pre_update = next((s for s in dest_music_data_pre_update if generate_hash_from_keys(s) == song_hash), None)
         dest_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
         # Song can't be found in music-ex.json
@@ -192,17 +135,17 @@ def sync_json_data():
             print_message(f"- Couldn't find matching song in {LOCAL_INTL_MUSIC_EX_JSON_PATH}", bcolors.WARNING)
             continue
 
-        if old_song and dest_song:
+        if song_pre_update and dest_song:
             # Check for changes, additions, or removals
             for key, value in song.items():
                 # maimai uses 'date' key for recording NEW markers... ignore them
                 if key == 'date':
                     continue
-                if key not in old_song or old_song[key] != value:
+                if key not in song_pre_update or song_pre_update[key] != value:
                     dest_song[key] = value
 
             # Check for removed keys
-            for key in old_song.copy():
+            for key in song_pre_update.copy():
                 # maimai uses 'date' key for recording NEW markers... ignore them
                 if key == 'date':
                     continue
@@ -222,6 +165,10 @@ def add_intl_info():
     # Load JSON data
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
+
+    if CURRENT_INTL_VER != CURRENT_JP_VER:
+        with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'r', encoding='utf-8') as f:
+            local_music_ex_prev_ver_data = json.load(f)
 
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_intl_music_ex_data = json.load(f)
@@ -250,20 +197,10 @@ def add_intl_info():
         wiki_song = {}
         header_printed = [0]
 
-        # Reset utility vars
-        song_matched = False
         # If this is empty, it means the song has single chart type (dx/std unknown)
         wiki_chart_type = ''
         # If B/A/E/M fields are empty, it means only Re:MAS is added at this time
         only_remas = False
-
-        matched_jp_song = None
-        matched_jp_old_song = None
-        matched_intl_song = None
-        matched_intl_old_song = None
-        jp_song_matched = False
-        intl_song_matched = False
-
         song_details = row.find_all('td')
 
         # skip header rows
@@ -352,346 +289,87 @@ def add_intl_info():
 
 
         # Match wiki song with song from JP JSON file
-        for song in local_music_ex_data:
-            if utage_td:
-                if 'kanji' in song and 'kanji' in wiki_song:
-                    if (normalize_title(song['title']) == f'[{wiki_song['kanji']}]{wiki_song['title']}' and
-                        normalize_title(song['artist']) == wiki_song['artist'] and
-                        song['kanji'] == wiki_song['kanji']):
+        jp_song_matched, matched_jp_song, matched_jp_song_pre_update = _match_jp_song(local_music_ex_data, utage_td, wiki_song, wiki_chart_type, only_remas, header_printed)
 
-                        if ('lev_utage' in song and song['lev_utage'] == wiki_song['lev_utage'] or
-                        'dx_lev_utage' in song and song['dx_lev_utage'] == wiki_song['lev_utage']):
-                            matched_jp_song = song
-                            matched_jp_old_song = copy.copy(song)
-                            jp_song_matched = True
-                            break
-            else:
-                # Match with title and artist
-                if (normalize_title(song['title']) == wiki_song['title'] and normalize_title(song['artist']) == wiki_song['artist']):
+        # If JP version is ahead of INTL, additionally match JP song from prev ver data
+        # to source level data from
+        if CURRENT_INTL_VER != CURRENT_JP_VER:
+            jp_prev_ver_song_matched, matched_jp_prev_ver_song, matched_jp_prev_ver_song_pre_update = _match_jp_song(local_music_ex_prev_ver_data, utage_td, wiki_song, wiki_chart_type, only_remas, header_printed, legacy=True)
 
-                    # If wiki_chart_type is not explicitly set (single chart type)
-                    # Get chart type from JSON song
-                    if wiki_chart_type == '':
-                        # Check chart type in json:
-                        if 'lev_bas' in song:
-                            wiki_chart_type = 'std'
-                        elif 'dx_lev_bas' in song:
-                            wiki_chart_type = 'dx'
-
-                    if wiki_chart_type == 'std':
-                        # if song only has remas added
-                        if only_remas:
-                            if song['lev_remas'] != wiki_song['lev_remas']:
-                                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
-
-                                if game.ARGS.strict:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['lev_remas']} vs Wiki: {wiki_song['lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
-                                    continue
-                                else:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['lev_remas']} vs Wiki: {wiki_song['lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
-
-                        # Song has other charts added but levels mismatch
-                        else:
-                            if ((song['lev_bas'] != wiki_song['lev_bas'] or
-                                song['lev_adv'] != wiki_song['lev_adv'] or
-                                song['lev_exp'] != wiki_song['lev_exp'] or
-                                song['lev_mas'] != wiki_song['lev_mas'])):
-
-                                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
-
-                                if game.ARGS.strict:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
-                                    continue
-                                else:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
-
-                    elif wiki_chart_type == 'dx':
-                        # if song only has remas added
-                        if only_remas:
-                            if song['dx_lev_remas'] != wiki_song['lev_remas']:
-                                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
-
-                                if game.ARGS.strict:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_remas']} vs Wiki: {wiki_song['dx_lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
-                                    continue
-                                else:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_remas']} vs Wiki: {wiki_song['dx_lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
-
-                        # Song has other DX charts added but levels mismatch
-                        else:
-                            if ('dx_lev_bas' in song and
-                                    ((song['dx_lev_bas'] != wiki_song['lev_bas'] or
-                                    song['dx_lev_adv'] != wiki_song['lev_adv'] or
-                                    song['dx_lev_exp'] != wiki_song['lev_exp'] or
-                                    song['dx_lev_mas'] != wiki_song['lev_mas']))
-                                ):
-
-                                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
-
-                                if game.ARGS.strict:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
-                                    continue
-                                else:
-                                    print_message(f"- One of the levels were not matched. (JSON: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
-
-                    matched_jp_song = song
-                    matched_jp_old_song = copy.copy(song)
-                    jp_song_matched = True
-                    break
 
         # Match wiki song with song from INTL JSON file
-        for intl_song in local_intl_music_ex_data:
-            # UTAGE
-            if utage_td:
-                if 'kanji' in intl_song and 'kanji' in wiki_song:
-                    if (normalize_title(intl_song['title']) == f'[{wiki_song['kanji']}]{wiki_song['title']}' and
-                        normalize_title(intl_song['artist']) == wiki_song['artist'] and
-                        intl_song['kanji'] == wiki_song['kanji']):
+        intl_song_matched, matched_intl_song, matched_intl_song_pre_update = _match_intl_song(local_intl_music_ex_data, utage_td, wiki_song)
 
-                        if ('lev_utage' in intl_song and intl_song['lev_utage'] == wiki_song['lev_utage'] or
-                        'dx_lev_utage' in intl_song and intl_song['dx_lev_utage'] == wiki_song['lev_utage']):
-                            matched_intl_song = intl_song
-                            matched_intl_old_song = copy.copy(intl_song)
-                            intl_song_matched = True
-                            break
-
-            # else
-            else:
-                if (normalize_title(intl_song['title']) == wiki_song['title'] and normalize_title(song['artist']) == wiki_song['artist']):
-                    matched_intl_song = intl_song
-                    matched_intl_old_song = copy.copy(intl_song)
-                    intl_song_matched = True
-                    break
 
 
         # If song is not yet in INTL data
-        if jp_song_matched is True and intl_song_matched is False:
-            if matched_jp_song['intl'] == '0':
+        # Copying entire song from JP->INTL
+        if intl_song_matched is False:
+            # If current JP ver is ahead of INTL, first look in the prev ver data
+            if CURRENT_INTL_VER != CURRENT_JP_VER:
+                # cross check if JP song (latest ver. data) says the song is not yet in INTL
+                if jp_prev_ver_song_matched:
+                    local_intl_music_ex_data.append(matched_jp_song)
+                    matched_intl_song = local_intl_music_ex_data[-1]
+                    intl_song_matched = True
+                    _sync_jp_to_intl_song('full_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
 
-                # Copy song from JP data
-                local_intl_music_ex_data.append(matched_jp_song)
-                matched_intl_song = local_intl_music_ex_data[-1]
-                intl_song_matched = True
-                matched_jp_song['intl'] = "1"
-                matched_intl_song['intl'] = "1"
+                    # Update INTL marker in current ver JP data as well
+                    if jp_song_matched:
+                        matched_jp_song['intl'] = "1"
 
-                if utage_td:
-                    lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
+                        if ('date_intl_added' not in matched_jp_song or matched_jp_song['date_intl_added'] == '000000'):
+                            matched_jp_song['date_intl_added'] = wiki_song['date']
+                            print_message(f"- Marked INTL added date (JP data)", bcolors.OKGREEN, log=True)
+
+                # Fallback: fetch from current ver jp song
+                # (Song is not of this version)
                 else:
-                    lazy_print_song_header(f"{title}", header_printed, log=True)
+                    if jp_song_matched:
+                        local_intl_music_ex_data.append(matched_jp_song)
+                        matched_intl_song = local_intl_music_ex_data[-1]
+                        intl_song_matched = True
+                        _sync_jp_to_intl_song('full_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
 
-                print_message(f"- Song copied from JP data to INTL", bcolors.OKGREEN, log=True)
-                print_message(f"- Marked as available in Intl ver.", bcolors.OKGREEN, log=True)
-
-        # If song is already in INTL data (most likely partially)
-        elif jp_song_matched is True and intl_song_matched is True:
-            # if '幻想に咲いた花' in wiki_song['title']:
-            #     ipdb.set_trace()
-
-            if matched_jp_song['intl'] != '0':
-                if wiki_chart_type == '':
-                    # Check chart type in json:
-                    if 'lev_bas' in song:
-                        wiki_chart_type = 'std'
-                    elif 'dx_lev_bas' in song:
-                        wiki_chart_type = 'dx'
-
-                # copy missing keys to INTL from JP
-                if wiki_chart_type == 'std':
-                    if only_remas:
-                        for key in [
-                            'lev_remas',
-                            'lev_remas_i',
-                            'lev_remas_notes',
-                            'lev_remas_notes_tap',
-                            'lev_remas_notes_hold',
-                            'lev_remas_notes_slide',
-                            'lev_remas_notes_break',
-                            'lev_remas_designer'
-                        ]:
-                            if key in matched_jp_song:
-                                matched_intl_song[key] = matched_jp_song[key]
-
-                        if matched_intl_old_song != matched_intl_song:
-                            lazy_print_song_header(f"{title}", header_printed, log=True)
-                            print_message(f"- Copied RE:MASTER (Std) chart from JP data to INTL", bcolors.OKGREEN, log=True)
-                    else:
-                        for key in [
-                            'lev_bas',
-                            'lev_bas_i',
-                            'lev_bas_notes',
-                            'lev_bas_notes_tap',
-                            'lev_bas_notes_hold',
-                            'lev_bas_notes_slide',
-                            'lev_bas_notes_break',
-                            'lev_bas_designer',
-                            'lev_adv',
-                            'lev_adv_i',
-                            'lev_adv_notes',
-                            'lev_adv_notes_tap',
-                            'lev_adv_notes_hold',
-                            'lev_adv_notes_slide',
-                            'lev_adv_notes_break',
-                            'lev_adv_designer',
-                            'lev_exp',
-                            'lev_exp_i',
-                            'lev_exp_notes',
-                            'lev_exp_notes_tap',
-                            'lev_exp_notes_hold',
-                            'lev_exp_notes_slide',
-                            'lev_exp_notes_break',
-                            'lev_exp_designer',
-                            'lev_mas',
-                            'lev_mas_i',
-                            'lev_mas_notes',
-                            'lev_mas_notes_tap',
-                            'lev_mas_notes_hold',
-                            'lev_mas_notes_slide',
-                            'lev_mas_notes_break',
-                            'lev_mas_designer',
-                        ]:
-                            if key in matched_jp_song:
-                                matched_intl_song[key] = matched_jp_song[key]
-
-                        if matched_intl_old_song != matched_intl_song:
-                            lazy_print_song_header(f"{title}", header_printed, log=True)
-                            print_message(f"- Copied Std charts from JP data to INTL", bcolors.OKGREEN, log=True)
-
-                if wiki_chart_type == 'dx':
-                    if only_remas:
-                        for key in [
-                            'dx_lev_remas',
-                            'dx_lev_remas_i',
-                            'dx_lev_remas_notes',
-                            'dx_lev_remas_notes_tap',
-                            'dx_lev_remas_notes_hold',
-                            'dx_lev_remas_notes_slide',
-                            'dx_lev_remas_notes_break',
-                            'dx_lev_remas_notes_touch',
-                            'dx_lev_remas_designer'
-                        ]:
-                            if key in matched_jp_song:
-                                matched_intl_song[key] = matched_jp_song[key]
-
-                        if matched_intl_old_song != matched_intl_song:
-                            lazy_print_song_header(f"{title}", header_printed, log=True)
-                            print_message(f"- Copied RE:MASTER (DX) chart from JP data to INTL", bcolors.OKGREEN, log=True)
-                    else:
-                        for key in [
-                            'dx_lev_bas',
-                            'dx_lev_bas_i',
-                            'dx_lev_bas_notes',
-                            'dx_lev_bas_notes_tap',
-                            'dx_lev_bas_notes_hold',
-                            'dx_lev_bas_notes_slide',
-                            'dx_lev_bas_notes_break',
-                            'dx_lev_bas_notes_touch',
-                            'dx_lev_bas_designer',
-                            'dx_lev_adv',
-                            'dx_lev_adv_i',
-                            'dx_lev_adv_notes',
-                            'dx_lev_adv_notes_tap',
-                            'dx_lev_adv_notes_hold',
-                            'dx_lev_adv_notes_slide',
-                            'dx_lev_adv_notes_break',
-                            'dx_lev_adv_notes_touch',
-                            'dx_lev_adv_designer',
-                            'dx_lev_exp',
-                            'dx_lev_exp_i',
-                            'dx_lev_exp_notes',
-                            'dx_lev_exp_notes_tap',
-                            'dx_lev_exp_notes_hold',
-                            'dx_lev_exp_notes_slide',
-                            'dx_lev_exp_notes_break',
-                            'dx_lev_exp_notes_touch',
-                            'dx_lev_exp_designer',
-                            'dx_lev_mas',
-                            'dx_lev_mas_i',
-                            'dx_lev_mas_notes',
-                            'dx_lev_mas_notes_tap',
-                            'dx_lev_mas_notes_hold',
-                            'dx_lev_mas_notes_slide',
-                            'dx_lev_mas_notes_break',
-                            'dx_lev_mas_notes_touch',
-                            'dx_lev_mas_designer',
-                        ]:
-                            if key in matched_jp_song:
-                                matched_intl_song[key] = matched_jp_song[key]
-
-                        if matched_intl_old_song != matched_intl_song:
-                            lazy_print_song_header(f"{title}", header_printed, log=True)
-                            print_message(f"- Copied DX charts from JP data to INTL", bcolors.OKGREEN, log=True)
-
-                    if (matched_intl_old_song != matched_intl_song and
-                        ('date_intl_updated' not in matched_intl_song or int(wiki_song['date']) > int(song['date_intl_updated']))):
-
-                        matched_intl_song['date_intl_updated'] = wiki_song['date']
-                        matched_jp_song['date_intl_updated'] = wiki_song['date']
-                        print_message(f"- Added Intl updated date ({wiki_song['date']})", bcolors.OKBLUE, log=True)
-
-
-        if intl_song_matched is True:
-            if utage_td:
-                if matched_jp_song['intl'] == '0':
-                    matched_intl_song['intl'] = "1"
-                    matched_jp_song['intl'] = "1"
-                    lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
-                    print_message(f"- Marked as available in Intl ver.", bcolors.OKGREEN, log=True)
-
-
-                if ('date_intl_added' not in song or song['date_intl_added'] == '000000'):
-                    matched_intl_song['date_intl_added'] = wiki_song['date']
-                    matched_jp_song['date_intl_added'] = wiki_song['date']
-                    lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
-                    print_message(f"- Intl added date (UTAGE) ({wiki_song['date']})", bcolors.OKGREEN, log=True)
-                else:
-                    if 'date_intl_updated' not in song and int(wiki_song['date']) > int(song['date_intl_added']):
-                        matched_intl_song['date_intl_updated'] = wiki_song['date']
-                        matched_jp_song['date_intl_updated'] = wiki_song['date']
-                        lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
-                        print_message(f"- Intl updated date (UTAGE) ({wiki_song['date']})", bcolors.OKBLUE, log=True)
-
-                    # If date from wiki is later than existing date, consider it as updated date
-                    elif 'date_intl_updated' in song and int(wiki_song['date']) > int(song['date_intl_updated']):
-                        matched_intl_song['date_intl_updated'] = wiki_song['date']
-                        matched_jp_song['date_intl_updated'] = wiki_song['date']
-                        lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
-                        print_message(f"- Intl updated date (UTAGE) ({wiki_song['date']})", bcolors.OKBLUE, log=True)
+            # If current JP ver = INTL ver
             else:
-                if ('date_intl_added' not in matched_jp_song or matched_jp_song['date_intl_added'] == '000000'):
-                    matched_intl_song['date_intl_added'] = wiki_song['date']
-                    matched_jp_song['date_intl_added'] = wiki_song['date']
-                    lazy_print_song_header(f"{title}", header_printed, log=True)
-                    print_message(f"- Added Intl added date ({wiki_song['date']})", bcolors.OKGREEN, log=True)
-                else:
-                    if 'date_intl_updated' not in matched_jp_song and int(wiki_song['date']) > int(matched_jp_song['date_intl_added']):
-                        matched_intl_song['date_intl_updated'] = wiki_song['date']
-                        matched_jp_song['date_intl_updated'] = wiki_song['date']
-                        lazy_print_song_header(f"{title}", header_printed, log=True)
-                        print_message(f"- Added Intl updated date ({wiki_song['date']})", bcolors.OKBLUE, log=True)
-
-                    # If date from wiki is later than existing date, consider it as updated date
-                    elif 'date_intl_updated' in matched_jp_song and int(wiki_song['date']) > int(matched_jp_song['date_intl_updated']):
-                        matched_intl_song['date_intl_updated'] = wiki_song['date']
-                        matched_jp_song['date_intl_updated'] = wiki_song['date']
-                        lazy_print_song_header(f"{title}", header_printed, log=True)
-                        print_message(f"- Added Intl updated date ({wiki_song['date']})", bcolors.OKBLUE, log=True)
+                if jp_song_matched:
+                    # Copy song from JP data (prev ver)
+                    local_intl_music_ex_data.append(matched_jp_song)
+                    matched_intl_song = local_intl_music_ex_data[-1]
+                    intl_song_matched = True
+                    _sync_jp_to_intl_song('full_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
 
 
-        # Write unlockable
-        if 'key_intl' in wiki_song and ('key_intl' not in matched_jp_song or matched_jp_song['key_intl'] == ''):
-            matched_intl_song['key_intl'] = "○"
-            matched_jp_song['key_intl'] = "○"
+        # If song is already in INTL data
+        # Partial copy (chart) from JP->INTL
+        elif intl_song_matched is True:
+            # If current JP ver is ahead of INTL, first look in the prev ver data
+            if CURRENT_INTL_VER != CURRENT_JP_VER:
+                if jp_prev_ver_song_matched:
+                    _sync_jp_to_intl_song('partial_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
 
-            lazy_print_song_header(f"{title}", header_printed, log=True)
-            print_message(f"- Marked as unlockable in Intl ver", bcolors.OKBLUE, log=True)
+            # If current JP ver = INTL ver
+            else:
+                if jp_song_matched:
+                    _sync_jp_to_intl_song('partial_copy',matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
+
+            # Write unlockable info
+            if 'key_intl' in wiki_song and ('key_intl' not in matched_jp_song or matched_jp_song['key_intl'] == ''):
+                matched_intl_song['key_intl'] = "○"
+                matched_jp_song['key_intl'] = "○"
+
+                # If JP version is ahead of INTL, also update PREV VER JP data
+                if CURRENT_INTL_VER != CURRENT_JP_VER:
+                    matched_jp_prev_ver_song['key_intl'] = "○"
+
+                lazy_print_song_header(f"{title}", header_printed, log=True)
+                print_message(f"- Marked as unlockable in Intl ver", bcolors.OKBLUE, log=True)
 
 
 
-        # if song['title'] == "One Step Ahead":
-        #     ipdb.set_trace()
-
-        if matched_intl_old_song is not None and matched_intl_old_song == matched_intl_song:
+        # Check if anything has actually changed
+        if matched_intl_song_pre_update is not None and matched_intl_song_pre_update == matched_intl_song:
             if utage_td:
                 lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True, is_verbose=True)
             else:
@@ -701,8 +379,8 @@ def add_intl_info():
             total_diffs[0] += 1
 
 
-        # if song was not matched (if break was not triggered)
-        if intl_song_matched is not True:
+        # if song was not matched, not copied from any JP data after all (if break was not triggered)
+        if intl_song_matched is False:
             if utage_td:
                 lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
             else:
@@ -724,7 +402,237 @@ def add_intl_info():
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_intl_music_ex_data, f, ensure_ascii=False, indent=2)
 
-    # Write updated JSON data to file
+    if CURRENT_INTL_VER != CURRENT_JP_VER:
+        with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
+            json.dump(local_music_ex_prev_ver_data, f, ensure_ascii=False, indent=2)
+
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
+
+
+# Match wiki song with song from JP JSON file
+def _match_jp_song(json_data, utage_td, wiki_song, wiki_chart_type, only_remas, header_printed, legacy=False):
+    jp_song_matched = False
+    matched_jp_song = None
+    matched_jp_song_pre_update = None
+
+    for song in json_data:
+        if utage_td:
+            if 'kanji' in song and 'kanji' in wiki_song:
+                if (normalize_title(song['title']) == f'[{wiki_song['kanji']}]{wiki_song['title']}' and
+                    normalize_title(song['artist']) == wiki_song['artist'] and
+                    song['kanji'] == wiki_song['kanji']):
+
+                    if ('lev_utage' in song and song['lev_utage'] == wiki_song['lev_utage'] or
+                    'dx_lev_utage' in song and song['dx_lev_utage'] == wiki_song['lev_utage']):
+                        jp_song_matched = True
+                        matched_jp_song = song
+                        matched_jp_song_pre_update = copy.copy(song)
+                        break
+        else:
+            # Match with title and artist
+            if (normalize_title(song['title']) == wiki_song['title'] and normalize_title(song['artist']) == wiki_song['artist']):
+
+                # If wiki_chart_type is not explicitly set (single chart type)
+                # Get chart type from JSON song
+                if wiki_chart_type == '':
+                    # Check chart type in json:
+                    if 'lev_bas' in song:
+                        wiki_chart_type = 'std'
+                    elif 'dx_lev_bas' in song:
+                        wiki_chart_type = 'dx'
+
+                if wiki_chart_type == 'std':
+                    # if song only has remas added
+                    if only_remas:
+                        if song['lev_remas'] != wiki_song['lev_remas']:
+                            lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_remas']} vs Wiki: {wiki_song['lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
+                                continue
+                            else:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_remas']} vs Wiki: {wiki_song['lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
+
+                    # Song has other charts added but levels mismatch
+                    else:
+                        if ((song['lev_bas'] != wiki_song['lev_bas'] or
+                            song['lev_adv'] != wiki_song['lev_adv'] or
+                            song['lev_exp'] != wiki_song['lev_exp'] or
+                            song['lev_mas'] != wiki_song['lev_mas'])):
+
+                            lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                                continue
+                            else:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+
+                elif wiki_chart_type == 'dx':
+                    # if song only has remas added
+                    if only_remas:
+                        if song['dx_lev_remas'] != wiki_song['lev_remas']:
+                            lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_remas']} vs Wiki: {wiki_song['dx_lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
+                                continue
+                            else:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_remas']} vs Wiki: {wiki_song['dx_lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
+
+                    # Song has other DX charts added but levels mismatch
+                    else:
+                        if ('dx_lev_bas' in song and
+                                ((song['dx_lev_bas'] != wiki_song['lev_bas'] or
+                                song['dx_lev_adv'] != wiki_song['lev_adv'] or
+                                song['dx_lev_exp'] != wiki_song['lev_exp'] or
+                                song['dx_lev_mas'] != wiki_song['lev_mas']))
+                            ):
+
+                            lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+
+                            if game.ARGS.strict:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                                continue
+                            else:
+                                print_message(f"- Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+
+                jp_song_matched = True
+                matched_jp_song = song
+                matched_jp_song_pre_update = copy.copy(song)
+                break
+
+    return jp_song_matched, matched_jp_song, matched_jp_song_pre_update
+
+
+
+def _match_intl_song(json_data, utage_td, wiki_song):
+    intl_song_matched = False
+    matched_intl_song = None
+    matched_intl_song_pre_update = None
+
+    for intl_song in json_data:
+        # UTAGE
+        if utage_td:
+            if 'kanji' in intl_song and 'kanji' in wiki_song:
+                if (normalize_title(intl_song['title']) == f'[{wiki_song['kanji']}]{wiki_song['title']}' and
+                    normalize_title(intl_song['artist']) == wiki_song['artist'] and
+                    intl_song['kanji'] == wiki_song['kanji']):
+
+                    if ('lev_utage' in intl_song and intl_song['lev_utage'] == wiki_song['lev_utage'] or
+                    'dx_lev_utage' in intl_song and intl_song['dx_lev_utage'] == wiki_song['lev_utage']):
+                        matched_intl_song = intl_song
+                        matched_intl_song_pre_update = copy.copy(intl_song)
+                        intl_song_matched = True
+                        break
+
+        # else
+        else:
+            if (normalize_title(intl_song['title']) == wiki_song['title'] and normalize_title(intl_song['artist']) == wiki_song['artist']):
+                matched_intl_song = intl_song
+                matched_intl_song_pre_update = copy.copy(intl_song)
+                intl_song_matched = True
+                break
+
+    return intl_song_matched, matched_intl_song, matched_intl_song_pre_update
+
+
+def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, title, header_printed, only_remas, wiki_song):
+    if method == 'full_copy':
+        if 'kanji' in wiki_song:
+            lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True)
+        else:
+            lazy_print_song_header(f"{title}", header_printed, log=True)
+        print_message(f"- Song copied from JP data to INTL", bcolors.OKGREEN, log=True)
+    elif method == 'partial_copy':
+        # Define key prefixes
+        std_prefixes = ["lev_bas", "lev_adv", "lev_exp", "lev_mas"]
+        dx_prefixes = ["dx_lev_bas", "dx_lev_adv", "dx_lev_exp", "dx_lev_mas"]
+        remas_prefixes_std = ["lev_remas"]
+        remas_prefixes_dx = ["dx_lev_remas"]
+
+        # Get wiki chart type
+        chart_type = _determine_wiki_chart_type(intl_song)
+
+        # Determine which prefixes to use
+        if chart_type == 'std':
+            prefixes_to_match = remas_prefixes_std if only_remas else std_prefixes
+            message = "- Copied RE:MASTER (Std) chart from JP data to INTL" if only_remas else "- Copied Std charts from JP data to INTL"
+        elif chart_type == 'dx':
+            prefixes_to_match = remas_prefixes_dx if only_remas else dx_prefixes
+            message = "- Copied RE:MASTER (DX) chart from JP data to INTL" if only_remas else "- Copied DX charts from JP data to INTL"
+        elif chart_type == 'utage':
+            lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True)
+            print_message("- (Song is Utage)", bcolors.ENDC, log=True)
+        else:
+            lazy_print_song_header(f"{title}", header_printed, log=True)
+            print_message("- Could not determine chart type", bcolors.FAIL, log=True)
+            return
+
+        # Copy data based on matching prefixes
+        updated = False
+        if not chart_type == 'utage':
+            for key in jp_song:
+                if any(key.startswith(prefix) for prefix in prefixes_to_match):
+                    intl_song[key] = jp_song[key]
+
+                    if intl_song_pre_update.get(key) != intl_song[key]:
+                        updated = True
+
+            if updated:
+                lazy_print_song_header(f"{title}", header_printed, log=True)
+                print_message(message, bcolors.OKGREEN, log=True)
+
+    # Note if JP song has INTL already marked
+    if jp_song['intl'] != '0':
+        if 'kanji' in wiki_song:
+            lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True, is_verbose=True)
+        else:
+            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+
+        print_message(f"- (INTL already marked in JP data)", bcolors.ENDC, log=True, is_verbose=True)
+    else:
+        # update INTL markers
+        intl_song['intl'] = "1"
+        jp_song['intl'] = "1"
+
+        if 'kanji' in wiki_song:
+            lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True)
+        else:
+            lazy_print_song_header(f"{title}", header_printed, log=True)
+
+        print_message(f"- Marked as available in Intl ver.", bcolors.OKGREEN, log=True)
+
+    # Process dates
+    def _print_header():
+        song_title = f"[{wiki_song['kanji']}] {title}" if 'kanji' in wiki_song else title
+        lazy_print_song_header(song_title, header_printed, log=True)
+
+    def _update_date(date_key, color, message):
+        intl_song[date_key] = wiki_song['date']
+        jp_song[date_key] = wiki_song['date']
+        _print_header()
+        print_message(f"- {message} ({wiki_song['date']})", color, log=True)
+
+    wiki_date = int(wiki_song['date'])
+    added_date = int(jp_song.get('date_intl_added', '000000')) if 'date_intl_added' in jp_song else 0
+    updated_date = int(jp_song.get('date_intl_updated', '000000')) if 'date_intl_updated' in jp_song else 0
+
+    if 'date_intl_added' not in jp_song or jp_song['date_intl_added'] == '000000':  # If added date doesn't exist or is a placeholder
+        _update_date('date_intl_added', bcolors.OKGREEN, "Added Intl added date")
+    elif 'date_intl_updated' not in jp_song and wiki_date > added_date:  # If new update is found
+        _update_date('date_intl_updated', bcolors.OKBLUE, "Added Intl updated date")
+    elif 'date_intl_updated' in jp_song and wiki_date > updated_date:  # If a later update exists
+        _update_date('date_intl_updated', bcolors.OKBLUE, "Added Intl updated date")
+
+
+def _determine_wiki_chart_type(matched_intl_song):
+    if 'lev_bas' in matched_intl_song:
+        return 'std'
+    elif 'dx_lev_bas' in matched_intl_song:
+        return 'dx'
+    elif 'lev_utage' in matched_intl_song:
+        return 'utage'
+    return ''
