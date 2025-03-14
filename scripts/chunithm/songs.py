@@ -136,11 +136,6 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                         dest_ex_song['date_updated'] = f"{datetime.now().strftime('%Y%m%d')}"
                         print_message(f"- ULTIMA chart added", bcolors.OKGREEN)
 
-                        # Sort the song dictionary before saving
-                        sorted_song = sort_dict_keys(dest_ex_song)
-                        dest_ex_song.clear()  # Clear the original song dictionary
-                        dest_ex_song.update(sorted_song)
-
             # Check for removed keys
             for key in old_song.copy():
                 # maimai uses 'date' key for recording NEW markers... ignore them
@@ -224,6 +219,12 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
+
+    for song in local_music_ex_data:
+        # Sort the song dictionary before saving
+        sorted_song = sort_dict_keys(song)
+        song.clear()  # Clear the original song dictionary
+        song.update(sorted_song)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
