@@ -101,6 +101,11 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
         _record_diffs(song, song_hash, 'new')
 
+        # Sort the song dictionary before saving
+        sorted_song = sort_dict_keys(song)
+        song.clear()  # Clear the original song dictionary
+        song.update(sorted_song)
+
 
     if game.ARGS.markdown:
         print_message(f"Updated Songs", 'H3')
