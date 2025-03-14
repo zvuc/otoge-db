@@ -11481,6 +11481,7 @@
     "lev_mas_notes_slide": "91",
     "lev_mas_notes_break": "15",
     "lev_mas_designer": "mai-Star",
+    "dx_lev_bas_i": "4.0",
     "dx_lev_bas_notes": "196",
     "dx_lev_bas_notes_tap": "155",
     "dx_lev_bas_notes_hold": "17",
@@ -59279,7 +59280,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "4",
     "dx_lev_bas_notes_break": "10",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.2",
     "dx_lev_adv_notes": "315",
     "dx_lev_adv_notes_tap": "275",
     "dx_lev_adv_notes_hold": "16",
@@ -59306,6 +59307,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59329,7 +59331,7 @@
     "dx_lev_bas_notes_slide": "6",
     "dx_lev_bas_notes_touch": "11",
     "dx_lev_bas_notes_break": "10",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.5",
     "dx_lev_adv_notes": "271",
     "dx_lev_adv_notes_tap": "201",
     "dx_lev_adv_notes_hold": "28",
@@ -59356,6 +59358,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59439,7 +59442,7 @@
     "dx_lev_bas_notes_slide": "6",
     "dx_lev_bas_notes_touch": "6",
     "dx_lev_bas_notes_break": "9",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.2",
     "dx_lev_adv_notes": "303",
     "dx_lev_adv_notes_tap": "262",
     "dx_lev_adv_notes_hold": "16",
@@ -59474,6 +59477,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59497,7 +59501,7 @@
     "dx_lev_bas_notes_slide": "2",
     "dx_lev_bas_notes_touch": "6",
     "dx_lev_bas_notes_break": "16",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.8",
     "dx_lev_adv_notes": "319",
     "dx_lev_adv_notes_tap": "278",
     "dx_lev_adv_notes_hold": "14",
@@ -59524,6 +59528,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59547,7 +59552,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "12",
     "dx_lev_bas_notes_break": "4",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.5",
     "dx_lev_adv_notes": "353",
     "dx_lev_adv_notes_tap": "297",
     "dx_lev_adv_notes_hold": "20",
@@ -59574,6 +59579,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59597,7 +59603,7 @@
     "dx_lev_bas_notes_slide": "6",
     "dx_lev_bas_notes_touch": "22",
     "dx_lev_bas_notes_break": "5",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.8",
     "dx_lev_adv_notes": "364",
     "dx_lev_adv_notes_tap": "293",
     "dx_lev_adv_notes_hold": "35",
@@ -59624,6 +59630,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59697,7 +59704,7 @@
     "dx_lev_bas_notes_slide": "8",
     "dx_lev_bas_notes_touch": "25",
     "dx_lev_bas_notes_break": "12",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.8",
     "dx_lev_adv_notes": "364",
     "dx_lev_adv_notes_tap": "289",
     "dx_lev_adv_notes_hold": "19",
@@ -59724,6 +59731,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59747,7 +59755,7 @@
     "dx_lev_bas_notes_slide": "7",
     "dx_lev_bas_notes_touch": "14",
     "dx_lev_bas_notes_break": "5",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "8.5",
     "dx_lev_adv_notes": "406",
     "dx_lev_adv_notes_tap": "345",
     "dx_lev_adv_notes_hold": "18",
@@ -59774,6 +59782,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59797,7 +59806,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "20",
     "dx_lev_bas_notes_break": "2",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.7",
     "dx_lev_adv_notes": "300",
     "dx_lev_adv_notes_tap": "247",
     "dx_lev_adv_notes_hold": "12",
@@ -59824,6 +59833,7 @@
     "intl": "1",
     "date_added": "20250110",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59847,7 +59857,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "7",
     "dx_lev_bas_notes_break": "13",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.7",
     "dx_lev_adv_notes": "326",
     "dx_lev_adv_notes_tap": "277",
     "dx_lev_adv_notes_hold": "12",
@@ -59874,6 +59884,7 @@
     "intl": "1",
     "date_added": "20250110",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59897,7 +59908,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "8",
     "dx_lev_bas_notes_break": "5",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.8",
     "dx_lev_adv_notes": "396",
     "dx_lev_adv_notes_tap": "358",
     "dx_lev_adv_notes_hold": "12",
@@ -59926,6 +59937,7 @@
     "key_intl": "○",
     "date_added": "20250110",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -59949,7 +59961,7 @@
     "dx_lev_bas_notes_slide": "5",
     "dx_lev_bas_notes_touch": "15",
     "dx_lev_bas_notes_break": "7",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "8.7",
     "dx_lev_adv_notes": "513",
     "dx_lev_adv_notes_tap": "467",
     "dx_lev_adv_notes_hold": "17",
@@ -59978,6 +59990,7 @@
     "key_intl": "○",
     "date_added": "20250110",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -60001,7 +60014,7 @@
     "dx_lev_bas_notes_slide": "8",
     "dx_lev_bas_notes_touch": "8",
     "dx_lev_bas_notes_break": "6",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.5",
     "dx_lev_adv_notes": "313",
     "dx_lev_adv_notes_tap": "263",
     "dx_lev_adv_notes_hold": "18",
@@ -60028,6 +60041,7 @@
     "intl": "1",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -60051,7 +60065,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "8",
     "dx_lev_bas_notes_break": "3",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.7",
     "dx_lev_adv_notes": "325",
     "dx_lev_adv_notes_tap": "269",
     "dx_lev_adv_notes_hold": "20",
@@ -60080,6 +60094,7 @@
     "key_intl": "○",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -60207,7 +60222,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "8",
     "dx_lev_bas_notes_break": "4",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "8.0",
     "dx_lev_adv_notes": "358",
     "dx_lev_adv_notes_tap": "308",
     "dx_lev_adv_notes_hold": "16",
@@ -60235,6 +60250,7 @@
     "key": "○",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -60258,7 +60274,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "20",
     "dx_lev_bas_notes_break": "12",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "8.2",
     "dx_lev_adv_notes": "390",
     "dx_lev_adv_notes_tap": "328",
     "dx_lev_adv_notes_hold": "22",
@@ -60286,6 +60302,7 @@
     "key_intl": "○",
     "date_added": "20240912",
     "date_intl_added": "20250116",
+    "date_intl_updated": "20250116",
     "date": "NEW"
   },
   {
@@ -60455,7 +60472,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "6",
     "dx_lev_bas_notes_break": "5",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.2",
     "dx_lev_adv_notes": "244",
     "dx_lev_adv_notes_tap": "192",
     "dx_lev_adv_notes_hold": "18",
@@ -60482,6 +60499,7 @@
     "intl": "1",
     "date_added": "20240927",
     "date_intl_added": "20250131",
+    "date_intl_updated": "20250131",
     "date": "NEW"
   },
   {
@@ -60555,7 +60573,7 @@
     "dx_lev_bas_notes_slide": "7",
     "dx_lev_bas_notes_touch": "8",
     "dx_lev_bas_notes_break": "8",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "8.5",
     "dx_lev_adv_notes": "389",
     "dx_lev_adv_notes_tap": "326",
     "dx_lev_adv_notes_hold": "14",
@@ -60584,6 +60602,7 @@
     "key_intl": "○",
     "date_added": "20241011",
     "date_intl_added": "20250131",
+    "date_intl_updated": "20250131",
     "date": "NEW"
   },
   {
@@ -60607,7 +60626,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "6",
     "dx_lev_bas_notes_break": "8",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.5",
     "dx_lev_adv_notes": "293",
     "dx_lev_adv_notes_tap": "241",
     "dx_lev_adv_notes_hold": "14",
@@ -60634,6 +60653,7 @@
     "intl": "1",
     "date_added": "20241011",
     "date_intl_added": "20250214",
+    "date_intl_updated": "20250214",
     "date": "NEW"
   },
   {
@@ -60716,7 +60736,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "7",
     "dx_lev_bas_notes_break": "4",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.2",
     "dx_lev_adv_notes": "278",
     "dx_lev_adv_notes_tap": "240",
     "dx_lev_adv_notes_hold": "13",
@@ -60743,6 +60763,7 @@
     "intl": "1",
     "date_added": "20241011",
     "date_intl_added": "20250214",
+    "date_intl_updated": "20250214",
     "date": "NEW"
   },
   {
@@ -60766,7 +60787,7 @@
     "dx_lev_bas_notes_slide": "6",
     "dx_lev_bas_notes_touch": "6",
     "dx_lev_bas_notes_break": "6",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "6.0",
     "dx_lev_adv_notes": "318",
     "dx_lev_adv_notes_tap": "269",
     "dx_lev_adv_notes_hold": "16",
@@ -60793,6 +60814,7 @@
     "intl": "1",
     "date_added": "20241011",
     "date_intl_added": "20250214",
+    "date_intl_updated": "20250214",
     "date": "NEW"
   },
   {
@@ -60816,7 +60838,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "8",
     "dx_lev_bas_notes_break": "8",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.7",
     "dx_lev_adv_notes": "323",
     "dx_lev_adv_notes_tap": "263",
     "dx_lev_adv_notes_hold": "20",
@@ -60845,6 +60867,7 @@
     "key_intl": "○",
     "date_added": "20250227",
     "date_intl_added": "20250227",
+    "date_intl_updated": "20250227",
     "date": "NEW"
   },
   {
@@ -60868,7 +60891,7 @@
     "dx_lev_bas_notes_slide": "4",
     "dx_lev_bas_notes_touch": "24",
     "dx_lev_bas_notes_break": "9",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.7",
     "dx_lev_adv_notes": "305",
     "dx_lev_adv_notes_tap": "247",
     "dx_lev_adv_notes_hold": "18",
@@ -60897,6 +60920,7 @@
     "key_intl": "○",
     "date_added": "20250227",
     "date_intl_added": "20250227",
+    "date_intl_updated": "20250227",
     "date": "NEW"
   },
   {
@@ -60920,7 +60944,7 @@
     "dx_lev_bas_notes_slide": "6",
     "dx_lev_bas_notes_touch": "27",
     "dx_lev_bas_notes_break": "11",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "9.0",
     "dx_lev_adv_notes": "532",
     "dx_lev_adv_notes_tap": "479",
     "dx_lev_adv_notes_hold": "24",
@@ -60949,6 +60973,7 @@
     "key_intl": "○",
     "date_added": "20250227",
     "date_intl_added": "20250227",
+    "date_intl_updated": "20250227",
     "date": "NEW"
   },
   {
@@ -61023,7 +61048,7 @@
     "dx_lev_bas_notes_slide": "8",
     "dx_lev_bas_notes_touch": "19",
     "dx_lev_bas_notes_break": "8",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "7.8",
     "dx_lev_adv_notes": "402",
     "dx_lev_adv_notes_tap": "336",
     "dx_lev_adv_notes_hold": "20",
@@ -61050,6 +61075,7 @@
     "intl": "1",
     "date_added": "20241122",
     "date_intl_added": "20250313",
+    "date_intl_updated": "20250313",
     "date": "NEW"
   },
   {
@@ -61123,14 +61149,14 @@
     "dx_lev_bas_notes_slide": "",
     "dx_lev_bas_notes_touch": "",
     "dx_lev_bas_notes_break": "",
-    "dx_lev_adv_i": "",
+    "dx_lev_adv_i": "8.0",
     "dx_lev_adv_notes": "",
     "dx_lev_adv_notes_tap": "",
     "dx_lev_adv_notes_hold": "",
     "dx_lev_adv_notes_slide": "",
     "dx_lev_adv_notes_touch": "",
     "dx_lev_adv_notes_break": "",
-    "dx_lev_exp_i": "",
+    "dx_lev_exp_i": "11.7",
     "dx_lev_exp_notes": "",
     "dx_lev_exp_notes_tap": "",
     "dx_lev_exp_notes_hold": "",
@@ -61138,7 +61164,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
+    "dx_lev_mas_i": "13.9",
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
@@ -61152,6 +61178,7 @@
     "key_intl": "○",
     "date_added": "20250313",
     "date_intl_added": "20250313",
+    "date_intl_updated": "20250313",
     "date": "NEW"
   },
   {
