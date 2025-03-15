@@ -203,8 +203,6 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
 
             song[chart_key] = str(chart_const)
 
-            return True
-
         # If existing chart const is empty
         if song[chart_key] == "":
             total_diffs[0] += 1
