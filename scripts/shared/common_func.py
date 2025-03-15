@@ -210,12 +210,23 @@ def json_to_hash_value_map(json, *keys):
     return {generate_hash_from_keys(song, *keys): song for song in json}
 
 def generate_hash_from_keys(song, *keys):
-    # Check for game-specific hash keys
-    if game.GAME_NAME == "maimai":
-        if 'lev_utage' in song:
-            keys = game.HASH_KEYS_UTAGE
-        else:
-            keys = game.HASH_KEYS
+    if not keys:
+        # If keys were not explicitly passed, use default HASH KEYS set
+        keys = game.HASH_KEYS
+
+        # For SP charts (Lunatic/WE/UTAGE), use HASH_KEYS_SP set
+        if game.GAME_NAME == "ongeki":
+            if song['lunatic'] == "1":
+                keys = game.HASH_KEYS_SP
+
+        elif game.GAME_NAME == "chunithm":
+            if song['we_kanji'] != "":
+                keys = game.HASH_KEYS_SP
+
+        elif game.GAME_NAME == "maimai":
+            if 'lev_utage' in song:
+                keys = game.HASH_KEYS_SP
+
     else:
         # Use keys provided or default to empty list if not specified
         if len(keys) == 1 and isinstance(keys[0], (list, tuple)):
@@ -238,7 +249,7 @@ def generate_hash(text_input):
 
     return hash_result
 
-def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash_key):
+def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key):
     args = game.ARGS
 
     if args.all:
@@ -269,7 +280,7 @@ def get_target_song_list(song_list, local_diffs_log_path, id_key, date_key, hash
         return filter_songs_by_date(song_list, date_key, args.date_from, args.date_until)
     else:
         # get id list from diffs.txt
-        return get_songs_from_diffs(song_list, local_diffs_log_path, hash_key)
+        return get_songs_from_diffs(song_list, local_diffs_log_path, game.HASH_KEYS)
 
 
 def filter_songs_by_date(song_list, date_key, date_from, date_until):
@@ -373,6 +384,19 @@ def archive_deleted_song(song, deleted_data):
 def print_keys_change(song, old_song, song_diffs):
     # Define the possible level keys (both normal and dx versions)
     any_changes = False
+
+    for key in game.META_KEYS:
+        # Check if the key exists in both song and old_song
+        if key in song and key in old_song:
+            # Compare the values of the key in both dictionaries
+            if song[key] != old_song[key]:
+                # Print the difference in the format: key: old_value -> new_value
+
+                # Lazy-print song name
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+
+                print_message(f"- {key} changed: {old_song[key]} → {song[key]}", bcolors.WARNING)
+                any_changes = True
 
     # Iterate over each key in level_keys
     for key in game.LEVEL_KEYS:
