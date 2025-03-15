@@ -3,8 +3,14 @@ GAME_NAME = "maimai"
 CURRENT_JP_VER = "PRiSM PLUS"
 CURRENT_INTL_VER = "PRiSM"
 
-HASH_KEYS = ['title', 'image_url']
-HASH_KEYS_UTAGE = ['title', 'lev_utage', 'kanji']
+HASH_KEYS = ['image_url']
+HASH_KEYS_SP = ['title', 'lev_utage', 'kanji']
+
+META_KEYS = {
+    "artist",
+    "title",
+    "title_kana"
+}
 
 LEVEL_KEYS = {
     "lev_bas",
@@ -33,15 +39,12 @@ LEVEL_CONST_KEYS = {
 }
 
 OTHER_KEYS = {
-    "artist",
     "catcode",
     "kanji",
     "comment",
     "image_url",
     "key",
     "release",
-    "title",
-    "title_kana",
     "version"
 }
 

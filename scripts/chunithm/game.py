@@ -3,7 +3,14 @@ GAME_NAME = "chunithm"
 CURRENT_JP_VER = "VERSE"
 CURRENT_INTL_VER = "LUMINOUS PLUS"
 
-HASH_KEYS = ['title', 'artist', 'we_kanji']
+HASH_KEYS = ['image']
+HASH_KEYS_SP = ['image', 'we_kanji']
+
+META_KEYS = {
+    "artist",
+    "title",
+    "reading"
+}
 
 LEVEL_KEYS = {
     "lev_bas",
@@ -26,9 +33,6 @@ LEVEL_CONST_KEYS = {
 OTHER_KEYS = {
     "id",
     "catname",
-    "title",
-    "reading",
-    "artist",
     "image"
 }
 

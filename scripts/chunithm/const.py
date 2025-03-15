@@ -54,7 +54,7 @@ def update_const_data():
     # Create error log file if it doesn't exist
     f = open("errors.txt", 'w')
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added', game.HASH_KEYS)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'id', 'date_added')
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")

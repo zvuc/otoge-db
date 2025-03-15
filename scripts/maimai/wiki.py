@@ -45,7 +45,7 @@ def update_songs_extra_data():
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
-    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'sort', 'date_added', generate_hash_from_keys)
+    target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'sort', 'date_added')
 
     if len(target_song_list) == 0:
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
