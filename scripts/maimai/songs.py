@@ -90,7 +90,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     for song in added_songs:
         song_diffs = [0]
         song_hash = generate_hash_from_keys(song)
-        _download_song_jacket(song)
+        _download_song_jacket(song, song_diffs)
         _add_song_data_to_ex_data(song, local_music_ex_data)
 
         if game.ARGS.markdown:
@@ -255,7 +255,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
 
 
-def _download_song_jacket(song):
+def _download_song_jacket(song, song_diffs):
     try:
         response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], verify=False, stream=True)
 
@@ -266,8 +266,10 @@ def _download_song_jacket(song):
                 # file.write(response.content)
                 shutil.copyfileobj(response.raw, file)
 
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, is_verbose=True)
             print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, log=True, is_verbose=True)
         else:
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, is_verbose=True)
             print_message(f"- Failed to download image. Status code: {response.status_code}", bcolors.FAIL, log=True, is_verbose=True)
     except Exception as e:
         print_message(f"- Could not download: {e}", bcolors.FAIL, log=True, is_verbose=True)
