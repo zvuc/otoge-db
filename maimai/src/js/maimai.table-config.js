@@ -199,6 +199,15 @@ function maimaiRenderLvNum(lev) {
           </div>`;
       }
     }
+    else if (type == 'sort') {
+      if (lev == 'lev_utage') {
+        data = data ? parseFloat(data.replace('?', '').replace('+', '.6')).toFixed(1) : null;
+        return data;
+      }
+      else {
+        return data;
+      }
+    }
     else {
       return data;
     }
@@ -255,7 +264,7 @@ function renderUtage(kanji, lev_utage) {
   }
 }
 
-function maimaiProcessChartData(obj, chart_diff) {
+function processMaimaiChartData(obj, chart_diff) {
   if (obj[chart_diff]) {
     if (obj[`buddy`] === '○') {
       return {
@@ -285,7 +294,7 @@ function maimaiProcessChartData(obj, chart_diff) {
         ...obj,
         chart_diff,
         chart_lev: obj[chart_diff],
-        chart_lev_i: parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.6')),
+        chart_lev_i: obj[`lev_utage`] ? obj[chart_diff] : parseFloat(obj[`${chart_diff}_i`] || obj[chart_diff].replace('+', '.6')),
         chart_lev_i_display: obj[`${chart_diff}_i`] || `<span class="approx">${parseFloat(obj[chart_diff].replace('+', '.6')).toFixed(1)}</span>`,
         chart_notes: obj[`${chart_diff}_notes`],
         chart_notes_tap: obj[`${chart_diff}_notes_tap`],
@@ -833,7 +842,7 @@ $(document).ready(function() {
 
     $.getJSON((currentRegion === 'intl' ? "data/music-ex-intl.json" : "data/music-ex.json"), (data) => {
       var table = $('#table').DataTable( {
-        data: flattenMusicData(data, flat_view, maimai_chart_list, maimaiProcessChartData),
+        data: flattenMusicData(data, flat_view, maimai_chart_list, processMaimaiChartData),
         "buttons": [
           {
             extend: 'colvis',

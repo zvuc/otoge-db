@@ -455,8 +455,7 @@ $(document).ready(function() {
         name: "chart_lev_i",
         data: ( flat_view ? 'chart_lev_i' : null ),
         className: "lv lv-name detail-hidden",
-        render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', ongeki_chart_list)
-        : null ),
+        render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', ongeki_chart_list): null ),
         width: "4rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
           $(td).addClass( rowData.chart_diff );

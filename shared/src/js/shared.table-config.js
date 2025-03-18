@@ -70,16 +70,20 @@ function renderLvNum(lev) {
   }
 }
 
-function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display, chart_link) {
+function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, precise_lv_display, chart_list) {
   return function ( data, type, row ) {
     if ( type === 'display' ) {
-      var chart_diff_display = convertDifficultyNames(row[chart_diff],false,chart_link);
+      var chart_diff_display = convertDifficultyNames(row[chart_diff],false,chart_list);
 
+      // chunithm
       if (row[chart_diff] === 'we_kanji') {
         var precise_lv = `☆${row[precise_lv_display]}`;
-      } else if (row[chart_diff] === 'lev_utage') {
+      }
+      // maimai
+      else if (row[chart_diff] === 'lev_utage') {
         var precise_lv = ``;
-      } else {
+      }
+      else {
         var precise_lv = row[precise_lv_display];
       }
 
@@ -91,6 +95,15 @@ function renderChartDifficultyNameAndLv(chart_diff, simple_lv, precise_lv, preci
             <span class="lv-num-precise">${precise_lv}</span>
           </span>
         </div>`;
+    }
+    else if (type == 'sort') {
+      // maimai
+      if (row[chart_diff] === 'lev_utage') {
+        // Subtract 0.01 from virtual utage constant to order underneath normal charts for sort
+        return addLeadingZero(parseFloat(data.toString().replace('?', '').replace('+', '.6')).toFixed(2) - 0.01);
+      } else {
+        return addLeadingZero(parseFloat(data).toFixed(1));
+      }
     }
     else {
       return data;
