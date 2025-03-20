@@ -64272,11 +64272,11 @@
     "image_url": "6c38d19035bd1ea6.png",
     "release": "250313",
     "lev_utage": "13?",
-    "lev_utage_notes": "",
-    "lev_utage_notes_tap": "",
-    "lev_utage_notes_hold": "",
-    "lev_utage_notes_slide": "",
-    "lev_utage_notes_break": "",
+    "lev_utage_notes": "474",
+    "lev_utage_notes_tap": "263",
+    "lev_utage_notes_hold": "0",
+    "lev_utage_notes_slide": "202",
+    "lev_utage_notes_break": "9",
     "lev_utage_designer": "実際はBPM360らしいので…",
     "kanji": "即",
     "comment": "実際はBPM360らしいので…",
@@ -64284,7 +64284,7 @@
     "intl": "0",
     "date_added": "20250313",
     "date_intl_added": "000000",
-    "lev_utage_notes_touch": ""
+    "lev_utage_notes_touch": "0"
   },
   {
     "sort": "871",
@@ -64667,11 +64667,11 @@
     "image_url": "e1e5a738cc1af930.png",
     "release": "250313",
     "lev_utage": "12?",
-    "lev_utage_notes": "",
-    "lev_utage_notes_tap": "",
-    "lev_utage_notes_hold": "",
-    "lev_utage_notes_slide": "",
-    "lev_utage_notes_break": "",
+    "lev_utage_notes": "432",
+    "lev_utage_notes_tap": "303",
+    "lev_utage_notes_hold": "43",
+    "lev_utage_notes_slide": "21",
+    "lev_utage_notes_break": "47",
     "lev_utage_designer": "そんな「甘い魔法」",
     "kanji": "甘",
     "comment": "そんな「甘い魔法」",
@@ -64679,7 +64679,7 @@
     "intl": "0",
     "date_added": "20250313",
     "date_intl_added": "000000",
-    "lev_utage_notes_touch": ""
+    "lev_utage_notes_touch": "18"
   },
   {
     "sort": "1360",
@@ -64818,11 +64818,11 @@
     "image_url": "1b3fd58d6ebade7c.png",
     "release": "250313",
     "lev_utage": "13?",
-    "lev_utage_notes": "",
-    "lev_utage_notes_tap": "",
-    "lev_utage_notes_hold": "",
-    "lev_utage_notes_slide": "",
-    "lev_utage_notes_break": "",
+    "lev_utage_notes": "674",
+    "lev_utage_notes_tap": "421",
+    "lev_utage_notes_hold": "78",
+    "lev_utage_notes_slide": "81",
+    "lev_utage_notes_break": "58",
     "lev_utage_designer": "まわると　うれしいね",
     "kanji": "回",
     "comment": "まわると　うれしいね",
@@ -64830,7 +64830,7 @@
     "intl": "0",
     "date_added": "20250313",
     "date_intl_added": "000000",
-    "lev_utage_notes_touch": ""
+    "lev_utage_notes_touch": "36"
   },
   {
     "sort": "101",
