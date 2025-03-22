@@ -70,16 +70,16 @@ CHART_LIST_DX = [
 ]
 
 REQUIRED_KEYS_PER_CHART = {
-    "lev_bas": ["lev_bas_notes","lev_bas_notes_tap","lev_bas_notes_hold","lev_bas_notes_slide","lev_bas_notes_break"],
-    "lev_adv": ["lev_adv_notes","lev_adv_notes_tap","lev_adv_notes_hold","lev_adv_notes_slide","lev_adv_notes_break"],
-    "lev_exp": ["lev_exp_notes","lev_exp_notes_tap","lev_exp_notes_hold","lev_exp_notes_slide","lev_exp_notes_break","lev_exp_designer"],
-    "lev_mas": ["lev_mas_notes","lev_mas_notes_tap","lev_mas_notes_hold","lev_mas_notes_slide","lev_mas_notes_break","lev_mas_designer"],
-    "lev_remas": ["lev_remas_notes","lev_remas_notes_tap","lev_remas_notes_hold","lev_remas_notes_slide","lev_remas_notes_break","lev_remas_designer"],
-    "dx_lev_bas": ["dx_lev_bas_notes","dx_lev_bas_notes_tap","dx_lev_bas_notes_hold","dx_lev_bas_notes_slide","dx_lev_bas_notes_break","dx_lev_bas_notes_touch"],
-    "dx_lev_adv": ["dx_lev_adv_notes","dx_lev_adv_notes_tap","dx_lev_adv_notes_hold","dx_lev_adv_notes_slide","dx_lev_adv_notes_break","dx_lev_adv_notes_touch"],
-    "dx_lev_exp": ["dx_lev_exp_notes","dx_lev_exp_notes_tap","dx_lev_exp_notes_hold","dx_lev_exp_notes_slide","dx_lev_exp_notes_break","dx_lev_exp_notes_touch","dx_lev_exp_designer"],
-    "dx_lev_mas": ["dx_lev_mas_notes","dx_lev_mas_notes_tap","dx_lev_mas_notes_hold","dx_lev_mas_notes_slide","dx_lev_mas_notes_break","dx_lev_mas_notes_touch","dx_lev_mas_designer"],
-    "dx_lev_remas": ["dx_lev_remas_notes","dx_lev_remas_notes_tap","dx_lev_remas_notes_hold","dx_lev_remas_notes_slide","dx_lev_remas_notes_break","dx_lev_remas_notes_touch","dx_lev_remas_designer"],
+    "lev_bas": ["lev_bas_i", "lev_bas_notes","lev_bas_notes_tap","lev_bas_notes_hold","lev_bas_notes_slide","lev_bas_notes_break"],
+    "lev_adv": ["lev_adv_i", "lev_adv_notes","lev_adv_notes_tap","lev_adv_notes_hold","lev_adv_notes_slide","lev_adv_notes_break"],
+    "lev_exp": ["lev_exp_i", "lev_exp_notes","lev_exp_notes_tap","lev_exp_notes_hold","lev_exp_notes_slide","lev_exp_notes_break","lev_exp_designer"],
+    "lev_mas": ["lev_mas_i", "lev_mas_notes","lev_mas_notes_tap","lev_mas_notes_hold","lev_mas_notes_slide","lev_mas_notes_break","lev_mas_designer"],
+    "lev_remas": ["lev_remas_i", "lev_remas_notes","lev_remas_notes_tap","lev_remas_notes_hold","lev_remas_notes_slide","lev_remas_notes_break","lev_remas_designer"],
+    "dx_lev_bas": ["dx_lev_bas_i", "dx_lev_bas_notes","dx_lev_bas_notes_tap","dx_lev_bas_notes_hold","dx_lev_bas_notes_slide","dx_lev_bas_notes_break","dx_lev_bas_notes_touch"],
+    "dx_lev_adv": ["dx_lev_adv_i", "dx_lev_adv_notes","dx_lev_adv_notes_tap","dx_lev_adv_notes_hold","dx_lev_adv_notes_slide","dx_lev_adv_notes_break","dx_lev_adv_notes_touch"],
+    "dx_lev_exp": ["dx_lev_exp_i", "dx_lev_exp_notes","dx_lev_exp_notes_tap","dx_lev_exp_notes_hold","dx_lev_exp_notes_slide","dx_lev_exp_notes_break","dx_lev_exp_notes_touch","dx_lev_exp_designer"],
+    "dx_lev_mas": ["dx_lev_mas_i", "dx_lev_mas_notes","dx_lev_mas_notes_tap","dx_lev_mas_notes_hold","dx_lev_mas_notes_slide","dx_lev_mas_notes_break","dx_lev_mas_notes_touch","dx_lev_mas_designer"],
+    "dx_lev_remas": ["dx_lev_remas_i", "dx_lev_remas_notes","dx_lev_remas_notes_tap","dx_lev_remas_notes_hold","dx_lev_remas_notes_slide","dx_lev_remas_notes_break","dx_lev_remas_notes_touch","dx_lev_remas_designer"],
     "lev_utage": ["lev_utage_notes","lev_utage_notes_tap","lev_utage_notes_hold","lev_utage_notes_slide","lev_utage_notes_break","lev_utage_notes_touch","lev_utage_designer"]
 }
 

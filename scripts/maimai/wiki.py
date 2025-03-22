@@ -90,9 +90,13 @@ def update_song_wiki_data(song, total_diffs):
             if (
                 # If chart exists in song, check REQUIRED_KEYS_PER_CHART
                 # and add any missing additional keys for that chart
+                # EXCEPT for lev_xxx_i keys because we're not fetching constants from wiki
                 any(
                     chart_key in song
-                    and any(required_key not in song for required_key in required_keys)
+                    and any(
+                        required_key not in song and "_i" not in required_key
+                        for required_key in required_keys
+                    )
                     for chart_key, required_keys in game.REQUIRED_KEYS_PER_CHART.items()
                 )
                 # Check if any existing keys have empty values
