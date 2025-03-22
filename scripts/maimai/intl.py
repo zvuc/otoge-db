@@ -181,6 +181,12 @@ def sync_json_data():
                 if key not in song:
                     del dest_song[key]
 
+    # sort before saving
+    for song in dest_music_data:
+        sorted_song = sort_dict_keys(song)
+        song.clear()
+        song.update(sorted_song)
+
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(dest_music_data, f, ensure_ascii=False, indent=2)
 
