@@ -70,7 +70,7 @@ def sync_json_data():
 
             if existing_song:
                 lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-                print_message(f"- Warning: Song does not exist in JP data", bcolors.FAIL)
+                print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
 
     # Iterate through updated songs
     # For the list of updated songs, go through each of them in older song list
@@ -97,26 +97,47 @@ def sync_json_data():
                 if key in ['date', 'version', 'intl', 'release', 'date_intl_added', 'date_intl_updated']:
                     continue
 
-                # overwrite silently
-                if key == 'sort':
-                    dest_song[key] = value
-                    continue
+                # Also, if INTL and JP ver are different
+                # never update non-chart detail data (e.g. Title, Artist etc)
+                if (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
+                    all_required_keys = {key for keys in game.REQUIRED_KEYS_PER_CHART.values() for key in keys}
+                    if key not in all_required_keys:
+                        continue
 
-                # Don't copy keys that don't exist in INTL
-                # They might be keys for new added charts in existing songs that are not yet added to INTL
-
-                # if key not in song_pre_update:
-                #     lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-                #     print_message(f"- Added key {key}: {song[key]}", bcolors.OKGREEN)
-                #     dest_song[key] = value
+                # If key doesn't exist
                 if key not in song_pre_update:
-                    continue
+                    # Chart Constant
+                    if "_i" in key:
+                        # Check if relevant chart already exists in INTL
+                        if parent_key_exists(key, dest_song):
+                            # If INTL and JP version are same, copy key and value from JP
+                            if (game.CURRENT_JP_VER == game.CURRENT_INTL_VER):
+                                dest_song[key] = value
+                                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                                print_message(f"- Copied {key}: {song[key]}", bcolors.OKBLUE)
+                    # Other notes data keys
+                    elif "_notes" in key:
+                        # Check if relevant chart already exists in INTL
+                        if parent_key_exists(key, dest_song):
+                            dest_song[key] = value
+                            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                            print_message(f"- Copied {key}: {song[key]}", bcolors.OKBLUE)
+
+                # If key exists, but value is empty
                 elif song_pre_update[key] != value and value != "":
                     if song_pre_update[key] == "":
+                        # For chart constant, skip overwrite if current INTL and JP ver are different
+                        if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
+                            continue
+
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                         print_message(f"- Added value for {key}: {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
                     else:
+                        # For chart constant, skip overwrite if current INTL and JP ver are different
+                        if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
+                            continue
+
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                         print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
@@ -138,6 +159,14 @@ def sync_json_data():
         if song_pre_update and dest_song:
             # Check for changes, additions, or removals
             for key, value in song.items():
+                 # overwrite "sort" value silently (only if INTL and JP version are same)
+                if key == 'sort':
+                    if (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
+                        continue
+                    else:
+                        dest_song[key] = value
+                        continue
+
                 # maimai uses 'date' key for recording NEW markers... ignore them
                 if key == 'date':
                     continue
@@ -636,3 +665,15 @@ def _determine_wiki_chart_type(matched_intl_song):
     elif 'lev_utage' in matched_intl_song:
         return 'utage'
     return ''
+
+def parent_key_exists(key_name, song):
+    for parent_key, child_keys in game.REQUIRED_KEYS_PER_CHART.items():
+        # skip irrelevant key
+        if key_name not in child_keys:
+            continue
+        # matched
+        if parent_key in song:
+            return True
+        else:
+            return False
+    return False
