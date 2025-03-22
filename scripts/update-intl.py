@@ -4,7 +4,8 @@ import shared
 from shared.common_func import *
 
 def main():
-    if (game.CURRENT_JP_VER == game.CURRENT_INTL_VER):
+    # temporary since chuni has no sync_json_data yet
+    if(game.GAME_NAME == 'maimai'):
         game.GAME_MODULE.intl.sync_json_data()
 
     game.GAME_MODULE.intl.add_intl_info()
