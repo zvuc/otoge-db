@@ -270,7 +270,7 @@ def _add_ex_data_template(song):
     song['lev_lnt_bells'] = ""
     song['lev_lnt_designer'] = ""
     song['lev_lnt_chart_link'] = ""
-    song['version'] = "bright MEMORY Act.3"
+    song['version'] = game.CURRENT_JP_VER
     song['wikiwiki_url'] = ""
 
     # Rename 'date' key to 'date_added' if it exists
