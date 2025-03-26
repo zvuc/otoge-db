@@ -1,7 +1,7 @@
 GAME_NAME = "ongeki"
 
-CURRENT_JP_VER = "BRIGHT MEMORY ACT.3"
-CURRENT_INTL_VER = "BRIGHT MEMORY ACT.3"
+CURRENT_JP_VER = "Re:Fresh"
+CURRENT_INTL_VER = "Re:Fresh"
 
 HASH_KEYS = ['image_url', 'lunatic']
 HASH_KEYS_SP = ['image_url', 'lunatic']
