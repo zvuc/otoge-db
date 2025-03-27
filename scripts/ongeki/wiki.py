@@ -254,7 +254,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
             print_message("Added BPM", bcolors.OKGREEN, log=True)
 
-    if song['wikiwiki_url'] != url and critical_errors[0] == 0:
+    if ('wikiwiki_url' not in song or song['wikiwiki_url'] != url) and critical_errors[0] == 0:
         song['wikiwiki_url'] = url
         lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
         print_message("Saved wiki URL", bcolors.OKBLUE)
