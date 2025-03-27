@@ -6,6 +6,12 @@ CURRENT_INTL_VER = "Re:Fresh"
 HASH_KEYS = ['image_url', 'lunatic']
 HASH_KEYS_SP = ['image_url', 'lunatic']
 
+META_KEYS = {
+    "artist",
+    "title",
+    "title_sort"
+}
+
 LEVEL_KEYS = {
     "lev_bas",
     "lev_adv",
