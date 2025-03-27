@@ -26,7 +26,7 @@ def update_const_data():
     target_song_list = get_target_song_list(local_music_ex_data, LOCAL_DIFFS_LOG_PATH, 'sort', 'date_added')
 
     if len(target_song_list) == 0:
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
+        print_message("(Nothing to update)", bcolors.ENDC, log=True)
         return
 
     sgimera_js = _fetch_js_data(SGIMERA_URL)
