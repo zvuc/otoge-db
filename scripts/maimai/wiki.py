@@ -477,7 +477,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                     _process_chart(song, chart_type, CHART_COLORS[chart_type], charts_table_dx, charts_table_head_dx, chart_designers_dict_dx, header_printed)
 
 
-    if song['wiki_url'] != url and critical_errors[0] == 0:
+    if ('wiki_url' not in song or song['wiki_url'] != url) and critical_errors[0] == 0:
         song['wiki_url'] = url
         lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True)
         print_message("Saved wiki URL", bcolors.OKBLUE)
