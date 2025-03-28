@@ -13113,7 +13113,9 @@
     "intl": "1",
     "date_added": "20150917",
     "date_updated": "20241011",
-    "date_intl_added": "20150917"
+    "date_intl_added": "20150917",
+    "date_intl_updated": "20250328",
+    "key_intl": "○"
   },
   {
     "sort": "566",
@@ -61205,9 +61207,9 @@
     "dx_lev_mas_notes_touch": "37",
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/886030",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20241122",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250328",
     "date": "NEW"
   },
   {
@@ -61255,9 +61257,9 @@
     "dx_lev_mas_notes_touch": "22",
     "dx_lev_mas_designer": "きょむりん",
     "wiki_url": "https://gamerch.com/maimai/886027",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20241122",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250328",
     "date": "NEW"
   },
   {
@@ -61362,9 +61364,9 @@
     "dx_lev_mas_notes_touch": "23",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/886033",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20241122",
-    "date_intl_added": "000000",
+    "date_intl_added": "20250328",
     "date": "NEW"
   },
   {
