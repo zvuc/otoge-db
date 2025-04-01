@@ -50096,9 +50096,9 @@
     "lev_mas": "",
     "lev_lnt": "0",
     "image_url": "208058fa34707164.png",
-    "enemy_lv": "",
+    "enemy_lv": "42",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "160",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -50124,7 +50124,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ENERGY SYNERGY MATRIX"
   },
   {
     "new": "NEW",
