@@ -7612,7 +7612,8 @@
     "date_added": "20170921",
     "intl": "1",
     "date_intl_added": "20220303",
-    "date_updated": "20240801"
+    "date_updated": "20240801",
+    "date_intl_updated": "20241212"
   },
   {
     "id": "421",
@@ -18489,7 +18490,8 @@
     "date_added": "20181025",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20240801"
+    "date_updated": "20240801",
+    "date_intl_updated": "20241212"
   },
   {
     "id": "631",
@@ -23810,7 +23812,8 @@
     "date_added": "20160707",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20240620"
+    "date_updated": "20240620",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "211",
@@ -32910,7 +32913,8 @@
     "date_added": "20180510",
     "intl": "1",
     "date_intl_added": "20210318",
-    "date_updated": "20240822"
+    "date_updated": "20240822",
+    "date_intl_updated": "20241226"
   },
   {
     "id": "627",
@@ -44266,7 +44270,8 @@
     "date_added": "20160623",
     "intl": "1",
     "date_intl_added": "20220303",
-    "date_updated": "20241031"
+    "date_updated": "20241031",
+    "date_intl_updated": "20250123"
   },
   {
     "id": "208",
@@ -58153,7 +58158,8 @@
     "date_added": "20150716",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20240620"
+    "date_updated": "20240620",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "160",
@@ -60479,7 +60485,8 @@
     "date_added": "20201001",
     "intl": "1",
     "date_intl_added": "20210708",
-    "date_updated": "20240620"
+    "date_updated": "20240620",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "1009",
@@ -70698,7 +70705,8 @@
     "date_added": "20150716",
     "intl": "1",
     "date_intl_added": "20201126",
-    "date_updated": "20240620"
+    "date_updated": "20240620",
+    "date_intl_updated": "20241017"
   },
   {
     "id": "108",
@@ -98820,7 +98828,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Beat Eater",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2511",
@@ -98894,7 +98903,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Glory Steady Go!",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2512",
@@ -98968,7 +98978,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ロウワー",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2513",
@@ -99042,7 +99053,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/てらてら",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2514",
@@ -99116,7 +99128,8 @@
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/天使のクローバー",
     "date_added": "20240111",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "2497",
@@ -103235,7 +103248,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/夏宵スターマイン",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2593",
@@ -103309,7 +103323,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Rrhar'il",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2636",
@@ -103383,7 +103398,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/コメクエスト",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2594",
@@ -103457,7 +103473,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ヒュブリスの頂に聳えるのは",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2602",
@@ -103531,7 +103548,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/幻想ロードオブキング",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2585",
@@ -103605,7 +103623,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/カオスが極まる",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2591",
@@ -103679,7 +103698,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/寝起きヤシの木",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2603",
@@ -103753,7 +103773,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/イーヴィルガール",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "8285",
@@ -103975,7 +103996,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/バッドトリッパー",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2600",
@@ -104049,7 +104071,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/其のエメラルドを見よ",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2671",
@@ -104123,7 +104146,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/デビルじゃないもん",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "8284",
@@ -104271,7 +104295,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/美少女無罪♡パイレーツ",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2584",
@@ -104345,7 +104370,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/勇者",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2586",
@@ -104419,7 +104445,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/唱",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2604",
@@ -104493,7 +104520,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/わたしはオッセルヴァトリーチェ！",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2589",
@@ -104567,7 +104595,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ÅMARA(大未来電脳)",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2592",
@@ -104641,7 +104670,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/マツヨイナイトバグ",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2596",
@@ -104715,7 +104745,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/The Greatest Night",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2539",
@@ -104864,7 +104895,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/リ・フィクション・O",
     "date_added": "20240620",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2610",
@@ -104938,7 +104970,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/おくすり飲んで寝よう",
     "date_added": "20240704",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2659",
@@ -105012,7 +105045,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/アプリコット",
     "date_added": "20240704",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2611",
@@ -105086,7 +105120,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/匿名M",
     "date_added": "20240704",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2658",
@@ -105160,7 +105195,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/熱異常",
     "date_added": "20240704",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2657",
@@ -105234,7 +105270,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/1000年生きてる",
     "date_added": "20240704",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241114"
   },
   {
     "id": "2597",
@@ -105308,7 +105345,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Stardust：RAY",
     "date_added": "20240704",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2613",
@@ -105382,7 +105420,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Overhea［r］t",
     "date_added": "20240718",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2614",
@@ -105456,7 +105495,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Malleus Maleficarum",
     "date_added": "20240718",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2620",
@@ -105530,7 +105570,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/チューリングの跡",
     "date_added": "20240718",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2612",
@@ -105604,7 +105645,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/DRE4M1N9",
     "date_added": "20240718",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2615",
@@ -105678,7 +105720,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Elusive Enforcer",
     "date_added": "20240718",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2616",
@@ -105752,7 +105795,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/黎命に殉ず",
     "date_added": "20240718",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241128"
   },
   {
     "id": "2619",
@@ -105826,7 +105870,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Presence",
     "date_added": "20240801",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241212"
   },
   {
     "id": "2618",
@@ -105900,7 +105945,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ReCoda",
     "date_added": "20240801",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2675",
@@ -105974,7 +106020,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/トゥッティ！",
     "date_added": "20240801",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241017"
   },
   {
     "id": "2624",
@@ -106048,7 +106095,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Make Up Your World feat. キョンシーのCiちゃん ＆ らっぷびと",
     "date_added": "20240808",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241212"
   },
   {
     "id": "8287",
@@ -106196,7 +106244,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Joe Fight",
     "date_added": "20240808",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241212"
   },
   {
     "id": "2621",
@@ -106270,7 +106319,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/NIGHTWAVE FRAGMENTS",
     "date_added": "20240808",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241212"
   },
   {
     "id": "8286",
@@ -106492,7 +106542,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Poppin' Dream",
     "date_added": "20240808",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241212"
   },
   {
     "id": "2625",
@@ -106640,7 +106691,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ハッピータイフーン",
     "date_added": "20240822",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2643",
@@ -106714,7 +106766,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ヒトリシズカ(Arranged： Iceon)",
     "date_added": "20240822",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2642",
@@ -106788,7 +106841,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/壊れた人形のマーチ",
     "date_added": "20240822",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2674",
@@ -106862,7 +106916,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/M.L.V.G",
     "date_added": "20240822",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241226"
   },
   {
     "id": "2637",
@@ -106936,7 +106991,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/乙女戦士☆あーし。",
     "date_added": "20240905",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2605",
@@ -107010,7 +107066,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/優勝Princess♡",
     "date_added": "20240905",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2634",
@@ -107084,7 +107141,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Dramatic%E2%80%A6%3F",
     "date_added": "20240905",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2638",
@@ -107158,7 +107216,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/おしゃまなプリンセス",
     "date_added": "20240905",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2635",
@@ -107232,7 +107291,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/X.Y.Z.",
     "date_added": "20240905",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2639",
@@ -107306,7 +107366,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ソーシャルワンダーランド",
     "date_added": "20240905",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250206"
   },
   {
     "id": "2629",
@@ -107380,7 +107441,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/壱雫空",
     "date_added": "20240919",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2633",
@@ -107454,7 +107516,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Rhythmic Ride",
     "date_added": "20240919",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2632",
@@ -107528,7 +107591,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ずんだパーリナイ",
     "date_added": "20240919",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2631",
@@ -107602,7 +107666,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/スコーピオンガールの貴重な捕食シーン",
     "date_added": "20240919",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2630",
@@ -107676,7 +107741,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/迷星叫",
     "date_added": "20240919",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250220"
   },
   {
     "id": "2676",
@@ -107750,7 +107816,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ハートサーモグラフィー",
     "date_added": "20241003",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250109"
   },
   {
     "id": "2679",
@@ -107824,7 +107891,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/特者生存ワンダラダー!!",
     "date_added": "20241003",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250109"
   },
   {
     "id": "2677",
@@ -107898,7 +107966,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/モンダイナイトリッパー！",
     "date_added": "20241003",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250109"
   },
   {
     "id": "2641",
@@ -107972,7 +108041,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/マシンガンポエムドール",
     "date_added": "20241003",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250123"
   },
   {
     "id": "8291",
@@ -108194,7 +108264,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Fire Engine73",
     "date_added": "20241017",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250306"
   },
   {
     "id": "2645",
@@ -108268,7 +108339,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Lovely Lovely Lover",
     "date_added": "20241017",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250306"
   },
   {
     "id": "2644",
@@ -108342,7 +108414,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Death Doll",
     "date_added": "20241017",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250306"
   },
   {
     "id": "2647",
@@ -108416,7 +108489,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/LibrariA",
     "date_added": "20241017",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250306"
   },
   {
     "id": "8289",
@@ -108564,7 +108638,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Tuatha Dé Danann",
     "date_added": "20241017",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250306"
   },
   {
     "id": "2650",
@@ -108638,7 +108713,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/MeteorSnow",
     "date_added": "20241031",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20241031"
   },
   {
     "id": "2660",
@@ -108712,7 +108788,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/What's up%3F Pop!",
     "date_added": "20241114",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2653",
@@ -108786,7 +108863,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Sleep Walking Orchestra",
     "date_added": "20241114",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2670",
@@ -108860,7 +108938,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/自称、音楽愛好家",
     "date_added": "20241114",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2651",
@@ -108934,7 +109013,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Acid God",
     "date_added": "20241114",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2661",
@@ -109008,7 +109088,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/まにまに",
     "date_added": "20241114",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2681",
@@ -109304,7 +109385,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Forsaken Tale",
     "date_added": "20241128",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2654",
