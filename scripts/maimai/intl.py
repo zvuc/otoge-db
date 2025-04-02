@@ -19,8 +19,7 @@ request_headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
-# Only sync data updated in JP data to INTL
-# If the current INTL and JP ver are the same
+# Copy over data from JP ver to INTL
 def sync_json_data():
     print_message(f"Syncing song data from JP to INTL", 'H2', log=True)
 
@@ -28,11 +27,17 @@ def sync_json_data():
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         src_music_data = json.load(f)
 
+    # If the current INTL and JP ver are not the same, load previous version archive as well
+    if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'r', encoding='utf-8') as f:
+            src_prev_ver_music_data = json.load(f)
+
     # Read INTL data
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         dest_music_data = json.load(f)
 
     src_music_map = json_to_hash_value_map(src_music_data)
+    src_prev_ver_music_map = json_to_hash_value_map(src_prev_ver_music_data)
     dest_music_map = json_to_hash_value_map(dest_music_data)
     dest_music_data_pre_update = copy.deepcopy(dest_music_data)
 
@@ -42,6 +47,9 @@ def sync_json_data():
     # Compare sets of IDs to identify added and removed songs
     added_ids = set(src_music_map.keys()) - set(dest_music_map.keys())
     removed_ids = set(dest_music_map.keys()) - set(src_music_map.keys())
+
+    if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        removed_ids_against_prev_ver = set(dest_music_map.keys()) - set(src_prev_ver_music_map.keys())
 
     updated_songs = []
     unchanged_songs = []
@@ -63,14 +71,40 @@ def sync_json_data():
     if removed_ids:
         removed_songs = [dest_music_map[id] for id in removed_ids]
 
-        for song in removed_songs:
-            song_diffs = [0]
-            song_hash = generate_hash_from_keys(song)
-            existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
+    # If INTL ver is behind JP, check with previous ver archive data first
+    if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        if removed_ids_against_prev_ver:
+            removed_songs_prev_ver = [dest_music_map[id] for id in removed_ids_against_prev_ver]
 
-            if existing_song:
-                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-                print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
+            for song in removed_songs_prev_ver:
+                song_diffs = [0]
+                song_hash = generate_hash_from_keys(song)
+                existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
+
+                if existing_song:
+                    if 'lev_utage' in song:
+                        lazy_print_song_header(f"[{song['kanji']}] {song['title']}", song_diffs, log=True)
+                    else:
+                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+
+                    # INTL song exists in latest JP version, skip
+                    if existing_song not in removed_songs:
+                        print_message(f"- Song does not exist in JP ({game.CURRENT_INTL_VER}) final data but is found in current JP version", bcolors.WARNING)
+                    else:
+                        print_message(f"- Warning: Song does not exist in JP ({game.CURRENT_INTL_VER}) final data. Perhaps this song was deleted?", bcolors.FAIL)
+    else:
+        if removed_ids:
+            for song in removed_songs:
+                song_diffs = [0]
+                song_hash = generate_hash_from_keys(song)
+                existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
+
+                if existing_song:
+                    if 'lev_utage' in song:
+                        lazy_print_song_header(f"[{song['kanji']}] {song['title']}", song_diffs, log=True)
+                    else:
+                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                    print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
 
     # Iterate through updated songs
     # For the list of updated songs, go through each of them in older song list
