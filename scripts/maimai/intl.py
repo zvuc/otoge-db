@@ -341,7 +341,7 @@ def add_intl_info():
         # Copying entire song from JP->INTL
         if intl_song_matched is False:
             # If current JP ver is ahead of INTL, first look in the prev ver data
-            if CURRENT_INTL_VER != CURRENT_JP_VER:
+            if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
                 # cross check if JP song (latest ver. data) says the song is not yet in INTL
                 if jp_prev_ver_song_matched:
                     local_intl_music_ex_data.append(matched_jp_song)
@@ -380,7 +380,7 @@ def add_intl_info():
         # Partial copy (chart) from JP->INTL
         elif intl_song_matched is True:
             # If current JP ver is ahead of INTL, first look in the prev ver data
-            if CURRENT_INTL_VER != CURRENT_JP_VER:
+            if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
                 if jp_prev_ver_song_matched:
                     _sync_jp_to_intl_song('partial_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
 
@@ -395,7 +395,7 @@ def add_intl_info():
                 matched_jp_song['key_intl'] = "○"
 
                 # If JP version is ahead of INTL, also update PREV VER JP data
-                if CURRENT_INTL_VER != CURRENT_JP_VER:
+                if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
                     matched_jp_prev_ver_song['key_intl'] = "○"
 
                 lazy_print_song_header(f"{title}", header_printed, log=True)
@@ -437,7 +437,7 @@ def add_intl_info():
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_intl_music_ex_data, f, ensure_ascii=False, indent=2)
 
-    if CURRENT_INTL_VER != CURRENT_JP_VER:
+    if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
         with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
             json.dump(local_music_ex_prev_ver_data, f, ensure_ascii=False, indent=2)
 

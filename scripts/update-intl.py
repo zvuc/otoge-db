@@ -6,8 +6,7 @@ from shared.common_func import *
 def main():
     game.GAME_MODULE.intl.add_intl_info()
 
-    # temporary since chuni has no sync_json_data yet
-    if(game.GAME_NAME == 'maimai'):
+    if game.GAME_NAME in ('maimai', 'chunithm'):
         game.GAME_MODULE.intl.sync_json_data()
 
     # Update the last updated time
