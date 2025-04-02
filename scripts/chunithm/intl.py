@@ -17,9 +17,7 @@ request_headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
-
-# Only sync data updated in JP data to INTL
-# If the current INTL and JP ver are the same
+# Copy over data from JP ver to INTL
 def sync_json_data():
     print_message(f"Syncing song data from JP to INTL", 'H2', log=True)
 
@@ -27,6 +25,7 @@ def sync_json_data():
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         src_music_data = json.load(f)
 
+    # If the current INTL and JP ver are not the same, load previous version archive as well
     if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
         with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'r', encoding='utf-8') as f:
             src_prev_ver_music_data = json.load(f)
