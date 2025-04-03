@@ -63468,14 +63468,14 @@
     "lev_utage_notes_hold": "57",
     "lev_utage_notes_slide": "45",
     "lev_utage_notes_break": "33",
+    "lev_utage_notes_touch": "1",
     "lev_utage_designer": "神々が恋したトリル郷",
     "kanji": "片",
     "comment": "神々が恋したトリル郷",
     "wiki_url": "https://gamerch.com/maimai/534184",
     "intl": "0",
     "date_added": "20250214",
-    "date_intl_added": "000000",
-    "lev_utage_notes_touch": "1"
+    "date_intl_added": "000000"
   },
   {
     "sort": "1369",
@@ -63493,14 +63493,14 @@
     "lev_utage_notes_hold": "0",
     "lev_utage_notes_slide": "69",
     "lev_utage_notes_break": "26",
+    "lev_utage_notes_touch": "0",
     "lev_utage_designer": "ほしだけスペクタクル",
     "kanji": "星",
     "comment": "ほしだけスペクタクル",
     "wiki_url": "https://gamerch.com/maimai/533963",
     "intl": "0",
     "date_added": "20250214",
-    "date_intl_added": "000000",
-    "lev_utage_notes_touch": "0"
+    "date_intl_added": "000000"
   },
   {
     "sort": "704",
@@ -63936,12 +63936,12 @@
     "lev_utage_left_notes_slide": "",
     "lev_utage_left_notes_touch": "",
     "lev_utage_left_notes_break": "",
-    "lev_utage_right_notes": "",
-    "lev_utage_right_notes_tap": "",
-    "lev_utage_right_notes_hold": "",
-    "lev_utage_right_notes_slide": "",
-    "lev_utage_right_notes_touch": "",
-    "lev_utage_right_notes_break": ""
+    "lev_utage_right_notes": "1131",
+    "lev_utage_right_notes_tap": "549",
+    "lev_utage_right_notes_hold": "0",
+    "lev_utage_right_notes_slide": "60",
+    "lev_utage_right_notes_touch": "45",
+    "lev_utage_right_notes_break": "2"
   },
   {
     "sort": "1365",
@@ -64298,14 +64298,14 @@
     "lev_utage_notes_hold": "0",
     "lev_utage_notes_slide": "202",
     "lev_utage_notes_break": "9",
+    "lev_utage_notes_touch": "0",
     "lev_utage_designer": "実際はBPM360らしいので…",
     "kanji": "即",
     "comment": "実際はBPM360らしいので…",
     "wiki_url": "https://gamerch.com/maimai/534293",
     "intl": "0",
     "date_added": "20250313",
-    "date_intl_added": "000000",
-    "lev_utage_notes_touch": "0"
+    "date_intl_added": "000000"
   },
   {
     "sort": "880",
@@ -64693,14 +64693,14 @@
     "lev_utage_notes_hold": "43",
     "lev_utage_notes_slide": "21",
     "lev_utage_notes_break": "47",
+    "lev_utage_notes_touch": "18",
     "lev_utage_designer": "そんな「甘い魔法」",
     "kanji": "甘",
     "comment": "そんな「甘い魔法」",
     "wiki_url": "https://gamerch.com/maimai/533667",
     "intl": "0",
     "date_added": "20250313",
-    "date_intl_added": "000000",
-    "lev_utage_notes_touch": "18"
+    "date_intl_added": "000000"
   },
   {
     "sort": "1372",
@@ -64844,14 +64844,14 @@
     "lev_utage_notes_hold": "78",
     "lev_utage_notes_slide": "81",
     "lev_utage_notes_break": "58",
+    "lev_utage_notes_touch": "36",
     "lev_utage_designer": "まわると　うれしいね",
     "kanji": "回",
     "comment": "まわると　うれしいね",
     "wiki_url": "https://gamerch.com/maimai/534093",
     "intl": "0",
     "date_added": "20250313",
-    "date_intl_added": "000000",
-    "lev_utage_notes_touch": "36"
+    "date_intl_added": "000000"
   },
   {
     "sort": "105",
@@ -65165,23 +65165,23 @@
     "artist": "こうのさんとはっぴーちゃん/Hiroの犯行",
     "catcode": "宴会場",
     "version": "25502",
-    "bpm": "",
+    "bpm": "190",
     "image_url": "228ca25f842c308b.png",
     "release": "250401",
     "lev_utage": "13?",
-    "lev_utage_notes": "",
-    "lev_utage_notes_tap": "",
-    "lev_utage_notes_hold": "",
-    "lev_utage_notes_slide": "",
-    "lev_utage_notes_break": "",
+    "lev_utage_notes": "412",
+    "lev_utage_notes_tap": "1",
+    "lev_utage_notes_hold": "402",
+    "lev_utage_notes_slide": "1",
+    "lev_utage_notes_break": "8",
+    "lev_utage_notes_touch": "",
     "lev_utage_designer": "HOLDだけでがんばろうとした。",
     "kanji": "幸",
     "comment": "HOLDだけでがんばろうとした。",
-    "wiki_url": "",
+    "wiki_url": "https://gamerch.com/maimai/534594",
     "intl": "0",
     "date_added": "20250401",
-    "date_intl_added": "000000",
-    "lev_utage_notes_touch": ""
+    "date_intl_added": "000000"
   },
   {
     "sort": "8",
