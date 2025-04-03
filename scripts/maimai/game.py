@@ -180,6 +180,7 @@ KEY_ORDER = [
     "lev_utage_notes_hold",
     "lev_utage_notes_slide",
     "lev_utage_notes_break",
+    "lev_utage_notes_touch",
     "lev_utage_designer",
     "kanji",
     "comment",
