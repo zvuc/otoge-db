@@ -356,6 +356,25 @@ function maimaiRenderVersionName() {
   }
 }
 
+function maimaiRenderGenre() {
+  return function( row, type, set, meta ) {
+    if ( type === 'sort' || type === 'meta') {
+      const genre_list = {
+        "POPS＆アニメ": "100",
+        "niconico＆ボーカロイド": "200",
+        "東方Project": "300",
+        "ゲーム＆バラエティ": "400",
+        "maimai": "500",
+        "オンゲキ＆CHUNITHM": "600",
+        "宴会場": "999",
+      }
+      return genre_list[row.catcode];
+    } else {
+      return row.catcode
+    }
+  }
+}
+
 $(document).ready(function() {
   initTranslations().then(() => {
     columns_params = [
@@ -420,7 +439,7 @@ $(document).ready(function() {
           }
           // Else type detection or sorting data, return reading
           else {
-            return row.reading;
+            return row.title_kana;
           }
         },
         width: "80vw"
@@ -505,7 +524,7 @@ $(document).ready(function() {
         // displayTitle: "ジャンル",
         displayTitle: getTranslation(userLanguage,'col_genre'),
         name: "category",
-        data: "catcode",
+        data: maimaiRenderGenre(),
         defaultContent: "",
         className: "details category",
         render: renderInWrapper(),
