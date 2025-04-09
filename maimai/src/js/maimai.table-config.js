@@ -375,6 +375,14 @@ function maimaiRenderGenre() {
   }
 }
 
+function extractBPM(text) {
+  const match = text.match(/([^)]+)\(([^)]+)\)/)
+  if(match) {
+    return match.slice(1).filter(v => v.trim().length <= 3)[0]
+  } else return text;
+  
+}
+
 $(document).ready(function() {
   initTranslations().then(() => {
     columns_params = [
@@ -485,9 +493,16 @@ $(document).ready(function() {
       {
         displayTitle: "BPM",
         name: "bpm",
-        data: "bpm",
+        data: function(row) {
+          return extractBPM(row.bpm);
+        },
         defaultContent: "",
         className: "details bpm",
+        customDropdownSortSource: function (row_a, row_b) {
+          var a = extractBPM(row_a.bpm).padStart(3, '0');
+          var b = extractBPM(row_b.bpm).padStart(3, '0');
+          return a.localeCompare(b);
+        },
         searchable: false,
         visible: false
       },
