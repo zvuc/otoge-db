@@ -109163,7 +109163,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/群青シグナル",
     "date_added": "20241128",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250403"
   },
   {
     "id": "2680",
@@ -109237,7 +109238,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/NAGAREBOSHI☆ROCKET",
     "date_added": "20241128",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250403"
   },
   {
     "id": "2663",
@@ -109311,7 +109313,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Flower",
     "date_added": "20241128",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250403"
   },
   {
     "id": "2652",
@@ -109460,7 +109463,8 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Here the Our MIRAI!",
     "date_added": "20241128",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250403"
   },
   {
     "id": "2665",
@@ -109534,6 +109538,7 @@
     "version": "LUMINOUS+",
     "wikiwiki_url": "",
     "date_added": "20241128",
-    "intl": "0"
+    "intl": "1",
+    "date_intl_added": "20250403"
   }
 ]
