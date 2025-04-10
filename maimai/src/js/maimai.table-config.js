@@ -493,15 +493,21 @@ $(document).ready(function() {
       {
         displayTitle: "BPM",
         name: "bpm",
-        data: function(row) {
-          return extractBPM(row.bpm);
-        },
+        data: "bpm",
         defaultContent: "",
         className: "details bpm",
         customDropdownSortSource: function (row_a, row_b) {
           var a = extractBPM(row_a.bpm).padStart(3, '0');
           var b = extractBPM(row_b.bpm).padStart(3, '0');
           return a.localeCompare(b);
+        },
+        render: function ( data, type, row ) {
+          if ( type === 'display' && data ) {
+            return data;
+          }
+          else {
+            return extractBPM(row.bpm);
+          }
         },
         searchable: false,
         visible: false
