@@ -424,13 +424,11 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
                 if charts_table_dx is not None and charts_table_dx == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
                     chart_designers_dict_dx = _construct_designers_dict(song, chart_designers_text, 'designer', 'dx_')
                     req_dict_count-=1
-                    break
 
                 # Check if the Std chart table is directly in front
                 if charts_table is not None and charts_table == chart_designers_span.find_previous().find_previous('div', {'class':"mu__table"}).find('table'):
                     chart_designers_dict = _construct_designers_dict(song, chart_designers_text, 'designer', '')
                     req_dict_count-=1
-                    break
 
 
 
