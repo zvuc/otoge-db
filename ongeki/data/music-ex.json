@@ -50668,9 +50668,9 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "62e54492e501fbb8.png",
-    "enemy_lv": "",
+    "enemy_lv": "44",
     "enemy_type": "LEAF",
-    "bpm": "",
+    "bpm": "120",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -50688,7 +50688,7 @@
     "lev_mas_i": "",
     "lev_mas_notes": "",
     "lev_mas_bells": "",
-    "lev_mas_designer": "",
+    "lev_mas_designer": "14.7",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
@@ -50696,7 +50696,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/QuiQ"
   },
   {
     "new": "NEW",
@@ -50720,9 +50720,9 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "9c23193cb9ce0cf2.png",
-    "enemy_lv": "",
+    "enemy_lv": "43",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "201",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -50748,6 +50748,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Energizing Flame"
   }
 ]
