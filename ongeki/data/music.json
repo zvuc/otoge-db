@@ -22356,7 +22356,7 @@
     "image_url": "11895c8d8d5c6536.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250424",
     "title": "一冊のアロー",
     "title_sort": "イツサツノアロ",
@@ -22379,7 +22379,7 @@
     "image_url": "ed26cae99192f4e6.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250424",
     "title": "Hey Darling!",
     "title_sort": "HEYDARLING",
@@ -22400,5 +22400,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "86aab18a4826f9aa.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250508",
+    "title": "Energizing Flame",
+    "title_sort": "ENERGIZINGFLAME",
+    "artist": "Artifact vs. Dualcast",
+    "id": "576700",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "星咲 あかり",
+    "chara_id": "1010",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "9c23193cb9ce0cf2.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250508",
+    "title": "QuiQ",
+    "title_sort": "QUIQ",
+    "artist": "owl＊tree feat.nie＊tree",
+    "id": "576600",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "九條 楓",
+    "chara_id": "1110",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exc": "12+",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "62e54492e501fbb8.png"
   }
 ]
