@@ -18371,6 +18371,22 @@
     "version": "25505"
   },
   {
+    "artist": "FANTAGIRAFF",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "14+",
+    "image_url": "cd7dc8b9ec80cf06.png",
+    "key": "○",
+    "release": "250509",
+    "sort": "892",
+    "title": "FLΛME/FRΦST",
+    "title_kana": "FLAMEFROST",
+    "version": "25505"
+  },
+  {
     "artist": "Massive New Krew",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "4",
@@ -18673,7 +18689,6 @@
   {
     "artist": "DECO*27",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
@@ -18688,7 +18703,6 @@
   {
     "artist": "DECO*27",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
