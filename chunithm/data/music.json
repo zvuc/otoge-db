@@ -2,7 +2,7 @@
   {
     "id": "2717",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "シリウスの輝きのように",
     "reading": "シリウスノカカヤキノヨウニ",
     "artist": "鳳 ここな(CV.石見舞菜香)、静香(CV.長谷川育美)、カトリナ・グリーベル(CV.天城サリー)、新妻八恵(CV.長縄まりあ)、柳場ぱんだ(CV.大空直美)、流石知冴(CV.佐々木李子)「ワールドダイスター 夢のステラリウム」",
@@ -18,7 +18,7 @@
   {
     "id": "2718",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "I Wanna",
     "reading": "IWANNA",
     "artist": "静香(CV.長谷川育美)「ワールドダイスター 夢のステラリウム」",
@@ -34,7 +34,7 @@
   {
     "id": "2719",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "革命ダンス",
     "reading": "カクメイタンス",
     "artist": "柳場ぱんだ(CV:大空直美)、与那国緋花里(CV:下地紫野)「ワールドダイスター 夢のステラリウム」",
@@ -2306,7 +2306,7 @@
   {
     "id": "2720",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "イガク",
     "reading": "イカク",
     "artist": "原口沙輔 feat.重音テト",
@@ -2322,7 +2322,7 @@
   {
     "id": "2721",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ザムザ",
     "reading": "サムサ",
     "artist": "てにをは",
@@ -6912,6 +6912,38 @@
     "image": "181682bf5b277726.jpg"
   },
   {
+    "id": "2787",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "超最終鬼畜妹フランドール・S",
+    "reading": "チヨウサイシユウキチクイモウトフラントウルS",
+    "artist": "ビートまりお×まろん",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exp": "12",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "052a255b2deefaaa.jpg"
+  },
+  {
+    "id": "2792",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "Help me, ERINNNNNN!!",
+    "reading": "HELPMEERINNNNNN",
+    "artist": "ビートまりお",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2249b72783ba421d.jpg"
+  },
+  {
     "id": "2692",
     "catname": "東方Project",
     "newflag": "0",
@@ -11440,6 +11472,22 @@
     "image": "9bff0f455b7b1ba1.jpg"
   },
   {
+    "id": "2771",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "宵の平安京 Stargazer",
+    "reading": "ヨイノヘイアンキヨウスタウケイサウ",
+    "artist": "永田泰之",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "11",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "be08c42de84d4873.jpg"
+  },
+  {
     "id": "901",
     "catname": "VARIETY",
     "newflag": "0",
@@ -12894,6 +12942,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "59368e6c4eae14d2.jpg"
+  },
+  {
+    "id": "2801",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "Destined Marionette",
+    "reading": "DESTINEDMARIONETTE",
+    "artist": "ビートまりお",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "12+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "de5fd541ca5e23be.jpg"
   },
   {
     "id": "145",
@@ -14478,6 +14542,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "7b1dc553eca44dec.jpg"
+  },
+  {
+    "id": "2769",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "We Are Us(IOSYS TRAX Remix)",
+    "reading": "WEAREUSIOSYSTRAXREMIX",
+    "artist": "舞ヶ原シンセ研究会",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "10+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "c164c69ead38bb76.jpg"
   },
   {
     "id": "99",
