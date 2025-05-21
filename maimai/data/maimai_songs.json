@@ -18325,7 +18325,6 @@
   {
     "artist": "isonosuke feat.知声",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
@@ -18341,7 +18340,6 @@
   {
     "artist": "SLAVE.V-V-R feat.Sor△",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8+",
     "dx_lev_exp": "11",
@@ -18357,7 +18355,6 @@
   {
     "artist": "原口沙輔, 式部めぐり",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -18373,7 +18370,6 @@
   {
     "artist": "FANTAGIRAFF",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12+",
@@ -18438,7 +18434,6 @@
     "dx_lev_exp": "12",
     "dx_lev_mas": "13+",
     "image_url": "ce4c219f98b929ed.png",
-    "key": "○",
     "release": "250313",
     "sort": "11",
     "title": "きゅびびびびずむ",
@@ -18717,7 +18712,6 @@
   {
     "artist": "ンバヂ",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
@@ -18728,6 +18722,51 @@
     "title": "好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
+  },
+  {
+    "artist": "ビートまりお",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
+    "image_url": "4911d20e27cad7a0.png",
+    "release": "250521",
+    "sort": "458",
+    "title": "Help me, ERINNNNNN!!",
+    "title_kana": "HELPMEERINNNNNN",
+    "version": "25506"
+  },
+  {
+    "artist": "ビートまりお×まろん",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "13+",
+    "image_url": "6cf3e3f842e52194.png",
+    "release": "250521",
+    "sort": "459",
+    "title": "超最終鬼畜妹フランドール・S",
+    "title_kana": "チヨウサイシユウキチクイモウトフラントオルエス",
+    "version": "25506"
+  },
+  {
+    "artist": "ビートまりお",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "14",
+    "image_url": "7fa4a3f8246030ce.png",
+    "release": "250521",
+    "sort": "612",
+    "title": "Destined Marionette",
+    "title_kana": "DESTINEDMARIONETTE",
+    "version": "25506"
   },
   {
     "artist": "Q;indivi [cover]",
@@ -19392,6 +19431,20 @@
     "title": "[嘘]ライアーダンサー",
     "title_kana": "ライアアタンサア",
     "version": "25007"
+  },
+  {
+    "artist": "ぱらどっと",
+    "catcode": "宴会場",
+    "lev_utage": "13+?",
+    "kanji": "協",
+    "comment": "みんなでFull Flavor!",
+    "buddy": "○",
+    "image_url": "45151be961a7a053.png",
+    "release": "250521",
+    "sort": "1371",
+    "title": "[協]Ultimate taste",
+    "title_kana": "ULTIMATETASTE",
+    "version": "25506"
   },
   {
     "artist": "原口沙輔 feat.重音テト",
