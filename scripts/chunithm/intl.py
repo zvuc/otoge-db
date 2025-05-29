@@ -10,7 +10,7 @@ from chunithm.paths import *
 from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:LUMINOUS_PLUS_(Asia)'
+wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:VERSE_(Asia)'
 
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
