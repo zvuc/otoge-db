@@ -18,8 +18,6 @@
     "name": "Hansol Kim <zvuc@usagi.moe>",
     "url": "https://xenosium.com"
   },
-  "dependencies": {
-  },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
     "concurrently": "^8.2.2",
@@ -53,36 +51,32 @@
     "minify": "yarn shared-minify & yarn ongeki-minify & yarn chunithm-minify & yarn maimai-minify",
     "watch": "concurrently \"yarn shared-watch\" \"yarn ongeki-watch\" \"yarn chunithm-watch\" \"yarn maimai-watch\"",
     "datatables-minify": "minify shared/src/datatables/datatables.custom.js > shared/datatables.custom.min.js",
-
     "fetch-songs": "python3 scripts/update-songs.py",
     "fetch-wiki": "python3 scripts/update-wiki-data.py",
     "fetch-chartguide": "python3 scripts/update-chartguide-data.py",
     "fetch-const": "python3 scripts/update-const.py",
     "fetch-intl": "python3 scripts/update-intl.py",
-
     "shared-build": "yarn shared-minify",
     "shared-minify": "minify shared/src/js/shared.*.js > shared/shared-functions.js & minify shared/src/js/early-functions.js > shared/early-functions.js",
     "shared-watch": "watch 'yarn shared-build' ./shared/src/js -d",
-
     "ongeki-build": "yarn ongeki-pug & yarn ongeki-minify & (yarn ongeki-less && yarn ongeki-postcss)",
     "ongeki-less": "lessc ./ongeki/src/less/ongeki.less ./ongeki/style.css",
     "ongeki-postcss": "postcss ./ongeki/style.css -o ./ongeki/style.css --verbose",
     "ongeki-minify": "minify ongeki/src/js/*.js > ongeki/ongeki-functions.js",
     "ongeki-pug": "yarn pug ongeki/src/pug/index.pug -o ongeki & yarn pug ongeki/src/pug/lv/index.pug -o ongeki/lv & yarn pug ongeki/src/pug/namuwiki.pug -o ongeki",
     "ongeki-watch": "watch 'yarn ongeki-build' ./shared/src/less ./shared/src/pug ./ongeki/src -d",
-
     "chunithm-build": "yarn chunithm-pug & yarn chunithm-minify & (yarn chunithm-less && yarn chunithm-postcss)",
     "chunithm-less": "lessc ./chunithm/src/less/chunithm.less ./chunithm/style.css",
     "chunithm-postcss": "postcss ./chunithm/style.css -o ./chunithm/style.css --verbose",
     "chunithm-minify": "minify chunithm/src/js/*.js > chunithm/chunithm-functions.js",
     "chunithm-pug": "yarn pug chunithm/src/pug/index.pug -o chunithm & yarn pug chunithm/src/pug/lv/index.pug -o chunithm/lv",
     "chunithm-watch": "watch 'yarn chunithm-build' ./shared/src/less ./shared/src/pug ./chunithm/src -d",
-
     "maimai-build": "yarn maimai-pug & yarn maimai-minify & (yarn maimai-less && yarn maimai-postcss)",
     "maimai-less": "lessc ./maimai/src/less/maimai.less ./maimai/style.css",
     "maimai-postcss": "postcss ./maimai/style.css -o ./maimai/style.css --verbose",
     "maimai-minify": "minify maimai/src/js/*.js > maimai/maimai-functions.js",
     "maimai-pug": "yarn pug maimai/src/pug/index.pug -o maimai & yarn pug maimai/src/pug/lv/index.pug -o maimai/lv",
     "maimai-watch": "watch 'yarn maimai-build' ./shared/src/less ./shared/src/pug ./maimai/src -d"
-  }
+  },
+  "packageManager": "yarn@3.6.0+sha512.418e45c2268c4d6b69a28f3939084b5853d5f392c43c0b5588bd1995a96e328414ae4b7777a8980c64bad4328c52586ff879b289f98ae65372a55fa4d0ff70dd"
 }

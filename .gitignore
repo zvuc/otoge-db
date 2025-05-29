@@ -6,6 +6,7 @@ sdvxin_cache
 google_sheets_cache
 *.log
 .venv
+.yarn
 
 # build files
 chunithm/*.*
