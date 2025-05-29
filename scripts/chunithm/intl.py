@@ -35,7 +35,10 @@ def sync_json_data():
         dest_music_data = json.load(f)
 
     src_music_map = json_to_hash_value_map(src_music_data)
-    src_prev_ver_music_map = json_to_hash_value_map(src_prev_ver_music_data)
+
+    if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        src_prev_ver_music_map = json_to_hash_value_map(src_prev_ver_music_data)
+
     dest_music_map = json_to_hash_value_map(dest_music_data)
     dest_music_data_pre_update = copy.deepcopy(dest_music_data)
 
@@ -171,6 +174,8 @@ def sync_json_data():
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                         print_message(f"- Added value for {key}: {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
+                        print_message(f"- (Synced JP archive data)", bcolors.OKBLUE)
+                        song_pre_update[key] = value
                     else:
                         # For chart constant, skip overwrite if current INTL and JP ver are different
                         if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
@@ -179,6 +184,8 @@ def sync_json_data():
                         lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                         print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
+                        print_message(f"- (Synced JP archive data)", bcolors.OKBLUE)
+                        song_pre_update[key] = value
 
 
     # Iterate through unchanged songs
@@ -227,6 +234,9 @@ def sync_json_data():
 
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(dest_music_data, f, ensure_ascii=False, indent=2)
+
+    with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
+        json.dump(dest_music_data_pre_update, f, ensure_ascii=False, indent=2)
 
 
 # Update on top of existing music-ex
