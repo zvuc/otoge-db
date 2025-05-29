@@ -166,14 +166,14 @@
 	.chunithm-variables-dark();
 }
 
-:root[data-game-region="intl"] {
-	.chunithm-variables-legacy-common();
-	.chunithm-variables-legacy-light();
+// :root[data-game-region="intl"] {
+// 	.chunithm-variables-legacy-common();
+// 	.chunithm-variables-legacy-light();
 
-	&[data-theme="dark"] {
-		.chunithm-variables-legacy-dark();
-	}
-}
+// 	&[data-theme="dark"] {
+// 		.chunithm-variables-legacy-dark();
+// 	}
+// }
 
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) {
@@ -181,9 +181,9 @@
 		.chunithm-variables-dark();
 	}
 
-	:root:not([data-theme="light"])[data-game-region="intl"] {
-		.chunithm-variables-legacy-dark();
-	}
+	// :root:not([data-theme="light"])[data-game-region="intl"] {
+	// 	.chunithm-variables-legacy-dark();
+	// }
 }
 
 // Table
@@ -199,7 +199,7 @@ table.dataTable {
 	}
 	.lv-we .inner-wrap:not(:empty),
 	.we_kanji .inner-wrap:not(:empty) {
-		background-image: 
+		background-image:
 			repeating-linear-gradient(135deg,
 				rgba(var(--lv-color-mas),0.1) 0px,
 				rgba(var(--lv-color-mas),0.1) 18px,
@@ -210,7 +210,7 @@ table.dataTable {
 				rgba(var(--lv-color-adv),0.1) 54px,
 				rgba(var(--lv-color-adv),0.1) 72px
 			);
-			
+
 		.inner-wrap {
 			text-align: center;
 		}
@@ -225,7 +225,7 @@ table.dataTable {
 		font-size: 1.2em;
 		font-weight: 500;
 		color: transparent;
-		background-image: 
+		background-image:
 			radial-gradient(circle at bottom right, rgba(var(--lv-color-mas)) 0%, rgba(var(--lv-color-mas),0) 60%),
 			radial-gradient(circle at top right, rgba(var(--lv-color-exp)) 0%, rgba(var(--lv-color-exp),0) 50%),
 			radial-gradient(circle at top left, rgba(var(--lv-color-bsc)) 0%, rgba(var(--lv-color-bsc),0) 70%),
@@ -251,7 +251,7 @@ div.dtr-modal-content .details-table {
 				font-size: 2em;
 				font-weight: 500;
 				color: transparent;
-				background-image: 
+				background-image:
 					radial-gradient(circle at bottom right, rgba(var(--lv-color-mas)) 0%, rgba(var(--lv-color-mas),0) 60%),
 					radial-gradient(circle at top right, rgba(var(--lv-color-exp)) 0%, rgba(var(--lv-color-exp),0) 50%),
 					radial-gradient(circle at top left, rgba(var(--lv-color-bsc)) 0%, rgba(var(--lv-color-bsc),0) 70%),
@@ -290,19 +290,19 @@ div.dtr-modal-content .details-table {
 		& > span {
 			&.notes-detail-wrap {
 				span.notes_tap .label {
-					color: #ff5f6e;	
+					color: #ff5f6e;
 				}
 				span.notes_slide .label {
-					color: #ec942e;	
+					color: #ec942e;
 				}
 				span.notes_hold .label {
-					color: #46b2fb;	
+					color: #46b2fb;
 				}
 				span.notes_air .label {
-					color: #4bc84b;	
+					color: #4bc84b;
 				}
 				span.notes_flick .label {
-					color: #00d7c8;				
+					color: #00d7c8;
 				}
 			}
 		}
