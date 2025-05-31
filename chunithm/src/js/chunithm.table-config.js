@@ -792,10 +792,18 @@ $(document).ready(function() {
         },
         "rowGroup": {
           dataSrc: function(row) {
-            if (row.date_updated) {
-              return row.date_updated;
+            if (currentRegion != 'intl') {
+              if (row.date_updated) {
+                return row.date_updated;
+              } else {
+                return row.date_added;
+              }
             } else {
-              return row.date_added;
+              if (row.date_intl_updated) {
+                return row.date_intl_updated;
+              } else {
+                return row.date_intl_added;
+              }
             }
           },
           startRender: (!flat_view && searchParams == "" )? ( function ( rows, group ) {
