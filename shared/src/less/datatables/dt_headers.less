@@ -1,0 +1,180 @@
+// DataTables Header and Column Styles
+
+// Scrolling body
+div.dt-scroll {
+	width: 100%;
+
+	&-body {
+		thead, tfoot {
+			tr {
+				height: 0;
+
+				th, td {
+					height: 0 !important;
+					padding-top: 0px !important;
+					padding-bottom: 0px !important;
+					border-top-width: 0px !important;
+					border-bottom-width: 0px !important;
+
+					div.dt-scroll-sizing {
+						height: 0 !important;
+						overflow: hidden !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Column ordering
+table.dataTable {
+	thead, tfoot {
+		> tr {
+			> th, > td {
+				div.dt-column-header,
+				div.dt-column-footer {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 2px;
+
+					span.dt-column-title {
+						// flex-grow: 1;
+
+						&:empty {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	thead {
+		> tr {
+			> th, > td {
+				.dt-column-header {
+					padding: @dt-padding-header;
+					border-radius: 3px;
+					outline: 2px solid rgba(var(--ui-color-border), 0);
+					outline-offset: -2px;
+					transition-property: background-color, outline;
+					transition-duration: 0.2s;
+
+					span.dt-column-order {
+						transition-property: opacity;
+						transition-duration: 0.2s;
+					}
+				}
+
+				&:active {
+					outline: none;
+				}
+
+				&.dt-orderable-asc, &.dt-ordering-asc {
+					span.dt-column-order:before {
+						position: absolute;
+						display: block;
+						bottom: 50%;
+						content: "\25B2";
+						content: "\25B2"/"";
+					}
+				}
+
+				&.dt-orderable-desc, &.dt-ordering-desc {
+					span.dt-column-order:after {
+						position: absolute;
+						display: block;
+						top: 50%;
+						content: "\25BC";
+						content: "\25BC"/"";
+					}
+				}
+
+				&.dt-orderable-asc, &.dt-orderable-desc,
+				&.dt-ordering-asc, &.dt-ordering-desc {
+					.dt-column-header {
+						padding-right: 2px;
+					}
+
+					span.dt-column-order {
+						position: relative;
+						width: 0.5em;
+						height: 20px;
+						opacity: 0.5;
+
+						&:before, &:after {
+							left: 0;
+							opacity: 0.3;
+							line-height: 1em;
+							font-size: 0.5em;
+						}
+					}
+				}
+
+				&.dt-orderable-asc, &.dt-orderable-desc {
+					cursor: pointer;
+
+					&:hover .dt-column-header {
+						background-color: rgba(var(--ui-color-table-row-bg-hover));
+						outline: 2px solid rgba(var(--ui-color-border), 0.05);
+						outline-offset: -2px;
+						transition-duration: 0s;
+
+						span.dt-column-order {
+							opacity: 1;
+							transition-duration: 0s;
+						}
+					}
+
+					&:active .dt-column-header {
+						background-color: rgba(var(--ui-color-table-row-bg-selected));
+						transition-duration: 0s;
+
+						span.dt-column-order {
+							opacity: 1;
+							transition-duration: 0s;
+						}
+					}
+				}
+
+				&.dt-ordering-asc, &.dt-ordering-desc {
+					span.dt-column-order {
+						opacity: 0.6;
+					}
+				}
+
+				&.dt-ordering-asc span.dt-column-order:before,
+				&.dt-ordering-desc span.dt-column-order:after {
+					opacity: 1;
+					color: #f76108;
+				}
+
+				&.sorting_desc_disabled span.dt-column-order:after,
+				&.sorting_asc_disabled span.dt-column-order:before {
+					display: none;
+				}
+
+				&:active {
+					outline: none;
+				}
+			}
+		}
+	}
+}
+
+// Overflow handling for fixed headers
+div.dt-scroll-body > table.dataTable > thead > tr > th,
+div.dt-scroll-body > table.dataTable > thead > tr > td {
+	overflow: hidden;
+}
+
+// Dark mode hover styles for orderable columns
+:root.dark, :root[data-bs-theme=dark] {
+	table.dataTable thead > tr > th,
+	table.dataTable thead > tr > td {
+		&.dt-orderable-asc:hover, &.dt-orderable-desc:hover {
+			outline: 2px solid rgba(255, 255, 255, 0.05);
+		}
+	}
+}

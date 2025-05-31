@@ -1,0 +1,51 @@
+// DataTables Variables
+
+// Color system
+@dt-primary-color: rgb(13, 110, 253);  // Bootstrap primary blue
+@dt-white: rgb(255, 255, 255);
+@dt-black: rgb(0, 0, 0);
+@dt-gray-dark: rgb(33, 37, 41);  // Bootstrap dark background
+@dt-gray-medium: rgb(89, 91, 94);  // Medium gray for borders in dark mode
+@dt-gray-light: rgb(64, 67, 70);  // Light gray for borders in dark mode
+
+// Row colors (comma-separated for CSS vars)
+@dt-row-selected: 13, 110, 253;  // Same as @dt-primary-color
+@dt-row-selected-text: 255, 255, 255;  // White text on selected rows
+@dt-row-selected-link: 9, 10, 11;  // Nearly black for links in selected rows
+@dt-row-stripe: 0, 0, 0;  // Black with alpha for striping
+@dt-row-hover: var(--ui-color-table-row-bg-hover);  // Black with alpha for hover
+@dt-column-ordering: 0, 0, 0;  // Black with alpha for ordered columns
+
+// Background colors
+@dt-html-background: white;
+@dt-dark-background: @dt-gray-dark;
+
+// Alpha values for various effects
+@dt-row-hover-alpha: 1;
+@dt-row-stripe-alpha: 0.023;
+@dt-column-ordering-alpha: 0.019;
+@dt-row-selected-stripe-alpha: 0.923;
+@dt-row-selected-column-ordering-alpha: 0.919;
+
+// Calculated colors with alpha
+@dt-row-hover-color: rgba(var(--ui-color-table-row-bg-hover));
+@dt-row-stripe-color: rgba(var(--ui-color-table-row-bg-odd));
+@dt-column-ordering-color: rgba(var(--ui-color-table-row-bg-sorting));
+@dt-row-selected-color: rgba(var(--ui-color-table-row-bg-selected));
+
+// Border colors
+@dt-border-color: rgb(var(--ui-color-table-row-border));
+@dt-border-color-thick: rgb(var(--ui-color-table-row-border));
+
+// Spacing
+@dt-padding-cell: 8px 10px;
+@dt-padding-header: 10px;
+@dt-padding-compact: 4px;
+
+// Z-index layers
+@dt-z-index-processing: 10;
+@dt-z-index-modal-background: 101;
+@dt-z-index-modal: 102;
+@dt-z-index-button-collection: 2002;
+@dt-z-index-button-background: 2001;
+@dt-z-index-button-info: 2003;

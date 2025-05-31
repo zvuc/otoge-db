@@ -1,0 +1,171 @@
+// DataTables Base Styles
+
+// Root CSS variables for compatibility with other frameworks
+:root {
+	// Row colors
+	--dt-row-selected: @dt-row-selected;
+	--dt-row-selected-text: @dt-row-selected-text;
+	--dt-row-selected-link: @dt-row-selected-link;
+	--dt-row-stripe: @dt-row-stripe;
+	--dt-row-hover: @dt-row-hover;
+	--dt-column-ordering: @dt-column-ordering;
+	--dt-html-background: @dt-html-background;
+	
+	// Dark mode overrides
+	&.dark {
+		--dt-html-background: @dt-dark-background;
+		--dt-row-hover: 255, 255, 255;
+		--dt-row-stripe: 255, 255, 255;
+		--dt-column-ordering: 255, 255, 255;
+	}
+}
+
+// Basic table styles
+table.dataTable {
+	width: 100%;
+	margin: 0 auto;
+	border-spacing: 0;
+	box-sizing: border-box;
+	
+	// Control cell
+	td.dt-control {
+		text-align: center;
+		cursor: pointer;
+		
+		&:before {
+			.dt-control-arrow-left();
+		}
+	}
+	
+	// Child row controls
+	tr.dt-hasChild {
+		td.dt-control:before {
+			.dt-control-arrow-down();
+		}
+	}
+	
+	// Empty footer
+	tfoot:empty {
+		display: none;
+	}
+	
+	// Header styles
+	thead {
+		> tr {
+			> th, > td {
+				// padding: @dt-padding-header;
+				// border-bottom: 1px solid @dt-border-color-thick;
+				
+				&:active {
+					outline: none;
+				}
+			}
+			
+			> th {
+				font-weight: bold;
+			}
+		}
+	}
+	
+	// Footer styles
+	tfoot {
+		> tr {
+			> th, > td {
+				border-top: 1px solid @dt-border-color-thick;
+				padding: @dt-padding-header @dt-padding-header 6px @dt-padding-header;
+			}
+		}
+	}
+	
+	// Body styles
+	tbody {
+		> tr {
+			background-color: transparent;
+			
+			&:first-child > * {
+				border-top: none;
+			}
+			
+			&:last-child > * {
+				border-bottom: none;
+			}
+			
+			&.selected > * {
+				.dt-inset-shadow(@dt-row-selected-color);
+				color: rgb(@dt-row-selected-text);
+				
+				a {
+					color: rgb(@dt-row-selected-link);
+				}
+			}
+			
+			> th, > td {
+				padding: @dt-padding-cell;
+			}
+		}
+	}
+	
+	// Cell alignment classes
+	th, td {
+		box-sizing: border-box;
+		
+		// Numeric and date cells are right-aligned
+		&.dt-type-numeric, &.dt-type-date {
+			// text-align: right;
+			
+			div.dt-column-header, div.dt-column-footer {
+				// flex-direction: row-reverse;
+			}
+		}
+		
+		// Left-aligned cells
+		&.dt-left {
+			text-align: left;
+			
+			div.dt-column-header, div.dt-column-footer {
+				flex-direction: row;
+			}
+		}
+		
+		// Center-aligned cells
+		&.dt-center {
+			text-align: center;
+		}
+		
+		// Right-aligned cells
+		&.dt-right {
+			text-align: right;
+			
+			div.dt-column-header, div.dt-column-footer {
+				// flex-direction: row-reverse;
+			}
+		}
+		
+		// Justified text cells
+		&.dt-justify {
+			text-align: justify;
+			
+			div.dt-column-header, div.dt-column-footer {
+				flex-direction: row;
+			}
+		}
+		
+		// No text wrapping
+		&.dt-nowrap {
+			.dt-text-truncate();
+		}
+		
+		// Empty cells
+		&.dt-empty {
+			text-align: center;
+			vertical-align: top;
+		}
+	}
+	
+	// Nowrap table
+	&.nowrap {
+		th, td {
+			white-space: nowrap;
+		}
+	}
+}

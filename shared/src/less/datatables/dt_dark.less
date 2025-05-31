@@ -1,0 +1,230 @@
+// DataTables Dark Mode Styles
+
+html.dark {
+	// Variables
+	--dt-row-hover: 255, 255, 255;
+	--dt-row-stripe: 255, 255, 255;
+	--dt-column-ordering: 255, 255, 255;
+
+	// Table styles
+	table.dataTable {
+		> thead > tr {
+			> th, > td {
+				border-bottom: 1px solid @dt-dark-border;
+
+				&:active {
+					outline: none;
+				}
+			}
+		}
+
+		> tfoot > tr {
+			> th, > td {
+				border-top: 1px solid @dt-dark-border;
+			}
+		}
+
+		// Row borders
+		&.row-border, &.display {
+			> tbody > tr > * {
+				border-top: 1px solid @dt-dark-border-light;
+
+				&:first-child {
+					border-top: none;
+				}
+			}
+
+			> tbody > tr.selected + tr.selected > td {
+				border-top-color: rgba(@dt-row-selected, 0.65);
+			}
+		}
+
+		// Cell borders
+		&.cell-border > tbody > tr {
+			> th, > td {
+				border-top: 1px solid @dt-dark-border-light;
+				border-right: 1px solid @dt-dark-border-light;
+
+				&:first-child {
+					border-left: 1px solid @dt-dark-border-light;
+				}
+			}
+		}
+
+		// Control arrows
+		td.dt-control:before {
+			border-left-color: rgba(255, 255, 255, 0.5) !important;
+		}
+
+		td.dt-control.arrow-right::before {
+			border-right-color: rgba(255, 255, 255, 0.5) !important;
+		}
+
+		tr.dtr-expanded {
+			> td.dtr-control:before,
+			> th.dtr-control:before {
+				border-top-color: rgba(255, 255, 255, 0.5) !important;
+				border-left-color: transparent !important;
+				border-right-color: transparent !important;
+			}
+		}
+
+		// Child rows
+		tr.child ul.dtr-details > li {
+			border-bottom-color: @dt-dark-border-light;
+		}
+
+		// Row groups
+		tr.dtrg-group th {
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+
+		tr.dtrg-group.dtrg-level-1 th {
+			background-color: rgba(255, 255, 255, 0.05);
+		}
+
+		tr.dtrg-group.dtrg-level-2 th,
+		tr.dtrg-group.dtrg-level-3 th,
+		tr.dtrg-group.dtrg-level-4 th,
+		tr.dtrg-group.dtrg-level-5 th {
+			background-color: rgba(255, 255, 255, 0.01);
+		}
+	}
+
+	// Container styles
+	.dt-container {
+		&.dt-empty-footer table.dataTable {
+			border-bottom: 1px solid @dt-dark-border;
+		}
+
+		.dt-search input,
+		.dt-length select {
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			background-color: var(--dt-html-background);
+		}
+
+		.dt-paging {
+			.dt-paging-button {
+				&.current, &.current:hover {
+					border: 1px solid @dt-dark-border;
+					background: rgba(255, 255, 255, 0.15);
+				}
+
+				&.disabled, &.disabled:hover, &.disabled:active {
+					color: #666 !important;
+				}
+
+				&:hover {
+					border: 1px solid rgb(53, 53, 53);
+					background: rgb(53, 53, 53);
+				}
+
+				&:active {
+					background: #3a3a3a;
+				}
+			}
+		}
+	}
+
+	// Button styles
+	div.dt-buttons {
+		> .dt-button,
+		> div.dt-button-split .dt-button {
+			border: 1px solid @dt-dark-border;
+			background: rgba(255, 255, 255, 0.15);
+
+			&.dt-button-active:not(.disabled) {
+				background: rgba(179, 179, 179, 0.15);
+				box-shadow: inset 1px 1px 2px black;
+
+				&:hover:not(.disabled) {
+					background: rgba(128, 128, 128, 0.15);
+					box-shadow: inset 1px 1px 3px black;
+				}
+			}
+
+			&:hover:not(.disabled) {
+				background: rgba(179, 179, 179, 0.15);
+			}
+
+			&:focus:not(.disabled) {
+				outline: 2px solid rgb(110, 168, 254);
+			}
+		}
+
+		> div.dt-button-split {
+			.dt-button:first-child {
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+				&:hover {
+					border-right: 1px solid @dt-dark-border;
+				}
+			}
+
+			.dt-button:last-child:hover {
+				border-left: 1px solid @dt-dark-border;
+			}
+		}
+	}
+
+	// Collection styles
+	div.dt-button-collection {
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		background-color: @dt-dark-background;
+		box-shadow: 3px 4px 10px 1px rgba(0, 0, 0, 0.8);
+	}
+
+	div.dt-button-info {
+		background-color: var(--dt-html-background);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	// Modal styles
+	div.dtr-modal div.dtr-modal-display {
+		background-color: @dt-dark-background;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	// Scroller styles
+	div.dts {
+		div.dts_label {
+			background: rgba(255, 255, 255, 0.8);
+			color: black;
+		}
+
+		div.dt-scroll-body,
+		div.dataTables_scrollBody {
+			background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025) 10px, rgba(255, 255, 255, 0) 10px, rgba(255, 255, 255, 0) 20px);
+
+			table {
+				background-color: var(--dt-html-background);
+			}
+		}
+	}
+}
+
+// Alternative dark mode selectors
+:root[data-bs-theme=dark], :root[data-theme=dark] {
+	table.dataTable {
+		td.dt-control:before {
+			border-left-color: rgba(255, 255, 255, 0.5) !important;
+		}
+
+		td.dt-control.arrow-right::before {
+			border-right-color: rgba(255, 255, 255, 0.5) !important;
+		}
+
+		tr.dtr-expanded {
+			> td.dtr-control:before,
+			> th.dtr-control:before {
+				border-top-color: rgba(255, 255, 255, 0.5) !important;
+				border-left-color: transparent !important;
+				border-right-color: transparent !important;
+			}
+		}
+
+		tr.child ul.dtr-details > li {
+			border-bottom-color: @dt-dark-border-light;
+		}
+	}
+}
