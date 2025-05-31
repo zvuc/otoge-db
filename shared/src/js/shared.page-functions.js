@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Check the initial color scheme preference
   const initialColorScheme = userColorScheme || 'auto';
-  console.log(initialColorScheme);
   document.querySelector(`input[value="${initialColorScheme}"]`).checked = true;
   applyColorScheme(); // Apply initial color scheme
 
