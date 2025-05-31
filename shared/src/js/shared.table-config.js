@@ -396,7 +396,7 @@ function generateFilterDropdowns(table) {
 
     if (("filterable" in column_param) && (column_param.filterable == true)) {
       var selectWrap = $(`<div class="select-wrap ${column_param.className}"></div>`)
-        .appendTo($('.toolbar.filters'));
+        .appendTo($('.filters-wrap'));
       var select = $('<select id="' + column_param.name + '"><option value="" data-default>——</option></select>')
         .appendTo(selectWrap);
       var selectLabel = $(`<span class="label">${column_param.displayTitle}</span>`)
