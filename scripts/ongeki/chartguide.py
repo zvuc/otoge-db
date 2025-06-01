@@ -324,19 +324,9 @@ def _extract_song_id(song, song_dict, song_title):
                         f.write('WARNING - matched without subtitle : ' + song['id'] + ' ' + song['title'] + '\n')
                     return song_id
                 else:
-                    match_similarity = _compare_strings(title, song_title)
+                    match_similarity = compare_strings(title, song_title)
                     if match_similarity > 80:
                         print_message(f"Found closest match ({round(match_similarity,2)}%)", bcolors.WARNING)
                         return song_id
 
     print_message(f"- Match not found", bcolors.FAIL, log=True, is_verbose=True)
-
-
-def _compare_strings(str1, str2):
-    set1 = set(str1)
-    set2 = set(str2)
-    intersection = len(set1.intersection(set2))
-    union = len(set1.union(set2))
-    similarity_percentage = (intersection / union) * 100
-    return similarity_percentage
-

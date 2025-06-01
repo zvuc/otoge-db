@@ -643,3 +643,11 @@ def sort_dict_keys(input_dict):
 def record_diffs(song, song_hash, diff_type):
     with open(game.LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:
         f.write(diff_type.upper() + ' ' + song_hash + '\n')
+
+def compare_strings(str1, str2):
+    set1 = set(str1)
+    set2 = set(str2)
+    intersection = len(set1.intersection(set2))
+    union = len(set1.union(set2))
+    similarity_percentage = (intersection / union) * 100
+    return similarity_percentage
