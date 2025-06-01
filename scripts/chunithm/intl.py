@@ -753,10 +753,9 @@ def _smart_match(region, title_or_artist, target_song, wiki_song, header_printed
     if (match_similarity == 100):
         return True
     elif (match_similarity > 80):
-        lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+        lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True)
 
         if game.ARGS.strict:
-            lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True)
             print_message(f"- Rejected {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy (strict mode)", bcolors.FAIL)
             return False
 
