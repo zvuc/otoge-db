@@ -235,8 +235,9 @@ def sync_json_data():
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(dest_music_data, f, ensure_ascii=False, indent=2)
 
-    with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
-        json.dump(dest_music_data_pre_update, f, ensure_ascii=False, indent=2)
+    if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
+            json.dump(dest_music_data_pre_update, f, ensure_ascii=False, indent=2)
 
 
 # Update on top of existing music-ex
