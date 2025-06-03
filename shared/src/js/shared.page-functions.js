@@ -206,7 +206,7 @@ function replaceUnitText(obj) {
 }
 
 
-// $("#hide-notice-btn").on("click", function(){
+// $("#hide-notice-btn").on("click", function(){    
 //     $('.notice-wrap').removeClass('visible');
 //     localStorage.setItem("noticeNewAddress", $('.notice-wrap').is(':visible'));
 // });
@@ -322,33 +322,6 @@ $(document).ready(function() {
 
   $('#table').on( 'page.dt', function () {
     $('html').scrollTop(0);
-  });
-
-  // Adjust DataTable columns on window resize
-  let resizeTimeout;
-  let previousWidth = window.innerWidth;
-
-  $(window).on('resize', function() {
-    // Only proceed if the width has changed
-    if (window.innerWidth != previousWidth) {
-      if (window.innerWidth > previousWidth) {
-        // Clear the timeout if it's already set
-        if (resizeTimeout) {
-          clearTimeout(resizeTimeout);
-        }
-
-        // Set a timeout to avoid calling the function too many times during resize
-        resizeTimeout = setTimeout(function() {
-          // Check if table exists and is initialized as a DataTable
-          if ($.fn.DataTable.isDataTable('#table')) {
-            // Adjust columns and redraw the table
-            $('#table').DataTable().columns.adjust().draw();
-          }
-        }, 250); // 250ms delay
-      }
-      // Update the previous width
-      previousWidth = window.innerWidth;
-    }
   });
 
 });

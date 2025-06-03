@@ -171,6 +171,7 @@ $(document).ready(function() {
             return row.title_sort;
           }
         },
+        width: "80vw"
       },
       {
         displayTitle: "曲名 (読み)",
@@ -196,8 +197,6 @@ $(document).ready(function() {
             return row.title_sort;
           }
         },
-        width: "60%",
-        searchable: false
       },
       {
         // hidden real artist column (for search)
@@ -213,7 +212,6 @@ $(document).ready(function() {
         name: "bpm",
         data: "bpm",
         className: "details bpm",
-        width: "4.125rem",
         searchable: false,
         visible: false
       },
@@ -233,7 +231,7 @@ $(document).ready(function() {
           }
         },
         customDropdownSortSource: "date_added",
-        width: "130px"
+        width: "12em"
       },
       {
         // displayTitle: "ジャンル",
@@ -243,7 +241,6 @@ $(document).ready(function() {
         className: "details category",
         render: renderInWrapper(),
         customDropdownSortSource: 'category_id',
-        width: "100px",
         filterable: true
       },
       {
@@ -276,7 +273,7 @@ $(document).ready(function() {
           }
         },
         className: "chapter",
-        width: "120px",
+        width: "15em",
         render: function ( data, type, row ) {
           if ( type === 'display' ) {
             var chap_id_display = parseChapId(row, true);
@@ -330,7 +327,7 @@ $(document).ready(function() {
           }
         },
         customDropdownSortSource: 'chara_id',
-        width: "120px",
+        width: "150px",
         filterable: true
       },
       {
@@ -349,7 +346,7 @@ $(document).ready(function() {
           }
         },
         customDropdownSortSource: sortByLeadingZeros('enemy_lv'),
-        width: "70px",
+        width: "4em",
         searchable: false
       },
       {
@@ -361,7 +358,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_bas'),
         customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true
       },
       {
@@ -373,7 +370,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_adv'),
         customDropdownSortSource: sortByLeadingZeros('lev_adv'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -385,7 +382,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_exc'),
         customDropdownSortSource: sortByLeadingZeros('lev_exc'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -397,7 +394,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_mas'),
         customDropdownSortSource: sortByLeadingZeros('lev_mas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -409,7 +406,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_lnt'),
         customDropdownSortSource: sortByLeadingZeros('lev_lnt'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -431,7 +428,7 @@ $(document).ready(function() {
             }
           },
         className: "lv-name detail-hidden",
-        width: "120px",
+        width: "3rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
           $(td).addClass( rowData.chart_diff );
         }) : null,
@@ -446,7 +443,7 @@ $(document).ready(function() {
         name: "chart_lev",
         data: ( flat_view ? 'chart_lev' : null ),
         className: "lv detail-hidden",
-        width: "4.125rem",
+        width: "4rem",
         customDropdownSortSource: sortByLeadingZeros('chart_lev'),
         reverseSortOrder: true,
         visible: false
@@ -459,7 +456,7 @@ $(document).ready(function() {
         data: ( flat_view ? 'chart_lev_i' : null ),
         className: "lv lv-name detail-hidden",
         render: ( flat_view ? renderChartDifficultyNameAndLv('chart_diff', 'chart_lev', 'chart_lev_i', 'chart_lev_i_display', ongeki_chart_list): null ),
-        width: "4.125rem",
+        width: "4rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
           $(td).addClass( rowData.chart_diff );
         }) : null,
@@ -472,7 +469,7 @@ $(document).ready(function() {
         name: "chart_notes",
         data: ( flat_view ? "chart_notes" : null ),
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "6em",
         searchable: false,
         visible: false
       },
@@ -482,7 +479,7 @@ $(document).ready(function() {
         name: "chart_bells",
         data: ( flat_view ? "chart_bells" : null ),
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "5em",
         searchable: false,
         visible: false
       },
@@ -491,8 +488,8 @@ $(document).ready(function() {
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
         defaultContent: "",
+        width: "15em",
         className: "details detail-hidden designer",
-        width: "100px",
         filterable: flat_view,
         searchable: flat_view,
       },
@@ -502,7 +499,7 @@ $(document).ready(function() {
         data: ( flat_view ? "chart_link" : null ),
         defaultContent: "",
         render: ( flat_view ? renderChartLinkBtn('chart_link', 'ongeki') : null ),
-        width: "130px",
+        width: "5em",
         className: "details detail-hidden chart-link",
       },
       {
@@ -529,7 +526,7 @@ $(document).ready(function() {
           }
         },
         reverseSortOrder: true,
-        width: "125px"
+        width: "4em"
       },
       {
         displayTitle: "BONUS",
@@ -553,7 +550,18 @@ $(document).ready(function() {
     $.getJSON("data/music-ex.json", (data) => {
       var table = $('#table').DataTable( {
         data: flattenMusicData(data, flat_view, ongeki_chart_list, processOngekiChartData),
-        "autoWidth": true,
+        "buttons": [
+          {
+            extend: 'colvis',
+            className: 'config-btn',
+            columns: '.toggle',
+            text: getTranslation(userLanguage, 'colvis_btn_label'),
+            collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
+            collectionLayout: "fixed",
+            fade: 150
+          },
+          typeof namuwiki !== "undefined" ? namuwiki : ""
+        ],
         "columns": columns_params,
         "searchCols": default_search,
         "createdRow": function( row, data, dataIndex, cells ) {
@@ -573,57 +581,10 @@ $(document).ready(function() {
           toggleDateRowGroup(this, default_search);
         },
         "deferRender": true,
-        "layout": {
-          top2Start: {
-            rowClass: 'filter-and-search',
-            className: 'toolbar filters',
-            features: {
-              div: {
-                className: 'filters-wrap'
-              }
-            }
-          },
-          top2End: {
-            rowClass: 'filter-and-search',
-            className: 'toolbar search',
-            features: {
-              search: {
-                className: 'search-wrap',
-              }
-            },
-          },
-          topStart: {
-            rowClass: 'toolbar view-options',
-            features: 'info'
-          },
-          topEnd: {
-            rowClass: 'toolbar view-options',
-            features: {
-              pageLength: {
-                menu: [25, 50, 100, "All"]
-              },
-              buttons: [
-                {
-                  extend: 'colvis',
-                  className: 'config-btn',
-                  columns: '.toggle',
-                  text: getTranslation(userLanguage, 'colvis_btn_label'),
-                  collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
-                  collectionLayout: "fixed",
-                  fade: 150
-                },
-                typeof namuwiki !== "undefined" ? namuwiki : undefined
-              ],
-            }
-          },
-          bottomEnd: {
-            rowClass: 'paging',
-            features: 'paging'
-          }
-        },
+        "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
         "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
         "order": setDefaultOrder(),
-        "pageLength": 25,
         "responsive": {
           details: {
             type: 'column',

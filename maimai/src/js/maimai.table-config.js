@@ -450,6 +450,7 @@ $(document).ready(function() {
             return row.title_kana;
           }
         },
+        width: "80vw"
       },
       {
         displayTitle: "曲名 (読み)",
@@ -477,7 +478,6 @@ $(document).ready(function() {
             return row.reading;
           }
         },
-        width: "60%",
         searchable: false
       },
       {
@@ -539,7 +539,7 @@ $(document).ready(function() {
         className: "details version",
         filterable: true,
         customDropdownSortSource: "version",
-        width: "8rem",
+        width: "12em",
       },
       {
         // displayTitle: "ジャンル",
@@ -549,7 +549,7 @@ $(document).ready(function() {
         defaultContent: "",
         className: "details category",
         render: renderInWrapper(),
-        width: "8rem",
+        width: "12em",
         filterable: true,
       },
       {
@@ -562,7 +562,7 @@ $(document).ready(function() {
         render: maimaiRenderChartTypeBadges(),
         // customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         // reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -575,7 +575,7 @@ $(document).ready(function() {
         render: maimaiRenderLvNum('lev_bas'),
         customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -588,7 +588,7 @@ $(document).ready(function() {
         render: maimaiRenderLvNum('lev_adv'),
         customDropdownSortSource: sortByLeadingZeros('lev_adv'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -601,7 +601,7 @@ $(document).ready(function() {
         render: maimaiRenderLvNum('lev_exp'),
         customDropdownSortSource: sortByLeadingZeros('lev_exp'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -614,7 +614,7 @@ $(document).ready(function() {
         render: maimaiRenderLvNum('lev_mas'),
         customDropdownSortSource: sortByLeadingZeros('lev_mas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -627,7 +627,7 @@ $(document).ready(function() {
         render: maimaiRenderLvNum('lev_remas'),
         customDropdownSortSource: sortByLeadingZeros('lev_remas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -640,7 +640,7 @@ $(document).ready(function() {
         render: maimaiRenderLvNum('lev_utage'),
         customDropdownSortSource: sortByLeadingZeros('lev_utage'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -652,7 +652,7 @@ $(document).ready(function() {
         className: "lv lv-utage kanji",
         render: renderUtage('kanji', 'lev_utage'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -675,7 +675,7 @@ $(document).ready(function() {
           },
         defaultContent: "",
         className: "lv-name detail-hidden",
-        width: "4.125rem",
+        width: "3rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
           $(td).addClass( rowData.chart_diff );
         }) : null,
@@ -719,7 +719,7 @@ $(document).ready(function() {
         data: maimaiProcessNotesCount('chart_notes'),
         defaultContent: "",
         className: "details notecount detail-hidden nowrap",
-        width: "4.125rem",
+        width: "8em",
         type: 'html-num-fmt',
         searchable: false
       },
@@ -729,7 +729,7 @@ $(document).ready(function() {
         data: maimaiProcessNotesCount('chart_notes_tap'),
         defaultContent: "",
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "5em",
         type: 'html-num-fmt',
         searchable: false,
         visible: false
@@ -740,7 +740,7 @@ $(document).ready(function() {
         data: maimaiProcessNotesCount('chart_notes_hold'),
         defaultContent: "",
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "5em",
         type: 'html-num-fmt',
         searchable: false,
         visible: false
@@ -751,7 +751,7 @@ $(document).ready(function() {
         data: maimaiProcessNotesCount('chart_notes_slide'),
         defaultContent: "",
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "5em",
         type: 'html-num-fmt',
         searchable: false,
         visible: false
@@ -762,7 +762,7 @@ $(document).ready(function() {
         data: maimaiProcessNotesCount('chart_notes_touch'),
         defaultContent: "",
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "5em",
         type: 'html-num-fmt',
         searchable: false,
         visible: false
@@ -773,7 +773,7 @@ $(document).ready(function() {
         data: maimaiProcessNotesCount('chart_notes_break'),
         defaultContent: "",
         className: "details notecount detail-hidden",
-        width: "4.125rem",
+        width: "5em",
         type: 'html-num-fmt',
         searchable: false,
         visible: false
@@ -784,8 +784,8 @@ $(document).ready(function() {
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
         defaultContent: "",
+        width: "15em",
         className: "details detail-hidden designer",
-        width: "10em",
         filterable: flat_view,
         searchable: flat_view
       },
@@ -795,7 +795,7 @@ $(document).ready(function() {
       //     data: ( flat_view ? "chart_link" : null ),
       //     defaultContent: "",
       //     render: ( flat_view ? renderChartLinkBtn('chart_link') : null ),
-      //     width: "4.125rem",
+      //     width: "5em",
       //     className: "details detail-hidden chart-link",
       // },
       {
@@ -864,7 +864,7 @@ $(document).ready(function() {
           }
         },
         reverseSortOrder: true,
-        width: "124px",
+        width: "4em",
         filterable: true,
         visible: (currentRegion === 'intl' ? false : true)
       },
@@ -883,9 +883,16 @@ $(document).ready(function() {
     $.getJSON((currentRegion === 'intl' ? "data/music-ex-intl.json" : "data/music-ex.json"), (data) => {
       var table = $('#table').DataTable( {
         data: flattenMusicData(data, flat_view, maimai_chart_list, processMaimaiChartData),
-        "autoWidth": true,
-        "columnDefs": [
-          { orderSequence: ['desc','asc',''], targets: '_all'}
+        "buttons": [
+          {
+            extend: 'colvis',
+            className: 'config-btn',
+            columns: '.toggle',
+            text: getTranslation(userLanguage, 'colvis_btn_label'),
+            collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
+            collectionLayout: "fixed",
+            fade: 150
+          },
         ],
         "columns": columns_params,
         "searchCols": default_search,
@@ -909,56 +916,10 @@ $(document).ready(function() {
           toggleDateRowGroup(this, default_search);
         },
         "deferRender": true,
-        "layout": {
-          top2Start: {
-            rowClass: 'filter-and-search',
-            className: 'toolbar filters',
-            features: {
-              div: {
-                className: 'filters-wrap'
-              }
-            }
-          },
-          top2End: {
-            rowClass: 'filter-and-search',
-            className: 'toolbar search',
-            features: {
-              search: {
-                className: 'search-wrap',
-              }
-            },
-          },
-          topStart: {
-            rowClass: 'toolbar view-options',
-            features: 'info'
-          },
-          topEnd: {
-            rowClass: 'toolbar view-options',
-            features: {
-              pageLength: {
-                menu: [25, 50, 100, "All"]
-              },
-              buttons: [
-                {
-                  extend: 'colvis',
-                  className: 'config-btn',
-                  columns: '.toggle',
-                  text: getTranslation(userLanguage, 'colvis_btn_label'),
-                  collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
-                  collectionLayout: "fixed",
-                  fade: 150
-                },
-              ],
-            }
-          },
-          bottomEnd: {
-            rowClass: 'paging',
-            features: 'paging'
-          }
-        },
+        "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
         "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
         "order": setDefaultOrder(),
-        "pageLength": 25,
         "responsive": {
           details: {
             type: 'column',

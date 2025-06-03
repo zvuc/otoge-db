@@ -162,6 +162,7 @@ $(document).ready(function() {
             return row.reading;
           }
         },
+        width: "80vw"
       },
       {
         displayTitle: "曲名 (読み)",
@@ -186,7 +187,6 @@ $(document).ready(function() {
             return row.reading;
           }
         },
-        width: "60%",
         searchable: false
       },
       {
@@ -223,7 +223,7 @@ $(document).ready(function() {
           }
         },
         customDropdownSortSource: "date_added",
-        width: "100px",
+        width: "12em",
       },
       {
         // displayTitle: "ジャンル",
@@ -244,7 +244,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_bas'),
         customDropdownSortSource: sortByLeadingZeros('lev_bas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -256,7 +256,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_adv'),
         customDropdownSortSource: sortByLeadingZeros('lev_adv'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -268,7 +268,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_exp'),
         customDropdownSortSource: sortByLeadingZeros('lev_exp'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -280,7 +280,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_mas'),
         customDropdownSortSource: sortByLeadingZeros('lev_mas'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -292,7 +292,7 @@ $(document).ready(function() {
         render: renderLvNum('lev_ult'),
         customDropdownSortSource: sortByLeadingZeros('lev_ult'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -304,7 +304,7 @@ $(document).ready(function() {
         render: renderWorldsEnd('we_kanji', 'we_star'),
         customDropdownSortSource: sortByLeadingZeros('we_star'),
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         filterable: flat_view ? false : true,
       },
       {
@@ -314,7 +314,7 @@ $(document).ready(function() {
         data: convertWEStars('we_star'),
         className: "lv lv-we we-star",
         reverseSortOrder: true,
-        width: "4.125rem",
+        width: "3rem",
         searchable: false,
         visible: false
       },
@@ -337,7 +337,7 @@ $(document).ready(function() {
             }
           },
         className: "lv-name detail-hidden",
-        width: "4.125rem",
+        width: "3rem",
         createdCell: flat_view ? ( function( td, cellData, rowData, row, col ) {
           $(td).addClass( rowData.chart_diff );
         }) : null,
@@ -378,7 +378,7 @@ $(document).ready(function() {
         name: "chart_notes",
         data: ( flat_view ? "chart_notes" : null ),
         className: "details notecount detail-hidden nowrap",
-        width: "5em",
+        width: "8em",
         searchable: false,
         visible: false
       },
@@ -433,7 +433,7 @@ $(document).ready(function() {
         name: "chart_designer",
         data: ( flat_view ? "chart_designer" : null ),
         defaultContent: "",
-        width: "10em",
+        width: "15em",
         className: "details detail-hidden designer",
         filterable: flat_view,
         searchable: flat_view
@@ -509,7 +509,7 @@ $(document).ready(function() {
           }
         },
         reverseSortOrder: true,
-        width: "124px",
+        width: "4em",
         filterable: true,
         visible: (currentRegion === 'intl' ? false : true)
       },
@@ -526,9 +526,45 @@ $(document).ready(function() {
 
     $.getJSON((currentRegion === 'intl' ? "data/music-ex-intl.json" : "data/music-ex.json"), (data) => {
       var table = $('#table').DataTable( {
+        // "ajax": {
+        //     url: "data/music-ex.json",
+        //     dataSrc: ""
+        // },
         data: flattenMusicData(data, flat_view, chunithm_chart_list, processChunithmChartData),
-        "autoWidth": true,
         "buttons": [
+          // {
+          //     extend: 'colvisRestore',
+          //     text: '全カラムON',
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     text: '全レベル ON',
+          //     show: [ 14, 15, 16, 17, 18 ]
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     text: '譜面レベルのみ',
+          //     hide: [ 6, 8, 9, 10, 12, 13, 24 ],
+          //     show: [ 14, 15, 16, 17, 18 ],
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     text: 'EXPERT以上のみ',
+          //     hide: [ 6, 8, 9, 10, 12, 13, 14, 15, 24 ],
+          //     show: [ 16, 17, 18 ]
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     className: 'asdf',
+          //     text: 'ジャンル・チャプタ OFF',
+          //     hide: [ 6, 9 ]
+          // },
+          // {
+          //     extend: 'colvisGroup',
+          //     className: 'asdf',
+          //     text: '属性・Lv ON',
+          //     show: [ 10, 13 ]
+          // },
           {
             extend: 'colvis',
             className: 'config-btn',
@@ -561,56 +597,10 @@ $(document).ready(function() {
           toggleDateRowGroup(this, default_search);
         },
         "deferRender": true,
-        "layout": {
-          top2Start: {
-            rowClass: 'filter-and-search',
-            className: 'toolbar filters',
-            features: {
-              div: {
-                className: 'filters-wrap'
-              }
-            }
-          },
-          top2End: {
-            rowClass: 'filter-and-search',
-            className: 'toolbar search',
-            features: {
-              search: {
-                className: 'search-wrap',
-              }
-            },
-          },
-          topStart: {
-            rowClass: 'toolbar view-options',
-            features: 'info'
-          },
-          topEnd: {
-            rowClass: 'toolbar view-options',
-            features: {
-              pageLength: {
-                menu: [25, 50, 100, "All"]
-              },
-              buttons: [
-                {
-                  extend: 'colvis',
-                  className: 'config-btn',
-                  columns: '.toggle',
-                  text: getTranslation(userLanguage, 'colvis_btn_label'),
-                  collectionTitle: getTranslation(userLanguage, 'colvis_guide_text'),
-                  collectionLayout: "fixed",
-                  fade: 150
-                },
-              ],
-            }
-          },
-          bottomEnd: {
-            rowClass: 'paging',
-            features: 'paging'
-          }
-        },
+        "dom": '<"toolbar-group"<"toolbar filters"><"toolbar search"f>><"toolbar secondary"<"info"ilB>><"table-inner"rt><"paging"p>',
         "language": replaceUnitText(getTranslation(userLanguage, 'datatable_ui')),
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
         "order": setDefaultOrder(),
-        "pageLength": 25,
         "responsive": {
           details: {
             type: 'column',
