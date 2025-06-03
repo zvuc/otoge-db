@@ -894,6 +894,9 @@ $(document).ready(function() {
             fade: 150
           },
         ],
+        "columnDefs": [
+          { orderSequence: ['desc','asc'], targets: '_all'}
+        ],
         "columns": columns_params,
         "searchCols": default_search,
         "createdRow": function( row, data, dataIndex, cells ) {
