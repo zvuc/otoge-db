@@ -2304,6 +2304,38 @@
     "image": "d5a47266b4fe0bfe.jpg"
   },
   {
+    "id": "2740",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "月光",
+    "reading": "ケツコウ",
+    "artist": "歌：V.I.P 作詞：廉　作曲：廉 「神椿市協奏中。」",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f671fc9f1b21cfdc.jpg"
+  },
+  {
+    "id": "2741",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "ゆりかご",
+    "reading": "ユリカコ",
+    "artist": "歌：可不 作詞：MIMI　作曲：MIMI 「神椿市協奏中。」",
+    "lev_bas": "2",
+    "lev_adv": "4",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "eddc42780c7c9f66.jpg"
+  },
+  {
     "id": "2720",
     "catname": "niconico",
     "newflag": "0",
@@ -6914,7 +6946,7 @@
   {
     "id": "2787",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "超最終鬼畜妹フランドール・S",
     "reading": "チヨウサイシユウキチクイモウトフラントウルS",
     "artist": "ビートまりお×まろん",
@@ -6930,7 +6962,7 @@
   {
     "id": "2792",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Help me, ERINNNNNN!!",
     "reading": "HELPMEERINNNNNN",
     "artist": "ビートまりお",
@@ -11474,7 +11506,7 @@
   {
     "id": "2771",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "宵の平安京 Stargazer",
     "reading": "ヨイノヘイアンキヨウスタウケイサウ",
     "artist": "永田泰之",
@@ -12946,7 +12978,7 @@
   {
     "id": "2801",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Destined Marionette",
     "reading": "DESTINEDMARIONETTE",
     "artist": "ビートまりお",
@@ -12958,6 +12990,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "de5fd541ca5e23be.jpg"
+  },
+  {
+    "id": "2743",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "ひつぎとふたご",
+    "reading": "ヒツキトフタコ",
+    "artist": "plastic feat. サキト",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "609af8fb1bf0bc94.jpg"
   },
   {
     "id": "145",
@@ -14546,7 +14594,7 @@
   {
     "id": "2769",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "We Are Us(IOSYS TRAX Remix)",
     "reading": "WEAREUSIOSYSTRAXREMIX",
     "artist": "舞ヶ原シンセ研究会",
@@ -23502,6 +23550,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "389e07a73cac6890.jpg"
+  },
+  {
+    "id": "2768",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "MegiddØ",
+    "reading": "MEGIDDO",
+    "artist": "BlackY VS 大国奏音",
+    "lev_bas": "5",
+    "lev_adv": "8+",
+    "lev_exp": "14",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "a9b50666a6a84430.jpg"
   },
   {
     "id": "8299",
