@@ -22448,7 +22448,7 @@
     "image_url": "62e54492e501fbb8.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250522",
     "title": "オレンジスケール",
     "title_sort": "オレンシスケル",
@@ -22471,7 +22471,7 @@
     "image_url": "81d2e9de7a20c1c8.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250522",
     "title": "ほんの感想",
     "title_sort": "ホンノカンソウ",
@@ -22494,7 +22494,7 @@
     "image_url": "8dc51fbc45752ff2.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250522",
     "title": "いっかい書いてさようなら",
     "title_sort": "イツカイカイテサヨウナラ",
@@ -22517,7 +22517,7 @@
     "image_url": "820751d0563fc394.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250528",
     "title": "WakeUP MakeUP FEVER! -星咲 あかりソロver.-",
     "title_sort": "WAKEUPMAKEUPFEVERホシサキアカリソロVER",
@@ -22540,7 +22540,7 @@
     "image_url": "21a4adcdf219d9f3.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250528",
     "title": "WakeUP MakeUP FEVER! -高瀬 梨緒ソロver.-",
     "title_sort": "WAKEUPMAKEUPFEVERタカセリオソロVER",
@@ -22563,7 +22563,7 @@
     "image_url": "c62d7edbabb2ca4f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250528",
     "title": "WakeUP MakeUP FEVER! -藍原 椿ソロver.-",
     "title_sort": "WAKEUPMAKEUPFEVERアイハラツハキソロVER",
@@ -22586,7 +22586,7 @@
     "image_url": "c1d89ccc9a5e66ef.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250528",
     "title": "WakeUP MakeUP FEVER! -桜井 春菜ソロver.-",
     "title_sort": "WAKEUPMAKEUPFEVERサクライハルナソロVER",
@@ -22609,7 +22609,7 @@
     "image_url": "56be5d27918e7ffa.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250528",
     "title": "WakeUP MakeUP FEVER! -東雲 つむぎソロver.-",
     "title_sort": "WAKEUPMAKEUPFEVERシノノメツムキソロVER",
@@ -22630,5 +22630,74 @@
     "lev_mas": "12",
     "lev_lnt": "",
     "image_url": "64453d0af79be21c.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250605",
+    "title": "Break Over",
+    "title_sort": "BREAKOVER",
+    "artist": "K-forest「Phigros」",
+    "id": "479500",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "柏木 美亜",
+    "chara_id": "1150",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©Oshiribeat\r\n©Pigeon Games",
+    "lev_bas": "3",
+    "lev_adv": "9",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "e8c1bd9af1ac5694.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250605",
+    "title": "Concvssion",
+    "title_sort": "CONCVSSION",
+    "artist": "Halv「Phigros」",
+    "id": "479400",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "高瀬 梨緒",
+    "chara_id": "1040",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©Pigeon Games",
+    "lev_bas": "3",
+    "lev_adv": "9+",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "c945d1c91b48dece.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250605",
+    "title": "Distorted Fate",
+    "title_sort": "DISTORTEDFATE",
+    "artist": "Sakuzyo「Phigros」",
+    "id": "479300",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "柏木 咲姫",
+    "chara_id": "1100",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©Pigeon Games",
+    "lev_bas": "6",
+    "lev_adv": "10",
+    "lev_exc": "13",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "4909c7c938d899f7.png"
   }
 ]
