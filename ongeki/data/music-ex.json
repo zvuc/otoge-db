@@ -51216,7 +51216,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Break Over"
   },
   {
     "new": "NEW",
@@ -51240,25 +51240,25 @@
     "lev_mas": "15",
     "lev_lnt": "",
     "image_url": "4909c7c938d899f7.png",
-    "enemy_lv": "",
+    "enemy_lv": "65",
     "enemy_type": "AQUA",
     "bpm": "",
     "lev_bas_i": "",
-    "lev_bas_notes": "",
+    "lev_bas_notes": "521",
     "lev_bas_bells": "",
     "lev_bas_designer": "",
     "lev_adv_i": "",
-    "lev_adv_notes": "",
+    "lev_adv_notes": "734",
     "lev_adv_bells": "",
     "lev_adv_designer": "",
     "lev_adv_chart_link": "",
     "lev_exc_i": "",
-    "lev_exc_notes": "",
+    "lev_exc_notes": "1090",
     "lev_exc_bells": "",
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
+    "lev_mas_notes": "1717",
     "lev_mas_bells": "",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
@@ -51268,7 +51268,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Distorted Fate"
   },
   {
     "new": "NEW",
@@ -51320,6 +51320,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Concvssion"
   }
 ]
