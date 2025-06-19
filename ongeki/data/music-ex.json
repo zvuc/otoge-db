@@ -51398,7 +51398,7 @@
     "image_url": "8c4a6bfba5bcfa96.png",
     "enemy_lv": "",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "155",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -51424,7 +51424,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Dolphika"
   },
   {
     "new": "NEW",
@@ -51450,7 +51450,7 @@
     "image_url": "5170a264f4e18b12.png",
     "enemy_lv": "",
     "enemy_type": "LEAF",
-    "bpm": "",
+    "bpm": "142",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -51476,6 +51476,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/SPILL OVER COLORS"
   }
 ]
