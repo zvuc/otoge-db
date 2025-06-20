@@ -83,10 +83,8 @@ def sync_json_data():
                 existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
                 if existing_song:
-                    if song["we_kanji"] != "":
-                        lazy_print_song_header(f"[{song['we_kanji']}] {song['title']}", song_diffs, log=True)
-                    else:
-                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                    title_print = f"[{song['we_kanji']}] {song['title']}" if song["we_kanji"] else song["title"]
+                    lazy_print_song_header(title_print, song_diffs, log=True)
 
                     # INTL song exists in latest JP version, skip
                     if existing_song not in removed_songs:
@@ -101,10 +99,8 @@ def sync_json_data():
                 existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
                 if existing_song:
-                    if song["we_kanji"] != "":
-                        lazy_print_song_header(f"[{song['we_kanji']}] {song['title']}", song_diffs, log=True)
-                    else:
-                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                    title_print = f"[{song['we_kanji']}] {song['title']}" if song["we_kanji"] else song["title"]
+                    lazy_print_song_header(title_print, song_diffs, log=True)
                     print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
 
 
@@ -113,13 +109,14 @@ def sync_json_data():
     # Find the same song in ex_data list then update any changed keys
     for song in updated_songs:
         song_diffs = [0]
+        title_print = f"[{song['we_kanji']}] {song['title']}" if song["we_kanji"] else song["title"]
         song_hash = generate_hash_from_keys(song)
         song_pre_update = next((s for s in dest_music_data_pre_update if generate_hash_from_keys(s) == song_hash), None)
         dest_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_song:
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+            lazy_print_song_header(title_print, song_diffs, log=True)
             print_message(f"- Couldn't find matching song in INTL", bcolors.WARNING)
             continue
 
@@ -149,7 +146,7 @@ def sync_json_data():
                             # If INTL and JP version are same, copy key and value from JP
                             if (game.CURRENT_JP_VER == game.CURRENT_INTL_VER):
                                 dest_song[key] = value
-                                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                                lazy_print_song_header(title_print, song_diffs, log=True)
                                 print_message(f"- Copied {key}: {song[key]}", bcolors.OKBLUE)
                     # Other notes data keys
                     elif "_notes" in key:
@@ -161,7 +158,7 @@ def sync_json_data():
                         if parent_key_exists(key, dest_song):
                             if value != "":
                                 dest_song[key] = value
-                                lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                                lazy_print_song_header(title_print, song_diffs, log=True)
                                 print_message(f"- Copied {key}: {song[key]}", bcolors.OKBLUE)
 
                 # If key exists, but value is empty
@@ -171,7 +168,7 @@ def sync_json_data():
                         if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
                             continue
 
-                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                        lazy_print_song_header(title_print, song_diffs, log=True)
                         print_message(f"- Added value for {key}: {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
                         print_message(f"- (Synced JP archive data)", bcolors.OKBLUE)
@@ -181,7 +178,7 @@ def sync_json_data():
                         if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
                             continue
 
-                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                        lazy_print_song_header(title_print, song_diffs, log=True)
                         print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
                         dest_song[key] = value
                         print_message(f"- (Synced JP archive data)", bcolors.OKBLUE)
@@ -191,13 +188,14 @@ def sync_json_data():
     # Iterate through unchanged songs
     for song in unchanged_songs:
         song_diffs = [0]
+        title_print = f"[{song['we_kanji']}] {song['title']}" if song["we_kanji"] else song["title"]
         song_hash = generate_hash_from_keys(song)
         song_pre_update = next((s for s in dest_music_data_pre_update if generate_hash_from_keys(s) == song_hash), None)
         dest_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
         # Song can't be found in music-ex.json
         if not dest_song:
-            lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+            lazy_print_song_header(title_print, song_diffs, log=True)
             print_message(f"- Couldn't find matching song in {LOCAL_INTL_MUSIC_EX_JSON_PATH}", bcolors.WARNING)
             continue
 
@@ -340,6 +338,7 @@ def add_intl_info():
                 # Add song to dictionary with date
                 wiki_song = {
                     'title': title,
+                    'title_print': f"[{we_kanji}]{title}",
                     'artist': artist,
                     'date': date,
                     'we_kanji': we_kanji,
@@ -361,6 +360,7 @@ def add_intl_info():
             # Add song to dictionary with date
             wiki_song = {
                 'title': title,
+                'title_print': title,
                 'artist': artist,
                 'date': date,
                 'lev_bas': lev_bas,
@@ -460,17 +460,14 @@ def add_intl_info():
             #     if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
             #         matched_jp_prev_ver_song['key_intl'] = "○"
 
-            #     lazy_print_song_header(f"{title}", header_printed, log=True)
+            #     lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
             #     print_message(f"- Marked as unlockable in Intl ver", bcolors.OKBLUE, log=True)
 
 
 
         # Check if anything has actually changed
         if matched_intl_song_pre_update is not None and matched_intl_song_pre_update == matched_intl_song:
-            if worlds_end_td:
-                lazy_print_song_header(f"[{we_kanji}]{title}", header_printed, log=True, is_verbose=True)
-            else:
-                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+            lazy_print_song_header(wiki_song['title_print'], header_printed, log=True, is_verbose=True)
             print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
         else:
             total_diffs[0] += 1
@@ -478,10 +475,7 @@ def add_intl_info():
 
         # if song was not matched, not copied from any JP data after all (if break was not triggered)
         if intl_song_matched is False:
-            if worlds_end_td:
-                lazy_print_song_header(f"[{we_kanji}]{title}", header_printed, log=True)
-            else:
-                lazy_print_song_header(f"{title}", header_printed, log=True)
+            lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
 
             if jp_song_matched is False:
                 print_message(f"- Song not matched with any song in JP data", bcolors.FAIL, log=True)
@@ -537,13 +531,13 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
 
 
                 if ('we_star' in song and song['we_star'] != wiki_song['we_star']):
-                    lazy_print_song_header(f"[{song['we_kanji']}] {wiki_song['title']}", header_printed, log=True)
+                    lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
 
                     if game.ARGS.strict:
-                        print_message(f"- JP song match: WORLDS END level (stars) mismatch. (JSON: {song['we_star']} vs Wiki: {we_star})", bcolors.FAIL, log=True)
+                        print_message(f"- JP song match: WORLDS END level (stars) mismatch. (JSON: {song['we_star']} vs Wiki: {wiki_song['we_star']})", bcolors.FAIL, log=True)
                         continue
                     else:
-                        print_message(f"- JP song match: WORLDS END level (stars) mismatch. (JSON: {song['we_star']} vs Wiki: {we_star})", bcolors.WARNING, log=True)
+                        print_message(f"- JP song match: WORLDS END level (stars) mismatch. (JSON: {song['we_star']} vs Wiki: {wiki_song['we_star']})", bcolors.WARNING, log=True)
 
                 if ('we_kanji' in song and song['we_kanji'] == wiki_song['we_kanji']):
                     jp_song_matched = True
@@ -564,7 +558,7 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
             # if song only has ult added
             if only_ultima:
                 if song['lev_ult'] != wiki_song['lev_ult']:
-                    lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+                    lazy_print_song_header(wiki_song['title_print'], header_printed, log=True, is_verbose=True)
 
                     if game.ARGS.strict:
                         print_message(f"- JP song matched but rejected due to chart levels mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.FAIL, log=True, is_verbose=True)
@@ -579,7 +573,7 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
                     song['lev_exp'] != wiki_song['lev_exp'] or
                     song['lev_mas'] != wiki_song['lev_mas'])):
 
-                    lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
+                    lazy_print_song_header(wiki_song['title_print'], header_printed, log=True, is_verbose=True)
 
                     if game.ARGS.strict:
                         print_message(f"- JP song matched but rejected due to chart levels mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
@@ -648,10 +642,7 @@ def _match_intl_song(json_data, worlds_end_td, wiki_song, header_printed):
 
 def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, title, header_printed, only_ultima, wiki_song):
     if method == 'full_copy':
-        if 'we_kanji' in wiki_song:
-            lazy_print_song_header(f"[{wiki_song['we_kanji']}]{title}", header_printed, log=True)
-        else:
-            lazy_print_song_header(f"{title}", header_printed, log=True)
+        lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
         print_message(f"- Song copied from JP data to INTL", bcolors.OKGREEN, log=True)
     elif method == 'partial_copy':
         # Define key prefixes
@@ -665,11 +656,8 @@ def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, titl
         if chart_type == 'std':
             prefixes_to_match = ult_prefixes if only_ultima else std_prefixes
             message = "- Copied ULTIMA chart from JP data to INTL" if only_ultima else "- Copied data from JP data to INTL"
-        elif chart_type == 'worlds_end':
-            lazy_print_song_header(f"[{wiki_song['we_kanji']}]{title}", header_printed, log=True)
-            print_message("- (Song is WORLDS END)", bcolors.ENDC, log=True)
-        else:
-            lazy_print_song_header(f"{title}", header_printed, log=True)
+        elif chart_type != 'worlds_end':
+            lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
             print_message("- Could not determine chart type", bcolors.FAIL, log=True)
             return
 
@@ -684,38 +672,26 @@ def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, titl
                         updated = True
 
             if updated:
-                lazy_print_song_header(f"{title}", header_printed, log=True)
+                lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
                 print_message(message, bcolors.OKGREEN, log=True)
 
     # Note if JP song has INTL already marked
     if jp_song['intl'] != '0':
-        if 'we_kanji' in wiki_song:
-            lazy_print_song_header(f"[{wiki_song['we_kanji']}]{title}", header_printed, log=True, is_verbose=True)
-        else:
-            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
-
+        lazy_print_song_header(wiki_song['title_print'], header_printed, log=True, is_verbose=True)
         print_message(f"- (INTL already marked as available in JP data)", bcolors.ENDC, log=True, is_verbose=True)
     else:
         # update INTL markers
         intl_song['intl'] = "1"
         jp_song['intl'] = "1"
 
-        if 'we_kanji' in wiki_song:
-            lazy_print_song_header(f"[{wiki_song['we_kanji']}]{title}", header_printed, log=True)
-        else:
-            lazy_print_song_header(f"{title}", header_printed, log=True)
-
+        lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
         print_message(f"- Marked as available in INTL ver.", bcolors.OKGREEN, log=True)
 
     # Process dates
-    def _print_header():
-        song_title = f"[{wiki_song['we_kanji']}] {title}" if 'we_kanji' in wiki_song else title
-        lazy_print_song_header(song_title, header_printed, log=True)
-
     def _update_date(date_key, color, message):
         intl_song[date_key] = wiki_song['date']
         jp_song[date_key] = wiki_song['date']
-        _print_header()
+        lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
         print_message(f"- {message} ({wiki_song['date']})", color, log=True)
 
     wiki_date = int(wiki_song['date'])
@@ -755,11 +731,11 @@ def _smart_match(region, title_or_artist, target_song, wiki_song, header_printed
 
     match_similarity = compare_strings(normalized_target_song_title_or_artist, normalized_wiki_song_title_or_artist)
     if (match_similarity == 100):
-        # lazy_print_song_header(f"[{wiki_song['we_kanji']}]{wiki_song['title']}" if 'we_kanji' in wiki_song else wiki_song['title'], header_printed, log=True)
+        # lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
         # print_message(f"- {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy")
         return True
     elif (match_similarity > 80):
-        lazy_print_song_header(f"[{wiki_song['we_kanji']}]{wiki_song['title']}" if 'we_kanji' in wiki_song else wiki_song['title'], header_printed, log=True)
+        lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
 
         if game.ARGS.strict:
             print_message(f"- Rejected {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy (strict mode)", bcolors.FAIL)
@@ -774,7 +750,7 @@ def _smart_match(region, title_or_artist, target_song, wiki_song, header_printed
         if normalized_wiki_song_title_or_artist in normalized_target_song_title_or_artist:
             trimmed_target = re.sub(r'「.*?」$', '', normalized_target_song_title_or_artist).strip()
             if normalize_title(trimmed_target) == normalized_wiki_song_title_or_artist:
-                lazy_print_song_header(f"[{wiki_song['we_kanji']}]{wiki_song['title']}" if 'we_kanji' in wiki_song else wiki_song['title'], header_printed, log=True)
+                lazy_print_song_header(wiki_song['title_print'], header_printed, log=True)
 
                 print_message(f"- {region} song {title_or_artist} partially matched (JSON: {target_song[title_or_artist]} vs Wiki: {wiki_song[title_or_artist]})", bcolors.WARNING)
                 return True
