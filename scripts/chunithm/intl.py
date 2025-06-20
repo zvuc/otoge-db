@@ -468,7 +468,7 @@ def add_intl_info():
         # Check if anything has actually changed
         if matched_intl_song_pre_update is not None and matched_intl_song_pre_update == matched_intl_song:
             if worlds_end_td:
-                lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True, is_verbose=True)
+                lazy_print_song_header(f"[{we_kanji}]{title}", header_printed, log=True, is_verbose=True)
             else:
                 lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
             print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
@@ -479,7 +479,7 @@ def add_intl_info():
         # if song was not matched, not copied from any JP data after all (if break was not triggered)
         if intl_song_matched is False:
             if worlds_end_td:
-                lazy_print_song_header(f"[{we_kanji}] {title}", header_printed, log=True)
+                lazy_print_song_header(f"[{we_kanji}]{title}", header_printed, log=True)
             else:
                 lazy_print_song_header(f"{title}", header_printed, log=True)
 
@@ -521,6 +521,10 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
     for song in json_data:
         if worlds_end_td:
             if 'we_kanji' in song and 'we_kanji' in wiki_song:
+                # Match kanji
+                if (song['we_kanji'] != wiki_song['we_kanji']):
+                    continue
+
                 # Match title
                 jp_song_title_matched = _smart_match('jp', 'title', song, wiki_song, header_printed)
                 if jp_song_title_matched is False:
@@ -531,9 +535,6 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
                 if jp_song_artist_matched is False:
                     continue
 
-                # Match kanji
-                if (song['we_kanji'] != wiki_song['we_kanji']):
-                    continue
 
                 if ('we_star' in song and song['we_star'] != wiki_song['we_star']):
                     lazy_print_song_header(f"[{song['we_kanji']}] {wiki_song['title']}", header_printed, log=True)
@@ -566,10 +567,10 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
                     lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
 
                     if game.ARGS.strict:
-                        print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.FAIL, log=True, is_verbose=True)
+                        print_message(f"- JP song matched but rejected due to chart levels mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.FAIL, log=True, is_verbose=True)
                         continue
                     else:
-                        print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.WARNING, log=True, is_verbose=True)
+                        print_message(f"- JP song matched but chart levels differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_ult']} vs Wiki: {wiki_song['lev_ult']})", bcolors.WARNING, log=True, is_verbose=True)
 
             # Song has other charts added but levels mismatch
             else:
@@ -581,10 +582,10 @@ def _match_jp_song(json_data, worlds_end_td, wiki_song, wiki_chart_type, only_ul
                     lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
 
                     if game.ARGS.strict:
-                        print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                        print_message(f"- JP song matched but rejected due to chart levels mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
                         continue
                     else:
-                        print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+                        print_message(f"- JP song matched but chart levels differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
 
             matched_jp_song = song
             matched_jp_song_pre_update = copy.copy(song)
@@ -606,6 +607,10 @@ def _match_intl_song(json_data, worlds_end_td, wiki_song, header_printed):
         # WE
         if worlds_end_td:
             if 'we_kanji' in intl_song and 'we_kanji' in wiki_song:
+                # Match kanji
+                if (intl_song['we_kanji'] != wiki_song['we_kanji']):
+                    continue
+
                 # Match title
                 intl_song_title_matched = _smart_match('intl', 'title', intl_song, wiki_song, header_printed)
                 if intl_song_title_matched is False:
@@ -614,10 +619,6 @@ def _match_intl_song(json_data, worlds_end_td, wiki_song, header_printed):
                 # Match artist
                 intl_song_artist_matched = _smart_match('intl', 'artist', intl_song, wiki_song, header_printed)
                 if intl_song_artist_matched is False:
-                    continue
-
-                # Match kanji
-                if (intl_song['we_kanji'] != wiki_song['we_kanji']):
                     continue
 
                 matched_intl_song = intl_song
