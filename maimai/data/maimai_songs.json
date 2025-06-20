@@ -3406,13 +3406,12 @@
   {
     "artist": "Shandy kubota",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11",
     "dx_lev_mas": "13+",
     "image_url": "bf6a041e1c971bdd.png",
-    "release": "250606",
+    "release": "000000",
     "lev_bas": "5",
     "lev_adv": "8+",
     "lev_exp": "10+",
@@ -18415,6 +18414,21 @@
     "version": "25500"
   },
   {
+    "artist": "HaNaMiNa feat.Hana",
+    "catcode": "オンゲキ＆CHUNITHM",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "13+",
+    "image_url": "8bd4abae1de74251.png",
+    "release": "250620",
+    "sort": "1253",
+    "title": "なんかノイズにきこえる",
+    "title_kana": "ナンカノイスニキコエル",
+    "version": "25509"
+  },
+  {
     "artist": "超てんちゃん",
     "catcode": "POPS＆アニメ",
     "dx_lev_bas": "3",
@@ -18782,9 +18796,69 @@
     "version": "25507"
   },
   {
+    "artist": "三枝明那",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "dx_lev_remas": "13+",
+    "image_url": "4516b8b8e6cb4d7c.png",
+    "release": "250620",
+    "sort": "7",
+    "title": "うぇいびー",
+    "title_kana": "ウエイヒイ",
+    "version": "25509"
+  },
+  {
+    "artist": "三枝明那",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "13",
+    "image_url": "9bfa0e4eab3c770c.png",
+    "release": "250620",
+    "sort": "8",
+    "title": "RED",
+    "title_kana": "RED",
+    "version": "25509"
+  },
+  {
+    "artist": "七次元生徒会！",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "044c69ffe7a5d66a.png",
+    "release": "250620",
+    "sort": "9",
+    "title": "ホラフキパペット",
+    "title_kana": "ホラフキハヘツト",
+    "version": "25509"
+  },
+  {
+    "artist": "社築 × sasakure.UK",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "b63264a7cfe89264.png",
+    "release": "250620",
+    "sort": "10",
+    "title": "BlackFlagBreaker!!",
+    "title_kana": "BLACKFLAGBREAKER",
+    "version": "25510"
+  },
+  {
     "artist": "電ǂ鯨",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
@@ -18799,7 +18873,6 @@
   {
     "artist": "はるまきごはん",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "2",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
@@ -18814,7 +18887,6 @@
   {
     "artist": "ナナホシ管弦楽団",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -19370,6 +19442,19 @@
     "version": "24506"
   },
   {
+    "artist": "ETIA.",
+    "catcode": "宴会場",
+    "lev_utage": "13+?",
+    "kanji": "覚",
+    "comment": "maimai でらっくす版覚譜面もほしかった",
+    "image_url": "6bb029ffc3be5817.png",
+    "release": "250620",
+    "sort": "1387",
+    "title": "[覚]Hainuwele",
+    "title_kana": "HAINUWELE",
+    "version": "25508"
+  },
+  {
     "artist": "七条レタスグループ",
     "catcode": "宴会場",
     "lev_utage": "12?",
@@ -19434,6 +19519,19 @@
     "title": "[息]ノンブレス・オブリージュ",
     "title_kana": "ノンフレスオフリイシユ",
     "version": "24500"
+  },
+  {
+    "artist": "Zekk",
+    "catcode": "宴会場",
+    "lev_utage": "12+?",
+    "kanji": "逆",
+    "comment": "SLIDE BACK!!",
+    "image_url": "31d7d548f4a52676.png",
+    "release": "250620",
+    "sort": "1386",
+    "title": "[逆]WE'RE BACK!!",
+    "title_kana": "WEREBACK",
+    "version": "25508"
   },
   {
     "artist": "結束バンド",
