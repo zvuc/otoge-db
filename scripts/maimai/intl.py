@@ -443,8 +443,8 @@ def add_intl_info():
                 matched_jp_song['key_intl'] = "○"
 
                 # If JP version is ahead of INTL, also update PREV VER JP data
-                if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-                    matched_jp_prev_ver_song['key_intl'] = "○"
+                # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+                #     matched_jp_prev_ver_song['key_intl'] = "○"
 
                 lazy_print_song_header(f"{title}", header_printed, log=True)
                 print_message(f"- Marked as unlockable in Intl ver", bcolors.OKBLUE, log=True)
