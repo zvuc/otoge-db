@@ -749,11 +749,16 @@ def parent_key_exists(key_name, song):
     return False
 
 def _smart_match(region, title_or_artist, target_song, wiki_song, header_printed):
-    match_similarity = compare_strings(normalize_title(target_song[title_or_artist]), normalize_title(wiki_song[title_or_artist]))
+    normalized_target_song_title_or_artist = normalize_title(target_song[title_or_artist])
+    normalized_wiki_song_title_or_artist = normalize_title(wiki_song[title_or_artist])
+
+    match_similarity = compare_strings(normalized_target_song_title_or_artist, normalized_wiki_song_title_or_artist)
     if (match_similarity == 100):
+        # lazy_print_song_header(f"[{wiki_song['we_kanji']}]{wiki_song['title']}" if 'we_kanji' in wiki_song else wiki_song['title'], header_printed, log=True)
+        # print_message(f"- {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy")
         return True
     elif (match_similarity > 80):
-        lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True)
+        lazy_print_song_header(f"[{wiki_song['we_kanji']}]{wiki_song['title']}" if 'we_kanji' in wiki_song else wiki_song['title'], header_printed, log=True)
 
         if game.ARGS.strict:
             print_message(f"- Rejected {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy (strict mode)", bcolors.FAIL)
@@ -762,4 +767,15 @@ def _smart_match(region, title_or_artist, target_song, wiki_song, header_printed
         print_message(f"- {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy", bcolors.WARNING)
         return True
     else:
+        # Allow cases where wiki artist doesn't include extra info
+        # ex. 蓮ノ空女学院スクールアイドルクラブ「Link! Like! ラブライブ!」 vs 蓮ノ空女学院スクールアイドルクラブ
+        # ex. UNISON SQUARE GARDEN「ブルーロック」vs UNISON SQUARE GARDEN
+        if normalized_wiki_song_title_or_artist in normalized_target_song_title_or_artist:
+            trimmed_target = re.sub(r'「.*?」$', '', normalized_target_song_title_or_artist).strip()
+            if normalize_title(trimmed_target) == normalized_wiki_song_title_or_artist:
+                lazy_print_song_header(f"[{wiki_song['we_kanji']}]{wiki_song['title']}" if 'we_kanji' in wiki_song else wiki_song['title'], header_printed, log=True)
+
+                print_message(f"- {region} song {title_or_artist} partially matched (JSON: {target_song[title_or_artist]} vs Wiki: {wiki_song[title_or_artist]})", bcolors.WARNING)
+                return True
+
         return False
