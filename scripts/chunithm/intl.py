@@ -227,18 +227,10 @@ def sync_json_data():
     if song_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
     else:
-        # sort before saving
-        for song in dest_music_data:
-            sorted_song = sort_dict_keys(song)
-            song.clear()
-            song.update(sorted_song)
-
-        with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(dest_music_data, f, ensure_ascii=False, indent=2)
+        sort_and_save_json(dest_music_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
         if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-            with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
-                json.dump(dest_music_data_pre_update, f, ensure_ascii=False, indent=2)
+            sort_and_save_json(dest_music_data_pre_update, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
 
 # Update on top of existing music-ex
@@ -485,22 +477,12 @@ def add_intl_info():
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
     else:
-        # sort before saving
-        for song in local_intl_music_ex_data:
-            sorted_song = sort_dict_keys(song)
-            song.clear()
-            song.update(sorted_song)
-
-        # Write updated JSON data to file
-        with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(local_intl_music_ex_data, f, ensure_ascii=False, indent=2)
+        sort_and_save_json(local_intl_music_ex_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
         if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-            with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'w', encoding='utf-8') as f:
-                json.dump(local_music_ex_prev_ver_data, f, ensure_ascii=False, indent=2)
+            sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
-        with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
+        sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
 
 

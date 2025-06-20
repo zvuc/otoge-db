@@ -214,18 +214,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                     lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                     print_message(f"- Removed song (WE)[{song['we_kanji']}]", bcolors.OKBLUE)
 
+        sort_and_save(local_music_ex_deleted_data, LOCAL_MUSIC_EX_DELETED_JSON_PATH)
 
-        with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(local_music_ex_deleted_data, f, ensure_ascii=False, indent=2)
-
-    for song in local_music_ex_data:
-        # Sort the song dictionary before saving
-        sorted_song = sort_dict_keys(song)
-        song.clear()  # Clear the original song dictionary
-        song.update(sorted_song)
-
-    with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
-        json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
+    sort_and_save(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
 
 

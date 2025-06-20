@@ -651,3 +651,10 @@ def compare_strings(str1, str2):
     union = len(set1.union(set2))
     similarity_percentage = (intersection / union) * 100
     return similarity_percentage
+
+def sort_and_save_json(data, path):
+    for song in data:
+        song.update(sort_dict_keys(song.copy()))
+        song = dict(sorted(song.items()))
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
