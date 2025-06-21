@@ -57,7 +57,7 @@ def update_songs_extra_data():
         update_song_wiki_data(song, total_diffs)
         # time.sleep(random.randint(1,2))
 
-    sort_and_save(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
+    sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)

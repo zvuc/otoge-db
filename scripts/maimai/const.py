@@ -37,7 +37,7 @@ def update_const_data():
     for song in target_song_list:
         _update_song_with_sgimera_data(song, sgimera_data, total_diffs)
 
-    sort_and_save(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
+    sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)

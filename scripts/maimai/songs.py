@@ -235,9 +235,9 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
                 lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                 print_message(f"- Removed song", bcolors.FAIL)
 
-        sort_and_save(local_music_ex_deleted_data, LOCAL_MUSIC_EX_DELETED_JSON_PATH)
+        sort_and_save_json(local_music_ex_deleted_data, LOCAL_MUSIC_EX_DELETED_JSON_PATH)
 
-    sort_and_save(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
+    sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
 
 def _download_song_jacket(song, song_diffs):
