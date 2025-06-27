@@ -18416,7 +18416,6 @@
   {
     "artist": "HaNaMiNa feat.Hana",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
@@ -18427,6 +18426,21 @@
     "title": "なんかノイズにきこえる",
     "title_kana": "ナンカノイスニキコエル",
     "version": "25509"
+  },
+  {
+    "artist": "鬱P feat.000",
+    "catcode": "オンゲキ＆CHUNITHM",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "1803a7329d1d7290.png",
+    "release": "250627",
+    "sort": "1252",
+    "title": "JIGOKU STATION CENTRAL GATE",
+    "title_kana": "JIGOKUSTATIONCENTRALGATE",
+    "version": "25510"
   },
   {
     "artist": "超てんちゃん",
@@ -18796,9 +18810,38 @@
     "version": "25507"
   },
   {
+    "artist": "マサラダ",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "13",
+    "image_url": "a53cf82eedd35750.png",
+    "release": "250627",
+    "sort": "110",
+    "title": "㋰責任集合体",
+    "title_kana": "ムセキニンシユウコウタイ",
+    "version": "25510"
+  },
+  {
+    "artist": "r-906",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "624953ea26b3f5c3.png",
+    "release": "250627",
+    "sort": "111",
+    "title": "三日月ステップ 2023",
+    "title_kana": "ミカツキステツフ2023",
+    "version": "25511"
+  },
+  {
     "artist": "三枝明那",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10",
@@ -18814,7 +18857,6 @@
   {
     "artist": "三枝明那",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
@@ -18829,7 +18871,6 @@
   {
     "artist": "七次元生徒会！",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
@@ -18844,7 +18885,6 @@
   {
     "artist": "社築 × sasakure.UK",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11",
