@@ -2723,8 +2723,13 @@
   {
     "artist": "samfree feat.(V)・∀・(V)かにぱん。(A-ONE)",
     "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
     "image_url": "fba94ed765e1c00b.png",
-    "release": "000000",
+    "release": "250704",
     "lev_bas": "4",
     "lev_adv": "8",
     "lev_exp": "10+",
@@ -18430,7 +18435,6 @@
   {
     "artist": "鬱P feat.000",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -18441,6 +18445,21 @@
     "title": "JIGOKU STATION CENTRAL GATE",
     "title_kana": "JIGOKUSTATIONCENTRALGATE",
     "version": "25510"
+  },
+  {
+    "artist": "litmus*",
+    "catcode": "オンゲキ＆CHUNITHM",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "a1e1854c51cf78ac.png",
+    "release": "250704",
+    "sort": "1251",
+    "title": "Lover's Trick",
+    "title_kana": "LOVERSTRICK",
+    "version": "25512"
   },
   {
     "artist": "超てんちゃん",
@@ -18812,7 +18831,6 @@
   {
     "artist": "マサラダ",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "9+",
@@ -18827,7 +18845,6 @@
   {
     "artist": "r-906",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10",
