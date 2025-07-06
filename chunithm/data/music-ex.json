@@ -32456,7 +32456,8 @@
     "intl": "1",
     "date_added": "20160921",
     "date_updated": "20250306",
-    "date_intl_added": "20220303"
+    "date_intl_added": "20220303",
+    "date_intl_updated": "20250703"
   },
   {
     "id": "137",
@@ -81093,8 +81094,9 @@
     "lev_mas_chart_link": "10/10061mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/INFiNiTE ENERZY -Overdoze-",
-    "intl": "0",
-    "date_added": "20250306"
+    "intl": "1",
+    "date_added": "20250306",
+    "date_intl_added": "20250703"
   },
   {
     "id": "2746",
@@ -81367,8 +81369,9 @@
     "lev_mas_chart_link": "10/10066mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/本能的 Survivor",
-    "intl": "0",
-    "date_added": "20250327"
+    "intl": "1",
+    "date_added": "20250327",
+    "date_intl_added": "20250703"
   },
   {
     "id": "2800",
@@ -81420,8 +81423,9 @@
     "lev_mas_chart_link": "10/10067mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/淵底のグレイ・ユークロニア",
-    "intl": "0",
-    "date_added": "20250327"
+    "intl": "1",
+    "date_added": "20250327",
+    "date_intl_added": "20250703"
   },
   {
     "id": "8025",
