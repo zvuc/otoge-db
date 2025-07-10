@@ -51761,7 +51761,7 @@
     "image_url": "a63f2be3cc7c99c4.png",
     "enemy_lv": "",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "150",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -51787,7 +51787,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/リアライズ",
     "date_added": "20250710"
   },
   {
@@ -51813,7 +51813,7 @@
     "image_url": "d76f8f7e6ff7d0e3.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "170",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -51829,9 +51829,9 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
-    "lev_mas_designer": "",
+    "lev_mas_notes": "1445",
+    "lev_mas_bells": "61",
+    "lev_mas_designer": "アミノハバキリ",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
@@ -51839,7 +51839,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ライアーダンサー",
     "date_added": "20250710"
   },
   {
@@ -51865,7 +51865,7 @@
     "image_url": "979fff2053ed2264.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "150",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -51891,7 +51891,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": "",
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/人マニア",
     "date_added": "20250710"
   }
 ]
