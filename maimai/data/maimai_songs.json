@@ -8,7 +8,7 @@
     "lev_adv": "7",
     "lev_exp": "10",
     "lev_mas": "12",
-    "sort": "1030",
+    "sort": "1036",
     "title": "True Love Song",
     "title_kana": "TRUELOVESONG",
     "version": "10000"
@@ -22,7 +22,7 @@
     "lev_adv": "7",
     "lev_exp": "9+",
     "lev_mas": "12",
-    "sort": "1029",
+    "sort": "1035",
     "title": "Color My World",
     "title_kana": "COLORMYWORLD",
     "version": "10000"
@@ -110,7 +110,7 @@
     "lev_adv": "7",
     "lev_exp": "9",
     "lev_mas": "11",
-    "sort": "1027",
+    "sort": "1033",
     "title": "Sweets×Sweets",
     "title_kana": "SWEETSSWEETS",
     "version": "10000"
@@ -142,7 +142,7 @@
     "lev_adv": "7+",
     "lev_exp": "8+",
     "lev_mas": "12+",
-    "sort": "1035",
+    "sort": "1041",
     "title": "ネコ日和。",
     "title_kana": "ネコヒヨリ",
     "version": "10000"
@@ -156,7 +156,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "12+",
-    "sort": "1028",
+    "sort": "1034",
     "title": "虹と太陽",
     "title_kana": "ニシトタイヨウ",
     "version": "10000"
@@ -170,7 +170,7 @@
     "lev_adv": "7",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1033",
+    "sort": "1039",
     "title": "炭★坑★節",
     "title_kana": "タンコウフシ",
     "version": "10000"
@@ -302,7 +302,7 @@
     "lev_exp": "11",
     "lev_mas": "13",
     "lev_remas": "13",
-    "sort": "1037",
+    "sort": "1043",
     "title": "Endless World",
     "title_kana": "ENDLESSWORLD",
     "version": "11007"
@@ -418,7 +418,7 @@
     "lev_adv": "7+",
     "lev_exp": "10",
     "lev_mas": "12",
-    "sort": "1040",
+    "sort": "1046",
     "title": "オレンジの夏",
     "title_kana": "オレンシノナツ",
     "version": "10000"
@@ -432,7 +432,7 @@
     "lev_adv": "8+",
     "lev_exp": "12",
     "lev_mas": "12",
-    "sort": "1039",
+    "sort": "1045",
     "title": "BaBan!! －甘い罠－",
     "title_kana": "BABANアマイワナ",
     "version": "10000"
@@ -451,7 +451,7 @@
     "lev_exp": "10+",
     "lev_mas": "14",
     "lev_remas": "14",
-    "sort": "1047",
+    "sort": "1053",
     "title": "ジングルベル",
     "title_kana": "シンクルヘル",
     "version": "10000"
@@ -837,7 +837,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "12+",
-    "sort": "1041",
+    "sort": "1047",
     "title": "ぴぴぱぷぅ！",
     "title_kana": "ヒヒハフウ",
     "version": "11007"
@@ -855,7 +855,7 @@
     "lev_adv": "7",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "1043",
+    "sort": "1049",
     "title": "炎歌 -ほむらうた-",
     "title_kana": "ホムラウタ",
     "version": "11006"
@@ -869,7 +869,7 @@
     "lev_adv": "7",
     "lev_exp": "10",
     "lev_mas": "12",
-    "sort": "1036",
+    "sort": "1042",
     "title": "犬日和。",
     "title_kana": "イヌヒヨリ",
     "version": "11001"
@@ -883,7 +883,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1031",
+    "sort": "1037",
     "title": "ソーラン☆節",
     "title_kana": "ソオランフシ",
     "version": "11006"
@@ -979,7 +979,7 @@
     "lev_adv": "8+",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "979",
+    "sort": "984",
     "title": "FEEL ALIVE",
     "title_kana": "FEELALIVE",
     "version": "11004"
@@ -994,7 +994,7 @@
     "lev_exp": "12+",
     "lev_mas": "12",
     "lev_remas": "13",
-    "sort": "1193",
+    "sort": "1199",
     "title": "Link",
     "title_kana": "LINK1",
     "version": "11004"
@@ -1008,7 +1008,7 @@
     "lev_adv": "8",
     "lev_exp": "13",
     "lev_mas": "13+",
-    "sort": "1192",
+    "sort": "1198",
     "title": "Turn around",
     "title_kana": "TURNAROUND",
     "version": "11007"
@@ -1023,7 +1023,7 @@
     "lev_exp": "12+",
     "lev_mas": "13+",
     "lev_remas": "13+",
-    "sort": "1197",
+    "sort": "1203",
     "title": "We Gonna Party",
     "title_kana": "WEGONNAPARTY",
     "version": "11000"
@@ -1038,7 +1038,7 @@
     "lev_exp": "11+",
     "lev_mas": "13",
     "lev_remas": "13",
-    "sort": "1010",
+    "sort": "1015",
     "title": "Night Fly",
     "title_kana": "NIGHTFLY",
     "version": "11004"
@@ -1052,7 +1052,7 @@
     "lev_adv": "9",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1244",
+    "sort": "1250",
     "title": "Feel My Fire",
     "title_kana": "FEELMYFIRE",
     "version": "11004"
@@ -1066,7 +1066,7 @@
     "lev_adv": "8",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1191",
+    "sort": "1197",
     "title": "Streak",
     "title_kana": "STREAK",
     "version": "11000"
@@ -1080,7 +1080,7 @@
     "lev_adv": "8",
     "lev_exp": "12",
     "lev_mas": "13",
-    "sort": "1009",
+    "sort": "1014",
     "title": "Spin me harder",
     "title_kana": "SPINMEHARDER",
     "version": "11004"
@@ -1094,7 +1094,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1004",
+    "sort": "1009",
     "title": "Lionheart",
     "title_kana": "LIONHEART",
     "version": "11000"
@@ -1108,7 +1108,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1221",
+    "sort": "1227",
     "title": "Acceleration",
     "title_kana": "ACCELERATION",
     "version": "11000"
@@ -1122,7 +1122,7 @@
     "lev_adv": "8+",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1231",
+    "sort": "1237",
     "title": "Sprintrances",
     "title_kana": "SPRINTRANCES",
     "version": "11000"
@@ -1136,7 +1136,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "14",
-    "sort": "1230",
+    "sort": "1236",
     "title": "Nerverakes",
     "title_kana": "NERVERAKES",
     "version": "11007"
@@ -1150,7 +1150,7 @@
     "lev_adv": "8",
     "lev_exp": "13",
     "lev_mas": "13",
-    "sort": "1234",
+    "sort": "1240",
     "title": "Black Out",
     "title_kana": "BLACKOUT",
     "version": "11007"
@@ -1165,7 +1165,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "14+",
-    "sort": "1235",
+    "sort": "1241",
     "title": "Fragrance",
     "title_kana": "FRAGRANCE",
     "version": "11004"
@@ -1180,7 +1180,7 @@
     "lev_exp": "11",
     "lev_mas": "13",
     "lev_remas": "13+",
-    "sort": "1240",
+    "sort": "1246",
     "title": "air's gravity",
     "title_kana": "AIRSGRAVITY",
     "version": "11000"
@@ -1199,7 +1199,7 @@
     "lev_exp": "11+",
     "lev_mas": "12",
     "lev_remas": "12+",
-    "sort": "1012",
+    "sort": "1017",
     "title": "Starlight Disco",
     "title_kana": "STARLIGHTDISCO",
     "version": "11000"
@@ -1289,7 +1289,7 @@
     "lev_exp": "10+",
     "lev_mas": "13",
     "lev_remas": "12+",
-    "sort": "1044",
+    "sort": "1050",
     "title": "泣き虫O'clock",
     "title_kana": "ナキムシOCLOCK",
     "version": "11007"
@@ -1317,7 +1317,7 @@
     "lev_adv": "7",
     "lev_exp": "9",
     "lev_mas": "12",
-    "sort": "1025",
+    "sort": "1031",
     "title": "maimaiちゃんのテーマ",
     "title_kana": "MAIMAIチヤンノテエマ",
     "version": "11001"
@@ -1769,7 +1769,7 @@
     "lev_exp": "11",
     "lev_mas": "13+",
     "lev_remas": "14",
-    "sort": "1014",
+    "sort": "1019",
     "title": "記憶、記録",
     "title_kana": "キオクキロク",
     "version": "12000"
@@ -1844,7 +1844,7 @@
     "lev_exp": "12",
     "lev_mas": "13",
     "lev_remas": "13",
-    "sort": "1072",
+    "sort": "1078",
     "title": "Blew Moon",
     "title_kana": "BLEWMOON",
     "version": "12000"
@@ -1859,7 +1859,7 @@
     "lev_exp": "13",
     "lev_mas": "14",
     "lev_remas": "14+",
-    "sort": "1071",
+    "sort": "1077",
     "title": "Garakuta Doll Play",
     "title_kana": "GARAKUTADOLLPLAY",
     "version": "12005"
@@ -1873,7 +1873,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "12+",
-    "sort": "989",
+    "sort": "994",
     "title": "Dreampainter",
     "title_kana": "DREAMPAINTER",
     "version": "14001"
@@ -1887,7 +1887,7 @@
     "lev_adv": "7",
     "lev_exp": "9+",
     "lev_mas": "12+",
-    "sort": "1008",
+    "sort": "1013",
     "title": "ぐるぐるWASH！コインランドリー・ディスコ",
     "title_kana": "クルクルWASHコインラントリイテイスコ",
     "version": "13000"
@@ -1901,7 +1901,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1003",
+    "sort": "1008",
     "title": "CYCLES",
     "title_kana": "CYCLES",
     "version": "13003"
@@ -1915,7 +1915,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1005",
+    "sort": "1010",
     "title": "Heartbeats",
     "title_kana": "HEARTBEATS1",
     "version": "13003"
@@ -1929,7 +1929,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1196",
+    "sort": "1202",
     "title": "Life Feels Good",
     "title_kana": "LIFEFEELSGOOD",
     "version": "13003"
@@ -1943,7 +1943,7 @@
     "lev_adv": "8+",
     "lev_exp": "12",
     "lev_mas": "14",
-    "sort": "1198",
+    "sort": "1204",
     "title": "MYTHOS",
     "title_kana": "MYTHOS",
     "version": "13003"
@@ -1957,7 +1957,7 @@
     "lev_adv": "7+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "982",
+    "sort": "987",
     "title": "End of Twilight",
     "title_kana": "ENDOFTWILIGHT",
     "version": "13003"
@@ -1975,7 +1975,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1126",
+    "sort": "1132",
     "title": "火炎地獄",
     "title_kana": "カエンシコク",
     "version": "13006"
@@ -1989,7 +1989,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1020",
+    "sort": "1026",
     "title": "ユビキリ",
     "title_kana": "ユヒキリ",
     "version": "18599"
@@ -2003,7 +2003,7 @@
     "lev_adv": "6",
     "lev_exp": "9+",
     "lev_mas": "12+",
-    "sort": "1026",
+    "sort": "1032",
     "title": "Pixel Voyage",
     "title_kana": "PIXELVOYAGE",
     "version": "12000"
@@ -2017,7 +2017,7 @@
     "lev_adv": "7+",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1209",
+    "sort": "1215",
     "title": "Get Happy",
     "title_kana": "GETHAPPY",
     "version": "12000"
@@ -2032,7 +2032,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "14",
-    "sort": "1210",
+    "sort": "1216",
     "title": "System “Z”",
     "title_kana": "SYSTEMZ",
     "version": "12005"
@@ -2047,7 +2047,7 @@
     "lev_exp": "12+",
     "lev_mas": "13+",
     "lev_remas": "14",
-    "sort": "1228",
+    "sort": "1234",
     "title": "Beat of getting entangled",
     "title_kana": "BEATOFGETTINGENTANGLED",
     "version": "12000"
@@ -2061,7 +2061,7 @@
     "lev_adv": "6",
     "lev_exp": "10+",
     "lev_mas": "12",
-    "sort": "1018",
+    "sort": "1024",
     "title": "Cosmic Train",
     "title_kana": "COSMICTRAIN",
     "version": "12000"
@@ -2079,7 +2079,7 @@
     "lev_adv": "7+",
     "lev_exp": "10+",
     "lev_mas": "12",
-    "sort": "1023",
+    "sort": "1029",
     "title": "ナミダと流星",
     "title_kana": "ナミタトリユウセイ",
     "version": "15000"
@@ -2093,7 +2093,7 @@
     "lev_adv": "6",
     "lev_exp": "10",
     "lev_mas": "13",
-    "sort": "1032",
+    "sort": "1038",
     "title": "おても☆Yan",
     "title_kana": "オテモYAN",
     "version": "14009"
@@ -2107,7 +2107,7 @@
     "lev_adv": "7+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1045",
+    "sort": "1051",
     "title": "maiム・maiム feat.週刊少年マガジン",
     "title_kana": "MAIムMAIムFEATシユウカンシヨウネンマカシン",
     "version": "12000"
@@ -2122,7 +2122,7 @@
     "lev_exp": "10+",
     "lev_mas": "13",
     "lev_remas": "13+",
-    "sort": "1245",
+    "sort": "1251",
     "title": "Danza zandA",
     "title_kana": "DANZAZANDA",
     "version": "13010"
@@ -2137,7 +2137,7 @@
     "lev_exp": "11+",
     "lev_mas": "12+",
     "lev_remas": "13",
-    "sort": "1038",
+    "sort": "1044",
     "title": "Backyun! －悪い女－",
     "title_kana": "BACKYUNワルイオンナ",
     "version": "12000"
@@ -2155,7 +2155,7 @@
     "lev_adv": "8+",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "991",
+    "sort": "996",
     "title": "Monochrome Rainbow",
     "title_kana": "MONOCHROMERAINBOW",
     "version": "13000"
@@ -2170,7 +2170,7 @@
     "lev_exp": "11",
     "lev_mas": "13+",
     "lev_remas": "13+",
-    "sort": "971",
+    "sort": "976",
     "title": "みんなのマイマイマー",
     "title_kana": "ミンナノマイマイマア",
     "version": "12000"
@@ -2275,7 +2275,7 @@
     "lev_exp": "12",
     "lev_mas": "13",
     "lev_remas": "13+",
-    "sort": "1227",
+    "sort": "1233",
     "title": "LUCIA",
     "title_kana": "LUCIA",
     "version": "12003"
@@ -2290,7 +2290,7 @@
     "lev_exp": "12",
     "lev_mas": "13+",
     "lev_remas": "14",
-    "sort": "1226",
+    "sort": "1232",
     "title": "Death Scythe",
     "title_kana": "DEATHSCYTHE",
     "version": "12003"
@@ -2304,7 +2304,7 @@
     "lev_adv": "7",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "975",
+    "sort": "980",
     "title": "BREAK YOU!!",
     "title_kana": "BREAKYOU",
     "version": "12003"
@@ -2318,7 +2318,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1006",
+    "sort": "1011",
     "title": "JUMPIN' JUMPIN'",
     "title_kana": "JUMPINJUMPIN",
     "version": "12003"
@@ -2332,7 +2332,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1007",
+    "sort": "1012",
     "title": "L'épilogue",
     "title_kana": "LEPILOGUE",
     "version": "12003"
@@ -2723,13 +2723,12 @@
   {
     "artist": "samfree feat.(V)・∀・(V)かにぱん。(A-ONE)",
     "catcode": "東方Project",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "13",
     "image_url": "fba94ed765e1c00b.png",
-    "release": "250704",
+    "release": "000000",
     "lev_bas": "4",
     "lev_adv": "8",
     "lev_exp": "10+",
@@ -3028,7 +3027,7 @@
     "lev_adv": "7",
     "lev_exp": "9+",
     "lev_mas": "13",
-    "sort": "970",
+    "sort": "975",
     "title": "タカハせ！名人マン",
     "title_kana": "タカハセメイシンマン",
     "version": "13007"
@@ -3239,7 +3238,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1190",
+    "sort": "1196",
     "title": "Axeria",
     "title_kana": "AXERIA",
     "version": "15019"
@@ -3253,7 +3252,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "1024",
+    "sort": "1030",
     "title": "ピーマンたべたら",
     "title_kana": "ヒイマンタヘタラ",
     "version": "14007"
@@ -3267,7 +3266,7 @@
     "lev_adv": "7+",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1017",
+    "sort": "1023",
     "title": "MIRROR of MAGIC",
     "title_kana": "MIRROROFMAGIC",
     "version": "14000"
@@ -3337,7 +3336,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "12+",
-    "sort": "1019",
+    "sort": "1025",
     "title": "BETTER CHOICE",
     "title_kana": "BETTERCHOICE",
     "version": "14003"
@@ -3355,7 +3354,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "14",
-    "sort": "1070",
+    "sort": "1076",
     "title": "Oshama Scramble!",
     "title_kana": "OSHAMASCRAMBLE",
     "version": "15007"
@@ -3370,7 +3369,7 @@
     "lev_exp": "11+",
     "lev_mas": "13+",
     "lev_remas": "13",
-    "sort": "1203",
+    "sort": "1209",
     "title": "D✪N’T  ST✪P  R✪CKIN’",
     "title_kana": "DONTSTOPROCKIN",
     "version": "15007"
@@ -3385,7 +3384,7 @@
     "lev_exp": "13",
     "lev_mas": "14+",
     "lev_remas": "14+",
-    "sort": "1094",
+    "sort": "1100",
     "title": "ガラテアの螺旋",
     "title_kana": "カラテアノラセン",
     "version": "15007"
@@ -3403,7 +3402,7 @@
     "lev_adv": "8",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "1100",
+    "sort": "1106",
     "title": "oboro",
     "title_kana": "OBORO",
     "version": "14008"
@@ -3422,7 +3421,7 @@
     "lev_exp": "10+",
     "lev_mas": "13",
     "lev_remas": "14",
-    "sort": "1225",
+    "sort": "1231",
     "title": "Dragoon",
     "title_kana": "DRAGOON",
     "version": "14008"
@@ -3483,7 +3482,7 @@
     "lev_exp": "11",
     "lev_mas": "13",
     "lev_remas": "13+",
-    "sort": "1021",
+    "sort": "1027",
     "title": "planet dancer",
     "title_kana": "PLANETDANCER",
     "version": "14006"
@@ -3497,7 +3496,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1218",
+    "sort": "1224",
     "title": "Caliburne ～Story of the Legendary sword～",
     "title_kana": "CALIBUNESTORYOFTHELEGENDARYSWORD",
     "version": "14010"
@@ -3567,7 +3566,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "14+",
-    "sort": "1247",
+    "sort": "1253",
     "title": "VERTeX",
     "title_kana": "VERTEX",
     "version": "14004"
@@ -3871,7 +3870,7 @@
     "lev_adv": "8",
     "lev_exp": "9+",
     "lev_mas": "12+",
-    "sort": "980",
+    "sort": "985",
     "title": "welcome to maimai!! with マイマイマー",
     "title_kana": "WELCOMETOMAIMAI",
     "version": "15004"
@@ -3903,7 +3902,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1304",
+    "sort": "1315",
     "title": "Change Our MIRAI！",
     "title_kana": "CHANGEOURMIRAI",
     "version": "15010"
@@ -3917,7 +3916,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1172",
+    "sort": "1178",
     "title": "Aiolos",
     "title_kana": "AIOLOS",
     "version": "15017"
@@ -3935,7 +3934,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1220",
+    "sort": "1226",
     "title": "LANCE",
     "title_kana": "LANCE",
     "version": "15014"
@@ -4005,7 +4004,7 @@
     "lev_adv": "9",
     "lev_exp": "13",
     "lev_mas": "14",
-    "sort": "1068",
+    "sort": "1074",
     "title": "Contrapasso -paradiso-",
     "title_kana": "CONTRAPASSOPARADISO",
     "version": "17005"
@@ -4103,7 +4102,7 @@
     "lev_adv": "7+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1232",
+    "sort": "1238",
     "title": "GEMINI -M-",
     "title_kana": "GEMINIM",
     "version": "16009"
@@ -4201,7 +4200,7 @@
     "lev_adv": "7+",
     "lev_exp": "10+",
     "lev_mas": "12",
-    "sort": "1368",
+    "sort": "1379",
     "title": "Counselor",
     "title_kana": "COUNSELOR",
     "version": "16000"
@@ -4215,7 +4214,7 @@
     "lev_adv": "10",
     "lev_exp": "13",
     "lev_mas": "14+",
-    "sort": "1171",
+    "sort": "1177",
     "title": "Glorious Crown",
     "title_kana": "GLORIOUSCROWN",
     "version": "16014"
@@ -4257,7 +4256,7 @@
     "lev_adv": "8+",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1369",
+    "sort": "1380",
     "title": "幾四音-Ixion-",
     "title_kana": "イクシオン",
     "version": "16000"
@@ -4271,7 +4270,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1356",
+    "sort": "1367",
     "title": "閃鋼のブリューナク",
     "title_kana": "センコウノフリユウナク",
     "version": "16002"
@@ -4285,7 +4284,7 @@
     "lev_adv": "8+",
     "lev_exp": "10",
     "lev_mas": "13+",
-    "sort": "1305",
+    "sort": "1316",
     "title": "無敵We are one!!",
     "title_kana": "ムテキWEAREONE",
     "version": "17000"
@@ -4299,7 +4298,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "14",
-    "sort": "1141",
+    "sort": "1147",
     "title": "7thSense",
     "title_kana": "7THSENSE",
     "version": "16007"
@@ -4314,7 +4313,7 @@
     "lev_exp": "11+",
     "lev_mas": "13+",
     "lev_remas": "13+",
-    "sort": "974",
+    "sort": "979",
     "title": "FEEL the BEATS",
     "title_kana": "FEELTHEBEATS",
     "version": "16012"
@@ -4329,7 +4328,7 @@
     "lev_exp": "12+",
     "lev_mas": "13+",
     "lev_remas": "14",
-    "sort": "1237",
+    "sort": "1243",
     "title": "Revive The Rave",
     "title_kana": "REVIVETHERAVE",
     "version": "16005"
@@ -4343,7 +4342,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13+",
-    "sort": "1002",
+    "sort": "1007",
     "title": "スリップフリップ",
     "title_kana": "スリツフフリツフ",
     "version": "16012"
@@ -4414,7 +4413,7 @@
     "lev_exp": "10+",
     "lev_mas": "13",
     "lev_remas": "14",
-    "sort": "988",
+    "sort": "993",
     "title": "アージェントシンメトリー",
     "title_kana": "アアシエントシンメトリイ",
     "version": "16002"
@@ -4484,7 +4483,7 @@
     "lev_adv": "9+",
     "lev_exp": "13",
     "lev_mas": "14",
-    "sort": "1205",
+    "sort": "1211",
     "title": "Lividi",
     "title_kana": "LIVIDI",
     "version": "18015"
@@ -4498,7 +4497,7 @@
     "lev_adv": "8+",
     "lev_exp": "10+",
     "lev_mas": "13+",
-    "sort": "1360",
+    "sort": "1371",
     "title": "Infantoon Fantasy",
     "title_kana": "INFANTOONFANTASY",
     "version": "17004"
@@ -4512,7 +4511,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1206",
+    "sort": "1212",
     "title": "Jumble Rumble",
     "title_kana": "JUMBLERUMBLE",
     "version": "17007"
@@ -4530,7 +4529,7 @@
     "lev_adv": "7+",
     "lev_exp": "12+",
     "lev_mas": "13",
-    "sort": "1208",
+    "sort": "1214",
     "title": "Imitation:Loud Lounge",
     "title_kana": "IMITATIONLOUDLOUNGE",
     "version": "18014"
@@ -4544,7 +4543,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1202",
+    "sort": "1208",
     "title": "CITRUS MONSTER",
     "title_kana": "CITRUSMONSTER",
     "version": "17015"
@@ -4558,7 +4557,7 @@
     "lev_adv": "9",
     "lev_exp": "13",
     "lev_mas": "13+",
-    "sort": "1149",
+    "sort": "1155",
     "title": "Hyper Active",
     "title_kana": "HYPERACTIVE",
     "version": "17011"
@@ -4573,7 +4572,7 @@
     "lev_exp": "13+",
     "lev_mas": "14+",
     "lev_remas": "14",
-    "sort": "1239",
+    "sort": "1245",
     "title": "AMAZING MIGHTYYYY!!!!",
     "title_kana": "AMAZINGMIGHTYYYY",
     "version": "17018"
@@ -4855,7 +4854,7 @@
     "lev_adv": "7",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1313",
+    "sort": "1324",
     "title": "brilliant better",
     "title_kana": "BRILLIANTBETTER",
     "version": "17010"
@@ -4869,7 +4868,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1311",
+    "sort": "1322",
     "title": "ハート・ビート",
     "title_kana": "ハアトヒイト",
     "version": "17016"
@@ -4883,7 +4882,7 @@
     "lev_adv": "7+",
     "lev_exp": "9+",
     "lev_mas": "13",
-    "sort": "1370",
+    "sort": "1381",
     "title": "Invitation",
     "title_kana": "INVITATION",
     "version": "17001"
@@ -4897,7 +4896,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1015",
+    "sort": "1020",
     "title": "connecting with you",
     "title_kana": "CONNECTINGWITHYOU",
     "version": "17002"
@@ -4911,7 +4910,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1243",
+    "sort": "1249",
     "title": "高気圧ねこロック",
     "title_kana": "コウキアツネコロツク",
     "version": "17002"
@@ -4925,7 +4924,7 @@
     "lev_adv": "9",
     "lev_exp": "12",
     "lev_mas": "14+",
-    "sort": "1238",
+    "sort": "1244",
     "title": "Prophesy One",
     "title_kana": "PROPHESYONE",
     "version": "17018"
@@ -4968,7 +4967,7 @@
     "lev_adv": "8",
     "lev_exp": "12",
     "lev_mas": "14",
-    "sort": "1211",
+    "sort": "1217",
     "title": "Nitrous Fury",
     "title_kana": "NITROUSFURY",
     "version": "17013"
@@ -5116,7 +5115,7 @@
     "lev_adv": "6",
     "lev_exp": "9",
     "lev_mas": "12+",
-    "sort": "1315",
+    "sort": "1326",
     "title": "フォルテシモBELL",
     "title_kana": "フオルテシモBELL",
     "version": "18007"
@@ -5130,7 +5129,7 @@
     "lev_adv": "7",
     "lev_exp": "9+",
     "lev_mas": "13",
-    "sort": "1317",
+    "sort": "1328",
     "title": "私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察",
     "title_kana": "ワタシノナカノケンソウテキセカイカン",
     "version": "18009"
@@ -5144,7 +5143,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "1320",
+    "sort": "1331",
     "title": "DETARAME ROCK&ROLL THEORY",
     "title_kana": "DETARAMEROCKROLLTHEORY",
     "version": "18008"
@@ -5278,7 +5277,7 @@
     "lev_adv": "8+",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "978",
+    "sort": "983",
     "title": "いっしそう電☆舞舞神拳！",
     "title_kana": "イツシソウテンマイマイシンケン",
     "version": "18003"
@@ -5292,7 +5291,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "12+",
-    "sort": "1013",
+    "sort": "1018",
     "title": "ENJOY POLIS",
     "title_kana": "ENJOYPOLIS",
     "version": "19900"
@@ -5320,7 +5319,7 @@
     "lev_adv": "9+",
     "lev_exp": "13",
     "lev_mas": "14",
-    "sort": "1140",
+    "sort": "1146",
     "title": "天火明命",
     "title_kana": "アメノホアカリ",
     "version": "18022"
@@ -5334,7 +5333,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1242",
+    "sort": "1248",
     "title": "HERA",
     "title_kana": "HERA",
     "version": "18011"
@@ -5362,7 +5361,7 @@
     "lev_adv": "9+",
     "lev_exp": "13",
     "lev_mas": "14+",
-    "sort": "1067",
+    "sort": "1073",
     "title": "Our Wrenally",
     "title_kana": "OURWRENALLY",
     "version": "18006"
@@ -5394,7 +5393,7 @@
     "lev_adv": "8+",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "1199",
+    "sort": "1205",
     "title": "四月の雨",
     "title_kana": "シカツノアメ",
     "version": "18020"
@@ -5412,7 +5411,7 @@
     "lev_adv": "7+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1001",
+    "sort": "1006",
     "title": "Selector",
     "title_kana": "SELECTOR",
     "version": "18010"
@@ -5426,7 +5425,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1306",
+    "sort": "1317",
     "title": "ドキドキDREAM!!!",
     "title_kana": "トキトキDREAM",
     "version": "18009"
@@ -5468,7 +5467,7 @@
     "lev_adv": "9",
     "lev_exp": "13",
     "lev_mas": "14",
-    "sort": "1195",
+    "sort": "1201",
     "title": "ねぇ、壊れタ人形ハ何処へ棄テらレるノ？",
     "title_kana": "ネエコワレタニンキヨウハトコヘステラレルノ",
     "version": "18018"
@@ -5567,7 +5566,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "14",
-    "sort": "1201",
+    "sort": "1207",
     "title": "Panopticon",
     "title_kana": "PANOPTICON",
     "version": "18022"
@@ -5673,7 +5672,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "12+",
-    "sort": "1371",
+    "sort": "1382",
     "title": "その群青が愛しかったようだった",
     "title_kana": "ソノクンシヨウカイトシカツタヨウタ",
     "version": "18012"
@@ -5687,7 +5686,7 @@
     "lev_adv": "8+",
     "lev_exp": "13",
     "lev_mas": "14",
-    "sort": "1372",
+    "sort": "1383",
     "title": "The wheel to the right",
     "title_kana": "THEWHEELTOTHERIGHT",
     "version": "18019"
@@ -5757,7 +5756,7 @@
     "lev_adv": "8",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "984",
+    "sort": "989",
     "title": "夢花火",
     "title_kana": "ユメハナヒ",
     "version": "18500"
@@ -5771,7 +5770,7 @@
     "lev_adv": "7+",
     "lev_exp": "11+",
     "lev_mas": "12+",
-    "sort": "999",
+    "sort": "1004",
     "title": "オトヒメモリー☆ウタゲーション",
     "title_kana": "オトヒメモリイウタケイシヨン",
     "version": "18501"
@@ -5887,7 +5886,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1374",
+    "sort": "1385",
     "title": "心象蜃気楼",
     "title_kana": "シンシヨウシンキロウ",
     "version": "18504"
@@ -5901,7 +5900,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1373",
+    "sort": "1384",
     "title": "光線チューニング",
     "title_kana": "コウセンチユウニンク",
     "version": "18504"
@@ -5916,7 +5915,7 @@
     "lev_exp": "11",
     "lev_mas": "13",
     "lev_remas": "13+",
-    "sort": "998",
+    "sort": "1003",
     "title": "Limit Break",
     "title_kana": "LIMITBREAK",
     "version": "18505"
@@ -5930,7 +5929,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "997",
+    "sort": "1002",
     "title": "曖昧mind",
     "title_kana": "アイマイMIND",
     "version": "18505"
@@ -5944,7 +5943,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "976",
+    "sort": "981",
     "title": "KING is BACK!!",
     "title_kana": "KINGISBACK",
     "version": "18505"
@@ -5958,7 +5957,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1189",
+    "sort": "1195",
     "title": "Ultranova",
     "title_kana": "ULTRANOVA",
     "version": "18505"
@@ -6060,7 +6059,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "986",
+    "sort": "991",
     "title": "Justified",
     "title_kana": "JUSTIFIED",
     "version": "19012"
@@ -6074,7 +6073,7 @@
     "lev_adv": "10",
     "lev_exp": "13",
     "lev_mas": "14+",
-    "sort": "1217",
+    "sort": "1223",
     "title": "Excalibur ～Revived resolution～",
     "title_kana": "EXCALIBURREVIVEDRESOLUTION",
     "version": "19005"
@@ -6102,7 +6101,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1323",
+    "sort": "1334",
     "title": "My Dearest Song",
     "title_kana": "MYDEARESTSONG",
     "version": "18509"
@@ -6116,7 +6115,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1324",
+    "sort": "1335",
     "title": "猛進ソリストライフ！",
     "title_kana": "モウシンソリストライフ",
     "version": "18509"
@@ -6228,7 +6227,7 @@
     "lev_adv": "9",
     "lev_exp": "13",
     "lev_mas": "14",
-    "sort": "1223",
+    "sort": "1229",
     "title": "Moon of Noon",
     "title_kana": "MOONOFNOON",
     "version": "18507"
@@ -6260,7 +6259,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "1050",
+    "sort": "1056",
     "title": "デスパレイト",
     "title_kana": "テスハレイト",
     "version": "18507"
@@ -6335,7 +6334,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "996",
+    "sort": "1001",
     "title": "Magical Flavor",
     "title_kana": "MAGICALFLAVOR",
     "version": "19000"
@@ -6391,7 +6390,7 @@
     "lev_adv": "7+",
     "lev_exp": "11+",
     "lev_mas": "13+",
-    "sort": "994",
+    "sort": "999",
     "title": "Candy Tall Woman",
     "title_kana": "CANDYTALLWOMAN",
     "version": "19007"
@@ -6405,7 +6404,7 @@
     "lev_adv": "8+",
     "lev_exp": "12",
     "lev_mas": "13",
-    "sort": "1216",
+    "sort": "1222",
     "title": "Signature",
     "title_kana": "SIGNATURE",
     "version": "19003"
@@ -6563,7 +6562,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1321",
+    "sort": "1332",
     "title": "猫祭り",
     "title_kana": "ネコマツリ",
     "version": "19008"
@@ -6577,7 +6576,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1318",
+    "sort": "1329",
     "title": "TRUST",
     "title_kana": "TRUST",
     "version": "19008"
@@ -6591,7 +6590,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13",
-    "sort": "1307",
+    "sort": "1318",
     "title": "Still",
     "title_kana": "STILL",
     "version": "19008"
@@ -6684,7 +6683,7 @@
     "lev_exp": "11+",
     "lev_mas": "13",
     "lev_remas": "13",
-    "sort": "987",
+    "sort": "992",
     "title": "SPILL OVER COLORS",
     "title_kana": "SPILLOVERCOLORS",
     "version": "19009"
@@ -6698,7 +6697,7 @@
     "lev_adv": "9",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "1214",
+    "sort": "1220",
     "title": "Mare Maris",
     "title_kana": "MAREMARIS",
     "version": "19012"
@@ -6814,7 +6813,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "12+",
-    "sort": "995",
+    "sort": "1000",
     "title": "Kinda Way",
     "title_kana": "KINDAWAY",
     "version": "19005"
@@ -6842,7 +6841,7 @@
     "lev_adv": "9+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1385",
+    "sort": "1396",
     "title": "エンドマークに希望と涙を添えて",
     "title_kana": "エントマアクニキホウトナミタヲソエテ",
     "version": "19010"
@@ -6870,7 +6869,7 @@
     "lev_adv": "8",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1314",
+    "sort": "1325",
     "title": "Bang Babang Bang!!!",
     "title_kana": "BANGBABANGBANG",
     "version": "19001"
@@ -6884,7 +6883,7 @@
     "lev_adv": "7",
     "lev_exp": "9",
     "lev_mas": "12",
-    "sort": "1316",
+    "sort": "1327",
     "title": "Tic Tac DREAMIN’",
     "title_kana": "TICTACDREAMIN",
     "version": "19001"
@@ -6898,7 +6897,7 @@
     "lev_adv": "8+",
     "lev_exp": "11+",
     "lev_mas": "13",
-    "sort": "1312",
+    "sort": "1323",
     "title": "SPICY SWINGY STYLE",
     "title_kana": "SPICYSWINGYSTYLE",
     "version": "19001"
@@ -7001,7 +7000,7 @@
     "lev_adv": "7+",
     "lev_exp": "10+",
     "lev_mas": "12+",
-    "sort": "1308",
+    "sort": "1319",
     "title": "Session High⤴",
     "title_kana": "SESSIONHIGH",
     "version": "19500"
@@ -7015,7 +7014,7 @@
     "lev_adv": "9+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1375",
+    "sort": "1386",
     "title": "World Vanquisher",
     "title_kana": "WORLDVANQUISHER",
     "version": "19500"
@@ -7029,7 +7028,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "993",
+    "sort": "998",
     "title": "FestivaLight",
     "title_kana": "FESTIVALIGHT",
     "version": "19500"
@@ -7114,7 +7113,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1212",
+    "sort": "1218",
     "title": "keep hopping",
     "title_kana": "KEEPHOPPING",
     "version": "19503"
@@ -7128,7 +7127,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14+",
-    "sort": "1241",
+    "sort": "1247",
     "title": "larva",
     "title_kana": "LARVA",
     "version": "19503"
@@ -7241,7 +7240,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1376",
+    "sort": "1387",
     "title": "Xevel",
     "title_kana": "XEVEL",
     "version": "19507"
@@ -7284,7 +7283,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1229",
+    "sort": "1235",
     "title": "Ragnarok",
     "title_kana": "RAGNAROK",
     "version": "19508"
@@ -7397,7 +7396,7 @@
     "lev_adv": "7+",
     "lev_exp": "10+",
     "lev_mas": "12+",
-    "sort": "1310",
+    "sort": "1321",
     "title": "Help me, あーりん！",
     "title_kana": "HELPMEARRIN",
     "version": "19510"
@@ -7411,7 +7410,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "1309",
+    "sort": "1320",
     "title": "なるとなぎのパーフェクトロックンロール教室",
     "title_kana": "ナルトナキノハアフエクトロツクンロオルキヨウシツ",
     "version": "19510"
@@ -7425,7 +7424,7 @@
     "lev_adv": "8",
     "lev_exp": "10+",
     "lev_mas": "13",
-    "sort": "1327",
+    "sort": "1338",
     "title": "あねぺったん",
     "title_kana": "アネヘツタン",
     "version": "19510"
@@ -7439,7 +7438,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1377",
+    "sort": "1388",
     "title": "We Gonna Journey",
     "title_kana": "WEGONNAJOURNEY",
     "version": "19511"
@@ -7467,7 +7466,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "14+",
-    "sort": "1061",
+    "sort": "1067",
     "title": "SILENT BLUE",
     "title_kana": "SILENTBLUE",
     "version": "19514"
@@ -7510,7 +7509,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "13+",
-    "sort": "992",
+    "sort": "997",
     "title": "花と、雪と、ドラムンベース。",
     "title_kana": "ハナトユキノトラムンヘエス",
     "version": "19512"
@@ -7538,7 +7537,7 @@
     "lev_adv": "9+",
     "lev_exp": "13",
     "lev_mas": "14+",
-    "sort": "1379",
+    "sort": "1390",
     "title": "怒槌",
     "title_kana": "イカツチ",
     "version": "19514"
@@ -7580,7 +7579,7 @@
     "lev_adv": "8+",
     "lev_exp": "12+",
     "lev_mas": "13+",
-    "sort": "1378",
+    "sort": "1389",
     "title": "My First Phone",
     "title_kana": "MYFIRSTPHONE",
     "version": "19514"
@@ -7709,7 +7708,7 @@
     "lev_exp": "13",
     "lev_mas": "14+",
     "lev_remas": "14+",
-    "sort": "1066",
+    "sort": "1072",
     "title": "QZKago Requiem",
     "title_kana": "QZKAGOREQUIEM",
     "version": "19992"
@@ -7766,7 +7765,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "14+",
-    "sort": "1233",
+    "sort": "1239",
     "title": "Schwarzschild",
     "title_kana": "SCHWARZSCHILD",
     "version": "19993"
@@ -7881,7 +7880,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "14+",
-    "sort": "1164",
+    "sort": "1170",
     "title": "Alea jacta est!",
     "title_kana": "ALEAJACTAEST",
     "version": "19994"
@@ -7968,7 +7967,7 @@
     "lev_exp": "12+",
     "lev_mas": "14",
     "lev_remas": "14",
-    "sort": "1200",
+    "sort": "1206",
     "title": "FFT",
     "title_kana": "FFT",
     "version": "19995"
@@ -7982,7 +7981,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "1322",
+    "sort": "1333",
     "title": "-OutsideR:RequieM-",
     "title_kana": "OUTSIDERREQUIEM",
     "version": "19906"
@@ -7996,7 +7995,7 @@
     "lev_adv": "7",
     "lev_exp": "10+",
     "lev_mas": "12+",
-    "sort": "1319",
+    "sort": "1330",
     "title": "イロトリドリのメロディ",
     "title_kana": "イロトリトリノメロテイ",
     "version": "19906"
@@ -8010,7 +8009,7 @@
     "lev_adv": "9",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "1325",
+    "sort": "1336",
     "title": "奏者はただ背中と提琴で語るのみ",
     "title_kana": "ソウシヤハタタセナカトハイオリンテカタルノミ",
     "version": "19906"
@@ -8025,7 +8024,7 @@
     "lev_exp": "12+",
     "lev_mas": "14+",
     "lev_remas": "14+",
-    "sort": "1213",
+    "sort": "1219",
     "title": "雷切-RAIKIRI-",
     "title_kana": "ライキリ",
     "version": "19996"
@@ -8113,7 +8112,7 @@
     "lev_exp": "13",
     "lev_mas": "14+",
     "lev_remas": "14+",
-    "sort": "1093",
+    "sort": "1099",
     "title": "the EmpErroR",
     "title_kana": "THEEMPERROR",
     "version": "19997"
@@ -8128,7 +8127,7 @@
     "lev_exp": "13+",
     "lev_mas": "14+",
     "lev_remas": "15",
-    "sort": "1139",
+    "sort": "1145",
     "title": "PANDORA PARADOXXX",
     "title_kana": "PANDORAPARADOXXX",
     "version": "19998"
@@ -8142,7 +8141,7 @@
     "lev_adv": "8+",
     "lev_exp": "10",
     "lev_mas": "13",
-    "sort": "1016",
+    "sort": "1022",
     "title": "Believe the Rainbow",
     "title_kana": "BELIEVETHERAINBOW",
     "version": "19999"
@@ -8297,7 +8296,7 @@
     "lev_adv": "9",
     "lev_exp": "13",
     "lev_mas": "13+",
-    "sort": "1381",
+    "sort": "1392",
     "title": "Kattobi KEIKYU Rider",
     "title_kana": "KATTOBIKEIKYURIDER",
     "version": "19904"
@@ -8325,7 +8324,7 @@
     "lev_adv": "10",
     "lev_exp": "13",
     "lev_mas": "14+",
-    "sort": "1380",
+    "sort": "1391",
     "title": "TiamaT:F minor",
     "title_kana": "TIAMATFMINOR",
     "version": "19900"
@@ -8357,7 +8356,7 @@
     "lev_adv": "7+",
     "lev_exp": "11",
     "lev_mas": "13+",
-    "sort": "1147",
+    "sort": "1153",
     "title": "Technicians High",
     "title_kana": "TECHNICIANSHIGH",
     "version": "22005"
@@ -8429,7 +8428,7 @@
     "lev_adv": "9",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1103",
+    "sort": "1109",
     "title": "渦状銀河のシンフォニエッタ",
     "title_kana": "カシヨウキンカノシンフオニエツタ",
     "version": "24014"
@@ -8447,7 +8446,7 @@
     "lev_adv": "8",
     "lev_exp": "12+",
     "lev_mas": "14",
-    "sort": "1117",
+    "sort": "1123",
     "title": "VIIIbit Explorer",
     "title_kana": "VIIIBITEXPLORER",
     "version": "23007"
@@ -8465,7 +8464,7 @@
     "lev_adv": "8",
     "lev_exp": "12",
     "lev_mas": "13+",
-    "sort": "1155",
+    "sort": "1161",
     "title": "華の集落、秋のお届け",
     "title_kana": "ハナノシユウラクアキノオトトケ",
     "version": "24510"
@@ -8508,7 +8507,7 @@
     "dx_lev_mas": "12+",
     "image_url": "461917094fed4012.png",
     "release": "000000",
-    "sort": "967",
+    "sort": "972",
     "title": "でらっくmaimai♪てんてこまい!",
     "title_kana": "テラツクマイマイテンテコマイ",
     "version": "20000"
@@ -8523,7 +8522,7 @@
     "dx_lev_remas": "14",
     "image_url": "0a0caa488ad79b61.png",
     "release": "000000",
-    "sort": "1204",
+    "sort": "1210",
     "title": "MAXRAGE",
     "title_kana": "MAXRAGE",
     "version": "20000"
@@ -8538,7 +8537,7 @@
     "dx_lev_remas": "14",
     "image_url": "d95b9e9492d691ec.png",
     "release": "000000",
-    "sort": "1222",
+    "sort": "1228",
     "title": "バーチャルダム　ネーション",
     "title_kana": "ハアチヤルタムネエシヨン",
     "version": "20000"
@@ -8552,7 +8551,7 @@
     "dx_lev_mas": "13",
     "image_url": "83b0d1eecad1ca6c.png",
     "release": "000000",
-    "sort": "1053",
+    "sort": "1059",
     "title": "P-qoq",
     "title_kana": "PQOQ",
     "version": "20000"
@@ -8567,7 +8566,7 @@
     "dx_lev_remas": "13+",
     "image_url": "70510086327c010b.png",
     "release": "000000",
-    "sort": "965",
+    "sort": "970",
     "title": "超常マイマイン",
     "title_kana": "チヨウシヨウマイマイン",
     "version": "20000"
@@ -8581,7 +8580,7 @@
     "dx_lev_mas": "12+",
     "image_url": "38542e3373e20ae4.png",
     "release": "000000",
-    "sort": "966",
+    "sort": "971",
     "title": "Crazy Circle",
     "title_kana": "CRAZYCIRCLE",
     "version": "20000"
@@ -8596,7 +8595,7 @@
     "dx_lev_remas": "13",
     "image_url": "66080b430db9b49c.png",
     "release": "000000",
-    "sort": "964",
+    "sort": "969",
     "title": "STEREOSCAPE",
     "title_kana": "STEREOSCAPE",
     "version": "20000"
@@ -8611,7 +8610,7 @@
     "dx_lev_remas": "12",
     "image_url": "ed96c2a200c81d55.png",
     "release": "000000",
-    "sort": "1257",
+    "sort": "1268",
     "title": "STARTLINER",
     "title_kana": "STARTLINER",
     "version": "20002"
@@ -8625,7 +8624,7 @@
     "dx_lev_mas": "12+",
     "image_url": "392f29c0cc1df489.png",
     "release": "000000",
-    "sort": "969",
+    "sort": "974",
     "title": "♡マイマイマイラブ♡",
     "title_kana": "マイマイマイラフ",
     "version": "20007"
@@ -8640,7 +8639,7 @@
     "dx_lev_remas": "14",
     "image_url": "1873c61115b01c98.png",
     "release": "000000",
-    "sort": "983",
+    "sort": "988",
     "title": "一か罰",
     "title_kana": "イチカハチ",
     "version": "20008"
@@ -8654,7 +8653,7 @@
     "dx_lev_mas": "13",
     "image_url": "6ef94b83aa8b6213.png",
     "release": "000000",
-    "sort": "973",
+    "sort": "978",
     "title": "キリキリ舞Mine",
     "title_kana": "キリキリマイマイン",
     "version": "20008"
@@ -8668,7 +8667,7 @@
     "dx_lev_mas": "13",
     "image_url": "d460c9541b932e05.png",
     "release": "000000",
-    "sort": "972",
+    "sort": "977",
     "title": "福宿音屋魂音泉",
     "title_kana": "フクヤトルオトヤタマオンセン",
     "version": "20008"
@@ -8683,7 +8682,7 @@
     "dx_lev_remas": "14",
     "image_url": "611619306640df12.png",
     "release": "000000",
-    "sort": "985",
+    "sort": "990",
     "title": "Now or Never",
     "title_kana": "NOWORNEVER",
     "version": "20008"
@@ -8697,7 +8696,7 @@
     "dx_lev_mas": "12+",
     "image_url": "0658c9340f90f5c8.png",
     "release": "000000",
-    "sort": "981",
+    "sort": "986",
     "title": "Scarlet Wings",
     "title_kana": "SCARLETWINGS",
     "version": "20003"
@@ -8711,7 +8710,7 @@
     "dx_lev_mas": "13+",
     "image_url": "571080deee3ca1df.png",
     "release": "000000",
-    "sort": "1215",
+    "sort": "1221",
     "title": "魔ジョ狩リ",
     "title_kana": "マシヨカリ",
     "version": "20003"
@@ -8725,7 +8724,7 @@
     "dx_lev_mas": "13+",
     "image_url": "ff21a1154316f6e7.png",
     "release": "000000",
-    "sort": "1065",
+    "sort": "1071",
     "title": "TwisteD! XD",
     "title_kana": "TWISTED",
     "version": "20003"
@@ -8740,7 +8739,7 @@
     "dx_lev_remas": "14",
     "image_url": "6791fcbbde5a1056.png",
     "release": "000000",
-    "sort": "1236",
+    "sort": "1242",
     "title": "Blows Up Everything",
     "title_kana": "BLOWSUPEVERYTHING",
     "version": "20003"
@@ -8754,7 +8753,7 @@
     "dx_lev_mas": "12",
     "image_url": "4d22545493b5a4e0.png",
     "release": "000000",
-    "sort": "1333",
+    "sort": "1344",
     "title": "Agitation！",
     "title_kana": "AGITATION",
     "version": "20011"
@@ -8768,7 +8767,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6dde61e843ceca00.png",
     "release": "000000",
-    "sort": "1326",
+    "sort": "1337",
     "title": "管弦楽組曲 第3番 ニ長調「第2曲（G線上のアリア）」BWV.1068-2",
     "title_kana": "カンケンカククミキヨクタイサンハンニチヨウチヨウタイニキヨクシイセンシヨウノアリアBWV10682",
     "version": "20011"
@@ -8782,7 +8781,7 @@
     "dx_lev_mas": "14+",
     "image_url": "492c768653001e2a.png",
     "release": "000000",
-    "sort": "1060",
+    "sort": "1066",
     "title": "TEmPTaTiON",
     "title_kana": "TEMPTATION",
     "version": "20013"
@@ -8796,7 +8795,7 @@
     "dx_lev_mas": "14",
     "image_url": "5b142977c87d85d1.png",
     "release": "000000",
-    "sort": "1194",
+    "sort": "1200",
     "title": "アポカリプスに反逆の焔を焚べろ",
     "title_kana": "アホカリフスニハンキヤクノホノオヲクヘロ",
     "version": "20013"
@@ -8810,7 +8809,7 @@
     "dx_lev_mas": "13+",
     "image_url": "d8edddab9b63782a.png",
     "release": "000000",
-    "sort": "1382",
+    "sort": "1393",
     "title": "玩具狂奏曲 -終焉-",
     "title_kana": "カンクキヨウソウキヨクシユウエン",
     "version": "20009"
@@ -8824,7 +8823,7 @@
     "dx_lev_mas": "14+",
     "image_url": "a6dce38910fd32d7.png",
     "release": "000000",
-    "sort": "1287",
+    "sort": "1298",
     "title": "Titania",
     "title_kana": "TITANIA",
     "version": "20009"
@@ -8838,7 +8837,7 @@
     "dx_lev_mas": "13",
     "image_url": "8be390a8118639f5.png",
     "release": "000000",
-    "sort": "1383",
+    "sort": "1394",
     "title": "BOKUTO",
     "title_kana": "BOKUTO",
     "version": "20015"
@@ -8852,7 +8851,7 @@
     "dx_lev_mas": "13+",
     "image_url": "d8ed15b9651c107c.png",
     "release": "000000",
-    "sort": "1384",
+    "sort": "1395",
     "title": "立川浄穢捕物帳",
     "title_kana": "タチカワシヨウエトリモノチヨウ",
     "version": "20015"
@@ -8866,7 +8865,7 @@
     "dx_lev_mas": "13+",
     "image_url": "9e15d61bf69877e4.png",
     "release": "000000",
-    "sort": "1365",
+    "sort": "1376",
     "title": "CHOCOLATE BOMB!!!!",
     "title_kana": "CHOCOLATEBOMB",
     "version": "20514"
@@ -9202,7 +9201,7 @@
     "dx_lev_mas": "12",
     "image_url": "e5cbb7f29dbf12dc.png",
     "release": "000000",
-    "sort": "1258",
+    "sort": "1269",
     "title": "Jump!! Jump!! Jump!!",
     "title_kana": "JUMPJUMPJUMP",
     "version": "20002"
@@ -9286,7 +9285,7 @@
     "dx_lev_mas": "14",
     "image_url": "fac8d66129926589.png",
     "release": "000000",
-    "sort": "1163",
+    "sort": "1169",
     "title": "STEEL TRANSONIC",
     "title_kana": "STEELTRANSONIC",
     "version": "20505"
@@ -9300,7 +9299,7 @@
     "dx_lev_mas": "13",
     "image_url": "d84cebbe82687a4b.png",
     "release": "000000",
-    "sort": "1187",
+    "sort": "1193",
     "title": "Flashkick",
     "title_kana": "FLASHKICK",
     "version": "20505"
@@ -9314,7 +9313,7 @@
     "dx_lev_mas": "13",
     "image_url": "869b30cfdcb643f7.png",
     "release": "000000",
-    "sort": "1184",
+    "sort": "1190",
     "title": "Stardust Memories",
     "title_kana": "STARDUSTMEMORIES",
     "version": "20509"
@@ -9328,7 +9327,7 @@
     "dx_lev_mas": "13+",
     "image_url": "ef49d54bf76426a4.png",
     "release": "000000",
-    "sort": "1129",
+    "sort": "1135",
     "title": "My My My",
     "title_kana": "MYMYMY",
     "version": "20509"
@@ -9342,7 +9341,7 @@
     "dx_lev_mas": "14",
     "image_url": "a7c4c1462f81284a.png",
     "release": "000000",
-    "sort": "1185",
+    "sort": "1191",
     "title": "UniTas",
     "title_kana": "UNITAS",
     "version": "20500"
@@ -9356,7 +9355,7 @@
     "dx_lev_mas": "13",
     "image_url": "c4360c3533c50d49.png",
     "release": "000000",
-    "sort": "1188",
+    "sort": "1194",
     "title": "ここからはじまるプロローグ。",
     "title_kana": "ココカラハシマルフロロオク",
     "version": "20500"
@@ -9370,7 +9369,7 @@
     "dx_lev_mas": "12+",
     "image_url": "6e8cce3f2599eb13.png",
     "release": "000000",
-    "sort": "962",
+    "sort": "967",
     "title": "絡めトリック利己ライザー",
     "title_kana": "カラメトリツクリコライサア",
     "version": "20500"
@@ -9384,7 +9383,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f0ae8cae2fae4f11.png",
     "release": "000000",
-    "sort": "1092",
+    "sort": "1098",
     "title": "モ°ルモ°ル",
     "title_kana": "モルモル",
     "version": "20500"
@@ -9398,7 +9397,7 @@
     "dx_lev_mas": "13",
     "image_url": "272d10fdd20ebf8d.png",
     "release": "000000",
-    "sort": "961",
+    "sort": "966",
     "title": "ブレインジャックシンドローム",
     "title_kana": "フレインシヤツクシントロオム",
     "version": "20505"
@@ -9412,7 +9411,7 @@
     "dx_lev_mas": "13",
     "image_url": "f03b05b1fc782ceb.png",
     "release": "000000",
-    "sort": "960",
+    "sort": "965",
     "title": "共鳴",
     "title_kana": "キヨウメイ",
     "version": "20509"
@@ -9426,7 +9425,7 @@
     "dx_lev_mas": "12+",
     "image_url": "5c7da68424b91ee0.png",
     "release": "000000",
-    "sort": "963",
+    "sort": "968",
     "title": "Ututu",
     "title_kana": "UTUTU",
     "version": "20509"
@@ -9441,7 +9440,7 @@
     "dx_lev_remas": "13+",
     "image_url": "9fb752248141c1d7.png",
     "release": "000000",
-    "sort": "959",
+    "sort": "964",
     "title": "シエルブルーマルシェ",
     "title_kana": "シエルフルウマルシエ",
     "version": "20505"
@@ -9455,7 +9454,7 @@
     "dx_lev_mas": "13+",
     "image_url": "2a26b38fcd378676.png",
     "release": "000000",
-    "sort": "1186",
+    "sort": "1192",
     "title": "GRÄNDIR",
     "title_kana": "GRANDIR",
     "version": "20512"
@@ -9469,7 +9468,7 @@
     "dx_lev_mas": "14+",
     "image_url": "2985e6ee69db26de.png",
     "release": "000000",
-    "sort": "1055",
+    "sort": "1061",
     "title": "封焔の135秒",
     "title_kana": "フウエンノ135ヒヨウ",
     "version": "20512"
@@ -9511,7 +9510,7 @@
     "dx_lev_mas": "14+",
     "image_url": "d394210103ee76c3.png",
     "release": "000000",
-    "sort": "1052",
+    "sort": "1058",
     "title": "Valsqotch",
     "title_kana": "VALSQOTCH",
     "version": "20502"
@@ -9525,7 +9524,7 @@
     "dx_lev_mas": "12+",
     "image_url": "ab91abb8f5f716be.png",
     "release": "000000",
-    "sort": "1259",
+    "sort": "1270",
     "title": "最強 the サマータイム!!!!!",
     "title_kana": "サイキヨウササマアタイム",
     "version": "20503"
@@ -9539,7 +9538,7 @@
     "dx_lev_mas": "12+",
     "image_url": "f3768d0e7994daa5.png",
     "release": "000000",
-    "sort": "1273",
+    "sort": "1284",
     "title": "UTAKATA",
     "title_kana": "UTAKATA",
     "version": "20503"
@@ -9553,7 +9552,7 @@
     "dx_lev_mas": "12+",
     "image_url": "75ed99d686a556b0.png",
     "release": "000000",
-    "sort": "1270",
+    "sort": "1281",
     "title": "タテマエと本心の大乱闘",
     "title_kana": "タテマエトホンシンノタイラントウ",
     "version": "20503"
@@ -9567,7 +9566,7 @@
     "dx_lev_mas": "12+",
     "image_url": "044f1d6c5c170d86.png",
     "release": "000000",
-    "sort": "1366",
+    "sort": "1377",
     "title": "はちみつアドベンチャー",
     "title_kana": "ハチミツアトヘンチヤア",
     "version": "20514"
@@ -9581,7 +9580,7 @@
     "dx_lev_mas": "13",
     "image_url": "ed998c68adada909.png",
     "release": "000000",
-    "sort": "1367",
+    "sort": "1378",
     "title": "popcorn",
     "title_kana": "POPCORN",
     "version": "20514"
@@ -10045,7 +10044,7 @@
     "dx_lev_remas": "13+",
     "image_url": "c8bed480e22142c9.png",
     "release": "000000",
-    "sort": "957",
+    "sort": "962",
     "title": "ぼくたちいつでも　しゅわっしゅわ！",
     "title_kana": "ホクタチイツテモシユワツシユワ",
     "version": "21000"
@@ -10059,7 +10058,7 @@
     "dx_lev_mas": "13",
     "image_url": "747c68a6bf27de45.png",
     "release": "000000",
-    "sort": "1178",
+    "sort": "1184",
     "title": "Boys O’Clock",
     "title_kana": "BOYSOCLOCK",
     "version": "21000"
@@ -10073,7 +10072,7 @@
     "dx_lev_mas": "12+",
     "image_url": "c02537aab0c8a6a2.png",
     "release": "000000",
-    "sort": "954",
+    "sort": "959",
     "title": "居並ぶ穀物と溜息まじりの運送屋",
     "title_kana": "イナラフコクモツトタメイキマシリノウンソウヤ",
     "version": "21000"
@@ -10087,7 +10086,7 @@
     "dx_lev_mas": "14",
     "image_url": "63687937bbd3b9f4.png",
     "release": "000000",
-    "sort": "1181",
+    "sort": "1187",
     "title": "ARAIS",
     "title_kana": "ARAIS",
     "version": "21000"
@@ -10101,7 +10100,7 @@
     "dx_lev_mas": "12+",
     "image_url": "2dd30e50b2be509e.png",
     "release": "000000",
-    "sort": "956",
+    "sort": "961",
     "title": "マイオドレ！舞舞タイム",
     "title_kana": "マイオトレマイマイタイム",
     "version": "21000"
@@ -10115,7 +10114,7 @@
     "dx_lev_mas": "13",
     "image_url": "b2491c88e30e7d0b.png",
     "release": "000000",
-    "sort": "1175",
+    "sort": "1181",
     "title": "Aetheric Energy",
     "title_kana": "AETHERICENERGY",
     "version": "21002"
@@ -10129,7 +10128,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6fb57dd3a171eab3.png",
     "release": "000000",
-    "sort": "1182",
+    "sort": "1188",
     "title": "Komplexe",
     "title_kana": "KOMPLEXE",
     "version": "21002"
@@ -10143,7 +10142,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f116991206292434.png",
     "release": "000000",
-    "sort": "1177",
+    "sort": "1183",
     "title": "Beautiful Future",
     "title_kana": "BEAUTIFULFUTURE",
     "version": "21002"
@@ -10157,7 +10156,7 @@
     "dx_lev_mas": "14",
     "image_url": "927305ac2ee395bf.png",
     "release": "000000",
-    "sort": "1089",
+    "sort": "1095",
     "title": "Mutation",
     "title_kana": "MUTATION",
     "version": "21002"
@@ -10171,7 +10170,7 @@
     "dx_lev_mas": "12+",
     "image_url": "32f13971dcdc12f7.png",
     "release": "000000",
-    "sort": "953",
+    "sort": "958",
     "title": "オリフィス",
     "title_kana": "オリフイス",
     "version": "21006"
@@ -10185,7 +10184,7 @@
     "dx_lev_mas": "13",
     "image_url": "61a459ab9bce91e2.png",
     "release": "000000",
-    "sort": "955",
+    "sort": "960",
     "title": "ユメヒバナ",
     "title_kana": "ユメヒハナ",
     "version": "21006"
@@ -10199,7 +10198,7 @@
     "dx_lev_mas": "12+",
     "image_url": "ac02343dc7001ef1.png",
     "release": "000000",
-    "sort": "958",
+    "sort": "963",
     "title": "REAL VOICE",
     "title_kana": "REALVOICE",
     "version": "21006"
@@ -10213,7 +10212,7 @@
     "dx_lev_mas": "13+",
     "image_url": "73a07468c38c298c.png",
     "release": "000000",
-    "sort": "952",
+    "sort": "957",
     "title": "パラボラ",
     "title_kana": "ハラホラ",
     "version": "21006"
@@ -10227,7 +10226,7 @@
     "dx_lev_mas": "14+",
     "image_url": "f340a4081d9c66d7.png",
     "release": "000000",
-    "sort": "1180",
+    "sort": "1186",
     "title": "Regulus",
     "title_kana": "REGULUS",
     "version": "21011"
@@ -10241,7 +10240,7 @@
     "dx_lev_mas": "14",
     "image_url": "7795406e0a4be488.png",
     "release": "000000",
-    "sort": "1179",
+    "sort": "1185",
     "title": "ワンダーシャッフェンの法則",
     "title_kana": "ワンタアシヤツフエンノホウソク",
     "version": "21011"
@@ -10255,7 +10254,7 @@
     "dx_lev_mas": "14",
     "image_url": "6957b90486e1318e.png",
     "release": "000000",
-    "sort": "1176",
+    "sort": "1182",
     "title": "BIRTH",
     "title_kana": "BIRTH",
     "version": "21011"
@@ -10311,7 +10310,7 @@
     "dx_lev_mas": "14",
     "image_url": "7e709a028bc1c5c3.png",
     "release": "000000",
-    "sort": "1288",
+    "sort": "1299",
     "title": "YURUSHITE",
     "title_kana": "YURUSHITE",
     "version": "21007"
@@ -10325,7 +10324,7 @@
     "dx_lev_mas": "13",
     "image_url": "adff3375e43eafbd.png",
     "release": "000000",
-    "sort": "1268",
+    "sort": "1279",
     "title": "ポケットからぬりつぶせ！",
     "title_kana": "ホケツトカラヌリツフセ",
     "version": "21012"
@@ -10339,7 +10338,7 @@
     "dx_lev_mas": "13",
     "image_url": "aa826be0d2a02ff8.png",
     "release": "000000",
-    "sort": "1275",
+    "sort": "1286",
     "title": "トリドリ⇒モリモリ！Lovely fruits☆",
     "title_kana": "トリトリモリモリラフリイフルウツ",
     "version": "21012"
@@ -10353,7 +10352,7 @@
     "dx_lev_mas": "14",
     "image_url": "9cf73e43ce65b3a9.png",
     "release": "000000",
-    "sort": "1289",
+    "sort": "1300",
     "title": "Desperado Waltz",
     "title_kana": "DESPERADOWALTZ",
     "version": "21012"
@@ -10367,7 +10366,7 @@
     "dx_lev_mas": "13+",
     "image_url": "034cbece579217c7.png",
     "release": "000000",
-    "sort": "1364",
+    "sort": "1375",
     "title": "宛城、炎上！！",
     "title_kana": "エンシヨウエンシヨウ",
     "version": "21000"
@@ -10381,7 +10380,7 @@
     "dx_lev_mas": "14",
     "image_url": "c8af8a03388a9a19.png",
     "release": "000000",
-    "sort": "1362",
+    "sort": "1373",
     "title": "Climax",
     "title_kana": "CLIMAX",
     "version": "21007"
@@ -10396,7 +10395,7 @@
     "dx_lev_remas": "13+",
     "image_url": "3208b3758def086b.png",
     "release": "000000",
-    "sort": "1363",
+    "sort": "1374",
     "title": "レーイレーイ",
     "title_kana": "レエイレエイ",
     "version": "21005"
@@ -10817,7 +10816,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6371b8c7d2c59e7f.png",
     "release": "000000",
-    "sort": "1049",
+    "sort": "1055",
     "title": "Jörqer",
     "title_kana": "JORQER",
     "version": "21000"
@@ -10831,7 +10830,7 @@
     "dx_lev_mas": "14",
     "image_url": "fcb1d9c95bb8205d.png",
     "release": "000000",
-    "sort": "1051",
+    "sort": "1057",
     "title": "Sqlupp (Camellia's \"Sqleipd*Hiytex\" Remix)",
     "title_kana": "SQLUPPCAMELLIAREMIX",
     "version": "21000"
@@ -10887,7 +10886,7 @@
     "dx_lev_mas": "14",
     "image_url": "7bd3115b580213e3.png",
     "release": "000000",
-    "sort": "1183",
+    "sort": "1189",
     "title": "≠彡\"/了→",
     "title_kana": "キミツアア",
     "version": "21001"
@@ -10901,7 +10900,7 @@
     "dx_lev_mas": "14+",
     "image_url": "91737a421106e7ca.png",
     "release": "000000",
-    "sort": "1148",
+    "sort": "1154",
     "title": "BREaK! BREaK! BREaK!",
     "title_kana": "BREAKBREAKBREAK",
     "version": "21500"
@@ -10915,7 +10914,7 @@
     "dx_lev_mas": "14+",
     "image_url": "b93bb5411292f1d8.png",
     "release": "000000",
-    "sort": "1170",
+    "sort": "1176",
     "title": "Heavenly Blast",
     "title_kana": "HEAVENLYBLAST",
     "version": "21500"
@@ -10929,7 +10928,7 @@
     "dx_lev_mas": "13",
     "image_url": "b714febbedc27687.png",
     "release": "000000",
-    "sort": "950",
+    "sort": "955",
     "title": "Paradisoda",
     "title_kana": "PARADISODA",
     "version": "21500"
@@ -10943,7 +10942,7 @@
     "dx_lev_mas": "13+",
     "image_url": "079a34779ccd60d3.png",
     "release": "000000",
-    "sort": "947",
+    "sort": "952",
     "title": "VANTABLACK RAVER",
     "title_kana": "VANTABLACKRAVER",
     "version": "21500"
@@ -10957,7 +10956,7 @@
     "dx_lev_mas": "13",
     "image_url": "68824ef167581ccf.png",
     "release": "000000",
-    "sort": "1173",
+    "sort": "1179",
     "title": "時計の国のジェミニ",
     "title_kana": "トケイノクニノシエミニ",
     "version": "21500"
@@ -10971,7 +10970,7 @@
     "dx_lev_mas": "14",
     "image_url": "9a806edb5b8a642e.png",
     "release": "000000",
-    "sort": "1166",
+    "sort": "1172",
     "title": "Xenovcipher",
     "title_kana": "XENOVCIPHER",
     "version": "21500"
@@ -10986,7 +10985,7 @@
     "dx_lev_remas": "13",
     "image_url": "c110c819a6c43a54.png",
     "release": "000000",
-    "sort": "949",
+    "sort": "954",
     "title": "星めぐり、果ての君へ。",
     "title_kana": "ホシメクリハテノキミヘ",
     "version": "21506"
@@ -11000,7 +10999,7 @@
     "dx_lev_mas": "12+",
     "image_url": "565d4805b8b8848e.png",
     "release": "000000",
-    "sort": "948",
+    "sort": "953",
     "title": "スローアライズ",
     "title_kana": "スロオアライス",
     "version": "21506"
@@ -11014,7 +11013,7 @@
     "dx_lev_mas": "14",
     "image_url": "9475222592a29f06.png",
     "release": "000000",
-    "sort": "910",
+    "sort": "914",
     "title": "チエルカ／エソテリカ",
     "title_kana": "チエルカエソテリカ",
     "version": "21506"
@@ -11028,7 +11027,7 @@
     "dx_lev_mas": "13+",
     "image_url": "194a9262c9480e48.png",
     "release": "000000",
-    "sort": "951",
+    "sort": "956",
     "title": "生命不詳",
     "title_kana": "セイメイフシヨウ",
     "version": "21506"
@@ -11043,7 +11042,7 @@
     "dx_lev_remas": "13+",
     "image_url": "fd5895f21f0da045.png",
     "release": "000000",
-    "sort": "1167",
+    "sort": "1173",
     "title": "Never Give Up!",
     "title_kana": "NEVERGIVEUP",
     "version": "21510"
@@ -11057,7 +11056,7 @@
     "dx_lev_mas": "14",
     "image_url": "f38fc9d91ef0b72c.png",
     "release": "000000",
-    "sort": "1162",
+    "sort": "1168",
     "title": "Starry Colors",
     "title_kana": "STARRYCOLORS",
     "version": "21510"
@@ -11071,7 +11070,7 @@
     "dx_lev_mas": "14",
     "image_url": "3b610dccb2b32467.png",
     "release": "000000",
-    "sort": "1174",
+    "sort": "1180",
     "title": "ほしぞらスペクタクル",
     "title_kana": "ホシソラスヘクタクル",
     "version": "21510"
@@ -11085,7 +11084,7 @@
     "dx_lev_mas": "13+",
     "image_url": "b7884713b914d359.png",
     "release": "000000",
-    "sort": "1169",
+    "sort": "1175",
     "title": "Last Samurai",
     "title_kana": "LASTSAMURAI",
     "version": "21508"
@@ -11099,7 +11098,7 @@
     "dx_lev_mas": "13+",
     "image_url": "7cc92964b5148cca.png",
     "release": "000000",
-    "sort": "1165",
+    "sort": "1171",
     "title": "蒼穹舞楽",
     "title_kana": "ソウキユウフカク",
     "version": "21508"
@@ -11113,7 +11112,7 @@
     "dx_lev_mas": "14+",
     "image_url": "761e10bd436f83cf.png",
     "release": "000000",
-    "sort": "1168",
+    "sort": "1174",
     "title": "AMABIE",
     "title_kana": "AMABIE",
     "version": "21508"
@@ -11127,7 +11126,7 @@
     "dx_lev_mas": "12+",
     "image_url": "854c238aee12a027.png",
     "release": "000000",
-    "sort": "1328",
+    "sort": "1339",
     "title": "オーケー？　オーライ！",
     "title_kana": "オウケエオウライ",
     "version": "21502"
@@ -11141,7 +11140,7 @@
     "dx_lev_mas": "12+",
     "image_url": "f6bf56f478f8ddcf.png",
     "release": "000000",
-    "sort": "1330",
+    "sort": "1341",
     "title": "サヨナラフリーウェイ",
     "title_kana": "サヨナラフリイウエイ",
     "version": "21502"
@@ -11156,7 +11155,7 @@
     "dx_lev_remas": "13+",
     "image_url": "538753c5c57b3e9e.png",
     "release": "000000",
-    "sort": "1331",
+    "sort": "1342",
     "title": "単一指向性オーバーブルーム",
     "title_kana": "タンイツシコウセイオウハアフルウム",
     "version": "21502"
@@ -11170,7 +11169,7 @@
     "dx_lev_mas": "13",
     "image_url": "6a189a90cc4d00dd.png",
     "release": "000000",
-    "sort": "1332",
+    "sort": "1343",
     "title": "みなえをチェック！",
     "title_kana": "ミナエヲチエツク",
     "version": "21502"
@@ -11184,7 +11183,7 @@
     "dx_lev_mas": "13+",
     "image_url": "d8582cffde7aaa51.png",
     "release": "000000",
-    "sort": "1361",
+    "sort": "1372",
     "title": "ハジマリノピアノ",
     "title_kana": "ハシマリノヒアノ",
     "version": "21501"
@@ -11198,7 +11197,7 @@
     "dx_lev_mas": "13+",
     "image_url": "5978cd4680adbdf1.png",
     "release": "000000",
-    "sort": "1290",
+    "sort": "1301",
     "title": "BOUNCE & DANCE",
     "title_kana": "BOUNCEDANCE",
     "version": "21513"
@@ -11212,7 +11211,7 @@
     "dx_lev_mas": "12+",
     "image_url": "d54f6840c982c52e.png",
     "release": "000000",
-    "sort": "1265",
+    "sort": "1276",
     "title": "Kiss Me Kiss",
     "title_kana": "KISSMEKISS",
     "version": "21513"
@@ -11226,7 +11225,7 @@
     "dx_lev_mas": "14",
     "image_url": "5e9ecbc940b79708.png",
     "release": "000000",
-    "sort": "1291",
+    "sort": "1302",
     "title": "MEGATON BLAST",
     "title_kana": "MEGATONBLAST",
     "version": "21513"
@@ -11240,7 +11239,7 @@
     "dx_lev_mas": "13",
     "image_url": "8b18c71ee9262272.png",
     "release": "000000",
-    "sort": "1260",
+    "sort": "1271",
     "title": "Splash Dance!!",
     "title_kana": "SPLASHDANCE",
     "version": "21513"
@@ -11772,7 +11771,7 @@
     "dx_lev_mas": "14",
     "image_url": "c052a8d637901cf3.png",
     "release": "000000",
-    "sort": "1357",
+    "sort": "1368",
     "title": "宿星審判",
     "title_kana": "シユクセイシンハン",
     "version": "22000"
@@ -11786,7 +11785,7 @@
     "dx_lev_mas": "14+",
     "image_url": "1a7893a226f7befc.png",
     "release": "000000",
-    "sort": "1292",
+    "sort": "1303",
     "title": "脳天直撃",
     "title_kana": "ノウテンチヨクケキ",
     "version": "22000"
@@ -11800,7 +11799,7 @@
     "dx_lev_mas": "13+",
     "image_url": "a8dfce2488046508.png",
     "release": "000000",
-    "sort": "946",
+    "sort": "951",
     "title": "とびだせ！TO THE COSMIC!!",
     "title_kana": "トヒタセトウウサコスミツク",
     "version": "22000"
@@ -11814,7 +11813,7 @@
     "dx_lev_mas": "13",
     "image_url": "c3abc1a6434b4ebe.png",
     "release": "000000",
-    "sort": "977",
+    "sort": "982",
     "title": "噛み係",
     "title_kana": "カミカカリ",
     "version": "22000"
@@ -11828,7 +11827,7 @@
     "dx_lev_mas": "13",
     "image_url": "9466cf52a10671cf.png",
     "release": "000000",
-    "sort": "945",
+    "sort": "950",
     "title": "トリアージ",
     "title_kana": "トリアアシ",
     "version": "22000"
@@ -11842,7 +11841,7 @@
     "dx_lev_mas": "14",
     "image_url": "db0eec06b051299f.png",
     "release": "000000",
-    "sort": "1159",
+    "sort": "1165",
     "title": "NAGAREBOSHI☆ROCKET",
     "title_kana": "NAGAREBOSHIROCKET",
     "version": "22000"
@@ -11856,7 +11855,7 @@
     "dx_lev_mas": "14",
     "image_url": "6cc01bbad2650c50.png",
     "release": "000000",
-    "sort": "1161",
+    "sort": "1167",
     "title": "U&iVERSE -銀河鸞翔-",
     "title_kana": "UNIVERSEキンカランシヨウ",
     "version": "22008"
@@ -11870,7 +11869,7 @@
     "dx_lev_mas": "14+",
     "image_url": "58d3f2aeccf6a09d.png",
     "release": "000000",
-    "sort": "1158",
+    "sort": "1164",
     "title": "BLACK SWAN",
     "title_kana": "BLACKSWAN",
     "version": "22004"
@@ -11884,7 +11883,7 @@
     "dx_lev_mas": "14",
     "image_url": "f01745a29d2ef5bd.png",
     "release": "000000",
-    "sort": "1157",
+    "sort": "1163",
     "title": "星詠みとデスペラード",
     "title_kana": "ホシヨミトテスヘラアト",
     "version": "22004"
@@ -11898,7 +11897,7 @@
     "dx_lev_mas": "13",
     "image_url": "6a7e5bd00eb678b3.png",
     "release": "000000",
-    "sort": "1151",
+    "sort": "1157",
     "title": "Round Round Spinning Around",
     "title_kana": "ROUNDROUNDSPINNINGAROUND",
     "version": "22007"
@@ -11912,7 +11911,7 @@
     "dx_lev_mas": "14",
     "image_url": "071768635e02a075.png",
     "release": "000000",
-    "sort": "1152",
+    "sort": "1158",
     "title": "Alcyone",
     "title_kana": "ALCYONE",
     "version": "22007"
@@ -11926,7 +11925,7 @@
     "dx_lev_mas": "14",
     "image_url": "000e4e52cbf4d11f.png",
     "release": "000000",
-    "sort": "1150",
+    "sort": "1156",
     "title": "Raven Emperor",
     "title_kana": "RAVENEMPEROR",
     "version": "22007"
@@ -11940,7 +11939,7 @@
     "dx_lev_mas": "14+",
     "image_url": "ffa8c12106a9ee96.png",
     "release": "000000",
-    "sort": "1144",
+    "sort": "1150",
     "title": "Yorugao",
     "title_kana": "YORUGAO",
     "version": "22007"
@@ -11954,7 +11953,7 @@
     "dx_lev_mas": "13+",
     "image_url": "36b1fd60ab5bf872.png",
     "release": "000000",
-    "sort": "944",
+    "sort": "949",
     "title": "ヨミビトシラズ",
     "title_kana": "ヨミヒトシラス",
     "version": "22013"
@@ -11968,7 +11967,7 @@
     "dx_lev_mas": "13+",
     "image_url": "ff81865c331e96f7.png",
     "release": "000000",
-    "sort": "943",
+    "sort": "948",
     "title": "前衛的Landscape",
     "title_kana": "センエイテキラントスケエフ",
     "version": "22013"
@@ -11982,7 +11981,7 @@
     "dx_lev_mas": "14",
     "image_url": "5e69a551a2fa34d9.png",
     "release": "000000",
-    "sort": "1156",
+    "sort": "1162",
     "title": "Trick tear",
     "title_kana": "TRICKTEAR",
     "version": "22013"
@@ -11996,7 +11995,7 @@
     "dx_lev_mas": "14+",
     "image_url": "55a2c29fef3811ad.png",
     "release": "000000",
-    "sort": "1160",
+    "sort": "1166",
     "title": "躯樹の墓守",
     "title_kana": "ムクロシユノハカモリ",
     "version": "22013"
@@ -12010,7 +12009,7 @@
     "dx_lev_mas": "13",
     "image_url": "07f841698cba7fa8.png",
     "release": "000000",
-    "sort": "1272",
+    "sort": "1283",
     "title": "ぱくぱく☆がーる",
     "title_kana": "ハクハクカアル",
     "version": "22011"
@@ -12024,7 +12023,7 @@
     "dx_lev_mas": "12+",
     "image_url": "d0f6b039af8831d3.png",
     "release": "000000",
-    "sort": "1261",
+    "sort": "1272",
     "title": "No Limit RED Force",
     "title_kana": "NOLIMITREDFORCE",
     "version": "22011"
@@ -12038,7 +12037,7 @@
     "dx_lev_mas": "13+",
     "image_url": "75f148963308b860.png",
     "release": "000000",
-    "sort": "1293",
+    "sort": "1304",
     "title": "LiftOff",
     "title_kana": "LIFTOFF",
     "version": "22011"
@@ -12052,7 +12051,7 @@
     "dx_lev_mas": "14",
     "image_url": "403667b44ac1d17e.png",
     "release": "000000",
-    "sort": "1294",
+    "sort": "1305",
     "title": "Falsum Atlantis.",
     "title_kana": "FALSUMATLANTIS",
     "version": "22011"
@@ -12066,7 +12065,7 @@
     "dx_lev_mas": "13",
     "image_url": "d99038ea8737e638.png",
     "release": "000000",
-    "sort": "1334",
+    "sort": "1345",
     "title": "We Are Us",
     "title_kana": "WEAREUS",
     "version": "22016"
@@ -12080,7 +12079,7 @@
     "dx_lev_mas": "13",
     "image_url": "966be589591a4a6c.png",
     "release": "000000",
-    "sort": "1335",
+    "sort": "1346",
     "title": "Limits",
     "title_kana": "LIMITS",
     "version": "22016"
@@ -12094,7 +12093,7 @@
     "dx_lev_mas": "14",
     "image_url": "b81925a4285c4ce1.png",
     "release": "000000",
-    "sort": "1358",
+    "sort": "1369",
     "title": "スピカの天秤",
     "title_kana": "スヒカノテンヒン",
     "version": "22016"
@@ -12108,7 +12107,7 @@
     "dx_lev_mas": "13+",
     "image_url": "d032c4be975fda12.png",
     "release": "000000",
-    "sort": "1359",
+    "sort": "1370",
     "title": "ハードコア・シンドローム",
     "title_kana": "ハアトコアシントロオム",
     "version": "22016"
@@ -12560,7 +12559,7 @@
     "dx_lev_mas": "14+",
     "image_url": "0c326d43294255a7.png",
     "release": "000000",
-    "sort": "1153",
+    "sort": "1159",
     "title": "Lia=Fail",
     "title_kana": "LIAFAIL",
     "version": "22000"
@@ -12645,7 +12644,7 @@
     "dx_lev_mas": "14+",
     "image_url": "fed702195b5af0e7.png",
     "release": "000000",
-    "sort": "1145",
+    "sort": "1151",
     "title": "GIGANTØMAKHIA",
     "title_kana": "GIGANTOMAKHIA",
     "version": "22015"
@@ -12659,7 +12658,7 @@
     "dx_lev_mas": "12+",
     "image_url": "e625655fb14640ec.png",
     "release": "000000",
-    "sort": "914",
+    "sort": "918",
     "title": "ミルキースター・シューティングスター",
     "title_kana": "ミルキイスタアシユウテインクスタア",
     "version": "22501"
@@ -12673,7 +12672,7 @@
     "dx_lev_mas": "13",
     "image_url": "f6aef2150786d0b4.png",
     "release": "000000",
-    "sort": "942",
+    "sort": "947",
     "title": "ｉｓｏｐｈｏｔｅ",
     "title_kana": "ISOPHOTE",
     "version": "22501"
@@ -12687,7 +12686,7 @@
     "dx_lev_mas": "14",
     "image_url": "f4f0f2f8ebd3f0da.png",
     "release": "000000",
-    "sort": "1143",
+    "sort": "1149",
     "title": "パラマウント☆ショータイム！！",
     "title_kana": "ハラマウントシヨオタイム",
     "version": "22501"
@@ -12701,7 +12700,7 @@
     "dx_lev_mas": "14",
     "image_url": "c22b6708af0c7a69.png",
     "release": "000000",
-    "sort": "1133",
+    "sort": "1139",
     "title": "Strive against fate",
     "title_kana": "STRIVEAGAINSTFATE",
     "version": "22501"
@@ -12715,7 +12714,7 @@
     "dx_lev_mas": "14+",
     "image_url": "8043243d47cacaee.png",
     "release": "000000",
-    "sort": "1249",
+    "sort": "1255",
     "title": "sølips",
     "title_kana": "SOLIPS",
     "version": "22501"
@@ -12757,7 +12756,7 @@
     "dx_lev_mas": "14",
     "image_url": "49e05689f3a0b19a.png",
     "release": "000000",
-    "sort": "1135",
+    "sort": "1141",
     "title": "HECATONCHEIR",
     "title_kana": "HECATONCHEIR",
     "version": "22507"
@@ -12771,7 +12770,7 @@
     "dx_lev_mas": "13+",
     "image_url": "5a1380b2897bb763.png",
     "release": "000000",
-    "sort": "1132",
+    "sort": "1138",
     "title": "Irresistible",
     "title_kana": "IRRESISTIBLE",
     "version": "22507"
@@ -12785,7 +12784,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6efe955c46de9657.png",
     "release": "000000",
-    "sort": "1131",
+    "sort": "1137",
     "title": "HAGAKIRI",
     "title_kana": "HAGAKIRI",
     "version": "22507"
@@ -12799,7 +12798,7 @@
     "dx_lev_mas": "14",
     "image_url": "4a4b3606f9a72e2c.png",
     "release": "000000",
-    "sort": "1128",
+    "sort": "1134",
     "title": "N3V3R G3T OV3R",
     "title_kana": "N3V3RG3TOV3R",
     "version": "22507"
@@ -12813,7 +12812,7 @@
     "dx_lev_mas": "14",
     "image_url": "b88e127e372b0c2e.png",
     "release": "000000",
-    "sort": "1088",
+    "sort": "1094",
     "title": "Swift Swing",
     "title_kana": "SWIFTSWING",
     "version": "22509"
@@ -12827,7 +12826,7 @@
     "dx_lev_mas": "13+",
     "image_url": "34d250113b737f05.png",
     "release": "000000",
-    "sort": "911",
+    "sort": "915",
     "title": "星空パーティーチューン",
     "title_kana": "ホシソラハアテイイチユウン",
     "version": "22509"
@@ -12841,7 +12840,7 @@
     "dx_lev_mas": "14+",
     "image_url": "6c38d19035bd1ea6.png",
     "release": "000000",
-    "sort": "1130",
+    "sort": "1136",
     "title": "チューリングの跡",
     "title_kana": "チユウリンクノアト",
     "version": "22509"
@@ -12855,7 +12854,7 @@
     "dx_lev_mas": "14",
     "image_url": "4cd6568a0952195d.png",
     "release": "000000",
-    "sort": "1136",
+    "sort": "1142",
     "title": "Sage",
     "title_kana": "SAGE",
     "version": "22509"
@@ -12869,7 +12868,7 @@
     "dx_lev_mas": "13+",
     "image_url": "55f59b99f698b962.png",
     "release": "000000",
-    "sort": "968",
+    "sort": "973",
     "title": "OTOGEMA",
     "title_kana": "OTOGEMA",
     "version": "22511"
@@ -12883,7 +12882,7 @@
     "dx_lev_mas": "14+",
     "image_url": "1a61a11a3b89420f.png",
     "release": "000000",
-    "sort": "1064",
+    "sort": "1070",
     "title": "WiPE OUT MEMORIES",
     "title_kana": "WIPEOUTMEMORIES",
     "version": "22511"
@@ -12897,7 +12896,7 @@
     "dx_lev_mas": "14+",
     "image_url": "d02540b6cedfa362.png",
     "release": "000000",
-    "sort": "1138",
+    "sort": "1144",
     "title": "Metamorphosism",
     "title_kana": "METAMORPHOSISM",
     "version": "22513"
@@ -12911,7 +12910,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f01f26e4a1228a08.png",
     "release": "000000",
-    "sort": "1134",
+    "sort": "1140",
     "title": "白花の天使",
     "title_kana": "ハクカノテンシ",
     "version": "22513"
@@ -12925,7 +12924,7 @@
     "dx_lev_mas": "14+",
     "image_url": "e341ba3d5adb60dd.png",
     "release": "000000",
-    "sort": "1142",
+    "sort": "1148",
     "title": "World's end loneliness",
     "title_kana": "WORLDSENDLONELINESS",
     "version": "22513"
@@ -12939,7 +12938,7 @@
     "dx_lev_mas": "13+",
     "image_url": "fa6943ebb851f378.png",
     "release": "000000",
-    "sort": "941",
+    "sort": "946",
     "title": "Jouez Avec Moi?",
     "title_kana": "JOUEZAVECMOI",
     "version": "22513"
@@ -12953,7 +12952,7 @@
     "dx_lev_mas": "14",
     "image_url": "c7f4f382b3342a09.png",
     "release": "000000",
-    "sort": "1297",
+    "sort": "1308",
     "title": "Good bye, Merry-Go-Round.",
     "title_kana": "GOODBYEMERRYGOROUND",
     "version": "22501"
@@ -12967,7 +12966,7 @@
     "dx_lev_mas": "13",
     "image_url": "dbe50b3985a760b8.png",
     "release": "000000",
-    "sort": "1350",
+    "sort": "1361",
     "title": "ツクヨミステップ",
     "title_kana": "ツクヨミステツフ",
     "version": "22512"
@@ -12981,7 +12980,7 @@
     "dx_lev_mas": "13+",
     "image_url": "a904cc91a7d095dd.png",
     "release": "000000",
-    "sort": "1352",
+    "sort": "1363",
     "title": "folern",
     "title_kana": "FOLERN",
     "version": "22512"
@@ -12995,7 +12994,7 @@
     "dx_lev_mas": "13",
     "image_url": "4829035abbb63320.png",
     "release": "000000",
-    "sort": "1351",
+    "sort": "1362",
     "title": "コスモポップファンクラブ",
     "title_kana": "コスモホツフフアンクラフ",
     "version": "22512"
@@ -13009,7 +13008,7 @@
     "dx_lev_mas": "13",
     "image_url": "536446ddde354589.png",
     "release": "000000",
-    "sort": "1264",
+    "sort": "1275",
     "title": "撩乱乙女†無双劇",
     "title_kana": "リヨウランオトメムソウケキ",
     "version": "22515"
@@ -13023,7 +13022,7 @@
     "dx_lev_mas": "13+",
     "image_url": "65620eda680cc9f4.png",
     "release": "000000",
-    "sort": "1295",
+    "sort": "1306",
     "title": "See The Light",
     "title_kana": "SEETHELIGHT",
     "version": "22515"
@@ -13037,7 +13036,7 @@
     "dx_lev_mas": "14",
     "image_url": "241ef09441315f33.png",
     "release": "000000",
-    "sort": "1296",
+    "sort": "1307",
     "title": "エータ・ベータ・イータ",
     "title_kana": "エエタヘエタイイタ",
     "version": "22515"
@@ -13388,7 +13387,7 @@
     "dx_lev_mas": "13+",
     "image_url": "3176c5e84eaa1818.png",
     "release": "000000",
-    "sort": "1354",
+    "sort": "1365",
     "title": "8-EM",
     "title_kana": "8EM",
     "version": "22501"
@@ -13416,7 +13415,7 @@
     "dx_lev_mas": "13+",
     "image_url": "922bd2e6993e7140.png",
     "release": "000000",
-    "sort": "940",
+    "sort": "945",
     "title": "遺伝子レベル∞スパイラル",
     "title_kana": "イテンシレヘルスハイラル",
     "version": "22502"
@@ -13430,7 +13429,7 @@
     "dx_lev_mas": "14",
     "image_url": "22cfe49ebfb24007.png",
     "release": "000000",
-    "sort": "1353",
+    "sort": "1364",
     "title": "otorii INNOVATED -[i]3-",
     "title_kana": "OTORIIINNOVATEDI3",
     "version": "22502"
@@ -13472,7 +13471,7 @@
     "dx_lev_mas": "13",
     "image_url": "02ac5a7ec58b9e7f.png",
     "release": "000000",
-    "sort": "1349",
+    "sort": "1360",
     "title": "パズルリボン",
     "title_kana": "ハスルリホン",
     "version": "22514"
@@ -13486,7 +13485,7 @@
     "dx_lev_mas": "13",
     "image_url": "48b49fc84a9226f9.png",
     "release": "000000",
-    "sort": "1263",
+    "sort": "1274",
     "title": "Transcend Lights",
     "title_kana": "TRANSCENDLIGHTS",
     "version": "22515"
@@ -13500,7 +13499,7 @@
     "dx_lev_mas": "13",
     "image_url": "89507763b8227c0d.png",
     "release": "000000",
-    "sort": "939",
+    "sort": "944",
     "title": "ホシシズク",
     "title_kana": "ホシシスク",
     "version": "23000"
@@ -13514,7 +13513,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6090e7ca3c80cdc6.png",
     "release": "000000",
-    "sort": "936",
+    "sort": "941",
     "title": "Rainbow Rush Story",
     "title_kana": "RAINBOWRUSHSTORY",
     "version": "23000"
@@ -13528,7 +13527,7 @@
     "dx_lev_mas": "14",
     "image_url": "3839ea9459990614.png",
     "release": "000000",
-    "sort": "1124",
+    "sort": "1130",
     "title": "Tricolor⁂circuS",
     "title_kana": "TRICOLORCIRCUS",
     "version": "23000"
@@ -13542,7 +13541,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f712ee022ae3e620.png",
     "release": "000000",
-    "sort": "1114",
+    "sort": "1120",
     "title": "[X]",
     "title_kana": "INFINITY",
     "version": "23000"
@@ -13570,7 +13569,7 @@
     "dx_lev_mas": "14+",
     "image_url": "077872054fe8552d.png",
     "release": "000000",
-    "sort": "1059",
+    "sort": "1065",
     "title": "mystique as iris",
     "title_kana": "MYSTIQUEASIRIS",
     "version": "23000"
@@ -13584,7 +13583,7 @@
     "dx_lev_mas": "14",
     "image_url": "7294b35c4ce70324.png",
     "release": "000000",
-    "sort": "1122",
+    "sort": "1128",
     "title": "Rising on the horizon",
     "title_kana": "RISINGONTHEHORIZON",
     "version": "23005"
@@ -13598,7 +13597,7 @@
     "dx_lev_mas": "13+",
     "image_url": "225fd594b05d2650.png",
     "release": "000000",
-    "sort": "1119",
+    "sort": "1125",
     "title": "You Mean the World to Me",
     "title_kana": "YOUMEANTHEWORLDTOME",
     "version": "23006"
@@ -13612,7 +13611,7 @@
     "dx_lev_mas": "13+",
     "image_url": "467af0cc4f091827.png",
     "release": "000000",
-    "sort": "1118",
+    "sort": "1124",
     "title": "Neon Kingdom",
     "title_kana": "NEONKINGDOM",
     "version": "23006"
@@ -13626,7 +13625,7 @@
     "dx_lev_mas": "14",
     "image_url": "1bde84ebe909f8bc.png",
     "release": "000000",
-    "sort": "1115",
+    "sort": "1121",
     "title": "#狂った民族２ PRAVARGYAZOOQA",
     "title_kana": "クルツタミンソク2PRAVARGYAZOOQA",
     "version": "23006"
@@ -13640,7 +13639,7 @@
     "dx_lev_mas": "14",
     "image_url": "5d7f7536dd643e71.png",
     "release": "000000",
-    "sort": "1120",
+    "sort": "1126",
     "title": "VSpook!",
     "title_kana": "VSPOOK",
     "version": "23006"
@@ -13654,7 +13653,7 @@
     "dx_lev_mas": "13",
     "image_url": "3ecd074431732b76.png",
     "release": "000000",
-    "sort": "921",
+    "sort": "925",
     "title": "RIFFRAIN",
     "title_kana": "RIFFRAIN",
     "version": "23008"
@@ -13668,7 +13667,7 @@
     "dx_lev_mas": "13",
     "image_url": "da328e1e834698bf.png",
     "release": "000000",
-    "sort": "937",
+    "sort": "942",
     "title": "Falling",
     "title_kana": "FALLING",
     "version": "23008"
@@ -13682,7 +13681,7 @@
     "dx_lev_mas": "13",
     "image_url": "4f4b2b44bfcd87b4.png",
     "release": "000000",
-    "sort": "920",
+    "sort": "924",
     "title": "ピリオドサイン",
     "title_kana": "ヒリオトサイン",
     "version": "23008"
@@ -13696,7 +13695,7 @@
     "dx_lev_mas": "13+",
     "image_url": "4b3c4017b405dc49.png",
     "release": "000000",
-    "sort": "938",
+    "sort": "943",
     "title": "群青シグナル",
     "title_kana": "クンシヨウシクナル",
     "version": "23008"
@@ -13710,7 +13709,7 @@
     "dx_lev_mas": "14",
     "image_url": "c87ba892e4792628.png",
     "release": "000000",
-    "sort": "1113",
+    "sort": "1119",
     "title": "Beat Opera op.1",
     "title_kana": "BEATOPERAOP1",
     "version": "23012"
@@ -13724,7 +13723,7 @@
     "dx_lev_mas": "13+",
     "image_url": "04dca5fcd4b9163a.png",
     "release": "000000",
-    "sort": "1127",
+    "sort": "1133",
     "title": "星見草",
     "title_kana": "ホシミソウ",
     "version": "23012"
@@ -13738,7 +13737,7 @@
     "dx_lev_mas": "14",
     "image_url": "c05db4664af4c45e.png",
     "release": "000000",
-    "sort": "1123",
+    "sort": "1129",
     "title": "\"411Ψ892\"",
     "title_kana": "411892",
     "version": "23012"
@@ -13752,7 +13751,7 @@
     "dx_lev_mas": "14+",
     "image_url": "d7aa8fbe05bb911e.png",
     "release": "000000",
-    "sort": "1121",
+    "sort": "1127",
     "title": "康莊大道",
     "title_kana": "ヒカリニテラサレルオオミチ",
     "version": "23012"
@@ -13766,7 +13765,7 @@
     "dx_lev_mas": "14",
     "image_url": "28898558057a514c.png",
     "release": "000000",
-    "sort": "1344",
+    "sort": "1355",
     "title": "蜘蛛の糸",
     "title_kana": "クモノイト",
     "version": "23000"
@@ -13780,7 +13779,7 @@
     "dx_lev_mas": "14",
     "image_url": "2e9da84e3e523f2f.png",
     "release": "000000",
-    "sort": "1300",
+    "sort": "1311",
     "title": "Don't Fight The Music",
     "title_kana": "DONTFIGHTTHEMUSIC",
     "version": "23000"
@@ -13794,7 +13793,7 @@
     "dx_lev_mas": "13",
     "image_url": "a7a36ba57c915530.png",
     "release": "000000",
-    "sort": "1271",
+    "sort": "1282",
     "title": "Catch Me If You Can",
     "title_kana": "CATCHMEIFYOUCAN",
     "version": "23003"
@@ -13808,7 +13807,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6aa746259d41bf92.png",
     "release": "000000",
-    "sort": "1298",
+    "sort": "1309",
     "title": "MAGNETAR GIRL",
     "title_kana": "MAGNETARGIRL",
     "version": "23003"
@@ -13822,7 +13821,7 @@
     "dx_lev_mas": "14",
     "image_url": "11f607f1a79a3165.png",
     "release": "000000",
-    "sort": "1299",
+    "sort": "1310",
     "title": "SUPER AMBULANCE",
     "title_kana": "SUPERAMBULANCE",
     "version": "23003"
@@ -13836,7 +13835,7 @@
     "dx_lev_mas": "13",
     "image_url": "054d8fbb19a508c4.png",
     "release": "000000",
-    "sort": "1345",
+    "sort": "1356",
     "title": "Ghost Dance",
     "title_kana": "GHOSTDANCE",
     "version": "23011"
@@ -13850,7 +13849,7 @@
     "dx_lev_mas": "14",
     "image_url": "74c92bac1b51a9c3.png",
     "release": "000000",
-    "sort": "1347",
+    "sort": "1358",
     "title": "電光石火",
     "title_kana": "テンコウセツカ",
     "version": "23011"
@@ -13864,7 +13863,7 @@
     "dx_lev_mas": "14",
     "image_url": "6bb029ffc3be5817.png",
     "release": "000000",
-    "sort": "1348",
+    "sort": "1359",
     "title": "Hainuwele",
     "title_kana": "HAINUWELE",
     "version": "23011"
@@ -14455,7 +14454,7 @@
     "dx_lev_mas": "14+",
     "image_url": "5d89c120d8c41d6a.png",
     "release": "000000",
-    "sort": "1248",
+    "sort": "1254",
     "title": "ViRTUS",
     "title_kana": "VIRTUS",
     "version": "23014"
@@ -14483,7 +14482,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f64908fc2a147935.png",
     "release": "000000",
-    "sort": "1346",
+    "sort": "1357",
     "title": "ピュグマリオンの咒文",
     "title_kana": "ヒユクマリオンノシユモン",
     "version": "23011"
@@ -14497,7 +14496,7 @@
     "dx_lev_mas": "12+",
     "image_url": "8212573b9837ddff.png",
     "release": "000000",
-    "sort": "919",
+    "sort": "923",
     "title": "トノサマビーム",
     "title_kana": "トノサマヒイム",
     "version": "23500"
@@ -14511,7 +14510,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f7555b935a2eddc3.png",
     "release": "000000",
-    "sort": "1105",
+    "sort": "1111",
     "title": "enchanted wanderer",
     "title_kana": "ENCHANTEDWANDERER",
     "version": "23500"
@@ -14525,7 +14524,7 @@
     "dx_lev_mas": "13+",
     "image_url": "81c7f7c9a9042eab.png",
     "release": "000000",
-    "sort": "1106",
+    "sort": "1112",
     "title": "Comet Panto Men!",
     "title_kana": "COMETPANTOMEN",
     "version": "23500"
@@ -14539,7 +14538,7 @@
     "dx_lev_mas": "13+",
     "image_url": "793b837b2593552d.png",
     "release": "000000",
-    "sort": "934",
+    "sort": "939",
     "title": "ツムギボシ",
     "title_kana": "ツムキホシ",
     "version": "23500"
@@ -14553,7 +14552,7 @@
     "dx_lev_mas": "14+",
     "image_url": "5461cc48817a3c7a.png",
     "release": "000000",
-    "sort": "1107",
+    "sort": "1113",
     "title": "VeRForTe αRtE:VEiN",
     "title_kana": "VERFORTEARTEVEIN",
     "version": "23500"
@@ -14595,7 +14594,7 @@
     "dx_lev_mas": "14",
     "image_url": "4014389349bb320b.png",
     "release": "000000",
-    "sort": "1086",
+    "sort": "1092",
     "title": "The Great Banquet",
     "title_kana": "THEGREATBANQUET",
     "version": "24013"
@@ -14609,7 +14608,7 @@
     "dx_lev_mas": "13+",
     "image_url": "ee99a02fc685bbe4.png",
     "release": "000000",
-    "sort": "1096",
+    "sort": "1102",
     "title": "Redemption",
     "title_kana": "REDEMPTION",
     "version": "24013"
@@ -14623,7 +14622,7 @@
     "dx_lev_mas": "13+",
     "image_url": "1572e3183f426fc0.png",
     "release": "000000",
-    "sort": "1082",
+    "sort": "1088",
     "title": "Ether Second",
     "title_kana": "ETHERSECOND",
     "version": "24013"
@@ -14637,7 +14636,7 @@
     "dx_lev_mas": "14+",
     "image_url": "bb049831e2c0b573.png",
     "release": "000000",
-    "sort": "1084",
+    "sort": "1090",
     "title": "Straight into the lights",
     "title_kana": "STRAIGHTINTOTHELIGHTS",
     "version": "24013"
@@ -14651,7 +14650,7 @@
     "dx_lev_mas": "13",
     "image_url": "575733d6aee16503.png",
     "release": "000000",
-    "sort": "932",
+    "sort": "937",
     "title": "アンバークロニクル",
     "title_kana": "アンハアクロニクル",
     "version": "23507"
@@ -14665,7 +14664,7 @@
     "dx_lev_mas": "13+",
     "image_url": "6626dcdb181d6d4e.png",
     "release": "000000",
-    "sort": "933",
+    "sort": "938",
     "title": "リフヴェイン",
     "title_kana": "リフウエイン",
     "version": "23507"
@@ -14679,7 +14678,7 @@
     "dx_lev_mas": "13",
     "image_url": "d1902fbb83b1c1cc.png",
     "release": "000000",
-    "sort": "930",
+    "sort": "935",
     "title": "Kairos",
     "title_kana": "KAIROS",
     "version": "23507"
@@ -14693,7 +14692,7 @@
     "dx_lev_mas": "13+",
     "image_url": "e005c0199a1cf88d.png",
     "release": "000000",
-    "sort": "931",
+    "sort": "936",
     "title": "宵の鳥",
     "title_kana": "ヨイノトリ",
     "version": "23507"
@@ -14707,7 +14706,7 @@
     "dx_lev_mas": "13+",
     "image_url": "163cb65566312402.png",
     "release": "000000",
-    "sort": "1110",
+    "sort": "1116",
     "title": "ここからはじまるプロローグ。 (Kanon Remix)",
     "title_kana": "ココカラハシマルフロロオクKANONREMIX",
     "version": "23508"
@@ -14721,7 +14720,7 @@
     "dx_lev_mas": "13+",
     "image_url": "959d4a141d9b398b.png",
     "release": "000000",
-    "sort": "1111",
+    "sort": "1117",
     "title": "モ°ルモ°ル (MZK Skippin' Remix)",
     "title_kana": "モルモルMZKSKIPPINREMIX",
     "version": "23508"
@@ -14735,7 +14734,7 @@
     "dx_lev_mas": "14+",
     "image_url": "fad2062de9b868ae.png",
     "release": "000000",
-    "sort": "1112",
+    "sort": "1118",
     "title": "VERTeX (rintaro soma deconstructed remix)",
     "title_kana": "VERTEXRINTAROSOMADECONSTRUCTEDREMIX",
     "version": "23508"
@@ -14749,7 +14748,7 @@
     "dx_lev_mas": "13",
     "image_url": "693ed3f8ef555432.png",
     "release": "000000",
-    "sort": "918",
+    "sort": "922",
     "title": "隠密あんみつDX",
     "title_kana": "オンミツアンミツDX",
     "version": "23510"
@@ -14763,7 +14762,7 @@
     "dx_lev_mas": "14",
     "image_url": "df8227797c9a592e.png",
     "release": "000000",
-    "sort": "935",
+    "sort": "940",
     "title": "地球",
     "title_kana": "チキユウ",
     "version": "23510"
@@ -14777,7 +14776,7 @@
     "dx_lev_mas": "13+",
     "image_url": "b1f8ab64f6dcdac3.png",
     "release": "000000",
-    "sort": "1108",
+    "sort": "1114",
     "title": "Churros Parlor",
     "title_kana": "CHURROSPARLOR",
     "version": "23510"
@@ -14791,7 +14790,7 @@
     "dx_lev_mas": "14+",
     "image_url": "ee5ed79e9849c1a6.png",
     "release": "000000",
-    "sort": "1104",
+    "sort": "1110",
     "title": "超熊猫的周遊記（ワンダーパンダートラベラー）",
     "title_kana": "ワンタアハンタアトラヘラア",
     "version": "23510"
@@ -14805,7 +14804,7 @@
     "dx_lev_mas": "14",
     "image_url": "482a7afdc94fba8b.png",
     "release": "000000",
-    "sort": "1343",
+    "sort": "1354",
     "title": "Trrricksters!!",
     "title_kana": "TRRRICKSTERS",
     "version": "23500"
@@ -14819,7 +14818,7 @@
     "dx_lev_mas": "14",
     "image_url": "6572d38b823295bd.png",
     "release": "000000",
-    "sort": "1286",
+    "sort": "1297",
     "title": "FLUFFY FLASH",
     "title_kana": "FLUFFYFLASH",
     "version": "23500"
@@ -14833,7 +14832,7 @@
     "dx_lev_mas": "12",
     "image_url": "77d1acf8f729d163.png",
     "release": "000000",
-    "sort": "1262",
+    "sort": "1273",
     "title": "STARRED HEART",
     "title_kana": "STARREDHEART",
     "version": "23512"
@@ -14847,7 +14846,7 @@
     "dx_lev_mas": "13",
     "image_url": "58eb9f4012c61f50.png",
     "release": "000000",
-    "sort": "1267",
+    "sort": "1278",
     "title": "Y.Y.Y.計画!!!!",
     "title_kana": "YYYケイカク",
     "version": "23512"
@@ -14861,7 +14860,7 @@
     "dx_lev_mas": "13+",
     "image_url": "0f5e140d7b059b50.png",
     "release": "000000",
-    "sort": "1285",
+    "sort": "1296",
     "title": "Last Kingdom",
     "title_kana": "LASTKINGDOM",
     "version": "23512"
@@ -14875,7 +14874,7 @@
     "dx_lev_mas": "14+",
     "image_url": "0cde431203c0df1c.png",
     "release": "000000",
-    "sort": "1283",
+    "sort": "1294",
     "title": "LAMIA",
     "title_kana": "LAMIA",
     "version": "23512"
@@ -15522,7 +15521,7 @@
     "dx_lev_mas": "13+",
     "image_url": "fb636683b41b00f1.png",
     "release": "000000",
-    "sort": "1302",
+    "sort": "1313",
     "title": "『ウソテイ』 ～一回戦せりなvsしろなvsなずな～",
     "title_kana": "ウソテイイツカイセンセリナVSシロナVSナスナ",
     "version": "23506"
@@ -15536,7 +15535,7 @@
     "dx_lev_mas": "13",
     "image_url": "69815c3a46ef8b0f.png",
     "release": "000000",
-    "sort": "1329",
+    "sort": "1340",
     "title": "Bad Apple!! feat.nomico ～五十嵐 撫子 Ver.～",
     "title_kana": "BADAPPLEFEATNOMICOイカラシナテシコVER",
     "version": "23506"
@@ -15550,7 +15549,7 @@
     "dx_lev_mas": "12+",
     "image_url": "27e298313b402e0b.png",
     "release": "000000",
-    "sort": "1301",
+    "sort": "1312",
     "title": "Snow Colored Score",
     "title_kana": "SNOWCOLOREDSCORE",
     "version": "23506"
@@ -15578,7 +15577,7 @@
     "dx_lev_mas": "13",
     "image_url": "e7badc37466ded77.png",
     "release": "000000",
-    "sort": "912",
+    "sort": "916",
     "title": "NOIZY BOUNCE",
     "title_kana": "NOIZYBOUNCE",
     "version": "24000"
@@ -15592,7 +15591,7 @@
     "dx_lev_mas": "13",
     "image_url": "921a8fe452c6f622.png",
     "release": "000000",
-    "sort": "929",
+    "sort": "934",
     "title": "サンバディ！",
     "title_kana": "サンハテイ",
     "version": "24000"
@@ -15606,7 +15605,7 @@
     "dx_lev_mas": "14",
     "image_url": "8ad4e0648c979e13.png",
     "release": "000000",
-    "sort": "1090",
+    "sort": "1096",
     "title": "Horoscope Express",
     "title_kana": "HOROSCOPEEXPRESS",
     "version": "24000"
@@ -15620,7 +15619,7 @@
     "dx_lev_mas": "14",
     "image_url": "284cbd482551683b.png",
     "release": "000000",
-    "sort": "1095",
+    "sort": "1101",
     "title": "Party☆People☆Princess",
     "title_kana": "PARTYPEOPLEPRINCESS",
     "version": "24000"
@@ -15634,7 +15633,7 @@
     "dx_lev_mas": "14+",
     "image_url": "2079d8ee35e28e4d.png",
     "release": "000000",
-    "sort": "1087",
+    "sort": "1093",
     "title": "Latent Kingdom",
     "title_kana": "LATENTKINGDOM",
     "version": "24002"
@@ -15676,7 +15675,7 @@
     "dx_lev_mas": "13",
     "image_url": "8a8d657158afc525.png",
     "release": "000000",
-    "sort": "1101",
+    "sort": "1107",
     "title": "ぽわわん劇場",
     "title_kana": "ホワワンケキシヨウ",
     "version": "24004"
@@ -15690,7 +15689,7 @@
     "dx_lev_mas": "13+",
     "image_url": "bb78ce62fe4a3def.png",
     "release": "000000",
-    "sort": "1085",
+    "sort": "1091",
     "title": "my flow",
     "title_kana": "MYFLOW",
     "version": "24004"
@@ -15704,7 +15703,7 @@
     "dx_lev_mas": "13+",
     "image_url": "34d74efd7d8eca9d.png",
     "release": "000000",
-    "sort": "1097",
+    "sort": "1103",
     "title": "POWER OF UNITY",
     "title_kana": "POWEROFUNITY",
     "version": "24004"
@@ -15718,7 +15717,7 @@
     "dx_lev_mas": "14",
     "image_url": "eb39039aa47b1aa7.png",
     "release": "000000",
-    "sort": "1083",
+    "sort": "1089",
     "title": "Energizing Flame",
     "title_kana": "ENERGIZINGFLAME",
     "version": "24004"
@@ -15732,7 +15731,7 @@
     "dx_lev_mas": "14+",
     "image_url": "474425ed8b75f482.png",
     "release": "000000",
-    "sort": "1098",
+    "sort": "1104",
     "title": "KHYMΞXΛ",
     "title_kana": "KHYMERA",
     "version": "24005"
@@ -15746,7 +15745,7 @@
     "dx_lev_mas": "13+",
     "image_url": "ef022adb2813059a.png",
     "release": "000000",
-    "sort": "913",
+    "sort": "917",
     "title": "フェイクフェイス・フェイルセイフ",
     "title_kana": "フエイクフエイスフエイルセイフ",
     "version": "24009"
@@ -15760,7 +15759,7 @@
     "dx_lev_mas": "13+",
     "image_url": "f7bab572b1bef0d9.png",
     "release": "000000",
-    "sort": "917",
+    "sort": "921",
     "title": "ふらふらふら、",
     "title_kana": "フラフラフラ",
     "version": "24009"
@@ -15774,7 +15773,7 @@
     "dx_lev_mas": "13",
     "image_url": "9cd7ade77cfb6cd4.png",
     "release": "000000",
-    "sort": "915",
+    "sort": "919",
     "title": "シックスプラン",
     "title_kana": "シツクスフラン",
     "version": "24009"
@@ -15788,7 +15787,7 @@
     "dx_lev_mas": "13",
     "image_url": "97dd3b432fba0716.png",
     "release": "000000",
-    "sort": "916",
+    "sort": "920",
     "title": "フタタビ",
     "title_kana": "フタタヒ",
     "version": "24009"
@@ -15802,7 +15801,7 @@
     "dx_lev_mas": "14",
     "image_url": "1f7f4a1e70e24919.png",
     "release": "000000",
-    "sort": "1339",
+    "sort": "1350",
     "title": "SQUAD-Phvntom-",
     "title_kana": "SQUADPHVNTOM",
     "version": "24000"
@@ -15816,7 +15815,7 @@
     "dx_lev_mas": "14",
     "image_url": "34b3ce15e74d1446.png",
     "release": "000000",
-    "sort": "1284",
+    "sort": "1295",
     "title": "GEOMETRIC DANCE",
     "title_kana": "GEOMETRICDANCE",
     "version": "24000"
@@ -15830,7 +15829,7 @@
     "dx_lev_mas": "12+",
     "image_url": "dae3ed9c3ccbcdb2.png",
     "release": "000000",
-    "sort": "1341",
+    "sort": "1352",
     "title": "Ring",
     "title_kana": "RING",
     "version": "24015"
@@ -15844,7 +15843,7 @@
     "dx_lev_mas": "14",
     "image_url": "f3e016cdb888c313.png",
     "release": "000000",
-    "sort": "1340",
+    "sort": "1351",
     "title": "インパアフェクシオン・ホワイトガアル",
     "title_kana": "インハアフエクシオンホワイトカアル",
     "version": "24015"
@@ -15858,7 +15857,7 @@
     "dx_lev_mas": "14",
     "image_url": "31d7d548f4a52676.png",
     "release": "000000",
-    "sort": "1342",
+    "sort": "1353",
     "title": "WE'RE BACK!!",
     "title_kana": "WEREBACK",
     "version": "24015"
@@ -16295,7 +16294,7 @@
     "dx_lev_mas": "14+",
     "image_url": "2b46dc47f1fe3d6d.png",
     "release": "000000",
-    "sort": "1282",
+    "sort": "1293",
     "title": "Apollo",
     "title_kana": "APOLLO",
     "version": "24008"
@@ -16309,7 +16308,7 @@
     "dx_lev_mas": "14+",
     "image_url": "486d317c19a52fd5.png",
     "release": "000000",
-    "sort": "1091",
+    "sort": "1097",
     "title": "raputa",
     "title_kana": "RAPUTA",
     "version": "24008"
@@ -16324,7 +16323,7 @@
     "dx_lev_remas": "15",
     "image_url": "1ace9e4612c5e020.png",
     "release": "000000",
-    "sort": "1250",
+    "sort": "1256",
     "title": "系ぎて",
     "title_kana": "ツナキテ",
     "version": "24015"
@@ -16394,7 +16393,7 @@
     "dx_lev_mas": "13+",
     "image_url": "0155b81ffa2eab24.png",
     "release": "000000",
-    "sort": "1355",
+    "sort": "1366",
     "title": "PinqPiq (xovevox Remix)",
     "title_kana": "PINQPIQXOVEVOXREMIX",
     "version": "24008"
@@ -16408,7 +16407,7 @@
     "dx_lev_mas": "13+",
     "image_url": "ec45c25d80cd0341.png",
     "release": "000000",
-    "sort": "908",
+    "sort": "912",
     "title": "エスオーエス",
     "title_kana": "エスオウエス",
     "version": "24500"
@@ -16422,7 +16421,7 @@
     "dx_lev_mas": "13",
     "image_url": "396fbb70013071f7.png",
     "release": "000000",
-    "sort": "909",
+    "sort": "913",
     "title": "のじゃロリック",
     "title_kana": "ノシヤロリツク",
     "version": "24500"
@@ -16436,7 +16435,7 @@
     "dx_lev_mas": "13+",
     "image_url": "929e9ac15a6a6b70.png",
     "release": "000000",
-    "sort": "1076",
+    "sort": "1082",
     "title": "Edelweiss",
     "title_kana": "EDELWEISS",
     "version": "24500"
@@ -16450,7 +16449,7 @@
     "dx_lev_mas": "14",
     "image_url": "cbe2c6b9420a2d98.png",
     "release": "000000",
-    "sort": "1048",
+    "sort": "1054",
     "title": "QuiQ",
     "title_kana": "QUIQ",
     "version": "24500"
@@ -16464,7 +16463,7 @@
     "dx_lev_mas": "14+",
     "image_url": "0c04b513c0520392.png",
     "release": "000000",
-    "sort": "1075",
+    "sort": "1081",
     "title": "IF:U",
     "title_kana": "IFU",
     "version": "24502"
@@ -16478,7 +16477,7 @@
     "dx_lev_mas": "13",
     "image_url": "4839dab189ca43a1.png",
     "release": "000000",
-    "sort": "1109",
+    "sort": "1115",
     "title": "Cider P@rty",
     "title_kana": "CIDERPARTY",
     "version": "24504"
@@ -16492,7 +16491,7 @@
     "dx_lev_mas": "14",
     "image_url": "f724f87d64fa40db.png",
     "release": "000000",
-    "sort": "1077",
+    "sort": "1083",
     "title": "勦滅",
     "title_kana": "ソウメツ",
     "version": "24504"
@@ -16506,7 +16505,7 @@
     "dx_lev_mas": "13+",
     "image_url": "7ab09df82652c586.png",
     "release": "000000",
-    "sort": "1078",
+    "sort": "1084",
     "title": "Lunatic Vibes",
     "title_kana": "LUNATICVIBES",
     "version": "24504"
@@ -16520,7 +16519,7 @@
     "dx_lev_mas": "14",
     "image_url": "e9c5825f3cebbfe1.png",
     "release": "000000",
-    "sort": "1079",
+    "sort": "1085",
     "title": "Bloody Trail",
     "title_kana": "BLOODYTRAIL",
     "version": "24504"
@@ -16534,7 +16533,7 @@
     "dx_lev_mas": "13+",
     "image_url": "08ecab27bca7f9f7.png",
     "release": "000000",
-    "sort": "925",
+    "sort": "930",
     "title": "RE:INCARNATED DRAGNER",
     "title_kana": "REINCARNATEDDRAGNER",
     "version": "24507"
@@ -16548,7 +16547,7 @@
     "dx_lev_mas": "13+",
     "image_url": "091204c68ec374bc.png",
     "release": "000000",
-    "sort": "926",
+    "sort": "931",
     "title": "Beginning together!",
     "title_kana": "BEGINNINGTOGETHER",
     "version": "24507"
@@ -16562,7 +16561,7 @@
     "dx_lev_mas": "13",
     "image_url": "683b3ea0430e281e.png",
     "release": "000000",
-    "sort": "927",
+    "sort": "932",
     "title": "Shining Ray ～僕らの絆～",
     "title_kana": "SHININGRAYホクラノキスナ",
     "version": "24507"
@@ -16576,7 +16575,7 @@
     "dx_lev_mas": "14",
     "image_url": "dfe08aefe5fcd266.png",
     "release": "000000",
-    "sort": "928",
+    "sort": "933",
     "title": "DEVOTION",
     "title_kana": "DEVOTION",
     "version": "24507"
@@ -16590,7 +16589,7 @@
     "dx_lev_mas": "13+",
     "image_url": "acf47237292dfe55.png",
     "release": "000000",
-    "sort": "924",
+    "sort": "929",
     "title": "Geranium",
     "title_kana": "GERANIUM",
     "version": "24511"
@@ -16604,7 +16603,7 @@
     "dx_lev_mas": "13",
     "image_url": "4a62f16daa2b88e3.png",
     "release": "000000",
-    "sort": "1080",
+    "sort": "1086",
     "title": "The Cursed Doll",
     "title_kana": "THECURSEDDOLL",
     "version": "24511"
@@ -16618,7 +16617,7 @@
     "dx_lev_mas": "14",
     "image_url": "2741f6c344272eb8.png",
     "release": "000000",
-    "sort": "1081",
+    "sort": "1087",
     "title": "RondeauX of RagnaroQ",
     "title_kana": "RONDEAUXOFRAGNAROQ",
     "version": "24511"
@@ -16632,7 +16631,7 @@
     "dx_lev_mas": "14+",
     "image_url": "48447c3e67a26b08.png",
     "release": "000000",
-    "sort": "1246",
+    "sort": "1252",
     "title": "ℝ∈Χ LUNATiCA",
     "title_kana": "REXLUNATICA",
     "version": "24511"
@@ -16646,7 +16645,7 @@
     "dx_lev_mas": "14+",
     "image_url": "52844a4b40958122.png",
     "release": "000000",
-    "sort": "1337",
+    "sort": "1348",
     "title": "Λzure Vixen",
     "title_kana": "AZUREVIXEN",
     "version": "24500"
@@ -16660,7 +16659,7 @@
     "dx_lev_mas": "14",
     "image_url": "297d6d7da385d698.png",
     "release": "000000",
-    "sort": "1279",
+    "sort": "1290",
     "title": "MarbleBlue.",
     "title_kana": "MARBLEBLUE",
     "version": "24500"
@@ -16674,7 +16673,7 @@
     "dx_lev_mas": "13",
     "image_url": "41845620a08d44cf.png",
     "release": "000000",
-    "sort": "1274",
+    "sort": "1285",
     "title": "まっすぐ→→→ストリーム！",
     "title_kana": "マツスクストリイム",
     "version": "24513"
@@ -16688,7 +16687,7 @@
     "dx_lev_mas": "13+",
     "image_url": "99de641563f8b8a1.png",
     "release": "000000",
-    "sort": "1266",
+    "sort": "1277",
     "title": "最っ高のエンタメだ!!",
     "title_kana": "サイツコウノエンタメタ",
     "version": "24513"
@@ -16702,7 +16701,7 @@
     "dx_lev_mas": "13+",
     "image_url": "211cecb144f94410.png",
     "release": "000000",
-    "sort": "1280",
+    "sort": "1291",
     "title": "Baqeela",
     "title_kana": "BAQEELA",
     "version": "24513"
@@ -16716,7 +16715,7 @@
     "dx_lev_mas": "14",
     "image_url": "17fd83901e99d7b6.png",
     "release": "000000",
-    "sort": "1281",
+    "sort": "1292",
     "title": "Ai C",
     "title_kana": "AIC",
     "version": "24513"
@@ -17266,7 +17265,7 @@
     "dx_lev_mas": "13+",
     "image_url": "3340e09175faaa70.png",
     "release": "000000",
-    "sort": "1338",
+    "sort": "1349",
     "title": "MUSIC PЯAYER",
     "title_kana": "MUSICPRAYER",
     "version": "24501"
@@ -17308,7 +17307,7 @@
     "dx_lev_mas": "13",
     "image_url": "0357191a14ae5114.png",
     "release": "000000",
-    "sort": "922",
+    "sort": "926",
     "title": "プリズム△▽リズム",
     "title_kana": "フリスムリスム",
     "version": "25000"
@@ -17323,7 +17322,7 @@
     "image_url": "cee93e70e6c82a7a.png",
     "key": "○",
     "release": "000000",
-    "sort": "904",
+    "sort": "908",
     "title": "パラドクスイヴ",
     "title_kana": "ハラトクスイウ",
     "version": "25000"
@@ -17338,7 +17337,7 @@
     "image_url": "602137b1a10fa7eb.png",
     "key": "○",
     "release": "000000",
-    "sort": "905",
+    "sort": "909",
     "title": "YKWTD",
     "title_kana": "YKWTD",
     "version": "25000"
@@ -17353,7 +17352,7 @@
     "image_url": "a2354433a57c01eb.png",
     "key": "○",
     "release": "000000",
-    "sort": "906",
+    "sort": "910",
     "title": "184億回のマルチトニック",
     "title_kana": "184オクカイノマルチトニツク",
     "version": "25000"
@@ -17368,7 +17367,7 @@
     "image_url": "a0307249aa05e567.png",
     "key": "○",
     "release": "000000",
-    "sort": "907",
+    "sort": "911",
     "title": "果ての空、僕らが見た光。",
     "title_kana": "ハテノソラホクラカミタヒカリ",
     "version": "25000"
@@ -17382,7 +17381,7 @@
     "dx_lev_mas": "14+",
     "image_url": "cb40822c0f5a3ec1.png",
     "release": "000000",
-    "sort": "1137",
+    "sort": "1143",
     "title": "Cryptarithm",
     "title_kana": "CRYPTARITHM",
     "version": "25002"
@@ -17397,7 +17396,7 @@
     "image_url": "d54c8fb0237dc170.png",
     "key": "○",
     "release": "000000",
-    "sort": "923",
+    "sort": "928",
     "title": "Ourania",
     "title_kana": "OURANIA",
     "version": "25003"
@@ -17412,7 +17411,7 @@
     "image_url": "4b1d9466de5e53e0.png",
     "key": "○",
     "release": "000000",
-    "sort": "1073",
+    "sort": "1079",
     "title": "天蓋",
     "title_kana": "テンカイ",
     "version": "25003"
@@ -17427,7 +17426,7 @@
     "image_url": "52fdd4f921a6c08e.png",
     "key": "○",
     "release": "000000",
-    "sort": "1074",
+    "sort": "1080",
     "title": "Deicide",
     "title_kana": "DEICIDE",
     "version": "25003"
@@ -17442,7 +17441,7 @@
     "image_url": "b28c21f0d14c6e26.png",
     "key": "○",
     "release": "000000",
-    "sort": "1054",
+    "sort": "1060",
     "title": "氷滅の135小節",
     "title_kana": "ヒヨウメツノ135シヨウセツ",
     "version": "25003"
@@ -17456,7 +17455,7 @@
     "dx_lev_mas": "14+",
     "image_url": "da7d3a099d23a585.png",
     "release": "000000",
-    "sort": "1056",
+    "sort": "1062",
     "title": "Divide et impera!",
     "title_kana": "DIVIDEETIMPERA",
     "version": "25004"
@@ -17514,7 +17513,7 @@
     "image_url": "8d23c1808c240e57.png",
     "key": "○",
     "release": "000000",
-    "sort": "1057",
+    "sort": "1063",
     "title": "Flashback",
     "title_kana": "FLASHBACK",
     "version": "25015"
@@ -17529,7 +17528,7 @@
     "image_url": "0380745bb9f9388b.png",
     "key": "○",
     "release": "000000",
-    "sort": "1058",
+    "sort": "1064",
     "title": "Colorfull:Encounter",
     "title_kana": "COLORFULLENCOUNTER",
     "version": "25015"
@@ -17544,7 +17543,7 @@
     "image_url": "2c80b1a894f03420.png",
     "key": "○",
     "release": "000000",
-    "sort": "1062",
+    "sort": "1068",
     "title": "雨露霜雪",
     "title_kana": "ウロソウセツ",
     "version": "25015"
@@ -17559,7 +17558,7 @@
     "image_url": "92fed24b2755bbb4.png",
     "key": "○",
     "release": "000000",
-    "sort": "1063",
+    "sort": "1069",
     "title": "宙天",
     "title_kana": "チユウテン",
     "version": "25015"
@@ -17573,7 +17572,7 @@
     "dx_lev_mas": "14",
     "image_url": "d24d81a72fa103e9.png",
     "release": "000000",
-    "sort": "1336",
+    "sort": "1347",
     "title": "Elemental Ethnic",
     "title_kana": "ELEMENTALETHNIC",
     "version": "25000"
@@ -17587,7 +17586,7 @@
     "dx_lev_mas": "14",
     "image_url": "286e3071ecea46df.png",
     "release": "000000",
-    "sort": "1278",
+    "sort": "1289",
     "title": "美夜月鏡",
     "title_kana": "ミヤケツキヨウ",
     "version": "25000"
@@ -17601,7 +17600,7 @@
     "dx_lev_mas": "13+",
     "image_url": "59b521d1daa4e5c3.png",
     "release": "000000",
-    "sort": "1269",
+    "sort": "1280",
     "title": "Resolution",
     "title_kana": "RESOLUTION",
     "version": "25013"
@@ -17615,7 +17614,7 @@
     "dx_lev_mas": "13",
     "image_url": "65e8e9900bb9161f.png",
     "release": "000000",
-    "sort": "1256",
+    "sort": "1267",
     "title": "いちげき！のテーマ",
     "title_kana": "イチケキノテエマ",
     "version": "25013"
@@ -17629,7 +17628,7 @@
     "dx_lev_mas": "13+",
     "image_url": "fca868901b5bc94e.png",
     "release": "000000",
-    "sort": "1276",
+    "sort": "1287",
     "title": "Radiance",
     "title_kana": "RADIANCE",
     "version": "25013"
@@ -17643,7 +17642,7 @@
     "dx_lev_mas": "14",
     "image_url": "162fce5271b54ab3.png",
     "release": "000000",
-    "sort": "1277",
+    "sort": "1288",
     "title": "R'N'R Monsta",
     "title_kana": "RNRMONSTA",
     "version": "25013"
@@ -18391,6 +18390,54 @@
     "version": "25505"
   },
   {
+    "artist": "qfeileadh feat.のあ",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "14",
+    "image_url": "51959395323a90a1.png",
+    "key": "○",
+    "release": "250711",
+    "sort": "904",
+    "title": "IMBRUED:FLUX",
+    "title_kana": "IMBRUEDFLUX",
+    "version": "25512"
+  },
+  {
+    "artist": "Nego_tiator",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "14",
+    "image_url": "64591d22ccbf08c8.png",
+    "key": "○",
+    "release": "250711",
+    "sort": "905",
+    "title": "砂の函",
+    "title_kana": "スナノハコ",
+    "version": "25512"
+  },
+  {
+    "artist": "rN",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "13+",
+    "image_url": "bd5acd48e3191743.png",
+    "key": "○",
+    "release": "250711",
+    "sort": "906",
+    "title": "Amereistr",
+    "title_kana": "AMEREISTR",
+    "version": "25512"
+  },
+  {
     "artist": "Massive New Krew",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "4",
@@ -18399,7 +18446,7 @@
     "dx_lev_mas": "13+",
     "image_url": "fa5e0d329a6c6726.png",
     "release": "250313",
-    "sort": "1254",
+    "sort": "1265",
     "title": "Supersonic Generation",
     "title_kana": "SUPERSONICGENERATION",
     "version": "25500"
@@ -18413,7 +18460,7 @@
     "dx_lev_mas": "14",
     "image_url": "2b7c6e8b13676f2e.png",
     "release": "250313",
-    "sort": "1255",
+    "sort": "1266",
     "title": "Zitronectar",
     "title_kana": "ZITRONECTAR",
     "version": "25500"
@@ -18427,7 +18474,7 @@
     "dx_lev_mas": "13+",
     "image_url": "8bd4abae1de74251.png",
     "release": "250620",
-    "sort": "1253",
+    "sort": "1264",
     "title": "なんかノイズにきこえる",
     "title_kana": "ナンカノイスニキコエル",
     "version": "25509"
@@ -18441,7 +18488,7 @@
     "dx_lev_mas": "13+",
     "image_url": "1803a7329d1d7290.png",
     "release": "250627",
-    "sort": "1252",
+    "sort": "1263",
     "title": "JIGOKU STATION CENTRAL GATE",
     "title_kana": "JIGOKUSTATIONCENTRALGATE",
     "version": "25510"
@@ -18449,16 +18496,30 @@
   {
     "artist": "litmus*",
     "catcode": "オンゲキ＆CHUNITHM",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
     "dx_lev_mas": "13+",
     "image_url": "a1e1854c51cf78ac.png",
     "release": "250704",
-    "sort": "1251",
+    "sort": "1262",
     "title": "Lover's Trick",
     "title_kana": "LOVERSTRICK",
+    "version": "25512"
+  },
+  {
+    "artist": "tilt-six feat.バル",
+    "catcode": "オンゲキ＆CHUNITHM",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13+",
+    "image_url": "9099bf55e3eb446a.png",
+    "release": "250711",
+    "sort": "1261",
+    "title": "サウンドプレイヤー",
+    "title_kana": "サウントフレイヤア",
     "version": "25512"
   },
   {
@@ -18963,7 +19024,7 @@
     "comment": "リア充専用譜面だよ！リア充向けだってば！",
     "image_url": "daf6adeacb8fc300.png",
     "release": "230914",
-    "sort": "1443",
+    "sort": "1454",
     "title": "[協]Love You",
     "title_kana": "LOVEYOU",
     "version": "24000"
@@ -18976,7 +19037,7 @@
     "comment": "チャンさんは今日もアクセル全開",
     "image_url": "a044abc0c8fca1cf.png",
     "release": "231225",
-    "sort": "1441",
+    "sort": "1452",
     "title": "[蔵]In Chaos",
     "title_kana": "INCHAOS",
     "version": "24010"
@@ -18989,7 +19050,7 @@
     "comment": "パーフェクトホールド教室",
     "image_url": "d44aee5f4b660d3d.png",
     "release": "231225",
-    "sort": "1431",
+    "sort": "1442",
     "title": "[蛸]チルノのパーフェクトさんすう教室",
     "title_kana": "チルノノハアフエクトサンスウキヨウシツ",
     "version": "24010"
@@ -19002,7 +19063,7 @@
     "comment": "☆TAP大作戦☆",
     "image_url": "cd787bcc1dc248f7.png",
     "release": "231225",
-    "sort": "1428",
+    "sort": "1439",
     "title": "[星]しゅわスパ大作戦☆",
     "title_kana": "シユワスハタイサクセン",
     "version": "24010"
@@ -19015,7 +19076,7 @@
     "comment": "回転タップ検定起動音",
     "image_url": "6cb5afa2c0d02884.png",
     "release": "231225",
-    "sort": "1432",
+    "sort": "1443",
     "title": "[宴]セガサターン起動音[H.][Remix]",
     "title_kana": "セカサタアンキトウオン",
     "version": "24010"
@@ -19028,7 +19089,7 @@
     "comment": "はっぴーの若干ストイック気味版",
     "image_url": "a259af51e0b9d863.png",
     "release": "231225",
-    "sort": "1434",
+    "sort": "1445",
     "title": "[は]Garakuta Doll Play",
     "title_kana": "GARAKUTADOLLPLAY",
     "version": "24010"
@@ -19041,7 +19102,7 @@
     "comment": "いつもより多く回っております",
     "image_url": "2e64a1f5e2e4b832.png",
     "release": "231225",
-    "sort": "1429",
+    "sort": "1440",
     "title": "[宴]CYCLES",
     "title_kana": "CYCLES",
     "version": "24010"
@@ -19054,7 +19115,7 @@
     "comment": "名人マンよくばりセット",
     "image_url": "f671bf7482912046.png",
     "release": "231225",
-    "sort": "1439",
+    "sort": "1450",
     "title": "[狂]タカハせ！名人マン",
     "title_kana": "タカハセメイシンマン",
     "version": "24010"
@@ -19067,7 +19128,7 @@
     "comment": "Let's Party Night !",
     "image_url": "64635a3534ce788a.png",
     "release": "231012",
-    "sort": "1442",
+    "sort": "1453",
     "title": "[宴]Oshama Scramble!",
     "title_kana": "OSHAMASCRAMBLE",
     "version": "24003"
@@ -19080,7 +19141,7 @@
     "comment": "チャンさんの初稿シリーズ～王～",
     "image_url": "0c142b42f0e37845.png",
     "release": "231225",
-    "sort": "1440",
+    "sort": "1451",
     "title": "[蔵]Glorious Crown",
     "title_kana": "GLORIOUSCROWN",
     "version": "24010"
@@ -19093,7 +19154,7 @@
     "comment": "リア充向け譜面　～爆発しろ～",
     "image_url": "3dc5138216e086fe.png",
     "release": "230914",
-    "sort": "1444",
+    "sort": "1455",
     "title": "[協]恋愛裁判",
     "title_kana": "レンアイサイハン",
     "version": "24000"
@@ -19106,7 +19167,7 @@
     "comment": "なぞる順番を覚えるゲーム(初級編)",
     "image_url": "a4c576aec0c3897c.png",
     "release": "231225",
-    "sort": "1430",
+    "sort": "1441",
     "title": "[覚]東京リアルワールド",
     "title_kana": "トウキヨウリアルワアルト",
     "version": "24010"
@@ -19119,7 +19180,7 @@
     "comment": "Hand in Hand in Hand in Hand",
     "image_url": "687a2e2257afd36e.png",
     "release": "230914",
-    "sort": "1446",
+    "sort": "1457",
     "title": "[協]Hand in Hand",
     "title_kana": "HANDINHAND",
     "version": "24000"
@@ -19132,7 +19193,7 @@
     "comment": "スライドの発射タイミング 速度がデタラメ",
     "image_url": "d3a429e38da60e5a.png",
     "release": "231225",
-    "sort": "1438",
+    "sort": "1449",
     "title": "[疑]DETARAME ROCK&ROLL THEORY",
     "title_kana": "DETARAMEROCKROLLTHEORY",
     "version": "24010"
@@ -19145,7 +19206,7 @@
     "comment": "なりきれ！プリズムリバー三姉妹",
     "image_url": "4ae8a044a75d8432.png",
     "release": "230914",
-    "sort": "1445",
+    "sort": "1456",
     "title": "[協]疾走あんさんぶる",
     "title_kana": "シツソウアンサンフル",
     "version": "24000"
@@ -19158,7 +19219,7 @@
     "comment": "HOLDだけでがんばろうとした。",
     "image_url": "228ca25f842c308b.png",
     "release": "250401",
-    "sort": "1395",
+    "sort": "1406",
     "title": "[幸]犬日和。(はっぴー歌唱Ver)",
     "title_kana": "イヌヒヨリハツヒイカシヨウVER",
     "version": "25502"
@@ -19171,7 +19232,7 @@
     "comment": "ぼくらのかんがえたさいきょうのまいまい",
     "image_url": "262844c08ce50193.png",
     "release": "240524",
-    "sort": "1418",
+    "sort": "1429",
     "title": "[宴]Oshama Scramble! (Cranky Remix)",
     "title_kana": "OSHAMASCRAMBLECRANKYREMIX",
     "version": "24505"
@@ -19184,7 +19245,7 @@
     "comment": "HOLDがSQUILLAに！？",
     "image_url": "2f730929cef3fa6e.png",
     "release": "240229",
-    "sort": "1427",
+    "sort": "1438",
     "title": "[耐]Space Harrier Main Theme [Reborn]",
     "title_kana": "SPACEHARRIERMAINTHEMEREBORN",
     "version": "24015"
@@ -19197,7 +19258,7 @@
     "comment": "そんな「甘い魔法」",
     "image_url": "e1e5a738cc1af930.png",
     "release": "250313",
-    "sort": "1399",
+    "sort": "1410",
     "title": "[甘]スイートマジック",
     "title_kana": "スイイトマシツク",
     "version": "25500"
@@ -19210,7 +19271,7 @@
     "comment": "Jackの現代風アレンジ版",
     "image_url": "a259af51e0b9d863.png",
     "release": "240321",
-    "sort": "1433",
+    "sort": "1444",
     "title": "[J]Garakuta Doll Play",
     "title_kana": "GARAKUTADOLLPLAY",
     "version": "24500"
@@ -19224,7 +19285,7 @@
     "buddy": "○",
     "image_url": "2f2c3f8d7dfbcaa4.png",
     "release": "240912",
-    "sort": "1408",
+    "sort": "1419",
     "title": "[回]ダブルラリアット",
     "title_kana": "タフルラリアツト",
     "version": "25000"
@@ -19237,7 +19298,7 @@
     "comment": "ウミユリ練習譚",
     "image_url": "e2047e2898d1bc8c.png",
     "release": "240912",
-    "sort": "1411",
+    "sort": "1422",
     "title": "[習]ウミユリ海底譚",
     "title_kana": "ウミユリカイテイタン",
     "version": "25000"
@@ -19251,7 +19312,7 @@
     "buddy": "○",
     "image_url": "29eb81a88a8533ec.png",
     "release": "240912",
-    "sort": "1409",
+    "sort": "1420",
     "title": "[奏]洗脳",
     "title_kana": "センノウ",
     "version": "25000"
@@ -19265,7 +19326,7 @@
     "buddy": "○",
     "image_url": "e500e033148d33c1.png",
     "release": "240321",
-    "sort": "1421",
+    "sort": "1432",
     "title": "[奏]チュルリラ・チュルリラ・ダッダッダ！",
     "title_kana": "チユルリラチユルリラタツタツタ",
     "version": "24500"
@@ -19278,7 +19339,7 @@
     "comment": "インド人含め右に",
     "image_url": "9f01a2ef6b665b53.png",
     "release": "240229",
-    "sort": "1425",
+    "sort": "1436",
     "title": "[右]The wheel to the right",
     "title_kana": "THEWHEELTOTHERIGHT",
     "version": "24015"
@@ -19291,7 +19352,7 @@
     "comment": "お前がBACKするんかーーーい!!",
     "image_url": "f051590fb4cf9e96.png",
     "release": "240229",
-    "sort": "1426",
+    "sort": "1437",
     "title": "[逆]KING is BACK!!",
     "title_kana": "KINGISBACK",
     "version": "24015"
@@ -19305,7 +19366,7 @@
     "buddy": "○",
     "image_url": "30b9a835ccb9b302.png",
     "release": "240321",
-    "sort": "1419",
+    "sort": "1430",
     "title": "[協]エイリアンエイリアン",
     "title_kana": "エイリアンエイリアン",
     "version": "24500"
@@ -19318,7 +19379,7 @@
     "comment": "デタラメのロックンロール",
     "image_url": "b5d48d0f260a213d.png",
     "release": "240321",
-    "sort": "1422",
+    "sort": "1433",
     "title": "[疑]ロキ",
     "title_kana": "ロキ",
     "version": "24500"
@@ -19331,7 +19392,7 @@
     "comment": "一緒にデスコ",
     "image_url": "ab3c088d671ddab6.png",
     "release": "240912",
-    "sort": "1412",
+    "sort": "1423",
     "title": "[協]太陽系デスコ",
     "title_kana": "タイヨウケイテスコ",
     "version": "25000"
@@ -19344,7 +19405,7 @@
     "comment": "まわると　うれしいね",
     "image_url": "1b3fd58d6ebade7c.png",
     "release": "250313",
-    "sort": "1400",
+    "sort": "1411",
     "title": "[回]ハム太郎とっとこうた",
     "title_kana": "ハムタロウトツトコウタ",
     "version": "25500"
@@ -19358,7 +19419,7 @@
     "buddy": "○",
     "image_url": "2dd30e50b2be509e.png",
     "release": "241122",
-    "sort": "1407",
+    "sort": "1418",
     "title": "[奏]マイオドレ！舞舞タイム",
     "title_kana": "マイオトレマイマイタイム",
     "version": "25006"
@@ -19371,7 +19432,7 @@
     "comment": "ほしだけスペクタクル",
     "image_url": "3b610dccb2b32467.png",
     "release": "250214",
-    "sort": "1401",
+    "sort": "1412",
     "title": "[星]ほしぞらスペクタクル",
     "title_kana": "ホシソラスヘクタクル",
     "version": "25013"
@@ -19385,7 +19446,7 @@
     "buddy": "○",
     "image_url": "8ec5044872bc5c23.png",
     "release": "240321",
-    "sort": "1420",
+    "sort": "1431",
     "title": "[奏]テレキャスタービーボーイ",
     "title_kana": "テレキヤスタアヒイホオイ",
     "version": "24500"
@@ -19399,7 +19460,7 @@
     "buddy": "○",
     "image_url": "3d04a3710463921e.png",
     "release": "230914",
-    "sort": "1448",
+    "sort": "1459",
     "title": "[協]ラグトレイン",
     "title_kana": "ラクトレイン",
     "version": "24000"
@@ -19413,7 +19474,7 @@
     "buddy": "○",
     "image_url": "f27eaa7f0425f9c8.png",
     "release": "230914",
-    "sort": "1447",
+    "sort": "1458",
     "title": "[奏]アカツキアライヴァル",
     "title_kana": "アカツキアライウアル",
     "version": "24000"
@@ -19426,7 +19487,7 @@
     "comment": "神々が恋したトリル郷",
     "image_url": "1060b41523ca6346.png",
     "release": "250214",
-    "sort": "1402",
+    "sort": "1413",
     "title": "[片]神々が恋した幻想郷",
     "title_kana": "カミカミカコイシタケンソウキヨウ",
     "version": "25013"
@@ -19440,7 +19501,7 @@
     "buddy": "○",
     "image_url": "e63c3acfdf00c605.png",
     "release": "240912",
-    "sort": "1410",
+    "sort": "1421",
     "title": "[奏]アンビバレンス",
     "title_kana": "アンヒハレンス",
     "version": "25000"
@@ -19453,7 +19514,7 @@
     "comment": "実際はBPM360らしいので…",
     "image_url": "6c38d19035bd1ea6.png",
     "release": "250313",
-    "sort": "1398",
+    "sort": "1409",
     "title": "[即]チューリングの跡",
     "title_kana": "チユウリンクノアト",
     "version": "25500"
@@ -19466,7 +19527,7 @@
     "comment": "爆発は好きか！？",
     "image_url": "fd30be82f708758f.png",
     "release": "241224",
-    "sort": "1403",
+    "sort": "1414",
     "title": "[爆]Love's Theme of BADASS ～バッド・アス 愛のテーマ～",
     "title_kana": "LOVESTHEMEOFBADASSハツトアスアイノテエマ",
     "version": "25009"
@@ -19480,7 +19541,7 @@
     "buddy": "○",
     "image_url": "a33a77ea8c117b3d.png",
     "release": "240816",
-    "sort": "1413",
+    "sort": "1424",
     "title": "[奏]ヒトガタ",
     "title_kana": "ヒトカタ",
     "version": "24511"
@@ -19493,7 +19554,7 @@
     "comment": "君たちが三妖精だ！！！",
     "image_url": "30b9ee1f385156b4.png",
     "release": "240607",
-    "sort": "1416",
+    "sort": "1427",
     "title": "[協]三妖精SAY YA!!!",
     "title_kana": "サンヨウセイSAYYA",
     "version": "24506"
@@ -19506,7 +19567,7 @@
     "comment": "maimai でらっくす版覚譜面もほしかった",
     "image_url": "6bb029ffc3be5817.png",
     "release": "250620",
-    "sort": "1387",
+    "sort": "1398",
     "title": "[覚]Hainuwele",
     "title_kana": "HAINUWELE",
     "version": "25508"
@@ -19520,7 +19581,7 @@
     "buddy": "○",
     "image_url": "5f9f0619083ebab0.png",
     "release": "240607",
-    "sort": "1415",
+    "sort": "1426",
     "title": "[覚]スカーレット警察のゲットーパトロール24時",
     "title_kana": "スカアレツトケイサツノケツトオハトロオル24シ",
     "version": "24506"
@@ -19533,7 +19594,7 @@
     "comment": "くるくる回る、お星さま。",
     "image_url": "dd2686a8aa23107f.png",
     "release": "240229",
-    "sort": "1424",
+    "sort": "1435",
     "title": "[回]回る空うさぎ",
     "title_kana": "マワルソラウサキ",
     "version": "24015"
@@ -19546,7 +19607,7 @@
     "comment": "秘密を握った　真実を　魅せてあげる",
     "image_url": "8d2776e8b9c3ceaf.png",
     "release": "241122",
-    "sort": "1406",
+    "sort": "1417",
     "title": "[蛸]不機嫌なスリーカード",
     "title_kana": "フキケンナスリイカアト",
     "version": "25006"
@@ -19559,7 +19620,7 @@
     "comment": "もう一人じゃないから",
     "image_url": "4d9e0c3640c966c5.png",
     "release": "240816",
-    "sort": "1414",
+    "sort": "1425",
     "title": "[両]はんぶんこ",
     "title_kana": "ハンフンコ",
     "version": "24511"
@@ -19572,7 +19633,7 @@
     "comment": "息が詰まる息が詰まる息が詰まる息が詰まる",
     "image_url": "6a7cf1cc1358ceba.png",
     "release": "240321",
-    "sort": "1423",
+    "sort": "1434",
     "title": "[息]ノンブレス・オブリージュ",
     "title_kana": "ノンフレスオフリイシユ",
     "version": "24500"
@@ -19585,7 +19646,7 @@
     "comment": "SLIDE BACK!!",
     "image_url": "31d7d548f4a52676.png",
     "release": "250620",
-    "sort": "1386",
+    "sort": "1397",
     "title": "[逆]WE'RE BACK!!",
     "title_kana": "WEREBACK",
     "version": "25508"
@@ -19599,7 +19660,7 @@
     "buddy": "○",
     "image_url": "b3c2cfe1e41c7ee9.png",
     "release": "230914",
-    "sort": "1450",
+    "sort": "1461",
     "title": "[協]青春コンプレックス",
     "title_kana": "セイシユンコンフレツクス",
     "version": "24000"
@@ -19613,7 +19674,7 @@
     "buddy": "○",
     "image_url": "4a865397a5170d82.png",
     "release": "240524",
-    "sort": "1417",
+    "sort": "1428",
     "title": "[奏]さくゆいたいそう",
     "title_kana": "サクユイタイソウ",
     "version": "24505"
@@ -19627,7 +19688,7 @@
     "buddy": "○",
     "image_url": "3521590854ca73db.png",
     "release": "250313",
-    "sort": "1396",
+    "sort": "1407",
     "title": "[匿]匿名M",
     "title_kana": "トクメイM",
     "version": "25500"
@@ -19640,7 +19701,7 @@
     "comment": "嘘に踊れ",
     "image_url": "3ecd712a72f9b81a.png",
     "release": "241206",
-    "sort": "1405",
+    "sort": "1416",
     "title": "[嘘]ライアーダンサー",
     "title_kana": "ライアアタンサア",
     "version": "25007"
@@ -19654,7 +19715,7 @@
     "buddy": "○",
     "image_url": "45151be961a7a053.png",
     "release": "250521",
-    "sort": "1388",
+    "sort": "1399",
     "title": "[協]Ultimate taste",
     "title_kana": "ULTIMATETASTE",
     "version": "25506"
@@ -19667,7 +19728,7 @@
     "comment": "人（の初見姿観察推奨）マニア",
     "image_url": "10356aac35f154c5.png",
     "release": "241206",
-    "sort": "1404",
+    "sort": "1415",
     "title": "[X]人マニア",
     "title_kana": "ヒトマニア",
     "version": "25007"
@@ -19681,7 +19742,7 @@
     "buddy": "○",
     "image_url": "cd6694c3b545ed8b.png",
     "release": "250313",
-    "sort": "1397",
+    "sort": "1408",
     "title": "[助]メズマライザー",
     "title_kana": "メスマライサア",
     "version": "25500"
@@ -19694,7 +19755,7 @@
     "comment": "好きな譜面発表Luxizhel",
     "image_url": "f5f0c148fc18e746.png",
     "release": "250509",
-    "sort": "1389",
+    "sort": "1400",
     "title": "[好]好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
@@ -19707,7 +19768,7 @@
     "comment": "rioNのスライド筋マシマシ版",
     "image_url": "a259af51e0b9d863.png",
     "release": "240321",
-    "sort": "1435",
+    "sort": "1446",
     "title": "[r]Garakuta Doll Play",
     "title_kana": "GARAKUTADOLLPLAY",
     "version": "24500"
@@ -19721,7 +19782,7 @@
     "buddy": "○",
     "image_url": "b3c2cfe1e41c7ee9.png",
     "release": "230914",
-    "sort": "1449",
+    "sort": "1460",
     "title": "[協]青春コンプレックス",
     "title_kana": "セイシユンコンフレツクス",
     "version": "24000"
@@ -19734,7 +19795,7 @@
     "comment": "好きな譜面発表サファ太",
     "image_url": "f5f0c148fc18e746.png",
     "release": "250509",
-    "sort": "1390",
+    "sort": "1401",
     "title": "[譜]好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
@@ -19747,7 +19808,7 @@
     "comment": "玉子豆腐のチュウニリスペクト版",
     "image_url": "a259af51e0b9d863.png",
     "release": "240321",
-    "sort": "1436",
+    "sort": "1447",
     "title": "[玉]Garakuta Doll Play",
     "title_kana": "GARAKUTADOLLPLAY",
     "version": "24500"
@@ -19760,7 +19821,7 @@
     "comment": "好きな譜面発表鳩ホルダー",
     "image_url": "f5f0c148fc18e746.png",
     "release": "250509",
-    "sort": "1391",
+    "sort": "1402",
     "title": "[面]好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
@@ -19773,7 +19834,7 @@
     "comment": "パリピS氏のやべーやつ版",
     "image_url": "a259af51e0b9d863.png",
     "release": "240321",
-    "sort": "1437",
+    "sort": "1448",
     "title": "[某]Garakuta Doll Play",
     "title_kana": "GARAKUTADOLLPLAY",
     "version": "24500"
@@ -19786,7 +19847,7 @@
     "comment": "好きな譜面発表メロンポップ",
     "image_url": "f5f0c148fc18e746.png",
     "release": "250509",
-    "sort": "1392",
+    "sort": "1403",
     "title": "[発]好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
@@ -19799,7 +19860,7 @@
     "comment": "好きな譜面発表きょむりん",
     "image_url": "f5f0c148fc18e746.png",
     "release": "250509",
-    "sort": "1393",
+    "sort": "1404",
     "title": "[表]好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
@@ -19812,7 +19873,7 @@
     "comment": "好きな譜面発表アマリリス",
     "image_url": "f5f0c148fc18e746.png",
     "release": "250509",
-    "sort": "1394",
+    "sort": "1405",
     "title": "[龍]好きな惣菜発表ドラゴン",
     "title_kana": "スキナソウサイハツヒヨウトラコン",
     "version": "25505"
