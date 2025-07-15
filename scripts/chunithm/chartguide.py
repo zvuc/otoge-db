@@ -30,7 +30,8 @@ VERSION_MAPPING = {
     "SUN+": "08",
     "LUMINOUS": "09",
     "LUMINOUS+": "09",
-    "VERSE": "10"
+    "VERSE": "10",
+    "X-VERSE": "10"
 }
 
 PAGES = {

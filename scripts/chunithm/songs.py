@@ -292,7 +292,7 @@ def _add_ex_data_template(song):
         song['lev_we_designer'] = ""
         song['lev_we_chart_link'] = ""
 
-    song['version'] = "VERSE"
+    song['version'] = game.CURRENT_JP_VER
     song['wikiwiki_url'] = ""
     song['intl'] = "0"
     song['date_added'] = f"{datetime.now().strftime('%Y%m%d')}"
