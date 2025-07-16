@@ -25,12 +25,17 @@ header
       .info
         span.region-badge
           span.text
-        span.date.jp
-          block lastupdated-jp
-            | 00000000
-        span.date.intl
-          block lastupdated-intl
-            | 00000000
+        div.version-date
+          span.version.jp
+            | #{game_version_display}
+          span.version.intl
+            | #{game_version_display_intl}
+          span.date.jp
+            block lastupdated-jp
+              | 00000000
+          span.date.intl
+            block lastupdated-intl
+              | 00000000
       .region-quick-switch
         input#gameRegionQuickSwitch(type='checkbox')
         label.switch(for='gameRegionQuickSwitch')
