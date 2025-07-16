@@ -9,7 +9,7 @@ from shared.common_func import *
 from chunithm.paths import *
 from datetime import datetime
 
-SHEETS_ID = '1NTGkrOoLdzOoaYyz7d4vDT3cW2Q6lZfoc1nvd7nlNLE'
+SHEETS_ID = '1wewufZZ9iOy-3To6ITc_vwbUpfMhEVlGUKAmse2JgSs'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 
 CHARTS = [
@@ -21,7 +21,8 @@ CHARTS = [
 ]
 CUR_VERSION_SHEET = '1971412612'
 SHEETS_MAP = {
-    '262760047': ['14+', '15', '15+'],
+    '672636621': ['15', '15+'],
+    '262760047': ['14+'],
     '2099154164': ['14'],
     '1700582700': ['13+'],
     '487918628': ['13+'],
