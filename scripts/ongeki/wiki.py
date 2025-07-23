@@ -166,7 +166,7 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
             enemy_name = enemy_info[0]
             enemy_lv = enemy_info[1]
 
-            if enemy_lv and not enemy_lv == '○':
+            if enemy_lv and enemy_lv.isdigit():
                 diff_count = [0]
                 update_song_key(song, 'enemy_lv', enemy_lv, diff_count=diff_count)
 
