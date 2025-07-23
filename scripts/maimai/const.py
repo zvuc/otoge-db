@@ -156,7 +156,17 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
         return False  # No match found
 
     if 'lev_bas' in song and 'dx_lev_bas' in song:
-        target_entry_lv = target_entry['lv_std'] + target_entry['lv_dx']
+        if 'lv_std' in target_entry and 'lv_dx' not in target_entry:
+            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+            print_message("Warning: Target found but DX charts not in entry. Skipping", bcolors.WARNING, log=True)
+            return False  # No match found
+        elif 'lv_std' not in target_entry and 'lv_dx' in target_entry:
+            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+            print_message("Warning: Target found but Std charts not in entry. Skipping", bcolors.WARNING, log=True)
+            return False  # No match found
+        elif 'lv_std' in target_entry and 'lv_dx' in target_entry:
+            target_entry_lv = target_entry['lv_std'] + target_entry['lv_dx']
+
     elif 'dx_lev_bas' in song:
         target_entry_lv = target_entry['lv_dx']
     elif 'lev_bas' in song:
