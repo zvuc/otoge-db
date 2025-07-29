@@ -22885,7 +22885,7 @@
     "image_url": "32fb19e8d01b2f01.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250710",
     "title": "人マニア",
     "title_sort": "ヒトマニア",
@@ -22908,7 +22908,7 @@
     "image_url": "979fff2053ed2264.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250710",
     "title": "ライアーダンサー",
     "title_sort": "ライアタンサ",
@@ -22931,7 +22931,7 @@
     "image_url": "d76f8f7e6ff7d0e3.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250710",
     "title": "リアライズ",
     "title_sort": "リアライス",
@@ -22954,7 +22954,7 @@
     "image_url": "a63f2be3cc7c99c4.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250716",
     "title": "レイテストショーマン",
     "title_sort": "レイテストシヨマン",
@@ -22977,7 +22977,7 @@
     "image_url": "913cdd61abee9d86.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250716",
     "title": "Λzure Vixen",
     "title_sort": "AZUREVIXEN",
@@ -23000,7 +23000,7 @@
     "image_url": "58ea7a8eb3ba1816.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250716",
     "title": "Ignition",
     "title_sort": "IGNITION",
@@ -23023,7 +23023,7 @@
     "image_url": "b79e9edfe44d857e.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250716",
     "title": "Honeycomb",
     "title_sort": "HONEYCOMB",
@@ -23044,5 +23044,51 @@
     "lev_mas": "12+",
     "lev_lnt": "",
     "image_url": "a1b55ff02c538b4d.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250726",
+    "title": "パピプペ Popping！ Talk！",
+    "title_sort": "ハヒフヘPOPPINGTALK",
+    "artist": "曲：脇眞富／歌：オンゲキシューターズ",
+    "id": "665900",
+    "chap_id": "80046",
+    "chapter": "O.N.G.E.K.I. 7th Anniversary",
+    "character": "柏木 美亜",
+    "chara_id": "1150",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "7+",
+    "lev_exc": "10+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "33634e39a152cf45.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250726",
+    "title": "WakeUP MakeUP FEVER!",
+    "title_sort": "WAKEUPMAKEUPFEVER",
+    "artist": "曲：アオワイファイ／歌：オンゲキシューターズ",
+    "id": "985100",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "星咲 あかり",
+    "chara_id": "1010",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "1",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exc": "",
+    "lev_mas": "",
+    "lev_lnt": "14",
+    "image_url": "fe128d898db56415.png"
   }
 ]
