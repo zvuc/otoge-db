@@ -12,7 +12,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 # wiki_url = 'https://silentblue.remywiki.com/maimai_DX:BUDDiES_PLUS_(Asia)'
-wiki_url = 'https://silentblue.remywiki.com/maimai_DX:PRiSM_(Asia)'
+wiki_url = 'https://silentblue.remywiki.com/maimai_DX:PRiSM_PLUS_(Asia)'
 
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
