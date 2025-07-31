@@ -137,7 +137,7 @@ def sync_json_data():
                     if key not in all_required_keys:
                         continue
 
-                # If key doesn't exist
+                # If key had not existed
                 if key not in song_pre_update:
                     # Chart Constant
                     if "_i" in key:
@@ -147,7 +147,7 @@ def sync_json_data():
                             if (game.CURRENT_JP_VER == game.CURRENT_INTL_VER):
                                 dest_song[key] = value
                                 lazy_print_song_header(title_print, song_diffs, log=True)
-                                print_message(f"- Copied {key}: {song[key]}", bcolors.OKBLUE)
+                                print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
                     # Other notes data keys
                     elif "_notes" in key:
                         # Don't copy if ULTIMA level actually doesn't exist
@@ -159,30 +159,29 @@ def sync_json_data():
                             if value != "":
                                 dest_song[key] = value
                                 lazy_print_song_header(title_print, song_diffs, log=True)
-                                print_message(f"- Copied {key}: {song[key]}", bcolors.OKBLUE)
+                                print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
 
-                # If key exists, but value is empty
+                # If existing value differs
+                # and new value is not empty (proceed to add or overwrite)
                 elif song_pre_update[key] != value and value != "":
+                    # Skip overwrite for chart constants if JP and INTL versions differ
+                    if "_i" in key and game.CURRENT_JP_VER != game.CURRENT_INTL_VER:
+                        continue
+
+                    lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+
                     if song_pre_update[key] == "":
-                        # For chart constant, skip overwrite if current INTL and JP ver are different
-                        if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
-                            continue
-
-                        lazy_print_song_header(title_print, song_diffs, log=True)
-                        print_message(f"- Added value for {key}: {song[key]}", bcolors.OKBLUE)
-                        dest_song[key] = value
-                        print_message(f"- (Synced JP archive data)", bcolors.OKBLUE)
-                        song_pre_update[key] = value
+                        print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
                     else:
-                        # For chart constant, skip overwrite if current INTL and JP ver are different
-                        if "_i" in key and (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
-                            continue
+                        # It's a chart level change
+                        if key in game.LEVEL_KEYS:
+                            print_message(f"- Chart level changed! {key}: {song_pre_update[key]} → {song[key]}", bcolors.WARNING)
+                        # everything else
+                        else:
+                            print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
 
-                        lazy_print_song_header(title_print, song_diffs, log=True)
-                        print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
-                        dest_song[key] = value
-                        print_message(f"- (Synced JP archive data)", bcolors.OKBLUE)
-                        song_pre_update[key] = value
+                    dest_song[key] = value
+                    song_pre_update[key] = value
 
 
     # Iterate through unchanged songs
