@@ -11,6 +11,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 wiki_base_url = 'https://wikiwiki.jp/chunithmwiki/'
+SDVXIN_BASE_URL = 'https://sdvx.in/'
 
 request_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
@@ -124,6 +125,8 @@ def update_songs_extra_data():
 
     for song in target_song_list:
         update_song_wiki_data(song, total_diffs)
+
+        _fetch_designer_info_from_sdvxin(song, total_diffs)
 
     sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
@@ -607,3 +610,101 @@ def _guess_version(release_date):
             closest_version = version
 
     return closest_version
+
+
+def _fetch_designer_info_from_sdvxin(song, total_diffs):
+    """
+    Update song dict with missing designer info by scraping sdvx.in chart pages.
+    Only works for lev_exp, lev_mas, lev_ult based on song type and current designer info.
+    """
+    chart_map = {
+        'lev_exp': 'E',
+        'lev_mas': 'M',
+        'lev_ult': 'U',
+        'lev_we': 'W',
+    }
+
+    # Determine target charts
+    is_we = song.get('we_kanji') != ''
+    has_ult = song.get('lev_ult') != ''
+    if is_we:
+        target_charts = ['lev_we',]
+    elif has_ult:
+        target_charts = ['lev_exp', 'lev_mas', 'lev_ult']
+    else:
+        target_charts = ['lev_exp', 'lev_mas']
+
+    for chart in target_charts:
+        designer_key = f"{chart}_designer"
+        chart_link_key = f"{chart}_chart_link"
+
+        # Skip if already has designer info or no chart link
+        if song.get(designer_key):
+            continue
+
+        print_message(f"Fetch missing designer info for {chart.upper()} from sdvx.in", bcolors.OKBLUE, is_verbose=True)
+
+        chart_link = song.get(chart_link_key)
+        if not chart_link:
+            print_message(f"Skipping: there is no chart link", bcolors.ENDC, is_verbose=True)
+            continue
+
+        # Define version and URL suffix patterns per chart
+        chart_info = {
+            'lev_we':  ('end', 'end'),
+            'lev_ult': ('ult', 'ult'),
+        }
+
+        # Determine the version prefix and expected file suffix
+        version_prefix, file_suffix = chart_info.get(chart, (r'\d{2}', 'sort'))
+
+        # Build regex pattern dynamically
+        pattern = rf'({version_prefix})/(\d{{5}})[a-z]{{3}}\d*'
+        match = re.match(pattern, chart_link)
+
+        if not match:
+            print_message(f"Parsing ID from chart link failed", bcolors.FAIL, is_verbose=True)
+            continue
+
+        version_num, song_id = match.groups()
+
+        # Construct URL
+        url = f"{SDVXIN_BASE_URL}{game.GAME_NAME}/{version_num}/js/{song_id}{file_suffix}.js"
+
+
+        try:
+            resp = requests.get(url)
+            resp.encoding = 'ansi'
+            content = resp.text
+        except Exception:
+            print_message(f"Failed to load page", bcolors.FAIL)
+            continue  # skip on any error
+
+        # Check validity
+        lines = content.strip().splitlines()
+        lines = [line.lstrip('\ufeff') for line in lines]
+
+        # Validate that expected declarations are present anywhere in the first 10 lines
+        head = lines[:10]
+        has_title = any(re.match(r'^var TITLE\d+ *=', line) for line in head)
+        has_artist = any(re.match(r'^var ARTIST\d+ *=', line) for line in head)
+        has_bpm = any(re.match(r'^var BPM\d+ *=', line) for line in head)
+        has_cr = any(re.match(rf'^var CR{song_id}', line) for line in head)
+
+        # ipdb.set_trace()
+
+        if not (has_title and has_artist and has_bpm and has_cr):
+            continue
+
+        # Parse designer info
+        suffix = chart_map[chart]
+        cr_key = f"var CR{song_id}{suffix}"
+        for line in lines:
+            if line.startswith(cr_key):
+                # Extract designer name
+                m = re.search(r'NOTES DESIGNER / ([^<]+)</table>', line)
+                if m:
+                    song[designer_key] = m.group(1).strip()
+                    print_message(f"Added chart designer for {chart.upper()}: {song[designer_key]}", bcolors.OKGREEN)
+                    total_diffs[0] += 1
+                break  # stop after finding the correct one
