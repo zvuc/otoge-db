@@ -419,6 +419,7 @@ $(document).ready(function() {
               <span class="img-wrap">
                 <img src="jacket/${data}"/>
                 ${ (currentRegion === 'intl' ? row.key_intl : row.key) == '○' ? `<span class="key-icon" title="解禁必要"></span>` : ''}
+                ${ (row.long && row.long == '1') ? `<span class="long-song-badge" title="${getTranslation(userLanguage,'long')}"><span class="long-song-text">${getTranslation(userLanguage,'long')}</span></span>` : ''}
               </span>
             `;
         },

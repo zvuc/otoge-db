@@ -591,12 +591,19 @@ function renderModalHeader(game_name, image_col, wiki_url_col, wiki_url_base, yo
 
     var wiki_url = data[wiki_url_col] ? data[wiki_url_col] : wiki_url_guess;
 
+    const long_song_badge_html = `
+      <span class="long-song-badge">
+        <span class="long-song-text">${getTranslation(userLanguage, 'long')}</span>
+      <span>
+    `;
+
     return `
       <div class="modal-header" style="--img:url(jacket/${image_url});">
         <span class="header-img"></span>
         <span class="header-img-overlay"></span>
         <div class="img-wrap">
           <img src="jacket/${image_url}" />
+          ${data['long'] && data['long'] === '1' ? long_song_badge_html : ''}
         </div>
         <div class="content-wrap">
           <span class="title">${data.title}</span>

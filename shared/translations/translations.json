@@ -74,7 +74,8 @@
     "option_translation": "翻訳設定",
     "option_translation_chara_name": "メインキャラクターの名前を音訳",
     "refresh": "今リロード",
-    "report_twitter": "💬 足りない情報・間違いを報告する （Twitter）"
+    "report_twitter": "💬 足りない情報・間違いを報告する （Twitter）",
+    "long": "ロング"
   },
   "en": {
     "datatable_ui": {
@@ -152,6 +153,7 @@
     "option_translation_chara_name": "Transliterate main characters' names",
     "refresh": "Refresh Now",
     "report_twitter": "💬 Report missing or incorrect data (Twitter)",
+    "long": "Long",
     "ch_hoshizaki_akari" : "Akari Hoshizaki",
     "ch_fujisawa_yuzu" : "Yuzu Fujisawa",
     "ch_misumi_aoi" : "Aoi Misumi",
@@ -246,6 +248,7 @@
     "option_translation_chara_name": "메인 캐릭터 이름 한글로 표기",
     "refresh": "지금 새로고침",
     "report_twitter": "💬 누락/잘못된 정보 보고하기 (Twitter)",
+    "long": "Long",
     "ch_hoshizaki_akari" : "호시자키 아카리",
     "ch_fujisawa_yuzu" : "후지사와 유즈",
     "ch_misumi_aoi" : "미스미 아오이",

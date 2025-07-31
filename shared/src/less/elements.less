@@ -358,3 +358,25 @@ select {
 	// box-shadow: 0 0 0 1px rgba(@check-icon-color,0.5) inset;
 	border-radius: var(--icon-size);
 }
+
+.long-song-badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: url("img/long.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 16px;
+	aspect-ratio: ~'73/33';
+	font-size: 10px;
+	font-weight: bold;
+
+	html[lang="en"] &,
+	html[lang="ko"] & {
+		background-image: url("img/long_en.svg");
+	}
+
+	.long-song-text {
+		display: none;
+	}
+}
