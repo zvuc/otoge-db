@@ -301,7 +301,7 @@ header {
 
 		@media screen and (min-width: 640px) {
 			padding: 5px 15px 5px 0;
-			width: 10em;
+			width: 12em;
 		}
 	}
 
@@ -309,10 +309,11 @@ header {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
+		justify-content: center;
 
 		@media screen and (min-width: 640px) {
-			flex-flow: row;
-			gap: 2px;
+			flex-flow: row wrap;
+			gap: 0 0.2em;
 		}
 	}
 
@@ -356,6 +357,7 @@ header {
 	.version {
 		// margin-right: 10px;
 		font-size: 0.85em;
+		white-space: nowrap;
 
 		:root[data-game-region="jp"] &.intl {
 			display: none;
