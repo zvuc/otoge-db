@@ -56,6 +56,7 @@
     "fetch-chartguide": "python3 scripts/update-chartguide-data.py",
     "fetch-const": "python3 scripts/update-const.py",
     "fetch-intl": "python3 scripts/update-intl.py",
+    "clear-const": "python3 scripts/clear-const.py",
     "shared-build": "yarn shared-minify",
     "shared-minify": "minify shared/src/js/shared.*.js > shared/shared-functions.js & minify shared/src/js/early-functions.js > shared/early-functions.js",
     "shared-watch": "watch 'yarn shared-build' ./shared/src/js -d",
