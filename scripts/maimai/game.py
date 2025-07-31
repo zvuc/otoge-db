@@ -1,7 +1,7 @@
 GAME_NAME = "maimai"
 
 CURRENT_JP_VER = "PRiSM PLUS"
-CURRENT_INTL_VER = "PRiSM"
+CURRENT_INTL_VER = "PRiSM PLUS"
 
 HASH_KEYS = ['image_url']
 HASH_KEYS_SP = ['title', 'lev_utage', 'kanji']
