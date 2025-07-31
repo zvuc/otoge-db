@@ -2,7 +2,7 @@
   {
     "id": "2893",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ぎゅむ！",
     "reading": "キユム",
     "artist": "ぷにる（CV：篠原 侑）「ぷにるはかわいいスライム」",
@@ -18,7 +18,7 @@
   {
     "id": "2819",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "TAIDADA",
     "reading": "TAIDADA",
     "artist": "ずっと真夜中でいいのに。",
@@ -34,7 +34,7 @@
   {
     "id": "2820",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "モエチャッカファイア",
     "reading": "モエチヤツカフアイア",
     "artist": "弌誠「ゲーム『ゼンレスゾーンゼロ』エレン・ジョー 同人イメージソング」",
@@ -50,7 +50,7 @@
   {
     "id": "2821",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "はいよろこんで",
     "reading": "ハイヨロコンテ",
     "artist": "こっちのけんと",
@@ -2224,9 +2224,73 @@
     "image": "d5a47266b4fe0bfe.jpg"
   },
   {
-    "id": "2822",
+    "id": "2839",
     "catname": "niconico",
     "newflag": "1",
+    "title": "ブタサンダー",
+    "reading": "フタサンタウ",
+    "artist": "ゆこぴ",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "8+",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "261b96cc30398de6.jpg"
+  },
+  {
+    "id": "2840",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "私の歯医者さん",
+    "reading": "ワタシノハイシヤサン",
+    "artist": "ゆこぴ",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "8",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "99a5ef719e4a5b7e.jpg"
+  },
+  {
+    "id": "2841",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "少女A",
+    "reading": "シヨウシヨA",
+    "artist": "椎名もた",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "99a5f5206ba8389c.jpg"
+  },
+  {
+    "id": "2842",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "え？あぁ、そう。- 10th Anniversary Edition -",
+    "reading": "エアアソウ10THANNIVERSARYEDITION",
+    "artist": "蝶々P",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "dc9accd551abab04.jpg"
+  },
+  {
+    "id": "2822",
+    "catname": "niconico",
+    "newflag": "0",
     "title": "ラヴィ",
     "reading": "ラウイ",
     "artist": "すりぃ",
@@ -2242,7 +2306,7 @@
   {
     "id": "2823",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "テトリス",
     "reading": "テトリス",
     "artist": "柊マグネタイト",
@@ -2258,7 +2322,7 @@
   {
     "id": "2824",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "モ　ミ　ア　ゲ　ヲ　シ　ャ　カ　ア　ゲ　ヲ",
     "reading": "モミアケヲシヤカアケヲ",
     "artist": "ぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬ",
@@ -6882,7 +6946,7 @@
   {
     "id": "2825",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "最終鬼畜妹フランドール・S (Chroma Remix)",
     "reading": "サイシユウキチクイモウトフラントウルSCHROMAREMIX",
     "artist": "ビートまりお × 黒魔",
@@ -11490,7 +11554,7 @@
   {
     "id": "2816",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "RE Aoharu",
     "reading": "REAOHARU",
     "artist": "Nor「ブルーアーカイブ -Blue Archive-」",
@@ -11506,7 +11570,7 @@
   {
     "id": "2817",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Unwelcome School",
     "reading": "UNWELCOMESCHOOL",
     "artist": "Mitsukiyo「ブルーアーカイブ -Blue Archive-」",
@@ -11522,7 +11586,7 @@
   {
     "id": "2818",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "彩りキャンバス",
     "reading": "イロトリキヤンハス",
     "artist": "Mitsukiyo「ブルーアーカイブ -Blue Archive-」",
@@ -13042,7 +13106,7 @@
   {
     "id": "2826",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ニルヴの心臓",
     "reading": "ニルウノシンソウ",
     "artist": "TJ.hangneil + Atomic Sphere feat.Annabel",
@@ -14066,7 +14130,7 @@
   {
     "id": "2847",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "単位がない！",
     "reading": "タンイカナイ",
     "artist": "五十嵐 撫子(CV:花井 美春)",
@@ -15970,7 +16034,7 @@
   {
     "id": "2828",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Energizing Flame",
     "reading": "ENERGIZINGFLAME",
     "artist": "Artifact vs. Dualcast",
@@ -16302,6 +16366,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "73fcb499a4352f53.jpg"
+  },
+  {
+    "id": "2827",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "Individual on parade!",
+    "reading": "INDIVIDUALONPARADE",
+    "artist": "曲：渡部チェル／歌：珠洲島 有栖(CV：長縄 まりあ)、皇城 セツナ(CV：八巻 アンナ)、柏木 咲姫(CV：石見 舞菜香)、日向 千夏(CV：岡咲 美保)、井之原 小星(CV：ももの はるな)",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "92f2fa910ab26134.jpg"
   },
   {
     "id": "2235",
@@ -17458,7 +17538,7 @@
   {
     "id": "2829",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Daydreama",
     "reading": "DAYDREAMA",
     "artist": "HiTECH NINJA",
@@ -23762,7 +23842,7 @@
   {
     "id": "2836",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "エモーション・キャプチャー",
     "reading": "エモウシヨンキヤフチヤウ",
     "artist": "藍月なくる",
@@ -23778,7 +23858,7 @@
   {
     "id": "2837",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Flap&Clap",
     "reading": "FLAPCLAP",
     "artist": "棗いつき",
@@ -23794,7 +23874,7 @@
   {
     "id": "2834",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "luminoid love PART2",
     "reading": "LUMINOIDLOVEPART2",
     "artist": "DÉ DÉ MOUSE",
@@ -23810,7 +23890,7 @@
   {
     "id": "2831",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "χρόνος",
     "reading": "KRONOS",
     "artist": "Street",
@@ -23826,7 +23906,7 @@
   {
     "id": "2832",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "TOXIC",
     "reading": "TOXIC",
     "artist": "Zekk",
@@ -23842,7 +23922,7 @@
   {
     "id": "2833",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "並行天涯",
     "reading": "ハラレルホライスンス",
     "artist": "BilliumMoto",
@@ -23858,7 +23938,7 @@
   {
     "id": "2835",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Wing:No.6223",
     "reading": "WINGNO6223",
     "artist": "NAMV & Game-i",
@@ -23874,7 +23954,7 @@
   {
     "id": "8306",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Invitation",
     "reading": "INVITATION",
     "artist": "れるりり feat.ろん",
@@ -23890,7 +23970,7 @@
   {
     "id": "8314",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "sølips",
     "reading": "SOLIPS",
     "artist": "rintaro soma",
@@ -23906,7 +23986,7 @@
   {
     "id": "8307",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Kattobi KEIKYU Rider",
     "reading": "KATTOBIKEIKYURIDER",
     "artist": "Sampling Masters MEGA",
