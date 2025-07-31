@@ -19,10 +19,23 @@ request_headers = {
 
 TARGET_KEYS = [
     "bpm",
-    "enemy_lv",
-    "enemy_type",
-    "_notes",
-    "_designer"
+    "lev_bas_notes",
+    "lev_bas_bells",
+    "lev_adv_notes",
+    "lev_adv_bells",
+    "lev_exc_notes",
+    "lev_exc_bells",
+    "lev_mas_notes",
+    "lev_mas_bells",
+    "_exp_designer",
+    "_mas_designer"
+]
+
+TARGET_KEYS_LNT = [
+    "bpm",
+    "lev_lnt_notes",
+    "lev_lnt_bells",
+    "_lnt_designer",
 ]
 
 # Update on top of existing music-ex
@@ -67,7 +80,20 @@ def update_song_wiki_data(song, total_diffs):
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
         if game.ARGS.noskip:
             # Check if any values are empty
-            if any(value == "" for key, value in song.items() if any(target in key for target in TARGET_KEYS)) or game.ARGS.overwrite:
+            if (
+                any(
+                    value == ""
+                    for key, value in song.items()
+                    if any(
+                        target in key
+                        for target in (
+                            TARGET_KEYS_LNT if song.get("lunatic", "") != ""
+                            else TARGET_KEYS
+                        )
+                    )
+                )
+                or game.ARGS.overwrite
+            ):
                 url = song['wikiwiki_url']
                 try:
                     wiki = requests.get(url, timeout=5, headers=request_headers, allow_redirects=True)
