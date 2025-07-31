@@ -198,6 +198,7 @@ KEY_ORDER = [
     "kanji",
     "comment",
     "wiki_url",
+    "long",
     "intl",
     "key",
     "key_intl",
