@@ -51,6 +51,14 @@ IGNORE_KEYS = {
 
 NEW_TAG_KEY = "new"
 
+REQUIRED_KEYS_PER_CHART = {
+    "lev_bas": ["lev_bas_notes","lev_bas_bells"],
+    "lev_adv": ["lev_adv_notes","lev_adv_bells","lev_adv_chart_link"],
+    "lev_exc": ["lev_exc_i", "lev_exc_notes","lev_exc_bells","lev_exc_designer","lev_exc_chart_link"],
+    "lev_mas": ["lev_mas_i", "lev_mas_notes","lev_mas_bells","lev_mas_designer","lev_mas_chart_link"],
+    "lev_lnt": ["lev_lnt_i", "lev_lnt_notes","lev_lnt_bells","lev_lnt_designer","lev_lnt_chart_link"]
+}
+
 CHARACTER_TABLE = {
     "星咲あかり": "FIRE",
     "藤沢柚子": "LEAF",
