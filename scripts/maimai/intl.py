@@ -21,6 +21,8 @@ request_headers = {
 
 # Copy over data from JP ver to INTL
 def sync_json_data():
+    total_diffs = [0]
+
     print_message(f"Syncing song data from JP to INTL", 'H2', log=True)
 
     # Read JP data
@@ -152,6 +154,7 @@ def sync_json_data():
                                 dest_song[key] = value
                                 lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                                 print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
+                                total_diffs[0] += 1
                     # Other notes data keys
                     elif "_notes" in key:
                         # Check if relevant chart already exists in INTL
@@ -159,6 +162,7 @@ def sync_json_data():
                             dest_song[key] = value
                             lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                             print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
+                            total_diffs[0] += 1
 
                 # If existing value differs
                 # and new value is not empty (proceed to add or overwrite)
@@ -171,13 +175,16 @@ def sync_json_data():
 
                     if song_pre_update[key] == "":
                         print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
+                        total_diffs[0] += 1
                     else:
                         # It's a chart level change
                         if key in game.LEVEL_KEYS:
                             print_message(f"- Chart level changed! {key}: {song_pre_update[key]} → {song[key]}", bcolors.WARNING)
+                            total_diffs[0] += 1
                         # everything else
                         else:
                             print_message(f"- Overwrote {key}: {song_pre_update[key]} → {song[key]}", bcolors.OKBLUE)
+                            total_diffs[0] += 1
 
                     dest_song[key] = value
                     song_pre_update[key] = value
@@ -221,7 +228,7 @@ def sync_json_data():
                 if key not in song:
                     del dest_song[key]
 
-    if song_diffs[0] == 0:
+    if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
     else:
         sort_and_save_json(dest_music_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
