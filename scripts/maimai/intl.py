@@ -87,10 +87,7 @@ def sync_json_data():
                 existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
                 if existing_song:
-                    if 'lev_utage' in song:
-                        lazy_print_song_header(f"[{song['kanji']}] {song['title']}", song_diffs, log=True)
-                    else:
-                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                    lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
 
                     # INTL song exists in latest JP version, skip
                     if existing_song not in removed_songs:
@@ -105,10 +102,7 @@ def sync_json_data():
                 existing_song = next((s for s in dest_music_data if generate_hash_from_keys(s) == song_hash), None)
 
                 if existing_song:
-                    if 'lev_utage' in song:
-                        lazy_print_song_header(f"[{song['kanji']}] {song['title']}", song_diffs, log=True)
-                    else:
-                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                    lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                     print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
 
     # Iterate through updated songs
@@ -451,10 +445,7 @@ def add_intl_info():
 
         # Check if anything has actually changed
         if matched_intl_song_pre_update is not None and matched_intl_song_pre_update == matched_intl_song:
-            if utage_td:
-                lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True, is_verbose=True)
-            else:
-                lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
+            lazy_print_song_header(f"{title}", header_printed, log=True, is_verbose=True)
             print_message("- Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
         else:
             total_diffs[0] += 1
@@ -462,11 +453,7 @@ def add_intl_info():
 
         # if song was not matched, not copied from any JP data after all (if break was not triggered)
         if intl_song_matched is False:
-            if utage_td:
-                lazy_print_song_header(f"[{kanji}] {title}", header_printed, log=True)
-            else:
-                lazy_print_song_header(f"{title}", header_printed, log=True)
-
+            lazy_print_song_header(f"{title}", header_printed, log=True)
             print_message(f"- Song not found in JSON file", bcolors.FAIL, log=True)
 
     if total_diffs[0] == 0:
