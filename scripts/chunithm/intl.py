@@ -19,6 +19,8 @@ request_headers = {
 
 # Copy over data from JP ver to INTL
 def sync_json_data():
+    total_diffs = [0]
+
     print_message(f"Syncing song data from JP to INTL", 'H2', log=True)
 
     # Read JP data
