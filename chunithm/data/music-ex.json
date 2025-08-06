@@ -80131,8 +80131,9 @@
     "lev_ult_chart_link": "ult/10063ult",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/オーバーライド",
-    "intl": "0",
-    "date_added": "20250319"
+    "intl": "1",
+    "date_added": "20250319",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2747",
@@ -80184,8 +80185,9 @@
     "lev_mas_chart_link": "10/10064mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ライアーダンサー",
-    "intl": "0",
-    "date_added": "20250319"
+    "intl": "1",
+    "date_added": "20250319",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2748",
@@ -80237,8 +80239,9 @@
     "lev_mas_chart_link": "10/10065mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/黒塗り世界宛て書簡",
-    "intl": "0",
-    "date_added": "20250319"
+    "intl": "1",
+    "date_added": "20250319",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2745",
@@ -80290,8 +80293,9 @@
     "lev_mas_chart_link": "10/10062mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/人マニア",
-    "intl": "0",
-    "date_added": "20250319"
+    "intl": "1",
+    "date_added": "20250319",
+    "date_intl_added": "20250319"
   },
   {
     "id": "2749",
