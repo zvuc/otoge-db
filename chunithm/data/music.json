@@ -2226,7 +2226,7 @@
   {
     "id": "2839",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ブタサンダー",
     "reading": "フタサンタウ",
     "artist": "ゆこぴ",
@@ -2242,7 +2242,7 @@
   {
     "id": "2840",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "私の歯医者さん",
     "reading": "ワタシノハイシヤサン",
     "artist": "ゆこぴ",
@@ -2258,7 +2258,7 @@
   {
     "id": "2841",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "少女A",
     "reading": "シヨウシヨA",
     "artist": "椎名もた",
@@ -2274,7 +2274,7 @@
   {
     "id": "2842",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "え？あぁ、そう。- 10th Anniversary Edition -",
     "reading": "エアアソウ10THANNIVERSARYEDITION",
     "artist": "蝶々P",
@@ -16048,6 +16048,22 @@
     "image": "bb1d32dafa47b4be.jpg"
   },
   {
+    "id": "2848",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "アージェントシンメトリー",
+    "reading": "アウシエントシンメトリウ",
+    "artist": "Sta feat.b",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "72666e842e68af96.jpg"
+  },
+  {
     "id": "802",
     "catname": "ゲキマイ",
     "newflag": "0",
@@ -16370,7 +16386,7 @@
   {
     "id": "2827",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Individual on parade!",
     "reading": "INDIVIDUALONPARADE",
     "artist": "曲：渡部チェル／歌：珠洲島 有栖(CV：長縄 まりあ)、皇城 セツナ(CV：八巻 アンナ)、柏木 咲姫(CV：石見 舞菜香)、日向 千夏(CV：岡咲 美保)、井之原 小星(CV：ももの はるな)",
@@ -23950,6 +23966,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "355e4c4d48457c14.jpg"
+  },
+  {
+    "id": "2843",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "ノーライ",
+    "reading": "ノウライ",
+    "artist": "鬱P feat.鯖",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "11+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "edd22f25d62b34ea.jpg"
+  },
+  {
+    "id": "2844",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "あの日、あの部屋で、あったこと",
+    "reading": "アノヒアノヘヤテアツタコト",
+    "artist": "wotaku feat. SHIKI",
+    "lev_bas": "4",
+    "lev_adv": "8+",
+    "lev_exp": "13",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "efe636611ce07775.jpg"
+  },
+  {
+    "id": "2845",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Star Saveler",
+    "reading": "STARSAVELER",
+    "artist": "ShiBa",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "4cbf8a9dd137c01b.jpg"
   },
   {
     "id": "8306",
