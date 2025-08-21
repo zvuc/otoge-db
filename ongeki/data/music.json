@@ -23092,7 +23092,7 @@
     "image_url": "fe128d898db56415.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "Unwelcome School",
     "title_sort": "UNWELCOMESCHOOL",
@@ -23115,7 +23115,7 @@
     "image_url": "16596388af6910da.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "彩りキャンバス",
     "title_sort": "イロトリキヤンハス",
@@ -23138,7 +23138,7 @@
     "image_url": "993cb5ac19602922.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "Usagi Flap",
     "title_sort": "USAGIFLAP",
@@ -23161,7 +23161,7 @@
     "image_url": "264bb6d245b237fd.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "夏色花火 -藤沢 柚子ソロver.-",
     "title_sort": "ナツイロハナヒフシサワユスソロVER",
@@ -23184,7 +23184,7 @@
     "image_url": "8d724f264d77371c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "夏色花火 -早乙女 彩華ソロver.-",
     "title_sort": "ナツイロハナヒサオトメアヤカソロVER",
@@ -23207,7 +23207,7 @@
     "image_url": "2069f3a6846c2410.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "Iudicium “Apocalypsis Mix” -柏木 咲姫ソロver.-",
     "title_sort": "IUDICIUMAPOCALYPSISMIXカシワキサキソロVER",
@@ -23230,7 +23230,7 @@
     "image_url": "4978b8ca6143525a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20250807",
     "title": "Iudicium “Apocalypsis Mix” -柏木 美亜ソロver.-",
     "title_sort": "IUDICIUMAPOCALYPSISMIXカシワキミアソロVER",
@@ -23251,5 +23251,97 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "0dc33f7d76b44df5.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250821",
+    "title": "crazy (about you)",
+    "title_sort": "CRAZYABOUTYOU",
+    "artist": "kamome sano",
+    "id": "576200",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "三角 葵",
+    "chara_id": "1030",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "5",
+    "lev_adv": "8+",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "a84d4ca94a24ff7b.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250821",
+    "title": "As You Feel",
+    "title_sort": "ASYOUFEEL",
+    "artist": "DÉ DÉ MOUSE & WaMi",
+    "id": "478700",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "九條 楓",
+    "chara_id": "1110",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©Bushiroad Music Publishing Inc.\r\n©not records",
+    "lev_bas": "2",
+    "lev_adv": "7",
+    "lev_exc": "11",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "608e7b18bdbc4625.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250821",
+    "title": "Glitch Street",
+    "title_sort": "GLITCHSTREET",
+    "artist": "KARUT「ブルーアーカイブ -Blue Archive-」",
+    "id": "479000",
+    "chap_id": "99127",
+    "chapter": "ブルーアーカイブ【ランキングイベント編】",
+    "character": "聖園 ミカ",
+    "chara_id": "6850",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© 2025 NEXON Games Co., Ltd. All Rights Reserved.",
+    "lev_bas": "3",
+    "lev_adv": "8",
+    "lev_exc": "11",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "e93ea6ecfc6378ef.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20250821",
+    "title": "RE Aoharu",
+    "title_sort": "REAOHARU",
+    "artist": "Nor「ブルーアーカイブ -Blue Archive-」",
+    "id": "478800",
+    "chap_id": "99127",
+    "chapter": "ブルーアーカイブ【ランキングイベント編】",
+    "character": "聖園 ミカ",
+    "chara_id": "6850",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© 2025 NEXON Games Co., Ltd. All Rights Reserved.",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exc": "10",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "ac61d67382fb3a57.png"
   }
 ]
