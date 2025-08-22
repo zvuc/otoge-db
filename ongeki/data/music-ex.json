@@ -52592,9 +52592,9 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "a84d4ca94a24ff7b.png",
-    "enemy_lv": "",
+    "enemy_lv": "39",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "145",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -52620,7 +52620,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/crazy (about you)"
   },
   {
     "new": "NEW",
@@ -52748,7 +52748,7 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "608e7b18bdbc4625.png",
-    "enemy_lv": "",
+    "enemy_lv": "9",
     "enemy_type": "LEAF",
     "bpm": "",
     "lev_bas_i": "",
@@ -52776,6 +52776,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/As You Feel"
   }
 ]
