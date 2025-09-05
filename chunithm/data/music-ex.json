@@ -81082,8 +81082,9 @@
     "lev_mas_chart_link": "10/10081mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/イガク",
-    "intl": "0",
-    "date_added": "20250508"
+    "intl": "1",
+    "date_added": "20250508",
+    "date_intl_added": "20250904"
   },
   {
     "id": "2721",
@@ -81135,8 +81136,9 @@
     "lev_mas_chart_link": "10/10082mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ザムザ",
-    "intl": "0",
-    "date_added": "20250508"
+    "intl": "1",
+    "date_added": "20250508",
+    "date_intl_added": "20250904"
   },
   {
     "id": "2717",
@@ -81197,8 +81199,9 @@
     "lev_ult_chart_link": "ult/10078ult",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/シリウスの輝きのように",
-    "intl": "0",
-    "date_added": "20250508"
+    "intl": "1",
+    "date_added": "20250508",
+    "date_intl_added": "20250904"
   },
   {
     "id": "2718",
@@ -81250,8 +81253,9 @@
     "lev_mas_chart_link": "10/10079mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/I Wanna",
-    "intl": "0",
-    "date_added": "20250508"
+    "intl": "1",
+    "date_added": "20250508",
+    "date_intl_added": "20250904"
   },
   {
     "id": "2719",
@@ -81303,8 +81307,9 @@
     "lev_mas_chart_link": "10/10080mst",
     "version": "VERSE",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/革命ダンス",
-    "intl": "0",
-    "date_added": "20250508"
+    "intl": "1",
+    "date_added": "20250508",
+    "date_intl_added": "20250904"
   },
   {
     "id": "2801",
