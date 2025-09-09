@@ -25102,5 +25102,37 @@
     "we_kanji": "止",
     "we_star": "1",
     "image": "e4c034fc74ff62fc.jpg"
+  },
+  {
+    "id": "2838",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "神鳴",
+    "reading": "カミナリ",
+    "artist": "Rígr feat. 光吉猛修",
+    "lev_bas": "6",
+    "lev_adv": "10+",
+    "lev_exp": "14",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "fdc5ae0fe63318c3.jpg"
+  },
+  {
+    "id": "2846",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "Tru'nembra",
+    "reading": "TRUNEMBRA",
+    "artist": "Team Grimoire & 穴山大輔",
+    "lev_bas": "5",
+    "lev_adv": "10",
+    "lev_exp": "14",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b636e7d1edc5c6c6.jpg"
   }
 ]
