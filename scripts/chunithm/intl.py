@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 wiki_url = 'https://silentblue.remywiki.com/CHUNITHM:VERSE_(Asia)'
 
 request_headers = {
-    'User-Agent': 'curl/8.5.0',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
 }
 
