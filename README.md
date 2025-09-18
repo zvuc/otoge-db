@@ -18,6 +18,18 @@ OTOGE DBはSEGAの音ゲー「オンゲキ」「CHUNITHM」「maimaiでらっく
 	```
 	pip install -r requirements.txt
 	```
+	or
+	```
+	pip3 install -r requirements.txt
+	```
+- Setup virtual environment (if required)
+	```
+	python3 -m venv .venv
+	```
+- Activate venv
+	```
+	source .venv/bin/activate
+	```
 
 ## Run scripts
 - **`yarn fetch-songs`** : Download new song and images from server
