@@ -1,13 +1,13 @@
 name: "[Chunithm] Update International Ver. Availability"
 
 on:
-  # schedule:
-  #   - cron: '10 0-5 * * 3-5'
+  schedule:
+    - cron: '10 0-5 * * 3-5'
   workflow_dispatch:
 
 jobs:
   fetch_intl:
-    name: Fetch latest song list from SEGA
+    name: Update International ver. song data from RemyWiki
     runs-on: ubuntu-latest
 
     steps:
@@ -53,7 +53,7 @@ jobs:
         run: |
           {
             echo "OUTPUT_LOG<<EOF"
-            python scripts/update-intl.py --chunithm --nocolors --escape --markdown --no_timestamp --no_verbose
+            python -u scripts/update-intl.py --chunithm --nocolors --escape --markdown --no_timestamp --no_verbose | tee /dev/stderr
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
