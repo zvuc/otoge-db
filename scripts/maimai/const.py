@@ -9,7 +9,7 @@ from maimai.paths import *
 from datetime import datetime
 from math import log2
 
-SGIMERA_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_prismplus__.js'
+SGIMERA_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_circle__.js'
 # SGIMERA_URL = 'https://gist.githubusercontent.com/myjian/f059331eb9daefeb0dc57ce15e6f73e9/raw/'
 
 
