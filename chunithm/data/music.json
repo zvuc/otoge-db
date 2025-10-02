@@ -2306,7 +2306,7 @@
   {
     "id": "2894",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ずんだシェイキング",
     "reading": "スンタシエイキンク",
     "artist": "なみぐる",
@@ -2322,7 +2322,7 @@
   {
     "id": "2852",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "オブソミート",
     "reading": "オフソミウト",
     "artist": "サツキ",
@@ -2338,7 +2338,7 @@
   {
     "id": "2853",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "スーパーヒーロー",
     "reading": "スウハウヒウロウ",
     "artist": "Guiano",
@@ -2354,7 +2354,7 @@
   {
     "id": "2854",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "カルチャ",
     "reading": "カルチヤ",
     "artist": "ツミキ",
@@ -11602,7 +11602,7 @@
   {
     "id": "2862",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "スパイダーダンス",
     "reading": "スハイタウタンス",
     "artist": "Toby Fox「UNDERTALE」",
@@ -11618,7 +11618,7 @@
   {
     "id": "2895",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "夢と希望",
     "reading": "ユメトキホウ",
     "artist": "Toby Fox「UNDERTALE」",
@@ -14318,6 +14318,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "ca791e9bd762bc91.jpg"
+  },
+  {
+    "id": "2870",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "ソウルのピース",
+    "reading": "ソウルノヒウス",
+    "artist": "葛城 華(CV:丸岡 和佳奈)",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "10+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "d566db7c0f7ec2ba.jpg"
   },
   {
     "id": "1012",
@@ -24256,9 +24272,57 @@
     "image": "68097129ef999df1.jpg"
   },
   {
+    "id": "2866",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "ナラク・オン・エア",
+    "reading": "ナラクオンエア",
+    "artist": "吉田夜世 feat.棗いつき",
+    "lev_bas": "4",
+    "lev_adv": "6",
+    "lev_exp": "12",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "83c2148b0c5439ea.jpg"
+  },
+  {
+    "id": "2867",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "システム",
+    "reading": "システム",
+    "artist": "大漠波新 feat.ウォルピスカーター",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "11",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ff674bf7edab0f4c.jpg"
+  },
+  {
+    "id": "2868",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "恋伯色",
+    "reading": "コハクイロ",
+    "artist": "瀬名水紀 feat.六宮",
+    "lev_bas": "4",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3c8481ae79bb7075.jpg"
+  },
+  {
     "id": "8308",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "M.L.V.G",
     "reading": "MLVG",
     "artist": "テトラルキア「Re:ステージ！プリズムステップ」",
@@ -24274,7 +24338,7 @@
   {
     "id": "8309",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ナイト・オブ・ナイツ",
     "reading": "ナイトオフナイツ",
     "artist": "ビートまりお",
@@ -24290,7 +24354,7 @@
   {
     "id": "8310",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "MEGALOVANIA",
     "reading": "MEGALOVANIA",
     "artist": "Toby Fox「UNDERTALE」",
