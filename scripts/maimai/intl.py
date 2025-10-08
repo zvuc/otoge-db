@@ -502,12 +502,12 @@ def _match_jp_song(json_data, utage_td, wiki_song, wiki_chart_type, only_remas, 
                         break
         else:
             # Match title
-            jp_song_title_matched = _smart_match('jp', 'title', song, wiki_song, header_printed)
+            jp_song_title_matched = smart_match('jp', 'title', song, wiki_song, header_printed)
             if jp_song_title_matched is False:
                 continue
 
             # Match artist
-            jp_song_artist_matched = _smart_match('jp', 'artist', song, wiki_song, header_printed)
+            jp_song_artist_matched = smart_match('jp', 'artist', song, wiki_song, header_printed)
             if jp_song_artist_matched is False:
                 continue
 
@@ -608,12 +608,12 @@ def _match_intl_song(json_data, utage_td, wiki_song, header_printed):
         # else
         else:
             # Match title
-            intl_song_title_matched = _smart_match('intl', 'title', intl_song, wiki_song, header_printed)
+            intl_song_title_matched = smart_match('intl', 'title', intl_song, wiki_song, header_printed)
             if intl_song_title_matched is False:
                 continue
 
             # Match artist
-            intl_song_artist_matched = _smart_match('intl', 'artist', intl_song, wiki_song, header_printed)
+            intl_song_artist_matched = smart_match('intl', 'artist', intl_song, wiki_song, header_printed)
             if intl_song_artist_matched is False:
                 continue
 
@@ -734,19 +734,3 @@ def parent_key_exists(key_name, song):
         else:
             return False
     return False
-
-def _smart_match(region, title_or_artist, target_song, wiki_song, header_printed):
-    match_similarity = compare_strings(normalize_title(target_song[title_or_artist]), normalize_title(wiki_song[title_or_artist]))
-    if (match_similarity == 100):
-        return True
-    elif (match_similarity > 80):
-        lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True)
-
-        if game.ARGS.strict:
-            print_message(f"- Rejected {region} song {title_or_artist} close match ({round(match_similarity,2)}%) because strict mode", bcolors.FAIL)
-            return False
-
-        print_message(f"- {region} song {title_or_artist} matched with {round(match_similarity,2)}% accuracy", bcolors.WARNING)
-        return True
-    else:
-        return False

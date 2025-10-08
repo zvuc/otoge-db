@@ -8,6 +8,7 @@ import hashlib
 import importlib
 import unicodedata
 import game
+import difflib
 from functools import reduce
 from .terminal import bcolors
 from datetime import datetime
@@ -658,3 +659,57 @@ def sort_and_save_json(data, path):
 
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def levenshtein_distance(a: str, b: str) -> int:
+    """
+    Simple Levenshtein distance using dynamic programming.
+    Returns number of single-character edits needed to turn a into b.
+    """
+    if a == b:
+        return 0
+    if len(a) < len(b):
+        a, b = b, a
+
+    previous_row = range(len(b) + 1)
+    for i, ca in enumerate(a, 1):
+        current_row = [i]
+        for j, cb in enumerate(b, 1):
+            insertions = previous_row[j] + 1
+            deletions = current_row[j - 1] + 1
+            substitutions = previous_row[j - 1] + (ca != cb)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+    return previous_row[-1]
+
+
+def compare_with_details(a: str, b: str):
+    """Return (distance, ratio%) using difflib for ratio."""
+    distance = levenshtein_distance(a, b)
+    ratio = 100 * difflib.SequenceMatcher(None, a, b).ratio()
+    return distance, ratio
+
+
+def smart_match(region, title_or_artist, target_song, wiki_song, header_printed):
+    t1 = normalize_title(target_song[title_or_artist])
+    t2 = normalize_title(wiki_song[title_or_artist])
+
+    distance, ratio = compare_with_details(t1, t2)
+
+    # Exact match
+    if distance == 0:
+        return True
+
+    # Allow only *tiny* typos: 1 edit for short titles, 2 for long
+    max_allowed_distance = 1 if len(t1) <= 10 else 2
+
+    if ratio > 85 and distance <= max_allowed_distance:
+        lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True)
+
+        if game.ARGS.strict:
+            return False
+
+        print_message(f"- {region} song {title_or_artist} matched with {round(ratio, 2)}% accuracy ({distance} edits)", bcolors.WARNING, log=True)
+        return True
+
+    return False
