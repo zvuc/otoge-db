@@ -12,10 +12,10 @@
     "type": "git",
     "url": "https://github.com/zvuc/otoge-db"
   },
-  "homepage": "https//ongeki.info",
+  "homepage": "https//otoge-db.net",
   "license": "MIT",
   "author": {
-    "name": "Hansol Kim <zvuc@usagi.moe>",
+    "name": "Hansol Kim <i.am@hansol.kim>",
     "url": "https://xenosium.com"
   },
   "devDependencies": {
