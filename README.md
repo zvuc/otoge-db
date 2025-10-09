@@ -13,7 +13,7 @@ OTOGE DB is an unofficial database for viewing song information served in SEGA's
 OTOGE DBはSEGAの音ゲー「オンゲキ」「CHUNITHM」「maimaiでらっくす」の非公式収録曲データベースサイトです。公式サイトで公開されているデータを基にして、Wikiなどウェブで入手できる情報を集めて一箇所で楽に見れるようにする目標で作られました。
 
 ## Setting up dev environment
-- You'll need Python 3.x to run scripts on command line.
+- You'll need Python 3.12+ to run scripts on command line.
 - Setup virtual environment (if required)
 	```
 	python3 -m venv .venv
@@ -205,8 +205,7 @@ OTOGE DBはSEGAの音ゲー「オンゲキ」「CHUNITHM」「maimaiでらっく
 
 #### Local Dev Environment
 Just open `index.html` and refresh manually. Simple as the good old year 2000.
-Or, you can also do `python -m http.server` to quickly run a local server.
-_Note: You may need to use `python3` instead of `python` depending on your environment (i.e.: macOS)_
+Or, you can also do `python3 -m http.server` to quickly run a local server.
 
 ## Notes
 - This webpage is hosted and run entirely on Github Pages without any additional backend servers attached.
