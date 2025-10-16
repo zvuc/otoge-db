@@ -23437,7 +23437,7 @@
     "image_url": "aaafe44ea222b8f9.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251002",
     "title": "アンビバレンス",
     "title_sort": "アンヒハレンス",
@@ -23460,7 +23460,7 @@
     "image_url": "591ed2f3e8aebfb9.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251002",
     "title": "おしゃまなプリンセス",
     "title_sort": "オシヤマナフリンセス",
@@ -23483,7 +23483,7 @@
     "image_url": "d16fb013aa632dfd.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251002",
     "title": "B100d Hunter",
     "title_sort": "B100DHUNTER",
@@ -23506,7 +23506,7 @@
     "image_url": "6d5f71583cba7254.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251002",
     "title": "感情アクセラレイション -三角 葵ソロver.-",
     "title_sort": "カンシヨウアクセラレイシヨンミスミアオイソロVER",
@@ -23529,7 +23529,7 @@
     "image_url": "06d89a3b68918eb8.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251002",
     "title": "感情アクセラレイション -早乙女 彩華ソロver.-",
     "title_sort": "カンシヨウアクセラレイシヨンサオトメアヤカソロVER",
@@ -23552,7 +23552,7 @@
     "image_url": "feecf1e76631fc45.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251002",
     "title": "感情アクセラレイション -柏木 咲姫ソロver.-",
     "title_sort": "カンシヨウアクセラレイシヨンカシワキサキソロVER",
@@ -23573,5 +23573,74 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "a07345a5705db536.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251016",
+    "title": "はじまりの未来",
+    "title_sort": "ハシマリノミライ",
+    "artist": "40mP × sasakure.UK",
+    "id": "273600",
+    "chap_id": "99130",
+    "chapter": "劇場版プロジェクトセカイ　壊れたセカイと歌えないミク",
+    "character": "閉ざされた窓のセカイの初音ミク",
+    "chara_id": "7067",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©「劇場版プロジェクトセカイ　壊れたセカイと歌えないミク」製作委員会",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exc": "10",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "c63f5d061335e951.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251016",
+    "title": "Worlders",
+    "title_sort": "WORLDERS",
+    "artist": "じん",
+    "id": "273700",
+    "chap_id": "99130",
+    "chapter": "劇場版プロジェクトセカイ　壊れたセカイと歌えないミク",
+    "character": "開かれた窓のセカイの初音ミク",
+    "chara_id": "7068",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©「劇場版プロジェクトセカイ　壊れたセカイと歌えないミク」製作委員会",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exc": "9",
+    "lev_mas": "12+",
+    "lev_lnt": "",
+    "image_url": "ca47494d57c5041a.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251016",
+    "title": "ダイダイダイダイダイキライ",
+    "title_sort": "タイタイタイタイタイキライ",
+    "artist": "雨良 Amala",
+    "id": "273800",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "藍原 椿",
+    "chara_id": "1060",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© 雨良 Amala",
+    "lev_bas": "2",
+    "lev_adv": "7",
+    "lev_exc": "10+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "bdc32c7afa9285c1.png"
   }
 ]
