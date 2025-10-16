@@ -53320,7 +53320,7 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "bdc32c7afa9285c1.png",
-    "enemy_lv": "",
+    "enemy_lv": "9",
     "enemy_type": "LEAF",
     "bpm": "",
     "lev_bas_i": "",
@@ -53348,7 +53348,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ダイダイダイダイダイキライ"
   },
   {
     "new": "NEW",
@@ -53372,7 +53372,7 @@
     "lev_mas": "12+",
     "lev_lnt": "",
     "image_url": "ca47494d57c5041a.png",
-    "enemy_lv": "",
+    "enemy_lv": "5",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -53400,7 +53400,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Worlders"
   },
   {
     "new": "NEW",
@@ -53424,7 +53424,7 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "c63f5d061335e951.png",
-    "enemy_lv": "",
+    "enemy_lv": "1",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -53452,6 +53452,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/はじまりの未来"
   }
 ]
