@@ -234,8 +234,8 @@ def sync_json_data():
     else:
         sort_and_save_json(dest_music_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
-        if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-            sort_and_save_json(dest_music_data_pre_update, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+        # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        #     sort_and_save_json(dest_music_data_pre_update, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
 
 # Update on top of existing music-ex
@@ -510,8 +510,8 @@ def add_intl_info():
     else:
         sort_and_save_json(local_intl_music_ex_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
-        if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-            sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+        # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        #     sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
         sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
