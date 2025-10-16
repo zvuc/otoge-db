@@ -129,7 +129,7 @@ def sync_json_data():
                 # never update non-chart detail data (e.g. Title, Artist etc)
                 if (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
                     all_required_keys = {key for keys in game.REQUIRED_KEYS_PER_CHART.values() for key in keys}
-                    if key not in all_required_keys:
+                    if key not in all_required_keys and key != 'date_updated':
                         continue
 
                 # If key had not existed
@@ -157,6 +157,12 @@ def sync_json_data():
                                 lazy_print_song_header(title_print, song_diffs, log=True)
                                 print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
                                 total_diffs[0] += 1
+                    # Always copy date_updated
+                    elif "date_updated" in key:
+                        dest_song[key] = value
+                        lazy_print_song_header(title_print, song_diffs, log=True)
+                        print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
+                        total_diffs[0] += 1
 
                 # If existing value differs
                 # and new value is not empty (proceed to add or overwrite)

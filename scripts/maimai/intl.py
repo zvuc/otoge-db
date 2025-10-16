@@ -125,7 +125,7 @@ def sync_json_data():
                 # never update non-chart detail data (e.g. Title, Artist etc)
                 if (game.CURRENT_JP_VER != game.CURRENT_INTL_VER):
                     all_required_keys = {key for keys in game.REQUIRED_KEYS_PER_CHART.values() for key in keys}
-                    if key not in all_required_keys:
+                    if key not in all_required_keys and key != 'date_updated':
                         continue
 
                 # If key had not existed
@@ -148,6 +148,12 @@ def sync_json_data():
                             lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
                             print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
                             total_diffs[0] += 1
+                    # Always copy date_updated
+                    elif "date_updated" in key:
+                        dest_song[key] = value
+                        lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
+                        print_message(f"- Added {key}: {song[key]}", bcolors.OKGREEN)
+                        total_diffs[0] += 1
 
                 # If existing value differs
                 # and new value is not empty (proceed to add or overwrite)
@@ -218,8 +224,8 @@ def sync_json_data():
     else:
         sort_and_save_json(dest_music_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
-        if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-            sort_and_save_json(dest_music_data_pre_update, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+        # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        #     sort_and_save_json(dest_music_data_pre_update, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
 
 # Update on top of existing music-ex
@@ -474,8 +480,8 @@ def add_intl_info():
     else:
         sort_and_save_json(local_intl_music_ex_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
-        if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-            sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+        # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        #     sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
         sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
