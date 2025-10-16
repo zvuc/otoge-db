@@ -516,8 +516,13 @@
   {
     "artist": "大谷智哉「リズム怪盗R 皇帝ナポレオンの遺産」",
     "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
     "image_url": "7164862f8378206f.png",
-    "release": "000000",
+    "release": "251016",
     "lev_bas": "5",
     "lev_adv": "7+",
     "lev_exp": "10+",
@@ -19312,6 +19317,38 @@
     "version": "26000"
   },
   {
+    "artist": "吉田夜世 feat.ちっく。",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "9de69d869392cae6.png",
+    "key": "○",
+    "release": "251016",
+    "sort": "931",
+    "title": "廃墟にいますキャンペーン",
+    "title_kana": "ハイキヨニイマスキヤンヘエン",
+    "version": "26003"
+  },
+  {
+    "artist": "Kobaryo",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "6",
+    "dx_lev_adv": "8+",
+    "dx_lev_exp": "13",
+    "dx_lev_mas": "14+",
+    "image_url": "9354ec1583e9ffbb.png",
+    "key": "○",
+    "release": "251016",
+    "sort": "934",
+    "title": "Customized Justice",
+    "title_kana": "CUSTOMIZEDJUSTICE",
+    "version": "26003"
+  },
+  {
     "artist": "Fushi feat.吉乃",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "4",
@@ -19543,7 +19580,6 @@
   {
     "artist": "YOFUKASHi Sound Team feat.編井うも",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "8",
     "dx_lev_exp": "10+",
@@ -19558,7 +19594,6 @@
   {
     "artist": "ぱりぱりさらうどん",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11",
@@ -19573,7 +19608,6 @@
   {
     "artist": "ヤレギノ",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9",
@@ -19589,7 +19623,6 @@
   {
     "artist": "litmus*",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "12",
@@ -19605,7 +19638,6 @@
   {
     "artist": "ちから",
     "catcode": "niconico＆ボーカロイド",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -19617,6 +19649,36 @@
     "title": "るろうらんる",
     "title_kana": "ルロウランル",
     "version": "26002"
+  },
+  {
+    "artist": "40mP × sasakure.UK / 初音ミク「劇場版プロジェクトセカイ　壊れたセカイと歌えないミク」",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "0f8294359ea35f03.png",
+    "release": "251016",
+    "sort": "113",
+    "title": "はじまりの未来",
+    "title_kana": "ハシマリノミライ",
+    "version": "26003"
+  },
+  {
+    "artist": "じん / バーチャル・シンガー、Leo/need、MORE MORE JUMP！、Vivid BAD SQUAD、ワンダーランズ×ショウタイム、25時、ナイトコードで。「劇場版プロジェクトセカイ　壊れたセカイと歌えないミク」",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "12+",
+    "image_url": "c76c2dfb5e5ba4e5.png",
+    "release": "251016",
+    "sort": "114",
+    "title": "Worlders",
+    "title_kana": "WORLDERS",
+    "version": "26003"
   },
   {
     "artist": "MIMI",
@@ -20029,6 +20091,19 @@
     "version": "25006"
   },
   {
+    "artist": "獅子志司",
+    "catcode": "宴会場",
+    "lev_utage": "13?",
+    "kanji": "藍",
+    "comment": "絶え間なく青色",
+    "image_url": "9fcfc39056f4c51e.png",
+    "release": "251016",
+    "sort": "1443",
+    "title": "[藍]絶え間なく藍色",
+    "title_kana": "タエマナクアイイロ",
+    "version": "26003"
+  },
+  {
     "artist": "奏音",
     "catcode": "宴会場",
     "lev_utage": "14?",
@@ -20389,6 +20464,19 @@
     "title": "[X]人マニア",
     "title_kana": "ヒトマニア",
     "version": "25007"
+  },
+  {
+    "artist": "wotaku feat.SHIKI",
+    "catcode": "宴会場",
+    "lev_utage": "13+?",
+    "kanji": "音",
+    "comment": "～音取りほぼMAXバージョン～",
+    "image_url": "990f36f291344332.png",
+    "release": "251016",
+    "sort": "1444",
+    "title": "[音]snooze",
+    "title_kana": "SNOOZE",
+    "version": "26003"
   },
   {
     "artist": "サツキ feat.初音ミク・重音テト",
