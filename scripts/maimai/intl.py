@@ -643,10 +643,10 @@ def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, titl
         chart_type = _determine_wiki_chart_type(intl_song)
 
         # Determine which prefixes to use
-        if chart_type == 'std':
+        if chart_type == 'dx':
             prefixes_to_match = remas_prefixes_std if only_remas else std_prefixes
             message = "- Copied RE:MASTER (Std) chart from JP data to INTL" if only_remas else "- Copied Std charts from JP data to INTL"
-        elif chart_type == 'dx':
+        elif chart_type == 'std':
             prefixes_to_match = remas_prefixes_dx if only_remas else dx_prefixes
             message = "- Copied RE:MASTER (DX) chart from JP data to INTL" if only_remas else "- Copied DX charts from JP data to INTL"
         elif chart_type == 'utage':
