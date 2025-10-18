@@ -173,7 +173,7 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
         target_entry_lv = target_entry['lv_std']
 
     for idx, modifier_num in enumerate(target_entry_lv):
-        if modifier_num <= -1 or idx == 0: # Skip Basic
+        if modifier_num <= -1: # Skip Basic
             continue
 
         if target_entry['dx'] == 2:
@@ -189,12 +189,19 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
         if chart_key not in song:
             continue
 
-        if game.ARGS.legacy:
-            chart_const = float(modifier_num)
-        else:
-            decimal_part = modifier_num
-            base_level = float(song[chart_key].replace("+", ".6"))
-            chart_const = (base_level * 10 + decimal_part) / 10
+        base_level_str = song[chart_key]
+
+        if idx != 0:
+            if game.ARGS.legacy:
+                chart_const = float(modifier_num)
+            else:
+                decimal_part = modifier_num
+                base_level = float(base_level_str.replace("+", ".6"))
+                chart_const = (base_level * 10 + decimal_part) / 10
+        else: # Basic chart are always .0 except for 7+ which we will check manually
+            if "+" in base_level_str:
+                continue # Skip 7+ cases
+            chart_const = float(base_level_str)
 
         chart_key += "_i"
 
