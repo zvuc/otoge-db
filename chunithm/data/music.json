@@ -2306,7 +2306,7 @@
   {
     "id": "2874",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "はじまりの未来",
     "reading": "ハシマリノミライ",
     "artist": "40mP × sasakure.UK / 初音ミク「劇場版プロジェクトセカイ　壊れたセカイと歌えないミク」",
@@ -2322,7 +2322,7 @@
   {
     "id": "2875",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Worlders",
     "reading": "WORLDERS",
     "artist": "じん / バーチャル・シンガー、Leo/need、MORE MORE JUMP！、Vivid BAD SQUAD、ワンダーランズ×ショウタイム、25時、ナイトコードで。「劇場版プロジェクトセカイ　壊れたセカイと歌えないミク」",
@@ -7122,7 +7122,7 @@
   {
     "id": "2871",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Idoratrize World",
     "reading": "IDORATRIZEWORLD",
     "artist": "A-One",
@@ -7138,7 +7138,7 @@
   {
     "id": "2872",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Necromantic",
     "reading": "NECROMANTIC",
     "artist": "暁Records",
@@ -7154,7 +7154,7 @@
   {
     "id": "2873",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Galaxy Collapse",
     "reading": "GALAXYCOLLAPSE",
     "artist": "黒皇帝",
@@ -16350,6 +16350,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "72666e842e68af96.jpg"
+  },
+  {
+    "id": "2876",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "渦状銀河のシンフォニエッタ",
+    "reading": "カシヨウキンカノシンフオニエツタ",
+    "artist": "山本真央樹",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exp": "12+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "afdd20950ed143a5.jpg"
   },
   {
     "id": "802",
