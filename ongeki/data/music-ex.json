@@ -53476,7 +53476,7 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "3f95e0d3d5379861.png",
-    "enemy_lv": "",
+    "enemy_lv": "38",
     "enemy_type": "AQUA",
     "bpm": "",
     "lev_bas_i": "",
@@ -53504,7 +53504,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Tachyon"
   },
   {
     "new": "NEW",
@@ -53528,25 +53528,25 @@
     "lev_mas": "15",
     "lev_lnt": "",
     "image_url": "ee70cac61c4487f5.png",
-    "enemy_lv": "",
+    "enemy_lv": "72",
     "enemy_type": "AQUA",
     "bpm": "",
     "lev_bas_i": "",
-    "lev_bas_notes": "",
+    "lev_bas_notes": "520",
     "lev_bas_bells": "",
     "lev_bas_designer": "",
     "lev_adv_i": "",
-    "lev_adv_notes": "",
+    "lev_adv_notes": "973",
     "lev_adv_bells": "",
     "lev_adv_designer": "",
     "lev_adv_chart_link": "",
     "lev_exc_i": "",
-    "lev_exc_notes": "",
+    "lev_exc_notes": "1694",
     "lev_exc_bells": "",
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
+    "lev_mas_notes": "2260",
     "lev_mas_bells": "",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
@@ -53556,6 +53556,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/lovelynonsense"
   }
 ]
