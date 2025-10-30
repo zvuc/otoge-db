@@ -23575,7 +23575,7 @@
     "image_url": "a07345a5705db536.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251016",
     "title": "はじまりの未来",
     "title_sort": "ハシマリノミライ",
@@ -23598,7 +23598,7 @@
     "image_url": "c63f5d061335e951.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251016",
     "title": "Worlders",
     "title_sort": "WORLDERS",
@@ -23621,7 +23621,7 @@
     "image_url": "ca47494d57c5041a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251016",
     "title": "ダイダイダイダイダイキライ",
     "title_sort": "タイタイタイタイタイキライ",
@@ -23642,5 +23642,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "bdc32c7afa9285c1.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251030",
+    "title": "Tachyon",
+    "title_sort": "TACHYON",
+    "artist": "Zekk",
+    "id": "665000",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "珠洲島 有栖",
+    "chara_id": "1130",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "3f95e0d3d5379861.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251030",
+    "title": "lovelynonsense",
+    "title_sort": "LOVELYNONSENSE",
+    "artist": "tn-shi",
+    "id": "665100",
+    "chap_id": "80047",
+    "chapter": "KING of Performai The 7th 予選ラウンド",
+    "character": "早乙女 彩華",
+    "chara_id": "1080",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "7",
+    "lev_adv": "10",
+    "lev_exc": "14",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "ee70cac61c4487f5.png"
   }
 ]
