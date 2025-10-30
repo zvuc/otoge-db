@@ -266,7 +266,7 @@ def add_intl_info():
         try:
             data = resp.json()
         except ValueError:
-            print("Response is not JSON. First 500 chars:", resp.text[:500], flush=True)
+            print("Response is not JSON. First 500 chars:", resp.text, flush=True)
             return
     except requests.RequestException as e:
         print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, log=True)
