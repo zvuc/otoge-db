@@ -13386,7 +13386,7 @@
     "lev_adv": "5",
     "lev_exp": "8+",
     "lev_mas": "12",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "0bb58f15b16703ab.jpg"
@@ -14478,6 +14478,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "d725398d89dbc652.jpg"
+  },
+  {
+    "id": "2881",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "Hardsync",
+    "reading": "HARDSYNC",
+    "artist": "桔梗 小夜曲(CV:原田 彩楓)",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exp": "10+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "be2426e63cf3c019.jpg"
   },
   {
     "id": "684",
@@ -16354,7 +16370,7 @@
   {
     "id": "2876",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "渦状銀河のシンフォニエッタ",
     "reading": "カシヨウキンカノシンフオニエツタ",
     "artist": "山本真央樹",
@@ -17872,6 +17888,22 @@
     "image": "72229dd444b71cb3.jpg"
   },
   {
+    "id": "2882",
+    "catname": "ゲキマイ",
+    "newflag": "1",
+    "title": "しとしとと",
+    "reading": "シトシトト",
+    "artist": "t+pazolite",
+    "lev_bas": "4",
+    "lev_adv": "9+",
+    "lev_exp": "13",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "25c1a2346c2ff084.jpg"
+  },
+  {
     "id": "202",
     "catname": "ORIGINAL",
     "newflag": "0",
@@ -18122,7 +18154,7 @@
     "lev_adv": "6",
     "lev_exp": "8",
     "lev_mas": "11+",
-    "lev_ult": "",
+    "lev_ult": "13+",
     "we_kanji": "",
     "we_star": "",
     "image": "2e1f76149139177c.jpg"
@@ -18346,7 +18378,7 @@
     "lev_adv": "5",
     "lev_exp": "10",
     "lev_mas": "13+",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "73ad66e81061bba3.jpg"
@@ -18442,7 +18474,7 @@
     "lev_adv": "9",
     "lev_exp": "13",
     "lev_mas": "14+",
-    "lev_ult": "",
+    "lev_ult": "15",
     "we_kanji": "",
     "we_star": "",
     "image": "93abb77776c70b47.jpg"
@@ -18698,7 +18730,7 @@
     "lev_adv": "6",
     "lev_exp": "10",
     "lev_mas": "14",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "0c2791f737ce1ff2.jpg"
@@ -18890,7 +18922,7 @@
     "lev_adv": "5",
     "lev_exp": "8+",
     "lev_mas": "11",
-    "lev_ult": "",
+    "lev_ult": "13+",
     "we_kanji": "",
     "we_star": "",
     "image": "f29f10a963df60cf.jpg"
@@ -18986,7 +19018,7 @@
     "lev_adv": "6",
     "lev_exp": "10",
     "lev_mas": "13+",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "b59d2b2ab877a77d.jpg"
@@ -19146,7 +19178,7 @@
     "lev_adv": "6",
     "lev_exp": "9+",
     "lev_mas": "13+",
-    "lev_ult": "",
+    "lev_ult": "14",
     "we_kanji": "",
     "we_star": "",
     "image": "854cf33a2b30f004.jpg"
@@ -19482,7 +19514,7 @@
     "lev_adv": "6",
     "lev_exp": "8",
     "lev_mas": "12+",
-    "lev_ult": "",
+    "lev_ult": "13+",
     "we_kanji": "",
     "we_star": "",
     "image": "f3a23e078d6d8b31.jpg"
@@ -21626,7 +21658,7 @@
     "lev_adv": "5",
     "lev_exp": "9",
     "lev_mas": "11+",
-    "lev_ult": "",
+    "lev_ult": "13+",
     "we_kanji": "",
     "we_star": "",
     "image": "56ec1646b67d0d3c.jpg"
@@ -24414,6 +24446,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "3c8481ae79bb7075.jpg"
+  },
+  {
+    "id": "2877",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Warp Speed",
+    "reading": "WARPSPEED",
+    "artist": "Nhato",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "11+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "7d047fe786983b56.jpg"
+  },
+  {
+    "id": "2878",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "In the Straying Story",
+    "reading": "INTHESTRAYINGSTORY",
+    "artist": "polysha",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "13",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "e40b950f8f57ba5e.jpg"
+  },
+  {
+    "id": "2879",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "PhenomenoN",
+    "reading": "PHENOMENON",
+    "artist": "Laur feat.Tia",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "11",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "77f5fe5824721f3b.jpg"
   },
   {
     "id": "8308",
