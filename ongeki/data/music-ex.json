@@ -53580,7 +53580,7 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "99ed07df6a0a0f4c.png",
-    "enemy_lv": "",
+    "enemy_lv": "60",
     "enemy_type": "AQUA",
     "bpm": "",
     "lev_bas_i": "",
@@ -53608,7 +53608,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/六連星"
   },
   {
     "new": "NEW",
@@ -53632,9 +53632,9 @@
     "lev_mas": "",
     "lev_lnt": "14+",
     "image_url": "a921972c10659938.png",
-    "enemy_lv": "",
+    "enemy_lv": "30",
     "enemy_type": "LEAF",
-    "bpm": "",
+    "bpm": "160",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -53660,7 +53660,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ブツメツビーターズ"
   },
   {
     "new": "NEW",
@@ -53684,9 +53684,9 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "cfc59435357d17b2.png",
-    "enemy_lv": "",
+    "enemy_lv": "36",
     "enemy_type": "LEAF",
-    "bpm": "",
+    "bpm": "170",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -53712,6 +53712,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/トノサマビーム"
   }
 ]
