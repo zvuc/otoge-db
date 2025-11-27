@@ -53736,7 +53736,7 @@
     "lev_mas": "12+",
     "lev_lnt": "",
     "image_url": "43caff6cfcb8619a.png",
-    "enemy_lv": "",
+    "enemy_lv": "15",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -53764,7 +53764,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/光の惑星"
   },
   {
     "new": "NEW",
@@ -53788,7 +53788,7 @@
     "lev_mas": "12",
     "lev_lnt": "",
     "image_url": "98c77ff27f0c41b4.png",
-    "enemy_lv": "",
+    "enemy_lv": "5",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -53816,7 +53816,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/トキメキ禁断症状"
   },
   {
     "new": "NEW",
@@ -53840,7 +53840,7 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "b746754cfc94b54a.png",
-    "enemy_lv": "",
+    "enemy_lv": "7",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -53868,7 +53868,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/キミイロクロニクル"
   },
   {
     "new": "NEW",
@@ -53892,7 +53892,7 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "396cdea4dcbbd21d.png",
-    "enemy_lv": "",
+    "enemy_lv": "10",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -53920,6 +53920,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/MORAL"
   }
 ]
