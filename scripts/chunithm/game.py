@@ -1,7 +1,7 @@
 GAME_NAME = "chunithm"
 
 CURRENT_JP_VER = "X-VERSE"
-CURRENT_INTL_VER = "VERSE"
+CURRENT_INTL_VER = "X-VERSE"
 
 HASH_KEYS = ['image']
 HASH_KEYS_SP = ['image', 'we_kanji']
