@@ -18,3 +18,4 @@ maimai/lv/*.*
 shared/*.js
 !shared/*.min.js
 !diffs.txt
+index.html
