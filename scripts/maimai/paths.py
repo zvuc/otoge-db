@@ -9,7 +9,7 @@ LOCAL_MUSIC_EX_PREV_VER_JSON_PATH = "maimai/data/music-ex-prismplus-final.json"
 LOCAL_MUSIC_EX_DELETED_JSON_PATH = "maimai/data/music-ex-deleted.json"
 LOCAL_DIFFS_LOG_PATH = "maimai/diffs.txt"
 LOCAL_ERROR_LOG_PATH = "maimai/errors.txt"
-LOCAL_INDEX_HTML_PATH = "maimai/src/pug/_maimai.pug"
+LOCAL_META_PUG_PATH = "maimai/src/pug/_maimai_meta.pug"
 LOCAL_LEVELS_HTML_PATH = "maimai/lv/index.html"
 LOCAL_NAMUWIKI_EXPORT_PATH = "maimai/namuwiki-export.html"
 

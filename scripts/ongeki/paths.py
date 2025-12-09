@@ -5,7 +5,7 @@ LOCAL_MUSIC_EX_JSON_PATH = "ongeki/data/music-ex.json"
 LOCAL_MUSIC_EX_DELETED_JSON_PATH = "ongeki/data/music-ex-deleted.json"
 LOCAL_DIFFS_LOG_PATH = "ongeki/diffs.txt"
 LOCAL_ERROR_LOG_PATH = "ongeki/errors.txt"
-LOCAL_INDEX_HTML_PATH = "ongeki/src/pug/_ongeki.pug"
+LOCAL_META_PUG_PATH = "ongeki/src/pug/_ongeki_meta.pug"
 LOCAL_LEVELS_HTML_PATH = "ongeki/lv/index.html"
 LOCAL_NAMUWIKI_EXPORT_PATH = "ongeki/namuwiki-export.html"
 

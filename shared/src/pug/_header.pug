@@ -31,11 +31,9 @@ header
           span.version.intl
             | #{game_version_display_intl}
           span.date.jp
-            block lastupdated-jp
-              | 00000000
+            | #{lastupdated_jp}
           span.date.intl
-            block lastupdated-intl
-              | 00000000
+            | #{lastupdated_intl}
       .region-quick-switch
         input#gameRegionQuickSwitch(type='checkbox')
         label.switch(for='gameRegionQuickSwitch')

@@ -172,36 +172,33 @@ def get_last_date(region, local_music_data):
         # Handle the case where all dates are None
         return None
 
-def renew_lastupdated(region, local_json_ex_path, dest_html_path):
+def renew_lastupdated(region, local_json_ex_path, dest_pug_path):
     with open(local_json_ex_path, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
 
     latest_date = get_last_date(region, local_music_data)
 
-    with open(dest_html_path, 'r', encoding='utf-8') as f:
-        local_html_data = f.read()
+    with open(dest_pug_path, 'r', encoding='utf-8') as f:
+        local_pug_data = f.read()
 
-    pattern_map = {
-        'jp': r'block lastupdated-jp\n\s*\|\s*(\d{8})',
-        'intl': r'block lastupdated-intl\n\s*\|\s*(\d{8})'
-    }
+    var_name = f"lastupdated_{region}"
 
-    if region not in pattern_map:
-        return  # Exit if region is not recognized
+    if region not in ['jp', 'intl']:
+        return
 
-    pattern = pattern_map[region]
-    match = re.search(pattern, local_html_data, re.IGNORECASE)
+    pattern = rf"\n*- var {var_name} = '(\d{{8}})'"
+    match = re.search(pattern, local_pug_data, re.IGNORECASE)
 
     if match and match.group(1) == latest_date:
-        return  # Exit if the date hasn't changed
+        return
 
-    updated_html = re.sub(pattern, rf'block lastupdated-{region}\n  | {latest_date}', local_html_data, flags=re.IGNORECASE)
+    updated_pug = re.sub(pattern, rf"- var {var_name} = '{latest_date}'", local_pug_data)
 
-    with open(dest_html_path, 'w', encoding='utf-8') as f:
-        f.write(updated_html)
-
-    print_message(f"")
-    print_message(f"Updated {region.upper()} datestamp on {dest_html_path} to {latest_date}", '')
+    ipdb.set_trace()
+    with open(dest_pug_path, 'w', encoding='utf-8') as f:
+        f.write(updated_pug)
+    print_message("")
+    print_message(f"Updated {region.upper()} datestamp in {dest_pug_path} to {latest_date}", '')
 
 
 def json_to_id_value_map(json, id_key):

@@ -9,7 +9,7 @@ LOCAL_MUSIC_EX_PREV_VER_JSON_PATH = "chunithm/data/music-ex-verse-final.json"
 LOCAL_MUSIC_EX_DELETED_JSON_PATH = "chunithm/data/music-ex-deleted.json"
 LOCAL_DIFFS_LOG_PATH = "chunithm/diffs.txt"
 LOCAL_ERROR_LOG_PATH = "chunithm/errors.txt"
-LOCAL_INDEX_HTML_PATH = "chunithm/src/pug/_chunithm.pug"
+LOCAL_META_PUG_PATH = "chunithm/src/pug/_chunithm_meta.pug"
 LOCAL_LEVELS_HTML_PATH = "chunithm/lv/index.html"
 LOCAL_NAMUWIKI_EXPORT_PATH = "chunithm/namuwiki-export.html"
 

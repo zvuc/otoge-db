@@ -13,7 +13,7 @@ def main():
     )
 
     # Update the last updated time
-    renew_lastupdated('jp', game.GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_INDEX_HTML_PATH)
+    renew_lastupdated('jp', game.GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_META_PUG_PATH)
     # Uncomment other renew_lastupdated calls if needed
     # renew_lastupdated(GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, GAME_MODULE.paths.LOCAL_LEVELS_HTML_PATH)
     # renew_lastupdated(GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, GAME_MODULE.paths.LOCAL_NAMUWIKI_EXPORT_PATH)

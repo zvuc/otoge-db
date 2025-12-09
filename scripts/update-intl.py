@@ -10,7 +10,7 @@ def main():
         game.GAME_MODULE.intl.sync_json_data()
 
     # Update the last updated time
-    renew_lastupdated('intl', game.GAME_MODULE.paths.LOCAL_INTL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_INDEX_HTML_PATH)
+    renew_lastupdated('intl', game.GAME_MODULE.paths.LOCAL_INTL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_META_PUG_PATH)
 
 if __name__ == "__main__":
     custom_args = {
