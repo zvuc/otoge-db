@@ -24,11 +24,11 @@
       .segmented-btn-group.intl-switcher
         input#gameRegionJP(type='radio' name='gameRegion' value='jp' checked='')
         label.switch(for='gameRegionJP')
-          span.icon 🇯🇵
+          <svg class="symbol flag-jp" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#flag-jp"></use></svg>
           span(data-i18n="version_jp") 日本版
         input#gameRegionIntl(type='radio' name='gameRegion' value='intl')
         label.switch(for='gameRegionIntl')
-          span.icon 🌏
+          <svg class="symbol globe-asia" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#globe-asia"></use></svg>
           span(data-i18n="version_intl") 海外版
       p.option-caption(data-i18n='option_region_desc')
         | 「海外版」を選ぶと、海外版で選曲可能な曲のみ見せます。

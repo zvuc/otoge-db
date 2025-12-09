@@ -318,6 +318,10 @@ header {
 	}
 
 	span.region-badge {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
 		background-color: rgb(var(--ui-color-background-080),0.5);
 		position: relative;
 		color: rgb(var(--ui-color-foreground-100));
@@ -336,21 +340,28 @@ header {
 		// 	width: 100%;
 		// }
 
-		span.text {
-			position: relative;
-
-			&:after {
-				content: "🇯🇵 JPN";
-			}
-		}
-
-		:root[data-game-region="intl"]:not(.ongeki) & {
+		&.intl {
+			display: none;
 			background-color: rgba(var(--color-accent-03),0.8);
 			color: #fff;
+		}
+	}
 
-			span.text:after {
-				content: "🌏 INTL";
-			}
+	:root[data-game-region="jp"] & span.region-badge {
+		&.jp {
+			display: inline-flex;
+		}
+		&.intl {
+			display: none;
+		}
+	}
+
+	:root[data-game-region="intl"]:not(.ongeki) & span.region-badge {
+		&.jp {
+			display: none;
+		}
+		&.intl {
+			display: inline-flex;
 		}
 	}
 

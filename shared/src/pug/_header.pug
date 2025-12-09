@@ -23,8 +23,10 @@ header
         span.hidden(aria-hidden='true') #{game_db_name} : #{game_name_display} 非公式楽曲リスト
     .aside
       .info
-        span.region-badge
-          span.text
+        span.region-badge.jp
+          | <svg class="symbol flag-jp" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#flag-jp"></use></svg> JPN
+        span.region-badge.intl
+          | <svg class="symbol globe-asia" aria-hidden="true" focusable="false"><use href="/shared/img/symbols.svg#globe-asia"></use></svg> INTL
         div.version-date
           span.version.jp
             | #{game_version_display}
