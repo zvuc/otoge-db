@@ -31,7 +31,8 @@ VERSION_MAPPING = {
     "LUMINOUS": "09",
     "LUMINOUS+": "09",
     "VERSE": "10",
-    "X-VERSE": "10"
+    "X-VERSE": "10",
+    "X-VERSE-X": "10"
 }
 
 PAGES = {
