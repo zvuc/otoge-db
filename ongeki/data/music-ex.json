@@ -53944,7 +53944,7 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "04d6a98b11ba22c8.png",
-    "enemy_lv": "",
+    "enemy_lv": "57",
     "enemy_type": "FIRE",
     "bpm": "",
     "lev_bas_i": "",
@@ -53972,7 +53972,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/浮世絵横丁"
   },
   {
     "new": "NEW",
@@ -53996,7 +53996,7 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "9135256c9eb02ee7.png",
-    "enemy_lv": "",
+    "enemy_lv": "41",
     "enemy_type": "LEAF",
     "bpm": "",
     "lev_bas_i": "",
@@ -54024,7 +54024,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/夢紡ぎのワンダラー"
   },
   {
     "new": "NEW",
@@ -54048,7 +54048,7 @@
     "lev_mas": "14",
     "lev_lnt": "",
     "image_url": "85b18d050466e102.png",
-    "enemy_lv": "",
+    "enemy_lv": "26",
     "enemy_type": "AQUA",
     "bpm": "",
     "lev_bas_i": "",
@@ -54076,6 +54076,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/I.M.I"
   }
 ]
