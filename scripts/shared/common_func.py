@@ -194,7 +194,6 @@ def renew_lastupdated(region, local_json_ex_path, dest_pug_path):
 
     updated_pug = re.sub(pattern, rf"- var {var_name} = '{latest_date}'", local_pug_data)
 
-    ipdb.set_trace()
     with open(dest_pug_path, 'w', encoding='utf-8') as f:
         f.write(updated_pug)
     print_message("")
