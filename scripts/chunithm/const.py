@@ -9,7 +9,7 @@ from shared.common_func import *
 from chunithm.paths import *
 from datetime import datetime
 
-SHEETS_ID = '1wewufZZ9iOy-3To6ITc_vwbUpfMhEVlGUKAmse2JgSs'
+SHEETS_ID = '1UgalRHELZBe4Wb4yKXffBJ6juj57bHgSdEWphCDsByE'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 
 CHARTS = [
