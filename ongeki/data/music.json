@@ -23759,7 +23759,7 @@
     "image_url": "a921972c10659938.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251127",
     "title": "キミイロクロニクル",
     "title_sort": "キミイロクロニクル",
@@ -23782,7 +23782,7 @@
     "image_url": "b746754cfc94b54a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251127",
     "title": "トキメキ禁断症状",
     "title_sort": "トキメキキンタンシヨウシヨウ",
@@ -23805,7 +23805,7 @@
     "image_url": "98c77ff27f0c41b4.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251127",
     "title": "光の惑星",
     "title_sort": "ヒカリノワクセイ",
@@ -23828,7 +23828,7 @@
     "image_url": "43caff6cfcb8619a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251127",
     "title": "MORAL",
     "title_sort": "MORAL",
@@ -23849,5 +23849,74 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "396cdea4dcbbd21d.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251211",
+    "title": "浮世絵横丁",
+    "title_sort": "ウキヨエヨコチヨウ",
+    "artist": "魔界都市ニイガタ（黄泉路テヂーモ×dawn-system×かゆき）",
+    "id": "478400",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "逢坂 茜",
+    "chara_id": "1120",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©魔界都市ニイガタ",
+    "lev_bas": "5",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "04d6a98b11ba22c8.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251211",
+    "title": "I.M.I",
+    "title_sort": "IMI",
+    "artist": "打打だいず FEAT. 月乃",
+    "id": "478500",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "三角 葵",
+    "chara_id": "1030",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©打打だいず",
+    "lev_bas": "4",
+    "lev_adv": "8+",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "85b18d050466e102.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20251211",
+    "title": "夢紡ぎのワンダラー",
+    "title_sort": "ユメツムキノワンタラ",
+    "artist": "いるかアイス × Tanchiky feat. 初音ミク",
+    "id": "478600",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "井之原 小星",
+    "chara_id": "1090",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©On Prism Records / ©irucaice / ©Tanchiky",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "9135256c9eb02ee7.png"
   }
 ]
