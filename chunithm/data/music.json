@@ -1,8 +1,40 @@
 [
   {
-    "id": "2896",
+    "id": "2920",
     "catname": "POPS & ANIME",
     "newflag": "1",
+    "title": "アイドゥーミー！",
+    "reading": "アイトウウミウ",
+    "artist": "蓮ノ空女学院スクールアイドルクラブ「Link！Like！ラブライブ！」",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "8a60a70e7ff941f1.jpg"
+  },
+  {
+    "id": "2921",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "Edelied",
+    "reading": "EDELIED",
+    "artist": "Edel Note[セラス 柳田 リリエンフェルト(CV.三宅美羽)、桂城 泉(CV.進藤あまね)]「Link！Like！ラブライブ！」",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "1154917db46011a1.jpg"
+  },
+  {
+    "id": "2896",
+    "catname": "POPS & ANIME",
+    "newflag": "0",
     "title": "BOW AND ARROW （アニメ・オープニングver.）",
     "reading": "BOWANDARROWアニメオウフニンクVER",
     "artist": "米津玄師",
@@ -18,7 +50,7 @@
   {
     "id": "2897",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Ave Mujica",
     "reading": "AVEMUJICA",
     "artist": "Ave Mujica",
@@ -34,7 +66,7 @@
   {
     "id": "2898",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "KiLLKiSS",
     "reading": "KILLKISS",
     "artist": "Ave Mujica",
@@ -50,7 +82,7 @@
   {
     "id": "2899",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "怪獣",
     "reading": "カイシユウ",
     "artist": "サカナクション",
@@ -66,7 +98,7 @@
   {
     "id": "2900",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "一旦ステイ TONIGHT",
     "reading": "イツタンステイTONIGHT",
     "artist": "不破湊",
@@ -2160,9 +2192,57 @@
     "image": "d5a47266b4fe0bfe.jpg"
   },
   {
-    "id": "2901",
+    "id": "2922",
     "catname": "niconico",
     "newflag": "1",
+    "title": "㋰責任集合体",
+    "reading": "ムセキニンシユウコウタイ",
+    "artist": "マサラダ",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ca8e87e6896d99b1.jpg"
+  },
+  {
+    "id": "2923",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "バカ通信",
+    "reading": "ハカツウシン",
+    "artist": "isonosuke",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "1c0cd842e31d1ff2.jpg"
+  },
+  {
+    "id": "2924",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "ヤババイナ",
+    "reading": "ヤハハイナ",
+    "artist": "さたぱんP",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exp": "11+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2a1db642d331bc94.jpg"
+  },
+  {
+    "id": "2901",
+    "catname": "niconico",
+    "newflag": "0",
     "title": "モニタリング",
     "reading": "モニタリンク",
     "artist": "DECO*27",
@@ -2178,7 +2258,7 @@
   {
     "id": "2902",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "化けの花",
     "reading": "ハケノハナ",
     "artist": "なきそ",
@@ -2194,7 +2274,7 @@
   {
     "id": "2903",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "キャンディークッキーチョコレート",
     "reading": "キヤンテイウクツキウチヨコレウト",
     "artist": "はろける",
@@ -7010,7 +7090,7 @@
   {
     "id": "2904",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Ultimate taste",
     "reading": "ULTIMATETASTE",
     "artist": "ぱらどっと",
@@ -11218,7 +11298,7 @@
   {
     "id": "2907",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "AiAe",
     "reading": "AIAE",
     "artist": "DJ'TEKINA//SOMETHING a.k.a ゆよゆっぺ",
@@ -11778,7 +11858,7 @@
   {
     "id": "820",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ビッグブリッヂの死闘 -シアトリズムFFAC Arrange- from FFV",
     "reading": "ヒツクフリツチノシトウシアトリスムFFACARRANGEFROMFFV",
     "artist": "SQUARE ENIX",
@@ -13330,7 +13410,7 @@
   {
     "id": "2905",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "MORNINGLOOM",
     "reading": "MORNINGLOOM",
     "artist": "saaa",
@@ -13346,7 +13426,7 @@
   {
     "id": "2906",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Angelic Layer",
     "reading": "ANGELICLAYER",
     "artist": "SHIKI",
@@ -14658,7 +14738,7 @@
   {
     "id": "2911",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "当たり前田の小野美苗",
     "reading": "アタリマエタノオノミナエ",
     "artist": "小野 美苗(CV:伊藤 美来)",
@@ -16146,7 +16226,7 @@
   {
     "id": "2910",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "BIRTH",
     "reading": "BIRTH",
     "artist": "llliiillliiilll",
@@ -16562,7 +16642,7 @@
   {
     "id": "2908",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "WakeUP MakeUP FEVER!",
     "reading": "WAKEUPMAKEUPFEVER",
     "artist": "曲：アオワイファイ／歌：オンゲキシューターズ",
@@ -17938,7 +18018,7 @@
   {
     "id": "2909",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Starlight★Limited",
     "reading": "STARLIGHTLIMITED",
     "artist": "カタオカツグミ",
@@ -24690,7 +24770,7 @@
   {
     "id": "2912",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "魔法に照らされたアンコール",
     "reading": "マホウニテラサレタアンコウル",
     "artist": "MIMI feat.wawa",
@@ -24706,7 +24786,7 @@
   {
     "id": "2913",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ジナ",
     "reading": "シナ",
     "artist": "niki feat.DELUTAYA",
@@ -24722,7 +24802,7 @@
   {
     "id": "2914",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Road to Aventura",
     "reading": "ROADTOAVENTURA",
     "artist": "s-don",
@@ -24738,7 +24818,7 @@
   {
     "id": "2915",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "☆をつなぐシュトラール",
     "reading": "ホシヲツナクシユトラウル",
     "artist": "ああああ",
@@ -24754,7 +24834,7 @@
   {
     "id": "2916",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "MOMOCO68000",
     "reading": "MOMOCO68000",
     "artist": "AKIRA YAMAOKA",
@@ -24770,7 +24850,7 @@
   {
     "id": "2917",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "〚回帰〛 ～Scherzo ~フォルトゥーナの悪戯~",
     "reading": "SCHERZOフオルトウウナノイタスラ",
     "artist": "MIssinoary & DCWH",
@@ -24786,7 +24866,7 @@
   {
     "id": "2918",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "tHE uNcontRollaBle ciNdeRella",
     "reading": "THEUNCONTROLLABLECINDERELLA",
     "artist": "Felysrator (feat. Lamanya)",
@@ -24802,7 +24882,7 @@
   {
     "id": "8315",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "I Wanna",
     "reading": "IWANNA",
     "artist": "静香(CV.長谷川育美)「ワールドダイスター 夢のステラリウム」",
@@ -24818,7 +24898,7 @@
   {
     "id": "8316",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Adverse Gaff",
     "reading": "ADVERSEGAFF",
     "artist": "siromaru",
@@ -24834,7 +24914,7 @@
   {
     "id": "8317",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Teriqma",
     "reading": "TERIQMA",
     "artist": "owl＊tree",
