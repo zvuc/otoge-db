@@ -19431,7 +19431,6 @@
   {
     "artist": "テヅカ",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "10+",
@@ -19447,7 +19446,6 @@
   {
     "artist": "adaptor vs DRIVE.",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "12",
@@ -19463,7 +19461,6 @@
   {
     "artist": "Earliri",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11+",
@@ -19479,7 +19476,6 @@
   {
     "artist": "satella feat.Risa Yuzuki",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
@@ -19946,6 +19942,52 @@
     "version": "26007"
   },
   {
+    "artist": "halyosy",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "13",
+    "image_url": "67a6e0f8822e2d7a.png",
+    "release": "251224",
+    "sort": "116",
+    "title": "スノーマン (Rerec)",
+    "title_kana": "スノウマンREREC",
+    "version": "26009"
+  },
+  {
+    "artist": "DJ Myosuke & Gram",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "14",
+    "image_url": "c467dedfe621ce57.png",
+    "release": "251224",
+    "sort": "662",
+    "title": "JINGLE DEATH",
+    "title_kana": "JINGLEDEATH",
+    "version": "26009"
+  },
+  {
+    "artist": "cosMo＠暴走P",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "6",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "14",
+    "image_url": "48b784c73d0cba6b.png",
+    "key": "○",
+    "release": "251224",
+    "sort": "113",
+    "title": "ヤミナベ!!!!",
+    "title_kana": "ヤミナヘ",
+    "version": "26009"
+  },
+  {
     "artist": "MIMI",
     "catcode": "niconico＆ボーカロイド",
     "dx_lev_bas": "4",
@@ -20287,6 +20329,19 @@
     "title": "[協]エイリアンエイリアン",
     "title_kana": "エイリアンエイリアン",
     "version": "24500"
+  },
+  {
+    "artist": "谷屋楽",
+    "catcode": "宴会場",
+    "lev_utage": "14+?",
+    "kanji": "一",
+    "comment": "どいつもこいつもリア充しやがって！",
+    "image_url": "0efa58724b907097.png",
+    "release": "251224",
+    "sort": "1466",
+    "title": "[一]もうみんなしねばいいのに",
+    "title_kana": "モウミンナシネハイイノニ",
+    "version": "26009"
   },
   {
     "artist": "GYARI",
@@ -20796,6 +20851,20 @@
     "title": "[耐]死ぬな！",
     "title_kana": "シヌナ",
     "version": "26000"
+  },
+  {
+    "artist": "「太鼓の達人」より",
+    "catcode": "宴会場",
+    "lev_utage": "11?",
+    "kanji": "充",
+    "comment": "目と目を合わせて舞を分け合おう",
+    "buddy": "○",
+    "image_url": "503b44d4dc8fff1c.png",
+    "release": "251224",
+    "sort": "1467",
+    "title": "[充]エンジェル ドリーム",
+    "title_kana": "エンシエルトリイム",
+    "version": "26009"
   },
   {
     "artist": "t+pazolite",
