@@ -23920,7 +23920,7 @@
     "image_url": "9135256c9eb02ee7.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251225",
     "title": "最愛人生ランナー",
     "title_sort": "サイアイシンセイランナ",
@@ -23943,7 +23943,7 @@
     "image_url": "2671efd5642c74c9.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251225",
     "title": "ウィーアーピコピコハンマーズ!!!!",
     "title_sort": "ウイアヒコヒコハンマス",
@@ -23966,7 +23966,7 @@
     "image_url": "60dc587061a817a7.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251225",
     "title": "ジェットブラック",
     "title_sort": "シエツトフラク",
@@ -23989,7 +23989,7 @@
     "image_url": "66748ade3e1064a3.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251225",
     "title": "トレジャーガーデン",
     "title_sort": "トレシヤカテン",
@@ -24012,7 +24012,7 @@
     "image_url": "86e0bd7f4f08a3da.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20251225",
     "title": "電光刹歌",
     "title_sort": "テンコウセツカ",
@@ -24033,5 +24033,51 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "d7480e551d572926.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260108",
+    "title": "魔理沙は大変なものを盗んでいきました",
+    "title_sort": "マリサハタイヘンナモノヲヌスンテイキマシタ",
+    "artist": "ARM＋夕野ヨシミ (IOSYS) feat.藤咲かりん",
+    "id": "382400",
+    "chap_id": "99135",
+    "chapter": "東方妖々夢【第2弾】",
+    "character": "アリス・マーガトロイド",
+    "chara_id": "2090",
+    "category": "東方Project",
+    "category_id": "03",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©上海アリス幻樂団",
+    "lev_bas": "3",
+    "lev_adv": "8",
+    "lev_exc": "11",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "1eac175c0bbf4dda.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260108",
+    "title": "彷徨いの冥～天～",
+    "title_sort": "サマヨイノメイアマツ",
+    "artist": "少女フラクタル",
+    "id": "382500",
+    "chap_id": "99135",
+    "chapter": "東方妖々夢【第2弾】",
+    "character": "西行寺 幽々子",
+    "chara_id": "2330",
+    "category": "東方Project",
+    "category_id": "03",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©上海アリス幻樂団　©少女フラクタル",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exc": "10",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "6d339d4a041214ea.png"
   }
 ]
