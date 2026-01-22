@@ -1,5 +1,21 @@
 [
   {
+    "id": "3003",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "Choose!!!",
+    "reading": "CHOOSE",
+    "artist": "サイダーガール TVアニメ「悪役令嬢転生おじさん」",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "12",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b5eff2e5e6e10b15.jpg"
+  },
+  {
     "id": "2920",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -7090,7 +7106,7 @@
   {
     "id": "2925",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "A-Yah-YAh-YaH-YAH!",
     "reading": "AYAHYAHYAHYAH",
     "artist": "凋叶棕 feat. めらみぽっぷ",
@@ -7106,7 +7122,7 @@
   {
     "id": "2926",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "アマノジャクリバース feat. ｙｔｒ",
     "reading": "アマノシヤクリハウスFEATYTR",
     "artist": "魂音泉",
@@ -7122,7 +7138,7 @@
   {
     "id": "2927",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "The Music of Violent Eating",
     "reading": "THEMUSICOFVIOLENTEATING",
     "artist": "Jerico",
@@ -7138,7 +7154,7 @@
   {
     "id": "2928",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "New World",
     "reading": "NEWWORLD",
     "artist": "FELT",
@@ -7154,7 +7170,7 @@
   {
     "id": "2929",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "メイドノココロハアヤツリドール",
     "reading": "メイトノココロハアヤツリトウル",
     "artist": "森羅万象",
@@ -13518,6 +13534,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "0d333c9eab239e8b.jpg"
+  },
+  {
+    "id": "2932",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "愛と煩悩と輪廻と常識の極彩世界",
+    "reading": "アイトホンノウトリンネトシヨウシキノコクサイセカイ",
+    "artist": "sound piercer feat.Ritsu",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exp": "12",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ccab57547b68569f.jpg"
+  },
+  {
+    "id": "2933",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "ゼイタクするまで抱きしめて",
+    "reading": "セイタクスルマテタキシメテ",
+    "artist": "kei_iwata / KeiuO",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3c8ab9ef6a7782b9.jpg"
+  },
+  {
+    "id": "2934",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "LAST PROPOZE",
+    "reading": "LASTPROPOZE",
+    "artist": "あとぅす feat.橘花音",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9165f76e6dd66e11.jpg"
   },
   {
     "id": "145",
@@ -24958,6 +25022,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "72cd2fb54e03d738.jpg"
+  },
+  {
+    "id": "2919",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "轆轤首",
+    "reading": "ロクロクヒ",
+    "artist": "かねこちはる",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2b6966ef8a837f60.jpg"
   },
   {
     "id": "8315",
