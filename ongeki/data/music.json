@@ -24035,7 +24035,7 @@
     "image_url": "d7480e551d572926.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260108",
     "title": "魔理沙は大変なものを盗んでいきました",
     "title_sort": "マリサハタイヘンナモノヲヌスンテイキマシタ",
@@ -24058,7 +24058,7 @@
     "image_url": "1eac175c0bbf4dda.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260108",
     "title": "彷徨いの冥～天～",
     "title_sort": "サマヨイノメイアマツ",
@@ -24079,5 +24079,51 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "6d339d4a041214ea.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260122",
+    "title": "ふらふらふら、",
+    "title_sort": "フラフラフラ",
+    "artist": "アオワイファイ feat.犀羅",
+    "id": "575600",
+    "chap_id": "99136",
+    "chapter": "maimai でらっくす",
+    "character": "ラズ",
+    "chara_id": "7050",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "2",
+    "lev_adv": "8",
+    "lev_exc": "11+",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "3873b2054d49086f.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260122",
+    "title": "Straight into the lights",
+    "title_sort": "STRAIGHTINTOTHELIGHTS",
+    "artist": "Cosmograph",
+    "id": "575700",
+    "chap_id": "99136",
+    "chapter": "maimai でらっくす",
+    "character": "アシッド",
+    "chara_id": "7058",
+    "category": "チュウマイ",
+    "category_id": "05",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "5",
+    "lev_adv": "10",
+    "lev_exc": "12+",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "40ac3e77f03c488f.png"
   }
 ]
