@@ -68767,9 +68767,9 @@
     "dx_lev_mas_notes_break": "30",
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/934531",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250801",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260109",
     "date": "NEW"
   },
   {
@@ -68817,9 +68817,9 @@
     "dx_lev_mas_notes_break": "60",
     "dx_lev_mas_designer": "じゃこレモン",
     "wiki_url": "https://gamerch.com/maimai/934534",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250801",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260109",
     "date": "NEW"
   },
   {
@@ -68867,9 +68867,9 @@
     "dx_lev_mas_notes_break": "24",
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/936347",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250808",
-    "date_intl_added": "000000",
+    "date_intl_added": "20251226",
     "date": "NEW"
   },
   {
@@ -68917,9 +68917,9 @@
     "dx_lev_mas_notes_break": "39",
     "dx_lev_mas_designer": "アマリリス",
     "wiki_url": "https://gamerch.com/maimai/936348",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250808",
-    "date_intl_added": "000000",
+    "date_intl_added": "20251226",
     "date": "NEW"
   },
   {
@@ -68967,9 +68967,9 @@
     "dx_lev_mas_notes_break": "117",
     "dx_lev_mas_designer": "鳩ホルダー",
     "wiki_url": "https://gamerch.com/maimai/936350",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250808",
-    "date_intl_added": "000000",
+    "date_intl_added": "20251226",
     "date": "NEW"
   },
   {
@@ -69017,9 +69017,9 @@
     "dx_lev_mas_notes_break": "53",
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/936346",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250808",
-    "date_intl_added": "000000",
+    "date_intl_added": "20251226",
     "date": "NEW"
   },
   {
@@ -69050,9 +69050,9 @@
     "kanji": "騒",
     "comment": "花隈の歌は可愛いし小春六花はマジでうるさい",
     "wiki_url": "https://gamerch.com/maimai/936350",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250822",
-    "date_intl_added": "000000"
+    "date_intl_added": "20251226"
   },
   {
     "sort": "163",
@@ -69132,9 +69132,9 @@
     "kanji": "協",
     "comment": "さらに言うことを聞いてくれるアカネチャン",
     "wiki_url": "https://gamerch.com/maimai/533441",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250822",
-    "date_intl_added": "000000"
+    "date_intl_added": "20251226"
   },
   {
     "sort": "164",
@@ -69207,9 +69207,9 @@
     "kanji": "耐",
     "comment": "せかせかせかせかせかせかせかせかせかせか",
     "wiki_url": "https://gamerch.com/maimai/801237",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20250822",
-    "date_intl_added": "000000"
+    "date_intl_added": "20251226"
   },
   {
     "sort": "162",
@@ -69307,6 +69307,7 @@
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/940004",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20250905",
     "date_intl_added": "20251219",
     "date": "NEW"
@@ -69407,6 +69408,7 @@
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/940005",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20250905",
     "date_intl_added": "20251219",
     "date": "NEW"
