@@ -8459,6 +8459,25 @@
     "version": "24014"
   },
   {
+    "artist": "DiGiTAL WiNG feat. 花たん",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "9",
+    "dx_lev_mas": "13",
+    "image_url": "2bb6a69fa0e66cc6.png",
+    "release": "260123",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "sort": "645",
+    "title": "Paranoia",
+    "title_kana": "PARANOIA",
+    "version": "26012"
+  },
+  {
     "artist": "Lime",
     "catcode": "maimai",
     "dx_lev_bas": "6",
@@ -10700,20 +10719,6 @@
     "sort": "535",
     "title": "悪戯センセーション",
     "title_kana": "イタスラセンセイシヨン",
-    "version": "21000"
-  },
-  {
-    "artist": "DiGiTAL WiNG feat. 花たん",
-    "catcode": "東方Project",
-    "dx_lev_bas": "4",
-    "dx_lev_adv": "7",
-    "dx_lev_exp": "9",
-    "dx_lev_mas": "13",
-    "image_url": "2bb6a69fa0e66cc6.png",
-    "release": "000000",
-    "sort": "644",
-    "title": "Paranoia",
-    "title_kana": "PARANOIA",
     "version": "21000"
   },
   {
@@ -20056,7 +20061,6 @@
   {
     "artist": "3markets[ ]",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "9+",
@@ -20067,6 +20071,52 @@
     "title": "INTJINTPENTJENTPINFJENFJINFPENFPISTJISFJESTJESFJESTPISTPISFPESFP",
     "title_kana": "INTJINTPENTJENTPINFJENFJINFPENFPISTJISFJESTJESFJESTPISTPISFPESFP",
     "version": "26011"
+  },
+  {
+    "artist": "Knighthood",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "de1bf8e1a4349172.png",
+    "release": "260123",
+    "sort": "669",
+    "title": "Restricted Access",
+    "title_kana": "RESTRICTEDACCESS",
+    "version": "26012"
+  },
+  {
+    "artist": "Srav3R",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "13+",
+    "image_url": "243cb5e190e6bc1c.png",
+    "release": "260123",
+    "sort": "670",
+    "title": "胡蝶乃舞",
+    "title_kana": "コチヨウノマイ",
+    "version": "26012"
+  },
+  {
+    "artist": "seatrus",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "6",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "14+",
+    "image_url": "5013b0405bb25bc3.png",
+    "key": "○",
+    "release": "260123",
+    "sort": "671",
+    "title": "零號車輛",
+    "title_kana": "リンハオチユウリヤン",
+    "version": "26012"
   },
   {
     "artist": "MIMI",
