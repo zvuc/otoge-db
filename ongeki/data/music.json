@@ -24081,7 +24081,7 @@
     "image_url": "6d339d4a041214ea.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260122",
     "title": "ふらふらふら、",
     "title_sort": "フラフラフラ",
@@ -24104,7 +24104,7 @@
     "image_url": "3873b2054d49086f.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260122",
     "title": "Straight into the lights",
     "title_sort": "STRAIGHTINTOTHELIGHTS",
@@ -24125,5 +24125,51 @@
     "lev_mas": "15",
     "lev_lnt": "",
     "image_url": "40ac3e77f03c488f.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260205",
+    "title": "愛して愛して愛して",
+    "title_sort": "アイシテアイシテアイシテ",
+    "artist": "きくお",
+    "id": "272900",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "桜井 春菜",
+    "chara_id": "1070",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©DWANGO Co., Ltd.\r\nさしみやま、赤卵",
+    "lev_bas": "4",
+    "lev_adv": "8",
+    "lev_exc": "10+",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "16104e0bce4e193f.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260205",
+    "title": "お呪い",
+    "title_sort": "オマシナイ",
+    "artist": "なきそ",
+    "id": "273000",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "珠洲島 有栖",
+    "chara_id": "1130",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©なきそ",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exc": "11+",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "cba27d92e76e3779.png"
   }
 ]
