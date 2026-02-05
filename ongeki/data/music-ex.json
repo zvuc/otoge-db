@@ -54568,9 +54568,9 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "16104e0bce4e193f.png",
-    "enemy_lv": "",
+    "enemy_lv": "18",
     "enemy_type": "FIRE",
-    "bpm": "",
+    "bpm": "230",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -54586,9 +54586,9 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
-    "lev_mas_designer": "",
+    "lev_mas_notes": "1426",
+    "lev_mas_bells": "193",
+    "lev_mas_designer": "Nobody loves you.",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
@@ -54596,7 +54596,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/愛して愛して愛して"
   },
   {
     "new": "NEW",
@@ -54620,9 +54620,9 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "cba27d92e76e3779.png",
-    "enemy_lv": "",
+    "enemy_lv": "4",
     "enemy_type": "AQUA",
-    "bpm": "",
+    "bpm": "115",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -54638,9 +54638,9 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
-    "lev_mas_designer": "",
+    "lev_mas_notes": "1338",
+    "lev_mas_bells": "69",
+    "lev_mas_designer": "一ノ瀬 リズ",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
@@ -54648,6 +54648,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/お呪い"
   }
 ]
