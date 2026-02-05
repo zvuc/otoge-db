@@ -2,7 +2,7 @@
   {
     "id": "3003",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Choose!!!",
     "reading": "CHOOSE",
     "artist": "サイダーガール TVアニメ「悪役令嬢転生おじさん」",
@@ -13538,7 +13538,7 @@
   {
     "id": "2932",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "愛と煩悩と輪廻と常識の極彩世界",
     "reading": "アイトホンノウトリンネトシヨウシキノコクサイセカイ",
     "artist": "sound piercer feat.Ritsu",
@@ -13554,7 +13554,7 @@
   {
     "id": "2933",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ゼイタクするまで抱きしめて",
     "reading": "セイタクスルマテタキシメテ",
     "artist": "kei_iwata / KeiuO",
@@ -13570,7 +13570,7 @@
   {
     "id": "2934",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "LAST PROPOZE",
     "reading": "LASTPROPOZE",
     "artist": "あとぅす feat.橘花音",
@@ -14910,6 +14910,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "2fe1061faff537c9.jpg"
+  },
+  {
+    "id": "2939",
+    "catname": "イロドリミドリ",
+    "newflag": "1",
+    "title": "ソレイユ",
+    "reading": "ソレイユ",
+    "artist": "芒崎 奏(CV:立花 理香)",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "12",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "e77ba5fab553a22b.jpg"
   },
   {
     "id": "1012",
@@ -25038,6 +25054,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "2b6966ef8a837f60.jpg"
+  },
+  {
+    "id": "2935",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "天地のうた",
+    "reading": "アメツチノウタ",
+    "artist": "駄菓子O型 feat.みょみょ",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "10+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f8aaf7dd36dd8811.jpg"
+  },
+  {
+    "id": "2936",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Aether Wind",
+    "reading": "AETHERWIND",
+    "artist": "OSTER project feat. 常盤ゆう",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "6777d4ea3be2a2bf.jpg"
+  },
+  {
+    "id": "2937",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "そして春めくモノローグ",
+    "reading": "ソシテハルメクモノロウク",
+    "artist": "Qutabire feat.柚子花",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "5f449d387f43ebea.jpg"
   },
   {
     "id": "8315",
