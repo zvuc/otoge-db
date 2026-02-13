@@ -19495,7 +19495,6 @@
   {
     "artist": "nayuta",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
@@ -19511,7 +19510,6 @@
   {
     "artist": "棗いつき",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -19527,7 +19525,6 @@
   {
     "artist": "藍月なくる",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "11+",
@@ -19543,7 +19540,6 @@
   {
     "artist": "La prière",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12+",
@@ -20176,6 +20172,21 @@
     "title": "零號車輛",
     "title_kana": "リンハオチユウリヤン",
     "version": "26012"
+  },
+  {
+    "artist": "Kai",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "9+",
+    "dx_lev_mas": "12+",
+    "image_url": "130694f9747295ff.png",
+    "release": "260213",
+    "sort": "117",
+    "title": "ラプラスショコラ",
+    "title_kana": "ラフラスシヨコラ",
+    "version": "26014"
   },
   {
     "artist": "MIMI",
