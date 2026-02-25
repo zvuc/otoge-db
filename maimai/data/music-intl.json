@@ -13657,20 +13657,6 @@
   {
     "artist": "名取さな",
     "catcode": "POPS＆ANIME",
-    "dx_lev_bas": "3",
-    "dx_lev_adv": "6",
-    "dx_lev_exp": "9",
-    "dx_lev_mas": "12+",
-    "image_url": "db00c4017f608b7a.png",
-    "release": "000000",
-    "sort": "23",
-    "title": "アマカミサマ",
-    "title_kana": "アマカミサマ",
-    "version": "23005"
-  },
-  {
-    "artist": "名取さな",
-    "catcode": "POPS＆ANIME",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10+",
