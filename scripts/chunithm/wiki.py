@@ -264,15 +264,17 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         if not song['we_kanji']:
             # Find release date
             formatted_date = ''
-            if '初期' in overview_dict["解禁方法"]:
-                formatted_date = '20150716' # CHUNITHM launch date
-            else:
-                release_dates = overview_dict["解禁方法"]
-                earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates)
-                if earliest_release_date:
-                    earliest_release_date = earliest_release_date.group()
-                    date_num_parts = earliest_release_date.split('/')
-                    formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
+
+            if '解禁方法' in overview_dict:
+                if '初期' in overview_dict["解禁方法"]:
+                    formatted_date = '20150716' # CHUNITHM launch date
+                else:
+                    release_dates = overview_dict["解禁方法"]
+                    earliest_release_date = re.search(r'\b\d{4}/\d{1,2}/\d{1,2}', release_dates)
+                    if earliest_release_date:
+                        earliest_release_date = earliest_release_date.group()
+                        date_num_parts = earliest_release_date.split('/')
+                        formatted_date = '{:04d}{:02d}{:02d}'.format(int(date_num_parts[0]), int(date_num_parts[1]), int(date_num_parts[2]))
 
             if not formatted_date == '':
                 diff_count = [0]
