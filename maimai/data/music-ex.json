@@ -70807,6 +70807,7 @@
     "dx_lev_mas_designer": "るしえる",
     "wiki_url": "https://gamerch.com/maimai/944354",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20251003",
     "date_intl_added": "20260213",
     "date": "NEW"
@@ -70857,6 +70858,7 @@
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/944342",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20251003",
     "date_intl_added": "20260213",
     "date": "NEW"
@@ -70907,6 +70909,7 @@
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/944351",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20251003",
     "date_intl_added": "20260213",
     "date": "NEW"
@@ -70957,6 +70960,7 @@
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/945695",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20251016",
     "date_intl_added": "20260220",
     "date": "NEW"
@@ -70982,9 +70986,9 @@
     "kanji": "藍",
     "comment": "絶え間なく青色",
     "wiki_url": "",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20251016",
-    "date_intl_added": "000000"
+    "date_intl_added": "20260227"
   },
   {
     "sort": "1495",
@@ -71007,9 +71011,9 @@
     "kanji": "音",
     "comment": "～音取りほぼMAXバージョン～",
     "wiki_url": "",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20251016",
-    "date_intl_added": "000000"
+    "date_intl_added": "20260227"
   },
   {
     "sort": "975",
@@ -71107,9 +71111,9 @@
     "dx_lev_mas_notes_break": "56",
     "dx_lev_mas_designer": "カマボコ君",
     "wiki_url": "https://gamerch.com/maimai/946186",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20251016",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260227",
     "date": "NEW"
   },
   {
@@ -71157,9 +71161,9 @@
     "dx_lev_mas_notes_break": "55",
     "dx_lev_mas_designer": "ぴちネコ",
     "wiki_url": "https://gamerch.com/maimai/946185",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20251016",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260227",
     "date": "NEW"
   },
   {
@@ -72726,6 +72730,7 @@
     "wiki_url": "https://gamerch.com/maimai/958707",
     "intl": "1",
     "key": "○",
+    "key_intl": "○",
     "date_added": "20260123",
     "date_intl_added": "20260122",
     "date": "NEW"
@@ -73331,6 +73336,7 @@
     "dx_lev_mas_designer": "KOP7th -FiNAL BATTLE- by 7.3GHz",
     "wiki_url": "https://gamerch.com/maimai/969247",
     "intl": "1",
+    "key_intl": "○",
     "date_added": "20260305",
     "date_intl_added": "20260305",
     "date": "NEW"
