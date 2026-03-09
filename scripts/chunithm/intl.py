@@ -10,6 +10,11 @@ from chunithm.paths import *
 from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
+try:
+    import cloudscraper
+except ImportError:
+    cloudscraper = None
+
 # Copy over data from JP ver to INTL
 def sync_json_data():
     total_diffs = [0]
@@ -244,6 +249,106 @@ def sync_json_data():
             sort_and_save_json(src_prev_ver_music_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
 
+def is_cloudflare_challenge_response(resp):
+    body = resp.text.lower()
+    challenge_markers = (
+        "/cdn-cgi/challenge-platform",
+        "cf-mitigated",
+        "just a moment...",
+        "attention required!",
+        "verify you are human",
+    )
+    return (
+        resp.status_code in (403, 429, 503)
+        or any(marker in body for marker in challenge_markers)
+        or resp.headers.get("cf-mitigated", "") == "challenge"
+    )
+
+def fetch_remywiki_parse_json(page_name, wiki_api_url):
+    api_params = {
+        "action": "parse",
+        "page": page_name,
+        "format": "json",
+    }
+    main_page_url = f"https://silentblue.remywiki.com/{page_name}"
+    request_headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/136.0.0.0 Safari/537.36"
+        ),
+        "Accept": (
+            "application/json,text/html,application/xhtml+xml,application/xml;"
+            "q=0.9,image/avif,image/webp,*/*;q=0.8"
+        ),
+        "Accept-Language": "en-US,en;q=0.9",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Referer": main_page_url,
+    }
+
+    print_message(f"Request URL: {wiki_api_url}", bcolors.ENDC, log=True, is_verbose=True)
+
+    # First try: requests session with browser-like headers and retry.
+    with requests.Session() as session:
+        session.headers.update(request_headers)
+
+        for attempt in range(1, 4):
+            try:
+                # Warm up session/cookies on article page before API call.
+                session.get(main_page_url, timeout=10, allow_redirects=True)
+                resp = session.get(
+                    wiki_api_url,
+                    timeout=10,
+                    params=api_params,
+                    allow_redirects=True,
+                )
+            except requests.RequestException as e:
+                print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, log=True)
+                time.sleep(attempt * 1.5)
+                continue
+
+            if not is_cloudflare_challenge_response(resp):
+                try:
+                    data = resp.json()
+                except ValueError:
+                    print_message("Response is not JSON from RemyWiki API", bcolors.FAIL, log=True)
+                    return None
+
+                if "parse" in data and "text" in data["parse"]:
+                    return data
+
+                print_message("Unexpected JSON response from RemyWiki API", bcolors.FAIL, log=True)
+                return None
+
+            print_message(
+                f"Cloudflare challenge detected on attempt {attempt}/3; retrying",
+                bcolors.WARNING,
+                log=True,
+            )
+            time.sleep(attempt * 1.5)
+
+    # Fallback: cloudscraper can solve some Cloudflare JS challenges.
+    if cloudscraper:
+        try:
+            scraper = cloudscraper.create_scraper(browser={"browser": "chrome", "platform": "windows", "mobile": False})
+            scraper.headers.update(request_headers)
+            scraper.get(main_page_url, timeout=10, allow_redirects=True)
+            resp = scraper.get(wiki_api_url, timeout=10, params=api_params, allow_redirects=True)
+
+            if is_cloudflare_challenge_response(resp):
+                print_message("Cloudflare challenge remains after cloudscraper fallback", bcolors.FAIL, log=True)
+                return None
+
+            data = resp.json()
+            if "parse" in data and "text" in data["parse"]:
+                return data
+        except Exception as e:
+            print_message(f"cloudscraper fallback failed: {e}", bcolors.FAIL, log=True)
+
+    print_message("Failed to fetch RemyWiki content due to Cloudflare/browser checks", bcolors.FAIL, log=True)
+    return None
+
 # Update on top of existing music-ex
 def add_intl_info():
     total_diffs = [0]
@@ -262,30 +367,10 @@ def add_intl_info():
         local_intl_music_ex_data = json.load(f)
 
     # Get Wiki page
-    wiki_url = "https://silentblue.remywiki.com/api.php"
-    request_headers = {
-        'User-Agent': 'curl/8.5.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
-    }
-    params = {
-        "action": "parse",
-        "page": f"CHUNITHM:{game.CURRENT_INTL_VER.replace(' ', '_')}_(Asia)",
-        "format": "json"
-    }
-
-    print_message(f"Request URL: {wiki_url}", bcolors.ENDC, log=True, is_verbose=True)
-    try:
-        resp = requests.get(wiki_url, timeout=5, params=params, headers=request_headers, allow_redirects=True)
-        # print("Status:", resp.status_code, flush=True)
-        # print("Final URL after redirects:", resp.url, flush=True)
-        # print("First 500 chars of response:\n", resp.text[:500], flush=True)
-        try:
-            data = resp.json()
-        except ValueError:
-            print("Response is not JSON. First 500 chars:", resp.text[:500], flush=True)
-            return
-    except requests.RequestException as e:
-        print_message(f"Error while loading wiki page: {e}", bcolors.FAIL, log=True)
+    wiki_api_url = "https://silentblue.remywiki.com/api.php"
+    wiki_page = f"CHUNITHM:{game.CURRENT_INTL_VER.replace(' ', '_')}_(Asia)"
+    data = fetch_remywiki_parse_json(wiki_page, wiki_api_url)
+    if not data:
         return
 
     # Parse HTML
