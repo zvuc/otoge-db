@@ -2,7 +2,7 @@
   {
     "id": "2945",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "無敵的ハピネス！(SOS団5人Ver.)",
     "reading": "ムテキテキハヒネスSOSタン5ニンVER",
     "artist": "涼宮ハルヒ(CV.平野綾),長門有希(CV.茅原実里),朝比奈みくる(CV.後藤邑子)、キョン(CV.杉田智和)、古泉一樹(CV.小野大輔)",
@@ -18,7 +18,7 @@
   {
     "id": "2946",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Chasing destiny",
     "reading": "CHASINGDESTINY",
     "artist": "涼宮ハルヒ(CV.平野綾)",
@@ -34,7 +34,7 @@
   {
     "id": "2947",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Colorful Starting Line",
     "reading": "COLORFULSTARTINGLINE",
     "artist": "涼宮ハルヒ(CV.平野綾)",
@@ -14962,7 +14962,7 @@
   {
     "id": "2955",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Future Refrain",
     "reading": "FUTUREREFRAIN",
     "artist": "萩原 七々瀬(CV:東城 日沙子)",
@@ -18338,7 +18338,7 @@
   {
     "id": "2948",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "THE TRiANGLE",
     "reading": "THETRIANGLE",
     "artist": "Yuta Imai",
@@ -18610,7 +18610,7 @@
   {
     "id": "2950",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "DOMiNUS_GRAiL",
     "reading": "DOMINUSGRAIL",
     "artist": "xi",
@@ -18626,7 +18626,7 @@
   {
     "id": "2949",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Verse X",
     "reading": "VERSEX",
     "artist": "Yu_Asahina",
@@ -25310,6 +25310,54 @@
     "we_kanji": "",
     "we_star": "",
     "image": "f9d67323746c8e6e.jpg"
+  },
+  {
+    "id": "2951",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "パステル・シタイ！",
+    "reading": "ハステルシタイ",
+    "artist": "もちうつね feat.桃寝ちのい",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "74c743afe44f45d5.jpg"
+  },
+  {
+    "id": "2952",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "彩祭ワンダーワン！",
+    "reading": "サイサイワンタウワン",
+    "artist": "Ponchi♪ feat.はぁち",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "39631322c7453d61.jpg"
+  },
+  {
+    "id": "2953",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "Fly Better!",
+    "reading": "FLYBETTER",
+    "artist": "ShiBa × U-Ruri",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "2ccb91f3bb3d9356.jpg"
   },
   {
     "id": "8318",
