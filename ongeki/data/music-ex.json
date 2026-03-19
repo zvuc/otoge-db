@@ -55036,7 +55036,7 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "cc4443e3ccdb2887.png",
-    "enemy_lv": "",
+    "enemy_lv": "7",
     "enemy_type": "",
     "bpm": "",
     "lev_bas_i": "",
@@ -55064,7 +55064,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/テレパシ"
   },
   {
     "new": "NEW",
@@ -55088,9 +55088,9 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "d002345fa24580e3.png",
-    "enemy_lv": "",
+    "enemy_lv": "27",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "173",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -55116,7 +55116,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/ラビットホール"
   },
   {
     "new": "NEW",
@@ -55140,9 +55140,9 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "70f97ce7e615e765.png",
-    "enemy_lv": "",
+    "enemy_lv": "2",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "132",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -55168,6 +55168,6 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/モニタリング"
   }
 ]
