@@ -24242,7 +24242,7 @@
     "image_url": "5b4d665ecec62102.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260305",
     "title": "THE CELESTIA 180",
     "title_sort": "THECELESTIA180",
@@ -24265,7 +24265,7 @@
     "image_url": "4f54a4cba1a078e8.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260305",
     "title": "無敵的ハピネス！(SOS団5人Ver.)",
     "title_sort": "ムテキテキハヒネスSOSタン5ニンVER",
@@ -24288,7 +24288,7 @@
     "image_url": "95e63afc61d6d68c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260305",
     "title": "Chasing destiny",
     "title_sort": "CHASINGDESTINY",
@@ -24311,7 +24311,7 @@
     "image_url": "be14669e611d601b.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260305",
     "title": "Colorful Starting Line",
     "title_sort": "COLORFULSTARTINGLINE",
@@ -24332,5 +24332,74 @@
     "lev_mas": "12+",
     "lev_lnt": "",
     "image_url": "3d9f1561b0d46800.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260319",
+    "title": "モニタリング",
+    "title_sort": "モニタリンク",
+    "artist": "DECO*27",
+    "id": "272500",
+    "chap_id": "99142",
+    "chapter": "デコミク",
+    "character": "デコミク(ダークネス)",
+    "chara_id": "7079",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© DECO*27 / © OTOIRO\r\n© Crypton Future Media, INC. www.piapro.net　ピアプロロゴ",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exc": "9+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "70f97ce7e615e765.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260319",
+    "title": "テレパシ",
+    "title_sort": "テレハシ",
+    "artist": "DECO*27",
+    "id": "272600",
+    "chap_id": "99142",
+    "chapter": "デコミク",
+    "character": "デコミク(ライトネス)",
+    "chara_id": "7078",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© DECO*27 / © OTOIRO\r\n© Crypton Future Media, INC. www.piapro.net　ピアプロロゴ",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exc": "10+",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "cc4443e3ccdb2887.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260319",
+    "title": "ラビットホール",
+    "title_sort": "ラヒトホル",
+    "artist": "DECO*27",
+    "id": "272700",
+    "chap_id": "99142",
+    "chapter": "デコミク",
+    "character": "デコミク(ダークネス)",
+    "chara_id": "7079",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "© DECO*27 / © OTOIRO\r\n© Crypton Future Media, INC. www.piapro.net　ピアプロロゴ",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exc": "10",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "d002345fa24580e3.png"
   }
 ]
