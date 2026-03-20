@@ -559,15 +559,34 @@ def _update_song_chart_details(song, chart_dict, chart_designers_dict, chart, he
     details_diff_count = [0]
     designer_diff_count = [0]
 
-    update_song_key(song, f"{chart}_notes", chart_dict["総数"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"{chart}_notes_tap", chart_dict["Tap"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"{chart}_notes_hold", chart_dict["Hold"], remove_comma=True, diff_count=details_diff_count)
-    update_song_key(song, f"{chart}_notes_slide", chart_dict["Slide"], remove_comma=True, diff_count=details_diff_count)
+    required_note_keys = (
+        ("総数", f"{chart}_notes"),
+        ("Tap", f"{chart}_notes_tap"),
+        ("Hold", f"{chart}_notes_hold"),
+        ("Slide", f"{chart}_notes_slide"),
+        ("Break", f"{chart}_notes_break"),
+    )
 
-    if 'Touch' in chart_dict:
-        update_song_key(song, f"{chart}_notes_touch", chart_dict["Touch"], remove_comma=True, diff_count=details_diff_count)
+    missing_required_keys = []
+    for source_key, dest_key in required_note_keys:
+        value = chart_dict.get(source_key)
+        if value is None:
+            missing_required_keys.append(source_key)
+            continue
+        update_song_key(song, dest_key, value, remove_comma=True, diff_count=details_diff_count)
 
-    update_song_key(song, f"{chart}_notes_break", chart_dict["Break"], remove_comma=True, diff_count=details_diff_count)
+    touch_value = chart_dict.get("Touch")
+    if touch_value is not None:
+        update_song_key(song, f"{chart}_notes_touch", touch_value, remove_comma=True, diff_count=details_diff_count)
+
+    if missing_required_keys:
+        lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True, is_verbose=True)
+        print_message(
+            f"Warning - Missing chart note fields for {chart.upper()}: {', '.join(missing_required_keys)}",
+            bcolors.WARNING,
+            log=True,
+            is_verbose=True
+        )
 
     if details_diff_count[0] > 0:
         lazy_print_song_header(f"{song['sort']} {song['title']}", header_printed, log=True)
@@ -689,4 +708,3 @@ def _guess_version(release_date):
             closest_version = version
 
     return closest_version
-
