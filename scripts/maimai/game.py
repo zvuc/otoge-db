@@ -1,6 +1,6 @@
 GAME_NAME = "maimai"
 
-CURRENT_JP_VER = "CiRCLE"
+CURRENT_JP_VER = "CiRCLE PLUS"
 CURRENT_INTL_VER = "CiRCLE"
 
 HASH_KEYS = ['image_url']
