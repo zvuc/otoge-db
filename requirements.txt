@@ -1,4 +1,4 @@
 beautifulsoup4==4.12.2
 ipdb==0.13.13
-Requests==2.32.4
+Requests==2.33.0
 cloudscraper==1.2.71
