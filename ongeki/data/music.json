@@ -24334,7 +24334,7 @@
     "image_url": "3d9f1561b0d46800.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260319",
     "title": "モニタリング",
     "title_sort": "モニタリンク",
@@ -24357,7 +24357,7 @@
     "image_url": "70f97ce7e615e765.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260319",
     "title": "テレパシ",
     "title_sort": "テレハシ",
@@ -24380,7 +24380,7 @@
     "image_url": "cc4443e3ccdb2887.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260319",
     "title": "ラビットホール",
     "title_sort": "ラヒトホル",
@@ -24401,5 +24401,51 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "d002345fa24580e3.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260401",
+    "title": "テトリス",
+    "title_sort": "テトリス",
+    "artist": "柊マグネタイト",
+    "id": "272400",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "井之原 小星",
+    "chara_id": "1090",
+    "category": "niconico",
+    "category_id": "02",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©柊マグネタイト　©瀬奈悠太  ©DWANGO Co., Ltd.\r\n© 線/小山乃舞世/[TWINDRILLロゴ]",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exc": "11",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "88b1378da67132af.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260401",
+    "title": "時空を超えて久しぶり！",
+    "title_sort": "シクウヲコエテヒサシフリ",
+    "artist": "アルル(CV 園崎未恵)「ぷよぷよ」",
+    "id": "945300",
+    "chap_id": "99143",
+    "chapter": "ぷよぷよ",
+    "character": "アルル",
+    "chara_id": "7081",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "1",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "",
+    "lev_adv": "",
+    "lev_exc": "",
+    "lev_mas": "",
+    "lev_lnt": "0",
+    "image_url": "1945076320b6f2b3.png"
   }
 ]
