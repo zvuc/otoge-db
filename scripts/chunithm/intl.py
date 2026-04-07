@@ -377,13 +377,21 @@ def add_intl_info():
     wiki_html = data["parse"]["text"]["*"]
     soup = BeautifulSoup(wiki_html, 'html.parser')
 
-    # Find all tables with class 'bluetable'
-    song_list = soup.find('span', id="New_Songs_/_WORLD'S_END_Charts", class_="mw-headline")
+    # RemyWiki markup changed from span.mw-headline to heading IDs in newer pages.
+    # Try multiple selectors so parser survives minor layout changes.
+    song_list = (
+        soup.find('span', id="New_Songs_/_WORLD'S_END_Charts", class_="mw-headline")
+        or soup.find(id="New_Songs_/_WORLD'S_END_Charts")
+        or soup.find(id="New_Songs_.2F_WORLD.27S_END_Charts")
+    )
     if song_list:
         table = song_list.find_next('table', class_='bluetable')
+        if not table:
+            print_message("Couldn't find song table after 'New Songs / WORLD'S END Charts' section", bcolors.FAIL, log=True)
+            return
         rows = table.find_all('tr')
     else:
-        print_message(f"Error while loading wiki page", bcolors.FAIL, log=True, is_verbose=True)
+        print_message("Couldn't find 'New Songs / WORLD'S END Charts' section in RemyWiki page", bcolors.FAIL, log=True)
         return
 
     # Initialize a dictionary to store songs

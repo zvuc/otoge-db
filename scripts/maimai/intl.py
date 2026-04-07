@@ -361,9 +361,22 @@ def add_intl_info():
     wiki_html = data["parse"]["text"]["*"]
     soup = BeautifulSoup(wiki_html, 'html.parser')
 
-    # Find all tables with class 'bluetable'
-    song_list = soup.find('span', id="New_Songs_/_DX_Charts", class_="mw-headline")
+    # RemyWiki markup changed from span.mw-headline to heading IDs in newer pages.
+    # Try multiple selectors so parser survives minor layout changes.
+    song_list = (
+        soup.find('span', id="New_Songs_/_DX_Charts", class_="mw-headline")
+        or soup.find(id="New_Songs_/_DX_Charts")
+        or soup.find(id="New_Songs_.2F_DX_Charts")
+    )
+    if not song_list:
+        print_message("Couldn't find 'New Songs / DX Charts' section in RemyWiki page", bcolors.FAIL, log=True)
+        return
+
     table = song_list.find_next('table', class_='bluetable')
+    if not table:
+        print_message("Couldn't find song table after 'New Songs / DX Charts' section", bcolors.FAIL, log=True)
+        return
+
     rows = table.find_all('tr')
 
     # Initialize a dictionary to store songs
@@ -611,58 +624,68 @@ def _match_jp_song(json_data, utage_td, wiki_song, wiki_chart_type, only_remas, 
             if wiki_chart_type == 'std':
                 # if song only has remas added
                 if only_remas:
-                    if song['lev_remas'] != wiki_song['lev_remas']:
+                    song_lev_remas = song.get('lev_remas', '')
+                    if song_lev_remas != wiki_song['lev_remas']:
                         lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
 
                         if game.ARGS.strict:
-                            print_message(f"- JP song matched but did not update due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_remas']} vs Wiki: {wiki_song['lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but did not update due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song_lev_remas} vs Wiki: {wiki_song['lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
                             continue
                         else:
-                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_remas']} vs Wiki: {wiki_song['lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song_lev_remas} vs Wiki: {wiki_song['lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
 
                 # Song has other charts added but levels mismatch
                 else:
-                    if ((song['lev_bas'] != wiki_song['lev_bas'] or
-                        song['lev_adv'] != wiki_song['lev_adv'] or
-                        song['lev_exp'] != wiki_song['lev_exp'] or
-                        song['lev_mas'] != wiki_song['lev_mas'])):
+                    song_lev_bas = song.get('lev_bas', '')
+                    song_lev_adv = song.get('lev_adv', '')
+                    song_lev_exp = song.get('lev_exp', '')
+                    song_lev_mas = song.get('lev_mas', '')
+                    if ((song_lev_bas != wiki_song['lev_bas'] or
+                        song_lev_adv != wiki_song['lev_adv'] or
+                        song_lev_exp != wiki_song['lev_exp'] or
+                        song_lev_mas != wiki_song['lev_mas'])):
 
                         lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
 
                         if game.ARGS.strict:
-                            print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song_lev_bas}/{song_lev_adv}/{song_lev_exp}/{song_lev_mas} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
                             continue
                         else:
-                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['lev_bas']}/{song['lev_adv']}/{song['lev_exp']}/{song['lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song_lev_bas}/{song_lev_adv}/{song_lev_exp}/{song_lev_mas} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
 
             elif wiki_chart_type == 'dx':
                 # if song only has remas added
                 if only_remas:
-                    if song['dx_lev_remas'] != wiki_song['lev_remas']:
+                    song_dx_lev_remas = song.get('dx_lev_remas', '')
+                    if song_dx_lev_remas != wiki_song['lev_remas']:
                         lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
 
                         if game.ARGS.strict:
-                            print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_remas']} vs Wiki: {wiki_song['dx_lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song_dx_lev_remas} vs Wiki: {wiki_song['lev_remas']})", bcolors.FAIL, log=True, is_verbose=True)
                             continue
                         else:
-                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_remas']} vs Wiki: {wiki_song['dx_lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song_dx_lev_remas} vs Wiki: {wiki_song['lev_remas']})", bcolors.WARNING, log=True, is_verbose=True)
 
                 # Song has other DX charts added but levels mismatch
                 else:
+                    song_dx_lev_bas = song.get('dx_lev_bas', '')
+                    song_dx_lev_adv = song.get('dx_lev_adv', '')
+                    song_dx_lev_exp = song.get('dx_lev_exp', '')
+                    song_dx_lev_mas = song.get('dx_lev_mas', '')
                     if ('dx_lev_bas' in song and
-                            ((song['dx_lev_bas'] != wiki_song['lev_bas'] or
-                            song['dx_lev_adv'] != wiki_song['lev_adv'] or
-                            song['dx_lev_exp'] != wiki_song['lev_exp'] or
-                            song['dx_lev_mas'] != wiki_song['lev_mas']))
+                            ((song_dx_lev_bas != wiki_song['lev_bas'] or
+                            song_dx_lev_adv != wiki_song['lev_adv'] or
+                            song_dx_lev_exp != wiki_song['lev_exp'] or
+                            song_dx_lev_mas != wiki_song['lev_mas']))
                         ):
 
                         lazy_print_song_header(f"{wiki_song['title']}", header_printed, log=True, is_verbose=True)
 
                         if game.ARGS.strict:
-                            print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but rejected due to Lv mismatch (JSON{ " (Prev.ver)" if legacy else "" }: {song_dx_lev_bas}/{song_dx_lev_adv}/{song_dx_lev_exp}/{song_dx_lev_mas} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.FAIL, log=True, is_verbose=True)
                             continue
                         else:
-                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song['dx_lev_bas']}/{song['dx_lev_adv']}/{song['dx_lev_exp']}/{song['dx_lev_mas']} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
+                            print_message(f"- JP song matched but Lv differ partially (JSON{ " (Prev.ver)" if legacy else "" }: {song_dx_lev_bas}/{song_dx_lev_adv}/{song_dx_lev_exp}/{song_dx_lev_mas} vs Wiki: {wiki_song['lev_bas']}/{wiki_song['lev_adv']}/{wiki_song['lev_exp']}/{wiki_song['lev_mas']})", bcolors.WARNING, log=True, is_verbose=True)
 
             jp_song_matched = True
             matched_jp_song = song
