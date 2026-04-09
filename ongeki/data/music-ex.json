@@ -55296,9 +55296,9 @@
     "lev_mas": "",
     "lev_lnt": "0",
     "image_url": "1a38ce6ca555cb17.png",
-    "enemy_lv": "",
+    "enemy_lv": "1",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "187",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -55321,10 +55321,10 @@
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
     "lev_lnt_bells": "",
-    "lev_lnt_designer": "",
+    "lev_lnt_designer": "【招】6B SC",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Odysseus"
   },
   {
     "new": "NEW",
@@ -55356,8 +55356,8 @@
     "lev_bas_bells": "",
     "lev_bas_designer": "",
     "lev_adv_i": "",
-    "lev_adv_notes": "",
-    "lev_adv_bells": "",
+    "lev_adv_notes": "375",
+    "lev_adv_bells": "92",
     "lev_adv_designer": "",
     "lev_adv_chart_link": "",
     "lev_exc_i": "",
@@ -55366,8 +55366,8 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
+    "lev_mas_notes": "1003",
+    "lev_mas_bells": "79",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
@@ -55376,7 +55376,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/End of the Moonlight"
   },
   {
     "new": "NEW",
@@ -55418,8 +55418,8 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
+    "lev_mas_notes": "1156",
+    "lev_mas_bells": "51",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
@@ -55428,7 +55428,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Memory of Beach"
   },
   {
     "new": "NEW",
@@ -55454,7 +55454,7 @@
     "image_url": "5d3b3b579a91b282.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "187",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -55470,8 +55470,8 @@
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
+    "lev_mas_notes": "2214",
+    "lev_mas_bells": "258",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
@@ -55480,7 +55480,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Odysseus"
   },
   {
     "new": "NEW",
@@ -55506,7 +55506,7 @@
     "image_url": "86a5abf55fb333c1.png",
     "enemy_lv": "",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "150",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -55517,13 +55517,13 @@
     "lev_adv_designer": "",
     "lev_adv_chart_link": "",
     "lev_exc_i": "",
-    "lev_exc_notes": "",
-    "lev_exc_bells": "",
+    "lev_exc_notes": "648",
+    "lev_exc_bells": "153",
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
-    "lev_mas_notes": "",
-    "lev_mas_bells": "",
+    "lev_mas_notes": "1046",
+    "lev_mas_bells": "103",
     "lev_mas_designer": "",
     "lev_mas_chart_link": "",
     "lev_lnt_i": "",
@@ -55532,7 +55532,7 @@
     "lev_lnt_designer": "",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Hypernaid"
   },
   {
     "new": "NEW",
@@ -55556,9 +55556,9 @@
     "lev_mas": "",
     "lev_lnt": "0",
     "image_url": "f5618dc0781b497d.png",
-    "enemy_lv": "",
+    "enemy_lv": "1",
     "enemy_type": "",
-    "bpm": "",
+    "bpm": "150",
     "lev_bas_i": "",
     "lev_bas_notes": "",
     "lev_bas_bells": "",
@@ -55581,9 +55581,9 @@
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
     "lev_lnt_bells": "",
-    "lev_lnt_designer": "",
+    "lev_lnt_designer": "【招】6B SC",
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh",
-    "wikiwiki_url": ""
+    "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Hypernaid"
   }
 ]
