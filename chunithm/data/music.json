@@ -2,7 +2,7 @@
   {
     "id": "2958",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "僕達のギャグマンガ日和",
     "reading": "ホクタチノキヤクマンカヒヨリ",
     "artist": "うえだゆうじ",
@@ -2322,7 +2322,7 @@
   {
     "id": "2956",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ウルトラトレーラー",
     "reading": "ウルトラトレウラウ",
     "artist": "マサラダ",
@@ -2338,7 +2338,7 @@
   {
     "id": "2957",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ふぁんぶる！",
     "reading": "フアンフル",
     "artist": "藤原ハガネ",
@@ -11584,6 +11584,22 @@
     "image": "75ac394edc1b6294.jpg"
   },
   {
+    "id": "2962",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "バンバード ～Piano Version～",
+    "reading": "ハンハウトPIANOVERSION",
+    "artist": "mozell",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "11",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "436affe2be8db137.jpg"
+  },
+  {
     "id": "2353",
     "catname": "VARIETY",
     "newflag": "0",
@@ -12080,6 +12096,22 @@
     "image": "be08c42de84d4873.jpg"
   },
   {
+    "id": "2959",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "無双の咆哮 Warcry Overload",
+    "reading": "ムソウノホウコウWARCRYOVERLOAD",
+    "artist": "永田泰之",
+    "lev_bas": "3",
+    "lev_adv": "7+",
+    "lev_exp": "12",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "5e9b5e75bf05b27c.jpg"
+  },
+  {
     "id": "2816",
     "catname": "VARIETY",
     "newflag": "0",
@@ -12142,6 +12174,38 @@
     "we_kanji": "",
     "we_star": "",
     "image": "6526fdf31b83f552.jpg"
+  },
+  {
+    "id": "2960",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "God only knows",
+    "reading": "GODONLYKNOWS",
+    "artist": "A-One",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "0cb3382441cd8284.jpg"
+  },
+  {
+    "id": "2961",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "New Starlight",
+    "reading": "NEWSTARLIGHT",
+    "artist": "DiGiTAL WiNG",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "c8a1df3e97ad768f.jpg"
   },
   {
     "id": "901",
@@ -25426,7 +25490,7 @@
   {
     "id": "8321",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "九龍メタルゾネス",
     "reading": "クウロンメタルソネス",
     "artist": "桔梗 小夜曲(CV:原田 彩楓)",
@@ -25442,7 +25506,7 @@
   {
     "id": "8322",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "イガク",
     "reading": "イカク",
     "artist": "原口沙輔 feat.重音テト",
@@ -25458,7 +25522,7 @@
   {
     "id": "8323",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Nyan Cat",
     "reading": "NYANCAT",
     "artist": "daniwellP feat. 桃音モモ",
@@ -25474,7 +25538,7 @@
   {
     "id": "8324",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Kaleidoscope",
     "reading": "KALEIDOSCOPE",
     "artist": "Lycoris in the parterre",
