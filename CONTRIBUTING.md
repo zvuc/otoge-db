@@ -14,6 +14,8 @@ Scope is optional:
 <type>: <subject>
 ```
 
+For `docs` and `build` commits, prefer no scope unless a scope is truly needed for clarity.
+
 ### 1. Types used in this repo
 
 Use one of the commonly used types already present in history:
@@ -33,6 +35,11 @@ Examples from this repo:
 - subsystem scope: `script`, `site`, `deps`
 - nested scope when helpful: `script/maimai`, `site/chunithm`
 
+When a change is in scripts and only affects one game, prefer nested scope:
+
+- use `script/<game>` (for example `script/maimai`, `script/chunithm`, `script/ongeki`)
+- avoid broad `script` or plain game scope if the script path is the primary area
+
 ### 3. Subject line style
 
 - Keep it short and specific.
@@ -43,8 +50,11 @@ Examples from this repo:
 Examples:
 
 - `fix(script/chunithm): wiki script breaking - handle exception where 解禁方法 is not listed in overview table`
+- `fix(script/maimai): avoid false availability/date update logs`
 - `feat(site): upgrade International ver. to CiRCLE`
 - `data(maimai): add constants`
+- `docs: clarify script scope rules`
+- `build: bump dev dependencies`
 
 ### 4. Automation commit pattern
 
