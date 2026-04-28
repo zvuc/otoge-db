@@ -782,8 +782,18 @@ def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, titl
                 lazy_print_song_header(f"{title}", header_printed, log=True)
                 print_message(message, bcolors.OKGREEN, log=True)
 
-    # Note if JP song has INTL already marked
-    if jp_song['intl'] != '0':
+    # Note if INTL availability is already marked in either JP or INTL data.
+    # JP/INTL can get out of sync, so checking only JP can produce false
+    # "newly marked" messages for songs already available in INTL.
+    jp_intl_flag = jp_song.get('intl', '0')
+    intl_intl_flag = intl_song.get('intl', '0')
+    already_marked = (jp_intl_flag != '0') or (intl_intl_flag != '0')
+
+    if already_marked:
+        # Normalize both sides so they stay consistent for later sync steps.
+        jp_song['intl'] = "1"
+        intl_song['intl'] = "1"
+
         if 'kanji' in wiki_song:
             lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True, is_verbose=True)
         else:
@@ -814,14 +824,21 @@ def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, titl
         print_message(f"- {message} ({wiki_song['date']})", color, log=True)
 
     wiki_date = int(wiki_song['date'])
-    added_date = int(jp_song.get('date_intl_added', '000000')) if 'date_intl_added' in jp_song else 0
-    updated_date = int(jp_song.get('date_intl_updated', '000000')) if 'date_intl_updated' in jp_song else 0
+    jp_added_date = int(jp_song.get('date_intl_added', '000000')) if 'date_intl_added' in jp_song else 0
+    intl_added_date = int(intl_song.get('date_intl_added', '000000')) if 'date_intl_added' in intl_song else 0
+    jp_updated_date = int(jp_song.get('date_intl_updated', '000000')) if 'date_intl_updated' in jp_song else 0
+    intl_updated_date = int(intl_song.get('date_intl_updated', '000000')) if 'date_intl_updated' in intl_song else 0
 
-    if 'date_intl_added' not in jp_song or jp_song['date_intl_added'] == '000000':  # If added date doesn't exist or is a placeholder
+    # JP/INTL metadata can be temporarily out of sync. Use the latest known
+    # value from either side to decide whether this is actually a new update.
+    added_date = max(jp_added_date, intl_added_date)
+    updated_date = max(jp_updated_date, intl_updated_date)
+
+    if added_date == 0:  # Added date doesn't exist or is placeholder on both sides
         _update_date('date_intl_added', bcolors.OKGREEN, "Added Intl added date")
-    elif 'date_intl_updated' not in jp_song and wiki_date > added_date:  # If new update is found
+    elif updated_date == 0 and wiki_date > added_date:  # First detected update after added date
         _update_date('date_intl_updated', bcolors.OKBLUE, "Added Intl updated date")
-    elif 'date_intl_updated' in jp_song and wiki_date > updated_date:  # If a later update exists
+    elif updated_date > 0 and wiki_date > updated_date:  # Later update exists
         _update_date('date_intl_updated', bcolors.OKBLUE, "Added Intl updated date")
 
 
