@@ -1,5 +1,53 @@
 [
   {
+    "id": "2979",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "キスキツネ",
+    "reading": "キスキツネ",
+    "artist": "HIMEHINA",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "70736c900114d732.jpg"
+  },
+  {
+    "id": "2980",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "WWW",
+    "reading": "WWW",
+    "artist": "HIMEHINA",
+    "lev_bas": "3",
+    "lev_adv": "5",
+    "lev_exp": "9",
+    "lev_mas": "12+",
+    "lev_ult": "14",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "5cb62363cba66f4b.jpg"
+  },
+  {
+    "id": "3002",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "うたかたよいかないで",
+    "reading": "ウタカタヨイカナイテ",
+    "artist": "HIMEHINA",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ef2c22c0f97703cc.jpg"
+  },
+  {
     "id": "2958",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -2318,6 +2366,38 @@
     "we_kanji": "",
     "we_star": "",
     "image": "d5a47266b4fe0bfe.jpg"
+  },
+  {
+    "id": "2981",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "花弁、それにまつわる音声",
+    "reading": "カヘンソレニマツワルオンセイ",
+    "artist": "あばらや",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f2c93f26b6568653.jpg"
+  },
+  {
+    "id": "2982",
+    "catname": "niconico",
+    "newflag": "1",
+    "title": "愛して愛して愛して",
+    "reading": "アイシテアイシテアイシテ",
+    "artist": "きくお",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "9085fe54856f6bb7.jpg"
   },
   {
     "id": "2956",
@@ -9984,6 +10064,22 @@
     "image": "bc9c88b3adb6137e.jpg"
   },
   {
+    "id": "2970",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "†渚の小悪魔ラヴリィ～レイディオ†",
+    "reading": "ナキサノコアクマラフリイレイテイオ",
+    "artist": "夏色ビキニのPrim",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "10",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b227a354f158fec6.jpg"
+  },
+  {
     "id": "470",
     "catname": "VARIETY",
     "newflag": "0",
@@ -10224,6 +10320,22 @@
     "image": "9586809bbe5c1191.jpg"
   },
   {
+    "id": "2971",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "聖者の息吹",
+    "reading": "セイシヤノイフキ",
+    "artist": "世阿弥 vs Tatsh「グルーヴコースター」",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "12+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "fa67a8f24675ec38.jpg"
+  },
+  {
     "id": "2043",
     "catname": "VARIETY",
     "newflag": "0",
@@ -10400,6 +10512,22 @@
     "image": "345b5ef96c048e02.jpg"
   },
   {
+    "id": "2972",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "超MANJIラッシュ",
+    "reading": "チヨウMANJIラツシユ",
+    "artist": "Massive New Krew「WACCA」",
+    "lev_bas": "4",
+    "lev_adv": "8+",
+    "lev_exp": "13",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "f9a6b164418d922e.jpg"
+  },
+  {
     "id": "33",
     "catname": "VARIETY",
     "newflag": "0",
@@ -10494,6 +10622,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "2704dddce9cd4e3c.jpg"
+  },
+  {
+    "id": "2973",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "Lips XTC -Sorist Remix-",
+    "reading": "LIPSXTCSORISTREMIX",
+    "artist": "from PACA PACA PASSION Special",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "873ad3e03caedb0d.jpg"
   },
   {
     "id": "386",
@@ -10800,6 +10944,22 @@
     "image": "51028f5e0191f2ea.jpg"
   },
   {
+    "id": "2978",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "ALTER EGO",
+    "reading": "ALTEREGO",
+    "artist": "Yuta Imai vs Qlarabelle「Arcaea」",
+    "lev_bas": "4",
+    "lev_adv": "8",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "96dca6406e40c201.jpg"
+  },
+  {
     "id": "2036",
     "catname": "VARIETY",
     "newflag": "0",
@@ -10878,6 +11038,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "57afdaf21a762451.jpg"
+  },
+  {
+    "id": "2974",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "Marigold",
+    "reading": "MARIGOLD",
+    "artist": "M2U / Arranger: M2U, NICODE / Vocal: Guriri, M2U 「DEEMO」",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "7a19b31e47f91fb5.jpg"
   },
   {
     "id": "807",
@@ -10976,6 +11152,22 @@
     "image": "ad502bbb53cfaf29.jpg"
   },
   {
+    "id": "2975",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "glory MAX -to the MAXimum-",
+    "reading": "GLORYMAXTOTHEMAXIMUM",
+    "artist": "TAK",
+    "lev_bas": "3",
+    "lev_adv": "7+",
+    "lev_exp": "11+",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "8bd58bb075d55449.jpg"
+  },
+  {
     "id": "2532",
     "catname": "VARIETY",
     "newflag": "0",
@@ -11022,6 +11214,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "fbe22cdd47ec9506.jpg"
+  },
+  {
+    "id": "2976",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "DESTRUCTION 3,2,1",
+    "reading": "DESTRUCTION321",
+    "artist": "Normal1zer vs. Broken Nerdz「Phigros」",
+    "lev_bas": "5",
+    "lev_adv": "11+",
+    "lev_exp": "14",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "ce21ae87308e7599.jpg"
   },
   {
     "id": "2544",
@@ -11102,6 +11310,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "bcc06ce83c3e6dfb.jpg"
+  },
+  {
+    "id": "2977",
+    "catname": "VARIETY",
+    "newflag": "0",
+    "title": "Ré：Ré",
+    "reading": "RERE",
+    "artist": "モリモリあつし vs. uma「Muse Dash」",
+    "lev_bas": "4",
+    "lev_adv": "8+",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "117154b0ebadf063.jpg"
   },
   {
     "id": "2533",
@@ -16656,6 +16880,22 @@
     "image": "504297fb1be61191.jpg"
   },
   {
+    "id": "2968",
+    "catname": "ゲキマイ",
+    "newflag": "0",
+    "title": "PANDORA PARADOXXX",
+    "reading": "PANDORAPARADOXXX",
+    "artist": "削除",
+    "lev_bas": "6",
+    "lev_adv": "11+",
+    "lev_exp": "14+",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "7c0d2bba8c6432e8.jpg"
+  },
+  {
     "id": "99",
     "catname": "ゲキマイ",
     "newflag": "0",
@@ -18462,6 +18702,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "773b590c9a43452c.jpg"
+  },
+  {
+    "id": "2969",
+    "catname": "ゲキマイ",
+    "newflag": "0",
+    "title": "μ3",
+    "reading": "ミユウ3",
+    "artist": "水野健治 VS 穴山大輔",
+    "lev_bas": "5",
+    "lev_adv": "11+",
+    "lev_exp": "14",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "d79a18964b32fadb.jpg"
   },
   {
     "id": "202",
@@ -25490,7 +25746,7 @@
   {
     "id": "2963",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Beenden",
     "reading": "BEENDEN",
     "artist": "隣の庭は青い(庭師+Aoi)",
@@ -25506,7 +25762,7 @@
   {
     "id": "2964",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "EFX",
     "reading": "EFX",
     "artist": "Avans",
@@ -25522,7 +25778,7 @@
   {
     "id": "2965",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "薄明のクオリア",
     "reading": "ハクメイノクオリア",
     "artist": "polysha feat. 高城みよ",
@@ -25534,6 +25790,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "4c7fc5467cfc5e86.jpg"
+  },
+  {
+    "id": "2966",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "月葬",
+    "reading": "ケツソウ",
+    "artist": "黒魔 × rintaro soma",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exp": "14",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "526f2c61c37fb231.jpg"
   },
   {
     "id": "8321",
