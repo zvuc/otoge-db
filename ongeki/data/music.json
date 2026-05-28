@@ -24633,7 +24633,7 @@
     "image_url": "b39e1ef3db6aecfe.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260514",
     "title": "キスキツネ",
     "title_sort": "キスキツネ",
@@ -24656,7 +24656,7 @@
     "image_url": "e2079e73e216fefc.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260514",
     "title": "WWW",
     "title_sort": "WWW",
@@ -24679,7 +24679,7 @@
     "image_url": "51867fb25fafe80e.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260514",
     "title": "うたかたよいかないで",
     "title_sort": "ウタカタヨイカナイテ",
@@ -24700,5 +24700,28 @@
     "lev_mas": "12+",
     "lev_lnt": "",
     "image_url": "e70a64004a62cec6.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260528",
+    "title": "Paranormal Cluster",
+    "title_sort": "PARANORMALCLUSTER",
+    "artist": "歌：ぱらすと！／作曲作詞：ZAQ／編曲：eba",
+    "id": "165100",
+    "chap_id": "99146",
+    "chapter": "ぱらすと！",
+    "character": "柑原あさひ",
+    "chara_id": "7102",
+    "category": "POPS＆ANIME",
+    "category_id": "01",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©2023 Parallel Artist Project\r\n℗2025 Parallel Artist Project\r\n© 2025 by DAIICHIKOSHO MUSIC PUBLISHING, INC., Nippon Television Music Corporation ＆ ClaN Entertainment inc. All rights reserved",
+    "lev_bas": "4",
+    "lev_adv": "8+",
+    "lev_exc": "11",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "5b692679c9d480c9.png"
   }
 ]
