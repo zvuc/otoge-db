@@ -20763,7 +20763,6 @@
   {
     "artist": "HIMEHINA",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "2",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10",
@@ -20778,7 +20777,6 @@
   {
     "artist": "HIMEHINA",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "2",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -20793,7 +20791,6 @@
   {
     "artist": "HIMEHINA",
     "catcode": "POPS＆アニメ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7",
     "dx_lev_exp": "10",
@@ -20804,6 +20801,52 @@
     "title": "うたかたよいかないで",
     "title_kana": "ウタカタヨイカナイテ",
     "version": "26506"
+  },
+  {
+    "artist": "Yunosuke / CircusP",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "6e9ddddad4547a5c.png",
+    "release": "260529",
+    "sort": "127",
+    "title": "Intergalactic Bound",
+    "title_kana": "INTERGALACTICBOUND",
+    "version": "26507"
+  },
+  {
+    "artist": "TAK",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "11+",
+    "dx_lev_remas": "13",
+    "image_url": "4231978adaae3582.png",
+    "release": "260529",
+    "sort": "128",
+    "title": "LEMON MELON COOKIE",
+    "title_kana": "LEMONMELONCOOKIE",
+    "version": "26507"
+  },
+  {
+    "artist": "Sound Souler",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "c395d1612b386275.png",
+    "release": "260529",
+    "sort": "693",
+    "title": "3rd Avenue",
+    "title_kana": "3RDAVENUE",
+    "version": "26507"
   },
   {
     "artist": "Q;indivi [cover]",
@@ -21482,6 +21525,19 @@
     "version": "24015"
   },
   {
+    "artist": "Cosmograph",
+    "catcode": "宴会場",
+    "lev_utage": "14+?",
+    "kanji": "即",
+    "comment": "ごめんなさい、今は急がないと",
+    "image_url": "bb049831e2c0b573.png",
+    "release": "260529",
+    "sort": "1528",
+    "title": "[即]Straight into the lights",
+    "title_kana": "STRAIGHTINTOTHELIGHTS",
+    "version": "26507"
+  },
+  {
     "artist": "カルロス袴田 feat. 日南めい, 古川由彩",
     "catcode": "宴会場",
     "lev_utage": "12+?",
@@ -21787,6 +21843,19 @@
     "title": "[充]エンジェル ドリーム",
     "title_kana": "エンシエルトリイム",
     "version": "26009"
+  },
+  {
+    "artist": "Sound Souler",
+    "catcode": "宴会場",
+    "lev_utage": "12?",
+    "kanji": "覚",
+    "comment": "Mai Dimension",
+    "image_url": "c395d1612b386275.png",
+    "release": "260529",
+    "sort": "1529",
+    "title": "[覚]3rd Avenue",
+    "title_kana": "3RDAVENUE",
+    "version": "26507"
   },
   {
     "artist": "t+pazolite",
