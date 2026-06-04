@@ -489,7 +489,13 @@ def add_intl_info():
         # Match wiki song with song from INTL JSON file
         intl_song_matched, matched_intl_song, matched_intl_song_pre_update = _match_intl_song(local_intl_music_ex_data, utage_td, wiki_song, header_printed)
 
-
+        # Get chart type
+        chart_type = wiki_chart_type
+        if chart_type == '':
+            if intl_song_matched and matched_intl_song:
+                chart_type = _determine_wiki_chart_type(matched_intl_song)
+            elif jp_song_matched and matched_jp_song:
+                chart_type = _determine_wiki_chart_type(matched_jp_song)
 
         # If song is not yet in INTL data
         # Copying entire song from JP->INTL
@@ -501,7 +507,7 @@ def add_intl_info():
                     local_intl_music_ex_data.append(matched_jp_song)
                     matched_intl_song = local_intl_music_ex_data[-1]
                     intl_song_matched = True
-                    _sync_jp_to_intl_song('full_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
+                    _sync_jp_to_intl_song('full_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song, chart_type)
 
                     # Update INTL marker in current ver JP data as well
                     if jp_song_matched:
@@ -518,7 +524,7 @@ def add_intl_info():
                         local_intl_music_ex_data.append(matched_jp_song)
                         matched_intl_song = local_intl_music_ex_data[-1]
                         intl_song_matched = True
-                        _sync_jp_to_intl_song('full_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
+                        _sync_jp_to_intl_song('full_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song, chart_type)
 
             # If current JP ver = INTL ver
             else:
@@ -527,7 +533,7 @@ def add_intl_info():
                     local_intl_music_ex_data.append(matched_jp_song)
                     matched_intl_song = local_intl_music_ex_data[-1]
                     intl_song_matched = True
-                    _sync_jp_to_intl_song('full_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
+                    _sync_jp_to_intl_song('full_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song, chart_type)
 
 
         # If song is already in INTL data
@@ -536,12 +542,12 @@ def add_intl_info():
             # If current JP ver is ahead of INTL, first look in the prev ver data
             if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
                 if jp_prev_ver_song_matched:
-                    _sync_jp_to_intl_song('partial_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
+                    _sync_jp_to_intl_song('partial_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song, chart_type)
 
             # If current JP ver = INTL ver
             else:
                 if jp_song_matched:
-                    _sync_jp_to_intl_song('partial_copy',matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song)
+                    _sync_jp_to_intl_song('partial_copy', matched_jp_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_remas, wiki_song, chart_type)
 
             # Write unlockable info
             if 'key_intl' in wiki_song and ('key_intl' not in matched_jp_song or matched_jp_song['key_intl'] == ''):
@@ -736,7 +742,7 @@ def _match_intl_song(json_data, utage_td, wiki_song, header_printed):
     return intl_song_matched, matched_intl_song, matched_intl_song_pre_update
 
 
-def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, title, header_printed, only_remas, wiki_song):
+def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, title, header_printed, only_remas, wiki_song, chart_type):
     if method == 'full_copy':
         if 'kanji' in wiki_song:
             lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True)
@@ -750,16 +756,13 @@ def _sync_jp_to_intl_song(method, jp_song, intl_song, intl_song_pre_update, titl
         remas_prefixes_std = ["lev_remas"]
         remas_prefixes_dx = ["dx_lev_remas"]
 
-        # Get wiki chart type
-        chart_type = _determine_wiki_chart_type(intl_song)
-
         # Determine which prefixes to use
         if chart_type == 'dx':
-            prefixes_to_match = remas_prefixes_std if only_remas else std_prefixes
-            message = "- Copied RE:MASTER (Std) chart from JP data to INTL" if only_remas else "- Copied Std charts from JP data to INTL"
+            prefixes_to_match = remas_prefixes_dx if only_remas else std_prefixes
+            message = "- Copied RE:MASTER (DX) chart from JP data to INTL" if only_remas else "- Copied Std charts from JP data to INTL"
         elif chart_type == 'std':
-            prefixes_to_match = remas_prefixes_dx if only_remas else dx_prefixes
-            message = "- Copied RE:MASTER (DX) chart from JP data to INTL" if only_remas else "- Copied DX charts from JP data to INTL"
+            prefixes_to_match = remas_prefixes_std if only_remas else dx_prefixes
+            message = "- Copied RE:MASTER (Std) chart from JP data to INTL" if only_remas else "- Copied DX charts from JP data to INTL"
         elif chart_type == 'utage':
             lazy_print_song_header(f"[{wiki_song['kanji']}]{title}", header_printed, log=True)
             print_message("- (Song is Utage)", bcolors.ENDC, log=True)
