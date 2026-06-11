@@ -52227,7 +52227,7 @@
     "lev_adv": "7",
     "lev_exp": "12",
     "lev_mas": "14+",
-    "lev_ult": "",
+    "lev_ult": "15",
     "we_kanji": "",
     "we_star": "",
     "image": "989f4458fb34aa9d.jpg",
@@ -52264,10 +52264,12 @@
     "lev_mas_notes_flick": "149",
     "lev_mas_designer": "Revo@LC",
     "lev_mas_chart_link": "02/02022mst",
+    "lev_ult_i": "",
     "version": "AIR",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Philosopher",
     "intl": "1",
     "date_added": "20160825",
+    "date_updated": "20260611",
     "date_intl_added": "20211014"
   },
   {
