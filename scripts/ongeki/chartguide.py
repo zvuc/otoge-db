@@ -5,6 +5,7 @@ import shutil
 import json
 import re
 import copy
+import html
 from shared.common_func import *
 from ongeki.paths import *
 from datetime import datetime
@@ -225,14 +226,11 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
             print_message(f"- Requesting page to fetch title - {script_src}", bcolors.OKBLUE, is_verbose=True)
             response = requests.get(SDVXIN_BASE_URL + script_src)
             response.encoding = 'ansi'
-            js_soup = BeautifulSoup(response.text, 'html.parser')
-            match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))
+            clean_title = _clean_js_title(response.text)
+            print_message(f"- Title is: {clean_title}", bcolors.OKBLUE, is_verbose=True)
 
-            # print_message(f"- {js_soup}", bcolors.OKBLUE, is_verbose=True)
-            print_message(f"- Title is: {match}", bcolors.OKBLUE, is_verbose=True)
-
-            if match:
-                extracted_song_title = match[0]
+            if clean_title:
+                extracted_song_title = clean_title
 
         if extracted_song_title:
             extracted_song_title = extracted_song_title.strip()
@@ -245,13 +243,10 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
         print_message(f"- Requesting page for validation - {song_id}", bcolors.OKBLUE, is_verbose=True)
         response = requests.get(SDVXIN_BASE_URL + song_id)
         response.encoding = 'ansi'
-        js_soup = BeautifulSoup(response.text, 'html.parser')
-        match = re.findall(r'var TITLE\d+=".*?<div[^>]*?>(.*?)</div>";', str(js_soup))
+        clean_title = _clean_js_title(response.text)
+        print_message(f"- Title is: {clean_title}", bcolors.OKBLUE, is_verbose=True)
 
-        # print_message(f"- {js_soup}", bcolors.OKBLUE, is_verbose=True)
-        print_message(f"- Title is: {match}", bcolors.OKBLUE, is_verbose=True)
-
-        if not match:
+        if not clean_title:
             song_id = ''
 
     return song_id, script_src
@@ -286,47 +281,114 @@ def _get_and_save_page_to_local(url):
         print_message(f"Failed to retrieve {url}. Status code: {response.status_code}", bcolors.FAIL)
 
 
+def _clean_js_title(js_content):
+    match = re.search(r'var TITLE\d+=\s*"(.*?)";', js_content)
+    if not match:
+        match = re.search(r'var TITLE\d+=\s*\'(.*?)\';', js_content)
+        if not match:
+            return None
+    
+    html_title = match.group(1)
+    title = html.unescape(html_title)
+    title = re.sub(r'(?i)<br\s*/?>', ' ', title)
+    title = re.sub(r'<[^>]*?>', '', title)
+    title = title.replace(r'\"', '"').replace(r"\'", "'")
+    title = re.sub(r'\s+', ' ', title).strip()
+    return title
+
+def _normalize_title_for_comparison(title_str):
+    title_str = title_str.lower()
+    title_str = normalize_brackets(title_str)
+    title_str = (
+        title_str
+        .replace('ä', 'a')
+        .replace('å', 'a')
+        .replace('ø', 'o')
+        .replace('é', 'e')
+        .replace('ö', 'o')
+        .replace('☆', '')
+        .replace('★', '')
+        .replace('♥', '')
+        .replace('♡', '')
+        .replace('！', '!')
+        .replace('"', '')
+        .replace('”', '')
+        .replace('“', '')
+        .replace('’', '\'')
+        .replace(' ', '')
+        .replace('　', '')
+        .replace('～', '~')
+        .replace('〜', '~')
+        .replace('ー', '-')
+        .replace('-', '')
+        .replace('~', '')
+    )
+    return title_str
+
+def _is_match(title, song_title):
+    title = title.lower()
+    song_title = song_title.lower()
+
+    if title == song_title:
+        return True
+
+    song_title_alt = (
+        song_title
+        .replace('ä', 'a')
+        .replace('å', 'a')
+        .replace('ø', 'o')
+        .replace('é', 'e')
+        .replace('ö', 'o')
+        .replace('☆', '')
+        .replace('♥', '')
+        .replace('♡', '')
+        .replace('！', '!')
+        .replace('"', '”')
+    )
+    if title == song_title_alt:
+        return True
+
+    title_brackets = normalize_brackets(title)
+    song_title_brackets = normalize_brackets(song_title)
+    if title_brackets == song_title_brackets:
+        return True
+
+    pattern = re.compile(r'[-～].*?[-～]')
+    song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
+    if title == song_title_wo_subtitle:
+        return True
+
+    match_similarity = compare_strings(title, song_title)
+    if match_similarity > 80:
+        return True
+
+    return False
+
 def _extract_song_id(song, song_dict, song_title):
     for song_id, title in song_dict.items():
-        # print_message(f"- Attempt to extract song_id ({song_id}, {title})", bcolors.OKBLUE, log=True, is_verbose=True)
-        title = title.lower()
-        song_title = song_title.lower()
-
-        if title == song_title:
-            print_message(f"- Match found ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
+        if _is_match(title, song_title):
+            print_message(f"- Match found using comment ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
             return song_id
-        else:
-            # try fallback pairs
-            song_title_alt = (
-                song_title
-                .replace('ä', 'a')
-                .replace('å', 'a')
-                .replace('ø', 'o')
-                .replace('é', 'e')
-                .replace('ö', 'o')
-                .replace('☆', '')
-                .replace('♥', '')
-                .replace('♡', '')
-                .replace('！', '!')
-                .replace('"', '”')
-            )
-            if title == song_title_alt:
-                print_message(f"- Match found (some characters substituted) ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
-                return song_id
-            else:
-                # try removing subtitle
-                pattern = re.compile(r'[-～].*?[-～]')
-                song_title_wo_subtitle = re.sub(pattern, '', song_title).strip()
 
-                if title == song_title_wo_subtitle:
-                    print_message(f"WARNING: matched without subtitle", bcolors.WARNING)
-                    with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
-                        f.write('WARNING - matched without subtitle : ' + song['id'] + ' ' + song['title'] + '\n')
-                    return song_id
-                else:
-                    match_similarity = compare_strings(title, song_title)
-                    if match_similarity > 80:
-                        print_message(f"Found closest match ({round(match_similarity,2)}%)", bcolors.WARNING)
+    print_message(f"- No match using comments directly. Checking potential matches for: {song_title}", bcolors.WARNING, log=True, is_verbose=True)
+    normalized_song_title = _normalize_title_for_comparison(song_title)
+
+    for song_id, title in song_dict.items():
+        normalized_comment = _normalize_title_for_comparison(title)
+
+        if normalized_comment and (normalized_comment in normalized_song_title or normalized_song_title in normalized_comment):
+            print_message(f"- Potential match found: '{title}' (JS: {song_id}). Fetching full title...", bcolors.OKBLUE, log=True, is_verbose=True)
+            try:
+                response = requests.get(SDVXIN_BASE_URL + song_id)
+                response.encoding = 'ansi'
+                full_js_title = _clean_js_title(response.text)
+                if full_js_title:
+                    print_message(f"- Fetched full title: '{full_js_title}'", bcolors.OKBLUE, log=True, is_verbose=True)
+                    if _is_match(full_js_title, song_title):
+                        print_message(f"- Match found using fetched full title ({song_id})", bcolors.OKBLUE, log=True, is_verbose=True)
                         return song_id
+            except Exception as e:
+                print_message(f"Error fetching JS title from {song_id}: {e}", bcolors.FAIL)
 
     print_message(f"- Match not found", bcolors.FAIL, log=True, is_verbose=True)
+    return None
