@@ -5770,13 +5770,12 @@
   {
     "artist": "Junky feat. 乙姫(CV:浅川悠)",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10",
     "dx_lev_mas": "13",
     "image_url": "c20ee423d01b854a.png",
-    "release": "260612",
+    "release": "000000",
     "lev_bas": "5",
     "lev_adv": "7+",
     "lev_exp": "11+",
@@ -20411,7 +20410,6 @@
   {
     "artist": "ryhki",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "6",
     "dx_lev_exp": "11+",
@@ -20427,7 +20425,6 @@
   {
     "artist": "KARUT",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "11",
@@ -20443,7 +20440,6 @@
   {
     "artist": "polysha",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "11",
@@ -20459,7 +20455,6 @@
   {
     "artist": "Ashrount",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12+",
@@ -20777,7 +20772,6 @@
     "dx_lev_exp": "12+",
     "dx_lev_mas": "14+",
     "image_url": "d51e7f189023c7e0.png",
-    "key": "○",
     "release": "260417",
     "sort": "700",
     "title": "ANiMA",
@@ -20910,6 +20904,66 @@
     "title": "3rd Avenue",
     "title_kana": "3RDAVENUE",
     "version": "26507"
+  },
+  {
+    "artist": "森羅万象",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
+    "image_url": "9d139b8426001293.png",
+    "release": "260626",
+    "sort": "525",
+    "title": "純情アルメリア",
+    "title_kana": "シユンシヨウアルメリア",
+    "version": "26509"
+  },
+  {
+    "artist": "森羅万象",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "26721fc25e2f9f91.png",
+    "release": "260626",
+    "sort": "526",
+    "title": "運命線上のアリア",
+    "title_kana": "ウンメイセンシヨウノアリア",
+    "version": "26509"
+  },
+  {
+    "artist": "森羅万象",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13",
+    "image_url": "d352008e0f49d5d9.png",
+    "release": "260626",
+    "sort": "527",
+    "title": "デンデラパーティーナイト",
+    "title_kana": "テンテラハアテイイナイト",
+    "version": "26509"
+  },
+  {
+    "artist": "Laur",
+    "catcode": "東方Project",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "14",
+    "image_url": "3d2dcf5c55d4e855.png",
+    "release": "260626",
+    "sort": "528",
+    "title": "Absolute Queen",
+    "title_kana": "ABSOLUTEQUEEN",
+    "version": "26509"
   },
   {
     "artist": "Q;indivi [cover]",
@@ -21413,6 +21467,20 @@
     "version": "26003"
   },
   {
+    "artist": "森羅万象",
+    "catcode": "宴会場",
+    "lev_utage": "13?",
+    "kanji": "奏",
+    "comment": "二人で一つなの クランベリー",
+    "buddy": "○",
+    "image_url": "5c5ae698a3ca6825.png",
+    "release": "260626",
+    "sort": "1537",
+    "title": "[奏]悪戯センセーション",
+    "title_kana": "イタスラセンセイシヨン",
+    "version": "26509"
+  },
+  {
     "artist": "奏音",
     "catcode": "宴会場",
     "lev_utage": "14?",
@@ -21759,6 +21827,19 @@
     "title": "[嘘]ライアーダンサー",
     "title_kana": "ライアアタンサア",
     "version": "25007"
+  },
+  {
+    "artist": "まらしぃ",
+    "catcode": "宴会場",
+    "lev_utage": "14+?",
+    "kanji": "招",
+    "comment": "LUNATIC X",
+    "image_url": "0847c38d2a623e99.png",
+    "release": "260626",
+    "sort": "1538",
+    "title": "[招]Re:Unknown X",
+    "title_kana": "REUNKNOWNX",
+    "version": "26509"
   },
   {
     "artist": "HIMEHINA",
