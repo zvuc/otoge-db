@@ -1,6 +1,6 @@
 GAME_NAME = "chunithm"
 
-CURRENT_JP_VER = "MATE"
+CURRENT_JP_VER = "Mate"
 CURRENT_INTL_VER = "X-VERSE-X"
 
 HASH_KEYS = ['image']

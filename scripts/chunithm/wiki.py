@@ -98,7 +98,7 @@ VERSION_DATES = {
     "VERSE": "20241212",
     "X-VERSE": "20250716",
     "X-VERSE-X": "20251211",
-    "MATE": "20260702"
+    "Mate": "20260702"
 }
 
 CHART_COLORS = {

@@ -92,7 +92,7 @@ Example:
 "VERSE": "10",
 "X-VERSE": "10",
 "X-VERSE-X": "10",
-"MATE": "11"
+"Mate": "11"
 ```
 
 ## 7) Refresh Theme Colors in `{game}.less`
