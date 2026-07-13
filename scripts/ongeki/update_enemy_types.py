@@ -3,7 +3,6 @@ import os
 import sys
 import json
 import re
-import argparse
 import subprocess
 import tempfile
 import unicodedata
@@ -12,6 +11,11 @@ from PIL import Image
 # Ensure root is in sys.path
 sys.path.append(os.getcwd())
 
+# Inject default --ongeki parameter if not specified
+if "--ongeki" not in sys.argv and "--game" not in sys.argv:
+    sys.argv.append("--ongeki")
+
+import game
 from ongeki.paths import *
 from shared.common_func import *
 
@@ -26,12 +30,12 @@ def get_youtube_videos(force_refresh=False):
     if not force_refresh and os.path.exists(YT_CACHE_PATH):
         try:
             with open(YT_CACHE_PATH, "r", encoding="utf-8") as f:
-                print("Loaded YouTube videos list from cache.")
+                print_message("Loaded YouTube videos list from cache.", is_verbose=True)
                 return json.load(f)
         except Exception as e:
-            print(f"Error reading cache, will re-fetch: {e}")
+            print_message(f"Error reading cache, will re-fetch: {e}", bcolors.WARNING, is_verbose=True)
 
-    print("Fetching video list from YouTube channel @ongeki_humen...")
+    print_message("Fetching video list from YouTube channel @ongeki_humen...", is_verbose=True)
     cmd = [
         "yt-dlp",
         "--flat-playlist",
@@ -40,7 +44,7 @@ def get_youtube_videos(force_refresh=False):
     ]
     result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
     if result.returncode != 0:
-        print(f"Error calling yt-dlp: {result.stderr}")
+        print_message(f"Error calling yt-dlp: {result.stderr}", bcolors.FAIL)
         sys.exit(1)
 
     videos = {}
@@ -56,7 +60,7 @@ def get_youtube_videos(force_refresh=False):
     with open(YT_CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(videos, f, ensure_ascii=False, indent=2)
 
-    print(f"Successfully cached {len(videos)} videos.")
+    print_message(f"Successfully cached {len(videos)} videos.", is_verbose=True)
     return videos
 
 def extract_song_title_from_video(video_title):
@@ -90,11 +94,11 @@ def extract_and_detect_attribute(video_url):
     Extracts a frame at 10 seconds using stream seeking,
     resizes it to 480x854, crops the badge, and detects the color.
     """
-    print(f"Getting stream URL for: {video_url}")
+    print_message(f"Getting stream URL for: {video_url}", is_verbose=True)
     cmd = ["yt-dlp", "-g", "-f", "bestvideo[height<=1080]", video_url]
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
-        print(f"Failed to get stream URL: {result.stderr}")
+        print_message(f"Failed to get stream URL: {result.stderr}", bcolors.WARNING, is_verbose=True)
         return None
 
     stream_url = result.stdout.strip()
@@ -113,7 +117,7 @@ def extract_and_detect_attribute(video_url):
         ]
         res = subprocess.run(ffmpeg_cmd, capture_output=True)
         if res.returncode != 0 or not os.path.exists(tmp_path) or os.path.getsize(tmp_path) == 0:
-            print(f"ffmpeg frame extraction failed: {res.stderr}")
+            print_message(f"ffmpeg frame extraction failed: {res.stderr}", bcolors.WARNING, is_verbose=True)
             return None
 
         # Load and resize to canonical Vertical Play resolution
@@ -134,7 +138,7 @@ def extract_and_detect_attribute(video_url):
         avg_g = sum(p[1] for p in pixels) / len(pixels)
         avg_b = sum(p[2] for p in pixels) / len(pixels)
 
-        print(f"Color Analysis -> Avg R: {avg_r:.1f}, Avg G: {avg_g:.1f}, Avg B: {avg_b:.1f}")
+        print_message(f"Color Analysis -> Avg R: {avg_r:.1f}, Avg G: {avg_g:.1f}, Avg B: {avg_b:.1f}", is_verbose=True)
 
         # Classification logic based on dominant colors
         if avg_r > avg_g and avg_r > avg_b:
@@ -145,30 +149,23 @@ def extract_and_detect_attribute(video_url):
             return "AQUA"
             
     except Exception as e:
-        print(f"Error during frame extraction/analysis: {e}")
+        print_message(f"Error during frame extraction/analysis: {e}", bcolors.WARNING, is_verbose=True)
         return None
     finally:
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
 
 def main():
-    parser = argparse.ArgumentParser(description="Auto-detect ONGEKI enemy types from YouTube chart videos.")
-    parser.add_argument("--refresh", action="store_true", help="Force refresh the YouTube videos cache.")
-    parser.add_argument("--dry-run", action="store_true", help="Dry run (detect but do not write to JSON).")
-    parser.add_argument("--id", type=str, help="Process only a specific song ID.")
-    parser.add_argument("--limit", type=int, default=0, help="Limit the number of songs to process (0 for unlimited).")
-    args = parser.parse_args()
-
     # Load song data
     if not os.path.exists(LOCAL_MUSIC_EX_JSON_PATH):
-        print(f"Error: Could not find {LOCAL_MUSIC_EX_JSON_PATH}")
+        print_message(f"Error: Could not find {LOCAL_MUSIC_EX_JSON_PATH}", bcolors.FAIL)
         sys.exit(1)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, "r", encoding="utf-8") as f:
         music_ex = json.load(f)
 
     # Fetch cached videos
-    yt_videos = get_youtube_videos(force_refresh=args.refresh)
+    yt_videos = get_youtube_videos(force_refresh=game.ARGS.refresh)
     
     # Map normalized video title to video URL
     normalized_videos = {}
@@ -183,31 +180,36 @@ def main():
     target_songs = []
     for song in music_ex:
         # If specific ID is requested, filter by it
-        if args.id and song.get("id") != args.id:
+        if game.ARGS.id and song.get("id") != game.ARGS.id:
             continue
             
         # Only process if enemy_type is empty (or missing)
         if not song.get("enemy_type"):
             target_songs.append(song)
 
-    print(f"Found {len(target_songs)} songs missing enemy type.")
+    print_message(f"Found {len(target_songs)} songs missing enemy type.", is_verbose=True)
     if not target_songs:
-        print("Nothing to process.")
+        print_message("Nothing to process.", is_verbose=True)
         return
 
     processed_count = 0
     updated_songs = []
 
+    # Print markdown header if required
+    if game.ARGS.markdown:
+        print_message("Updated Enemy Types", 'H3')
+
     for song in target_songs:
-        if args.limit > 0 and processed_count >= args.limit:
-            print(f"Reached limit of {args.limit} songs.")
+        if game.ARGS.limit > 0 and processed_count >= game.ARGS.limit:
+            print_message(f"Reached limit of {game.ARGS.limit} songs.", is_verbose=True)
             break
 
         title = song.get("title", "")
         song_id = song.get("id", "")
         norm_title = normalize_title(title)
         
-        print(f"\nProcessing song ID {song_id}: '{title}' (Normalized: '{norm_title}')")
+        header_printed = [0]
+        song_header = f"{title}"
 
         # Try to find a matched video
         match = normalized_videos.get(norm_title)
@@ -216,35 +218,45 @@ def main():
             found = False
             for v_norm, (v_orig, v_url) in normalized_videos.items():
                 if norm_title in v_norm or v_norm in norm_title:
-                    print(f"Fuzzy matched to video: '{v_orig}'")
+                    print_message(f"Fuzzy matched to video: '{v_orig}'", is_verbose=True)
                     match = (v_orig, v_url)
                     found = True
                     break
             if not found:
-                print(f"Could not find YouTube video match for '{title}'. Skipping.")
+                lazy_print_song_header(song_header, header_printed, is_verbose=True)
+                print_message(f"- Could not find YouTube video match", bcolors.WARNING, is_verbose=True)
                 continue
         else:
-            print(f"Matched video: '{match[0]}'")
+            print_message(f"Matched video: '{match[0]}'", is_verbose=True)
 
         video_url = match[1]
         detected_attr = extract_and_detect_attribute(video_url)
         
         if detected_attr:
-            print(f"SUCCESS: Song '{title}' (ID {song_id}) -> Detected enemy type: {detected_attr}")
+            lazy_print_song_header(song_header, header_printed, log=True)
+            print_message(f"- Detected enemy type: {detected_attr}", bcolors.OKGREEN, log=True)
             song["enemy_type"] = detected_attr
             updated_songs.append(song)
             processed_count += 1
         else:
-            print(f"FAILED to extract/detect attribute for '{title}'. Skipping.")
+            lazy_print_song_header(song_header, header_printed, log=True)
+            print_message(f"- FAILED to extract/detect attribute", bcolors.FAIL, log=True)
 
-    print(f"\nProcessed {processed_count} songs.")
+    print_message(f"Processed {processed_count} songs.", is_verbose=True)
     
-    if updated_songs and not args.dry_run:
-        print(f"Saving changes to {LOCAL_MUSIC_EX_JSON_PATH}...")
+    if updated_songs and not game.ARGS.dry_run:
+        print_message(f"Saving changes to {LOCAL_MUSIC_EX_JSON_PATH}...", is_verbose=True)
         sort_and_save_json(music_ex, LOCAL_MUSIC_EX_JSON_PATH)
-        print("Changes saved successfully!")
-    elif args.dry_run:
-        print("Dry-run mode. No changes saved.")
+        print_message("Changes saved successfully!", is_verbose=True)
+    elif game.ARGS.dry_run:
+        print_message("Dry-run mode. No changes saved.", is_verbose=True)
 
 if __name__ == "__main__":
+    custom_args = {
+        "--refresh": {"action": "store_true", "help": "Force refresh the YouTube videos cache."},
+        "--dry-run": {"action": "store_true", "help": "Dry run (detect but do not write to JSON)."},
+        "--id": {"type": str, "help": "Process only a specific song ID."},
+        "--limit": {"type": int, "default": 0, "help": "Limit the number of songs to process (0 for unlimited)."}
+    }
+    set_args_and_game_module(custom_args)
     main()
