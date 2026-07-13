@@ -576,8 +576,12 @@ def normalize_title(string: str):
     return string
 
 def get_and_save_page_to_local(url, output_path, local_cache_dir):
-    response = requests.get(url)
-    response.encoding = 'ansi'
+    try:
+        response = requests.get(url, timeout=5)
+        response.encoding = 'ansi'
+    except requests.RequestException as e:
+        print_message(f"Failed to retrieve {url}: {e}", bcolors.FAIL, log=True)
+        return
 
     if not os.path.exists(local_cache_dir):
         os.makedirs(local_cache_dir)

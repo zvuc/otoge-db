@@ -192,32 +192,37 @@ def update_song_wiki_data(song, total_diffs):
 
     # If not, guess URL from title
     else:
-        guess_url = wiki_base_url + title
-        wiki = requests.get(guess_url, timeout=5, headers=request_headers, allow_redirects=True)
-
-        if not wiki.ok:
-            # try replacing special character as fallback
-            title = title.replace('\'', '’')
+        try:
             guess_url = wiki_base_url + title
             wiki = requests.get(guess_url, timeout=5, headers=request_headers, allow_redirects=True)
 
             if not wiki.ok:
-                # give up!
-                lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
-                print_message("Failed to guess wiki page", bcolors.FAIL, log=True)
-                return song
+                # try replacing special character as fallback
+                title = title.replace('\'', '’')
+                guess_url = wiki_base_url + title
+                wiki = requests.get(guess_url, timeout=5, headers=request_headers, allow_redirects=True)
+
+                if not wiki.ok:
+                    # give up!
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+                    print_message("Failed to guess wiki page", bcolors.FAIL, log=True)
+                    return song
+
+                else:
+                    url = guess_url
+                    lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
+                    print_message("Found URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
+                    return _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
 
             else:
                 url = guess_url
                 lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
                 print_message("Found URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
                 return _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
-
-        else:
-            url = guess_url
-            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True, is_verbose=True)
-            print_message("Found URL by guess!", bcolors.OKBLUE, log=True, is_verbose=True)
-            return _parse_wikiwiki(song, wiki, url, total_diffs, header_printed)
+        except requests.RequestException as e:
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+            print_message(f"Error while guessing wiki page: {e}", bcolors.FAIL, log=True)
+            return song
 
 
 def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
@@ -677,7 +682,7 @@ def _fetch_designer_info_from_sdvxin(song, total_diffs):
 
 
         try:
-            resp = requests.get(url)
+            resp = requests.get(url, timeout=5)
             resp.encoding = 'ansi'
             content = resp.text
         except Exception:

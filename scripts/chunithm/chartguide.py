@@ -202,6 +202,7 @@ def _update_song_chartguide_data(song, total_diffs):
     return song
 
 def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
+    content = None
     try:
         file_full_path = os.path.join(LOCAL_SDVXIN_CACHE_DIR + lv_page_file_path)
         with open(file_full_path, 'r', encoding='utf-8') as file:
@@ -217,8 +218,10 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
             print_message(f"Cache not found ({lv_page_file_path})", bcolors.ENDC)
     except Exception as e:
         print_message(f"Error reading file: {e}", bcolors.FAIL)
-        sys.exit(1)
+        return None, None
 
+    if content is None:
+        return None, None
 
     soup = BeautifulSoup(content, 'html.parser')
     song_dict = {}
@@ -239,13 +242,16 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
         # If comment doesn't contain title, request URL to get title
         if extracted_song_title == '':
             print_message(f"- Requesting page to fetch title - {script_src}", bcolors.OKBLUE, is_verbose=True)
-            response = requests.get(SDVXIN_BASE_URL + script_src)
-            response.encoding = 'ansi'
-            clean_title = _clean_js_title(response.text)
-            print_message(f"- Title is: {clean_title}", bcolors.OKBLUE, is_verbose=True)
+            try:
+                response = requests.get(SDVXIN_BASE_URL + script_src, timeout=5)
+                response.encoding = 'ansi'
+                clean_title = _clean_js_title(response.text)
+                print_message(f"- Title is: {clean_title}", bcolors.OKBLUE, is_verbose=True)
 
-            if clean_title:
-                extracted_song_title = clean_title
+                if clean_title:
+                    extracted_song_title = clean_title
+            except requests.RequestException as e:
+                print_message(f"Failed to fetch title from {script_src}: {e}", bcolors.FAIL)
 
         if extracted_song_title:
             extracted_song_title = extracted_song_title.strip()
@@ -256,12 +262,16 @@ def _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern):
     # Last check to see if page is valid
     if song_id != None:
         print_message(f"- Requesting page for validation - {song_id}", bcolors.OKBLUE, is_verbose=True)
-        response = requests.get(SDVXIN_BASE_URL + song_id)
-        response.encoding = 'ansi'
-        clean_title = _clean_js_title(response.text)
-        print_message(f"- Title is: {clean_title}", bcolors.OKBLUE, is_verbose=True)
+        try:
+            response = requests.get(SDVXIN_BASE_URL + song_id, timeout=5)
+            response.encoding = 'ansi'
+            clean_title = _clean_js_title(response.text)
+            print_message(f"- Title is: {clean_title}", bcolors.OKBLUE, is_verbose=True)
 
-        if not clean_title:
+            if not clean_title:
+                song_id = ''
+        except requests.RequestException as e:
+            print_message(f"Failed to validate page {song_id}: {e}", bcolors.FAIL)
             song_id = ''
 
     return song_id, script_src
@@ -273,8 +283,12 @@ def _get_and_save_page_to_local(url):
     if url == '':
         full_url = SDVXIN_BASE_URL + game.GAME_NAME + '.html'
 
-    response = requests.get(full_url)
-    response.encoding = 'ansi'
+    try:
+        response = requests.get(full_url, timeout=5)
+        response.encoding = 'ansi'
+    except requests.RequestException as e:
+        print_message(f"Failed to retrieve {url}: {e}", bcolors.FAIL)
+        return
 
     if not os.path.exists(LOCAL_SDVXIN_CACHE_DIR):
         os.makedirs(LOCAL_SDVXIN_CACHE_DIR)
@@ -393,7 +407,7 @@ def _extract_song_id(song, song_dict, song_title):
         if normalized_comment and (normalized_comment in normalized_song_title or normalized_song_title in normalized_comment):
             print_message(f"- Potential match found: '{title}' (JS: {song_id}). Fetching full title...", bcolors.OKBLUE, log=True, is_verbose=True)
             try:
-                response = requests.get(SDVXIN_BASE_URL + song_id)
+                response = requests.get(SDVXIN_BASE_URL + song_id, timeout=5)
                 response.encoding = 'ansi'
                 full_js_title = _clean_js_title(response.text)
                 if full_js_title:
