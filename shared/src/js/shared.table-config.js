@@ -424,56 +424,71 @@ function generateFilterDropdowns(table) {
         // update URL params on change
         updateQueryStringParameter(column_param.name, val);
 
+        var regex = val_e ? (column_param.spaceSeparatedFilter ? '(?:^|\\s)' + val_e + '(?:\\s|$)' : '^' + val_e + '$') : '';
         column
-          .search(val_e ? '^' + val_e + '$' : '', true, false)
+          .search(regex, true, false)
           .draw();
       });
 
 
-      // column parameter has customDropdownSortSource option
-      if (column_param.customDropdownSortSource) {
-        column_data = column_data.map(function (_, index) {
-          // get index of column
-          return index;
-        }).sort(function (index_a, index_b) {
-          // get index_a-th row and index_b-th row
-          var row_a = rows[index_a], row_b = rows[index_b];
-          // if customDropdownSortSource option is function type use it as comparator
-          if (typeof column_param.customDropdownSortSource === 'function') {
-            return column_param.customDropdownSortSource(row_a, row_b);
-            // if customDropdownSortSource option is string type use it as comparator column key
-          } else {
-            return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
+      // Use customDropdownValues if defined
+      if (column_param.customDropdownValues && typeof column_param.customDropdownValues === 'function') {
+        var custom_values = column_param.customDropdownValues(table.api(), rows);
+        custom_values.forEach(function (d) {
+          if (d != '') {
+            select.append('<option value="' + d + '">' + d + '</option>');
           }
-          // get column data again since we converted this array to row array in previous lines
-        }).map(function (index) {
-          // get index-th column's data
-          return column_data[index];
         });
       } else {
-        column_data = column_data.sort();
-      }
-
-      // reverse sort for date
-      if (column_param.reverseSortOrder) {
-        column_data.reverse();
-      }
-
-      // draw option list
-      column_data.unique().each(function (d, j) {
-        if (d != '') {
-          select.append('<option value="' + d + '">' + d + '</option>');
+        // column parameter has customDropdownSortSource option
+        if (column_param.customDropdownSortSource) {
+          column_data = column_data.map(function (_, index) {
+            // get index of column
+            return index;
+          }).sort(function (index_a, index_b) {
+            // get index_a-th row and index_b-th row
+            var row_a = rows[index_a], row_b = rows[index_b];
+            // if customDropdownSortSource option is function type use it as comparator
+            if (typeof column_param.customDropdownSortSource === 'function') {
+              return column_param.customDropdownSortSource(row_a, row_b);
+              // if customDropdownSortSource option is string type use it as comparator column key
+            } else {
+              return row_a[column_param.customDropdownSortSource].localeCompare(row_b[column_param.customDropdownSortSource])
+            }
+            // get column data again since we converted this array to row array in previous lines
+          }).map(function (index) {
+            // get index-th column's data
+            return column_data[index];
+          });
+        } else {
+          column_data = column_data.sort();
         }
-      });
+
+        // reverse sort for date
+        if (column_param.reverseSortOrder) {
+          column_data.reverse();
+        }
+
+        // draw option list
+        column_data.unique().each(function (d, j) {
+          if (d != '') {
+            select.append('<option value="' + d + '">' + d + '</option>');
+          }
+        });
+      }
 
       // set value for select on page init
       if ('URLSearchParams' in window) {
         var searchParamValue = searchParams.get(column_param.name);
         if ( searchParamValue !== null ) {
           var value = unescapeSlashes(searchParamValue)
-          column_data.unique().each(function (d) {
+          if (column_param.customDropdownValues && typeof column_param.customDropdownValues === 'function') {
             select.val(value);
-          });
+          } else {
+            column_data.unique().each(function (d) {
+              select.val(value);
+            });
+          }
           appendSelectboxStateClass(select, value);
         }
       }
@@ -499,7 +514,8 @@ function applyFilterFromURLSearchParams(table, searchParams) {
         );
 
         if ( searchParamValue !== null ) {
-          column.search(searchParamValue ? '^' + searchParamValue_e + '$' : '', true, false);
+          var regex = searchParamValue ? (column_param.spaceSeparatedFilter ? '(?:^|\\s)' + searchParamValue_e + '(?:\\s|$)' : '^' + searchParamValue_e + '$') : '';
+          column.search(regex, true, false);
         }
       });
     });

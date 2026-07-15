@@ -99,6 +99,10 @@ function maimaiProcessLvData(lev, lev_i) {
     let dx_lev = `dx_${lev}`;
     let dx_lev_i = `dx_${lev_i}`;
 
+    if (type === 'filter') {
+      return [row[dx_lev], row[lev]].filter(Boolean).join(' ');
+    }
+
     // Check if type is 'sort' and return the appropriate value with leading zero
     // only DX chart
     if (row[dx_lev] && !row[lev]) {
@@ -142,6 +146,41 @@ function maimaiProcessLvData(lev, lev_i) {
       }
     }
   }
+}
+
+function maimaiGetLvDropdownValues(lev) {
+  return function(api, rowsData) {
+    let dx_lev = `dx_${lev}`;
+    let values = new Set();
+    
+    for (let i = 0; i < rowsData.length; i++) {
+      let row = rowsData[i];
+      if (row[dx_lev]) {
+        values.add(row[dx_lev]);
+      }
+      if (row[lev]) {
+        values.add(row[lev]);
+      }
+    }
+    
+    let sortedValues = Array.from(values).sort(function(a, b) {
+      function parseLv(lv_str) {
+        if (!lv_str) return 0;
+        var match = lv_str.match(/^([0-9]+)(\+)?/);
+        if (match) {
+          var val = parseInt(match[1], 10);
+          if (match[2] === '+') {
+            val += 0.5;
+          }
+          return val;
+        }
+        return 0;
+      }
+      return parseLv(b) - parseLv(a);
+    });
+    
+    return sortedValues;
+  };
 }
 
 function maimaiRenderLvNum(lev) {
@@ -576,10 +615,10 @@ $(document).ready(function() {
         defaultContent: "",
         className: "lv lv-bsc",
         render: maimaiRenderLvNum('lev_bas'),
-        customDropdownSortSource: sortByLeadingZeros('lev_bas'),
-        reverseSortOrder: true,
+        customDropdownValues: maimaiGetLvDropdownValues('lev_bas'),
         width: "3rem",
         filterable: flat_view ? false : true,
+        spaceSeparatedFilter: true,
       },
       {
         //  ADVANCED
@@ -589,10 +628,10 @@ $(document).ready(function() {
         defaultContent: "",
         className: "lv lv-adv",
         render: maimaiRenderLvNum('lev_adv'),
-        customDropdownSortSource: sortByLeadingZeros('lev_adv'),
-        reverseSortOrder: true,
+        customDropdownValues: maimaiGetLvDropdownValues('lev_adv'),
         width: "3rem",
         filterable: flat_view ? false : true,
+        spaceSeparatedFilter: true,
       },
       {
         //  EXPERT
@@ -602,10 +641,10 @@ $(document).ready(function() {
         defaultContent: "",
         className: "lv lv-exp",
         render: maimaiRenderLvNum('lev_exp'),
-        customDropdownSortSource: sortByLeadingZeros('lev_exp'),
-        reverseSortOrder: true,
+        customDropdownValues: maimaiGetLvDropdownValues('lev_exp'),
         width: "3rem",
         filterable: flat_view ? false : true,
+        spaceSeparatedFilter: true,
       },
       {
         //  MASTER
@@ -615,10 +654,10 @@ $(document).ready(function() {
         defaultContent: "",
         className: "lv lv-mas",
         render: maimaiRenderLvNum('lev_mas'),
-        customDropdownSortSource: sortByLeadingZeros('lev_mas'),
-        reverseSortOrder: true,
+        customDropdownValues: maimaiGetLvDropdownValues('lev_mas'),
         width: "3rem",
         filterable: flat_view ? false : true,
+        spaceSeparatedFilter: true,
       },
       {
         //  Re:MASTER
@@ -628,10 +667,10 @@ $(document).ready(function() {
         defaultContent: "",
         className: "lv lv-remas",
         render: maimaiRenderLvNum('lev_remas'),
-        customDropdownSortSource: sortByLeadingZeros('lev_remas'),
-        reverseSortOrder: true,
+        customDropdownValues: maimaiGetLvDropdownValues('lev_remas'),
         width: "3rem",
         filterable: flat_view ? false : true,
+        spaceSeparatedFilter: true,
       },
       {
         //  UTAGE
