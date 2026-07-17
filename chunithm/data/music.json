@@ -1,8 +1,40 @@
 [
   {
-    "id": "3005",
+    "id": "3031",
     "catname": "POPS & ANIME",
     "newflag": "1",
+    "title": "シャオシャオ蘭々♪",
+    "reading": "シヤオシヤオランラン",
+    "artist": "いずれ菖蒲か杜若",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "22e49ceacc2f334c.jpg"
+  },
+  {
+    "id": "3032",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "偉大なる悪魔は実は大天使パトラちゃん様なのだ！",
+    "reading": "イタイナルアクマハシツハタイテンシハトラチヤンサマナノタ",
+    "artist": "周防パトラ",
+    "lev_bas": "3",
+    "lev_adv": "7",
+    "lev_exp": "9+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3aae93089e19306d.jpg"
+  },
+  {
+    "id": "3005",
+    "catname": "POPS & ANIME",
+    "newflag": "0",
     "title": "ハッピーラッキーチャッピー",
     "reading": "ハツヒウラツキウチヤツヒウ",
     "artist": "ano「タコピーの原罪」",
@@ -18,7 +50,7 @@
   {
     "id": "3006",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Bling-Bang-Bang-Born",
     "reading": "BLINGBANGBANGBORN",
     "artist": "covered by 光吉猛修",
@@ -34,7 +66,7 @@
   {
     "id": "3007",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "明日の私に幸あれ",
     "reading": "アシタノワタシニサチアレ",
     "artist": "ナナヲアカリ",
@@ -50,7 +82,7 @@
   {
     "id": "3088",
     "catname": "POPS & ANIME",
-    "newflag": "1",
+    "newflag": "0",
     "title": "愛♡スクリ～ム！",
     "reading": "アイスクリウム",
     "artist": "AiScReam[黒澤ルビィ(CV.降幡 愛)、上原歩夢(CV.大西亜玖璃)、若菜四季(CV.大熊和奏)]",
@@ -2416,9 +2448,25 @@
     "image": "cb46c561d70c3b65.jpg"
   },
   {
-    "id": "3009",
+    "id": "3033",
     "catname": "niconico",
     "newflag": "1",
+    "title": "ウニ",
+    "reading": "ウニ",
+    "artist": "Adeliae",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "12+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "4bf33faf916826b0.jpg"
+  },
+  {
+    "id": "3009",
+    "catname": "niconico",
+    "newflag": "0",
     "title": "ダイダイダイダイダイキライ",
     "reading": "タイタイタイタイタイキライ",
     "artist": "雨良 Amala",
@@ -2434,7 +2482,7 @@
   {
     "id": "3010",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "お返事まだカナ？おじさん構文！",
     "reading": "オヘンシマタカナオシサンコウフン",
     "artist": "吉本おじさん",
@@ -2450,7 +2498,7 @@
   {
     "id": "3011",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "テレパシ",
     "reading": "テレハシ",
     "artist": "DECO*27",
@@ -7474,7 +7522,7 @@
   {
     "id": "3012",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "最終鬼畜妹フランドール・S (原口沙輔は鬼畜なのか？remix)",
     "reading": "サイシユウキチクイモウトフラントウルSハラクチサスケハキチクナノカREMIX",
     "artist": "ビートまりお × 原口沙輔",
@@ -10466,7 +10514,7 @@
   {
     "id": "3085",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "OMAKENO Stroke",
     "reading": "OMAKENOSTROKE",
     "artist": "t+pazolite「グルーヴコースター」",
@@ -10482,7 +10530,7 @@
   {
     "id": "3013",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "キミとのテトテコネクト",
     "reading": "キミトノテトテコネクト",
     "artist": "MASAKI(ZUNTATA)×ドロシィ(CV:水瀬いのり)「テトテ×コネクト」",
@@ -11122,7 +11170,7 @@
   {
     "id": "3089",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Cryogenic",
     "reading": "CRYOGENIC",
     "artist": "Camellia ft. Petra Gurin「In Falsus」",
@@ -11506,7 +11554,7 @@
   {
     "id": "3014",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "零號車輛",
     "reading": "リンハオチユウリヤン",
     "artist": "seatrus「Paradigm: Reboot」",
@@ -12098,7 +12146,7 @@
   {
     "id": "3015",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "RE:UNION -Duo Blade Against-",
     "reading": "REUNIONDUOBLADEAGAINST",
     "artist": "Ice vs. Morimori Atsushi",
@@ -12706,7 +12754,7 @@
   {
     "id": "3016",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "英雄の証",
     "reading": "エイユウノアカシ",
     "artist": "カプコン・サウンドチーム",
@@ -12722,7 +12770,7 @@
   {
     "id": "3017",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "白光に響く生命の叫び",
     "reading": "ヒヤツコウニヒヒクセイメイノサケヒ",
     "artist": "カプコン・サウンドチーム",
@@ -14402,7 +14450,7 @@
   {
     "id": "3079",
     "catname": "VARIETY",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Hello! My World!!",
     "reading": "HELLOMYWORLD",
     "artist": "ああああ ＋ 翡乃イスカ",
@@ -14418,7 +14466,7 @@
   {
     "id": "3022",
     "catname": "イロドリミドリ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "私たちは、花になる",
     "reading": "ワタシタチハハナニナル",
     "artist": "イロドリミドリ｜HaNaMiNa｜S.S.L.",
@@ -17314,7 +17362,7 @@
   {
     "id": "3020",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "勦滅",
     "reading": "ソウメツ",
     "artist": "siqlo",
@@ -19202,7 +19250,7 @@
   {
     "id": "3019",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Honey Bear",
     "reading": "HONEYBEAR",
     "artist": "Freezer",
@@ -19218,7 +19266,7 @@
   {
     "id": "3021",
     "catname": "ゲキマイ",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ALLNIGHT_DANCER",
     "reading": "ALLNIGHTDANCER",
     "artist": "brz1128",
@@ -19246,6 +19294,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "d79a18964b32fadb.jpg"
+  },
+  {
+    "id": "242",
+    "catname": "ORIGINAL",
+    "newflag": "0",
+    "title": "Garakuta Doll Play (sasakure.UK clutter remix)",
+    "reading": "GARAKUTADOLLPLAYSASAKUREUKCLUTTERREMIX",
+    "artist": "sasakure.UK",
+    "lev_bas": "5",
+    "lev_adv": "11",
+    "lev_exp": "13+",
+    "lev_mas": "15+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "0a3d7b00000922f8.jpg"
   },
   {
     "id": "202",
@@ -19534,6 +19598,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "994c8312e7285a1e.jpg"
+  },
+  {
+    "id": "3034",
+    "catname": "ORIGINAL",
+    "newflag": "1",
+    "title": "ウニの歌(Nanoru Naganai Remix)",
+    "reading": "ウニノウタNANORUNAGANAIREMIX",
+    "artist": "作詞・作曲・編曲・ボーカル：周防パトラ　アレンジ：Nanoru Naganai",
+    "lev_bas": "5",
+    "lev_adv": "8+",
+    "lev_exp": "13+",
+    "lev_mas": "15",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "cf8515a0679b2c17.jpg"
   },
   {
     "id": "59",
@@ -26386,7 +26466,7 @@
   {
     "id": "3026",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ひなたでワチャチャ",
     "reading": "ヒナタテワチヤチヤ",
     "artist": "瀬名航 feat.ねんね",
@@ -26402,7 +26482,7 @@
   {
     "id": "3027",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "白昼熱演",
     "reading": "ハクチユウネツエン",
     "artist": "ぬゆり feat.SHiNO from 雨ニマケテモ",
@@ -26418,7 +26498,7 @@
   {
     "id": "3028",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "絶対一生これで生きていく！",
     "reading": "セツタイイツシヨウコレテイキテイク",
     "artist": "えびかれー伯爵 feat.叶 響",
@@ -26434,7 +26514,7 @@
   {
     "id": "3023",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Luminous CANDY",
     "reading": "KLUMINOUSCANDY",
     "artist": "7mai",
@@ -26450,7 +26530,7 @@
   {
     "id": "3024",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "SOMA TONE",
     "reading": "SOMATONE",
     "artist": "MYUKKE.",
@@ -26466,7 +26546,7 @@
   {
     "id": "3025",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Tachy∅n",
     "reading": "TACHYON",
     "artist": "CHUBAY",
@@ -26482,7 +26562,7 @@
   {
     "id": "3029",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ちゅ、お注射。",
     "reading": "チユオチユウシヤ",
     "artist": "なみぐる feat.をとは somunia",
@@ -26498,7 +26578,7 @@
   {
     "id": "3030",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "チュウニペンギンのテーマ～左下より愛をこめて～",
     "reading": "チユウニヘンキンノテウマヒタリシタヨリアイヲコメテ",
     "artist": "cosMo＠暴走P",
@@ -26514,7 +26594,7 @@
   {
     "id": "8327",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "luminoid love PART2",
     "reading": "LUMINOIDLOVEPART2",
     "artist": "DÉ DÉ MOUSE",
@@ -26530,7 +26610,7 @@
   {
     "id": "8328",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Flap&Clap",
     "reading": "FLAPCLAP",
     "artist": "棗いつき",
@@ -26546,7 +26626,7 @@
   {
     "id": "8329",
     "catname": "東方Project",
-    "newflag": "1",
+    "newflag": "0",
     "title": "エテルニタス・ルドロジー",
     "reading": "エテルニタスルトロシウ",
     "artist": "IRON ATTACK!",
