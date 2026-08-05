@@ -239,7 +239,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
 def _download_song_jacket(song, song_diffs):
     try:
-        response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], stream=True, timeout=30)
+        response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], verify=False, stream=True, timeout=30)  # nosec B501 - maimaidx.jp serves an incomplete SSL chain (missing intermediate cert), Python cannot resolve via AIA
 
         if response.status_code == 200:
             filename = os.path.join('maimai/jacket', song['image_url'])
