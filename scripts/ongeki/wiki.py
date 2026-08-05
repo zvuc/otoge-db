@@ -9,6 +9,7 @@ from ongeki.paths import *
 from datetime import datetime
 from functools import reduce
 from bs4 import BeautifulSoup
+import re
 
 wiki_base_url = 'https://wikiwiki.jp/gameongeki/'
 SDVXIN_BASE_URL = 'https://sdvx.in/'
@@ -78,6 +79,16 @@ def update_song_wiki_data(song, total_diffs):
         .replace('"', '”')
         .replace('?', '？')
     )
+
+    # Clean/correct existing wikiwiki_url if it contains solo version suffix
+    if 'wikiwiki_url' in song and song['wikiwiki_url']:
+        corrected_url = re.sub(r'\s+-.*?ソロver\.-?$', '', song['wikiwiki_url'])
+        if song['wikiwiki_url'] != corrected_url:
+            song['wikiwiki_url'] = corrected_url
+            total_diffs[0] += 1
+
+    # Strip solo version suffix from guess title
+    title = re.sub(r'\s+-.*?ソロver\.-?$', '', title)
 
     # use existing URL if already present
     if 'wikiwiki_url' in song and song['wikiwiki_url']:
@@ -195,7 +206,10 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
         overview_dict = dict(zip(overview_heads, overview_data))
 
         # Find enemy lv data
-        if 'LV.' in overview_dict["対戦相手"].upper():
+        is_solo = bool(re.search(r'\s+-.*?ソロver\.-?$', song['title']))
+        if is_solo:
+            pass
+        elif 'LV.' in overview_dict["対戦相手"].upper():
             enemy_info = overview_dict["対戦相手"].upper().split("LV.")
             enemy_name = enemy_info[0]
             enemy_lv = enemy_info[1]
