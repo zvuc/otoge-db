@@ -1,11 +1,7 @@
 # import ipdb
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-
 import ipdb
 import requests
 import urllib.request
-import urllib3
 import copy
 import json
 import os
@@ -17,8 +13,6 @@ from datetime import datetime
 
 errors_log = LOCAL_ERROR_LOG_PATH
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
 def load_new_song_data():
     with open(LOCAL_MUSIC_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_data = json.load(f)
@@ -26,7 +20,7 @@ def load_new_song_data():
 
     old_local_music_data = copy.deepcopy(local_music_data)
 
-    server_music_data = requests.get(SERVER_MUSIC_DATA_URL).json()
+    server_music_data = requests.get(SERVER_MUSIC_DATA_URL, timeout=30).json()
     server_music_map = json_to_hash_value_map(server_music_data)
 
     added_songs = []
@@ -242,7 +236,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
 
 def _download_song_jacket(song, song_diffs):
     try:
-        response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], verify=False, stream=True)
+        response = requests.get(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], stream=True, timeout=30)
 
         if response.status_code == 200:
             filename = os.path.join('maimai/jacket', song['image_url'])
