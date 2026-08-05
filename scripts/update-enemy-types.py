@@ -5,12 +5,13 @@ import shared
 from shared.common_func import *
 
 # Inject default --ongeki parameter if not specified
-if "--ongeki" not in sys.argv and "--game" not in sys.argv:
+if not any(arg in sys.argv for arg in ("--ongeki", "--chunithm", "--maimai", "--game")):
     sys.argv.append("--ongeki")
 
 def main():
-    if hasattr(game.GAME_MODULE, 'enemy_types'):
-        game.GAME_MODULE.enemy_types.update_enemy_types()
+    if game.GAME == 'ongeki':
+        import ongeki.enemy_types
+        ongeki.enemy_types.update_enemy_types()
     else:
         print_message(f"Game {game.GAME} does not support updating enemy types.", bcolors.FAIL)
         sys.exit(1)
