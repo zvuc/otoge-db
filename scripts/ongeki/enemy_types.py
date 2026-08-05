@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import os
 import sys
 import json
@@ -7,14 +6,6 @@ import subprocess
 import tempfile
 import unicodedata
 from PIL import Image
-
-# Ensure root is in sys.path
-sys.path.append(os.getcwd())
-
-# Inject default --ongeki parameter if not specified
-if "--ongeki" not in sys.argv and "--game" not in sys.argv:
-    sys.argv.append("--ongeki")
-
 import game
 from ongeki.paths import *
 from shared.common_func import *
@@ -155,7 +146,7 @@ def extract_and_detect_attribute(video_url):
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
 
-def main():
+def update_enemy_types():
     # Load song data
     if not os.path.exists(LOCAL_MUSIC_EX_JSON_PATH):
         print_message(f"Error: Could not find {LOCAL_MUSIC_EX_JSON_PATH}", bcolors.FAIL)
@@ -250,13 +241,3 @@ def main():
         print_message("Changes saved successfully!", is_verbose=True)
     elif game.ARGS.dry_run:
         print_message("Dry-run mode. No changes saved.", is_verbose=True)
-
-if __name__ == "__main__":
-    custom_args = {
-        "--refresh": {"action": "store_true", "help": "Force refresh the YouTube videos cache."},
-        "--dry-run": {"action": "store_true", "help": "Dry run (detect but do not write to JSON)."},
-        "--id": {"type": str, "help": "Process only a specific song ID."},
-        "--limit": {"type": int, "default": 0, "help": "Limit the number of songs to process (0 for unlimited)."}
-    }
-    set_args_and_game_module(custom_args)
-    main()

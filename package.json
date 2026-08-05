@@ -56,6 +56,7 @@
     "fetch-chartguide": "./.venv/bin/python scripts/update-chartguide-data.py",
     "fetch-const": "./.venv/bin/python scripts/update-const.py",
     "fetch-intl": "./.venv/bin/python scripts/update-intl.py",
+    "fetch-enemy-types": "./.venv/bin/python scripts/update-enemy-types.py",
     "clear-const": "./.venv/bin/python scripts/clear-const.py",
     "shared-build": "yarn shared-pug & yarn shared-minify",
     "shared-pug": "yarn pug shared/src/pug/index.pug -o .",
