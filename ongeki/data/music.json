@@ -24978,7 +24978,7 @@
     "image_url": "e4b4144e4e95521a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "お返事まだカナ？おじさん構文！",
     "title_sort": "オヘンシマタカナオシサンコウフン",
@@ -25001,7 +25001,7 @@
     "image_url": "0dec128c43fd6b34.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "ユメハナビ",
     "title_sort": "ユメハナヒ",
@@ -25024,7 +25024,7 @@
     "image_url": "90f44a4020c169d5.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "涌遊スマイルパワー",
     "title_sort": "ユウユウスマイルハワ",
@@ -25047,7 +25047,7 @@
     "image_url": "dd8a3fb9d224aad5.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "ももいろの鍵",
     "title_sort": "モモイロノカキ",
@@ -25070,7 +25070,7 @@
     "image_url": "a280bf384499a297.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "熱異常",
     "title_sort": "ネツイシヨウ",
@@ -25093,7 +25093,7 @@
     "image_url": "2885df8ca0d4f99c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "What's up? Pop!",
     "title_sort": "WHATSUPPOP",
@@ -25116,7 +25116,7 @@
     "image_url": "680328627d618d8c.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "メモリア",
     "title_sort": "メモリア",
@@ -25139,7 +25139,7 @@
     "image_url": "052041e2ab66a49b.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "シークレット・シーカー",
     "title_sort": "シクレツトシカ",
@@ -25162,7 +25162,7 @@
     "image_url": "7b500adcc8771af3.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "Cryogenic",
     "title_sort": "CRYOGENIC",
@@ -25185,7 +25185,7 @@
     "image_url": "0801df4da4aa3ebd.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260723",
     "title": "poppin’ hoppin’ flappin’☆☆☆",
     "title_sort": "POPPINHOPPINFLAPPIN",
@@ -25206,5 +25206,74 @@
     "lev_mas": "13",
     "lev_lnt": "",
     "image_url": "d106d9c6a71e3170.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260806",
+    "title": "それはもうらぶちゅ",
+    "title_sort": "ソレハモウラフチユ",
+    "artist": "タケノコ少年 feat. 周央サンゴ（にじさんじ）",
+    "id": "400011",
+    "chap_id": "99151",
+    "chapter": "Muse Dash",
+    "character": "リン",
+    "chara_id": "0567",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©peropero",
+    "lev_bas": "4",
+    "lev_adv": "7",
+    "lev_exc": "11",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "b5096bb67d1379f0.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260806",
+    "title": "Cthugha",
+    "title_sort": "CTHUGHA",
+    "artist": "USAO",
+    "id": "400010",
+    "chap_id": "99151",
+    "chapter": "Muse Dash",
+    "character": "ブロウ",
+    "chara_id": "0568",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©peropero",
+    "lev_bas": "5",
+    "lev_adv": "9",
+    "lev_exc": "12",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "44ead0aa282c8105.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260806",
+    "title": "アルメリアの鳥籠",
+    "title_sort": "アルメリアノトリカコ",
+    "artist": "a_hisa",
+    "id": "400009",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "皇城 セツナ",
+    "chara_id": "0017",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "3",
+    "lev_adv": "8+",
+    "lev_exc": "12",
+    "lev_mas": "13+",
+    "lev_lnt": "",
+    "image_url": "da6bdd94008db88c.png"
   }
 ]
