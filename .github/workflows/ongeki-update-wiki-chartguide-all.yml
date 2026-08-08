@@ -47,14 +47,11 @@ jobs:
           # git push --force --set-upstream origin ongeki-staging
 
       - name: Run wiki script and capture output
-        id: run_script
         run: |
           {
-            echo "OUTPUT_LOG<<EOF"
-            python scripts/update-wiki-data.py --ongeki --all --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
-            python scripts/update-chartguide-data.py --ongeki --all --nocolors --escape --markdown --no_timestamp --no_verbose
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+            python -u scripts/update-wiki-data.py --ongeki --all --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
+            python -u scripts/update-chartguide-data.py --ongeki --all --nocolors --escape --markdown --no_timestamp --no_verbose
+          } 2>&1 | tee output.log
 
       - name: Extract datestamp from script output
         id: extract_date
@@ -80,17 +77,11 @@ jobs:
       - name: Checkout existing PR or create new
         if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
         run: |
-          if [[ $(gh pr list --state open --head ongeki-staging | grep ongeki-staging) ]]; then
-            echo "Add comment to existing open PR"
-            gh pr comment ongeki-staging \
-              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
-          else
-            echo "No currently open PR for ongeki-staging. Create new PR"
-            gh pr create \
-              -B ${{ github.ref_name }} \
-              -H "ongeki-staging" \
-              --title "[Automation] Ongeki: Update website with updated song data (all songs)" \
-              --body "${{ steps.run_script.outputs.OUTPUT_LOG }}"
-          fi
+          python scripts/post-pr.py \
+            --head "ongeki-staging" \
+            --base "${{ github.ref_name }}" \
+            --title "[Automation] Ongeki: Update website with updated song data (all songs)" \
+            --log-file "output.log"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
