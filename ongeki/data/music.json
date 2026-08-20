@@ -25208,7 +25208,7 @@
     "image_url": "d106d9c6a71e3170.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260806",
     "title": "それはもうらぶちゅ",
     "title_sort": "ソレハモウラフチユ",
@@ -25231,7 +25231,7 @@
     "image_url": "b5096bb67d1379f0.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260806",
     "title": "Cthugha",
     "title_sort": "CTHUGHA",
@@ -25254,7 +25254,7 @@
     "image_url": "44ead0aa282c8105.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260806",
     "title": "アルメリアの鳥籠",
     "title_sort": "アルメリアノトリカコ",
@@ -25275,5 +25275,51 @@
     "lev_mas": "13+",
     "lev_lnt": "",
     "image_url": "da6bdd94008db88c.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260820",
+    "title": "morph",
+    "title_sort": "MORPH",
+    "artist": "雄之助",
+    "id": "600012",
+    "chap_id": "00001",
+    "chapter": "マイリスト",
+    "character": "高瀬 梨緒",
+    "chara_id": "0004",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "9",
+    "lev_exc": "12+",
+    "lev_mas": "14",
+    "lev_lnt": "",
+    "image_url": "706d4a9c3b14fa1e.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20260820",
+    "title": "ときめきインビテーション",
+    "title_sort": "トキメキインヒテシヨン",
+    "artist": "曲：Kijibato／歌：⊿TRiEDGE [高瀬 梨緒(CV：久保 ユリカ)、結城 莉玖(CV：朝日奈 丸佳)、藍原 椿(CV：橋本 ちなみ)]",
+    "id": "600013",
+    "chap_id": "80051",
+    "chapter": "Shooter's Dream 《⊿TRiEDGE》",
+    "character": "結城 莉玖",
+    "chara_id": "0005",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exc": "9+",
+    "lev_mas": "13",
+    "lev_lnt": "",
+    "image_url": "e7c3bb8bd96c8a38.png"
   }
 ]
