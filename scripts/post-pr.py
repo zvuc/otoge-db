@@ -127,10 +127,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Create or comment on a pull request with automatic log chunking."
     )
-    parser.add_argument("--head", required=True, help="Head branch (e.g. maimai-staging)")
+    parser.add_argument("--head", required=True, help="Head branch (e.g. maimai/update-20260723)")
     parser.add_argument("--base", default="master", help="Base branch (default: master)")
     parser.add_argument("--title", required=True, help="Pull request title")
     parser.add_argument("--log-file", required=True, help="Path to the output log file")
+    parser.add_argument("--labels", default="", help="Comma-separated labels for new PRs (e.g. automation)")
 
     args = parser.parse_args()
 
@@ -162,7 +163,7 @@ def main() -> None:
             print(f"No existing PR found for '{args.head}'. Creating new PR...")
             pr_body_file = tmp_path / "pr_body.md"
             pr_body_file.write_text(chunks[0], encoding="utf-8")
-            res = run_gh(
+            create_cmd = [
                 "pr",
                 "create",
                 "--base",
@@ -173,7 +174,13 @@ def main() -> None:
                 args.title,
                 "--body-file",
                 str(pr_body_file),
-            )
+            ]
+            if args.labels:
+                for label in args.labels.split(","):
+                    lbl = label.strip()
+                    if lbl:
+                        create_cmd.extend(["--label", lbl])
+            res = run_gh(*create_cmd)
             print(f"Successfully created PR: {res.stdout.strip()}")
 
             if total_chunks > 1:

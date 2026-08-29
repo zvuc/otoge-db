@@ -3,6 +3,10 @@ name: "[Ongeki] Fetch from wiki & sdvx.in (all songs)"
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   fetch_from_wiki_all:
     name: Fetch from wiki & sdvx.in (all songs)
@@ -34,17 +38,14 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Checkout existing branch or create new
-        run : |
+        run: |
           git fetch origin
-          if git show-ref --quiet refs/remotes/origin/ongeki-staging; then
-            git switch ongeki-staging
+          if git show-ref --quiet refs/remotes/origin/ongeki/wiki-sync; then
+            git switch ongeki/wiki-sync
             git rebase origin/master
           else
-            git checkout -b ongeki-staging
+            git checkout -b ongeki/wiki-sync origin/master
           fi
-
-          # git pull origin ongeki-staging
-          # git push --force --set-upstream origin ongeki-staging
 
       - name: Run wiki script and capture output
         run: |
@@ -53,14 +54,8 @@ jobs:
             python -u scripts/update-chartguide-data.py --ongeki --all --nocolors --escape --markdown --no_timestamp --no_verbose
           } 2>&1 | tee output.log
 
-      - name: Extract datestamp from script output
-        id: extract_date
-        run: echo "datestamp=$(cat ongeki/data/music-ex.json | jq '.[-1].date_added | tonumber')" >> "$GITHUB_OUTPUT"
-
       - name: Commit changes
         id: commit_changes
-        env:
-          UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           git add .
 
@@ -69,8 +64,8 @@ jobs:
             echo "No changes. Skipping PR request"
           else
             git commit -m "data(ongeki): [bot] add song extra data (all songs)"
-            git push origin ongeki-staging --force-with-lease
-            echo "Commited changes."
+            git push origin ongeki/wiki-sync --force-with-lease -u
+            echo "Committed changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -78,9 +73,9 @@ jobs:
         if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
         run: |
           python scripts/post-pr.py \
-            --head "ongeki-staging" \
-            --base "${{ github.ref_name }}" \
-            --title "[Automation] Ongeki: Update website with updated song data (all songs)" \
+            --head "ongeki/wiki-sync" \
+            --base "master" \
+            --title "[Automation] Ongeki: Full wiki & chartguide sync" \
             --log-file "output.log"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

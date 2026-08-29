@@ -5,6 +5,10 @@ on:
     - cron: '0 0-5 * * 3-5'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   fetch_songs:
     name: Fetch latest song list from SEGA
@@ -35,55 +39,76 @@ jobs:
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Checkout existing branch or create new
-        run : |
-          git fetch origin
-          if git show-ref --quiet refs/remotes/origin/maimai-staging; then
-            git switch maimai-staging
-            git rebase origin/master
-          else
-            git checkout -b maimai-staging
-          fi
-
-          # git pull origin maimai-staging
-          # git push --force --set-upstream origin maimai-staging
+      - name: Ensure clean state on master
+        run: |
+          git checkout master
+          git pull origin master
 
       - name: Run main script and capture output
         run: |
           python -u scripts/update-songs.py --maimai --nocolors --escape --markdown --no_timestamp --no_verbose 2>&1 | tee output.log
 
-      - name: Extract datestamp from script output
-        id: extract_date
+      - name: Extract datestamp and prepare branch
+        id: prepare_branch
         run: |
-          echo "datestamp=$(cat maimai/data/music-ex.json | jq '.[-1].date_added | tonumber')" >> "$GITHUB_OUTPUT"
-          # Use today's date instead because maimai default json doesn't have date data...
-          # echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
+          if output=$(git status --porcelain) && [ -z "$output" ]; then
+            echo "has_diffs=false" >> "$GITHUB_OUTPUT"
+            echo "No changes found. Skipping."
+          else
+            echo "has_diffs=true" >> "$GITHUB_OUTPUT"
+            DATESTAMP=$(cat maimai/data/music-ex.json | jq -r '.[-1].date_added // empty')
+            if [ -z "$DATESTAMP" ] || [ "$DATESTAMP" = "null" ]; then
+              DATESTAMP=$(date '+%Y%m%d')
+            fi
+            BRANCH_NAME="maimai/update-$DATESTAMP"
+            echo "datestamp=$DATESTAMP" >> "$GITHUB_OUTPUT"
+            echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
 
+            # Create or switch to branch while carrying working tree changes
+            git fetch origin
+            if git show-ref --quiet "refs/remotes/origin/$BRANCH_NAME"; then
+              git stash
+              git switch "$BRANCH_NAME"
+              git pull origin "$BRANCH_NAME"
+              git stash pop || true
+            else
+              git checkout -b "$BRANCH_NAME"
+            fi
+          fi
 
-      - name: Commit changes
+      - name: Fetch initial wiki and constants data
+        if: steps.prepare_branch.outputs.has_diffs == 'true'
+        run: |
+          DATESTAMP="${{ steps.prepare_branch.outputs.datestamp }}"
+          {
+            python -u scripts/update-wiki-data.py --maimai --date "$DATESTAMP" --nocolors --escape --markdown --noskip --no_timestamp --no_verbose || true
+            python -u scripts/update-const.py --maimai --date "$DATESTAMP" --nocolors --escape --markdown --no_timestamp --no_verbose || true
+          } 2>&1 | tee -a output.log
+
+      - name: Commit and push changes
         id: commit_changes
-        env:
-          UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
+        if: steps.prepare_branch.outputs.has_diffs == 'true'
         run: |
+          DATESTAMP="${{ steps.prepare_branch.outputs.datestamp }}"
+          BRANCH_NAME="${{ steps.prepare_branch.outputs.branch_name }}"
           git add .
 
           if output=$(git status --porcelain) && [ -z "$output" ]; then
-            echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
-            echo "No changes. Skipping PR request"
+            echo "No changes to commit."
+            echo "has_diffs=false" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "data(maimai): [bot] add song data ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin maimai-staging --force-with-lease
-            echo "Commited changes."
-            echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
+            git commit -m "data(maimai): [bot] add song data $DATESTAMP"
+            git push origin "$BRANCH_NAME" --force-with-lease -u
+            echo "has_diffs=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Checkout existing PR or create new
-        if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
+      - name: Create or update PR
+        if: steps.prepare_branch.outputs.has_diffs == 'true' && steps.commit_changes.outputs.has_diffs == 'true'
         run: |
           python scripts/post-pr.py \
-            --head "maimai-staging" \
-            --base "${{ github.ref_name }}" \
-            --title "[Automation] maimai: Add new songs (${{ steps.extract_date.outputs.DATESTAMP }})" \
+            --head "${{ steps.prepare_branch.outputs.branch_name }}" \
+            --base "master" \
+            --title "[Automation] maimai: Add new songs (${{ steps.prepare_branch.outputs.datestamp }})" \
             --log-file "output.log"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

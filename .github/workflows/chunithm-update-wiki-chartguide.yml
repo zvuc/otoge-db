@@ -5,9 +5,13 @@ on:
     - cron: '5 */4 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   fetch_from_wiki:
-    name: Fetch from wiki & sdvx.in
+    name: Fetch from wiki & sdvx.in for active update PRs
     runs-on: ubuntu-latest
 
     steps:
@@ -35,57 +39,45 @@ jobs:
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Checkout existing branch or create new
-        run : |
-          git fetch origin
-          if git show-ref --quiet refs/remotes/origin/chunithm-staging; then
-            git switch chunithm-staging
-            git rebase origin/master
-          else
-            git checkout -b chunithm-staging
-          fi
-
-          # git pull origin chunithm-staging
-          # git push --force --set-upstream origin chunithm-staging
-
-      - name: Run wiki script and capture output
-        run: |
-          {
-            python -u scripts/update-wiki-data.py --chunithm --nocolors --escape --markdown --noskip --no_timestamp --no_verbose
-            python -u scripts/update-chartguide-data.py --chunithm --nocolors --escape --markdown --no_timestamp --no_verbose
-          } 2>&1 | tee output.log
-
-      - name: Extract datestamp from script output
-        id: extract_date
-        run: |
-          echo "datestamp=$(cat chunithm/data/music-ex.json | jq '.[-1].date_added | tonumber')" >> "$GITHUB_OUTPUT"
-          # echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
-
-      - name: Commit changes
-        id: commit_changes
-        env:
-          UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
-        run: |
-          git add .
-
-          if output=$(git status --porcelain) && [ -z "$output" ]; then
-            echo "HAS_DIFFS=false" >> "$GITHUB_OUTPUT"
-            echo "No changes. Skipping PR request"
-          else
-            git commit -m "data(chunithm): [bot] add song extra data ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin chunithm-staging --force-with-lease
-            echo "Commited changes."
-            echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Checkout existing PR or create new
-        if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
-        run: |
-          python scripts/post-pr.py \
-            --head "chunithm-staging" \
-            --base "${{ github.ref_name }}" \
-            --title "[Automation] CHUNITHM: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
-            --log-file "output.log"
+      - name: Find and enrich open update branches
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch origin
+
+          OPEN_BRANCHES=$(gh pr list --state open --base master --json headRefName --jq '.[].headRefName' | grep -E '^chunithm/update-[0-9]{8}$' || true)
+
+          if [ -z "$OPEN_BRANCHES" ]; then
+            echo "No active Chunithm update PRs found. Nothing to enrich."
+            exit 0
+          fi
+
+          for BRANCH in $OPEN_BRANCHES; do
+            echo "=========================================="
+            echo "Processing branch: $BRANCH"
+            echo "=========================================="
+
+            DATESTAMP=$(echo "$BRANCH" | grep -oE '[0-9]{8}$')
+            git checkout "$BRANCH"
+            git pull origin "$BRANCH"
+
+            {
+              python -u scripts/update-wiki-data.py --chunithm --date "$DATESTAMP" --nocolors --escape --markdown --noskip --no_timestamp --no_verbose || true
+              python -u scripts/update-chartguide-data.py --chunithm --date "$DATESTAMP" --nocolors --escape --markdown --no_timestamp --no_verbose || true
+              python -u scripts/update-const.py --chunithm --date "$DATESTAMP" --nocolors --escape --markdown --no_timestamp --no_verbose || true
+            } 2>&1 | tee output.log
+
+            git add .
+            if output=$(git status --porcelain) && [ -z "$output" ]; then
+              echo "No new wiki/chartguide/const data for $BRANCH"
+            else
+              git commit -m "data(chunithm): [bot] add song extra data $DATESTAMP"
+              git push origin "$BRANCH" --force-with-lease
+              python scripts/post-pr.py \
+                --head "$BRANCH" \
+                --base "master" \
+                --title "[Automation] CHUNITHM: Add new songs ($DATESTAMP)" \
+                --log-file "output.log"
+            fi
+          done
 
