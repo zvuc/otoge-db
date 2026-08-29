@@ -1,4 +1,4 @@
-name: "[Chunithm] Fetch from wiki (all songs)"
+name: "[Chunithm] Fetch from wiki & sdvx.in (all songs)"
 
 on:
   workflow_dispatch:
