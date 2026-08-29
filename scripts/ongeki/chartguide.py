@@ -21,7 +21,11 @@ VERSION_MAPPING = {
     'RED plus': '03',
     'bright': '04',
     'bright MEMORY': '04',
-    'Re:Fresh': '05'
+    'bright MEMORY Act.1': '04',
+    'bright MEMORY Act.2': '04',
+    'bright MEMORY Act.3': '04',
+    'Re:Fresh': '05',
+    'Re:Fresh Act.2': '05'
 }
 
 PAGES = {
