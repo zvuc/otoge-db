@@ -42,9 +42,9 @@ jobs:
           git fetch origin
           if git show-ref --quiet refs/remotes/origin/chunithm/wiki-sync; then
             git switch chunithm/wiki-sync
-            git rebase origin/master
+            git rebase origin/main
           else
-            git checkout -b chunithm/wiki-sync origin/master
+            git checkout -b chunithm/wiki-sync origin/main
           fi
 
       - name: Run wiki script and capture output
@@ -74,7 +74,7 @@ jobs:
         run: |
           python scripts/post-pr.py \
             --head "chunithm/wiki-sync" \
-            --base "master" \
+            --base "main" \
             --title "[Automation] CHUNITHM: Full wiki & chartguide sync" \
             --log-file "output.log"
         env:

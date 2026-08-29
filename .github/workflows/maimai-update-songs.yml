@@ -39,10 +39,10 @@ jobs:
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Ensure clean state on master
+      - name: Ensure clean state on main
         run: |
-          git checkout master
-          git pull origin master
+          git checkout main
+          git pull origin main
 
       - name: Run main script and capture output
         run: |
@@ -107,7 +107,7 @@ jobs:
         run: |
           python scripts/post-pr.py \
             --head "${{ steps.prepare_branch.outputs.branch_name }}" \
-            --base "master" \
+            --base "main" \
             --title "[Automation] maimai: Add new songs (${{ steps.prepare_branch.outputs.datestamp }})" \
             --log-file "output.log"
         env:

@@ -45,7 +45,7 @@ jobs:
         run: |
           git fetch origin
 
-          OPEN_BRANCHES=$(gh pr list --state open --base master --json headRefName --jq '.[].headRefName' | grep -E '^maimai/update-[0-9]{8}$' || true)
+          OPEN_BRANCHES=$(gh pr list --state open --base main --json headRefName --jq '.[].headRefName' | grep -E '^maimai/update-[0-9]{8}$' || true)
 
           if [ -z "$OPEN_BRANCHES" ]; then
             echo "No active maimai update PRs found. Nothing to enrich."
@@ -74,7 +74,7 @@ jobs:
               git push origin "$BRANCH" --force-with-lease
               python scripts/post-pr.py \
                 --head "$BRANCH" \
-                --base "master" \
+                --base "main" \
                 --title "[Automation] maimai: Add new songs ($DATESTAMP)" \
                 --log-file "output.log"
             fi

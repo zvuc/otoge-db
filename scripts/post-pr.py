@@ -128,7 +128,7 @@ def main() -> None:
         description="Create or comment on a pull request with automatic log chunking."
     )
     parser.add_argument("--head", required=True, help="Head branch (e.g. maimai/update-20260723)")
-    parser.add_argument("--base", default="master", help="Base branch (default: master)")
+    parser.add_argument("--base", default="main", help="Base branch (default: main)")
     parser.add_argument("--title", required=True, help="Pull request title")
     parser.add_argument("--log-file", required=True, help="Path to the output log file")
     parser.add_argument("--labels", default="", help="Comma-separated labels for new PRs (e.g. automation)")

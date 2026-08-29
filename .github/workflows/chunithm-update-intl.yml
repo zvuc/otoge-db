@@ -44,9 +44,9 @@ jobs:
           git fetch origin
           if git show-ref --quiet refs/remotes/origin/chunithm/intl; then
             git switch chunithm/intl
-            git rebase origin/master
+            git rebase origin/main
           else
-            git checkout -b chunithm/intl origin/master
+            git checkout -b chunithm/intl origin/main
           fi
 
       - name: Run wiki script and capture output
@@ -78,7 +78,7 @@ jobs:
         run: |
           python scripts/post-pr.py \
             --head "chunithm/intl" \
-            --base "master" \
+            --base "main" \
             --title "[Automation] CHUNITHM: Update International ver. availability (${{ steps.extract_date.outputs.DATESTAMP }})" \
             --log-file "output.log"
         env:
