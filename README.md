@@ -1,10 +1,10 @@
 <p>
 	<picture>
-	  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/zvuc/otoge-db/blob/master/ongeki/img/ongeki-db-logo-2022-wob.svg?raw=true">
-	  <img alt="Ongeki DB Logo" src="https://github.com/zvuc/otoge-db/blob/master/ongeki/img/ongeki-db-logo-2022-bow.svg?raw=true" width="200">
+	  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/zvuc/otoge-db/blob/main/ongeki/img/ongeki-db-logo-2022-wob.svg?raw=true">
+	  <img alt="Ongeki DB Logo" src="https://github.com/zvuc/otoge-db/blob/main/ongeki/img/ongeki-db-logo-2022-bow.svg?raw=true" width="200">
 	</picture>
-	&nbsp; &nbsp;<img alt="Chunithm DB Logo" src="https://github.com/zvuc/otoge-db/blob/master/chunithm/img/chunithm-db-logo.svg" style="margin-bottom:10px" width="240">
-	&nbsp; &nbsp;<img alt="maimai DB Logo" src="https://github.com/zvuc/otoge-db/blob/master/maimai/img/maimai-db-logo.svg?raw=true" width="200">
+	&nbsp; &nbsp;<img alt="Chunithm DB Logo" src="https://github.com/zvuc/otoge-db/blob/main/chunithm/img/chunithm-db-logo.svg" style="margin-bottom:10px" width="240">
+	&nbsp; &nbsp;<img alt="maimai DB Logo" src="https://github.com/zvuc/otoge-db/blob/main/maimai/img/maimai-db-logo.svg?raw=true" width="200">
 </p>
 
 # OTOGE DB (音ゲーDB)

@@ -44,9 +44,9 @@ jobs:
           git fetch origin
           if git show-ref --quiet refs/remotes/origin/chunithm/constants; then
             git switch chunithm/constants
-            git rebase origin/master
+            git rebase origin/main
           else
-            git checkout -b chunithm/constants origin/master
+            git checkout -b chunithm/constants origin/main
           fi
 
       - name: Run constants script and capture output
@@ -73,7 +73,7 @@ jobs:
         run: |
           python scripts/post-pr.py \
             --head "chunithm/constants" \
-            --base "master" \
+            --base "main" \
             --title "[Automation] CHUNITHM: Update chart constants" \
             --log-file "output.log"
         env:

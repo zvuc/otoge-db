@@ -42,9 +42,9 @@ jobs:
           git fetch origin
           if git show-ref --quiet refs/remotes/origin/maimai/wiki-sync; then
             git switch maimai/wiki-sync
-            git rebase origin/master
+            git rebase origin/main
           else
-            git checkout -b maimai/wiki-sync origin/master
+            git checkout -b maimai/wiki-sync origin/main
           fi
 
       - name: Run wiki script and capture output
@@ -71,7 +71,7 @@ jobs:
         run: |
           python scripts/post-pr.py \
             --head "maimai/wiki-sync" \
-            --base "master" \
+            --base "main" \
             --title "[Automation] maimai: Full wiki sync" \
             --log-file "output.log"
         env:
