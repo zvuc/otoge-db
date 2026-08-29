@@ -13,23 +13,14 @@ OTOGE DB is an unofficial database for viewing song information served in SEGA's
 OTOGE DBはSEGAの音ゲー「オンゲキ」「CHUNITHM」「maimaiでらっくす」の非公式収録曲データベースサイトです。公式サイトで公開されているデータを基にして、Wikiなどウェブで入手できる情報を集めて一箇所で楽に見れるようにする目標で作られました。
 
 ## Setting up dev environment
-- You'll need Python 3.12+ to run scripts on command line.
-- Setup virtual environment (if required)
+- Prerequisites: Node.js (v18+) and Python 3.12+
+- Run the one-step automated setup:
+	```bash
+	yarn install
+	yarn setup
 	```
-	python3 -m venv .venv
-	```
-- Activate venv
-	```
-	source .venv/bin/activate
-	```
-- Install requirements
-	```
-	pip install -r requirements.txt
-	```
-	or
-	```
-	pip3 install -r requirements.txt
-	```
+	This will automatically create `.venv`, install Python requirements, and compile all assets.
+	*(No manual `source .venv/bin/activate` is required when running yarn scripts!)*
 
 ## Run scripts
 - **`yarn fetch-songs`** : Download new song and images from server
@@ -199,13 +190,10 @@ OTOGE DBはSEGAの音ゲー「オンゲキ」「CHUNITHM」「maimaiでらっく
 
 
 ## Notes for Local Development
-#### Build Scripts
-- `yarn build` : minify+concat JS files, builds LESS stylesheet, runs PostCSS and minify.
-- `yarn watch` : watches changes to stylesheet for local development
-
-#### Local Dev Environment
-Just open `index.html` and refresh manually. Simple as the good old year 2000.
-Or, you can also do `python3 -m http.server` to quickly run a local server.
+#### Development & Build Scripts
+- `yarn dev` : Starts the local development server (with live reload) and watches for changes across Pug, LESS, and JS source files.
+- `yarn build` : Compiles Pug templates, LESS stylesheets (with PostCSS autoprefixer & cssnano), and minifies JS with esbuild.
+- `yarn build:pug` / `yarn build:less` / `yarn build:js` : Build individual asset categories.
 
 ## Notes
 - This webpage is hosted and run entirely on Github Pages without any additional backend servers attached.
