@@ -1,7 +1,7 @@
 GAME_NAME = "ongeki"
 
-CURRENT_JP_VER = "Re:Fresh"
-CURRENT_INTL_VER = "Re:Fresh"
+CURRENT_JP_VER = "Re:Fresh Act.2"
+CURRENT_INTL_VER = "Re:Fresh Act.2"
 
 HASH_KEYS = ['image_url', 'lunatic']
 HASH_KEYS_SP = ['image_url', 'lunatic']
