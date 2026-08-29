@@ -105,7 +105,8 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
         _add_song_data_to_ex_data(song, local_music_ex_data)
 
         if game.ARGS.markdown:
-            print_message(f"|<img src=\"https://github.com/zvuc/otoge-db/blob/ongeki-staging/ongeki/jacket/{song['image_url']}?raw=true\" width=\"120\">|**{song['title']}**<br>{song['artist']}|")
+            branch_name = os.getenv('BRANCH_NAME') or os.getenv('GITHUB_HEAD_REF') or os.getenv('GITHUB_REF_NAME') or 'master'
+            print_message(f"|<img src=\"https://github.com/zvuc/otoge-db/blob/{branch_name}/ongeki/jacket/{song['image_url']}?raw=true\" width=\"120\">|**{song['title']}**<br>{song['artist']}|")
         else:
             lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
             print_message(f"- New song added", bcolors.OKGREEN)

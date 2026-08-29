@@ -5,6 +5,10 @@ on:
     - cron: '10 0-5 * * 3-5'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   fetch_intl:
     name: Update International ver. song data from RemyWiki
@@ -36,17 +40,14 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Checkout existing branch or create new
-        run : |
+        run: |
           git fetch origin
-          if git show-ref --quiet refs/remotes/origin/maimai-staging; then
-            git switch maimai-staging
+          if git show-ref --quiet refs/remotes/origin/maimai/intl; then
+            git switch maimai/intl
             git rebase origin/master
           else
-            git checkout -b maimai-staging
+            git checkout -b maimai/intl origin/master
           fi
-
-          # git pull origin maimai-staging
-          # git push --force --set-upstream origin maimai-staging
 
       - name: Run wiki script and capture output
         run: |
@@ -55,13 +56,10 @@ jobs:
       - name: Extract datestamp from script output
         id: extract_date
         run: |
-          # echo "datestamp=$(cat maimai/data/music-ex.json | jq '.[-1].date | tonumber')" >> "$GITHUB_OUTPUT"
           echo "datestamp=$(date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
 
       - name: Commit changes
         id: commit_changes
-        env:
-          UNIQUE_STRING: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           git add .
 
@@ -70,8 +68,8 @@ jobs:
             echo "No changes. Skipping PR request"
           else
             git commit -m "data(maimai): [bot] add international ver. availability data ${{ steps.extract_date.outputs.DATESTAMP }}"
-            git push origin maimai-staging --force-with-lease
-            echo "Commited changes."
+            git push origin maimai/intl --force-with-lease -u
+            echo "Committed changes."
             echo "HAS_DIFFS=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -79,9 +77,9 @@ jobs:
         if: steps.commit_changes.outputs.HAS_DIFFS == 'true'
         run: |
           python scripts/post-pr.py \
-            --head "maimai-staging" \
-            --base "${{ github.ref_name }}" \
-            --title "[Automation] maimai: Update website with updated song data (${{ steps.extract_date.outputs.DATESTAMP }})" \
+            --head "maimai/intl" \
+            --base "master" \
+            --title "[Automation] maimai: Update International ver. availability (${{ steps.extract_date.outputs.DATESTAMP }})" \
             --log-file "output.log"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
