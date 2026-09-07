@@ -20325,7 +20325,8 @@
     "intl": "1",
     "date_added": "20170725",
     "date_updated": "20260403",
-    "date_intl_added": "20170725"
+    "date_intl_added": "20170725",
+    "date_intl_updated": "20260904"
   },
   {
     "sort": "884",
@@ -74697,9 +74698,9 @@
     "dx_lev_mas_notes_break": "41",
     "dx_lev_mas_designer": "はっぴー",
     "wiki_url": "https://gamerch.com/maimai/978373",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20260403",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260904",
     "date": "NEW"
   },
   {
@@ -74798,9 +74799,9 @@
     "dx_lev_mas_notes_break": "147",
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/978380",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20260403",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260904",
     "date": "NEW"
   },
   {
@@ -74848,9 +74849,9 @@
     "dx_lev_mas_notes_break": "31",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/978377",
-    "intl": "0",
+    "intl": "1",
     "date_added": "20260403",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260904",
     "date": "NEW"
   },
   {
@@ -75199,10 +75200,10 @@
     "dx_lev_mas_notes_break": "82",
     "dx_lev_mas_designer": "Jack",
     "wiki_url": "https://gamerch.com/maimai/985004",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
     "date_added": "20260508",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260821",
     "date": "NEW"
   },
   {
@@ -75250,10 +75251,10 @@
     "dx_lev_mas_notes_break": "46",
     "dx_lev_mas_designer": "サファ太",
     "wiki_url": "https://gamerch.com/maimai/985003",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
     "date_added": "20260508",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260821",
     "date": "NEW"
   },
   {
@@ -75301,10 +75302,10 @@
     "dx_lev_mas_notes_break": "31",
     "dx_lev_mas_designer": "Luxizhel",
     "wiki_url": "https://gamerch.com/maimai/985002",
-    "intl": "0",
+    "intl": "1",
     "key": "○",
     "date_added": "20260508",
-    "date_intl_added": "000000",
+    "date_intl_added": "20260821",
     "date": "NEW"
   },
   {
