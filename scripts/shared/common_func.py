@@ -348,7 +348,7 @@ def get_songs_from_diffs(song_list, diffs_log, identifier):
 
     return target_song_list
 
-def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
+def update_song_key(song, key, new_data, remove_comma=False, diff_count=None, overwrite=False):
 
     # skip if new data is placeholder or empty
     if new_data in ['？', '?', '??', '???', '-', '']:
@@ -360,12 +360,13 @@ def update_song_key(song, key, new_data, remove_comma=False, diff_count=None):
         if song[key] == new_data:
             return
         # skip if dest already has a valid value (other than ?) AND force overwrite is not set
-        if (song[key] != '' and song[key] not in ['？', '?']) and not game.ARGS.overwrite:
+        if (song[key] != '' and song[key] not in ['？', '?']) and not (game.ARGS.overwrite or overwrite):
             return
 
     # Write
     song[key] = new_data
-    diff_count[0] += 1
+    if diff_count is not None:
+        diff_count[0] += 1
 
     if remove_comma:
         song[key] = song[key].replace(',', '')

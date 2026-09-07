@@ -5,7 +5,7 @@ from shared.common_func import *
 
 def main():
     game.GAME_MODULE.wiki.update_songs_extra_data()
-    # renew_lastupdated(game.GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_INDEX_HTML_PATH, args)
+    renew_lastupdated('jp', game.GAME_MODULE.paths.LOCAL_MUSIC_EX_JSON_PATH, game.GAME_MODULE.paths.LOCAL_META_PUG_PATH)
 
 
 if __name__ == "__main__":

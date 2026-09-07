@@ -284,8 +284,8 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
 
             if not formatted_date == '':
                 diff_count = [0]
-                update_song_key(song, 'date_added', formatted_date, diff_count=diff_count)
-                update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count)
+                update_song_key(song, 'date_added', formatted_date, diff_count=diff_count, overwrite=True)
+                update_song_key(song, 'version', _guess_version(formatted_date), diff_count=diff_count, overwrite=True)
 
                 if diff_count[0] > 0:
                     lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
