@@ -235,7 +235,6 @@ def sync_json_data():
 def is_cloudflare_challenge_response(resp):
     body = resp.text.lower()
     challenge_markers = (
-        "/cdn-cgi/challenge-platform",
         "cf-mitigated",
         "just a moment...",
         "attention required!",
@@ -272,6 +271,8 @@ def fetch_remywiki_parse_json(page_name, wiki_api_url):
 
     print_message(f"Request URL: {wiki_api_url}", bcolors.ENDC, log=True, is_verbose=True)
 
+    fallback_page_html = None
+
     # First try: requests session with browser-like headers and retry.
     with requests.Session() as session:
         session.headers.update(request_headers)
@@ -279,7 +280,10 @@ def fetch_remywiki_parse_json(page_name, wiki_api_url):
         for attempt in range(1, 4):
             try:
                 # Warm up session/cookies on article page before API call.
-                session.get(main_page_url, timeout=10, allow_redirects=True)
+                page_resp = session.get(main_page_url, timeout=10, allow_redirects=True)
+                if page_resp.status_code == 200 and not is_cloudflare_challenge_response(page_resp):
+                    fallback_page_html = page_resp.text
+
                 resp = session.get(
                     wiki_api_url,
                     timeout=10,
@@ -316,18 +320,40 @@ def fetch_remywiki_parse_json(page_name, wiki_api_url):
         try:
             scraper = cloudscraper.create_scraper(browser={"browser": "chrome", "platform": "windows", "mobile": False})
             scraper.headers.update(request_headers)
-            scraper.get(main_page_url, timeout=10, allow_redirects=True)
+            page_resp = scraper.get(main_page_url, timeout=10, allow_redirects=True)
+            if page_resp.status_code == 200 and not is_cloudflare_challenge_response(page_resp):
+                fallback_page_html = page_resp.text
+
             resp = scraper.get(wiki_api_url, timeout=10, params=api_params, allow_redirects=True)
 
             if is_cloudflare_challenge_response(resp):
-                print_message("Cloudflare challenge remains after cloudscraper fallback", bcolors.FAIL, log=True)
-                return None
-
-            data = resp.json()
-            if "parse" in data and "text" in data["parse"]:
-                return data
+                print_message("Cloudflare challenge remains after cloudscraper fallback", bcolors.WARNING, log=True)
+            else:
+                data = resp.json()
+                if "parse" in data and "text" in data["parse"]:
+                    return data
         except Exception as e:
             print_message(f"cloudscraper fallback failed: {e}", bcolors.FAIL, log=True)
+
+    if not fallback_page_html:
+        try:
+            with requests.Session() as session:
+                session.headers.update(request_headers)
+                page_resp = session.get(main_page_url, timeout=10, allow_redirects=True)
+                if page_resp.status_code == 200 and not is_cloudflare_challenge_response(page_resp):
+                    fallback_page_html = page_resp.text
+        except requests.RequestException:
+            pass
+
+    if fallback_page_html:
+        print_message("Falling back to parsing RemyWiki article page HTML directly", bcolors.WARNING, log=True)
+        return {
+            "parse": {
+                "text": {
+                    "*": fallback_page_html
+                }
+            }
+        }
 
     print_message("Failed to fetch RemyWiki content due to Cloudflare/browser checks", bcolors.FAIL, log=True)
     return None
