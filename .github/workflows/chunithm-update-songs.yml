@@ -67,7 +67,7 @@ jobs:
             # Create or switch to branch while carrying working tree changes
             git fetch origin
             if git show-ref --quiet "refs/remotes/origin/$BRANCH_NAME"; then
-              git stash
+              git stash -u
               git switch "$BRANCH_NAME"
               git pull origin "$BRANCH_NAME"
               git stash pop || true
