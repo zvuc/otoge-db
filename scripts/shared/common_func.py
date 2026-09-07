@@ -83,7 +83,7 @@ def print_message(message, color_name='', args=None, log=False, is_verbose=False
     if not args.no_timestamp:
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' '
 
-    if args.escape:
+    if args.escape and not args.markdown:
         message = message.replace("\\", "\\\\").replace("\"", "\\\"").replace("'", r"\'")
 
     # is header

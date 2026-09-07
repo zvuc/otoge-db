@@ -46,7 +46,7 @@ jobs:
 
       - name: Run main script and capture output
         run: |
-          python -u scripts/update-songs.py --maimai --nocolors --escape --markdown --no_timestamp --no_verbose 2>&1 | tee output.log
+          python -u scripts/update-songs.py --maimai --nocolors --markdown --no_timestamp --no_verbose 2>&1 | tee output.log
 
       - name: Extract datestamp and prepare branch
         id: prepare_branch
@@ -81,8 +81,8 @@ jobs:
         run: |
           DATESTAMP="${{ steps.prepare_branch.outputs.datestamp }}"
           {
-            python -u scripts/update-wiki-data.py --maimai --date "$DATESTAMP" --nocolors --escape --markdown --noskip --no_timestamp --no_verbose || true
-            python -u scripts/update-const.py --maimai --date "$DATESTAMP" --nocolors --escape --markdown --no_timestamp --no_verbose || true
+            python -u scripts/update-wiki-data.py --maimai --date "$DATESTAMP" --nocolors --markdown --noskip --no_timestamp --no_verbose || true
+            python -u scripts/update-const.py --maimai --date "$DATESTAMP" --nocolors --markdown --no_timestamp --no_verbose || true
           } 2>&1 | tee -a output.log
 
       - name: Commit and push changes
