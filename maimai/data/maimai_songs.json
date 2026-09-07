@@ -21126,7 +21126,6 @@
   {
     "artist": "しーけー",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -21141,7 +21140,6 @@
   {
     "artist": "HyuN feat. ウォルピスカーター",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -21156,7 +21154,6 @@
   {
     "artist": "cybermiso feat. tigerlily",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11",
@@ -21172,7 +21169,6 @@
   {
     "artist": "ARForest",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "11+",
@@ -21184,6 +21180,51 @@
     "title": "Inverted World",
     "title_kana": "INVERTEDWORLD",
     "version": "26514"
+  },
+  {
+    "artist": "Idios",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "1495ded4d5b6a2d0.png",
+    "release": "260904",
+    "sort": "6",
+    "title": "相性×優勝ドロップス",
+    "title_kana": "アイシヨウユウシヨウトロツフス",
+    "version": "26515"
+  },
+  {
+    "artist": "Guiano",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "12+",
+    "image_url": "666702b28b895e23.png",
+    "release": "260904",
+    "sort": "129",
+    "title": "光線歌",
+    "title_kana": "コウセンカ",
+    "version": "26515"
+  },
+  {
+    "artist": "桃寝ちのい",
+    "catcode": "niconico＆ボーカロイド",
+    "date": "NEW",
+    "dx_lev_bas": "2",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "76c1ff8a2741cd05.png",
+    "release": "260904",
+    "sort": "130",
+    "title": "電脳眠眠猫",
+    "title_kana": "テンノウミエンミエンマオ",
+    "version": "26515"
   },
   {
     "artist": "Camellia ft. Petra Gurin「In Falsus」",
