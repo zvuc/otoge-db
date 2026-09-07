@@ -2764,6 +2764,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.3.16":
+  version: 3.3.18
+  resolution: "nanoid@npm:3.3.18"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: db804317d337b41602666f23014e399d1263033d13a903955c246378256fd4e002519e87199ca40b19aff52274965ac7cc6e70c13a63e194e15c4664724602d3
+  languageName: node
+  linkType: hard
+
 "native-request@npm:^1.0.5":
   version: 1.1.2
   resolution: "native-request@npm:1.1.2"
@@ -2952,7 +2961,7 @@ __metadata:
     esbuild: ^0.28.2
     imageoptim-cli: ^3.0.2
     less: ^3.11.1
-    postcss: ^7.0.39
+    postcss: ^8.5.23
     pug: ^3.0.3
   languageName: unknown
   linkType: soft
@@ -3387,13 +3396,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^7.0.0, postcss@npm:^7.0.1, postcss@npm:^7.0.27, postcss@npm:^7.0.32, postcss@npm:^7.0.39":
+"postcss@npm:^7.0.0, postcss@npm:^7.0.1, postcss@npm:^7.0.27, postcss@npm:^7.0.32":
   version: 7.0.39
   resolution: "postcss@npm:7.0.39"
   dependencies:
     picocolors: ^0.2.1
     source-map: ^0.6.1
   checksum: 4ac793f506c23259189064bdc921260d869a115a82b5e713973c5af8e94fbb5721a5cc3e1e26840500d7e1f1fa42a209747c5b1a151918a9bc11f0d7ed9048e3
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.23":
+  version: 8.5.23
+  resolution: "postcss@npm:8.5.23"
+  dependencies:
+    nanoid: ^3.3.16
+    picocolors: ^1.1.1
+    source-map-js: ^1.2.1
+  checksum: 02fe0aac9de34914104566b3fe3a29903dc7bae4a3fffffdca1331dc51e14aa62c48e8373fc4d107ef99f8f5cae98199d9a89fbcbf43371693b22a397ff5cc34
   languageName: node
   linkType: hard
 
@@ -3995,6 +4015,13 @@ __metadata:
     socket.io-adapter: ~2.5.2
     socket.io-parser: ~4.2.4
   checksum: 3435d57458813780c0b4b218872ba8a5b840aaf4b72d2e119c6b3eaa89fe492e977d09845f01c237147de2a2a359696c83e91e3f05270c07da7176238f4f4846
+  languageName: node
+  linkType: hard
+
+"source-map-js@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "source-map-js@npm:1.2.1"
+  checksum: 4eb0cd997cdf228bc253bcaff9340afeb706176e64868ecd20efbe6efea931465f43955612346d6b7318789e5265bdc419bc7669c1cebe3db0eb255f57efa76b
   languageName: node
   linkType: hard
 

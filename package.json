@@ -25,7 +25,7 @@
     "esbuild": "^0.28.2",
     "imageoptim-cli": "^3.0.2",
     "less": "^3.11.1",
-    "postcss": "^7.0.39",
+    "postcss": "^8.5.23",
     "pug": "^3.0.3"
   },
   "postcss": {
