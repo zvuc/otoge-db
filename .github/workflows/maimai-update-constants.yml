@@ -13,12 +13,11 @@ jobs:
   fetch_constants:
     name: Fetch latest chart constants
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: 'Asia/Tokyo'
 
     steps:
-      - name: Set timezone
-        run: |
-          sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-          echo "Asia/Tokyo" | sudo tee /etc/timezone
 
       - name: Checkout repository
         uses: actions/checkout@v7
