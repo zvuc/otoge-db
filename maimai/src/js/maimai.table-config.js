@@ -381,7 +381,8 @@ function maimaiRenderVersionName() {
         "25000": "PRiSM",
         "25500": "PRiSM PLUS",
         "26000": "CiRCLE",
-        "26500": "CiRCLE PLUS"
+        "26500": "CiRCLE PLUS",
+        "27000": "MAGiCAL"
       };
 
       let closestVersion = null;
