@@ -12,7 +12,7 @@ Use this checklist whenever a game (maimai / CHUNITHM / オンゲキ) is upgrade
 Example (maimai JP):
 
 ```py
-CURRENT_JP_VER = "CiRCLE PLUS"
+CURRENT_JP_VER = "MAGiCAL"
 ```
 
 ## 2) Update display version in `_{game}_meta.pug`
@@ -25,7 +25,7 @@ CURRENT_JP_VER = "CiRCLE PLUS"
 Example (maimai JP):
 
 ```pug
-- var game_version_display = 'CiRCLE PLUS'
+- var game_version_display = 'MAGiCAL'
 ```
 
 ## 3) Update version mapping in `{game}.table-config.js` (if present)
@@ -37,8 +37,8 @@ Example (maimai JP):
 Example (maimai):
 
 ```js
-"26000": "CiRCLE",
-"26500": "CiRCLE PLUS"
+"26500": "CiRCLE PLUS",
+"27000": "MAGiCAL"
 ```
 
 Note:
@@ -120,7 +120,7 @@ Example:
 ```bash
 rg -n "CURRENT_JP_VER|CURRENT_INTL_VER" scripts/{game}/game.py
 rg -n "game_version_display|game_version_display_intl" {game}/src/pug/_{game}_meta.pug
-rg -n "version_list|CiRCLE PLUS" {game}/src/js/{game}.table-config.js
+rg -n "version_list|MAGiCAL" {game}/src/js/{game}.table-config.js
 rg -n "VERSION_DATES|<NEW_CHUNITHM_VERSION_NAME>" scripts/chunithm/wiki.py
 rg -n "VERSION_MAPPING" scripts/chunithm/chartguide.py
 ```
