@@ -61,17 +61,34 @@ def update_const_data():
         return
 
     total_diffs = [0]
+    change_data = {
+        'rows': {},
+        'songs': set(),
+        'constants_added': 0,
+        'constants_modified': 0
+    }
 
     for song in target_song_list:
-        _update_song_const_data(song, total_diffs)
+        _update_song_const_data(song, total_diffs, change_data)
 
     sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
+    elif game.ARGS.markdown:
+        columns = ['ID', 'Title', 'BAS', 'ADV', 'EXP', 'MAS', 'ULT']
+        print_chart_const_summary_and_table(
+            list(change_data['rows'].values()),
+            len(change_data['songs']),
+            change_data['constants_added'],
+            change_data['constants_modified'],
+            columns
+        )
+    elif len(change_data['songs']) > 30:
+        print_message(f"\nTotal songs updated: {len(change_data['songs'])} (added: {change_data['constants_added']}, modified: {change_data['constants_modified']})", bcolors.BOLD)
 
 
-def _update_song_const_data(song, total_diffs):
+def _update_song_const_data(song, total_diffs, change_data=None):
     header_printed = [0]
     song_id = song['id']
     title = song['title']
@@ -143,42 +160,54 @@ def _update_song_const_data(song, total_diffs):
 
             # If value is valid
             elif re.fullmatch(r'\d+\.\d', value_chart_i):
-                # If lev_xxx_i doesn't exist yet, create it:
-                if key_chart_i not in song:
-                    total_diffs[0] += 1
+                is_empty = key_chart_i not in song or song[key_chart_i] == ""
 
-                    lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-                    print_message(f"Added chart constant ({chart_diff}: {value_chart_i})", bcolors.OKGREEN, log=True)
+                if is_empty:
+                    total_diffs[0] += 1
+                    if change_data is not None:
+                        change_data['songs'].add(song['id'])
+                        change_data['constants_added'] += 1
+                        if song['id'] not in change_data['rows']:
+                            change_data['rows'][song['id']] = {
+                                'id': song['id'],
+                                'title': song['title'],
+                                'diffs': {}
+                            }
+                        change_data['rows'][song['id']]['diffs'][chart_diff] = str(value_chart_i)
+
+                    if not game.ARGS.markdown:
+                        lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+                        print_message(f"Added chart constant ({chart_diff}: {value_chart_i})", bcolors.OKGREEN, log=True)
 
                     song[key_chart_i] = str(value_chart_i)
 
-                # If existing chart const is empty
-                if song[key_chart_i] == "":
-                    total_diffs[0] += 1
-
-                    lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-                    print_message(f"Updated chart constant ({chart_diff}: {value_chart_i})", bcolors.OKGREEN, log=True)
-
-                    song[key_chart_i] = str(value_chart_i)
-
-                # If there is already a value
                 else:
-                    # previous value is different
                     if song[key_chart_i] != str(value_chart_i):
                         if game.ARGS.overwrite:
                             total_diffs[0] += 1
-                            lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-                            print_message(
-                                f"Overwrote chart constant ({chart_diff}: {song[key_chart_i]} → {value_chart_i}) "
-                                f"{f'[Sheet: {found_sheet}]' if not game.ARGS.no_verbose else ''}",
-                                bcolors.WARNING, log=True
-                            )
+                            if change_data is not None:
+                                change_data['songs'].add(song['id'])
+                                change_data['constants_modified'] += 1
+                                if song['id'] not in change_data['rows']:
+                                    change_data['rows'][song['id']] = {
+                                        'id': song['id'],
+                                        'title': song['title'],
+                                        'diffs': {}
+                                    }
+                                change_data['rows'][song['id']]['diffs'][chart_diff] = f"~~{song[key_chart_i]}~~ → {value_chart_i}"
+
+                            if not game.ARGS.markdown:
+                                lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
+                                print_message(
+                                    f"Overwrote chart constant ({chart_diff}: {song[key_chart_i]} → {value_chart_i}) "
+                                    f"{f'[Sheet: {found_sheet}]' if not game.ARGS.no_verbose else ''}",
+                                    bcolors.WARNING, log=True
+                                )
 
                             song[key_chart_i] = str(value_chart_i)
                         else:
                             lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
                             print_message(f"No change ({chart_diff}: {value_chart_i})", bcolors.ENDC, log=True, is_verbose=True)
-                    # value is same
                     else:
                         lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
                         print_message(f"No change ({chart_diff}: {value_chart_i})", bcolors.ENDC, log=True, is_verbose=True)

@@ -42,14 +42,31 @@ def update_const_data():
         return
 
     total_diffs = [0]
+    change_data = {
+        'rows': {},
+        'songs': set(),
+        'constants_added': 0,
+        'constants_modified': 0
+    }
 
     for song in target_song_list:
-        _update_song_with_sgimera_data(song, sgimera_data, total_diffs)
+        _update_song_with_sgimera_data(song, sgimera_data, total_diffs, change_data)
 
     sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
     if total_diffs[0] == 0:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
+    elif game.ARGS.markdown:
+        columns = ['ID', 'Title', 'Type', 'BAS', 'ADV', 'EXP', 'MAS', 'Re:MAS']
+        print_chart_const_summary_and_table(
+            list(change_data['rows'].values()),
+            len(change_data['songs']),
+            change_data['constants_added'],
+            change_data['constants_modified'],
+            columns
+        )
+    elif len(change_data['songs']) > 30:
+        print_message(f"\nTotal songs updated: {len(change_data['songs'])} (added: {change_data['constants_added']}, modified: {change_data['constants_modified']})", bcolors.BOLD)
 
 
 def _fetch_js_data(url):
@@ -129,7 +146,7 @@ def _match_entry(target_entry, entry, song, dx_type=None):
     elif entry['dx'] == 1:
         target_entry['lv_dx'] = entry['lv']
 
-def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
+def _update_song_with_sgimera_data(song, sgimera_data, total_diffs, change_data=None):
     header_printed = [0]
 
     if 'lev_utage' in song:
@@ -222,40 +239,65 @@ def _update_song_with_sgimera_data(song, sgimera_data, total_diffs):
                 continue # Skip 7+ cases
             chart_const = float(base_level_str)
 
+        diff_map = {'bas': 'BAS', 'adv': 'ADV', 'exp': 'EXP', 'mas': 'MAS', 'remas': 'Re:MAS'}
+        if chart_key.startswith('dx_'):
+            chart_type = 'DX'
+            raw_diff = chart_key.replace('dx_lev_', '')
+        else:
+            chart_type = 'STD'
+            raw_diff = chart_key.replace('lev_', '')
+        diff_name = diff_map.get(raw_diff, raw_diff.upper())
+
         chart_key += "_i"
 
-        # If lev_xxx_i doesn't exist yet, create it:
-        if chart_key not in song:
-            total_diffs[0] += 1
+        is_empty = chart_key not in song or song[chart_key] == ""
 
-            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
-            print_message(f"Added chart constant ({chart_key}: {chart_const})", bcolors.OKGREEN, log=True)
+        if is_empty:
+            total_diffs[0] += 1
+            if change_data is not None:
+                change_data['songs'].add(song['sort'])
+                change_data['constants_added'] += 1
+                key = (song['sort'], chart_type)
+                if key not in change_data['rows']:
+                    change_data['rows'][key] = {
+                        'id': song['sort'],
+                        'title': song['title'],
+                        'type': chart_type,
+                        'diffs': {}
+                    }
+                change_data['rows'][key]['diffs'][diff_name] = str(chart_const)
+
+            if not game.ARGS.markdown:
+                lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+                print_message(f"Added chart constant ({chart_key}: {chart_const})", bcolors.OKGREEN, log=True)
 
             song[chart_key] = str(chart_const)
 
-        # If existing chart const is empty
-        if song[chart_key] == "":
-            total_diffs[0] += 1
-
-            lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
-            print_message(f"Updated chart constant ({chart_key}: {chart_const})", bcolors.OKGREEN, log=True)
-
-            song[chart_key] = str(chart_const)  # Update song with the sgimera level constant
-
-        # If there is already a value
         else:
-            # previous value is different
             if song[chart_key] != str(chart_const):
                 if game.ARGS.overwrite:
                     total_diffs[0] += 1
-                    lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
-                    print_message(f"Overwrote chart constant ({chart_key}: {song[chart_key]} → {chart_const})", bcolors.WARNING, log=True)
+                    if change_data is not None:
+                        change_data['songs'].add(song['sort'])
+                        change_data['constants_modified'] += 1
+                        key = (song['sort'], chart_type)
+                        if key not in change_data['rows']:
+                            change_data['rows'][key] = {
+                                'id': song['sort'],
+                                'title': song['title'],
+                                'type': chart_type,
+                                'diffs': {}
+                            }
+                        change_data['rows'][key]['diffs'][diff_name] = f"~~{song[chart_key]}~~ → {chart_const}"
 
-                    song[chart_key] = str(chart_const)  # Update song with the sgimera level constant
+                    if not game.ARGS.markdown:
+                        lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True)
+                        print_message(f"Overwrote chart constant ({chart_key}: {song[chart_key]} → {chart_const})", bcolors.WARNING, log=True)
+
+                    song[chart_key] = str(chart_const)
                 else:
                     lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
                     print_message(f"No change ({chart_key}: {chart_const})", bcolors.ENDC, log=True, is_verbose=True)
-            # value is same
             else:
                 lazy_print_song_header(f"{song['sort']}, {song['title']}, {song['version']}", header_printed, log=True, is_verbose=True)
                 print_message(f"No change ({chart_key}: {chart_const})", bcolors.ENDC, log=True, is_verbose=True)

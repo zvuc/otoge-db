@@ -714,3 +714,30 @@ def smart_match(region, title_or_artist, target_song, wiki_song, header_printed)
         return True
 
     return False
+
+def print_chart_const_summary_and_table(rows, songs_count, constants_added, constants_modified, columns):
+    if songs_count > 30:
+        print_message("Summary", 'H3', log=True)
+        print_message(f"- **Songs updated:** {songs_count}", log=True)
+        print_message(f"- **Constants added:** {constants_added}", log=True)
+        print_message(f"- **Constants modified:** {constants_modified}", log=True)
+        print_message("", log=True)
+
+    header = "| " + " | ".join(columns) + " |"
+    sep = "|" + "|".join([":---" if col in ('ID', 'Title') else ":---:" for col in columns]) + "|"
+    print_message(header, log=True)
+    print_message(sep, log=True)
+
+    for row in rows:
+        row_cells = []
+        for col in columns:
+            if col == 'ID':
+                row_cells.append(str(row.get('id', '')))
+            elif col == 'Title':
+                safe_title = str(row.get('title', '')).replace('|', r'\|')
+                row_cells.append(safe_title)
+            elif col == 'Type':
+                row_cells.append(str(row.get('type', '')))
+            else:
+                row_cells.append(str(row.get('diffs', {}).get(col, '-')))
+        print_message("| " + " | ".join(row_cells) + " |", log=True)
