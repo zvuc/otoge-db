@@ -1,5 +1,5 @@
 from shared.common_func import get_prev_ver_json_path
-from . import game
+from .game import CURRENT_INTL_VER
 
 SERVER_MUSIC_DATA_URL = "https://chunithm.sega.jp/storage/json/music.json"
 SERVER_MUSIC_JACKET_BASE_URL = "https://new.chunithm-net.com/chuni-mobile/html/mobile/img/"
@@ -8,7 +8,7 @@ LOCAL_MUSIC_JSON_PATH = "chunithm/data/music.json"
 LOCAL_INTL_MUSIC_JSON_PATH = "chunithm/data/music-intl.json"
 LOCAL_MUSIC_EX_JSON_PATH = "chunithm/data/music-ex.json"
 LOCAL_INTL_MUSIC_EX_JSON_PATH = "chunithm/data/music-ex-intl.json"
-LOCAL_MUSIC_EX_PREV_VER_JSON_PATH = get_prev_ver_json_path("chunithm", game.CURRENT_INTL_VER)
+LOCAL_MUSIC_EX_PREV_VER_JSON_PATH = get_prev_ver_json_path("chunithm", CURRENT_INTL_VER)
 LOCAL_MUSIC_EX_DELETED_JSON_PATH = "chunithm/data/music-ex-deleted.json"
 LOCAL_DIFFS_LOG_PATH = "chunithm/diffs.txt"
 LOCAL_ERROR_LOG_PATH = "chunithm/errors.txt"

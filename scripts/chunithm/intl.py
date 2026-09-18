@@ -554,7 +554,8 @@ def add_intl_info():
             if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
                 # cross check if JP song (latest ver. data) says the song is not yet in INTL
                 if jp_prev_ver_song_matched:
-                    local_intl_music_ex_data.append(matched_jp_song)
+                    song_to_copy = copy.deepcopy(matched_jp_song if jp_song_matched else matched_jp_prev_ver_song)
+                    local_intl_music_ex_data.append(song_to_copy)
                     matched_intl_song = local_intl_music_ex_data[-1]
                     intl_song_matched = True
                     _sync_jp_to_intl_song('full_copy', matched_jp_prev_ver_song, matched_intl_song, matched_intl_song_pre_update, title, header_printed, only_ultima, wiki_song, match_prev_ver=True)
