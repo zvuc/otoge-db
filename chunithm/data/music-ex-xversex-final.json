@@ -49,7 +49,7 @@
     "lev_mas_chart_link": "09/09001mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ALIVE",
-    "intl": "1",
+    "intl": "0",
     "date_added": "20231214",
     "date_intl_added": "20240321"
   },
@@ -30473,7 +30473,8 @@
     "intl": "1",
     "date_added": "20160825",
     "date_updated": "20260401",
-    "date_intl_added": "20201126"
+    "date_intl_added": "20201126",
+    "date_intl_updated": "20260716"
   },
   {
     "id": "319",
@@ -31927,7 +31928,8 @@
     "intl": "1",
     "date_added": "20190110",
     "date_updated": "20260401",
-    "date_intl_added": "20220303"
+    "date_intl_added": "20220303",
+    "date_intl_updated": "20260716"
   },
   {
     "id": "679",
@@ -88319,8 +88321,9 @@
     "lev_we_chart_link": "end/10002end",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260219"
+    "intl": "1",
+    "date_added": "20260219",
+    "date_intl_added": "20260618"
   },
   {
     "id": "8318",
@@ -88348,8 +88351,9 @@
     "lev_we_chart_link": "end/07132end",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260219"
+    "intl": "1",
+    "date_added": "20260219",
+    "date_intl_added": "20260618"
   },
   {
     "id": "2943",
@@ -88538,8 +88542,9 @@
     "lev_we_chart_link": "end/03172end3",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260219"
+    "intl": "1",
+    "date_added": "20260219",
+    "date_intl_added": "20260618"
   },
   {
     "id": "2942",
@@ -88805,8 +88810,9 @@
     "lev_mas_chart_link": "07/07120mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Chasing destiny",
-    "intl": "0",
-    "date_added": "20260305"
+    "intl": "1",
+    "date_added": "20260305",
+    "date_intl_added": "20260702"
   },
   {
     "id": "2948",
@@ -88858,8 +88864,9 @@
     "lev_mas_chart_link": "10/10232mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/THE TRiANGLE",
-    "intl": "0",
-    "date_added": "20260305"
+    "intl": "1",
+    "date_added": "20260305",
+    "date_intl_added": "20260730"
   },
   {
     "id": "2945",
@@ -88911,8 +88918,9 @@
     "lev_mas_chart_link": "10/10228mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/無敵的ハピネス！(SOS団5人Ver.)",
-    "intl": "0",
-    "date_added": "20260305"
+    "intl": "1",
+    "date_added": "20260305",
+    "date_intl_added": "20260702"
   },
   {
     "id": "2949",
@@ -89018,8 +89026,9 @@
     "lev_mas_chart_link": "10/10230mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Colorful Starting Line",
-    "intl": "0",
-    "date_added": "20260305"
+    "intl": "1",
+    "date_added": "20260305",
+    "date_intl_added": "20260702"
   },
   {
     "id": "2955",
@@ -89071,8 +89080,9 @@
     "lev_mas_chart_link": "10/10231mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Future Refrain",
-    "intl": "0",
-    "date_added": "20260305"
+    "intl": "1",
+    "date_added": "20260305",
+    "date_intl_added": "20260702"
   },
   {
     "id": "2953",
@@ -89124,8 +89134,9 @@
     "lev_mas_chart_link": "10/10237mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Fly Better!",
-    "intl": "0",
-    "date_added": "20260319"
+    "intl": "1",
+    "date_added": "20260319",
+    "date_intl_added": "20260716"
   },
   {
     "id": "2951",
@@ -89177,8 +89188,9 @@
     "lev_mas_chart_link": "10/10235mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/パステル・シタイ！",
-    "intl": "0",
-    "date_added": "20260319"
+    "intl": "1",
+    "date_added": "20260319",
+    "date_intl_added": "20260716"
   },
   {
     "id": "2952",
@@ -89230,8 +89242,9 @@
     "lev_mas_chart_link": "10/10236mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/彩祭ワンダーワン！",
-    "intl": "0",
-    "date_added": "20260319"
+    "intl": "1",
+    "date_added": "20260319",
+    "date_intl_added": "20260716"
   },
   {
     "id": "8078",
@@ -89341,8 +89354,9 @@
     "lev_mas_chart_link": "10/10238mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Phantom Crisis",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260716"
   },
   {
     "id": "8180",
@@ -89457,8 +89471,9 @@
     "lev_we_chart_link": "end/10174end",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260730"
   },
   {
     "id": "8259",
@@ -89568,8 +89583,9 @@
     "lev_mas_chart_link": "10/10241mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ふぁんぶる！",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260730"
   },
   {
     "id": "8322",
@@ -89597,8 +89613,9 @@
     "lev_we_chart_link": "end/10081end",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260730"
   },
   {
     "id": "2956",
@@ -89650,8 +89667,9 @@
     "lev_mas_chart_link": "10/10240mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ウルトラトレーラー",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260730"
   },
   {
     "id": "8321",
@@ -89679,8 +89697,9 @@
     "lev_we_chart_link": "end/10242end",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260730"
   },
   {
     "id": "8146",
@@ -89824,8 +89843,9 @@
     "lev_we_chart_link": "end/10068end",
     "version": "X-VERSE-X",
     "wikiwiki_url": "",
-    "intl": "0",
-    "date_added": "20260401"
+    "intl": "1",
+    "date_added": "20260401",
+    "date_intl_added": "20260730"
   },
   {
     "id": "2958",
@@ -89959,8 +89979,9 @@
     "lev_mas_chart_link": "10/10246mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/New Starlight",
-    "intl": "0",
-    "date_added": "20260416"
+    "intl": "1",
+    "date_added": "20260416",
+    "date_intl_added": "20260806"
   },
   {
     "id": "2962",
@@ -90012,8 +90033,9 @@
     "lev_mas_chart_link": "10/10243mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/バンバード ～Piano Version～",
-    "intl": "0",
-    "date_added": "20260416"
+    "intl": "1",
+    "date_added": "20260416",
+    "date_intl_added": "20260806"
   },
   {
     "id": "2959",
@@ -90065,8 +90087,9 @@
     "lev_mas_chart_link": "10/10244mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/無双の咆哮 Warcry Overload",
-    "intl": "0",
-    "date_added": "20260416"
+    "intl": "1",
+    "date_added": "20260416",
+    "date_intl_added": "20260806"
   },
   {
     "id": "2960",
@@ -90118,8 +90141,9 @@
     "lev_mas_chart_link": "10/10245mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/God only knows",
-    "intl": "0",
-    "date_added": "20260416"
+    "intl": "1",
+    "date_added": "20260416",
+    "date_intl_added": "20260806"
   },
   {
     "id": "2964",
@@ -90171,8 +90195,9 @@
     "lev_mas_chart_link": "10/10248mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/EFX",
-    "intl": "0",
-    "date_added": "20260423"
+    "intl": "1",
+    "date_added": "20260423",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2963",
@@ -90224,8 +90249,9 @@
     "lev_mas_chart_link": "10/10247mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Beenden",
-    "intl": "0",
-    "date_added": "20260423"
+    "intl": "1",
+    "date_added": "20260423",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2965",
@@ -90277,8 +90303,9 @@
     "lev_mas_chart_link": "10/10249mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/薄明のクオリア",
-    "intl": "0",
-    "date_added": "20260423"
+    "intl": "1",
+    "date_added": "20260423",
+    "date_intl_added": "20260820"
   },
   {
     "id": "3002",
@@ -90330,8 +90357,9 @@
     "lev_mas_chart_link": "10/10267mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/うたかたよいかないで",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260903"
   },
   {
     "id": "2982",
@@ -90383,8 +90411,9 @@
     "lev_mas_chart_link": "10/10269mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/愛して愛して愛して",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260903"
   },
   {
     "id": "2981",
@@ -90436,8 +90465,9 @@
     "lev_mas_chart_link": "10/10268mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/花弁、それにまつわる音声",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260903"
   },
   {
     "id": "2971",
@@ -90489,8 +90519,9 @@
     "lev_mas_chart_link": "10/10255mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/聖者の息吹",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2966",
@@ -90542,8 +90573,9 @@
     "lev_mas_chart_link": "10/10250mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/月葬",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2976",
@@ -90595,8 +90627,9 @@
     "lev_mas_chart_link": "10/10260mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/DESTRUCTION 3,2,1",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2979",
@@ -90648,8 +90681,9 @@
     "lev_mas_chart_link": "10/10265mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/キスキツネ",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260903"
   },
   {
     "id": "2970",
@@ -90701,8 +90735,9 @@
     "lev_mas_chart_link": "10/10254mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/†渚の小悪魔ラヴリィ～レイディオ†",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2968",
@@ -90754,8 +90789,9 @@
     "lev_mas_chart_link": "10/10252mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/PANDORA PARADOXXX",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2974",
@@ -90807,8 +90843,9 @@
     "lev_mas_chart_link": "10/10258mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Marigold",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2980",
@@ -90869,8 +90906,9 @@
     "lev_ult_chart_link": "ult/10266ult",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/WWW",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260903"
   },
   {
     "id": "2972",
@@ -90922,8 +90960,9 @@
     "lev_mas_chart_link": "10/10256mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/超MANJIラッシュ",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2975",
@@ -90975,8 +91014,9 @@
     "lev_mas_chart_link": "10/10259mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/glory MAX -to the MAXimum-",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2977",
@@ -91028,8 +91068,9 @@
     "lev_mas_chart_link": "10/10261mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Ré：Ré",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2973",
@@ -91081,8 +91122,9 @@
     "lev_mas_chart_link": "10/10257mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Lips XTC -Sorist Remix-",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2978",
@@ -91134,8 +91176,9 @@
     "lev_mas_chart_link": "10/10262mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ALTER EGO",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2969",
@@ -91187,8 +91230,9 @@
     "lev_mas_chart_link": "10/10253mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/μ3",
-    "intl": "0",
-    "date_added": "20260514"
+    "intl": "1",
+    "date_added": "20260514",
+    "date_intl_added": "20260820"
   },
   {
     "id": "2987",
@@ -91240,8 +91284,9 @@
     "lev_mas_chart_link": "10/10274mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Imprinting",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2985",
@@ -91293,8 +91338,9 @@
     "lev_mas_chart_link": "10/10272mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Amatsu",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2983",
@@ -91346,8 +91392,9 @@
     "lev_mas_chart_link": "10/10270mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/BANG!",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2984",
@@ -91399,8 +91446,9 @@
     "lev_mas_chart_link": "10/10271mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/All Over Again",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2986",
@@ -91452,8 +91500,9 @@
     "lev_mas_chart_link": "10/10273mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Reverie ft. xia",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2988",
