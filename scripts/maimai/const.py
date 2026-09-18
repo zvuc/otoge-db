@@ -6,10 +6,12 @@ import re
 from bs4 import BeautifulSoup
 from shared.common_func import *
 from maimai.paths import *
+from maimai.game import CURRENT_JP_VER
 from datetime import datetime
 from math import log2
 
-SGIMERA_URL = 'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_circleplus__.js'
+SGIMERA_VERSION = re.sub(r'[\s_\-]+', '', CURRENT_JP_VER.lower())
+SGIMERA_URL = f'https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_{SGIMERA_VERSION}__.js'
 # SGIMERA_URL = 'https://gist.githubusercontent.com/myjian/f059331eb9daefeb0dc57ce15e6f73e9/raw/'
 
 
@@ -30,7 +32,14 @@ def update_const_data():
         return
 
     sgimera_js = _fetch_js_data(SGIMERA_URL)
+    if not sgimera_js:
+        print_message("(Nothing updated)", bcolors.ENDC, log=True)
+        return
+
     sgimera_data = _parse_sgimera_data(sgimera_js)
+    if not sgimera_data:
+        print_message("(Nothing updated)", bcolors.ENDC, log=True)
+        return
 
     total_diffs = [0]
 
@@ -44,13 +53,23 @@ def update_const_data():
 
 
 def _fetch_js_data(url):
-    response = requests.get(url)
-    response.raise_for_status()
-    return response.text
+    try:
+        response = requests.get(url)
+        if response.status_code == 404:
+            print_message(f"Source file does not exist yet ({url})", bcolors.WARNING, log=True)
+            return None
+        response.raise_for_status()
+        return response.text
+    except requests.exceptions.RequestException as e:
+        print_message(f"Failed to fetch data from {url}: {e}", bcolors.WARNING, log=True)
+        return None
 
 
 # Function to parse data from SGIMERA_URL
 def _parse_sgimera_data(js_content):
+    if not js_content:
+        return []
+
     sgimera_data = []
 
     # Parse for legacy format (no decoding needed)
@@ -73,7 +92,7 @@ def _parse_sgimera_data(js_content):
         in_lv_data = re.search(r"var in_lv = \(.*?\)\?\[(.*?)\]:\[];", js_content, re.DOTALL)
 
         if not in_lv_data:
-            return {}
+            return []
 
         entries = re.finditer(
             r"\{dx:(\d+), v:(?:\s|)(\d+), lv:\[(.*?)\], n:`(.*?)`(?:, nn:`(.*?)`|), ico:`(.*?)`(?:, olv:(.*?)|)\}",
