@@ -49,7 +49,7 @@
     "lev_mas_chart_link": "09/09001mst",
     "version": "LUMINOUS",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/ALIVE",
-    "intl": "1",
+    "intl": "0",
     "date_added": "20231214",
     "date_intl_added": "20240321"
   },
@@ -90537,8 +90537,9 @@
     "lev_mas_chart_link": "10/10274mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Imprinting",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2985",
@@ -90590,8 +90591,9 @@
     "lev_mas_chart_link": "10/10272mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Amatsu",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2983",
@@ -90643,8 +90645,9 @@
     "lev_mas_chart_link": "10/10270mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/BANG!",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2984",
@@ -90696,8 +90699,9 @@
     "lev_mas_chart_link": "10/10271mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/All Over Again",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2986",
@@ -90749,8 +90753,9 @@
     "lev_mas_chart_link": "10/10273mst",
     "version": "X-VERSE-X",
     "wikiwiki_url": "https://wikiwiki.jp/chunithmwiki/Reverie ft. xia",
-    "intl": "0",
-    "date_added": "20260528"
+    "intl": "1",
+    "date_added": "20260528",
+    "date_intl_added": "20260917"
   },
   {
     "id": "2988",
