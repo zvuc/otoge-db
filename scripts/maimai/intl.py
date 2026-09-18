@@ -37,6 +37,13 @@ def sync_json_data():
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         dest_music_data = json.load(f)
 
+    deleted_data_changed = [False]
+    local_music_ex_deleted_data = []
+    if os.path.exists(LOCAL_MUSIC_EX_DELETED_JSON_PATH):
+        with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'r', encoding='utf-8') as f:
+            local_music_ex_deleted_data = json.load(f)
+    deleted_music_map = json_to_hash_value_map(local_music_ex_deleted_data)
+
     src_music_map = json_to_hash_value_map(src_music_data)
 
     if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
@@ -92,7 +99,16 @@ def sync_json_data():
                     if existing_song not in removed_songs:
                         print_message(f"- Song does not exist in JP ({game.CURRENT_INTL_VER}) final data but is found in current JP version", bcolors.WARNING)
                     else:
-                        print_message(f"- Warning: Song does not exist in JP ({game.CURRENT_INTL_VER}) final data. Perhaps this song was deleted?", bcolors.FAIL)
+                        deleted_song = deleted_music_map.get(song_hash)
+                        if deleted_song:
+                            dest_music_data.remove(existing_song)
+                            if deleted_song.get('intl') != "0":
+                                deleted_song['intl'] = "0"
+                                deleted_data_changed[0] = True
+                            print_message(f"- Removed song from INTL data (confirmed deleted in JP)", bcolors.OKBLUE, log=True)
+                            total_diffs[0] += 1
+                        else:
+                            print_message(f"- Warning: Song does not exist in JP ({game.CURRENT_INTL_VER}) final data. Perhaps this song was deleted?", bcolors.FAIL)
     else:
         if removed_ids:
             for song in removed_songs:
@@ -102,7 +118,16 @@ def sync_json_data():
 
                 if existing_song:
                     lazy_print_song_header(f"{song['title']}", song_diffs, log=True)
-                    print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
+                    deleted_song = deleted_music_map.get(song_hash)
+                    if deleted_song:
+                        dest_music_data.remove(existing_song)
+                        if deleted_song.get('intl') != "0":
+                            deleted_song['intl'] = "0"
+                            deleted_data_changed[0] = True
+                        print_message(f"- Removed song from INTL data (confirmed deleted in JP)", bcolors.OKBLUE, log=True)
+                        total_diffs[0] += 1
+                    else:
+                        print_message(f"- Warning: Song does not exist in JP data. Perhaps this song was deleted?", bcolors.FAIL)
 
     # Iterate through updated songs
     # For the list of updated songs, go through each of them in older song list
@@ -227,13 +252,17 @@ def sync_json_data():
                 if key not in song:
                     del dest_song[key]
 
-    if total_diffs[0] == 0:
+    if total_diffs[0] == 0 and not deleted_data_changed[0]:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
     else:
-        sort_and_save_json(dest_music_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
+        if total_diffs[0] > 0:
+            sort_and_save_json(dest_music_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
-        # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-        #     sort_and_save_json(dest_music_data_pre_update, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+            if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+                sort_and_save_json(src_prev_ver_music_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+
+        if deleted_data_changed[0]:
+            sort_and_save_json(local_music_ex_deleted_data, LOCAL_MUSIC_EX_DELETED_JSON_PATH)
 
 def is_cloudflare_challenge_response(resp):
     body = resp.text.lower()
@@ -372,6 +401,7 @@ def add_intl_info():
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
 
+    local_music_ex_prev_ver_data = None
     if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
         if not os.path.exists(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH):
             print_message(f"Previous version archive for JP ({game.CURRENT_INTL_VER}) final data not found at {LOCAL_MUSIC_EX_PREV_VER_JSON_PATH}! Please archive final data for this version.", bcolors.FAIL, log=True)
@@ -381,6 +411,12 @@ def add_intl_info():
 
     with open(LOCAL_INTL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_intl_music_ex_data = json.load(f)
+
+    deleted_data_changed = [False]
+    local_music_ex_deleted_data = []
+    if os.path.exists(LOCAL_MUSIC_EX_DELETED_JSON_PATH):
+        with open(LOCAL_MUSIC_EX_DELETED_JSON_PATH, 'r', encoding='utf-8') as f:
+            local_music_ex_deleted_data = json.load(f)
 
     # Get Wiki page
     wiki_api_url = "https://silentblue.remywiki.com/api.php"
@@ -609,15 +645,120 @@ def add_intl_info():
             lazy_print_song_header(f"{title}", header_printed, log=True)
             print_message(f"- Song not found in JSON file", bcolors.FAIL, log=True)
 
-    if total_diffs[0] == 0:
+    _remove_documented_intl_songs(
+        soup,
+        local_intl_music_ex_data,
+        local_music_ex_data,
+        local_music_ex_prev_ver_data,
+        local_music_ex_deleted_data,
+        total_diffs,
+        deleted_data_changed
+    )
+
+    if total_diffs[0] == 0 and not deleted_data_changed[0]:
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
     else:
-        sort_and_save_json(local_intl_music_ex_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
+        if total_diffs[0] > 0:
+            sort_and_save_json(local_intl_music_ex_data, LOCAL_INTL_MUSIC_EX_JSON_PATH)
 
-        # if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
-        #     sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
+            if game.CURRENT_INTL_VER != game.CURRENT_JP_VER and local_music_ex_prev_ver_data is not None:
+                sort_and_save_json(local_music_ex_prev_ver_data, LOCAL_MUSIC_EX_PREV_VER_JSON_PATH)
 
-        sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
+            sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
+
+        if deleted_data_changed[0]:
+            sort_and_save_json(local_music_ex_deleted_data, LOCAL_MUSIC_EX_DELETED_JSON_PATH)
+
+
+def _remove_documented_intl_songs(soup, local_intl_music_ex_data, local_music_ex_data, local_music_ex_prev_ver_data, local_music_ex_deleted_data, total_diffs, deleted_data_changed):
+    removed_headings = soup.find_all(
+        lambda tag: (
+            (tag.name == 'span' and 'mw-headline' in tag.get('class', []) and tag.get('id', '').startswith('Removed_Songs'))
+            or (tag.name in ['h2', 'h3', 'div'] and tag.get('id', '').startswith('Removed_Songs'))
+        )
+    )
+
+    seen_tables = set()
+    for heading in removed_headings:
+        parent = heading.find_parent(lambda t: t.name in ['h2', 'h3'] or (t.name == 'div' and 'mw-heading' in t.get('class', []))) or heading
+        table = None
+        for el in parent.next_siblings:
+            if not isinstance(el, Tag):
+                continue
+            if el.name in ['h2', 'h3'] or (el.name == 'div' and 'mw-heading' in el.get('class', [])):
+                break
+            if el.name == 'table' and 'bluetable' in el.get('class', []):
+                table = el
+                break
+            child = el.find('table', class_='bluetable')
+            if child:
+                table = child
+                break
+        if table and table not in seen_tables:
+            seen_tables.add(table)
+
+    if not seen_tables:
+        return
+
+    for table in seen_tables:
+        rows = table.find_all('tr')
+        for row in rows:
+            header_printed = [0]
+            song_details = row.find_all('td')
+
+            if len(song_details) <= 1:
+                continue
+
+            first_td_text = song_details[0].get_text(strip=True)
+            if first_td_text in ['Song', 'Basic', 'Launch', 'POPS & ANIME', 'niconico & VOCALOID', '東方Project', 'GAME & VARIETY', 'maimai', 'ONGEKI & CHUNITHM', '宴会場']:
+                continue
+
+            utage_td = row.find('td', style=lambda s: s and ('#dc39b8' in s.lower() or 'utage' in s.lower()))
+            title_a = song_details[0].find('a')
+            title = title_a.text.strip() if title_a else first_td_text
+
+            matched_intl_song = None
+            if utage_td:
+                for song in local_intl_music_ex_data:
+                    if 'lev_utage' in song or 'dx_lev_utage' in song or song.get('kanji'):
+                        if normalize_title(song['title']) == normalize_title(title) or (song.get('kanji') and normalize_title(song['title']) == normalize_title(f"[{song['kanji']}]{title}")):
+                            matched_intl_song = song
+                            break
+            else:
+                wiki_song = {'title': title}
+                for song in local_intl_music_ex_data:
+                    if 'lev_utage' in song or 'dx_lev_utage' in song or song.get('kanji'):
+                        continue
+                    if smart_match('intl', 'title', song, wiki_song, header_printed):
+                        matched_intl_song = song
+                        break
+
+            if matched_intl_song:
+                lazy_print_song_header(f"{title}", header_printed, log=True)
+                local_intl_music_ex_data.remove(matched_intl_song)
+                print_message(f"- Removed song from INTL data (documented on RemyWiki)", bcolors.OKBLUE, log=True)
+                total_diffs[0] += 1
+
+                song_hash = generate_hash_from_keys(matched_intl_song)
+
+                for jp_song in local_music_ex_data:
+                    if generate_hash_from_keys(jp_song) == song_hash:
+                        if jp_song.get('intl') != "0":
+                            jp_song['intl'] = "0"
+                            total_diffs[0] += 1
+
+                if local_music_ex_prev_ver_data is not None:
+                    for prev_song in local_music_ex_prev_ver_data:
+                        if generate_hash_from_keys(prev_song) == song_hash:
+                            if prev_song.get('intl') != "0":
+                                prev_song['intl'] = "0"
+                                total_diffs[0] += 1
+
+                for del_song in local_music_ex_deleted_data:
+                    if generate_hash_from_keys(del_song) == song_hash:
+                        if del_song.get('intl') != "0":
+                            del_song['intl'] = "0"
+                            deleted_data_changed[0] = True
 
 
 
