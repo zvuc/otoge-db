@@ -715,8 +715,10 @@ def smart_match(region, title_or_artist, target_song, wiki_song, header_printed)
 
     return False
 
+MAX_DISPLAY_SONGS = 30
+
 def print_chart_const_summary_and_table(rows, songs_count, constants_added, constants_modified, columns):
-    if songs_count > 30:
+    if songs_count > MAX_DISPLAY_SONGS:
         print_message("Summary", 'H3', log=True)
         print_message(f"- **Songs updated:** {songs_count}", log=True)
         print_message(f"- **Constants added:** {constants_added}", log=True)
@@ -728,7 +730,13 @@ def print_chart_const_summary_and_table(rows, songs_count, constants_added, cons
     print_message(header, log=True)
     print_message(sep, log=True)
 
+    seen_songs = set()
     for row in rows:
+        if songs_count > MAX_DISPLAY_SONGS:
+            if row['id'] not in seen_songs and len(seen_songs) >= MAX_DISPLAY_SONGS:
+                continue
+            seen_songs.add(row['id'])
+
         row_cells = []
         for col in columns:
             if col == 'ID':
@@ -741,3 +749,7 @@ def print_chart_const_summary_and_table(rows, songs_count, constants_added, cons
             else:
                 row_cells.append(str(row.get('diffs', {}).get(col, '-')))
         print_message("| " + " | ".join(row_cells) + " |", log=True)
+
+    if songs_count > MAX_DISPLAY_SONGS:
+        omitted = songs_count - MAX_DISPLAY_SONGS
+        print_message(f"\n> ℹ️ _Showing first {MAX_DISPLAY_SONGS} of {songs_count} songs ({omitted} more songs omitted). See commit diff for complete details._", log=True)
