@@ -59,7 +59,31 @@ Example:
 "NEXT-VERSION": "2026MMDD"
 ```
 
-## 5) Clear constants for the upgraded game/region
+## 5) Archive previous version final data (JP upgrade only)
+
+- When a JP version upgrade occurs, the International version remains on an older version and requires the final dataset of that version to compare chart levels and constant diffs against.
+- Before clearing constants or updating song data for the new JP version, archive the current `{game}/data/music-ex.json` to `{game}/data/music-ex-{version_slug}-final.json`.
+- **Slug naming convention**: Lowercase alphanumeric, replacing `+` with `plus`, and removing spaces and symbols (e.g., `X-VERSE-X` -> `xversex`, `CiRCLE PLUS` -> `circleplus`, `Mate` -> `mate`).
+- The previous version archive path is resolved dynamically via `get_prev_ver_json_path(game_name, version)`.
+
+Examples:
+
+```bash
+# For maimai upgrading from CiRCLE PLUS to MAGiCAL:
+cp maimai/data/music-ex.json maimai/data/music-ex-circleplus-final.json
+
+# For CHUNITHM upgrading from X-VERSE-X to Mate:
+cp chunithm/data/music-ex.json chunithm/data/music-ex-xversex-final.json
+```
+
+Commit the archive file separately:
+
+```bash
+git add {game}/data/music-ex-{version_slug}-final.json
+git commit -m "data({game}): archive {VERSION} final data"
+```
+
+## 6) Clear constants for the upgraded game/region
 
 Run:
 
@@ -81,7 +105,7 @@ yarn clear-const --chunithm --intl
 Note:
 - `ongeki` has no INTL release currently. `--ongeki --intl` will fail by design.
 
-## 6) Update version mapping in `scripts/{game}/chartguide.py` (CHUNITHM only)
+## 7) Update version mapping in `scripts/{game}/chartguide.py` (CHUNITHM only)
 
 - File: `scripts/chunithm/chartguide.py`
 - Find `VERSION_MAPPING` dict.
@@ -95,21 +119,21 @@ Example:
 "Mate": "11"
 ```
 
-## 7) Refresh Theme Colors in `{game}.less`
+## 8) Refresh Theme Colors in `{game}.less`
 
 - File: `{game}/src/pug/_{game}_meta.pug` / `{game}/src/less/{game}.less`
 - Pick theme colors from the official website of the new game version.
 - Assign these to theme color variables (`--color-accent-*`) in `{game}/src/less/{game}.less` to match the brand identity.
 - Refactor light and dark mode rules (e.g. form backgrounds, borders, active states, and buttons) to match the new color scheme, keeping them premium and legible in both theme modes.
 
-## 8) Differentiate International Version Regional Style (If applicable)
+## 9) Differentiate International Version Regional Style (If applicable)
 
 - If the International version sits at the previous version while the JP version upgrades:
   - Uncomment the `:root[data-game-region="intl"]` styles override block in the Less stylesheet.
   - Define the legacy variable groups (e.g. `.variables-legacy-common()`, `.variables-legacy-light()`, `.variables-legacy-dark()`) using the previous version's color scheme.
   - This ensures users see the previous theme on the INTL region page and the new theme on the JP region page.
 
-## 9) Separate Code and Data Commits
+## 10) Separate Code and Data Commits
 
 - Staging and committing changes should always split code changes from generated JSON database files:
   1. Stage and commit code/style changes first (commit prefix: `feat({game}): ...` or `fix({game}): ...`).
@@ -123,4 +147,5 @@ rg -n "game_version_display|game_version_display_intl" {game}/src/pug/_{game}_me
 rg -n "version_list|MAGiCAL" {game}/src/js/{game}.table-config.js
 rg -n "VERSION_DATES|<NEW_CHUNITHM_VERSION_NAME>" scripts/chunithm/wiki.py
 rg -n "VERSION_MAPPING" scripts/chunithm/chartguide.py
+ls -la {game}/data/music-ex-*-final.json
 ```

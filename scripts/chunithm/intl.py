@@ -27,6 +27,9 @@ def sync_json_data():
 
     # If the current INTL and JP ver are not the same, load previous version archive as well
     if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        if not os.path.exists(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH):
+            print_message(f"Previous version archive for JP ({game.CURRENT_INTL_VER}) final data not found at {LOCAL_MUSIC_EX_PREV_VER_JSON_PATH}! Please archive final data for this version.", bcolors.FAIL, log=True)
+            return
         with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'r', encoding='utf-8') as f:
             src_prev_ver_music_data = json.load(f)
 
@@ -386,6 +389,9 @@ def add_intl_info():
         local_music_ex_data = json.load(f)
 
     if game.CURRENT_INTL_VER != game.CURRENT_JP_VER:
+        if not os.path.exists(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH):
+            print_message(f"Previous version archive for JP ({game.CURRENT_INTL_VER}) final data not found at {LOCAL_MUSIC_EX_PREV_VER_JSON_PATH}! Please archive final data for this version.", bcolors.FAIL, log=True)
+            return
         with open(LOCAL_MUSIC_EX_PREV_VER_JSON_PATH, 'r', encoding='utf-8') as f:
             local_music_ex_prev_ver_data = json.load(f)
 

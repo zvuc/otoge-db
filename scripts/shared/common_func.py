@@ -753,3 +753,17 @@ def print_chart_const_summary_and_table(rows, songs_count, constants_added, cons
     if songs_count > MAX_DISPLAY_SONGS:
         omitted = songs_count - MAX_DISPLAY_SONGS
         print_message(f"\n> ℹ️ _Showing first {MAX_DISPLAY_SONGS} of {songs_count} songs ({omitted} more songs omitted). See commit diff for complete details._", log=True)
+
+
+def get_prev_ver_json_path(game_name, version):
+    slug = re.sub(r'[^0-9a-zA-Z]', '', version.lower().replace('+', 'plus'))
+    primary_path = f"{game_name}/data/music-ex-{slug}-final.json"
+    if os.path.exists(primary_path):
+        return primary_path
+
+    slug_hyphen = re.sub(r'[^0-9a-zA-Z]+', '-', version.lower().replace('+', 'plus')).strip('-')
+    hyphen_path = f"{game_name}/data/music-ex-{slug_hyphen}-final.json"
+    if os.path.exists(hyphen_path):
+        return hyphen_path
+
+    return primary_path
