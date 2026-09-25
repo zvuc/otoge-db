@@ -1,8 +1,40 @@
 [
   {
-    "id": "3086",
+    "id": "3057",
     "catname": "POPS & ANIME",
     "newflag": "1",
+    "title": "Your Reality (Kenji Mizuno Remix)",
+    "reading": "YOURREALITYKENJIMIZUNOREMIX",
+    "artist": "Dan Salvato／水野健治",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "14+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "140d3c0253db6498.jpg"
+  },
+  {
+    "id": "3058",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "LaVI-Bavellabion",
+    "reading": "LAVIBAVELLABION",
+    "artist": "三木谷奈々 SLAVE.V-V-R",
+    "lev_bas": "2",
+    "lev_adv": "5",
+    "lev_exp": "9+",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "1c4aa68762d08b13.jpg"
+  },
+  {
+    "id": "3086",
+    "catname": "POPS & ANIME",
+    "newflag": "0",
     "title": "Colossus",
     "reading": "COLOSSUS",
     "artist": "加藤 浩義（ノイジークローク）",
@@ -4314,7 +4346,7 @@
     "lev_adv": "7",
     "lev_exp": "10",
     "lev_mas": "13+",
-    "lev_ult": "",
+    "lev_ult": "15",
     "we_kanji": "",
     "we_star": "",
     "image": "4288ca332c1db6eb.jpg"
@@ -12958,6 +12990,22 @@
     "we_kanji": "",
     "we_star": "",
     "image": "0b01ce1c72e9defc.jpg"
+  },
+  {
+    "id": "3059",
+    "catname": "VARIETY",
+    "newflag": "1",
+    "title": "奇々解体",
+    "reading": "キキカイタイ",
+    "artist": "MURASAKI/かたたかんな",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3b7a809d84a6c9b6.jpg"
   },
   {
     "id": "901",
@@ -26866,7 +26914,7 @@
   {
     "id": "3043",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Prismatic Theory",
     "reading": "PRISMATICTHEORY",
     "artist": "荒谷サトル",
@@ -26882,7 +26930,7 @@
   {
     "id": "3044",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "Knockout Ravebox",
     "reading": "KNOCKOUTRAVEBOX",
     "artist": "Hommarju",
@@ -26898,7 +26946,7 @@
   {
     "id": "3045",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "アンサレステラー",
     "reading": "アンサレステラウ",
     "artist": "花徒めと",
@@ -26914,7 +26962,7 @@
   {
     "id": "3046",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "[IMPERIALDISORDER]",
     "reading": "IMPERIALDISORDER",
     "artist": "Blacklolita",
@@ -26930,7 +26978,7 @@
   {
     "id": "8330",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ヤババイナ",
     "reading": "ヤハハイナ",
     "artist": "さたぱんP",
@@ -26946,7 +26994,7 @@
   {
     "id": "8331",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "黒塗り世界宛て書簡",
     "reading": "クロヌリセカイアテシヨカン",
     "artist": "フロクロ",
@@ -26962,7 +27010,7 @@
   {
     "id": "8332",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "熱異常",
     "reading": "ネツイシヨウ",
     "artist": "いよわ",
