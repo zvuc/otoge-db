@@ -78181,6 +78181,7 @@
     "date": "NEW"
   },
   {
+<<<<<<< Updated upstream
     "sort": "712",
     "title": "The Happycore Idol",
     "title_kana": "THEHAPPYCOREIDOL",
@@ -78341,6 +78342,8 @@
     "date": "NEW"
   },
   {
+=======
+>>>>>>> Stashed changes
     "sort": "713",
     "title": "XODUS",
     "title_kana": "XODUS",
@@ -78356,7 +78359,11 @@
     "dx_lev_mas": "14",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "dx_lev_bas_i": "6.0",
+=======
+    "dx_lev_bas_i": "",
+>>>>>>> Stashed changes
 =======
     "dx_lev_bas_i": "",
 >>>>>>> Stashed changes
@@ -78371,7 +78378,11 @@
     "dx_lev_bas_notes_break": "",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "dx_lev_adv_i": "8.0",
+=======
+    "dx_lev_adv_i": "",
+>>>>>>> Stashed changes
 =======
     "dx_lev_adv_i": "",
 >>>>>>> Stashed changes
@@ -78386,7 +78397,11 @@
     "dx_lev_adv_notes_break": "",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "dx_lev_exp_i": "12.8",
+=======
+    "dx_lev_exp_i": "",
+>>>>>>> Stashed changes
 =======
     "dx_lev_exp_i": "",
 >>>>>>> Stashed changes
@@ -78402,7 +78417,11 @@
     "dx_lev_exp_designer": "",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "dx_lev_mas_i": "14.4",
+=======
+    "dx_lev_mas_i": "",
+>>>>>>> Stashed changes
 =======
     "dx_lev_mas_i": "",
 >>>>>>> Stashed changes
@@ -78418,7 +78437,11 @@
     "dx_lev_mas_designer": "",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "wiki_url": "https://gamerch.com/maimai/1016130",
+=======
+    "wiki_url": "",
+>>>>>>> Stashed changes
 =======
     "wiki_url": "",
 >>>>>>> Stashed changes
@@ -78432,7 +78455,60 @@
     "date": "NEW"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+  },
+  {
+    "sort": "712",
+    "title": "The Happycore Idol",
+    "title_kana": "THEHAPPYCOREIDOL",
+    "artist": "3R2",
+    "catcode": "ゲーム＆バラエティ",
+    "version": "27001",
+    "bpm": "",
+    "image_url": "922bd88061ebb54f.png",
+    "release": "260925",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13+",
+    "dx_lev_bas_i": "",
+    "dx_lev_bas_notes": "",
+    "dx_lev_bas_notes_tap": "",
+    "dx_lev_bas_notes_hold": "",
+    "dx_lev_bas_notes_slide": "",
+    "dx_lev_bas_notes_touch": "",
+    "dx_lev_bas_notes_break": "",
+    "dx_lev_adv_i": "",
+    "dx_lev_adv_notes": "",
+    "dx_lev_adv_notes_tap": "",
+    "dx_lev_adv_notes_hold": "",
+    "dx_lev_adv_notes_slide": "",
+    "dx_lev_adv_notes_touch": "",
+    "dx_lev_adv_notes_break": "",
+    "dx_lev_exp_i": "",
+    "dx_lev_exp_notes": "",
+    "dx_lev_exp_notes_tap": "",
+    "dx_lev_exp_notes_hold": "",
+    "dx_lev_exp_notes_slide": "",
+    "dx_lev_exp_notes_touch": "",
+    "dx_lev_exp_notes_break": "",
+    "dx_lev_exp_designer": "",
+    "dx_lev_mas_i": "",
+    "dx_lev_mas_notes": "",
+    "dx_lev_mas_notes_tap": "",
+    "dx_lev_mas_notes_hold": "",
+    "dx_lev_mas_notes_slide": "",
+    "dx_lev_mas_notes_touch": "",
+    "dx_lev_mas_notes_break": "",
+    "dx_lev_mas_designer": "",
+    "wiki_url": "",
+    "intl": "0",
+    "date_added": "20260925",
+    "date_intl_added": "000000",
+    "date": "NEW"
+>>>>>>> Stashed changes
   },
   {
     "sort": "711",
@@ -78483,6 +78559,9 @@
     "date_added": "20260925",
     "date_intl_added": "000000",
     "date": "NEW"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
