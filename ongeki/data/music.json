@@ -25392,7 +25392,7 @@
     "image_url": "43566f08617cc66b.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260917",
     "title": "Yami Yami",
     "title_sort": "YAMIYAMI",
@@ -25415,7 +25415,7 @@
     "image_url": "0a95f4a54dee0a0a.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260917",
     "title": "ハルシナイト（starring オンゲキシューターズ）",
     "title_sort": "ハルシナイトSTARRINGオンケキシユタス",
@@ -25438,7 +25438,7 @@
     "image_url": "a7e6749fb3ee3d50.png"
   },
   {
-    "new": "NEW",
+    "new": "",
     "date": "20260917",
     "title": "Sugarfull:Overbloom",
     "title_sort": "SUGARFULLOVERBLOOM",
@@ -25459,5 +25459,51 @@
     "lev_mas": "14+",
     "lev_lnt": "",
     "image_url": "d85777f355658014.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20261001",
+    "title": "零號車輛",
+    "title_sort": "リンハオチユリヤン",
+    "artist": "seatrus「Paradigm: Reboot」",
+    "id": "400021",
+    "chap_id": "99154",
+    "chapter": "Paradigm: Reboot",
+    "character": "パラ",
+    "chara_id": "0583",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©TunerGames Ltd.",
+    "lev_bas": "6",
+    "lev_adv": "10",
+    "lev_exc": "13",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "c2515807eee36455.png"
+  },
+  {
+    "new": "NEW",
+    "date": "20261001",
+    "title": "Indelible Scar ",
+    "title_sort": "INDELIBLESCAR",
+    "artist": "Noah「Paradigm: Reboot」",
+    "id": "400020",
+    "chap_id": "99154",
+    "chapter": "Paradigm: Reboot",
+    "character": "パラ",
+    "chara_id": "0583",
+    "category": "VARIETY",
+    "category_id": "04",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "©TunerGames Ltd.",
+    "lev_bas": "6",
+    "lev_adv": "9+",
+    "lev_exc": "13",
+    "lev_mas": "14+",
+    "lev_lnt": "",
+    "image_url": "8d4803f35996a8b5.png"
   }
 ]
