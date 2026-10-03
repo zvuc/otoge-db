@@ -78341,7 +78341,6 @@
     "date": "NEW"
   },
   {
-<<<<<<< Updated upstream
     "sort": "709",
     "title": "Crossfire",
     "title_kana": "CROSSFIRE",
@@ -78443,8 +78442,6 @@
     "date": "NEW"
   },
   {
-=======
->>>>>>> Stashed changes
     "sort": "1028",
     "title": "OV3RCLOCK",
     "title_kana": "OV3RCLOCK",
@@ -78481,7 +78478,6 @@
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
     "dx_lev_mas_i": "",
-<<<<<<< Updated upstream
     "dx_lev_mas_notes": "927",
     "dx_lev_mas_notes_tap": "685",
     "dx_lev_mas_notes_hold": "40",
@@ -78490,118 +78486,6 @@
     "dx_lev_mas_notes_break": "87",
     "dx_lev_mas_designer": "LuxizheLemon",
     "wiki_url": "https://gamerch.com/maimai/1018985",
-=======
-    "dx_lev_mas_notes": "",
-    "dx_lev_mas_notes_tap": "",
-    "dx_lev_mas_notes_hold": "",
-    "dx_lev_mas_notes_slide": "",
-    "dx_lev_mas_notes_touch": "",
-    "dx_lev_mas_notes_break": "",
-    "dx_lev_mas_designer": "",
-    "wiki_url": "",
-    "intl": "0",
-    "key": "○",
-    "date_added": "20261002",
-    "date_intl_added": "000000",
-    "date": "NEW"
-  },
-  {
-    "sort": "709",
-    "title": "Crossfire",
-    "title_kana": "CROSSFIRE",
-    "artist": "Blacklolita",
-    "catcode": "ゲーム＆バラエティ",
-    "version": "27002",
-    "bpm": "",
-    "image_url": "3d407fffa828cb4b.png",
-    "release": "261002",
-    "dx_lev_bas": "4",
-    "dx_lev_adv": "7",
-    "dx_lev_exp": "11",
-    "dx_lev_mas": "13+",
-    "dx_lev_bas_i": "",
-    "dx_lev_bas_notes": "",
-    "dx_lev_bas_notes_tap": "",
-    "dx_lev_bas_notes_hold": "",
-    "dx_lev_bas_notes_slide": "",
-    "dx_lev_bas_notes_touch": "",
-    "dx_lev_bas_notes_break": "",
-    "dx_lev_adv_i": "",
-    "dx_lev_adv_notes": "",
-    "dx_lev_adv_notes_tap": "",
-    "dx_lev_adv_notes_hold": "",
-    "dx_lev_adv_notes_slide": "",
-    "dx_lev_adv_notes_touch": "",
-    "dx_lev_adv_notes_break": "",
-    "dx_lev_exp_i": "",
-    "dx_lev_exp_notes": "",
-    "dx_lev_exp_notes_tap": "",
-    "dx_lev_exp_notes_hold": "",
-    "dx_lev_exp_notes_slide": "",
-    "dx_lev_exp_notes_touch": "",
-    "dx_lev_exp_notes_break": "",
-    "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
-    "dx_lev_mas_notes": "",
-    "dx_lev_mas_notes_tap": "",
-    "dx_lev_mas_notes_hold": "",
-    "dx_lev_mas_notes_slide": "",
-    "dx_lev_mas_notes_touch": "",
-    "dx_lev_mas_notes_break": "",
-    "dx_lev_mas_designer": "",
-    "wiki_url": "",
-    "intl": "0",
-    "key": "○",
-    "date_added": "20261002",
-    "date_intl_added": "000000",
-    "date": "NEW"
-  },
-  {
-    "sort": "710",
-    "title": "RE!NCARN4T10N",
-    "title_kana": "REINCARN4T10N",
-    "artist": "xi",
-    "catcode": "ゲーム＆バラエティ",
-    "version": "27002",
-    "bpm": "",
-    "image_url": "da7a8cbb420a1a22.png",
-    "release": "261002",
-    "dx_lev_bas": "6",
-    "dx_lev_adv": "8",
-    "dx_lev_exp": "12",
-    "dx_lev_mas": "14",
-    "dx_lev_bas_i": "",
-    "dx_lev_bas_notes": "",
-    "dx_lev_bas_notes_tap": "",
-    "dx_lev_bas_notes_hold": "",
-    "dx_lev_bas_notes_slide": "",
-    "dx_lev_bas_notes_touch": "",
-    "dx_lev_bas_notes_break": "",
-    "dx_lev_adv_i": "",
-    "dx_lev_adv_notes": "",
-    "dx_lev_adv_notes_tap": "",
-    "dx_lev_adv_notes_hold": "",
-    "dx_lev_adv_notes_slide": "",
-    "dx_lev_adv_notes_touch": "",
-    "dx_lev_adv_notes_break": "",
-    "dx_lev_exp_i": "",
-    "dx_lev_exp_notes": "",
-    "dx_lev_exp_notes_tap": "",
-    "dx_lev_exp_notes_hold": "",
-    "dx_lev_exp_notes_slide": "",
-    "dx_lev_exp_notes_touch": "",
-    "dx_lev_exp_notes_break": "",
-    "dx_lev_exp_designer": "",
-    "dx_lev_mas_i": "",
-    "dx_lev_mas_notes": "",
-    "dx_lev_mas_notes_tap": "",
-    "dx_lev_mas_notes_hold": "",
-    "dx_lev_mas_notes_slide": "",
-    "dx_lev_mas_notes_touch": "",
-    "dx_lev_mas_notes_break": "",
-    "dx_lev_mas_designer": "",
-    "wiki_url": "",
->>>>>>> Stashed changes
     "intl": "0",
     "key": "○",
     "date_added": "20261002",
@@ -78615,44 +78499,28 @@
     "artist": "Zekk",
     "catcode": "ゲーム＆バラエティ",
     "version": "27002",
-<<<<<<< Updated upstream
     "bpm": "210",
-=======
-    "bpm": "",
->>>>>>> Stashed changes
     "image_url": "027382bb48f2741d.png",
     "release": "261002",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
     "dx_lev_mas": "13+",
-<<<<<<< Updated upstream
     "dx_lev_bas_i": "5.0",
-=======
-    "dx_lev_bas_i": "",
->>>>>>> Stashed changes
     "dx_lev_bas_notes": "",
     "dx_lev_bas_notes_tap": "",
     "dx_lev_bas_notes_hold": "",
     "dx_lev_bas_notes_slide": "",
     "dx_lev_bas_notes_touch": "",
     "dx_lev_bas_notes_break": "",
-<<<<<<< Updated upstream
     "dx_lev_adv_i": "7.8",
-=======
-    "dx_lev_adv_i": "",
->>>>>>> Stashed changes
     "dx_lev_adv_notes": "",
     "dx_lev_adv_notes_tap": "",
     "dx_lev_adv_notes_hold": "",
     "dx_lev_adv_notes_slide": "",
     "dx_lev_adv_notes_touch": "",
     "dx_lev_adv_notes_break": "",
-<<<<<<< Updated upstream
     "dx_lev_exp_i": "11.8",
-=======
-    "dx_lev_exp_i": "",
->>>>>>> Stashed changes
     "dx_lev_exp_notes": "",
     "dx_lev_exp_notes_tap": "",
     "dx_lev_exp_notes_hold": "",
@@ -78660,11 +78528,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-<<<<<<< Updated upstream
     "dx_lev_mas_i": "13.9",
-=======
-    "dx_lev_mas_i": "",
->>>>>>> Stashed changes
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
@@ -78672,18 +78536,13 @@
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_notes_break": "",
     "dx_lev_mas_designer": "",
-<<<<<<< Updated upstream
     "wiki_url": "https://gamerch.com/maimai/1018820",
-=======
-    "wiki_url": "",
->>>>>>> Stashed changes
     "intl": "0",
     "date_added": "20261002",
     "date_intl_added": "000000",
     "date": "NEW"
   },
   {
-<<<<<<< Updated upstream
     "sort": "710",
     "title": "RE!NCARN4T10N",
     "title_kana": "REINCARN4T10N",
@@ -78698,44 +78557,20 @@
     "dx_lev_exp": "12",
     "dx_lev_mas": "14",
     "dx_lev_bas_i": "6.0",
-=======
-    "sort": "708",
-    "title": "Energy",
-    "title_kana": "ENERGY",
-    "artist": "Ryo Nakamura",
-    "catcode": "ゲーム＆バラエティ",
-    "version": "27002",
-    "bpm": "",
-    "image_url": "1144ad6c486a4673.png",
-    "release": "261002",
-    "dx_lev_bas": "3",
-    "dx_lev_adv": "6",
-    "dx_lev_exp": "10+",
-    "dx_lev_mas": "13+",
-    "dx_lev_bas_i": "",
->>>>>>> Stashed changes
     "dx_lev_bas_notes": "",
     "dx_lev_bas_notes_tap": "",
     "dx_lev_bas_notes_hold": "",
     "dx_lev_bas_notes_slide": "",
     "dx_lev_bas_notes_touch": "",
     "dx_lev_bas_notes_break": "",
-<<<<<<< Updated upstream
     "dx_lev_adv_i": "8.3",
-=======
-    "dx_lev_adv_i": "",
->>>>>>> Stashed changes
     "dx_lev_adv_notes": "",
     "dx_lev_adv_notes_tap": "",
     "dx_lev_adv_notes_hold": "",
     "dx_lev_adv_notes_slide": "",
     "dx_lev_adv_notes_touch": "",
     "dx_lev_adv_notes_break": "",
-<<<<<<< Updated upstream
     "dx_lev_exp_i": "12.2",
-=======
-    "dx_lev_exp_i": "",
->>>>>>> Stashed changes
     "dx_lev_exp_notes": "",
     "dx_lev_exp_notes_tap": "",
     "dx_lev_exp_notes_hold": "",
@@ -78743,11 +78578,7 @@
     "dx_lev_exp_notes_touch": "",
     "dx_lev_exp_notes_break": "",
     "dx_lev_exp_designer": "",
-<<<<<<< Updated upstream
     "dx_lev_mas_i": "14.3",
-=======
-    "dx_lev_mas_i": "",
->>>>>>> Stashed changes
     "dx_lev_mas_notes": "",
     "dx_lev_mas_notes_tap": "",
     "dx_lev_mas_notes_hold": "",
@@ -78755,14 +78586,9 @@
     "dx_lev_mas_notes_touch": "",
     "dx_lev_mas_notes_break": "",
     "dx_lev_mas_designer": "",
-<<<<<<< Updated upstream
     "wiki_url": "https://gamerch.com/maimai/1018823",
     "intl": "0",
     "key": "○",
-=======
-    "wiki_url": "",
-    "intl": "0",
->>>>>>> Stashed changes
     "date_added": "20261002",
     "date_intl_added": "000000",
     "date": "NEW"
