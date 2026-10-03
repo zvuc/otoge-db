@@ -5,6 +5,10 @@ on:
     - cron: '5 */4 * * *'
   workflow_dispatch:
 
+concurrency:
+  group: ongeki-update-data
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write

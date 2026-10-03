@@ -5,6 +5,10 @@ on:
     - cron: '0 0-5 * * 3-5'
   workflow_dispatch:
 
+concurrency:
+  group: ongeki-update-data
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write
@@ -38,10 +42,27 @@ jobs:
           git config --global user.email "noreply@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Ensure clean state on main
+      - name: Select update branch
+        id: select_branch
         run: |
-          git checkout main
-          git pull origin main
+          # Run the updater on the child branch to avoid stash conflicts
+          git fetch origin
+          BRANCH_NAME=$(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ongeki/update-* | sed 's#^origin/##' | sort -V | tail -n 1)
+
+          if [ -n "$BRANCH_NAME" ]; then
+            DATESTAMP="${BRANCH_NAME##*-}"
+            git switch --track "origin/$BRANCH_NAME"
+            git pull --ff-only origin "$BRANCH_NAME"
+            echo "existing_branch=true" >> "$GITHUB_OUTPUT"
+          else
+            git switch main
+            git pull --ff-only origin main
+            DATESTAMP=""
+            echo "existing_branch=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+          echo "datestamp=$DATESTAMP" >> "$GITHUB_OUTPUT"
 
       - name: Run main script and capture output
         run: |
@@ -55,24 +76,19 @@ jobs:
             echo "No changes found. Skipping."
           else
             echo "has_diffs=true" >> "$GITHUB_OUTPUT"
-            DATESTAMP=$(cat ongeki/data/music-ex.json | jq -r '.[-1].date_added // empty')
-            if [ -z "$DATESTAMP" ] || [ "$DATESTAMP" = "null" ]; then
-              DATESTAMP=$(date '+%Y%m%d')
-            fi
-            BRANCH_NAME="ongeki/update-$DATESTAMP"
-            echo "datestamp=$DATESTAMP" >> "$GITHUB_OUTPUT"
-            echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
-
-            # Create or switch to branch while carrying working tree changes
-            git fetch origin
-            if git show-ref --quiet "refs/remotes/origin/$BRANCH_NAME"; then
-              git stash -u
-              git switch "$BRANCH_NAME"
-              git pull origin "$BRANCH_NAME"
-              git stash pop || true
-            else
+            DATESTAMP="${{ steps.select_branch.outputs.datestamp }}"
+            BRANCH_NAME="${{ steps.select_branch.outputs.branch_name }}"
+            if [ "${{ steps.select_branch.outputs.existing_branch }}" != "true" ]; then
+              DATESTAMP=$(jq -r '[.[].date_added // empty] | .[-1] // empty' ongeki/data/music-ex.json)
+              if [ -z "$DATESTAMP" ] || [ "$DATESTAMP" = "null" ]; then
+                DATESTAMP=$(date '+%Y%m%d')
+              fi
+              BRANCH_NAME="ongeki/update-$DATESTAMP"
               git checkout -b "$BRANCH_NAME"
             fi
+
+            echo "datestamp=$DATESTAMP" >> "$GITHUB_OUTPUT"
+            echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Fetch initial wiki, chartguide, and constants data
