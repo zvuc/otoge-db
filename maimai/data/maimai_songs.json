@@ -8464,6 +8464,25 @@
     "version": "24014"
   },
   {
+    "artist": "hanzo",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "12+",
+    "image_url": "c02537aab0c8a6a2.png",
+    "release": "261002",
+    "lev_bas": "4",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "13+",
+    "sort": "1103",
+    "title": "居並ぶ穀物と溜息まじりの運送屋",
+    "title_kana": "イナラフコクモツトタメイキマシリノウンソウヤ",
+    "version": "27002"
+  },
+  {
     "artist": "DiGiTAL WiNG feat. 花たん",
     "catcode": "東方Project",
     "dx_lev_bas": "4",
@@ -10159,20 +10178,6 @@
     "sort": "1340",
     "title": "Boys O’Clock",
     "title_kana": "BOYSOCLOCK",
-    "version": "21000"
-  },
-  {
-    "artist": "hanzo",
-    "catcode": "maimai",
-    "dx_lev_bas": "3",
-    "dx_lev_adv": "7+",
-    "dx_lev_exp": "11+",
-    "dx_lev_mas": "12+",
-    "image_url": "c02537aab0c8a6a2.png",
-    "release": "000000",
-    "sort": "1104",
-    "title": "居並ぶ穀物と溜息まじりの運送屋",
-    "title_kana": "イナラフコクモツトタメイキマシリノウンソウヤ",
     "version": "21000"
   },
   {
@@ -21257,6 +21262,22 @@
     "version": "27000"
   },
   {
+    "artist": "Alicemetix",
+    "catcode": "maimai",
+    "date": "NEW",
+    "dx_lev_bas": "6",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "12+",
+    "dx_lev_mas": "14+",
+    "image_url": "360427dd3d2c96ca.png",
+    "key": "○",
+    "release": "261002",
+    "sort": "1028",
+    "title": "OV3RCLOCK",
+    "title_kana": "OV3RCLOCK",
+    "version": "27002"
+  },
+  {
     "artist": "USAO feat.光吉猛修",
     "catcode": "オンゲキ＆CHUNITHM",
     "dx_lev_bas": "5",
@@ -21446,7 +21467,6 @@
   {
     "artist": "iKz feat.小可學妹",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10",
@@ -21461,7 +21481,6 @@
   {
     "artist": "3R2",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10",
@@ -21476,7 +21495,6 @@
   {
     "artist": "DJ Myosuke & Gram",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12+",
@@ -21488,6 +21506,68 @@
     "title": "XODUS",
     "title_kana": "XODUS",
     "version": "27001"
+  },
+  {
+    "artist": "Zekk",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "5",
+    "dx_lev_adv": "7+",
+    "dx_lev_exp": "11+",
+    "dx_lev_mas": "13+",
+    "image_url": "027382bb48f2741d.png",
+    "release": "261002",
+    "sort": "707",
+    "title": "All Over Again",
+    "title_kana": "ALLOVERAGAIN",
+    "version": "27002"
+  },
+  {
+    "artist": "Ryo Nakamura",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10+",
+    "dx_lev_mas": "13+",
+    "image_url": "1144ad6c486a4673.png",
+    "release": "261002",
+    "sort": "708",
+    "title": "Energy",
+    "title_kana": "ENERGY",
+    "version": "27002"
+  },
+  {
+    "artist": "Blacklolita",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "4",
+    "dx_lev_adv": "7",
+    "dx_lev_exp": "11",
+    "dx_lev_mas": "13+",
+    "image_url": "3d407fffa828cb4b.png",
+    "key": "○",
+    "release": "261002",
+    "sort": "709",
+    "title": "Crossfire",
+    "title_kana": "CROSSFIRE",
+    "version": "27002"
+  },
+  {
+    "artist": "xi",
+    "catcode": "ゲーム＆バラエティ",
+    "date": "NEW",
+    "dx_lev_bas": "6",
+    "dx_lev_adv": "8",
+    "dx_lev_exp": "12",
+    "dx_lev_mas": "14",
+    "image_url": "da7a8cbb420a1a22.png",
+    "key": "○",
+    "release": "261002",
+    "sort": "710",
+    "title": "RE!NCARN4T10N",
+    "title_kana": "REINCARN4T10N",
+    "version": "27002"
   },
   {
     "artist": "Q;indivi [cover]",
