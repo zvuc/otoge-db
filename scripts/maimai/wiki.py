@@ -25,17 +25,17 @@ TARGET_KEYS = [
 ]
 
 CHART_COLORS = {
-   "lev_bas": "98fb98",
-   "dx_lev_bas": "98fb98",
-   "lev_adv": "ffa500",
-   "dx_lev_adv": "ffa500",
-   "lev_exp": "fa8080",
-   "dx_lev_exp": "fa8080",
-   "lev_mas": "ee82ee",
-   "dx_lev_mas": "ee82ee",
-   "lev_remas": "ffceff",
-   "dx_lev_remas": "ffceff",
-   "lev_utage": "ff5296"
+    "lev_bas": ("6fe163", "98fb98"),
+    "dx_lev_bas": ("6fe163", "98fb98"),
+    "lev_adv": ("f8df3a", "ffa500"),
+    "dx_lev_adv": ("f8df3a", "ffa500"),
+    "lev_exp": ("ff828e", "fa8080"),
+    "dx_lev_exp": ("ff828e", "fa8080"),
+    "lev_mas": ("c27ff4", "ee82ee"),
+    "dx_lev_mas": ("c27ff4", "ee82ee"),
+    "lev_remas": ("ed9cfb", "ffceff"),
+    "dx_lev_remas": ("ed9cfb", "ffceff"),
+    "lev_utage": ("ff6ffd", "ff5296")
 }
 
 # Update on top of existing music-ex
@@ -484,15 +484,24 @@ def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
 
 
 def _process_chart(song, chart_type, chart_color, charts_table, charts_table_head, chart_designers_dict, header_printed):
-    row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and f'{chart_color}' in tag.get('style', ''))
+    row = charts_table.find(lambda tag: tag.name in ['th', 'td'] and _has_chart_color(tag, chart_color))
     if row:
         row = row.find_parent()
         data = [cell.text for cell in row]
         data_dict = dict(zip(charts_table_head, data))
         _update_song_chart_details(song, data_dict, chart_designers_dict, chart_type, header_printed)
 
+def _has_chart_color(tag, chart_color):
+    expected_colors = chart_color if isinstance(chart_color, (tuple, list)) else (chart_color,)
+    expected_colors = [color.lstrip('#').lower() for color in expected_colors]
+    for attribute in ('style', 'bgcolor'):
+        attribute_value = tag.get(attribute, '')
+        if any(color in attribute_value.replace('#', '').lower() for color in expected_colors):
+            return True
+    return False
+
 def _process_utage_chart(song, charts_table, charts_table_head, chart_designers_dict, header_printed):
-    utage_rows = charts_table.find_all(lambda tag: tag.name in ['th', 'td'] and f'{CHART_COLORS["lev_utage"]}' in tag.get('style', ''))
+    utage_rows = charts_table.find_all(lambda tag: tag.name in ['th', 'td'] and _has_chart_color(tag, CHART_COLORS['lev_utage']))
 
     if 'buddy' not in song:
         for utage_row in utage_rows:
