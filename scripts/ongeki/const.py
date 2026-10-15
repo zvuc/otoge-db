@@ -9,7 +9,7 @@ from shared.common_func import *
 from ongeki.paths import *
 from datetime import datetime
 
-SHEETS_ID = '1vDAfKSvWqBSXRrdU1uTSExyoHzr1P5dBDt-dpCG6LIU'
+SHEETS_ID = '16WWwB2fx9wiBHbO1F_tyDaAPagRS8rsyYHFbmmariEs'
 SHEETS_BASE_URL = f'https://docs.google.com/spreadsheets/d/{SHEETS_ID}/export?format=csv&id={SHEETS_ID}&gid='
 LOCAL_SHEETS_CACHE_DIR = 'ongeki/google_sheets_cache'
 
