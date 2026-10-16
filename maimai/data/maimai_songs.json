@@ -8466,7 +8466,6 @@
   {
     "artist": "hanzo",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -8585,6 +8584,22 @@
     "title": "AFTER PANDORA",
     "title_kana": "AFTERPANDORA",
     "version": "25513"
+  },
+  {
+    "artist": "GRANRODEO",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "image_url": "7d34a09716db3d75.png",
+    "release": "261016",
+    "lev_bas": "4",
+    "lev_adv": "7+",
+    "lev_exp": "10+",
+    "lev_mas": "13",
+    "lev_remas": "13+",
+    "sort": "9",
+    "title": "Can Do",
+    "title_kana": "CANDO",
+    "version": "27003"
   },
   {
     "artist": "S!N・+α/あるふぁきゅん。×ALI PROJECT",
@@ -21264,7 +21279,6 @@
   {
     "artist": "Alicemetix",
     "catcode": "maimai",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "12+",
@@ -21508,9 +21522,38 @@
     "version": "27001"
   },
   {
+    "artist": "GRANRODEO",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "f691ea418d23b8f6.png",
+    "release": "261016",
+    "sort": "7",
+    "title": "ChaosBlue",
+    "title_kana": "CHAOSBLUE",
+    "version": "27003"
+  },
+  {
+    "artist": "GRANRODEO",
+    "catcode": "POPS＆アニメ",
+    "date": "NEW",
+    "dx_lev_bas": "3",
+    "dx_lev_adv": "6",
+    "dx_lev_exp": "10",
+    "dx_lev_mas": "13",
+    "image_url": "e3d0111b0ad45236.png",
+    "release": "261016",
+    "sort": "8",
+    "title": "GO GO PARADISE!!",
+    "title_kana": "GOGOPARADISE",
+    "version": "27003"
+  },
+  {
     "artist": "Zekk",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "5",
     "dx_lev_adv": "7+",
     "dx_lev_exp": "11+",
@@ -21525,7 +21568,6 @@
   {
     "artist": "Ryo Nakamura",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "3",
     "dx_lev_adv": "6",
     "dx_lev_exp": "10+",
@@ -21540,7 +21582,6 @@
   {
     "artist": "Blacklolita",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "4",
     "dx_lev_adv": "7",
     "dx_lev_exp": "11",
@@ -21556,7 +21597,6 @@
   {
     "artist": "xi",
     "catcode": "ゲーム＆バラエティ",
-    "date": "NEW",
     "dx_lev_bas": "6",
     "dx_lev_adv": "8",
     "dx_lev_exp": "12",
