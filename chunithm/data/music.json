@@ -1,5 +1,37 @@
 [
   {
+    "id": "3065",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "P-KATSU",
+    "reading": "PKATSU",
+    "artist": "P丸様。",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "3ffbcba18598abf6.jpg"
+  },
+  {
+    "id": "3066",
+    "catname": "POPS & ANIME",
+    "newflag": "1",
+    "title": "天天天国地獄国 (feat. ななひら & P丸様。)",
+    "reading": "テンテンテンコクシコクコクFEATナナヒラヒウマルサマ",
+    "artist": "Aiobahn +81",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "9",
+    "lev_mas": "13",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "d7918752c4fe334c.jpg"
+  },
+  {
     "id": "3057",
     "catname": "POPS & ANIME",
     "newflag": "0",
@@ -362,7 +394,7 @@
     "lev_adv": "6",
     "lev_exp": "9+",
     "lev_mas": "12+",
-    "lev_ult": "",
+    "lev_ult": "14+",
     "we_kanji": "",
     "we_star": "",
     "image": "8c4f3ce152d53cfe.jpg"
@@ -2546,7 +2578,7 @@
   {
     "id": "3052",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "雑魚",
     "reading": "サコ",
     "artist": "柊マグネタイト",
@@ -2562,7 +2594,7 @@
   {
     "id": "3054",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "風呂入るプロファイル",
     "reading": "フロハイルフロフアイル",
     "artist": "もちうつね",
@@ -2578,7 +2610,7 @@
   {
     "id": "3055",
     "catname": "niconico",
-    "newflag": "1",
+    "newflag": "0",
     "title": "SAN値直葬",
     "reading": "SANチチヨクソウ",
     "artist": "STEAKA",
@@ -7694,6 +7726,38 @@
     "we_kanji": "",
     "we_star": "",
     "image": "181682bf5b277726.jpg"
+  },
+  {
+    "id": "3067",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "さっきゅんライト（2025）",
+    "reading": "サツキユンライト2025",
+    "artist": "石鹸屋",
+    "lev_bas": "2",
+    "lev_adv": "6",
+    "lev_exp": "10",
+    "lev_mas": "13+",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "555cd99cbf7241a9.jpg"
+  },
+  {
+    "id": "3068",
+    "catname": "東方Project",
+    "newflag": "1",
+    "title": "物凄い狂っとるフランちゃんが物凄いうた",
+    "reading": "モノスコイクルツトルフランチヤンカモノスコイウタ",
+    "artist": "Halozy feat. ななひら",
+    "lev_bas": "3",
+    "lev_adv": "6",
+    "lev_exp": "10+",
+    "lev_mas": "14",
+    "lev_ult": "",
+    "we_kanji": "",
+    "we_star": "",
+    "image": "b080e086e37326b1.jpg"
   },
   {
     "id": "3012",
@@ -27026,7 +27090,7 @@
   {
     "id": "3064",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "ハイボルテージガール",
     "reading": "ハイホルテウシカウル",
     "artist": "マサラダ feat.あられ",
@@ -27042,7 +27106,7 @@
   {
     "id": "3062",
     "catname": "ORIGINAL",
-    "newflag": "1",
+    "newflag": "0",
     "title": "コンクエスト・チャレンジ",
     "reading": "コンクエストチヤレンシ",
     "artist": "サツキ feat.ろん",
