@@ -3,6 +3,7 @@ import requests
 import urllib.request
 import json
 import copy
+import shutil
 from ongeki.paths import *
 from ongeki import wiki
 from shared.common_func import *
@@ -101,7 +102,7 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     for song in added_songs:
         song_diffs = [0]
         song_hash = generate_hash_from_keys(song)
-        _download_song_jacket(song)
+        _download_song_jacket(song, song_diffs)
         _add_song_data_to_ex_data(song, local_music_ex_data)
 
         if game.ARGS.markdown:
@@ -225,8 +226,32 @@ def renew_music_ex_data(added_songs, updated_songs, unchanged_songs, removed_son
     sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
 
 
-def _download_song_jacket(song):
-    urllib.request.urlretrieve(SERVER_MUSIC_JACKET_BASE_URL + song['image_url'], 'ongeki/jacket/' + song['image_url'])
+def _download_song_jacket(song, song_diffs=None):
+    try:
+        response = requests.get(
+            SERVER_MUSIC_JACKET_BASE_URL + song['image_url'],
+            headers={'User-Agent': 'Mozilla/5.0'},
+            stream=True,
+            timeout=30
+        )
+
+        if response.status_code == 200:
+            filename = os.path.join('ongeki/jacket', song['image_url'])
+            with open(filename, 'wb') as file:
+                response.raw.decode_content = True
+                shutil.copyfileobj(response.raw, file)
+
+            if song_diffs is not None:
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True, is_verbose=True)
+            print_message(f"- Jacket downloaded: {filename}", bcolors.ENDC, log=True, is_verbose=True)
+        else:
+            if song_diffs is not None:
+                lazy_print_song_header(f"{song['title']}", song_diffs, log=True, is_verbose=True)
+            print_message(f"- Failed to download image ({response.status_code}): {song['image_url']}", bcolors.FAIL, log=True, is_verbose=True)
+    except Exception as e:
+        if song_diffs is not None:
+            lazy_print_song_header(f"{song['title']}", song_diffs, log=True, is_verbose=True)
+        print_message(f"- Could not download jacket: {e}", bcolors.FAIL, log=True, is_verbose=True)
 
 def _record_diffs(song, song_hash, diff_type):
     with open(LOCAL_DIFFS_LOG_PATH, 'a', encoding='utf-8') as f:

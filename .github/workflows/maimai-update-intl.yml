@@ -14,6 +14,9 @@ jobs:
     name: Update International ver. song data from RemyWiki
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
     env:
       TZ: 'Asia/Tokyo'
 

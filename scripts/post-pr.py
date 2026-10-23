@@ -143,6 +143,13 @@ def main() -> None:
         except Exception as e:
             print(f"Warning: Failed to read {log_path}: {e}", file=sys.stderr)
 
+    if "Traceback (most recent call last):" in log_text:
+        print(
+            f"Error: Log file '{args.log_file}' contains an unhandled Python traceback. Aborting PR creation/comment.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     chunks = chunk_markdown(log_text)
     total_chunks = len(chunks)
     print(f"Log prepared: {len(log_text)} chars divided into {total_chunks} chunk(s).")

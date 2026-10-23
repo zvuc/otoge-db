@@ -12,6 +12,9 @@ jobs:
     name: Fetch from wiki (all songs)
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
     env:
       TZ: 'Asia/Tokyo'
 
