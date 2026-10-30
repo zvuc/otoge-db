@@ -57826,6 +57826,61 @@
     "new": "NEW",
     "date_added": "20261029",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    "title": "Demonia",
+    "title_sort": "DEMONIA",
+    "artist": "Juggernaut.",
+    "id": "600106",
+    "chap_id": "80054",
+    "chapter": "KING of Performai The 8th 予選ラウンド",
+    "character": "九條 楓",
+    "chara_id": "0011",
+    "category": "オンゲキ",
+    "category_id": "06",
+    "lunatic": "",
+    "bonus": "",
+    "copyright1": "-",
+    "lev_bas": "7",
+    "lev_adv": "10+",
+    "lev_exc": "14",
+    "lev_mas": "15",
+    "lev_lnt": "",
+    "image_url": "92fe6cf5404ae29b.png",
+    "enemy_lv": "",
+    "enemy_type": "LEAF",
+    "bpm": "",
+    "lev_bas_i": "",
+    "lev_bas_notes": "",
+    "lev_bas_bells": "",
+    "lev_bas_designer": "",
+    "lev_adv_i": "",
+    "lev_adv_notes": "",
+    "lev_adv_bells": "",
+    "lev_adv_designer": "",
+    "lev_adv_chart_link": "",
+    "lev_exc_i": "",
+    "lev_exc_notes": "",
+    "lev_exc_bells": "",
+    "lev_exc_designer": "",
+    "lev_exc_chart_link": "",
+    "lev_mas_i": "",
+    "lev_mas_notes": "",
+    "lev_mas_bells": "",
+    "lev_mas_designer": "",
+    "lev_mas_chart_link": "",
+    "lev_lnt_i": "",
+    "lev_lnt_notes": "",
+    "lev_lnt_bells": "",
+    "lev_lnt_designer": "",
+    "lev_lnt_chart_link": "",
+    "version": "Re:Fresh Act.2",
+    "wikiwiki_url": ""
+  },
+  {
+    "new": "NEW",
+    "date_added": "20261029",
+>>>>>>> Stashed changes
     "title": "Earthly Light -⊿TRiEDGE ver.-",
     "title_sort": "EARTHLYLIGHTTRIEDGEVER",
     "artist": "曲：ヘリP／歌：⊿TRiEDGE [高瀬 梨緒(CV：久保 ユリカ)、結城 莉玖(CV：朝日奈 丸佳)、藍原 椿(CV：橋本 ちなみ)]",
@@ -57860,6 +57915,7 @@
     "lev_exc_i": "",
     "lev_exc_notes": "",
     "lev_exc_bells": "",
+<<<<<<< Updated upstream
     "lev_exc_designer": "みそかつ侍",
     "lev_exc_chart_link": "05/05016exp",
     "lev_mas_i": "",
@@ -57867,6 +57923,15 @@
     "lev_mas_bells": "",
     "lev_mas_designer": "Earthly Light",
     "lev_mas_chart_link": "05/05016mst",
+=======
+    "lev_exc_designer": "",
+    "lev_exc_chart_link": "",
+    "lev_mas_i": "",
+    "lev_mas_notes": "",
+    "lev_mas_bells": "",
+    "lev_mas_designer": "",
+    "lev_mas_chart_link": "",
+>>>>>>> Stashed changes
     "lev_lnt_i": "",
     "lev_lnt_notes": "",
     "lev_lnt_bells": "",
@@ -57878,6 +57943,9 @@
   {
     "new": "NEW",
     "date_added": "20261029",
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     "title": "Earthly Light -Trium Tone ver.-",
@@ -57915,6 +57983,7 @@
     "lev_exc_notes": "",
     "lev_exc_bells": "",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "lev_exc_designer": "みそかつ侍",
     "lev_exc_chart_link": "05/05016exp",
     "lev_mas_i": "",
@@ -57923,6 +57992,8 @@
     "lev_mas_designer": "Earthly Light",
     "lev_mas_chart_link": "05/05016mst",
 =======
+=======
+>>>>>>> Stashed changes
     "lev_exc_designer": "",
     "lev_exc_chart_link": "",
     "lev_mas_i": "",
@@ -57937,6 +58008,7 @@
     "lev_lnt_chart_link": "",
     "version": "Re:Fresh Act.2",
     "wikiwiki_url": ""
+<<<<<<< Updated upstream
   },
   {
     "new": "NEW",
@@ -58064,6 +58136,8 @@
     "wikiwiki_url": "https://wikiwiki.jp/gameongeki/Demonia"
 =======
     "wikiwiki_url": ""
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   }
 ]
