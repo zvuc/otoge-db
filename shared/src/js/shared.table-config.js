@@ -123,7 +123,11 @@ function renderChartLinkBtn(chart_link, game) {
 
 function chartLinkBtn(chart_link, game) {
   if ( chart_link && chart_link !== '' ) {
-    return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="https://sdvx.in/${game}/${chart_link}.htm">
+    const linkParts = chart_link.split('/');
+    const chartGuideUrl = game === 'chunithm' && linkParts.length === 2
+      ? `https://sdvx.in/chunithm/_/viewer.php?id=${linkParts[1].slice(0, -3)}&diff=${linkParts[1].slice(-3)}`
+      : `https://sdvx.in/${game}/${chart_link}.htm`;
+    return `<a class="btn chartlink" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" href="${chartGuideUrl}">
           <span class="img"></span><span>${getTranslation(userLanguage, 'check_chart_guide')}</span>
         </a><span class="chart-provider">${getTranslation(userLanguage, 'chart_guide_provide_credit')}</span>`;
   } else {
