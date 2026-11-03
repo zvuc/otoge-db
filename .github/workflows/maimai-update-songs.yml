@@ -69,10 +69,10 @@ jobs:
             # Create or switch to branch while carrying working tree changes
             git fetch origin
             if git show-ref --quiet "refs/remotes/origin/$BRANCH_NAME"; then
-              git stash -u
+              git reset --hard HEAD
+              git clean -fd
               git switch "$BRANCH_NAME"
               git pull origin "$BRANCH_NAME"
-              git stash pop || true
             else
               git checkout -b "$BRANCH_NAME"
             fi
@@ -94,6 +94,11 @@ jobs:
           DATESTAMP="${{ steps.prepare_branch.outputs.datestamp }}"
           BRANCH_NAME="${{ steps.prepare_branch.outputs.branch_name }}"
           git add .
+
+          if ! git diff --check --staged; then
+            echo "Error: Unresolved merge conflicts detected in staged files!" >&2
+            exit 1
+          fi
 
           if output=$(git status --porcelain) && [ -z "$output" ]; then
             echo "No changes to commit."
