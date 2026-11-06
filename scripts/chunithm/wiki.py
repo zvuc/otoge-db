@@ -266,13 +266,13 @@ def _fetch_missing_song_data_from_sdvxin(song, total_diffs):
             value = str(source.get(component, ''))
             components[component] = value
             target_key = f'{destination}_notes_{component}'
-            if target_key in song and not song.get(target_key) and value:
+            if not song.get(target_key) and value:
                 song[target_key] = value
                 changed = True
-            details_diff_count += 1
+                details_diff_count += 1
 
         total_key = f'{destination}_notes'
-        if total_key in song and not song.get(total_key):
+        if not song.get(total_key):
             values = [int(value) for value in components.values() if value.isdigit()]
             if values:
                 song[total_key] = str(sum(values))
