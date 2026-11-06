@@ -7,6 +7,7 @@ import random
 import time
 from shared.common_func import *
 from chunithm.paths import *
+from chunithm.chartguide import find_sdvxin_song, load_sdvxin_songs
 from datetime import datetime
 from bs4 import BeautifulSoup, NavigableString, Tag
 
@@ -128,6 +129,8 @@ def update_songs_extra_data():
     for song in target_song_list:
         update_song_wiki_data(song, total_diffs)
 
+        _fetch_missing_song_data_from_sdvxin(song, total_diffs)
+
         _fetch_designer_info_from_sdvxin(song, total_diffs)
 
     sort_and_save_json(local_music_ex_data, LOCAL_MUSIC_EX_JSON_PATH)
@@ -223,6 +226,81 @@ def update_song_wiki_data(song, total_diffs):
             lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
             print_message(f"Error while guessing wiki page: {e}", bcolors.FAIL, log=True)
             return song
+
+
+def _fetch_missing_song_data_from_sdvxin(song, total_diffs):
+    """Fill fields left empty by the wiki using the current sdvx.in JSON data."""
+    header_printed = [0]
+    sdvxin_song = find_sdvxin_song(load_sdvxin_songs(), song['title'])
+    if sdvxin_song is None:
+        print_message(
+            f"No matching sdvx.in song for fallback: {song['title']}",
+            bcolors.WARNING,
+            log=True,
+            is_verbose=True,
+        )
+        return
+
+    source_charts = {'bas': 'bsc', 'adv': 'adv', 'exp': 'exp', 'mas': 'mst', 'ult': 'ult'}
+    if song.get('we_kanji'):
+        source_charts = {'we': 'notes'}
+
+    changed = False
+    bpm = str(sdvxin_song.get('bpm', ''))
+    if not song.get('bpm') and bpm:
+        song['bpm'] = bpm
+        changed = True
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+        print_message("Added BPM from sdvx.in", bcolors.OKGREEN, log=True)
+
+    for chart, source_key in source_charts.items():
+        source = sdvxin_song.get(source_key, {})
+        if not isinstance(source, dict):
+            continue
+
+        destination = f'lev_{chart}'
+        component_names = ('tap', 'hold', 'slide', 'air', 'flick')
+        components = {}
+        details_diff_count = 0
+        for component in component_names:
+            value = str(source.get(component, ''))
+            components[component] = value
+            target_key = f'{destination}_notes_{component}'
+            if target_key in song and not song.get(target_key) and value:
+                song[target_key] = value
+                changed = True
+            details_diff_count += 1
+
+        total_key = f'{destination}_notes'
+        if total_key in song and not song.get(total_key):
+            values = [int(value) for value in components.values() if value.isdigit()]
+            if values:
+                song[total_key] = str(sum(values))
+                changed = True
+                details_diff_count += 1
+
+        if details_diff_count:
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+            print_message(
+                f"Added chart details for {chart.upper()} from sdvx.in (+{details_diff_count})",
+                bcolors.OKGREEN,
+                log=True,
+            )
+
+        designer = sdvxin_song.get('designer', '') if chart == 'we' else sdvxin_song.get('designer', {}).get(source_key, '')
+        designer_key = f'{destination}_designer'
+        if designer_key in song and not song.get(designer_key) and designer:
+            song[designer_key] = designer
+            changed = True
+            lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
+            print_message(
+                f"Added chart designer for {chart.upper()} from sdvx.in",
+                bcolors.OKGREEN,
+                log=True,
+            )
+
+    if changed:
+        total_diffs[0] += 1
 
 
 def _parse_wikiwiki(song, wiki, url, total_diffs, header_printed):
@@ -623,97 +701,26 @@ def _guess_version(release_date):
 
 def _fetch_designer_info_from_sdvxin(song, total_diffs):
     """
-    Update song dict with missing designer info by scraping sdvx.in chart pages.
-    Only works for lev_exp, lev_mas, lev_ult based on song type and current designer info.
+    Update missing designer info from the current sdvx.in JSON data.
     """
-    chart_map = {
-        'lev_exp': 'E',
-        'lev_mas': 'M',
-        'lev_ult': 'U',
-        'lev_we': 'W',
-    }
+    sdvxin_song = find_sdvxin_song(load_sdvxin_songs(), song['title'])
+    if sdvxin_song is None:
+        print_message(f"No matching sdvx.in song: {song['title']}", bcolors.FAIL, is_verbose=True)
+        return
 
-    # Determine target charts
-    is_we = song.get('we_kanji') != ''
-    has_ult = song.get('lev_ult') != ''
-    if is_we:
-        target_charts = ['lev_we',]
-    elif has_ult:
-        target_charts = ['lev_exp', 'lev_mas', 'lev_ult']
+    if song.get('we_kanji'):
+        targets = [('lev_we_designer', sdvxin_song.get('designer', ''))]
     else:
-        target_charts = ['lev_exp', 'lev_mas']
+        designers = sdvxin_song.get('designer', {})
+        targets = [
+            ('lev_exp_designer', designers.get('exp', '')),
+            ('lev_mas_designer', designers.get('mst', '')),
+            ('lev_ult_designer', designers.get('ult', '')),
+        ]
 
-    for chart in target_charts:
-        designer_key = f"{chart}_designer"
-        chart_link_key = f"{chart}_chart_link"
-
-        # Skip if already has designer info or no chart link
-        if song.get(designer_key):
+    for designer_key, designer in targets:
+        if song.get(designer_key) or not designer:
             continue
-
-        print_message(f"Fetch missing designer info for {chart.upper()} from sdvx.in", bcolors.OKBLUE, is_verbose=True)
-
-        chart_link = song.get(chart_link_key)
-        if not chart_link:
-            print_message(f"Skipping: there is no chart link", bcolors.ENDC, is_verbose=True)
-            continue
-
-        # Define version and URL suffix patterns per chart
-        chart_info = {
-            'lev_we':  ('end', 'end'),
-            'lev_ult': ('ult', 'ult'),
-        }
-
-        # Determine the version prefix and expected file suffix
-        version_prefix, file_suffix = chart_info.get(chart, (r'\d{2}', 'sort'))
-
-        # Build regex pattern dynamically
-        pattern = rf'({version_prefix})/(\d{{5}})[a-z]{{3}}\d*'
-        match = re.match(pattern, chart_link)
-
-        if not match:
-            print_message(f"Parsing ID from chart link failed", bcolors.FAIL, is_verbose=True)
-            continue
-
-        version_num, song_id = match.groups()
-
-        # Construct URL
-        url = f"{SDVXIN_BASE_URL}{game.GAME_NAME}/{version_num}/js/{song_id}{file_suffix}.js"
-
-
-        try:
-            resp = requests.get(url, timeout=5)
-            resp.encoding = 'ansi'
-            content = resp.text
-        except Exception:
-            print_message(f"Failed to load page", bcolors.FAIL)
-            continue  # skip on any error
-
-        # Check validity
-        lines = content.strip().splitlines()
-        lines = [line.lstrip('\ufeff') for line in lines]
-
-        # Validate that expected declarations are present anywhere in the first 10 lines
-        head = lines[:10]
-        has_title = any(re.match(r'^var TITLE\d+ *=', line) for line in head)
-        has_artist = any(re.match(r'^var ARTIST\d+ *=', line) for line in head)
-        has_bpm = any(re.match(r'^var BPM\d+ *=', line) for line in head)
-        has_cr = any(re.match(rf'^var CR{song_id}', line) for line in head)
-
-        # ipdb.set_trace()
-
-        if not (has_title and has_artist and has_bpm and has_cr):
-            continue
-
-        # Parse designer info
-        suffix = chart_map[chart]
-        cr_key = f"var CR{song_id}{suffix}"
-        for line in lines:
-            if line.startswith(cr_key):
-                # Extract designer name
-                m = re.search(r'NOTES DESIGNER / ([^<]+)</table>', line)
-                if m:
-                    song[designer_key] = m.group(1).strip()
-                    print_message(f"Added chart designer for {chart.upper()}: {song[designer_key]}", bcolors.OKGREEN)
-                    total_diffs[0] += 1
-                break  # stop after finding the correct one
+        song[designer_key] = designer.strip()
+        print_message(f"Added chart designer for {designer_key[4:-9].upper()}: {song[designer_key]}", bcolors.OKGREEN)
+        total_diffs[0] += 1

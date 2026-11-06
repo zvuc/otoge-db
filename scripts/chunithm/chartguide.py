@@ -68,20 +68,87 @@ PAGES = {
 }
 
 SDVXIN_BASE_URL = 'https://sdvx.in/'
+_sdvxin_songs_cache = None
+
+
+def load_sdvxin_songs():
+    global _sdvxin_songs_cache
+    if _sdvxin_songs_cache is not None:
+        return _sdvxin_songs_cache
+
+    songs = []
+    for chunk in range(1, 21):
+        response = requests.get(
+            f"{SDVXIN_BASE_URL}chunithm/_/json/songs{chunk:02d}.json",
+            timeout=10,
+        )
+        if response.status_code != 200 or not response.text.lstrip().startswith("["):
+            continue
+        response.encoding = 'utf-8'
+        songs.extend(response.json())
+
+    for path in ('songs_we.json', 'songs_wedel.json'):
+        response = requests.get(
+            f"{SDVXIN_BASE_URL}chunithm/_/json/{path}",
+            timeout=10,
+        )
+        if response.status_code == 200 and response.text.lstrip().startswith("["):
+            response.encoding = 'utf-8'
+            songs.extend(response.json())
+
+    _sdvxin_songs_cache = songs
+    return songs
+
+
+def normalize_sdvxin_title(title):
+    title = normalize_brackets(str(title)).lower()
+    return (
+        title.replace('ä', 'a')
+        .replace('å', 'a')
+        .replace('ø', 'o')
+        .replace('é', 'e')
+        .replace('ö', 'o')
+        .replace('☆', '')
+        .replace('★', '')
+        .replace('♥', '')
+        .replace('♡', '')
+        .replace('！', '!')
+        .replace('’', "'")
+        .replace('"', '')
+        .replace(' ', '')
+        .replace('　', '')
+        .replace('～', '~')
+        .replace('〜', '~')
+        .replace('ー', '-')
+        .replace('-', '')
+        .replace('~', '')
+    )
+
+
+def find_sdvxin_song(songs, title):
+    normalized_title = normalize_sdvxin_title(title)
+    exact_matches = [
+        song for song in songs
+        if normalize_sdvxin_title(song.get('title', '')) == normalized_title
+    ]
+    if exact_matches:
+        return exact_matches[0]
+
+    for song in songs:
+        candidate = normalize_sdvxin_title(song.get('title', ''))
+        if candidate and (candidate in normalized_title or normalized_title in candidate):
+            return song
+    return None
+
+
+def make_sdvxin_chart_link(sdvxin_song, difficulty):
+    folder = 'end' if difficulty == 'we' else '10'
+    suffix = 'end' if difficulty == 'we' else difficulty
+    return f"{folder}/{str(sdvxin_song['id']).zfill(5)}{suffix}"
 
 # Update on top of existing music-ex
 def update_chartguide_data():
     print_message(f"Chartguide link search", 'H2')
-
-    if game.ARGS.clear_cache:
-        try:
-            # Delete the directory and its contents
-            shutil.rmtree(LOCAL_SDVXIN_CACHE_DIR)
-            print_message(f"Cleared local cache", bcolors.OKBLUE, log=True)
-        except FileNotFoundError:
-            print_message(f"Cache directory not found: {LOCAL_SDVXIN_CACHE_DIR}", bcolors.WARNING, log=True)
-        except Exception as e:
-            print_message(f"Error deleting cache directory: {e}", bcolors.WARNING, log=True)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'r', encoding='utf-8') as f:
         local_music_ex_data = json.load(f)
@@ -95,10 +162,11 @@ def update_chartguide_data():
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " nothing updated")
         return
 
+    sdvxin_songs = load_sdvxin_songs()
     total_diffs = [0]
 
     for song in target_song_list:
-        _update_song_chartguide_data(song, total_diffs)
+        _update_song_chartguide_data(song, total_diffs, sdvxin_songs)
 
     with open(LOCAL_MUSIC_EX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(local_music_ex_data, f, ensure_ascii=False, indent=2)
@@ -107,92 +175,26 @@ def update_chartguide_data():
         print_message("(Nothing updated)", bcolors.ENDC, log=True)
 
 
-def _update_song_chartguide_data(song, total_diffs):
+def _update_song_chartguide_data(song, total_diffs, sdvxin_songs):
     header_printed = [0]
     old_song = copy.copy(song)
+    sdvxin_song = find_sdvxin_song(sdvxin_songs, song['title'])
+    if sdvxin_song is None:
+        print_message(f"No matching sdvx.in song: {song['title']}", bcolors.FAIL, log=True)
+        return song
 
-    lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True, is_verbose=True)
+    charts = [('we', 'lev_we_chart_link')] if song['we_kanji'] else [
+        ('exp', 'lev_exp_chart_link'),
+        ('mst', 'lev_mas_chart_link'),
+    ]
+    if song.get('lev_ult'):
+        charts.append(('ult', 'lev_ult_chart_link'))
 
-    version_num = VERSION_MAPPING.get(song['version'])
-
-    if song['we_kanji']:
-        charts = ['end']
-    elif song['lev_ult'] != "":
-        charts = ['exp','mst','ult']
-    else:
-        charts = ['exp','mst']
-
-    for chart in charts:
-        lv_page_url = ''
-        lv_page_file_path = '/new.html'
-        target_key = ''
-        url_pattern = re.compile('')
-
-        if chart == 'end':
-            target_key = 'lev_we_chart_link'
-            url_pattern = re.compile('/' + game.GAME_NAME + '/end')
-        elif chart == 'exp':
-            target_key = 'lev_exp_chart_link'
-            url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
-        elif chart == 'mst':
-            target_key = 'lev_mas_chart_link'
-            url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
-        elif chart == 'ult':
-            target_key = 'lev_ult_chart_link'
-            url_pattern = re.compile('/' + game.GAME_NAME + '/ult')
-
-        if target_key in song and not song[target_key] == '' and not game.ARGS.overwrite:
-            print_message(f"Chart link already exists! ({chart.upper()})", bcolors.ENDC, log=True, is_verbose=True)
+    for chart, target_key in charts:
+        if song.get(target_key) and not game.ARGS.overwrite:
             continue
-
-        lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-        print_message(f"Fetching chart link for {chart.upper()} (New page)", bcolors.OKBLUE, log=True, is_verbose=True)
-        song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern)
-
-        # Search level-specific pages if not found in main page
-        if not song_id:
-            if chart == 'end':
-                lv_page_url = '/end.htm'
-                lv_page_file_path = '/end.htm'
-                target_key = 'lev_we_chart_link'
-                url_pattern = re.compile('/' + game.GAME_NAME + '/end')
-            elif chart == 'exp':
-                lv_page_url = '/sort/' + song['lev_exp'] + '.htm'
-                lv_page_file_path = '/sort_' + song['lev_exp'] + '.htm'
-                target_key = 'lev_exp_chart_link'
-                url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
-            elif chart == 'mst':
-                lv_page_url = '/sort/' + song['lev_mas'] + '.htm'
-                lv_page_file_path = '/sort_' + song['lev_mas'] + '.htm'
-                target_key = 'lev_mas_chart_link'
-                url_pattern = re.compile(r'/' + game.GAME_NAME + r'/\d')
-            elif chart == 'ult':
-                lv_page_url = '/sort/ultima.htm'
-                lv_page_file_path = '/sort_ultima.htm'
-                target_key = 'lev_ult_chart_link'
-                url_pattern = re.compile('/' + game.GAME_NAME + '/ult')
-
-            lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-            print_message(f"Fetching chart link for {chart.upper()} (Level page)", bcolors.OKBLUE, log=True, is_verbose=True)
-            song_id, script_src = _parse_page(song, lv_page_url, lv_page_file_path, target_key, url_pattern)
-
-        if song_id:
-            # extract song_id from src
-            if chart == 'ult' or chart == 'end':
-                song_id = song_id.split('/')[-1].split(f'.js')[0]
-                song[target_key] = chart + '/' + song_id
-            elif 'sort' in script_src:
-                song_id = song_id.split('/')[-1].split(f'sort.js')[0]
-                song[target_key] = song_id[:2] + '/' + song_id + chart
-
-            lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-            print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN)
-        else:
-            lazy_print_song_header(f"{song['id']}, {song['title']}", header_printed, log=True)
-            print_message(f"No matching ID ({chart.upper()})", bcolors.FAIL)
-            with open(LOCAL_ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
-                f.write('No matching ID : ' + song['id'] + ' ' + song['title'] + '\n')
-            continue
+        song[target_key] = make_sdvxin_chart_link(sdvxin_song, chart)
+        print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN)
 
     if old_song == song:
         print_message("Done (Nothing updated)", bcolors.ENDC, is_verbose=True)
