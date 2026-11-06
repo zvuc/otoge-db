@@ -194,6 +194,7 @@ def _update_song_chartguide_data(song, total_diffs, sdvxin_songs):
         if song.get(target_key) and not game.ARGS.overwrite:
             continue
         song[target_key] = make_sdvxin_chart_link(sdvxin_song, chart)
+        lazy_print_song_header(f"{song['id']} {song['title']}", header_printed, log=True)
         print_message(f"Updated chart link ({chart.upper()})", bcolors.OKGREEN)
 
     if old_song == song:
