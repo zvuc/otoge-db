@@ -40,13 +40,25 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Checkout existing branch or create new
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch origin
-          if git show-ref --quiet refs/remotes/origin/maimai/wiki-sync; then
-            git switch maimai/wiki-sync
-            git rebase origin/main
+          BRANCH="maimai/wiki-sync"
+
+          HAS_OPEN_PR=$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' 2>/dev/null || true)
+
+          if [ -n "$HAS_OPEN_PR" ]; then
+            echo "Found open PR #$HAS_OPEN_PR for $BRANCH. Updating existing branch..."
+            git switch "$BRANCH"
+            git rebase origin/main || {
+              echo "Rebase conflict detected on open PR. Aborting rebase to preserve branch state."
+              git rebase --abort
+            }
           else
-            git checkout -b maimai/wiki-sync origin/main
+            echo "No open PR found for $BRANCH. Starting clean branch from origin/main..."
+            git checkout -B "$BRANCH" origin/main
           fi
 
       - name: Run wiki script and capture output
