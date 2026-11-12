@@ -231,7 +231,11 @@ def update_song_wiki_data(song, total_diffs):
 def _fetch_missing_song_data_from_sdvxin(song, total_diffs):
     """Fill fields left empty by the wiki using the current sdvx.in JSON data."""
     header_printed = [0]
-    sdvxin_song = find_sdvxin_song(load_sdvxin_songs(), song['title'])
+    sdvxin_song = find_sdvxin_song(
+        load_sdvxin_songs(),
+        song['title'],
+        is_we=bool(song.get('we_kanji')),
+    )
     if sdvxin_song is None:
         print_message(
             f"No matching sdvx.in song for fallback: {song['title']}",
@@ -703,7 +707,11 @@ def _fetch_designer_info_from_sdvxin(song, total_diffs):
     """
     Update missing designer info from the current sdvx.in JSON data.
     """
-    sdvxin_song = find_sdvxin_song(load_sdvxin_songs(), song['title'])
+    sdvxin_song = find_sdvxin_song(
+        load_sdvxin_songs(),
+        song['title'],
+        is_we=bool(song.get('we_kanji')),
+    )
     if sdvxin_song is None:
         print_message(f"No matching sdvx.in song: {song['title']}", bcolors.FAIL, is_verbose=True)
         return

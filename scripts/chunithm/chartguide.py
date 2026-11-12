@@ -125,16 +125,33 @@ def normalize_sdvxin_title(title):
     )
 
 
-def find_sdvxin_song(songs, title):
+def find_sdvxin_song(songs, title, is_we=False):
     normalized_title = normalize_sdvxin_title(title)
-    exact_matches = [
+    matching_songs = [
         song for song in songs
         if normalize_sdvxin_title(song.get('title', '')) == normalized_title
     ]
+    if is_we:
+        matching_songs = [
+            song for song in matching_songs
+            if song.get('genre') == "WORLD'S END"
+        ]
+    else:
+        non_we_matches = [
+            song for song in matching_songs
+            if song.get('genre') != "WORLD'S END"
+        ]
+        if non_we_matches:
+            matching_songs = non_we_matches
+    exact_matches = matching_songs
     if exact_matches:
         return exact_matches[0]
 
     for song in songs:
+        if is_we and song.get('genre') != "WORLD'S END":
+            continue
+        if not is_we and song.get('genre') == "WORLD'S END":
+            continue
         candidate = normalize_sdvxin_title(song.get('title', ''))
         if candidate and (candidate in normalized_title or normalized_title in candidate):
             return song
@@ -178,7 +195,11 @@ def update_chartguide_data():
 def _update_song_chartguide_data(song, total_diffs, sdvxin_songs):
     header_printed = [0]
     old_song = copy.copy(song)
-    sdvxin_song = find_sdvxin_song(sdvxin_songs, song['title'])
+    sdvxin_song = find_sdvxin_song(
+        sdvxin_songs,
+        song['title'],
+        is_we=bool(song.get('we_kanji')),
+    )
     if sdvxin_song is None:
         print_message(f"No matching sdvx.in song: {song['title']}", bcolors.FAIL, log=True)
         return song
