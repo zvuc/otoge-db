@@ -228,6 +228,17 @@ def update_song_wiki_data(song, total_diffs):
             return song
 
 
+def _extract_sdvxin_designer(sdvxin_song, chart, source_key):
+    """Extract a stripped string designer name from sdvx.in song data, or '' if invalid."""
+    raw_designer = sdvxin_song.get('designer')
+    if chart == 'we':
+        return raw_designer.strip() if isinstance(raw_designer, str) else ''
+    if not isinstance(raw_designer, dict):
+        return ''
+    designer = raw_designer.get(source_key)
+    return designer.strip() if isinstance(designer, str) else ''
+
+
 def _fetch_missing_song_data_from_sdvxin(song, total_diffs):
     """Fill fields left empty by the wiki using the current sdvx.in JSON data."""
     header_printed = [0]
@@ -291,7 +302,7 @@ def _fetch_missing_song_data_from_sdvxin(song, total_diffs):
                 log=True,
             )
 
-        designer = sdvxin_song.get('designer', '') if chart == 'we' else sdvxin_song.get('designer', {}).get(source_key, '')
+        designer = _extract_sdvxin_designer(sdvxin_song, chart, source_key)
         designer_key = f'{destination}_designer'
         if designer_key in song and not song.get(designer_key) and designer:
             song[designer_key] = designer
@@ -717,18 +728,17 @@ def _fetch_designer_info_from_sdvxin(song, total_diffs):
         return
 
     if song.get('we_kanji'):
-        targets = [('lev_we_designer', sdvxin_song.get('designer', ''))]
+        targets = [('lev_we_designer', _extract_sdvxin_designer(sdvxin_song, 'we', 'notes'))]
     else:
-        designers = sdvxin_song.get('designer', {})
         targets = [
-            ('lev_exp_designer', designers.get('exp', '')),
-            ('lev_mas_designer', designers.get('mst', '')),
-            ('lev_ult_designer', designers.get('ult', '')),
+            ('lev_exp_designer', _extract_sdvxin_designer(sdvxin_song, 'exp', 'exp')),
+            ('lev_mas_designer', _extract_sdvxin_designer(sdvxin_song, 'mas', 'mst')),
+            ('lev_ult_designer', _extract_sdvxin_designer(sdvxin_song, 'ult', 'ult')),
         ]
 
     for designer_key, designer in targets:
         if song.get(designer_key) or not designer:
             continue
-        song[designer_key] = designer.strip()
+        song[designer_key] = designer
         print_message(f"Added chart designer for {designer_key[4:-9].upper()}: {song[designer_key]}", bcolors.OKGREEN)
         total_diffs[0] += 1
